@@ -12,6 +12,10 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "snapshot.json"
 SITE = ROOT / "site"
 
+# Shared matching: pages show only therapies that target the biomarker.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from matching import targeting_therapies  # noqa: E402
+
 DISCLAIMER_SHORT = "Not medical advice. Talk to your oncologist."
 DISCLAIMER_LONG = (
     "This site is general information only. It is not medical advice, a diagnosis "
@@ -218,8 +222,10 @@ def civic_html(civic: dict) -> str:
               <p class="fine">{esc(bits)} — <a href="{esc(a.get("url") or "")}">CIViC assertion {esc(a.get("id"))}</a> (CC0).</p>
             </article>''')
         parts.append("</div>")
+    if not assertions:
+        parts.append("<p>No curated assertions yet.</p>")
     if not parts:
-        return "<p class='fine'>No CIViC assertions in this snapshot.</p>"
+        return "<p>No curated assertions yet.</p>"
     return "".join(parts)
 
 def country_options(trials: list) -> str:
@@ -237,11 +243,11 @@ def country_options(trials: list) -> str:
 
 def page_biomarker(snap: dict, b: dict) -> str:
     ct_ts = (snap.get("clinicalTrials") or {}).get("dataTimestamp") or ""
-    therapies = b.get("therapies") or []
+    therapies = targeting_therapies(b)
     trials = b.get("trials") or []
     fr = sum(1 for t in trials if "France" in (t.get("countries") or []))
     ch = sum(1 for t in trials if "Switzerland" in (t.get("countries") or []))
-    th_h = "".join(therapy_html(t) for t in therapies) or "<p>No associated therapies were found in the FDA or EMA sources for this snapshot.</p>"
+    th_h = "".join(therapy_html(t) for t in therapies) or "<p>No therapies in this snapshot have a label indication, FDA pharmacogenomic row or companion-diagnostic row that ties the drug to this biomarker as a selection criterion.</p>"
     tr_h = "".join(trial_html(t) for t in trials)
     summary_cites = cites_html(b.get("summarySources") or [])
     return (
@@ -254,7 +260,7 @@ def page_biomarker(snap: dict, b: dict) -> str:
         + f'<p class="lede">{esc(b.get("fullName") or "")}</p>'
         + f'<div class="prose"><p>{esc(b.get("summary") or "")}</p>{summary_cites}</div>'
         + f'<h2 id="therapies">Approved therapies</h2>'
-        + f'<p class="fine">{len(therapies)} associated therapies from the FDA pharmacogenomic and companion-diagnostic tables, with EMA matches where found. Excerpts are not a substitute for the official label.</p>'
+        + f'<p class="fine">{len(therapies)} approved therapies whose label indication, the FDA pharmacogenomic biomarker table, or an FDA companion-diagnostic row ties the drug to this biomarker as a selection criterion, with EMA matches where found. Mentions that are only incidental, or that use the biomarker as an exclusion or opposite-status criterion (for example “no EGFR or ALK aberrations”, or a HER2-negative indication), are kept in the snapshot data and are not shown here. Excerpts are not a substitute for the official label.</p>'
         + th_h
         + f'<h2 id="trials">Recruiting trials</h2>'
         + f'<p class="fine">{len(trials)} recruiting studies from ClinicalTrials.gov, including {fr} with a site in France and {ch} with a site in Switzerland. Filter is applied on this page only; nothing is sent anywhere.</p>'
@@ -295,7 +301,7 @@ def whats_new_html(items: list) -> str:
 def page_home(snap: dict) -> str:
     cards = []
     for b in snap.get("biomarkers") or []:
-        n_th = len(b.get("therapies") or [])
+        n_th = len(targeting_therapies(b))
         n_tr = len(b.get("trials") or [])
         cards.append(f'''
         <li>
@@ -364,7 +370,7 @@ def page_about(snap: dict) -> str:
         </div>
         <div class="licence">
           <h3>FDA pharmacogenomic and companion-diagnostic tables; oncology approval notifications</h3>
-          <p>Associations between biomarkers and therapies are taken from the <a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">Table of Pharmacogenomic Biomarkers in Drug Labeling</a> and the <a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">list of FDA-authorized companion diagnostic devices</a>. FDA website contents are, unless otherwise noted, in the public domain. Credit to the U.S. Food and Drug Administration is given; each copied table is dated and linked back, as FDA recommends.</p>
+          <p>Associations between biomarkers and therapies are taken from the <a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">Table of Pharmacogenomic Biomarkers in Drug Labeling</a> and the <a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">list of FDA-authorized companion diagnostic devices</a>, then checked against the drug’s Indications and Usage. A therapy is shown on a biomarker page only when the label indication, the pharmacogenomic table, or a companion-diagnostic row ties the drug to that biomarker as a <em>selection criterion</em>. Mentions that are incidental, or that use the biomarker as an exclusion or an opposite-status criterion, stay in the snapshot data (with a <code>relation</code> field) and are not rendered. FDA website contents are, unless otherwise noted, in the public domain. Credit to the U.S. Food and Drug Administration is given; each copied table is dated and linked back, as FDA recommends.</p>
           <p class="fine">This snapshot: {pgx} pharmacogenomic rows, {cdx} companion-diagnostic rows.</p>
         </div>
         <div class="licence">
