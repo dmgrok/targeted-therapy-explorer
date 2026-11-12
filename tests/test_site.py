@@ -22,6 +22,14 @@ from matching import (  # noqa: E402
     dedupe_therapies,
     therapies_are_same_drug,
 )
+from trial_matching import (  # noqa: E402
+    trial_requirement,
+    requiring_trials,
+    analyse_trial_text,
+    REQUIRES,
+    EXCLUSION,
+    NOT_REQUIRED,
+)
 DISCLAIMER = "Not medical advice. Talk to your oncologist."
 BIOMARKER_IDS = ["EGFR", "ALK", "BRAF-V600E", "KRAS-G12C", "HER2", "NTRK", "MSI-H-dMMR"]
 FORBIDDEN = [
@@ -228,21 +236,15 @@ def test_matching_correctness() -> None:
     shown_egfr = targeting_therapies(egfr)
     names_egfr = [t.get("name") or "" for t in shown_egfr]
     page_egfr = (SITE / "b" / "EGFR.html").read_text(encoding="utf-8")
-    # Only the approved-therapies section: trial intervention lists may
-    # mention atezolizumab without listing it as an EGFR-targeted therapy.
-    th_section = page_egfr
-    if 'id="therapies"' in page_egfr:
-        th_section = page_egfr.split('id="therapies"', 1)[1]
-        if 'id="trials"' in th_section:
-            th_section = th_section.split('id="trials"', 1)[0]
 
     for t in shown_egfr:
         if re.search(r"atezolizumab", t.get("name") or "", re.I):
             err("EGFR data lists atezolizumab as a targeting therapy")
-    if re.search(r"atezolizumab", th_section, re.I):
-        err("EGFR page lists atezolizumab")
+    # Whole rendered page, trial cards included.
+    if re.search(r"atezolizumab", page_egfr, re.I):
+        err("EGFR page contains 'atezolizumab'")
     else:
-        ok("EGFR page and targeting data do not list atezolizumab")
+        ok("EGFR page (including trial cards) does not contain atezolizumab")
 
     present = {t.get("name", "").lower() for t in (egfr.get("therapies") or [])}
     shown_l = {n.lower() for n in names_egfr}
@@ -411,6 +413,188 @@ def test_her2_partners_and_brand_dedup() -> None:
 
 
 
+
+def _trial_articles(page: str) -> list[str]:
+    if 'id="trials"' not in page:
+        return []
+    section = page.split('id="trials"', 1)[1]
+    # Stop before CIViC / further reading if present.
+    for stop in ('id="civic"', 'id="reading"'):
+        if stop in section:
+            section = section.split(stop, 1)[0]
+            break
+    return re.findall(r'<article class="item trial"[^>]*>.*?</article>', section, flags=re.I | re.S)
+
+
+def test_trial_requirement() -> None:
+    """Shown trials must require the biomarker; EGFR has no atezolizumab anywhere.
+
+    A trial whose only HER2 mention is HER2-negative must not appear on HER2.
+    Every rendered trial card has a matching requirement. Excluded trials stay
+    in the snapshot, flagged.
+    """
+    snap = json.loads(DATA.read_text(encoding="utf-8"))
+    by_id = {b["id"]: b for b in snap.get("biomarkers") or []}
+
+    page_egfr = (SITE / "b" / "EGFR.html").read_text(encoding="utf-8")
+    if re.search(r"atezolizumab", page_egfr, re.I):
+        err("EGFR page contains 'atezolizumab' (whole page, trial cards included)")
+    else:
+        ok("EGFR whole page contains no atezolizumab")
+
+    # Synthetic / documented cases.
+    cases = [
+        (
+            "EGFR",
+            {
+                "nctId": "NCT0",
+                "title": "A Study in Metastatic Breast Cancer",
+                "conditions": ["Metastatic Breast Cancer"],
+                "interventions": ["DRUG: Atezolizumab", "DRUG: Capecitabine"],
+            },
+            {},
+            NOT_REQUIRED,
+        ),
+        (
+            "EGFR",
+            {"nctId": "NCT1", "title": "Osimertinib for EGFR-Mutant Lung Cancer", "conditions": ["EGFR-Mutant NSCLC"]},
+            {},
+            REQUIRES,
+        ),
+        (
+            "EGFR",
+            {
+                "nctId": "NCT2",
+                "title": "Teliso-V in NSCLC",
+                "conditions": ["Non Small Cell Lung Cancer"],
+            },
+            {"officialTitle": "Telisotuzumab Vedotin in EGFR Wildtype NSCLC"},
+            EXCLUSION,
+        ),
+        (
+            "EGFR",
+            {"nctId": "NCT3", "title": "Study of a Kidney Drug", "conditions": ["Chronic Kidney Disease"]},
+            {"eligibilityCriteria": "Inclusion Criteria:\n* eGFR >= 30 mL/min/1.73m^2\nExclusion Criteria:\n* None"},
+            NOT_REQUIRED,
+        ),
+        (
+            "HER2",
+            {
+                "nctId": "NCT4",
+                "title": "A Study in HR+/HER2- Breast Cancer",
+                "conditions": ["HR+/HER2- Breast Cancer"],
+            },
+            {},
+            EXCLUSION,
+        ),
+        (
+            "HER2",
+            {
+                "nctId": "NCT5",
+                "title": "Trastuzumab in HER2-positive Breast Cancer",
+                "conditions": ["HER2-positive Breast Cancer"],
+            },
+            {},
+            REQUIRES,
+        ),
+        (
+            "EGFR",
+            {
+                "nctId": "NCT6",
+                "title": "STX-721 in NSCLC Harboring EGFR or HER2 Exon 20 Insertion Mutations",
+                "conditions": ["NSCLC", "EGFR/HER2 Exon 20 Insertion Mutation"],
+            },
+            {},
+            REQUIRES,
+        ),
+    ]
+    for bid, trial, extra, expect in cases:
+        got = trial_requirement(bid, trial, extra)["relation"]
+        if got != expect:
+            err(f"trial_requirement({bid}, {trial['nctId']}): expected {expect}, got {got}")
+    ok("trial_requirement unit cases")
+
+    her2 = by_id.get("HER2") or {}
+    page_her2 = (SITE / "b" / "HER2.html").read_text(encoding="utf-8")
+    shown_her2 = requiring_trials(her2)
+    for t in shown_her2:
+        pop = " ".join(
+            [
+                t.get("title") or "",
+                " ".join(t.get("conditions") or []),
+                t.get("requirementEvidence") or "",
+            ]
+        )
+        a = analyse_trial_text(pop, "HER2")
+        if a["negatives"] and not a["positives"]:
+            # Only-negative (HER2-negative / HR+/HER2-) mention.
+            err(
+                f"HER2 page would show a trial whose only HER2 mention is HER2-negative: "
+                f"{t.get('nctId')} {t.get('title')}"
+            )
+    # Same check on the rendered cards themselves.
+    by_nct = {t.get("nctId"): t for t in (her2.get("trials") or [])}
+    for art in _trial_articles(page_her2):
+        m = re.search(r'data-nct="([^"]+)"', art)
+        nct = m.group(1) if m else ""
+        t = by_nct.get(nct) or {}
+        text = re.sub(r"<[^>]+>", " ", art)
+        a = analyse_trial_text(
+            text + " " + (t.get("requirementEvidence") or ""),
+            "HER2",
+        )
+        if a["negatives"] and not a["positives"]:
+            err(f"HER2 page trial card {nct} has only a HER2-negative mention")
+    ok("HER2 shows no trial whose only HER2 mention is HER2-negative")
+
+    # Every shown trial card, on every biomarker page, has a matching requirement.
+    for b in snap.get("biomarkers") or []:
+        page = (SITE / "b" / f"{b['id']}.html").read_text(encoding="utf-8")
+        by_nct = {t.get("nctId"): t for t in (b.get("trials") or [])}
+        shown = {t.get("nctId") for t in requiring_trials(b)}
+        for art in _trial_articles(page):
+            m = re.search(r'data-nct="([^"]+)"', art)
+            if not m:
+                err(f"{b['id']}: trial card missing data-nct")
+                continue
+            nct = m.group(1)
+            t = by_nct.get(nct)
+            if not t:
+                err(f"{b['id']}: rendered trial {nct} is not in the snapshot")
+                continue
+            if nct not in shown or t.get("requirement") != REQUIRES:
+                err(f"{b['id']}: shown trial card {nct} is not flagged as requiring the biomarker")
+                continue
+            ev = t.get("requirementEvidence") or ""
+            pop = " ".join([t.get("title") or "", " ".join(t.get("conditions") or []), ev])
+            a = analyse_trial_text(pop, b["id"])
+            named_ok = ev or a["positives"] or a["has_mention"]
+            if not named_ok or (a["negatives"] and not a["positives"] and not ev):
+                err(f"{b['id']}: shown trial card {nct} lacks a matching requirement")
+        # Dropped trials must not be rendered.
+        for t in b.get("trials") or []:
+            if t.get("requirement") == REQUIRES:
+                continue
+            nct = t.get("nctId") or ""
+            if nct and re.search(rf'data-nct="{re.escape(nct)}"', page):
+                err(f"{b['id']}: dropped trial {nct} is still rendered")
+        # Flagged, kept in the data.
+        dropped = [t for t in (b.get("trials") or []) if t.get("requirement") != REQUIRES]
+        if dropped and any(not t.get("requirement") for t in dropped):
+            err(f"{b['id']}: a dropped trial is missing a requirement flag")
+    ok("every shown trial card has a matching requirement; excluded trials stay flagged in the data")
+
+    # The loose-match atezolizumab breast-cancer trial stays in EGFR data, not shown.
+    egfr = by_id.get("EGFR") or {}
+    loose = [t for t in (egfr.get("trials") or []) if t.get("nctId") == "NCT03424005"]
+    if loose:
+        if loose[0].get("requirement") == REQUIRES:
+            err("NCT03424005 is still marked as requiring EGFR")
+        else:
+            ok(f"EGFR keeps NCT03424005 in the data as requirement={loose[0].get('requirement')}")
+
+
+
 def main() -> int:
     test_snapshot_schema()
     test_pages()
@@ -418,6 +602,7 @@ def main() -> int:
     test_matching_patterns()
     test_matching_correctness()
     test_her2_partners_and_brand_dedup()
+    test_trial_requirement()
     if errors:
         print(f"\n{len(errors)} failure(s)")
         return 1

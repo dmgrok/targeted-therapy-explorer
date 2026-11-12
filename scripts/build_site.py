@@ -15,6 +15,7 @@ SITE = ROOT / "site"
 # Shared matching: pages show only therapies that target the biomarker.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from matching import targeting_therapies  # noqa: E402
+from trial_matching import requiring_trials  # noqa: E402
 
 DISCLAIMER_SHORT = "Not medical advice. Talk to your oncologist."
 DISCLAIMER_LONG = (
@@ -244,7 +245,7 @@ def country_options(trials: list) -> str:
 def page_biomarker(snap: dict, b: dict) -> str:
     ct_ts = (snap.get("clinicalTrials") or {}).get("dataTimestamp") or ""
     therapies = targeting_therapies(b)
-    trials = b.get("trials") or []
+    trials = requiring_trials(b)
     fr = sum(1 for t in trials if "France" in (t.get("countries") or []))
     ch = sum(1 for t in trials if "Switzerland" in (t.get("countries") or []))
     th_h = "".join(therapy_html(t) for t in therapies) or "<p>No therapies in this snapshot have a label indication, FDA pharmacogenomic row or companion-diagnostic row that ties the drug to this biomarker as a selection criterion.</p>"
@@ -263,7 +264,7 @@ def page_biomarker(snap: dict, b: dict) -> str:
         + f'<p class="fine">{len(therapies)} approved therapies whose label indication, the FDA pharmacogenomic biomarker table, or an FDA companion-diagnostic row ties the drug to this biomarker as a selection criterion, with EMA matches where found. Mentions that are only incidental, or that use the biomarker as an exclusion or opposite-status criterion (for example “no EGFR or ALK aberrations”, or a HER2-negative indication), are kept in the snapshot data and are not shown here. Excerpts are not a substitute for the official label.</p>'
         + th_h
         + f'<h2 id="trials">Recruiting trials</h2>'
-        + f'<p class="fine">{len(trials)} recruiting studies from ClinicalTrials.gov, including {fr} with a site in France and {ch} with a site in Switzerland. Filter is applied on this page only; nothing is sent anywhere.</p>'
+        + f'<p class="fine">{len(trials)} recruiting studies from ClinicalTrials.gov whose condition or eligibility inclusion criteria require this biomarker as a selection criterion, including {fr} with a site in France and {ch} with a site in Switzerland. A mention only in exclusions, interventions or keywords is not enough; those records stay in the snapshot data and are not shown. Filter is applied on this page only; nothing is sent anywhere.</p>'
         + f'''<div class="filter-bar">
           <label for="country-filter">Country
             <select id="country-filter" name="country">
@@ -302,7 +303,7 @@ def page_home(snap: dict) -> str:
     cards = []
     for b in snap.get("biomarkers") or []:
         n_th = len(targeting_therapies(b))
-        n_tr = len(b.get("trials") or [])
+        n_tr = len(requiring_trials(b))
         cards.append(f'''
         <li>
           <a class="bm-card" href="b/{esc(b["id"])}.html">
@@ -360,7 +361,7 @@ def page_about(snap: dict) -> str:
         <h2>Sources, licences and attribution</h2>
         <div class="licence">
           <h3>ClinicalTrials.gov API v2</h3>
-          <p>Trial records come from the U.S. National Library of Medicine’s <a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a> API v2. Downloading the data signifies acceptance of the <a href="https://clinicaltrials.gov/about-site/terms-conditions">ClinicalTrials.gov Terms and Conditions</a> (last updated 31 January 2023). The data are free to use, but they carry an international copyright outside the United States; some records may also be subject to third-party copyright. We attribute the source as ClinicalTrials.gov, display the processing date (<code>dataTimestamp</code>), keep weekly snapshots, and describe our selection (recruiting studies, closed biomarker queries, a country filter applied in the page). We assert no proprietary rights in the database and do not use extracted email addresses.</p>
+          <p>Trial records come from the U.S. National Library of Medicine’s <a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a> API v2. Downloading the data signifies acceptance of the <a href="https://clinicaltrials.gov/about-site/terms-conditions">ClinicalTrials.gov Terms and Conditions</a> (last updated 31 January 2023). The data are free to use, but they carry an international copyright outside the United States; some records may also be subject to third-party copyright. We attribute the source as ClinicalTrials.gov, display the processing date (<code>dataTimestamp</code>), keep weekly snapshots, and describe our selection (recruiting studies whose condition or eligibility inclusion requires the biomarker, closed biomarker queries, a country filter applied in the page). We assert no proprietary rights in the database and do not use extracted email addresses.</p>
           <p class="fine">This snapshot: {trials} recruiting records. Processing date: {ct}.</p>
         </div>
         <div class="licence">
