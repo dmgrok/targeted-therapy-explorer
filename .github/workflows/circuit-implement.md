@@ -17,7 +17,6 @@ permissions:
   issues: read
   pull-requests: read
   actions: read
-  copilot-requests: write
 engine: copilot
 strict: true
 timeout-minutes: 20
@@ -59,6 +58,12 @@ safe-outputs:
 ---
 
 # Implement a Targeted Therapy Explorer spec as a draft PR
+
+
+## Engine authentication
+
+This is a personal repository. Per the [gh-aw authentication docs](https://github.github.com/gh-aw/reference/auth/), Copilot inference uses the repository secret `COPILOT_GITHUB_TOKEN` (a fine-grained PAT owned by David's personal account, with Account permission **Copilot Requests: Read**). Do not set `permissions: copilot-requests: write` here: that path is for organization-billed Copilot, and when it is set the secret is ignored. Caps remain 20 minutes, 40 turns, 100 AI credits per run, 200 per day. Only a repository admin can trigger this workflow. Open a draft PR only; do not merge.
+
 
 You are implementing **one** GitHub issue. Follow `AGENTS.md` in the repository root. This prompt adds Circuit-specific safety rules; when they conflict, the stricter rule wins.
 
