@@ -94,7 +94,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "cobas EGFR Mutation Test v2 (Roche Molecular Systems, Inc.): Non-Small Cell Lung Cancer (NSCLC) - Tissue or Plasma"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "h metastatic non-small cell lung cancer (NSCLC) whose tumors have non-resistant epidermal growth factor receptor (EGFR) mutations as detected by an FDA-approved test ( 1.1 ) Limitations of Use : Safe"
         },
         {
           "name": "Amivantamab",
@@ -149,7 +152,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "Guardant360® Liquid CDx (Guardant Health, Inc.): Non-small cell lung cancer (NSCLC) - Plasma"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "1 INDICATIONS AND USAGE RYBREVANT is a bispecific EGF receptor-directed and MET receptor-directed antibody indicated: in combination with laze"
         },
         {
           "name": "Atezolizumab",
@@ -198,7 +204,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/tecentriq",
               "detail": "Tecentriq (atezolizumab). Authorised Urothelial carcinoma&nbsp;Tecentriq as monotherapy is indicated for the treatment of adult patients with locally advanced or metastatic urothelial carcinoma (UC): after prior platinum containing chemotherapy, or who are considered cisplatin i…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "f the tumor area [IC ≥ 10%] ), as determined by an FDA-authorized test, with no EGFR or ALK genomic tumor aberrations. ( 1.1 ) in combination with bevacizumab, pacl"
         },
         {
           "name": "Cemiplimab",
@@ -247,7 +256,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/libtayo",
               "detail": "Libtayo (cemiplimab). Authorised Cutaneous Squamous Cell Carcinoma Libtayo as monotherapy is indicated for the treatment of adult patients with metastatic or locally advanced cutaneous squamous cell carcinoma (mCSCC or laCSCC) who are not candidates for curative surgery or curat…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "ine treatment of adult patients with non-small cell lung cancer (NSCLC) with no EGFR, ALK or ROS1 aberrations and is: locally advanced where patients are not candid"
         },
         {
           "name": "Cetuximab",
@@ -308,7 +320,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "Dako EGFR pharmDx Kit (Dako North America, Inc.): Colorectal Cancer - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "1 INDICATIONS AND USAGE ERBITUX ® is an epidermal growth factor receptor (EGFR) antagonist indicated for treatment of: Head and Neck Cancer Locally or regional"
         },
         {
           "name": "Dacomitinib",
@@ -368,13 +383,16 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "therascreen EGFR RGQ PCR Kit (Qiagen Manchester, Ltd.): Non-Small Cell Lung Cancer (NSCLC) - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "e treatment of patients with metastatic non-small cell lung cancer (NSCLC) with epidermal growth factor receptor (EGFR) exon 19 deletion or exon 21 L858R substitution mutations as detected by an FDA-"
         },
         {
           "name": "Datopotamab Deruxtecan",
           "brandNames": [],
           "genericNames": [],
-          "indicationsExcerpt": "",
+          "indicationsExcerpt": "1 INDICATIONS AND USAGE DATROWAY is a Trop-2-directed antibody and topoisomerase inhibitor conjugate indicated for the treatment of: adult patients with locally advanced or metastatic epidermal growth factor receptor (EGFR)-mutated non-small cell lung cancer (NSCLC) who have received prior EGFR-directed therapy and platinum-based chemotherapy. ( 1.1 ) This indication is approved under accelerated approval based on ob…",
           "fda": {
             "pgxBiomarker": "EGFR",
             "pgxArea": "Oncology",
@@ -415,7 +433,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/datopotamab-deruxtecan-daiichi-sankyo",
               "detail": "Datopotamab deruxtecan Daiichi Sankyo (datopotamab deruxtecan). Application withdrawn Treatment of adult patients with locally advanced or metastatic non squamous non-small cell lung cancer (NSCLC)"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "icated for the treatment of: adult patients with locally advanced or metastatic epidermal growth factor receptor (EGFR)-mutated non-small cell lung cancer (NSCLC) who have received prior EGFR-directe"
         },
         {
           "name": "Durvalumab",
@@ -464,7 +485,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/imfinzi",
               "detail": "Imfinzi (durvalumab). Authorised Non-Small Cell Lung Cancer (NSCLC)Imfinzi in combination with platinum-based chemotherapy as neoadjuvant treatment, followed by Imfinzi as monotherapy as adjuvant treatment, is indicated for the treatment of adults with resectable NSCLC at high r…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "rs ≥ 4 cm and/or node positive) non-small cell lung cancer (NSCLC) and no known epidermal growth factor receptor (EGFR) mutations or anaplastic lymphoma kinase (ALK) rearrangements. ( 1.1 ) • as a si"
         },
         {
           "name": "Erlotinib",
@@ -557,7 +581,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "cobas EGFR Mutation Test v1 (Roche Molecular Systems, Inc.): Non-Small Cell Lung Cancer (NSCLC) - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "f patients with metastatic non-small cell lung cancer (NSCLC) whose tumors have epidermal growth factor receptor (EGFR) exon 19 deletions or exon 21 (L858R) substitution mutations as detected by an F"
         },
         {
           "name": "Gefitinib",
@@ -650,7 +677,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "cobas EGFR Mutation Test v2 (Roche Molecular Systems, Inc.): Non-Small Cell Lung Cancer (NSCLC) - Tissue or Plasma"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "f patients with metastatic non-small cell lung cancer (NSCLC) whose tumors have epidermal growth factor receptor (EGFR) exon 19 deletions or exon 21 (L858R) substitution mutations as detected by an F"
         },
         {
           "name": "Ipilimumab",
@@ -699,7 +729,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/yervoy",
               "detail": "Yervoy (ipilimumab). Authorised Melanoma Yervoy as monotherapy or combination with nivolumab is indicated for the treatment of advanced (unresectable or metastatic) melanoma in adults and adolescents 12 years of age and older (see section 4.4).&nbsp; Yervoy in combination with n…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": " cancer expressing PD-L1 (≥1%) as determined by an FDA-authorized test, with no EGFR or ALK genomic tumor aberrations, as first-line treatment in combination with n"
         },
         {
           "name": "Lazertinib",
@@ -748,7 +781,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/lazcluze",
               "detail": "Lazcluze (lazertinib). Authorised Lazcluze in combination with amivantamab is indicated for the first line treatment of adult patients with advanced non small cell lung cancer (NSCLC) with EGFR exon 19 deletions or exon 21 L858R substitution mutations."
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "nts with locally advanced or metastatic non-small cell lung cancer (NSCLC) with epidermal growth factor receptor (EGFR) exon 19 deletions or exon 21 L858R substitution mutations, as detected by an FD"
         },
         {
           "name": "Mobocertinib",
@@ -783,7 +819,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/exkivity",
               "detail": "Exkivity (mobocertinib). Application withdrawn Treatment of adult patients with epidermal growth factor receptor (EGFR) exon 20 insertion mutation-positive locally advanced or metastatic non-small cell lung cancer (NSCLC)."
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "Exkivity (mobocertinib). Application withdrawn Treatment of adult patients with epidermal growth factor receptor (EGFR) exon 20 insertion mutation-positive locally advanced or metastatic non-small ce"
         },
         {
           "name": "Nivolumab",
@@ -856,7 +895,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/nivolumab-bms",
               "detail": "Nivolumab BMS (nivolumab). Withdrawn Nivolumab BMS is indicated for the treatment of locally advanced or metastatic squamous non-small cell lung cancer (NSCLC) after prior chemotherapy in adults."
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "ult patients with resectable (tumors ≥4 cm or node positive) NSCLC and no known EGFR mutations or ALK rearrangements, for neoadjuvant treatment, in combination with"
         },
         {
           "name": "Osimertinib",
@@ -936,7 +978,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "Guardant360® Liquid CDx (Guardant Health, Inc.): Non-small cell lung cancer (NSCLC) - Plasma"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "ion in adult patients with non-small cell lung cancer (NSCLC) whose tumors have epidermal growth factor receptor (EGFR) exon 19 deletions or exon 21 L858R mutations, as detected by an FDA-approved te"
         },
         {
           "name": "Panitumumab",
@@ -996,7 +1041,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "Dako EGFR pharmDx Kit (Dako North America, Inc.): Colorectal Cancer - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "1 INDICATIONS AND USAGE Vectibix is an epidermal growth factor receptor (EGFR) antagonist indicated for the treatment of: Adult patients with wild-type RAS (d"
         },
         {
           "name": "Pembrolizumab",
@@ -1045,7 +1093,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/keytruda",
               "detail": "Keytruda (pembrolizumab). Authorised Melanoma Keytruda as monotherapy is indicated for the treatment of adults and adolescents aged 12 years and older with advanced (unresectable or metastatic) melanoma. Keytruda&nbsp;as monotherapy is indicated for the adjuvant treatment of adu…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "rst-line treatment of adult patients with metastatic nonsquamous NSCLC, with no EGFR or ALK genomic tumor aberrations. ( 1.2 ) in combination with carboplatin and e"
         },
         {
           "name": "Pemetrexed",
@@ -1130,7 +1181,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/pemetrexed-accord",
               "detail": "Pemetrexed Accord (pemetrexed). Authorised Malignant pleural mesothelioma Pemetrexed Accord in combination with cisplatin is indicated for the treatment of chemotherapy naïve patients with unresectable malignant pleural mesothelioma. Non-small cell lung cancer Pemetrexed Accord…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "tients with metastatic non-squamous non-small cell lung cancer (NSCLC), with no EGFR or ALK genomic tumor aberrations. ( 1.1 ) in combination with cisplatin for the"
         },
         {
           "name": "Ramucirumab",
@@ -1140,7 +1194,7 @@
           "genericNames": [
             "RAMUCIRUMAB"
           ],
-          "indicationsExcerpt": "1 INDICATIONS AND USAGE CYRAMZA ® is a human vascular endothelial growth factor receptor 2 (VEGFR2) antagonist indicated: as a single agent or in combination with paclitaxel, for treatment of adults with advanced or metastatic gastric or gastro-esophageal junction adenocarcinoma with disease progression on or after prior fluoropyrimidine- or platinum-containing chemotherapy. ( 1.1 ) in combination with erlotinib, fo…",
+          "indicationsExcerpt": "…r after prior fluoropyrimidine- or platinum-containing chemotherapy. ( 1.1 ) in combination with erlotinib, for first-line treatment of adults with metastatic non-small cell lung cancer with epidermal growth factor receptor (EGFR) exon 19 deletions or exon 21 (L858R) mutations. ( 1.2 ) in combination with docetaxel, for treatment of adults with metastatic non-small cell lung cancer with disease progression on or afte…",
           "fda": {
             "pgxBiomarker": "EGFR",
             "pgxArea": "Oncology",
@@ -1179,7 +1233,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/cyramza",
               "detail": "Cyramza (ramucirumab). Authorised Gastric cancer Cyramza in combination with paclitaxel is indicated for the treatment of adult patients with advanced gastric cancer or gastro-oesophageal junction adenocarcinoma with disease progression after prior platinum and fluoropyrimidine…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": " first-line treatment of adults with metastatic non-small cell lung cancer with epidermal growth factor receptor (EGFR) exon 19 deletions or exon 21 (L858R) mutations. ( 1.2 ) in combination with doc"
         },
         {
           "name": "Sevabertinib",
@@ -1215,7 +1272,10 @@
               "url": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=219972",
               "detail": "Application NDA219972"
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE HYRNUO is indicated for the treatment of adult patients with locally advanced or metastatic non-squamous non-small cell lung cancer (NSCLC) whose tumors have HER2 ( ERBB2 ) tyrosine kinase domain (TKD) activating mutations, as detected by an FDA-authorized"
         },
         {
           "name": "Sunvozertinib",
@@ -1251,13 +1311,16 @@
               "url": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=219839",
               "detail": "Application NDA219839"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "nts with locally advanced or metastatic non-small cell lung cancer (NSCLC) with epidermal growth factor receptor (EGFR) exon 20 insertion mutations, as detected by an FDA-approved test [see Dosage an"
         },
         {
           "name": "Telisotuzumab Vedotin",
           "brandNames": [],
           "genericNames": [],
-          "indicationsExcerpt": "",
+          "indicationsExcerpt": "1 INDICATIONS AND USAGE EMRELIS is indicated for the treatment of adult patients with locally advanced or metastatic, non-squamous non-small cell lung cancer (NSCLC) with high c-Met protein overexpression [≥50% of tumor cells with strong (3+) staining], as determined by an FDA-approved test [see Dosage and Administration ( 2.1 )] , who have received a prior systemic therapy . This indication is approved under accele…",
           "fda": {
             "pgxBiomarker": "EGFR",
             "pgxArea": "Oncology",
@@ -1273,7 +1336,10 @@
               "url": "https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling",
               "detail": "Biomarker listed as “EGFR”; labeling sections: Adverse Reactions, Use in Specific Populations, Clinical Studies."
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE EMRELIS is indicated for the treatment of adult patients with locally advanced or metastatic, non-squamous non-small cell lung cancer (NSCLC) with high c-Met protein overexpression [≥50% of tumor cells with strong (3+) staining], as determined by an FDA-ap"
         },
         {
           "name": "Tepotinib",
@@ -1322,13 +1388,16 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/tepmetko",
               "detail": "Tepmetko (tepotinib). Authorised Tepmetko&nbsp;as monotherapy is indicated for the treatment of adult patients with advanced non-small cell lung cancer (NSCLC) harbouring alterations leading to mesenchymal-epithelial transition factor gene exon 14 (METex14) skipping, who require…"
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE TEPMETKO is indicated for the treatment of adult patients with metastatic non-small cell lung cancer (NSCLC) harboring mesenchymal-epithelial transition ( MET ) exon 14 skipping alterations. TEPMETKO is a kinase inhibitor indicated for the treatment of adu"
         },
         {
           "name": "Tremelimumab",
           "brandNames": [],
           "genericNames": [],
-          "indicationsExcerpt": "",
+          "indicationsExcerpt": "…( 1.1 ) • in combination with durvalumab and platinum-based chemotherapy for the treatment of adult patients with metastatic non-small cell lung cancer (NSCLC) with no sensitizing epidermal growth factor receptor (EGFR) mutation or anaplastic lymphoma kinase (ALK) genomic tumor aberrations. ( 1.2 ) 1.1 Hepatocellular Carcinoma IMJUDO, in combination with durvalumab, is indicated for the treatment of adult patients wi…",
           "fda": {
             "pgxBiomarker": "EGFR",
             "pgxArea": "Oncology",
@@ -1369,13 +1438,16 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/tremelimumab-astrazeneca",
               "detail": "Tremelimumab AstraZeneca (tremelimumab). Withdrawn Tremelimumab AstraZeneca in combination with durvalumab and platinum-based chemotherapy is indicated for the first-line treatment of adults with metastatic non-small cell lung cancer (NSCLC) with no sensitising EGFR mutations or…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "patients with metastatic non-small cell lung cancer (NSCLC) with no sensitizing epidermal growth factor receptor (EGFR) mutation or anaplastic lymphoma kinase (ALK) genomic tumor aberrations. ( 1.2 )"
         },
         {
           "name": "Zegfrovy",
           "brandNames": [],
           "genericNames": [],
-          "indicationsExcerpt": "",
+          "indicationsExcerpt": "…INDICATIONS AND USAGE ZEGFROVY is indicated for the treatment of adult patients with locally advanced or metastatic non-small cell lung cancer (NSCLC) with epidermal growth factor receptor (EGFR) exon 20 insertion mutations, as detected by an FDA-approved test [see Dosage and Administration (2.1) ] , whose disease has progressed on or after platinum-based chemotherapy. This indication is approved under accelerated ap…",
           "fda": null,
           "ema": [],
           "companionDiagnostics": [
@@ -1391,7 +1463,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "Oncomine Dx Express Test (Life Technologies Corporation): Non-Small Cell Lung Cancer (NSCLC) - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "nts with locally advanced or metastatic non-small cell lung cancer (NSCLC) with epidermal growth factor receptor (EGFR) exon 20 insertion mutations, as detected by an FDA-approved test [see Dosage an"
         }
       ],
       "civic": {
@@ -15793,7 +15868,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/alecensa",
               "detail": "Alecensa (alectinib). Authorised Adjuvant treatment of resected non small cell lung cancer (NSCLC)&nbsp;Alecensa as monotherapy is indicated as adjuvant treatment following complete tumour resection for adult patients with ALK positive NSCLC at high risk of recurrence (see secti…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "ndicated for: adjuvant treatment in adult patients following tumor resection of anaplastic lymphoma kinase (ALK)-positive non-small cell lung cancer (NSCLC) (tumors ≥ 4 cm or node positive) as"
         },
         {
           "name": "Atezolizumab",
@@ -15842,7 +15920,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/tecentriq",
               "detail": "Tecentriq (atezolizumab). Authorised Urothelial carcinoma&nbsp;Tecentriq as monotherapy is indicated for the treatment of adult patients with locally advanced or metastatic urothelial carcinoma (UC): after prior platinum containing chemotherapy, or who are considered cisplatin i…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "mor area [IC ≥ 10%] ), as determined by an FDA-authorized test, with no EGFR or ALK genomic tumor aberrations. ( 1.1 ) in combination with bevacizumab, paclitaxel,"
         },
         {
           "name": "Brentuximab Vedotin",
@@ -15891,7 +15972,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/adcetris",
               "detail": "Adcetris (brentuximab vedotin). Authorised Hodgkin lymphomaAdcetris is indicated for adult patients with previously untreated CD30+ Stage IV Hodgkin lymphoma (HL) in combination with doxorubicin, vinblastine and dacarbazine (AVD).Adcetris is indicated for adult patients with pre…"
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE ADCETRIS is a CD30-directed antibody and microtubule inhibitor conjugate indicated for treatment of: • Adult patients with previously untreated Stage III or IV classical Hodgkin lymphoma (cHL), in combination with doxorubicin, vinblastine, and dacarbazine "
         },
         {
           "name": "Brigatinib",
@@ -15954,7 +16038,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/alunbrig",
               "detail": "Alunbrig (brigatinib). Authorised Alunbrig is indicated as monotherapy for the treatment of adult patients with anaplastic lymphoma kinase (ALK)?positive advanced non?small cell lung cancer (NSCLC) previously not treated with an ALK inhibitor. Alunbrig is indicated as monotherap…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "ATIONS AND USAGE ALUNBRIG is indicated for the treatment of adult patients with anaplastic lymphoma kinase (ALK)-positive metastatic non-small cell lung cancer (NSCLC) as detected by an FDA-ap"
         },
         {
           "name": "Cemiplimab",
@@ -16003,7 +16090,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/libtayo",
               "detail": "Libtayo (cemiplimab). Authorised Cutaneous Squamous Cell Carcinoma Libtayo as monotherapy is indicated for the treatment of adult patients with metastatic or locally advanced cutaneous squamous cell carcinoma (mCSCC or laCSCC) who are not candidates for curative surgery or curat…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "eatment of adult patients with non-small cell lung cancer (NSCLC) with no EGFR, ALK or ROS1 aberrations and is: locally advanced where patients are not candidates "
         },
         {
           "name": "Ceritinib",
@@ -16069,7 +16159,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "FoundationOne CDx (Foundation Medicine, Inc.): Non-Small Cell Lung Cancer (NSCLC) - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "lt patients with metastatic non-small cell lung cancer (NSCLC) whose tumors are anaplastic lymphoma kinase (ALK)-positive as detected by an FDA-approved test [see Dosage and Administration (2."
         },
         {
           "name": "Crizotinib",
@@ -16079,7 +16172,7 @@
           "genericNames": [
             "CRIZOTINIB"
           ],
-          "indicationsExcerpt": "1 INDICATIONS AND USAGE XALKORI is a kinase inhibitor indicated for the treatment of • adult patients with metastatic non-small cell lung cancer (NSCLC) whose tumors are anaplastic lymphoma kinase (ALK) or ROS1-positive as detected by an FDA-approved test. ( 1.1 , 2.1 ) • pediatric patients 1 year of age and older and young adults with relapsed or refractory, systemic anaplastic large cell lymphoma (ALCL) that is AL…",
+          "indicationsExcerpt": "…S1-positive as detected by an FDA-approved test. ( 1.1 , 2.1 ) • pediatric patients 1 year of age and older and young adults with relapsed or refractory, systemic anaplastic large cell lymphoma (ALCL) that is ALK-positive. ( 1.2 , 2.3 ) o Limitations of Use: The safety and efficacy of XALKORI have not been established in older adults with relapsed or refractory, systemic ALK-positive ALCL. • adult and pediatric patie…",
           "fda": {
             "pgxBiomarker": "ALK",
             "pgxArea": "Oncology",
@@ -16139,7 +16232,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "FoundationOne CDx (Foundation Medicine, Inc.): Non-Small Cell Lung Cancer (NSCLC) - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": " relapsed or refractory, systemic anaplastic large cell lymphoma (ALCL) that is ALK-positive. ( 1.2 , 2.3 ) o Limitations of Use: The safety and efficacy of XALKOR"
         },
         {
           "name": "Dabrafenib",
@@ -16200,7 +16296,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/finlee",
               "detail": "Finlee (dabrafenib). Authorised Low-grade glioma Finlee in combination with trametinib is indicated for the treatment of paediatric patients aged 1 year and older with low-grade glioma (LGG) with a BRAF V600E mutation who require systemic therapy. High-grade glioma Finlee in com…"
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE TAFINLAR is a kinase inhibitor indicated as a single agent for the treatment of patients with unresectable or metastatic melanoma with BRAF V600E mutation as detected by an FDA-approved test. ( 1.1 , 2.1 ) TAFINLAR is indicated, in combination with trameti"
         },
         {
           "name": "Durvalumab",
@@ -16249,7 +16348,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/imfinzi",
               "detail": "Imfinzi (durvalumab). Authorised Non-Small Cell Lung Cancer (NSCLC)Imfinzi in combination with platinum-based chemotherapy as neoadjuvant treatment, followed by Imfinzi as monotherapy as adjuvant treatment, is indicated for the treatment of adults with resectable NSCLC at high r…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "ancer (NSCLC) and no known epidermal growth factor receptor (EGFR) mutations or anaplastic lymphoma kinase (ALK) rearrangements. ( 1.1 ) • as a single agent, for the treatment of adult patient"
         },
         {
           "name": "Ensartinib",
@@ -16307,7 +16409,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/gevalka",
               "detail": "Gevalka (ensartinib). Opinion The treatment of adult patients with anaplastic lymphoma kinase (ALK)-positive advanced non-small cell lung cancer (NSCLC)"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "ATIONS AND USAGE ENSACOVE is indicated for the treatment of adult patients with anaplastic lymphoma kinase (ALK)-positive locally advanced or metastatic non-small cell lung cancer (NSCLC)as de"
         },
         {
           "name": "Ipilimumab",
@@ -16356,7 +16461,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/yervoy",
               "detail": "Yervoy (ipilimumab). Authorised Melanoma Yervoy as monotherapy or combination with nivolumab is indicated for the treatment of advanced (unresectable or metastatic) melanoma in adults and adolescents 12 years of age and older (see section 4.4).&nbsp; Yervoy in combination with n…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "expressing PD-L1 (≥1%) as determined by an FDA-authorized test, with no EGFR or ALK genomic tumor aberrations, as first-line treatment in combination with nivoluma"
         },
         {
           "name": "Lorlatinib",
@@ -16414,7 +16522,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/lorviqua",
               "detail": "Lorviqua (lorlatinib). Authorised Lorviqua as monotherapy is indicated for the treatment of adult patients with anaplastic lymphoma kinase (ALK)?positive advanced non?small cell lung cancer (NSCLC) previously not treated with an ALK inhibitor. Lorviqua as monotherapy is indicate…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "lt patients with metastatic non-small cell lung cancer (NSCLC) whose tumors are anaplastic lymphoma kinase (ALK)-positive as detected by an FDA-approved test. LORBRENA is a kinase inhibitor in"
         },
         {
           "name": "Nivolumab",
@@ -16487,7 +16598,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/nivolumab-bms",
               "detail": "Nivolumab BMS (nivolumab). Withdrawn Nivolumab BMS is indicated for the treatment of locally advanced or metastatic squamous non-small cell lung cancer (NSCLC) after prior chemotherapy in adults."
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "resectable (tumors ≥4 cm or node positive) NSCLC and no known EGFR mutations or ALK rearrangements, for neoadjuvant treatment, in combination with platinum-doublet"
         },
         {
           "name": "Pembrolizumab",
@@ -16536,7 +16650,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/keytruda",
               "detail": "Keytruda (pembrolizumab). Authorised Melanoma Keytruda as monotherapy is indicated for the treatment of adults and adolescents aged 12 years and older with advanced (unresectable or metastatic) melanoma. Keytruda&nbsp;as monotherapy is indicated for the adjuvant treatment of adu…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": " treatment of adult patients with metastatic nonsquamous NSCLC, with no EGFR or ALK genomic tumor aberrations. ( 1.2 ) in combination with carboplatin and either p"
         },
         {
           "name": "Pemetrexed",
@@ -16621,7 +16738,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/pemetrexed-accord",
               "detail": "Pemetrexed Accord (pemetrexed). Authorised Malignant pleural mesothelioma Pemetrexed Accord in combination with cisplatin is indicated for the treatment of chemotherapy naïve patients with unresectable malignant pleural mesothelioma. Non-small cell lung cancer Pemetrexed Accord…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "ith metastatic non-squamous non-small cell lung cancer (NSCLC), with no EGFR or ALK genomic tumor aberrations. ( 1.1 ) in combination with cisplatin for the initia"
         },
         {
           "name": "Ramucirumab",
@@ -16670,7 +16790,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/cyramza",
               "detail": "Cyramza (ramucirumab). Authorised Gastric cancer Cyramza in combination with paclitaxel is indicated for the treatment of adult patients with advanced gastric cancer or gastro-oesophageal junction adenocarcinoma with disease progression after prior platinum and fluoropyrimidine…"
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE CYRAMZA ® is a human vascular endothelial growth factor receptor 2 (VEGFR2) antagonist indicated: as a single agent or in combination with paclitaxel, for treatment of adults with advanced or metastatic gastric or gastro-esophageal junction adenocarcinoma "
         },
         {
           "name": "Tepotinib",
@@ -16719,13 +16842,16 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/tepmetko",
               "detail": "Tepmetko (tepotinib). Authorised Tepmetko&nbsp;as monotherapy is indicated for the treatment of adult patients with advanced non-small cell lung cancer (NSCLC) harbouring alterations leading to mesenchymal-epithelial transition factor gene exon 14 (METex14) skipping, who require…"
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE TEPMETKO is indicated for the treatment of adult patients with metastatic non-small cell lung cancer (NSCLC) harboring mesenchymal-epithelial transition ( MET ) exon 14 skipping alterations. TEPMETKO is a kinase inhibitor indicated for the treatment of adu"
         },
         {
           "name": "Tremelimumab",
           "brandNames": [],
           "genericNames": [],
-          "indicationsExcerpt": "",
+          "indicationsExcerpt": "…( 1.1 ) • in combination with durvalumab and platinum-based chemotherapy for the treatment of adult patients with metastatic non-small cell lung cancer (NSCLC) with no sensitizing epidermal growth factor receptor (EGFR) mutation or anaplastic lymphoma kinase (ALK) genomic tumor aberrations. ( 1.2 ) 1.1 Hepatocellular Carcinoma IMJUDO, in combination with durvalumab, is indicated for the treatment of adult patients wi…",
           "fda": {
             "pgxBiomarker": "ALK",
             "pgxArea": "Oncology",
@@ -16766,7 +16892,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/tremelimumab-astrazeneca",
               "detail": "Tremelimumab AstraZeneca (tremelimumab). Withdrawn Tremelimumab AstraZeneca in combination with durvalumab and platinum-based chemotherapy is indicated for the first-line treatment of adults with metastatic non-small cell lung cancer (NSCLC) with no sensitising EGFR mutations or…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "(NSCLC) with no sensitizing epidermal growth factor receptor (EGFR) mutation or anaplastic lymphoma kinase (ALK) genomic tumor aberrations. ( 1.2 ) 1.1 Hepatocellular Carcinoma IMJUDO, in comb"
         }
       ],
       "civic": {
@@ -21959,7 +22088,7 @@
           "genericNames": [
             "ATEZOLIZUMAB"
           ],
-          "indicationsExcerpt": "1 INDICATIONS AND USAGE TECENTRIQ is a programmed death-ligand 1 (PD-L1) blocking antibody indicated: Non-Small Cell Lung Cancer (NSCLC) as adjuvant treatment following resection and platinum-based chemotherapy for adult patients with Stage II to IIIA NSCLC whose tumors have PD-L1 expression on ≥ 1% of tumor cells, as determined by an FDA-authorized test. ( 1.1 , 14.1 ) for the first-line treatment of adult patients…",
+          "indicationsExcerpt": "…of adult patients with unresectable or metastatic HCC who have not received prior systemic therapy. ( 1.3 ) Melanoma in combination with cobimetinib and vemurafenib for the treatment of adult patients with BRAF V600 mutation-positive unresectable or metastatic melanoma. ( 1.4 ) Alveolar Soft Part Sarcoma (ASPS) for the treatment of adult and pediatric patients 2 years of age and older with unresectable or metastatic…",
           "fda": {
             "pgxBiomarker": "BRAF",
             "pgxArea": "Oncology",
@@ -22009,7 +22138,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "FoundationOne CDx (Foundation Medicine, Inc.): Melanoma - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "ation with cobimetinib and vemurafenib for the treatment of adult patients with BRAF V600 mutation-positive unresectable or metastatic melanoma. ( 1.4 ) Alveolar Soft Pa"
         },
         {
           "name": "Binimetinib",
@@ -22070,7 +22202,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/balimek",
               "detail": "Balimek (binimetinib). Application withdrawn Treatment of unresectable or metastatic melanoma. Treatment of unresectable melanoma, with NRA Q61 mutation."
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": ", for the treatment of patients with unresectable or metastatic melanoma with a BRAF V600E or V600K mutation, as detected by an FDA-approved test. ( 1.1 , 2.1 ) • in comb"
         },
         {
           "name": "Cetuximab",
@@ -22080,7 +22215,7 @@
           "genericNames": [
             "CETUXIMAB"
           ],
-          "indicationsExcerpt": "1 INDICATIONS AND USAGE ERBITUX ® is an epidermal growth factor receptor (EGFR) antagonist indicated for treatment of: Head and Neck Cancer Locally or regionally advanced squamous cell carcinoma of the head and neck in combination with radiation therapy. ( 1.1 , 14.1 ) Recurrent locoregional disease or metastatic squamous cell carcinoma of the head and neck in combination with platinum-based therapy with fluorouraci…",
+          "indicationsExcerpt": "…( 1.2 , 5.7 , 12.1 , 14.2 ) Limitations of Use: ERBITUX is not indicated for treatment of Ras-mutant colorectal cancer or when the results of the Ras mutation tests are unknown. ( 5.7 ) BRAF V600E Mutation-Positive Metastatic Colorectal Cancer (CRC) in combination with encorafenib, for the treatment of adult patients with metastatic colorectal cancer (CRC) with a BRAF V600E mutation, as detected by an FDA-approved te…",
           "fda": {
             "pgxBiomarker": "BRAF",
             "pgxArea": "Oncology",
@@ -22119,7 +22254,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/erbitux",
               "detail": "Erbitux (cetuximab). Authorised Erbitux is indicated for the treatment of patients with epidermal growth factor receptor (EGFR)-expressing, RAS wild-type metastatic colorectal cancer: in combination with irinotecan-based chemotherapy; in first-line in combination with FOLFOX; as…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "ectal cancer or when the results of the Ras mutation tests are unknown. ( 5.7 ) BRAF V600E Mutation-Positive Metastatic Colorectal Cancer (CRC) in combination with encora"
         },
         {
           "name": "Cobimetinib",
@@ -22179,7 +22317,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.): Melanoma - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "the treatment of adult patients with unresectable or metastatic melanoma with a BRAF V600E or V600K mutation, in combination with vemurafenib. ( 1.1 , 14.1 ) As a single "
         },
         {
           "name": "Dabrafenib",
@@ -22266,7 +22407,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "THXID BRAF Kit (bioMérieux Inc.): Melanoma - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "ent for the treatment of patients with unresectable or metastatic melanoma with BRAF V600E mutation as detected by an FDA-approved test. ( 1.1 , 2.1 ) TAFINLAR is indicat"
         },
         {
           "name": "Encorafenib",
@@ -22360,7 +22504,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/braftovi",
               "detail": "Braftovi (encorafenib). Authorised MelanomaEncorafenib in combination with binimetinib is indicated for the treatment of adult patients with unresectable or metastatic melanoma with a BRAF V600 mutation.Colorectal cancer (CRC)Encorafenib in combination with cetuximab is indicate…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": ", for the treatment of patients with unresectable or metastatic melanoma with a BRAF V600E or V600K mutation, as detected by an FDA-authorized test. ( 1.1 , 2.1 ) Colorec"
         },
         {
           "name": "Nivolumab",
@@ -22433,7 +22580,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/nivolumab-bms",
               "detail": "Nivolumab BMS (nivolumab). Withdrawn Nivolumab BMS is indicated for the treatment of locally advanced or metastatic squamous non-small cell lung cancer (NSCLC) after prior chemotherapy in adults."
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE OPDIVO QVANTIG is a combination of nivolumab, a programmed death receptor-1 (PD-1)-blocking antibody, and hyaluronidase, an endoglycosidase, indicated for the treatment of: Renal Cell Carcinoma (RCC) • adult patients with intermediate or poor risk advanced"
         },
         {
           "name": "Nivolumab and Relatlimab",
@@ -22469,7 +22619,10 @@
               "url": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761234",
               "detail": "Application BLA761234"
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE OPDUALAG™ is indicated for the treatment of adult and pediatric patients 12 years of age or older with unresectable or metastatic melanoma. OPDUALAG is a combination of nivolumab, a programmed death receptor-1 (PD-1) blocking antibody, and relatlimab, a ly"
         },
         {
           "name": "Pembrolizumab",
@@ -22518,7 +22671,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/keytruda",
               "detail": "Keytruda (pembrolizumab). Authorised Melanoma Keytruda as monotherapy is indicated for the treatment of adults and adolescents aged 12 years and older with advanced (unresectable or metastatic) melanoma. Keytruda&nbsp;as monotherapy is indicated for the adjuvant treatment of adu…"
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE KEYTRUDA QLEX is a combination of pembrolizumab, a programmed death receptor-1 (PD-1)-blocking antibody, and berahyaluronidase alfa, an endoglycosidase, indicated: Melanoma for the treatment of adult patients with unresectable or metastatic melanoma. ( 1.1"
         },
         {
           "name": "Tovorafenib",
@@ -22570,7 +22726,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/ojemda",
               "detail": "Ojemda (tovorafenib). Authorised Ojemda is indicated as monotherapy for the treatment of patients 6 months of age and older with paediatric low-grade glioma (LGG) harbouring a BRAF fusion or rearrangement, or BRAF V600 mutation, who have progressed after one or more prior system…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": " older with relapsed or refractory pediatric low-grade glioma (LGG) harboring a BRAF fusion or rearrangement, or BRAF V600 mutation. This indication is approved und"
         },
         {
           "name": "Trametinib",
@@ -22650,7 +22809,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/spexotras",
               "detail": "Spexotras (trametinib). Authorised Low-grade glioma Spexotras in combination with dabrafenib is indicated for the treatment of paediatric patients aged 1&nbsp;year and older with low-grade glioma (LGG) with a BRAF V600E mutation who require systemic therapy. High-grade glioma Sp…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "nhibitor treatment-naïve patients with unresectable or metastatic melanoma with BRAF V600E or V600K mutations as detected by an FDA-approved test. ( 1.1 , 2.1 ) MEKINIST "
         },
         {
           "name": "Vemurafenib",
@@ -22711,7 +22873,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.): Melanoma - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "ted for the treatment of patients with unresectable or metastatic melanoma with BRAF V600E mutation as detected by an FDA-approved test. ( 1.1 , 2.1 ) ZELBORAF ® is indic"
         }
       ],
       "civic": {
@@ -28379,13 +28544,16 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "therascreen KRAS RGQ PCR Kit (Qiagen Manchester, Ltd.): Colorectal Cancer - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "AZATI, as a single-agent, is indicated for the treatment of adult patients with KRAS G12C-mutated locally advanced or metastatic non-small cell lung cancer (NSCLC), as d"
         },
         {
           "name": "Avutometinib and Defactinib",
           "brandNames": [],
           "genericNames": [],
-          "indicationsExcerpt": "",
+          "indicationsExcerpt": "1 INDICATIONS AND USAGE AVMAPKI FAKZYNJA CO-PACK is indicated for the treatment of adult patients with KRAS -mutated recurrent low-grade serous ovarian cancer (LGSOC) who have received prior systemic therapy. This indication is approved under accelerated approval based on tumor response rate and duration of response [see Clinical Studies (14) ]. Continued approval for this indication may be contingent upon verificati…",
           "fda": {
             "pgxBiomarker": "KRAS",
             "pgxArea": "Oncology",
@@ -28401,7 +28569,10 @@
               "url": "https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling",
               "detail": "Biomarker listed as “KRAS”; labeling sections: Indications and Usage, Dosage and Administration, Adverse Reactions, Clinical Studies."
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE AVMAPKI FAKZYNJA CO-PACK is indicated for the treatment of adult patients with KRAS -mutated recurrent low-grade serous ovarian cancer (LGSOC) who have received prior systemic therapy. This indication is approved under accelerated approval based on tumor r"
         },
         {
           "name": "Cetuximab",
@@ -28410,7 +28581,7 @@
             "ERBITUX"
           ],
           "genericNames": [],
-          "indicationsExcerpt": "",
+          "indicationsExcerpt": "…with platinum-based therapy with fluorouracil. ( 1.1 , 14.1 ) Recurrent or metastatic squamous cell carcinoma of the head and neck progressing after platinum-based therapy. ( 1.1 , 14.1 ) Colorectal Cancer K-Ras wild-type, EGFR-expressing, metastatic colorectal cancer as determined by an FDA-approved test in combination with FOLFIRI for first-line treatment, in combination with irinotecan in patients who are refract…",
           "fda": null,
           "ema": [],
           "companionDiagnostics": [
@@ -28451,7 +28622,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "cobas KRAS Mutation Test (Roche Molecular Systems, Inc.): Colorectal Cancer - Tissue"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "ck progressing after platinum-based therapy. ( 1.1 , 14.1 ) Colorectal Cancer K-Ras wild-type, EGFR-expressing, metastatic colorectal cancer as determined by an FD"
         },
         {
           "name": "Panitumumab",
@@ -28459,7 +28633,7 @@
             "Vectibix"
           ],
           "genericNames": [],
-          "indicationsExcerpt": "",
+          "indicationsExcerpt": "…ith FOLFOX for first-line treatment. ( 1 , 14.2 ) As monotherapy following disease progression after prior treatment with fluoropyrimidine, oxaliplatin, and irinotecan-containing chemotherapy. ( 1 , 14.1 ) KRAS G12C-mutated Metastatic Colorectal Cancer (mCRC)* In combination with sotorasib, for the treatment of adult patients with KRAS G12C- mutated mCRC, as determined by an FDA-approved test, who have received prior…",
           "fda": null,
           "ema": [],
           "companionDiagnostics": [
@@ -28495,7 +28669,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "cobas KRAS Mutation Test (Roche Molecular Systems, Inc.): Colorectal Cancer - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "ropyrimidine, oxaliplatin, and irinotecan-containing chemotherapy. ( 1 , 14.1 ) KRAS G12C-mutated Metastatic Colorectal Cancer (mCRC)* In combination with sotorasib, for"
         },
         {
           "name": "Sotorasib",
@@ -28569,7 +28746,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/lumykras",
               "detail": "Lumykras (sotorasib). Authorised Lumykras as monotherapy is indicated for the treatment of adults with advanced non-small cell lung cancer (NSCLC) with KRAS G12C mutation and who have progressed after at least one prior line of systemic therapy."
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "IONS AND USAGE LUMAKRAS is an inhibitor of the RAS GTPase family indicated for: KRAS G12C-mutated Locally Advanced or Metastatic Non-Small Cell Lung Cancer (NSCLC) As a "
         }
       ],
       "civic": {
@@ -38905,7 +39085,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/verzenios",
               "detail": "Verzenios (abemaciclib). Authorised Early Breast Cancer Verzenios in combination with endocrine therapy is indicated for the adjuvant treatment of adult patients with hormone receptor (HR) positive, human epidermal growth factor receptor 2 (HER2) negative, node positive early br…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "itor) for the adjuvant treatment of adults with hormone receptor (HR)-positive, human epidermal growth factor receptor 2 (HER2)-negative, node-positive, early breast cancer at high risk of recurrence. ( 1.1 "
         },
         {
           "name": "Ado-Trastuzumab Emtansine",
@@ -38981,7 +39164,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "FoundationOne CDx (Foundation Medicine, Inc.): Breast Cancer - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "1 INDICATIONS AND USAGE KADCYLA is a HER2-targeted antibody and microtubule inhibitor conjugate indicated, as a single ag"
         },
         {
           "name": "Alpelisib",
@@ -39054,7 +39240,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/vijoice-w",
               "detail": "Vijoice (alpelisib). Application withdrawn Treatment of patients with severe manifestations of PIK3CA-related overgrowth spectrum"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "reatment of postmenopausal women, and men, with hormone receptor (HR)-positive, human epidermal growth factor receptor 2 (HER2)-negative, locally advanced or metastatic breast cancer with... Vijoice (alpelis"
         },
         {
           "name": "Capecitabine",
@@ -39064,7 +39253,7 @@
           "genericNames": [
             "CAPECITABINE"
           ],
-          "indicationsExcerpt": "1 INDICATIONS AND USAGE Capecitabine tablet is a nucleoside metabolic inhibitor indicated for: Colorectal Cancer • adjuvant treatment of patients with Stage III colon cancer as a single agent or as a component of a combination chemotherapy regimen. ( 1.1 ) • perioperative treatment of adults with locally advanced rectal cancer as a component of chemoradiotherapy. ( 1.1 ) • treatment of patients with unresectable or…",
+          "indicationsExcerpt": "…( 1.2 ) Gastric, Esophageal, or Gastroesophageal Junction Cancer • treatment of adults with unresectable or metastatic gastric, esophageal, or gastroesophageal junction cancer as a component of a combination chemotherapy regimen. ( 1.3 ) • treatment of adults with HER2-overexpressing metastatic gastric or gastroesophageal junction adenocarcinoma who have not received prior treatment for metastatic disease as a compon…",
           "fda": {
             "pgxBiomarker": "ERBB2(HER2)",
             "pgxArea": "Oncology",
@@ -39139,7 +39328,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/capecitabine-medac",
               "detail": "Capecitabine Medac (capecitabine). Authorised Capecitabine Medac is indicated for the adjuvant treatment of patients following surgery of stage-III (Dukes’ stage-C) colon cancer. Capecitabine Medac is indicated for the treatment of metastatic colorectal cancer. Capecitabine Meda…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "onent of a combination chemotherapy regimen. ( 1.3 ) • treatment of adults with HER2-overexpressing metastatic gastric or gastroesophageal junction adenocarcinoma w"
         },
         {
           "name": "Capivasertib",
@@ -39188,13 +39380,16 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/truqap",
               "detail": "Truqap (capivasertib). Authorised Truqap is indicated in combination with fulvestrant for the treatment of adult patients with oestrogen receptor (ER)-positive, HER2-negative locally advanced or metastatic breast cancer with one or more PIK3CA/AKT1/PTEN-alterations following rec…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "1 INDICATIONS AND USAGE TRUQAP is a kinase inhibitor indicated: HR-Positive, HER2-Megative Locally Advanced or Metastatic Breast Cancer • in combination with ful"
         },
         {
           "name": "Datopotamab Deruxtecan",
           "brandNames": [],
           "genericNames": [],
-          "indicationsExcerpt": "",
+          "indicationsExcerpt": "…adult patients with unresectable or metastatic triple-negative breast cancer (TNBC) who are not candidates for PD-1/PD-L1 inhibitor therapy [see Clinical Studies (14.2) ] . ( 1.2 ) adult patients with unresectable or metastatic, hormone receptor (HR)-positive, human epidermal growth factor receptor 2 (HER2)-negative (IHC 0, IHC 1+ or IHC 2+/ISH-) breast cancer who have received prior endocrine-based therapy and chemo…",
           "fda": {
             "pgxBiomarker": "ERBB2(HER2)",
             "pgxArea": "Oncology",
@@ -39235,7 +39430,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/datopotamab-deruxtecan-daiichi-sankyo",
               "detail": "Datopotamab deruxtecan Daiichi Sankyo (datopotamab deruxtecan). Application withdrawn Treatment of adult patients with locally advanced or metastatic non squamous non-small cell lung cancer (NSCLC)"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "adult patients with unresectable or metastatic, hormone receptor (HR)-positive, human epidermal growth factor receptor 2 (HER2)-negative (IHC 0, IHC 1+ or IHC 2+/ISH-) breast cancer who have received prior e"
         },
         {
           "name": "Elacestrant",
@@ -39284,7 +39482,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/orserdu",
               "detail": "Orserdu (elacestrant). Authorised Orserdu monotherapy is indicated for the treatment of postmenopausal women, and men, with estrogen receptor (ER) positive, HER2-negative, locally advanced or metastatic breast cancer with an activating ESR1 mutation who have disease progression…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "ment of postmenopausal women or adult men with estrogen receptor (ER)-positive, human epidermal growth factor receptor 2 (HER2)-negative, ESR1 -mutated advanced or metastatic breast cancer, as detected by an"
         },
         {
           "name": "Eribulin",
@@ -39357,7 +39558,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/halaven",
               "detail": "Halaven (eribulin). Authorised Halaven monotherapy is indicated for the treatment of patients with locally advanced or metastatic breast cancer who have progressed after at least one chemotherapeutic regimens for advanced disease (see section 5.1). Prior therapy should have incl…"
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE Eribulin mesylate injection is a microtubule inhibitor indicated for the treatment of patients with: Metastatic breast cancer who have previously received at least two chemotherapeutic regimens for the treatment of metastatic disease. Prior therapy should "
         },
         {
           "name": "Everolimus",
@@ -39418,7 +39622,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/votubia",
               "detail": "Votubia (everolimus). Authorised Renal angiomyolipoma associated with tuberous sclerosis complex (TSC) Votubia is indicated for the treatment of adult patients with renal angiomyolipoma associated with tuberous sclerosis complex (TSC) who are at risk of complications (based on f…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "the treatment of: Postmenopausal women with advanced hormone receptor-positive, HER2-negative breast cancer in combination with exemestane after failure of treatmen"
         },
         {
           "name": "Fam-trastuzumab deruxtecan",
@@ -39476,7 +39683,10 @@
               "url": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761139",
               "detail": "Application BLA761139"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "1 INDICATIONS AND USAGE ENHERTU is a HER2-directed antibody and topoisomerase inhibitor conjugate indicated for: HER2-Pos"
         },
         {
           "name": "Fulvestrant",
@@ -39537,7 +39747,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/faslodex",
               "detail": "Faslodex (fulvestrant). Authorised Faslodex is indicated as monotherapy for the treatment of estrogen receptor positive, locally advanced or metastatic breast cancer in postmenopausal women: not previously treated with endocrine therapy, or with disease relapse on or after adjuv…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "ptor antagonist indicated for the treatment of: Hormone receptor (HR)-positive, human epidermal growth factor receptor 2 (HER2)-negative advanced breast cancer in postmenopausal women not previously treated "
         },
         {
           "name": "Imlunestrant",
@@ -39586,7 +39799,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/inluriyo",
               "detail": "Inluriyo (imlunestrant). Authorised Inluriyo is indicated as monotherapy for the treatment of adult patients with oestrogen receptor (ER)-positive, HER2-negative, locally advanced or metastatic breast cancer with an activating ESR1-mutation, who have disease progression followin…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": " monotherapy, for the treatment of adults with estrogen receptor (ER)-positive, human epidermal growth factor receptor 2 (HER2)-negative, estrogen receptor-1 (ESR1 )-mutated advanced or metastatic breast can"
         },
         {
           "name": "Inavolisib",
@@ -39635,7 +39851,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/itovebi",
               "detail": "Itovebi (inavolisib). Authorised Itovebi, in combination with palbociclib and fulvestrant, is indicated for the treatment of adult patients with PIK3CA-mutated, oestrogen receptor (ER)-positive, HER2-negative, locally advanced or metastatic breast cancer, following recurrence on…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "ults with endocrine-resistant, PIK3CA -mutated, hormone receptor (HR)-positive, human epidermal growth factor receptor 2 (HER2)-negative, locally advanced or metastatic breast cancer, as detected by an FDA-a"
         },
         {
           "name": "Ixabepilone",
@@ -39671,7 +39890,10 @@
               "url": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=022065",
               "detail": "Application NDA022065"
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE IXEMPRA is indicated in combination with capecitabine for the treatment of patients with metastatic or locally advanced breast cancer resistant to treatment with an anthracycline and a taxane, or whose cancer is taxane resistant and for whom further anthra"
         },
         {
           "name": "Lapatinib",
@@ -39720,7 +39942,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/tyverb",
               "detail": "Tyverb (lapatinib). Authorised Tyverb is indicated for the treatment of patients with breast cancer, whose tumours overexpress HER2 (ErbB2): in combination with capecitabine for patients with advanced or metastatic disease with progression following prior therapy, which must hav…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": " of patients with advanced or metastatic breast cancer whose tumors overexpress human epidermal growth factor receptor 2 (HER2) and who have received prior therapy, including an anthracycline, a taxane, and "
         },
         {
           "name": "Margetuximab",
@@ -39756,7 +39981,10 @@
               "url": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761150",
               "detail": "Application BLA761150"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "bination with chemotherapy, for the treatment of adult patients with metastatic HER2-positive breast cancer who have received two or more prior anti-HER2 regimens, "
         },
         {
           "name": "Neratinib",
@@ -39805,7 +40033,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/nerlynx",
               "detail": "Nerlynx (neratinib). Authorised Nerlynx is indicated for the extended adjuvant treatment of adult patients with early stage hormone receptor positive HER2-overexpressed/amplified breast cancer and who are less than one year from the completion of prior adjuvant trastuzumab based…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "e agent, for the extended adjuvant treatment of adult patients with early-stage HER2-positive breast cancer, to follow adjuvant trastuzumab-based therapy. ( 1.1 ) I"
         },
         {
           "name": "Nivolumab",
@@ -39878,7 +40109,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/nivolumab-bms",
               "detail": "Nivolumab BMS (nivolumab). Withdrawn Nivolumab BMS is indicated for the treatment of locally advanced or metastatic squamous non-small cell lung cancer (NSCLC) after prior chemotherapy in adults."
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE OPDIVO QVANTIG is a combination of nivolumab, a programmed death receptor-1 (PD-1)-blocking antibody, and hyaluronidase, an endoglycosidase, indicated for the treatment of: Renal Cell Carcinoma (RCC) • adult patients with intermediate or poor risk advanced"
         },
         {
           "name": "Olaparib",
@@ -39927,7 +40161,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/lynparza",
               "detail": "Lynparza (olaparib). Authorised Ovarian cancer Lynparza is indicated as monotherapy for the: maintenance treatment of adult patients with advanced (FIGO stages III and IV) BRCA1/2-mutated (germline and/or somatic) high-grade epithelial ovarian, fallopian tube or primary peritone…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": " treatment of adult patients with deleterious or suspected deleterious g BRCA m human epidermal growth factor receptor 2 (HER2)-negative high risk early breast cancer who have been treated with neoadjuvant o"
         },
         {
           "name": "Palbociclib",
@@ -39937,7 +40174,7 @@
           "genericNames": [
             "PALBOCICLIB"
           ],
-          "indicationsExcerpt": "1 INDICATIONS AND USAGE IBRANCE is a kinase inhibitor indicated: • for the treatment of adult patients with hormone receptor (HR)-positive, human epidermal growth factor receptor 2 (HER2)-negative advanced or metastatic breast cancer in combination with: o an aromatase inhibitor as initial endocrine-based therapy ( 1.1 ); or o fulvestrant in patients with disease progression following endocrine therapy. ( 1.1 ) • in…",
+          "indicationsExcerpt": "…or after completing adjuvant endocrine therapy. ( 1.1 ) • in combination with trastuzumab, with or without pertuzumab, and endocrine therapy for the maintenance treatment of adult patients with HR-positive, HER2-positive locally advanced or metastatic breast cancer following induction treatment. ( 1.2 ) 1.1 HER2-Negative Metastatic Breast Cancer IBRANCE is indicated for the treatment of adult patients with hormone r…",
           "fda": {
             "pgxBiomarker": "ERBB2(HER2)",
             "pgxArea": "Oncology",
@@ -39988,7 +40225,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/ibrance",
               "detail": "Ibrance (palbociclib). Authorised Ibrance is indicated for the treatment of hormone receptor (HR) positive, human epidermal growth factor receptor 2 (HER2) negative locally advanced or metastatic breast cancer: in combination with an aromatase inhibitor; in combination with fulv…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "crine therapy for the maintenance treatment of adult patients with HR-positive, HER2-positive locally advanced or metastatic breast cancer following induction treat"
         },
         {
           "name": "Pembrolizumab",
@@ -39998,7 +40238,7 @@
           "genericNames": [
             "PEMBROLIZUMAB AND BERAHYALURONIDASE ALFA-PMPH"
           ],
-          "indicationsExcerpt": "1 INDICATIONS AND USAGE KEYTRUDA QLEX is a combination of pembrolizumab, a programmed death receptor-1 (PD-1)-blocking antibody, and berahyaluronidase alfa, an endoglycosidase, indicated: Melanoma for the treatment of adult patients with unresectable or metastatic melanoma. ( 1.1 ) for the adjuvant treatment of adult and pediatric patients 12 years and older with Stage IIB, IIC, or III melanoma following complete re…",
+          "indicationsExcerpt": "…( 1.7 , 2.1 ) Gastric Cancer in combination with trastuzumab, fluoropyrimidine- and platinum-containing chemotherapy, for the first-line treatment of adults with locally advanced unresectable or metastatic HER2-positive gastric or gastroesophageal junction (GEJ) adenocarcinoma whose tumors express PD-L1 (CPS ≥1) as determined by an FDA-authorized test. ( 1.8 ) in combination with fluoropyrimidine- and platinum-contai…",
           "fda": {
             "pgxBiomarker": "ERBB2(HER2)",
             "pgxArea": "Oncology",
@@ -40037,7 +40277,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/keytruda",
               "detail": "Keytruda (pembrolizumab). Authorised Melanoma Keytruda as monotherapy is indicated for the treatment of adults and adolescents aged 12 years and older with advanced (unresectable or metastatic) melanoma. Keytruda&nbsp;as monotherapy is indicated for the adjuvant treatment of adu…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "first-line treatment of adults with locally advanced unresectable or metastatic HER2-positive gastric or gastroesophageal junction (GEJ) adenocarcinoma whose tumors"
         },
         {
           "name": "Pertuzumab",
@@ -40142,7 +40385,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/perjeta",
               "detail": "Perjeta (pertuzumab). Authorised Metastatic Breast Cancer: Perjeta is indicated for use in combination with trastuzumab and docetaxel in adult patients with HER2-positive metastatic or locally recurrent unresectable breast cancer, who have not received previous anti-HER2 therapy…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": " Use in combination with trastuzumab and docetaxel for treatment of adults with HER2-positive metastatic breast cancer (MBC) who have not received prior anti-HER2 t"
         },
         {
           "name": "Ribociclib",
@@ -40191,13 +40437,16 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/kisqali",
               "detail": "Kisqali (ribociclib). Authorised Early breast cancer Kisqali in combination with an aromatase inhibitor is indicated for the adjuvant treatment of patients with hormone receptor (HR)-positive, human epidermal growth factor receptor 2 (HER2)-negative early breast cancer at high r…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "bitor for the adjuvant treatment of adults with hormone receptor (HR)-positive, human epidermal growth factor receptor 2 (HER2)-negative stage II and III early breast cancer at high risk of recurrence. ( 1 )"
         },
         {
           "name": "Sacituzumab Govitecan",
           "brandNames": [],
           "genericNames": [],
-          "indicationsExcerpt": "",
+          "indicationsExcerpt": "…( 1.1 , 14.1 ) Second Line or Later For the treatment of adult patients with unresectable locally advanced or mTNBC who have received two or more prior systemic therapies, at least one of them for metastatic disease. ( 1.1 , 14.1 ) Locally Advanced or Metastatic HR-Positive, HER2-Negative Breast Cancer For the treatment of adult patients with unresectable locally advanced or metastatic hormone receptor (HR)-positive,…",
           "fda": {
             "pgxBiomarker": "ERBB2(HER2)",
             "pgxArea": "Oncology",
@@ -40226,7 +40475,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/trodelvy",
               "detail": "Trodelvy (sacituzumab govitecan). Authorised Triple-Negative Breast Cancer&nbsp; Trodelvy is indicated:&nbsp; as monotherapy for the treatment of adult patients with unresectable locally advanced or metastatic triple-negative breast cancer (TNBC) who have not received prior syst…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": " metastatic disease. ( 1.1 , 14.1 ) Locally Advanced or Metastatic HR-Positive, HER2-Negative Breast Cancer For the treatment of adult patients with unresectable lo"
         },
         {
           "name": "Sevabertinib",
@@ -40276,7 +40528,10 @@
               "url": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=219972",
               "detail": "Application NDA219972"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "or metastatic non-squamous non-small cell lung cancer (NSCLC) whose tumors have HER2 ( ERBB2 ) tyrosine kinase domain (TKD) activating mutations, as detected by an "
         },
         {
           "name": "Talazoparib",
@@ -40325,13 +40580,16 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/talzenna",
               "detail": "Talzenna (talazoparib). Authorised Treatment with Talzenna should be initiated and supervised by a physician experienced in the use of anticancer medicinal products. Patient selection Breast cancer: Patients should be selected for the treatment of breast cancer with Talzenna bas…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "nts with deleterious or suspected deleterious germline BRCA -mutated (g BRCA m) HER2-negative locally advanced or metastatic breast cancer. Select patients for ther"
         },
         {
           "name": "Tipiracil and Trifluridine",
           "brandNames": [],
           "genericNames": [],
-          "indicationsExcerpt": "",
+          "indicationsExcerpt": "…( 1.1 ) metastatic gastric or gastroesophageal junction adenocarcinoma previously treated with at least two prior lines of chemotherapy that included a fluoropyrimidine, a platinum, either a taxane or irinotecan, and if appropriate, HER2/neu-targeted therapy. ( 1.2 ) 1.1 Metastatic Colorectal Cancer LONSURF, as a single agent or in combination with bevacizumab, is indicated for the treatment of adult patients with me…",
           "fda": {
             "pgxBiomarker": "ERBB2(HER2)",
             "pgxArea": "Oncology",
@@ -40347,7 +40605,10 @@
               "url": "https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling",
               "detail": "Biomarker listed as “ERBB2(HER2)”; labeling sections: Indications and Usage, Adverse Reactions, Clinical Studies."
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE LONSURF is a combination of trifluridine, a nucleoside metabolic inhibitor, and tipiracil, a thymidine phosphorylase inhibitor, indicated for the treatment of adult patients with: metastatic colorectal cancer as a single agent or in combination with bevaci"
         },
         {
           "name": "Tislelizumab",
@@ -40357,7 +40618,7 @@
           "genericNames": [
             "TISLELIZUMAB-JSGR"
           ],
-          "indicationsExcerpt": "1 INDICATIONS AND USAGE TEVIMBRA is a programmed death receptor-1 (PD-1)-blocking antibody indicated for: Esophageal Cancer in combination with platinum-containing chemotherapy for the first-line treatment of adults with unresectable or metastatic esophageal squamous cell carcinoma (ESCC) whose tumors express PD-L1 (≥1). ( 1.1 ) as a single agent in adults with unresectable or metastatic esophageal squamous cell car…",
+          "indicationsExcerpt": "…( 1.2 ) Gastric, Gastroesophageal Junction, or Esophageal Adenocarcinoma in combination with zanidatamab-hrii and fluoropyrimidine- and platinum-containing chemotherapy in adults for the first line treatment of HER2-positive (IHC 3+ or IHC 2+/ISH+) unresectable locally advanced or metastatic gastric, gastroesophageal junction, or esophageal adenocarcinoma. ( 1.3 ) 1.1 Esophageal Cancer First-Line Treatment of Esophag…",
           "fda": {
             "pgxBiomarker": "ERBB2(HER2)",
             "pgxArea": "Oncology",
@@ -40408,7 +40669,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/tizveni",
               "detail": "Tizveni (tislelizumab). Withdrawn Non-small cell lung cancer (NSCLC)Tizveni in combination with pemetrexed and platinum-containing chemotherapy is indicated for the first-line treatment of adult patients with non-squamous non-small cell lung cancer whose tumours have PD-L1 expre…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": " and platinum-containing chemotherapy in adults for the first line treatment of HER2-positive (IHC 3+ or IHC 2+/ISH+) unresectable locally advanced or metastatic ga"
         },
         {
           "name": "Trastuzumab",
@@ -40535,7 +40799,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/kadcyla",
               "detail": "Kadcyla (trastuzumab emtansine). Authorised Early Breast Cancer (EBC) Kadcyla, as a single agent, is indicated for the adjuvant treatment of adult patients with HER2-positive early breast cancer who have residual invasive disease, in the breast and/or lymph nodes, after neoadjuv…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "1 INDICATIONS AND USAGE KADCYLA is a HER2-targeted antibody and microtubule inhibitor conjugate indicated, as a single ag"
         },
         {
           "name": "Tucatinib",
@@ -40584,7 +40851,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/tukysa",
               "detail": "Tukysa (tucatinib). Authorised Tukysa is indicated in combination with trastuzumab and capecitabine for the treatment of adult patients with HER2?positive locally advanced or metastatic breast cancer who have received at least 2 prior anti-HER2 treatment regimens."
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "ce treatment of adult patients with unresectable locally advanced or metastatic HER2-positive breast cancer following induction treatment. ( 1.1 ) • in combination "
         },
         {
           "name": "Vepdegestrant",
@@ -40620,7 +40890,10 @@
               "url": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=219835",
               "detail": "Application NDA219835"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": " is indicated for the treatment of adults with estrogen receptor (ER)-positive, human epidermal growth factor receptor 2 (HER2)-negative, estrogen receptor-1 (ESR1) -mutated advanced or metastatic breast can"
         },
         {
           "name": "Zanidatamab",
@@ -40675,13 +40948,16 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "PATHWAY anti-HER-2/neu (4B5) Rabbit Monoclonal Primary Antibody (Ventana Medical Systems, Inc.): Gastroesophageal adenocarcinoma (GEA: gastric, gastroesophageal junction, and esophageal adenocarcinoma)"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "1 INDICATIONS AND USAGE ZIIHERA is a bispecific HER2-directed antibody indicated for: Gastroesophageal Adenocarcinoma (GEA) • in com"
         },
         {
           "name": "Zolbetuximab",
           "brandNames": [],
           "genericNames": [],
-          "indicationsExcerpt": "",
+          "indicationsExcerpt": "…GE VYLOY, in combination with fluoropyrimidine- and platinum-containing chemotherapy, is indicated for the first-line treatment of adults with locally advanced unresectable or metastatic human epidermal growth factor receptor 2 (HER2)-negative gastric or gastroesophageal junction (GEJ) adenocarcinoma whose tumors are claudin (CLDN) 18.2 positive as determined by an FDA-approved test [see Dosage and Administration ( 2…",
           "fda": {
             "pgxBiomarker": "ERBB2(HER2)",
             "pgxArea": "Oncology",
@@ -40710,7 +40986,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/vyloy",
               "detail": "Vyloy (zolbetuximab). Authorised Vyloy, in combination with fluoropyrimidine- and platinum-containing chemotherapy, is indicated for the first line treatment of adult patients with locally advanced unresectable or metastatic HER2 negative gastric or gastro-oesophageal junction (…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": "first-line treatment of adults with locally advanced unresectable or metastatic human epidermal growth factor receptor 2 (HER2)-negative gastric or gastroesophageal junction (GEJ) adenocarcinoma whose tumors"
         },
         {
           "name": "Zongertinib",
@@ -40754,7 +41033,10 @@
               "url": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=219042",
               "detail": "Application NDA219042"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "or metastatic non-squamous non-small cell lung cancer (NSCLC) whose tumors have HER2 (ERBB2) tyrosine kinase domain activating mutations, as detected by an FDA-auth"
         }
       ],
       "civic": {
@@ -55110,7 +55392,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "FoundationOne CDx (Foundation Medicine, Inc.): Solid Tumors - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "h of age with solid tumors that: have a neurotrophic tyrosine receptor kinase ( NTRK) gene fusion, as detected by an FDA-approved test without a known acquired... 1"
         },
         {
           "name": "Larotrectinib",
@@ -55176,7 +55461,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "FoundationOne CDx (Foundation Medicine, Inc.): Solid Tumors - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "patients with solid tumors that: have a neurotrophic receptor tyrosine kinase ( NTRK ) gene fusion without a known acquired resistance mutation, are metastatic or w"
         },
         {
           "name": "Repotrectinib",
@@ -55225,7 +55513,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/augtyro",
               "detail": "Augtyro (repotrectinib). Authorised Augtyro as monotherapy is indicated for the treatment of adult patients with ROS1-positive advanced non-small cell lung cancer (NSCLC). Augtyro as monotherapy is indicated for the treatment of adult and paediatric patients 12 years of age and…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": " older with solid tumors that: • have a neurotrophic tyrosine receptor kinase ( NTRK ) gene fusion and • are locally advanced or metastatic or where surgical resect"
         }
       ],
       "civic": {
@@ -60724,7 +61015,7 @@
             "Jemperli"
           ],
           "genericNames": [],
-          "indicationsExcerpt": "",
+          "indicationsExcerpt": "…in combination with carboplatin and paclitaxel, followed by JEMPERLI as a single agent, for the treatment of adult patients with primary advanced or recurrent endometrial cancer (EC). ( 1.1 ) • as a single agent for the treatment of adult patients with mismatch repair deficient (dMMR) recurrent or advanced EC, as determined by an FDA-authorized test, that has progressed on or following prior treatment with a platinum…",
           "fda": {
             "pgxBiomarker": "Microsatellite Instability, Mismatch Repair",
             "pgxArea": "Oncology",
@@ -60758,7 +61049,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "Ventana MMR RxDx Panel (Ventana Medical Systems, Inc.): Endometrial Carcinoma (EC) - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "ncer (EC). ( 1.1 ) • as a single agent for the treatment of adult patients with mismatch repair deficient (dMMR) recurrent or advanced EC, as determined by an FDA-authorized test, that "
         },
         {
           "name": "Durvalumab",
@@ -60769,7 +61063,7 @@
           "genericNames": [
             "DURVALUMAB"
           ],
-          "indicationsExcerpt": "1 INDICATIONS AND USAGE IMFINZI is a programmed death-ligand 1 (PD-L1) blocking antibody indicated: • in combination with platinum-containing chemotherapy as neoadjuvant treatment, followed by IMFINZI continued as a single agent as adjuvant treatment after surgery, for the treatment of adult patients with resectable (tumors ≥ 4 cm and/or node positive) non-small cell lung cancer (NSCLC) and no known epidermal growth…",
+          "indicationsExcerpt": "…( 1.4 ) • in combination with carboplatin and paclitaxel followed by IMFINZI as a single agent, for the treatment of adult patients with primary advanced or recurrent endometrial cancer that is mismatch repair deficient (dMMR) as determined by an FDA-authorized test. ( 1.5 , 2.1 ) • in combination with Bacillus Calmette-Guérin (BCG) for the treatment of adult patients with BCG-naive, high-risk non-muscle-invasive bla…",
           "fda": {
             "pgxBiomarker": "Mismatch Repair",
             "pgxArea": "Oncology",
@@ -60819,7 +61113,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "Ventana MMR RxDx Panel (Ventana Medical Systems, Inc.): Endometrial Carcinoma (EC) - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "of adult patients with primary advanced or recurrent endometrial cancer that is mismatch repair deficient (dMMR) as determined by an FDA-authorized test. ( 1.5 , 2.1 ) • in combination "
         },
         {
           "name": "Encorafenib",
@@ -60868,7 +61165,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/braftovi",
               "detail": "Braftovi (encorafenib). Authorised MelanomaEncorafenib in combination with binimetinib is indicated for the treatment of adult patients with unresectable or metastatic melanoma with a BRAF V600 mutation.Colorectal cancer (CRC)Encorafenib in combination with cetuximab is indicate…"
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE BRAFTOVI is a kinase inhibitor indicated: Melanoma • in combination with binimetinib, for the treatment of patients with unresectable or metastatic melanoma with a BRAF V600E or V600K mutation, as detected by an FDA-authorized test. ( 1.1 , 2.1 ) Colorecta"
         },
         {
           "name": "Ipilimumab",
@@ -60878,7 +61178,7 @@
           "genericNames": [
             "IPILIMUMAB"
           ],
-          "indicationsExcerpt": "1 INDICATIONS AND USAGE YERVOY is a human cytotoxic T-lymphocyte antigen 4 (CTLA-4)-blocking antibody indicated for: Melanoma • Treatment of unresectable or metastatic melanoma in adults and pediatric patients 12 years and older as a single agent or in combination with nivolumab. (1.1) • Adjuvant treatment of adult patients with cutaneous melanoma with pathologic involvement of regional lymph nodes of more than 1 mm…",
+          "indicationsExcerpt": "…Treatment of adult patients with intermediate or poor risk advanced renal cell carcinoma, as first-line treatment in combination with nivolumab. (1.3) Colorectal Cancer • Treatment of adults and pediatric patients 12 years and older with unresectable or metastatic microsatellite instability-high (MSI-H) or mismatch repair deficient (dMMR) colorectal cancer (CRC) as determined by an FDA-authorized test in combination…",
           "fda": {
             "pgxBiomarker": "Microsatellite Instability, Mismatch Repair",
             "pgxArea": "Oncology",
@@ -60917,7 +61217,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/yervoy",
               "detail": "Yervoy (ipilimumab). Authorised Melanoma Yervoy as monotherapy or combination with nivolumab is indicated for the treatment of advanced (unresectable or metastatic) melanoma in adults and adolescents 12 years of age and older (see section 4.4).&nbsp; Yervoy in combination with n…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "dults and pediatric patients 12 years and older with unresectable or metastatic microsatellite instability-high (MSI-H) or mismatch repair deficient (dMMR) colorectal cancer (CRC) as determin"
         },
         {
           "name": "Lenvatinib",
@@ -60978,7 +61281,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/lenvima",
               "detail": "Lenvima (lenvatinib). Authorised Lenvima&nbsp;is indicated as monotherapy for the treatment of adult patients with progressive, locally advanced or metastatic, differentiated (papillary/follicular/Hürthle cell) thyroid carcinoma (DTC), refractory to radioactive iodine (RAI). Len…"
             }
-          ]
+          ],
+          "relation": "exclusion",
+          "relationReason": "negative-or-exclusion-mention",
+          "relationEvidence": " for the treatment of patients with advanced endometrial carcinoma (EC) that is mismatch repair proficient (pMMR) or not microsatellite instability-high (MSI-H), as determined"
         },
         {
           "name": "Nivolumab",
@@ -60988,7 +61294,7 @@
           "genericNames": [
             "NIVOLUMAB AND HYALURONIDASE-NVHY"
           ],
-          "indicationsExcerpt": "1 INDICATIONS AND USAGE OPDIVO QVANTIG is a combination of nivolumab, a programmed death receptor-1 (PD-1)-blocking antibody, and hyaluronidase, an endoglycosidase, indicated for the treatment of: Renal Cell Carcinoma (RCC) • adult patients with intermediate or poor risk advanced RCC, as a first-line treatment following combination treatment with intravenous nivolumab and ipilimumab. (1.1) • Limitations of Use: OPDI…",
+          "indicationsExcerpt": "…• have disease progression within 12 months of neoadjuvant or adjuvant treatment with platinum-containing chemotherapy. (1.8) Colorectal Cancer (CRC) • adult and pediatric (12 years and older who weigh 30 kg or greater) patients with unresectable or metastatic microsatellite instability-high (MSI-H) or mismatch repair deficient (dMMR) colorectal cancer (CRC), following combination treatment with intravenous nivolumab…",
           "fda": {
             "pgxBiomarker": "Microsatellite Instability, Mismatch Repair",
             "pgxArea": "Oncology",
@@ -61056,7 +61362,10 @@
               "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
               "detail": "MMR IHC Panel pharmDx (Dako Omnis) (Agilent Technologies, Inc.): Colorectal Cancer (CRC) - Tissue"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": " and older who weigh 30 kg or greater) patients with unresectable or metastatic microsatellite instability-high (MSI-H) or mismatch repair deficient (dMMR) colorectal cancer (CRC), following "
         },
         {
           "name": "Pembrolizumab",
@@ -61065,7 +61374,7 @@
             "KEYTRUDA QLEX"
           ],
           "genericNames": [],
-          "indicationsExcerpt": "1 INDICATIONS AND USAGE KEYTRUDA QLEX is a combination of pembrolizumab, a programmed death receptor-1 (PD-1)-blocking antibody, and berahyaluronidase alfa, an endoglycosidase, indicated: Melanoma for the treatment of adult patients with unresectable or metastatic melanoma. ( 1.1 ) for the adjuvant treatment of adult and pediatric patients 12 years and older with Stage IIB, IIC, or III melanoma following complete re…",
+          "indicationsExcerpt": "…ive bladder cancer (NMIBC) with carcinoma in situ (CIS) with or without papillary tumors who are ineligible for or have elected not to undergo cystectomy. ( 1.5 ) Microsatellite Instability-High or Mismatch Repair Deficient Cancer for the treatment of adult and pediatric patients 12 years and older with unresectable or metastatic microsatellite instability-high (MSI-H) or mismatch repair deficient (dMMR) solid tumors…",
           "fda": {
             "pgxBiomarker": "Microsatellite Instability, Mismatch Repair",
             "pgxArea": "Oncology",
@@ -61145,7 +61454,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/keytruda",
               "detail": "Keytruda (pembrolizumab). Authorised Melanoma Keytruda as monotherapy is indicated for the treatment of adults and adolescents aged 12 years and older with advanced (unresectable or metastatic) melanoma. Keytruda&nbsp;as monotherapy is indicated for the adjuvant treatment of adu…"
             }
-          ]
+          ],
+          "relation": "targets",
+          "relationReason": "label-or-cdx-selection",
+          "relationEvidence": "e elected not to undergo cystectomy. ( 1.5 ) Microsatellite Instability-High or Mismatch Repair Deficient Cancer for the treatment of adult and pediatric patients 12 years and older wit"
         },
         {
           "name": "Tucatinib",
@@ -61194,7 +61506,10 @@
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/tukysa",
               "detail": "Tukysa (tucatinib). Authorised Tukysa is indicated in combination with trastuzumab and capecitabine for the treatment of adult patients with HER2?positive locally advanced or metastatic breast cancer who have received at least 2 prior anti-HER2 treatment regimens."
             }
-          ]
+          ],
+          "relation": "mentioned",
+          "relationReason": "mentioned-in-label",
+          "relationEvidence": "1 INDICATIONS AND USAGE TUKYSA is a kinase inhibitor indicated: • in combination with trastuzumab and pertuzumab for the maintenance treatment of adult patients with unresectable locally advanced or metastatic HER2-positive breast cancer following induction treatment. ( 1.1 ) • i"
         }
       ],
       "civic": {
@@ -70192,13 +70507,14 @@
   "failures": [],
   "counts": {
     "biomarkers": 7,
-    "therapies": 105,
+    "therapies": 55,
     "trials": 508,
     "civicAssertions": 69,
     "literature": 35,
     "fdaPgxRows": 692,
     "fdaCdxRows": 244,
     "emaRows": 2357,
-    "openfdaLabels": 68
+    "openfdaLabels": 68,
+    "therapiesAll": 105
   }
 }

@@ -26,6 +26,9 @@ from html.parser import HTMLParser
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from matching import classify_relation, relevant_excerpt, TARGETS, analyse_text  # noqa: E402
 UA = (
     "targeted-therapy-explorer/0.1 "
     "(https://dmgrok.github.io/targeted-therapy-explorer/; "
@@ -528,6 +531,7 @@ def fetch_openfda_label(drug: str) -> dict | None:
             "genericNames": generics[:4],
             "applicationNumbers": apps[:4],
             "effectiveTime": r.get("effective_time") or "",
+            "indicationsText": indic_text,
             "indicationsExcerpt": text_excerpt(indic_text, 420),
             "dailymedUrl": dailymed,
             "drugsfdaUrl": drugsfda,
@@ -1000,6 +1004,18 @@ def therapies_for(bm: dict, pgx: list[dict], cdx: list[dict],
             ],
             "citations": citations,
         })
+        therapy = therapies[-1]
+        full = (label or {}).get("indicationsText") or ""
+        result = classify_relation(bm["id"], therapy, extra_text=full)
+        therapy["relation"] = result["relation"]
+        therapy["relationReason"] = result["reason"]
+        therapy["relationEvidence"] = result["evidence"]
+        # Prefer a displayed excerpt that includes the selection-criterion clause.
+        if result["relation"] == TARGETS and full:
+            if not analyse_text(therapy.get("indicationsExcerpt") or "", bm["id"])["positives"]:
+                therapy["indicationsExcerpt"] = relevant_excerpt(full, bm["id"], 420)
+        elif not therapy.get("indicationsExcerpt") and full:
+            therapy["indicationsExcerpt"] = relevant_excerpt(full, bm["id"], 420)
     return therapies
 
 
@@ -1139,6 +1155,7 @@ def main() -> int:
     biomarkers_out = []
     total_trials = 0
     total_therapies = 0
+    total_therapies_all = 0
     total_civic = 0
     total_lit = 0
 
@@ -1193,7 +1210,8 @@ def main() -> int:
             "literature": literature,
         })
         total_trials += len(trials)
-        total_therapies += len(therapies)
+        total_therapies += sum(1 for th in therapies if th.get("relation") == TARGETS)
+        total_therapies_all += len(therapies)
         total_civic += len(civic.get("assertions") or [])
         total_lit += len(literature)
 
@@ -1213,6 +1231,7 @@ def main() -> int:
         "counts": {
             "biomarkers": len(biomarkers_out),
             "therapies": total_therapies,
+            "therapiesAll": total_therapies_all,
             "trials": total_trials,
             "civicAssertions": total_civic,
             "literature": total_lit,
