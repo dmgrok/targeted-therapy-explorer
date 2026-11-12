@@ -29,6 +29,7 @@ DATA = ROOT / "data"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from matching import classify_relation, relevant_excerpt, TARGETS, analyse_text, dedupe_therapies  # noqa: E402
+from trial_matching import trial_requirement, REQUIRES as TRIAL_REQUIRES  # noqa: E402
 UA = (
     "targeted-therapy-explorer/0.1 "
     "(https://dmgrok.github.io/targeted-therapy-explorer/; "
@@ -277,6 +278,9 @@ def _extract_trial(study: dict) -> dict:
             "name": "ClinicalTrials.gov",
             "url": f"https://clinicaltrials.gov/study/{nct}" if nct else "https://clinicaltrials.gov/",
         },
+        # Used to classify the biomarker requirement, then discarded.
+        "eligibilityCriteria": ((ps.get("eligibilityModule") or {}).get("eligibilityCriteria") or ""),
+        "officialTitle": ident.get("officialTitle") or "",
     }
 
 
@@ -325,7 +329,23 @@ def trials_for_biomarker(bm: dict) -> list[dict]:
         countries = set(t.get("countries") or [])
         flag = 0 if ("France" in countries or "Switzerland" in countries) else 1
         return (flag, t.get("nctId") or "")
-    return sorted(seen.values(), key=sort_key)
+    trials = sorted(seen.values(), key=sort_key)
+    # Flag each trial: shown only when conditions or inclusion criteria
+    # require the biomarker. Eligibility is used for classification then dropped.
+    out = []
+    for t in trials:
+        extra = {
+            "officialTitle": t.get("officialTitle") or "",
+            "eligibilityCriteria": t.get("eligibilityCriteria") or "",
+        }
+        result = trial_requirement(bm["id"], t, extra)
+        t["requirement"] = result["relation"]
+        t["requirementReason"] = result["reason"]
+        t["requirementEvidence"] = (result.get("evidence") or "")[:280]
+        t.pop("eligibilityCriteria", None)
+        t.pop("officialTitle", None)
+        out.append(t)
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -1164,6 +1184,7 @@ def main() -> int:
     label_cache: dict = {}
     biomarkers_out = []
     total_trials = 0
+    total_trials_all = 0
     total_therapies = 0
     total_therapies_all = 0
     total_civic = 0
@@ -1219,7 +1240,8 @@ def main() -> int:
             "trials": trials,
             "literature": literature,
         })
-        total_trials += len(trials)
+        total_trials += sum(1 for tr in trials if tr.get("requirement") == TRIAL_REQUIRES)
+        total_trials_all += len(trials)
         total_therapies += sum(1 for th in therapies if th.get("relation") == TARGETS)
         total_therapies_all += len(therapies)
         total_civic += len(civic.get("assertions") or [])
@@ -1243,6 +1265,7 @@ def main() -> int:
             "therapies": total_therapies,
             "therapiesAll": total_therapies_all,
             "trials": total_trials,
+            "trialsAll": total_trials_all,
             "civicAssertions": total_civic,
             "literature": total_lit,
             "fdaPgxRows": len(pgx),
