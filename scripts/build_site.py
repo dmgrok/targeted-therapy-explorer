@@ -1,0 +1,441 @@
+#!/usr/bin/env python3
+"""Render the static site from data/snapshot.json into site/."""
+from __future__ import annotations
+
+import html
+import json
+import sys
+from pathlib import Path
+from datetime import datetime
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "data" / "snapshot.json"
+SITE = ROOT / "site"
+
+DISCLAIMER_SHORT = "Not medical advice. Talk to your oncologist."
+DISCLAIMER_LONG = (
+    "This site is general information only. It is not medical advice, a diagnosis "
+    "or a treatment recommendation, and it is not a medical device. It does not "
+    "take account of any person’s medical situation. Talk to your oncologist before "
+    "making any decision about your care."
+)
+
+def esc(s) -> str:
+    return html.escape("" if s is None else str(s), quote=True)
+
+def fmt_date(iso: str) -> str:
+    if not iso:
+        return ""
+    # 2026-11-12 or 2026-11-12T...
+    day = iso[:10]
+    try:
+        d = datetime.strptime(day, "%Y-%m-%d")
+        return d.strftime("%-d %B %Y")
+    except ValueError:
+        return iso
+
+def notice(snapshot_date: str, ct_ts: str = "", root: bool = True) -> str:
+    data_file = "data/snapshot.json" if root else "../data/snapshot.json"
+    # data is in repo data/, also copy into site/data/
+    data_file = "data/snapshot.json" if root else "../data/snapshot.json"
+    ct = (
+        f' ClinicalTrials.gov processed this trial data at <time datetime="{esc(ct_ts)}">{esc(ct_ts)}</time>.'
+        if ct_ts else ""
+    )
+    return f'''
+    <div class="notice" role="note">
+      <strong>{esc(DISCLAIMER_SHORT)}</strong>
+      {esc(DISCLAIMER_LONG)}
+      Data is a snapshot as of <time datetime="{esc(snapshot_date)}">{esc(fmt_date(snapshot_date))}</time>.{ct}
+    </div>
+    <div class="stale" id="stale-banner" hidden>
+      This snapshot is more than eight days old. Figures may be out of date — please check the original FDA, EMA and ClinicalTrials.gov records, and do not rely on this page alone.
+    </div>
+    <p class="snapshot-meta">Snapshot date: <time id="snapshot-date" datetime="{esc(snapshot_date)}">{esc(fmt_date(snapshot_date))}</time></p>
+    '''
+
+def masthead(snap: dict, page: str, root: bool = True) -> str:
+    prefix = "" if root else "../"
+    def cur(name):
+        return ' aria-current="page"' if page == name else ""
+    title = "Targeted Therapy Explorer"
+    h = "h1" if page == "home" else "p"
+    title_html = (
+        f'<{h} class="site-title"><a href="{prefix}index.html">{esc(title)}</a></{h}>'
+        if page != "home"
+        else f'<h1 class="site-title"><a href="{prefix}index.html">{esc(title)}</a></h1>'
+    )
+    return f'''
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <p class="kicker">A watch-and-explain gazette · not a medical device</p>
+      {title_html}
+      <p class="issue"><span class="label">Snapshot</span>{esc(fmt_date(snap["snapshotDate"]))}</p>
+      <p class="standfirst">Approved targeted therapies and recruiting trials, organised by biomarker, from public regulatory and trial registers.</p>
+    </header>
+    <nav class="sections" aria-label="Sections">
+      <a href="{prefix}index.html"{cur("home")}>Biomarkers</a>
+      <a href="{prefix}index.html#whats-new"{cur("")}>What’s new</a>
+      <a href="{prefix}about.html"{cur("about")}>About &amp; sources</a>
+    </nav>
+    '''
+
+def footer(snap: dict, root: bool = True) -> str:
+    prefix = "" if root else "../"
+    return f'''
+    <footer>
+      <div class="notice" role="note">
+        <strong>{esc(DISCLAIMER_SHORT)}</strong>
+        {esc(DISCLAIMER_LONG)}
+        Data is a snapshot as of <time datetime="{esc(snap["snapshotDate"])}">{esc(fmt_date(snap["snapshotDate"]))}</time>.
+      </div>
+      <nav aria-label="Footer">
+        <a href="{prefix}index.html">Home</a>
+        <a href="{prefix}about.html">About &amp; sources</a>
+        <a href="https://github.com/dmgrok/targeted-therapy-explorer">Source code</a>
+      </nav>
+      <p class="fine">Code is MIT-licensed. Each data source remains under its own terms — see <a href="{prefix}about.html">About &amp; sources</a>. No cookies, no accounts, no analytics, no patient uploads.</p>
+    </footer>
+    <script src="{prefix}assets/js/app.js" defer></script>
+    '''
+
+def head(title: str, root: bool = True, extra: str = "") -> str:
+    prefix = "" if root else "../"
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Watch-and-explain explorer of approved targeted cancer therapies and recruiting trials, by biomarker. {DISCLAIMER_SHORT}">
+  <meta name="robots" content="index,follow">
+  <title>{esc(title)}</title>
+  <link rel="stylesheet" href="{prefix}assets/css/style.css">
+  {extra}
+</head>
+<body>
+'''
+
+def cites_html(citations: list) -> str:
+    if not citations:
+        return '<p class="fine">No citation recorded — this row should not have been published.</p>'
+    items = []
+    for c in citations:
+        url = c.get("url") or ""
+        src = c.get("source") or "Source"
+        detail = c.get("detail") or ""
+        link = f'<a href="{esc(url)}">{esc(src)}</a>' if url else esc(src)
+        items.append(f'<li><span class="src">{link}</span> {esc(detail)}</li>')
+    return '<ul class="cites">' + "".join(items) + "</ul>"
+
+def therapy_html(t: dict) -> str:
+    brands = ", ".join(t.get("brandNames") or [])
+    brand = f' <span class="brand">({esc(brands)})</span>' if brands else ""
+    excerpt = t.get("indicationsExcerpt") or ""
+    excerpt_h = f'<p class="excerpt">{esc(excerpt)}</p>' if excerpt else ""
+    ema = t.get("ema") or []
+    ema_h = ""
+    if ema:
+        bits = []
+        for e in ema:
+            name = e.get("name") or e.get("inn") or "EMA record"
+            url = e.get("url") or ""
+            st = e.get("status") or ""
+            dt = e.get("authorisationDate") or ""
+            label = f"{name}" + (f" — {st}" if st else "") + (f", authorised {dt}" if dt else "")
+            if url:
+                bits.append(f'<a href="{esc(url)}">{esc(label)}</a>')
+            else:
+                bits.append(esc(label))
+        ema_h = "<p class='fine'>EMA: " + "; ".join(bits) + "</p>"
+    cdx = t.get("companionDiagnostics") or []
+    cdx_h = ""
+    if cdx:
+        cdx_h = "<p class='fine'>Companion diagnostic (FDA): " + "; ".join(
+            esc(c.get("diagnostic") or "") for c in cdx[:3]
+        ) + "</p>"
+    return f'''
+    <article class="item" id="{esc((t.get("name") or "").lower().replace(" ","-"))}">
+      <h3>{esc(t.get("name") or "Therapy")}{brand}</h3>
+      {excerpt_h}
+      {ema_h}
+      {cdx_h}
+      {cites_html(t.get("citations") or [])}
+    </article>
+    '''
+
+def trial_html(t: dict) -> str:
+    countries = t.get("countries") or []
+    attr = " ".join(countries)
+    phases = ", ".join(t.get("phases") or []) or "Phase not stated"
+    cond = ", ".join(t.get("conditions") or [])
+    iv = "; ".join(t.get("interventions") or [])
+    loc_preview = ", ".join(sorted(countries)[:12])
+    more = f" (+{len(countries)-12} more)" if len(countries) > 12 else ""
+    return f'''
+    <article class="item trial" data-countries="{esc(attr)}" data-nct="{esc(t.get("nctId") or "")}">
+      <h3><a href="{esc(t.get("url") or "")}">{esc(t.get("nctId") or "")}</a>: {esc(t.get("title") or "")}</h3>
+      <p class="fine">
+        <span class="badge">{esc(t.get("status") or "Recruiting")}</span>
+        <span class="badge">{esc(phases)}</span>
+      </p>
+      <p class="excerpt">{esc(cond)}</p>
+      <p class="fine">{esc(iv)}</p>
+      <p class="fine">Locations: {esc(loc_preview)}{esc(more)}</p>
+      <ul class="cites"><li><span class="src"><a href="{esc(t.get("url") or "")}">ClinicalTrials.gov</a></span> Record {esc(t.get("nctId") or "")}.</li></ul>
+    </article>
+    '''
+
+def literature_html(cards: list) -> str:
+    if not cards:
+        return "<p class='fine'>No PubMed citation cards in this snapshot.</p>"
+    out = ['<div class="cards">']
+    for c in cards:
+        out.append(f'''
+        <article class="card">
+          <p><a href="{esc(c.get("url") or "")}">{esc(c.get("title") or "")}</a></p>
+          <p class="fine">{esc(c.get("authors") or "")} <em>{esc(c.get("journal") or "")}</em>, {esc(c.get("date") or "")}. PMID {esc(c.get("pmid") or "")}.</p>
+        </article>''')
+    out.append("</div>")
+    return "".join(out)
+
+def civic_html(civic: dict) -> str:
+    genes = civic.get("genes") or []
+    assertions = civic.get("assertions") or []
+    parts = []
+    for g in genes:
+        if g.get("description"):
+            parts.append(
+                f'<p>{esc(g["description"])} <a href="{esc(g.get("url") or "")}">CIViC gene summary for {esc(g.get("name") or "")}</a> (CC0).</p>'
+            )
+    if assertions:
+        parts.append("<div class='cards'>")
+        for a in assertions[:15]:
+            th = ", ".join(a.get("therapies") or [])
+            bits = " · ".join(filter(None, [a.get("significance"), a.get("ampLevel"), a.get("disease"), th]))
+            parts.append(f'''
+            <article class="card">
+              <p>{esc(a.get("summary") or a.get("molecularProfile") or "CIViC assertion")}</p>
+              <p class="fine">{esc(bits)} — <a href="{esc(a.get("url") or "")}">CIViC assertion {esc(a.get("id"))}</a> (CC0).</p>
+            </article>''')
+        parts.append("</div>")
+    if not parts:
+        return "<p class='fine'>No CIViC assertions in this snapshot.</p>"
+    return "".join(parts)
+
+def country_options(trials: list) -> str:
+    countries = sorted({c for t in trials for c in (t.get("countries") or []) if c})
+    preferred = ["France", "Switzerland"]
+    rest = [c for c in countries if c not in preferred]
+    opts = ['<option value="all" selected>All countries</option>']
+    for c in preferred:
+        n = sum(1 for t in trials if c in (t.get("countries") or []))
+        opts.append(f'<option value="{esc(c)}">{esc(c)} ({n})</option>')
+    for c in rest:
+        n = sum(1 for t in trials if c in (t.get("countries") or []))
+        opts.append(f'<option value="{esc(c)}">{esc(c)} ({n})</option>')
+    return "\n".join(opts)
+
+def page_biomarker(snap: dict, b: dict) -> str:
+    ct_ts = (snap.get("clinicalTrials") or {}).get("dataTimestamp") or ""
+    therapies = b.get("therapies") or []
+    trials = b.get("trials") or []
+    fr = sum(1 for t in trials if "France" in (t.get("countries") or []))
+    ch = sum(1 for t in trials if "Switzerland" in (t.get("countries") or []))
+    th_h = "".join(therapy_html(t) for t in therapies) or "<p>No associated therapies were found in the FDA or EMA sources for this snapshot.</p>"
+    tr_h = "".join(trial_html(t) for t in trials)
+    summary_cites = cites_html(b.get("summarySources") or [])
+    return (
+        head(f"{b['name']} — Targeted Therapy Explorer", root=False)
+        + '<div class="wrap">'
+        + masthead(snap, "bm", root=False)
+        + f'<main id="main">'
+        + notice(snap["snapshotDate"], ct_ts, root=False)
+        + f'<h2>{esc(b["name"])}</h2>'
+        + f'<p class="lede">{esc(b.get("fullName") or "")}</p>'
+        + f'<div class="prose"><p>{esc(b.get("summary") or "")}</p>{summary_cites}</div>'
+        + f'<h2 id="therapies">Approved therapies</h2>'
+        + f'<p class="fine">{len(therapies)} associated therapies from the FDA pharmacogenomic and companion-diagnostic tables, with EMA matches where found. Excerpts are not a substitute for the official label.</p>'
+        + th_h
+        + f'<h2 id="trials">Recruiting trials</h2>'
+        + f'<p class="fine">{len(trials)} recruiting studies from ClinicalTrials.gov, including {fr} with a site in France and {ch} with a site in Switzerland. Filter is applied on this page only; nothing is sent anywhere.</p>'
+        + f'''<div class="filter-bar">
+          <label for="country-filter">Country
+            <select id="country-filter" name="country">
+              {country_options(trials)}
+            </select>
+          </label>
+          <p class="fine" id="filter-count" aria-live="polite"></p>
+        </div>'''
+        + (tr_h or "<p>No recruiting trials in this snapshot.</p>")
+        + '<p class="trial-empty" id="trial-empty">No recruiting trials in the snapshot for that country. Try “All countries”, or check ClinicalTrials.gov directly.</p>'
+        + '<h2 id="civic">Open evidence from CIViC</h2>'
+        + '<p class="fine">CIViC is an educational knowledgebase released under CC0. These statements are not regulatory approvals.</p>'
+        + civic_html(b.get("civic") or {})
+        + '<h2 id="reading">Further reading</h2>'
+        + '<p class="fine">Citation cards only — titles, authors, journal and a link to PubMed. Abstracts are not reproduced.</p>'
+        + literature_html(b.get("literature") or [])
+        + "</main>"
+        + footer(snap, root=False)
+        + "</div></body></html>\n"
+    )
+
+def whats_new_html(items: list) -> str:
+    if not items:
+        return "<p>No changes recorded.</p>"
+    out = ['<ol class="news">']
+    for it in items:
+        kind = (it.get("type") or "note").replace("-", " ")
+        url = it.get("url")
+        text = it.get("text") or ""
+        body = f'<a href="{esc(url)}">{esc(text)}</a>' if url else esc(text)
+        out.append(f'<li><span class="kind">{esc(kind)}</span> {body}</li>')
+    out.append("</ol>")
+    return "".join(out)
+
+def page_home(snap: dict) -> str:
+    cards = []
+    for b in snap.get("biomarkers") or []:
+        n_th = len(b.get("therapies") or [])
+        n_tr = len(b.get("trials") or [])
+        cards.append(f'''
+        <li>
+          <a class="bm-card" href="b/{esc(b["id"])}.html">
+            <p class="name">{esc(b["name"])}</p>
+            <p class="full">{esc(b.get("fullName") or "")}</p>
+            <p class="counts">{n_th} therapies · {n_tr} recruiting trials</p>
+          </a>
+        </li>''')
+    ct_ts = (snap.get("clinicalTrials") or {}).get("dataTimestamp") or ""
+    counts = snap.get("counts") or {}
+    return (
+        head("Targeted Therapy Explorer — approved therapies and recruiting trials", root=True)
+        + '<div class="wrap">'
+        + masthead(snap, "home", root=True)
+        + '<main id="main">'
+        + notice(snap["snapshotDate"], ct_ts, root=True)
+        + '<h2 id="biomarkers">Choose a biomarker</h2>'
+        + '<p class="lede">Pick one entry from this closed list. There is no search box, no upload, and no place to enter personal or clinical information.</p>'
+        + f'<ul class="bm-grid">{"".join(cards)}</ul>'
+        + '<h2 id="whats-new">What’s new this week</h2>'
+        + '<p class="fine">Changes are computed from the difference between this snapshot and the previous one.</p>'
+        + whats_new_html(snap.get("whatsNew") or [])
+        + f'''<p class="fine">This snapshot: {counts.get("therapies",0)} therapy rows, {counts.get("trials",0)} recruiting trials, {counts.get("civicAssertions",0)} CIViC assertions, {counts.get("literature",0)} citation cards.</p>'''
+        + "</main>"
+        + footer(snap, root=True)
+        + "</div></body></html>\n"
+    )
+
+def page_about(snap: dict) -> str:
+    stats = snap.get("sourceStats") or {}
+    counts = snap.get("counts") or {}
+    failures = snap.get("failures") or []
+    fail_h = ""
+    if failures:
+        fail_h = "<h3>Sources that failed in this snapshot</h3><ul>" + "".join(
+            f"<li>{esc(f.get('source'))}: {esc(f.get('error'))}</li>" for f in failures
+        ) + "</ul>"
+    else:
+        fail_h = "<p>Every source responded for this snapshot.</p>"
+    ct_ts = (snap.get("clinicalTrials") or {}).get("dataTimestamp") or ""
+    return (
+        head("About &amp; sources — Targeted Therapy Explorer", root=True)
+        + '<div class="wrap">'
+        + masthead(snap, "about", root=True)
+        + '<main id="main" class="prose">'
+        + notice(snap["snapshotDate"], ct_ts, root=True)
+        + "<h2>About this site</h2>"
+        + f"<p>{esc(DISCLAIMER_LONG)}</p>"
+        + """
+        <p>The explorer maps a <strong>closed list of tumour biomarkers</strong> to approved targeted therapies and recruiting clinical trials, using public sources only. It is a watch-and-explain tool. It is not personalised to any patient, and it is not intended to be used to take a diagnostic or therapeutic decision.</p>
+        <p>You can pick a biomarker from the list. There is no free-text field, no file upload, no cookie, no analytics, and no account. A country filter on each trial list runs entirely in your browser.</p>
+        <p>A legal review of this wording, including under the EU Medical Device Regulation, is planned before any promotion of the site. It did not block this first build.</p>
+        <h2>How the data is refreshed</h2>
+        <p>A weekly GitHub Action rebuilds the static JSON snapshot and opens a pull request. Nothing goes live until that pull request is merged. If a snapshot is more than eight days old, every page shows a stale-data banner. ClinicalTrials.gov’s own processing date is shown where trials appear, as their terms require.</p>
+        <h2>Sources, licences and attribution</h2>
+        <div class="licence">
+          <h3>ClinicalTrials.gov API v2</h3>
+          <p>Trial records come from the U.S. National Library of Medicine’s <a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a> API v2. Downloading the data signifies acceptance of the <a href="https://clinicaltrials.gov/about-site/terms-conditions">ClinicalTrials.gov Terms and Conditions</a> (last updated 31 January 2023). The data are free to use, but they carry an international copyright outside the United States; some records may also be subject to third-party copyright. We attribute the source as ClinicalTrials.gov, display the processing date (<code>dataTimestamp</code>), keep weekly snapshots, and describe our selection (recruiting studies, closed biomarker queries, a country filter applied in the page). We assert no proprietary rights in the database and do not use extracted email addresses.</p>
+          <p class="fine">This snapshot: {trials} recruiting records. Processing date: {ct}.</p>
+        </div>
+        <div class="licence">
+          <h3>openFDA drug labels and Drugs@FDA</h3>
+          <p>Label excerpts come from <a href="https://open.fda.gov/apis/drug/label/">openFDA</a>, with links to DailyMed and <a href="https://www.fda.gov/drugs/drug-approvals-and-databases/drugsfda-data-files">Drugs@FDA</a>. openFDA data is, unless otherwise noted, dedicated to the public domain under <a href="https://open.fda.gov/terms/">CC0 1.0</a>. Some records may be third-party works and are skipped if so marked. FDA asks that openFDA not be relied on to make decisions about medical care. Credit: Data provided by the U.S. Food and Drug Administration (<a href="https://open.fda.gov">https://open.fda.gov</a>). No API key is used; the published no-key rate limits apply.</p>
+          <p class="fine">This snapshot: {labels} labels.</p>
+        </div>
+        <div class="licence">
+          <h3>FDA pharmacogenomic and companion-diagnostic tables; oncology approval notifications</h3>
+          <p>Associations between biomarkers and therapies are taken from the <a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">Table of Pharmacogenomic Biomarkers in Drug Labeling</a> and the <a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">list of FDA-authorized companion diagnostic devices</a>. FDA website contents are, unless otherwise noted, in the public domain. Credit to the U.S. Food and Drug Administration is given; each copied table is dated and linked back, as FDA recommends.</p>
+          <p class="fine">This snapshot: {pgx} pharmacogenomic rows, {cdx} companion-diagnostic rows.</p>
+        </div>
+        <div class="licence">
+          <h3>European Medicines Agency medicine data</h3>
+          <p>EU authorisations come from the EMA’s <a href="https://www.ema.europa.eu/en/medicines/download-medicine-data">downloadable medicines data</a>, used under the <a href="https://www.ema.europa.eu/en/about-us/about-website/legal-notice">EMA legal notice</a>: documents may be reproduced and distributed, commercially or not, provided the Agency is acknowledged as the source in each copy. © EMA 1995–2026. We acknowledge the European Medicines Agency as the source. We link to each European Public Assessment Report rather than copying the full report. The EMA logo is not used. The EMA PMS API is not used.</p>
+          <p class="fine">This snapshot: {ema} human medicines in the workbook; matches are listed on each therapy.</p>
+        </div>
+        <div class="licence">
+          <h3>CIViC</h3>
+          <p>Open evidence statements come from the <a href="https://civicdb.org/releases/licensing">CIViC</a> knowledgebase (Washington University School of Medicine), dedicated to the public domain under <strong>CC0 1.0 Universal</strong>. Attribution is not legally required; we cite CIViC as a matter of scholarly practice. CIViC is an educational resource and is not medical advice. We do not notify the CIViC team unless asked to.</p>
+          <p class="fine">This snapshot: {civic} assertions.</p>
+        </div>
+        <div class="licence">
+          <h3>PubMed E-utilities</h3>
+          <p>Further-reading cards are bibliographic metadata from <a href="https://www.ncbi.nlm.nih.gov/home/about/policies/">NCBI PubMed</a> (title, authors, journal, date, PMID and a link). Abstracts and full text are not stored. An API key is not used; requests stay at or under three per second. NLM is acknowledged as the source; this site does not imply NLM endorsement. NLM does not claim copyright on PubMed abstracts, but publishers or authors may — which is why abstracts are omitted. <a href="https://www.nlm.nih.gov/databases/download.html">NLM downloading terms</a>.</p>
+          <p class="fine">This snapshot: {lit} citation cards.</p>
+        </div>
+        <div class="licence">
+          <h3>Sources not used</h3>
+          <p><strong>OncoKB is not used.</strong> Memorial Sloan Kettering’s terms do not allow redistribution of OncoKB content to third parties without permission; a public website would be redistribution. No OncoKB data is fetched, stored or displayed.</p>
+          <p>bioRxiv, medRxiv and arXiv are available as outbound citation sources in later snapshots if needed; this first snapshot uses PubMed for literature cards. HAS, INCa and Swissmedic are reserved for a later addition.</p>
+        </div>
+        <h2>This snapshot</h2>
+        {fail}
+        <p>Generated at {gen}. Counts: {th} therapies, {tr} trials, {cv} CIViC assertions, {li} literature cards.</p>
+        <h2>Licence for the code</h2>
+        <p>The code of this site is offered under the MIT License. The data remains under each source’s own terms, as set out above.</p>
+        """.format(
+            trials=counts.get("trials", 0),
+            ct=esc(ct_ts or "not available"),
+            labels=counts.get("openfdaLabels", 0),
+            pgx=counts.get("fdaPgxRows", 0),
+            cdx=counts.get("fdaCdxRows", 0),
+            ema=counts.get("emaRows", 0),
+            civic=counts.get("civicAssertions", 0),
+            lit=counts.get("literature", 0),
+            fail=fail_h,
+            gen=esc(snap.get("generatedAt") or ""),
+            th=counts.get("therapies", 0),
+            tr=counts.get("trials", 0),
+            cv=counts.get("civicAssertions", 0),
+            li=counts.get("literature", 0),
+        )
+        + "</main>"
+        + footer(snap, root=True)
+        + "</div></body></html>\n"
+    )
+
+def main() -> int:
+    if not DATA.is_file():
+        print(f"missing {DATA}", file=sys.stderr)
+        return 1
+    snap = json.loads(DATA.read_text(encoding="utf-8"))
+    SITE.mkdir(parents=True, exist_ok=True)
+    (SITE / "b").mkdir(exist_ok=True)
+    (SITE / "data").mkdir(exist_ok=True)
+    # Copy snapshot next to the site so relative paths work on Pages
+    (SITE / "data" / "snapshot.json").write_text(
+        json.dumps({
+            "snapshotDate": snap["snapshotDate"],
+            "clinicalTrials": snap.get("clinicalTrials"),
+            "counts": snap.get("counts"),
+        }, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    (SITE / "index.html").write_text(page_home(snap), encoding="utf-8")
+    (SITE / "about.html").write_text(page_about(snap), encoding="utf-8")
+    for b in snap.get("biomarkers") or []:
+        (SITE / "b" / f"{b['id']}.html").write_text(page_biomarker(snap, b), encoding="utf-8")
+    print(f"Wrote site to {SITE}")
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())

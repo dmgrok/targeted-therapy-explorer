@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.env
+.env.*
+*.token
+.git-credentials
+.credentials
+credential-helper*
+.gh-credentials
+.DS_Store
+*.json.tmp
+/tmp/

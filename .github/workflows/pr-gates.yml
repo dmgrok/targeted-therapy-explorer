@@ -1,0 +1,54 @@
+name: PR gates
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Rebuild the site from the committed snapshot
+        run: python3 scripts/build_site.py
+      - name: Disclaimer, schema and source checks
+        run: python3 tests/test_site.py
+      - name: No OncoKB and no secrets in the tree
+        run: |
+          if grep -RIn --exclude-dir=.git --exclude-dir=site/assets/fonts \
+              -E 'oncokb(\.org)?|ONCOKB' . ; then
+            echo "OncoKB references are not allowed" >&2
+            # The about page is allowed to say "OncoKB is not used"
+            if grep -RIn --exclude-dir=.git --exclude-dir=site --exclude='*about*' \
+                --exclude='*CIRCUIT*' --exclude='*README*' --exclude='*test_site*' \
+                --exclude='*.md' -E 'oncokb\.org|api\.oncokb' . ; then
+              exit 1
+            fi
+          fi
+          python3 - << 'PY'
+          import os, re, sys
+          pat = re.compile(r"(ghp_|github_pat_|sk-|AKIA)[A-Za-z0-9_\-]{16,}")
+          bad = []
+          for root, dirs, files in os.walk("."):
+              dirs[:] = [d for d in dirs if d not in {".git", "site"}]
+              for f in files:
+                  path = os.path.join(root, f)
+                  try:
+                      text = open(path, "r", encoding="utf-8", errors="ignore").read()
+                  except OSError:
+                      continue
+                  if pat.search(text):
+                      bad.append(path)
+          if bad:
+              print("possible secret in", bad)
+              sys.exit(1)
+          print("no obvious secrets")
+          PY

@@ -1,0 +1,4 @@
+# Only @dmgrok reviews workflow and circuit changes.
+/.github/ @dmgrok
+/scripts/ @dmgrok
+/data/ @dmgrok

@@ -1,0 +1,52 @@
+name: Weekly snapshot
+
+on:
+  schedule:
+    # Sunday 06:00 UTC — a PR ready for Monday in Europe/Paris
+    - cron: "0 6 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch a new snapshot
+        run: |
+          mkdir -p /tmp/prev
+          cp data/snapshot.json /tmp/prev/snapshot.json
+          python3 scripts/fetch_snapshot.py \
+            --out data/snapshot.json \
+            --prev /tmp/prev/snapshot.json
+      - name: Rebuild the site
+        run: python3 scripts/build_site.py
+      - name: Run gates
+        run: python3 tests/test_site.py
+      - name: Open a pull request (no auto-merge)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- data/snapshot.json site/; then
+            echo "No snapshot change."
+            exit 0
+          fi
+          DATE=$(python3 -c "import json; print(json.load(open('data/snapshot.json'))['snapshotDate'])")
+          BRANCH="snapshot/$DATE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add data/snapshot.json site/
+          git commit -m "Weekly snapshot $DATE"
+          git push -u origin "$BRANCH"
+          gh pr create \
+            --title "Weekly snapshot $DATE" \
+            --body "Automated weekly refresh of public-source snapshots. Please review the What's new list and merge if it looks right. This pull request will not merge itself." \
+            --reviewer dmgrok \
+            --assignee dmgrok

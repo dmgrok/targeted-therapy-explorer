@@ -1,0 +1,18 @@
+{
+  "snapshotDate": "2026-11-12",
+  "clinicalTrials": {
+    "apiVersion": "2.0.5",
+    "dataTimestamp": "2026-11-10T10:00:05"
+  },
+  "counts": {
+    "biomarkers": 7,
+    "therapies": 105,
+    "trials": 508,
+    "civicAssertions": 69,
+    "literature": 35,
+    "fdaPgxRows": 692,
+    "fdaCdxRows": 244,
+    "emaRows": 2357,
+    "openfdaLabels": 68
+  }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Watch-and-explain explorer of approved targeted cancer therapies and recruiting trials, by biomarker. Not medical advice. Talk to your oncologist.">
+  <meta name="robots" content="index,follow">
+  <title>About &amp;amp; sources — Targeted Therapy Explorer</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+</head>
+<body>
+<div class="wrap">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead">
+      <p class="kicker">A watch-and-explain gazette · not a medical device</p>
+      <p class="site-title"><a href="index.html">Targeted Therapy Explorer</a></p>
+      <p class="issue"><span class="label">Snapshot</span>12 November 2026</p>
+      <p class="standfirst">Approved targeted therapies and recruiting trials, organised by biomarker, from public regulatory and trial registers.</p>
+    </header>
+    <nav class="sections" aria-label="Sections">
+      <a href="index.html">Biomarkers</a>
+      <a href="index.html#whats-new">What’s new</a>
+      <a href="about.html" aria-current="page">About &amp; sources</a>
+    </nav>
+    <main id="main" class="prose">
+    <div class="notice" role="note">
+      <strong>Not medical advice. Talk to your oncologist.</strong>
+      This site is general information only. It is not medical advice, a diagnosis or a treatment recommendation, and it is not a medical device. It does not take account of any person’s medical situation. Talk to your oncologist before making any decision about your care.
+      Data is a snapshot as of <time datetime="2026-11-12">12 November 2026</time>. ClinicalTrials.gov processed this trial data at <time datetime="2026-11-10T10:00:05">2026-11-10T10:00:05</time>.
+    </div>
+    <div class="stale" id="stale-banner" hidden>
+      This snapshot is more than eight days old. Figures may be out of date — please check the original FDA, EMA and ClinicalTrials.gov records, and do not rely on this page alone.
+    </div>
+    <p class="snapshot-meta">Snapshot date: <time id="snapshot-date" datetime="2026-11-12">12 November 2026</time></p>
+    <h2>About this site</h2><p>This site is general information only. It is not medical advice, a diagnosis or a treatment recommendation, and it is not a medical device. It does not take account of any person’s medical situation. Talk to your oncologist before making any decision about your care.</p>
+        <p>The explorer maps a <strong>closed list of tumour biomarkers</strong> to approved targeted therapies and recruiting clinical trials, using public sources only. It is a watch-and-explain tool. It is not personalised to any patient, and it is not intended to be used to take a diagnostic or therapeutic decision.</p>
+        <p>You can pick a biomarker from the list. There is no free-text field, no file upload, no cookie, no analytics, and no account. A country filter on each trial list runs entirely in your browser.</p>
+        <p>A legal review of this wording, including under the EU Medical Device Regulation, is planned before any promotion of the site. It did not block this first build.</p>
+        <h2>How the data is refreshed</h2>
+        <p>A weekly GitHub Action rebuilds the static JSON snapshot and opens a pull request. Nothing goes live until that pull request is merged. If a snapshot is more than eight days old, every page shows a stale-data banner. ClinicalTrials.gov’s own processing date is shown where trials appear, as their terms require.</p>
+        <h2>Sources, licences and attribution</h2>
+        <div class="licence">
+          <h3>ClinicalTrials.gov API v2</h3>
+          <p>Trial records come from the U.S. National Library of Medicine’s <a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a> API v2. Downloading the data signifies acceptance of the <a href="https://clinicaltrials.gov/about-site/terms-conditions">ClinicalTrials.gov Terms and Conditions</a> (last updated 31 January 2023). The data are free to use, but they carry an international copyright outside the United States; some records may also be subject to third-party copyright. We attribute the source as ClinicalTrials.gov, display the processing date (<code>dataTimestamp</code>), keep weekly snapshots, and describe our selection (recruiting studies, closed biomarker queries, a country filter applied in the page). We assert no proprietary rights in the database and do not use extracted email addresses.</p>
+          <p class="fine">This snapshot: 508 recruiting records. Processing date: 2026-11-10T10:00:05.</p>
+        </div>
+        <div class="licence">
+          <h3>openFDA drug labels and Drugs@FDA</h3>
+          <p>Label excerpts come from <a href="https://open.fda.gov/apis/drug/label/">openFDA</a>, with links to DailyMed and <a href="https://www.fda.gov/drugs/drug-approvals-and-databases/drugsfda-data-files">Drugs@FDA</a>. openFDA data is, unless otherwise noted, dedicated to the public domain under <a href="https://open.fda.gov/terms/">CC0 1.0</a>. Some records may be third-party works and are skipped if so marked. FDA asks that openFDA not be relied on to make decisions about medical care. Credit: Data provided by the U.S. Food and Drug Administration (<a href="https://open.fda.gov">https://open.fda.gov</a>). No API key is used; the published no-key rate limits apply.</p>
+          <p class="fine">This snapshot: 68 labels.</p>
+        </div>
+        <div class="licence">
+          <h3>FDA pharmacogenomic and companion-diagnostic tables; oncology approval notifications</h3>
+          <p>Associations between biomarkers and therapies are taken from the <a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">Table of Pharmacogenomic Biomarkers in Drug Labeling</a> and the <a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">list of FDA-authorized companion diagnostic devices</a>. FDA website contents are, unless otherwise noted, in the public domain. Credit to the U.S. Food and Drug Administration is given; each copied table is dated and linked back, as FDA recommends.</p>
+          <p class="fine">This snapshot: 692 pharmacogenomic rows, 244 companion-diagnostic rows.</p>
+        </div>
+        <div class="licence">
+          <h3>European Medicines Agency medicine data</h3>
+          <p>EU authorisations come from the EMA’s <a href="https://www.ema.europa.eu/en/medicines/download-medicine-data">downloadable medicines data</a>, used under the <a href="https://www.ema.europa.eu/en/about-us/about-website/legal-notice">EMA legal notice</a>: documents may be reproduced and distributed, commercially or not, provided the Agency is acknowledged as the source in each copy. © EMA 1995–2026. We acknowledge the European Medicines Agency as the source. We link to each European Public Assessment Report rather than copying the full report. The EMA logo is not used. The EMA PMS API is not used.</p>
+          <p class="fine">This snapshot: 2357 human medicines in the workbook; matches are listed on each therapy.</p>
+        </div>
+        <div class="licence">
+          <h3>CIViC</h3>
+          <p>Open evidence statements come from the <a href="https://civicdb.org/releases/licensing">CIViC</a> knowledgebase (Washington University School of Medicine), dedicated to the public domain under <strong>CC0 1.0 Universal</strong>. Attribution is not legally required; we cite CIViC as a matter of scholarly practice. CIViC is an educational resource and is not medical advice. We do not notify the CIViC team unless asked to.</p>
+          <p class="fine">This snapshot: 69 assertions.</p>
+        </div>
+        <div class="licence">
+          <h3>PubMed E-utilities</h3>
+          <p>Further-reading cards are bibliographic metadata from <a href="https://www.ncbi.nlm.nih.gov/home/about/policies/">NCBI PubMed</a> (title, authors, journal, date, PMID and a link). Abstracts and full text are not stored. An API key is not used; requests stay at or under three per second. NLM is acknowledged as the source; this site does not imply NLM endorsement. NLM does not claim copyright on PubMed abstracts, but publishers or authors may — which is why abstracts are omitted. <a href="https://www.nlm.nih.gov/databases/download.html">NLM downloading terms</a>.</p>
+          <p class="fine">This snapshot: 35 citation cards.</p>
+        </div>
+        <div class="licence">
+          <h3>Sources not used</h3>
+          <p><strong>OncoKB is not used.</strong> Memorial Sloan Kettering’s terms do not allow redistribution of OncoKB content to third parties without permission; a public website would be redistribution. No OncoKB data is fetched, stored or displayed.</p>
+          <p>bioRxiv, medRxiv and arXiv are available as outbound citation sources in later snapshots if needed; this first snapshot uses PubMed for literature cards. HAS, INCa and Swissmedic are reserved for a later addition.</p>
+        </div>
+        <h2>This snapshot</h2>
+        <p>Every source responded for this snapshot.</p>
+        <p>Generated at 2026-11-12T07:37:14.346452+00:00. Counts: 105 therapies, 508 trials, 69 CIViC assertions, 35 literature cards.</p>
+        <h2>Licence for the code</h2>
+        <p>The code of this site is offered under the MIT License. The data remains under each source’s own terms, as set out above.</p>
+        </main>
+    <footer>
+      <div class="notice" role="note">
+        <strong>Not medical advice. Talk to your oncologist.</strong>
+        This site is general information only. It is not medical advice, a diagnosis or a treatment recommendation, and it is not a medical device. It does not take account of any person’s medical situation. Talk to your oncologist before making any decision about your care.
+        Data is a snapshot as of <time datetime="2026-11-12">12 November 2026</time>.
+      </div>
+      <nav aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="about.html">About &amp; sources</a>
+        <a href="https://github.com/dmgrok/targeted-therapy-explorer">Source code</a>
+      </nav>
+      <p class="fine">Code is MIT-licensed. Each data source remains under its own terms — see <a href="about.html">About &amp; sources</a>. No cookies, no accounts, no analytics, no patient uploads.</p>
+    </footer>
+    <script src="assets/js/app.js" defer></script>
+    </div></body></html>

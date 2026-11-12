@@ -1,0 +1,50 @@
+name: Circuit weekly report
+
+on:
+  schedule:
+    # Monday 08:00 UTC = 09:00 Europe/Paris in winter
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Count Circuit PRs and issues, update the report issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          OPEN=$(gh pr list --state open --search 'head:[circuit]' --json number --jq 'length')
+          # Title prefix [circuit] from safe-outputs
+          OPEN_T=$(gh pr list --state open --json title --jq '[.[] | select(.title | startswith("[circuit] "))] | length')
+          MERGED=$(gh pr list --state merged --json title --jq '[.[] | select(.title | startswith("[circuit] "))] | length')
+          ISSUES=$(gh issue list --state open --json number --jq 'length')
+          WEEK=$(date -u +%F)
+          BODY=$(cat <<MD
+          ## Circuit weekly report — ${WEEK}
+
+          Aggregate counts only. No issue text, no personal data, no visitor identifiers.
+
+          | Metric | Count |
+          |---|---|
+          | Open \`[circuit]\` pull requests | ${OPEN_T} |
+          | Merged \`[circuit]\` pull requests | ${MERGED} |
+          | Open issues | ${ISSUES} |
+
+          Usage of the live site is not counted here (no cookies, no analytics). Optional GitHub Traffic totals may be added later; they are repo-owner aggregates only.
+          MD
+          )
+          # Reuse a single report issue, titled circuit-rapport
+          NUM=$(gh issue list --search 'in:title circuit-rapport' --state open --json number --jq '.[0].number // empty')
+          if [ -z "$NUM" ]; then
+            gh issue create --title "circuit-rapport" --body "$BODY"
+          else
+            gh issue comment "$NUM" --body "$BODY"
+          fi
