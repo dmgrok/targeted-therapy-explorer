@@ -30,6 +30,12 @@ from trial_matching import (  # noqa: E402
     EXCLUSION,
     NOT_REQUIRED,
 )
+from fetch_snapshot import (  # noqa: E402
+    same_active_ingredient,
+    primary_inn,
+    label_belongs_to_drug,
+    match_ema,
+)
 DISCLAIMER = "Not medical advice. Talk to your oncologist."
 BIOMARKER_IDS = ["EGFR", "ALK", "BRAF-V600E", "KRAS-G12C", "HER2", "NTRK", "MSI-H-dMMR"]
 FORBIDDEN = [
@@ -595,6 +601,322 @@ def test_trial_requirement() -> None:
 
 
 
+
+def _trastuzumab_article(page: str) -> str:
+    """Return the HER2 page article whose heading is the drug Trastuzumab itself.
+
+    The article id is "trastuzumab". Conjugates (ado-trastuzumab-emtansine,
+    fam-trastuzumab-deruxtecan) have different ids and must not be included.
+    """
+    m = re.search(
+        r'<article class="item" id="trastuzumab">.*?</article>',
+        page,
+        flags=re.I | re.S,
+    )
+    return m.group(0) if m else ""
+
+
+def test_kadcyla_brand_attachment() -> None:
+    """Trastuzumab must not list KADCYLA as a brand in data or on the HER2 article.
+
+    KADCYLA belongs to ado-trastuzumab emtansine, which may still show it.
+    """
+    snap = json.loads(DATA.read_text(encoding="utf-8"))
+    her2 = next((b for b in snap["biomarkers"] if b["id"] == "HER2"), None)
+    if not her2:
+        err("HER2 biomarker missing")
+        return
+    trast = next((t for t in (her2.get("therapies") or []) if t.get("name") == "Trastuzumab"), None)
+    ado = next(
+        (t for t in (her2.get("therapies") or []) if re.search(r"ado-?trastuzumab emtansine", t.get("name") or "", re.I)),
+        None,
+    )
+    if not trast:
+        err("HER2 snapshot has no Trastuzumab entry")
+        return
+    brands = trast.get("brandNames") or []
+    if any(re.search(r"kadcyla", b, re.I) for b in brands):
+        err(f"Trastuzumab brandNames includes KADCYLA: {brands}")
+    else:
+        ok(f"Trastuzumab brands are {brands}, no KADCYLA")
+    excerpt = trast.get("indicationsExcerpt") or ""
+    if re.search(r"kadcyla", excerpt, re.I):
+        err("Trastuzumab indications excerpt is the KADCYLA label")
+    ema_names = [e.get("name") or "" for e in (trast.get("ema") or [])]
+    if any(re.search(r"kadcyla|enhertu", n, re.I) for n in ema_names):
+        err(f"Trastuzumab EMA list includes a conjugate brand: {ema_names}")
+    else:
+        ok(f"Trastuzumab EMA matches are {ema_names}")
+    fda = trast.get("fda") or {}
+    if "23f3c1f4-0fc8-4804-a9e3-04cf25dd302e" in (fda.get("dailymedUrl") or ""):
+        err("Trastuzumab still points at the Kadcyla DailyMed setid")
+    if "125427" in (fda.get("drugsfdaUrl") or ""):
+        err("Trastuzumab still points at the Kadcyla Drugs@FDA application")
+    if ado:
+        ado_brands = ado.get("brandNames") or []
+        if not any(re.search(r"kadcyla", b, re.I) for b in ado_brands):
+            err(f"Ado-Trastuzumab Emtansine should still list KADCYLA, got {ado_brands}")
+        else:
+            ok(f"Ado-Trastuzumab Emtansine still lists {ado_brands}")
+    else:
+        err("HER2 snapshot is missing Ado-Trastuzumab Emtansine")
+
+    page = (SITE / "b" / "HER2.html").read_text(encoding="utf-8")
+    article = _trastuzumab_article(page)
+    if not article:
+        err("HER2 page has no article id=trastuzumab")
+        return
+    # Brand span on this article only.
+    brand_span = re.search(r'<span class="brand">\(([^)]*)\)</span>', article)
+    brand_txt = brand_span.group(1) if brand_span else ""
+    if re.search(r"kadcyla", brand_txt, re.I):
+        err(f"HER2 trastuzumab article lists KADCYLA as a brand: {brand_txt}")
+    else:
+        ok(f"HER2 trastuzumab article brands: {brand_txt or '(none)'}")
+    if re.search(r"kadcyla", article, re.I):
+        err("HER2 trastuzumab article still mentions KADCYLA")
+    else:
+        ok("HER2 trastuzumab article does not mention KADCYLA")
+    # The conjugate entry on the same page may still show KADCYLA.
+    if not re.search(r"kadcyla", page, re.I):
+        err("HER2 page should still mention KADCYLA on ado-trastuzumab emtansine")
+    else:
+        ok("HER2 page still mentions KADCYLA on the conjugate entry")
+
+    # Unit: the fetch matcher rejects Kadcyla for a trastuzumab query.
+    if label_belongs_to_drug("trastuzumab", ["KADCYLA"], ["ADO-TRASTUZUMAB EMTANSINE"]):
+        err("label_belongs_to_drug accepted KADCYLA for trastuzumab")
+    if not label_belongs_to_drug("trastuzumab", ["Herceptin"], ["TRASTUZUMAB"]):
+        err("label_belongs_to_drug rejected Herceptin for trastuzumab")
+    if same_active_ingredient("trastuzumab", "ado-trastuzumab emtansine"):
+        err("same_active_ingredient treated trastuzumab and ado-trastuzumab emtansine as the same")
+    if not same_active_ingredient("Ado-Trastuzumab Emtansine", "trastuzumab emtansine"):
+        err("same_active_ingredient failed to equate ado-trastuzumab emtansine with trastuzumab emtansine")
+    hits = match_ema(
+        [
+            {"name": "Herceptin", "inn": "trastuzumab"},
+            {"name": "Kadcyla", "inn": "trastuzumab emtansine"},
+            {"name": "Enhertu", "inn": "trastuzumab deruxtecan"},
+            {"name": "Phesgo", "inn": "pertuzumab;trastuzumab"},
+        ],
+        "trastuzumab",
+    )
+    names = [h["name"] for h in hits]
+    if "Kadcyla" in names or "Enhertu" in names:
+        err(f"match_ema attached a conjugate to trastuzumab: {names}")
+    if "Herceptin" not in names or "Phesgo" not in names:
+        err(f"match_ema should keep Herceptin and Phesgo, got {names}")
+    else:
+        ok(f"match_ema for trastuzumab: {names}")
+
+
+def test_brands_own_ingredient() -> None:
+    """Brand names, DailyMed / Drugs@FDA URLs and EMA matches belong to one INN."""
+    snap = json.loads(DATA.read_text(encoding="utf-8"))
+    by_brand: dict[str, set[str]] = {}
+    by_dailymed: dict[str, set[str]] = {}
+    by_app: dict[str, set[str]] = {}
+    ema_bad = []
+    for bm in snap.get("biomarkers") or []:
+        for t in bm.get("therapies") or []:
+            inn = primary_inn(t.get("name") or "")
+            if not inn:
+                continue
+            for b in t.get("brandNames") or []:
+                by_brand.setdefault(b.strip().lower(), set()).add(inn)
+            fda = t.get("fda") or {}
+            if fda.get("dailymedUrl"):
+                by_dailymed.setdefault(fda["dailymedUrl"], set()).add(inn)
+            if fda.get("drugsfdaUrl"):
+                by_app.setdefault(fda["drugsfdaUrl"], set()).add(inn)
+            for e in t.get("ema") or []:
+                inn_name = e.get("inn") or ""
+                parts = [p.strip() for p in re.split(r"[;/]", inn_name) if p.strip()] or [inn_name]
+                if parts and not any(same_active_ingredient(t.get("name") or "", p) for p in parts if p):
+                    ema_bad.append((bm["id"], t.get("name"), e.get("name"), inn_name))
+    shared = []
+    for label, mapping in (
+        ("brand", by_brand),
+        ("DailyMed URL", by_dailymed),
+        ("Drugs@FDA URL", by_app),
+    ):
+        for k, inns in mapping.items():
+            if len(inns) > 1:
+                shared.append(f"{label} {k} on INNs {sorted(inns)}")
+    if shared:
+        err("brand or label attached to more than one active ingredient: " + "; ".join(shared))
+    else:
+        ok("no brand, DailyMed URL or Drugs@FDA URL is shared across different INNs")
+    if ema_bad:
+        err(f"EMA matches whose INN is not this drug: {ema_bad}")
+    else:
+        ok("every EMA match is this drug’s own ingredient (or a combination that lists it)")
+
+
+def test_disclaimer_on_every_page() -> None:
+    """Dedicated gate: every generated HTML page carries the short disclaimer."""
+    pages = html_pages()
+    if not pages:
+        err("no generated HTML pages found")
+        return
+    missing = []
+    for p in pages:
+        text = p.read_text(encoding="utf-8")
+        if DISCLAIMER not in text:
+            missing.append(str(p.relative_to(ROOT)))
+    if missing:
+        err(f"pages missing {DISCLAIMER!r}: {missing}")
+    else:
+        ok(f"dedicated check: disclaimer present on all {len(pages)} pages")
+
+
+def test_no_pubmed_abstracts() -> None:
+    """Citation cards are metadata only; PubMed abstracts are not stored or shown."""
+    snap = json.loads(DATA.read_text(encoding="utf-8"))
+    forbidden_keys = {"abstract", "abstracttext", "abstractText"}
+    for bm in snap.get("biomarkers") or []:
+        for c in bm.get("literature") or []:
+            extra = set(c.keys()) & forbidden_keys
+            if extra:
+                err(f"{bm['id']} literature card has abstract field(s) {extra}")
+            allowed = {"pmid", "title", "authors", "journal", "date", "url", "source"}
+            unexpected = set(c.keys()) - allowed
+            if unexpected:
+                err(f"{bm['id']} literature card has unexpected fields {unexpected}")
+    ok("snapshot literature cards have citation metadata only, no abstracts")
+
+    # Pages: literature section must not contain an 'abstract' label, and must
+    # carry a PMID link. Fetch uses esummary, not efetch.
+    fetch = (ROOT / "scripts" / "fetch_snapshot.py").read_text(encoding="utf-8")
+    if "efetch.fcgi" in fetch:
+        err("fetch_snapshot.py calls PubMed efetch (would pull abstracts)")
+    else:
+        ok("fetch_snapshot.py does not call PubMed efetch")
+    for p in html_pages():
+        text = p.read_text(encoding="utf-8")
+        if 'id="reading"' not in text and p.name not in ("index.html", "about.html"):
+            # biomarker pages should have a further-reading section
+            if p.parent.name == "b":
+                err(f"{p.relative_to(ROOT)} missing further-reading section")
+            continue
+        if 'id="reading"' in text:
+            section = text.split('id="reading"', 1)[1]
+            for stop in ('id="civic"', "</main>"):
+                if stop in section:
+                    section = section.split(stop, 1)[0]
+                    break
+            if re.search(r"\babstract\b", section, re.I):
+                err(f"{p.relative_to(ROOT)} further-reading section mentions an abstract")
+    ok("further-reading cards do not show abstracts")
+
+
+def test_no_patient_contacts() -> None:
+    """No emails, phone numbers or site contact names in the snapshot or on pages.
+
+    Trial cards show countries and a ClinicalTrials.gov link, not site contacts.
+    Institution facility names may remain in the snapshot; they are not contacts.
+    """
+    snap = json.loads(DATA.read_text(encoding="utf-8"))
+    # Snapshot trials: location records may only have facility, city, country.
+    loc_allowed = {"facility", "city", "country"}
+    contact_keys = re.compile(
+        r"(centralcontact|overallofficial|contactname|contactphone|contactemail|phone|email|fax)",
+        re.I,
+    )
+    for bm in snap.get("biomarkers") or []:
+        for t in bm.get("trials") or []:
+            for k in t.keys():
+                if contact_keys.search(k) and k not in ("locations",):
+                    err(f"{bm['id']} {t.get('nctId')} has contact field {k}")
+            for loc in t.get("locations") or []:
+                extra = set(loc.keys()) - loc_allowed
+                if extra:
+                    err(f"{bm['id']} {t.get('nctId')} location has extra keys {extra}")
+                for k in extra:
+                    pass
+                blob = " ".join(str(loc.get(k) or "") for k in loc)
+                if re.search(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", blob):
+                    err(f"{bm['id']} {t.get('nctId')} location contains an email")
+                if re.search(r"(?i)\b(?:phone|tel|fax)\s*[:=]", blob):
+                    err(f"{bm['id']} {t.get('nctId')} location contains a phone label")
+
+    raw = DATA.read_text(encoding="utf-8")
+    emails = re.findall(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", raw)
+    if emails:
+        err(f"snapshot contains email addresses: {emails[:5]}")
+    else:
+        ok("snapshot has no email addresses")
+
+    for p in html_pages():
+        text = p.read_text(encoding="utf-8")
+        # mailto: or raw emails (ignore reserved example domains if any)
+        page_emails = re.findall(r"mailto:|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", text)
+        if page_emails:
+            err(f"{p.relative_to(ROOT)} contains email/mailto: {page_emails[:5]}")
+        if re.search(r"\btel:", text, re.I):
+            err(f"{p.relative_to(ROOT)} contains a tel: link")
+        if 'class="item trial"' in text:
+            for art in re.findall(r'<article class="item trial"[^>]*>.*?</article>', text, flags=re.I | re.S):
+                # Titles may contain "Investigator's Choice". Flag structured
+                # contact fields, not that phrase: "Contact:", "Phone:", "Email:",
+                # mailto:, or a named site contact.
+                if re.search(r"(?i)(mailto:|\btel:|(?:^|[\s>])(?:contact|phone|e-?mail)\s*:)", art):
+                    err(f"{p.relative_to(ROOT)} trial card mentions a contact: {art[:200]}")
+    ok("pages have no emails, tel: links or site contacts on trial cards")
+
+
+def test_sources_table() -> None:
+    """SOURCES.md and the About page carry a sources-and-licence table."""
+    src = ROOT / "SOURCES.md"
+    if not src.is_file():
+        err("SOURCES.md is missing")
+        return
+    text = src.read_text(encoding="utf-8")
+    for col in (
+        "Source",
+        "What we use",
+        "Licence or terms",
+        "Terms URL",
+        "Attribution requirement",
+        "How we meet it",
+    ):
+        if col not in text:
+            err(f"SOURCES.md missing column {col}")
+    for url in (
+        "https://clinicaltrials.gov/about-site/terms-conditions",
+        "https://open.fda.gov/terms/",
+        "https://open.fda.gov/license/",
+        "https://creativecommons.org/publicdomain/zero/1.0/",
+        "https://www.fda.gov/about-fda/about-website/website-policies",
+        "https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling",
+        "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+        "https://www.ema.europa.eu/en/about-us/about-website/legal-notice",
+        "https://civicdb.org/releases/licensing",
+        "https://www.ncbi.nlm.nih.gov/home/about/policies/",
+        "https://www.nlm.nih.gov/databases/download.html",
+    ):
+        if url not in text:
+            err(f"SOURCES.md missing terms URL {url}")
+    about = (SITE / "about.html").read_text(encoding="utf-8")
+    if 'class="sources"' not in about and "sources-table" not in about:
+        err("about.html is missing the sources-and-licence table")
+    else:
+        ok("about.html has a sources-and-licence table")
+    if "SOURCES.md" not in about:
+        err("about.html does not link to SOURCES.md")
+    site_copy = SITE / "SOURCES.md"
+    if not site_copy.is_file():
+        err("site/SOURCES.md was not copied into the published tree")
+    else:
+        ok("SOURCES.md is in the repo and in the published site tree")
+    # CIViC attribution links on pages must be absolute.
+    for p in (SITE / "b").glob("*.html"):
+        text = p.read_text(encoding="utf-8")
+        if re.search(r'href="/features/', text):
+            err(f"{p.relative_to(ROOT)} has a relative CIViC /features/ link")
+    ok("CIViC attribution links are absolute")
+
+
 def main() -> int:
     test_snapshot_schema()
     test_pages()
@@ -603,6 +925,12 @@ def main() -> int:
     test_matching_correctness()
     test_her2_partners_and_brand_dedup()
     test_trial_requirement()
+    test_kadcyla_brand_attachment()
+    test_brands_own_ingredient()
+    test_disclaimer_on_every_page()
+    test_no_pubmed_abstracts()
+    test_no_patient_contacts()
+    test_sources_table()
     if errors:
         print(f"\n{len(errors)} failure(s)")
         return 1

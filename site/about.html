@@ -40,6 +40,111 @@
         <h2>How the data is refreshed</h2>
         <p>A weekly GitHub Action rebuilds the static JSON snapshot and opens a pull request. Nothing goes live until that pull request is merged. If a snapshot is more than eight days old, every page shows a stale-data banner. ClinicalTrials.gov’s own processing date is shown where trials appear, as their terms require.</p>
         <h2>Sources, licences and attribution</h2>
+        <p>Terms were checked against each source’s official pages on 12 November 2026 (Europe/Paris). A full table, including notes on terms that are restrictive or that could not be re-extracted this turn, is in <a href="SOURCES.md">SOURCES.md</a>. This explorer uses public sources only.</p>
+        <div class="sources-table-wrap">
+        <table class="sources">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>What we use</th>
+              <th>Licence or terms</th>
+              <th>Terms URL</th>
+              <th>Attribution requirement</th>
+              <th>How we meet it</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ClinicalTrials.gov API v2</td>
+              <td>Recruiting trial records (title, NCT ID, status, phase, conditions, interventions, site city and country). Registry-level only: no contact names, emails or phones.</td>
+              <td>Free to use under the Terms and Conditions (last updated 31 January 2023). International copyright outside the United States. Display the source and processing date; keep data current; no proprietary rights; no email marketing.</td>
+              <td><a href="https://clinicaltrials.gov/about-site/terms-conditions">Terms</a>; <a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a></td>
+              <td>Attribute ClinicalTrials.gov; show the processing date; describe selection.</td>
+              <td>Each card cites ClinicalTrials.gov and links to the NCT record. The processing date is on every trials page. Weekly snapshots; stale banner after eight days. No emails are extracted.</td>
+            </tr>
+            <tr>
+              <td>openFDA drug labels</td>
+              <td>Indications and Usage excerpts, brand and generic names, application numbers, DailyMed set IDs.</td>
+              <td>Public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a> unless a record is marked as a third-party work (those are skipped). Attribution requested, not required. Not for medical-care decisions.</td>
+              <td><a href="https://open.fda.gov/terms/">Terms</a>; <a href="https://open.fda.gov/license/">License</a>; <a href="https://open.fda.gov/apis/drug/label/">API</a></td>
+              <td>Requested: “Data provided by the U.S. Food and Drug Administration (https://open.fda.gov)”.</td>
+              <td>That credit is given on this page. Each excerpt is labelled as FDA label text and linked to DailyMed.</td>
+            </tr>
+            <tr>
+              <td>DailyMed (NLM)</td>
+              <td>Outbound links to the official FDA Structured Product Label.</td>
+              <td>FDA label text is U.S. government public text. NLM terms: acknowledge NLM, do not imply endorsement, keep current or say so.</td>
+              <td><a href="https://dailymed.nlm.nih.gov/dailymed/about-dailymed.cfm">About DailyMed</a>; <a href="https://www.nlm.nih.gov/databases/download.html">NLM downloading terms</a></td>
+              <td>Acknowledge the source; link back to the official label.</td>
+              <td>Every excerpt cites “FDA drug label (openFDA / DailyMed)” and links to the DailyMed record.</td>
+            </tr>
+            <tr>
+              <td>Drugs@FDA</td>
+              <td>Application-number links (BLA/NDA overview). Files themselves are not copied.</td>
+              <td>FDA website content is, unless otherwise noted, a U.S. government work in the public domain. Date the copy and link back.</td>
+              <td><a href="https://www.fda.gov/drugs/drug-approvals-and-databases/drugsfda-data-files">Drugs@FDA data files</a>; <a href="https://www.fda.gov/about-fda/about-website/website-policies">FDA website policies</a></td>
+              <td>Recommended: date the copy and link back.</td>
+              <td>Each therapy cites Drugs@FDA with the application number and a link. The snapshot date is on every page.</td>
+            </tr>
+            <tr>
+              <td>FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</td>
+              <td>Rows associating a biomarker with a drug’s labeling sections, used to seed therapy lists.</td>
+              <td>U.S. government work, public domain unless otherwise noted. Date the copy and link back.</td>
+              <td><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">PGx table</a>; <a href="https://www.fda.gov/about-fda/about-website/website-policies">FDA website policies</a></td>
+              <td>Recommended: date the copy, link back, credit the FDA.</td>
+              <td>Each therapy cites the table by name, with a link. Snapshot date on every page. Credit on this page.</td>
+            </tr>
+            <tr>
+              <td>FDA list of authorized companion diagnostic devices</td>
+              <td>Device name and indication rows, shown as companion-diagnostic notes.</td>
+              <td>Same FDA website policy as above.</td>
+              <td><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">CDx list</a>; <a href="https://www.fda.gov/about-fda/about-website/website-policies">FDA website policies</a></td>
+              <td>Recommended: date the copy, link back, credit the FDA.</td>
+              <td>Each cited device is attributed to the FDA CDx list with a link.</td>
+            </tr>
+            <tr>
+              <td>European Medicines Agency medicines data</td>
+              <td>Name, INN, authorisation status and date, EPAR URL. Full EPARs are not copied.</td>
+              <td>© EMA 1995–2026. May be reproduced and distributed, commercially or not, provided the Agency is acknowledged as the source in each copy. EMA logo may not be used.</td>
+              <td><a href="https://www.ema.europa.eu/en/about-us/about-website/legal-notice">Legal notice</a>; <a href="https://www.ema.europa.eu/en/medicines/download-medicine-data">Downloadable medicines data</a></td>
+              <td>Acknowledge the European Medicines Agency as the source. Do not use the EMA logo.</td>
+              <td>EMA is named on each matching therapy and in citations, with a link to the EPAR. The logo is not used. The EMA PMS API is not used.</td>
+            </tr>
+            <tr>
+              <td>CIViC</td>
+              <td>Gene summaries (including EGFR) and curated assertion statements, via the public GraphQL API.</td>
+              <td>Dedicated to the public domain under <strong>CC0 1.0 Universal</strong>. Attribution is not legally required. Educational; not medical advice.</td>
+              <td><a href="https://civicdb.org/releases/licensing">CIViC licensing</a>; <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></td>
+              <td>Not legally required; we cite CIViC as scholarly practice.</td>
+              <td>Summaries and assertions are credited “CIViC (CC0)” with a link to <code>https://civicdb.org/…</code>.</td>
+            </tr>
+            <tr>
+              <td>PubMed / NCBI E-utilities</td>
+              <td>Bibliographic metadata only (title, authors, journal, year, PMID, link). Abstracts and full text are not fetched, stored or displayed.</td>
+              <td>NLM government webpages are public domain. Acknowledge NLM; do not imply endorsement; keep current or disclose. NLM does not claim copyright on PubMed abstracts, but publishers or authors may — abstracts are omitted. At most three E-utilities requests per second without a key; identify <code>tool</code> and <code>email</code>.</td>
+              <td><a href="https://www.ncbi.nlm.nih.gov/home/about/policies/">NCBI policies</a>; <a href="https://www.nlm.nih.gov/databases/download.html">NLM downloading terms</a>; <a href="https://www.ncbi.nlm.nih.gov/books/NBK25497/">E-utilities help</a></td>
+              <td>Acknowledge NLM; no implied endorsement; do not copy publisher-copyrighted abstracts; show NCBI’s disclaimer; identify tool and email.</td>
+              <td>Cards show only citation metadata and a PMID link. NLM is acknowledged here; endorsement is not implied. Requests send <code>tool</code> and a project email, at or under three per second, with no API key.</td>
+            </tr>
+            <tr>
+              <td>MyGene.info and other gene-summary APIs</td>
+              <td><strong>Not used.</strong> Gene summaries come from CIViC (CC0).</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>OncoKB</td>
+              <td><strong>Not used.</strong> Memorial Sloan Kettering’s terms do not allow redistribution without permission.</td>
+              <td>Memorial Sloan Kettering’s terms do not allow redistribution without permission. The terms URL is not linked here: OncoKB hosts are forbidden on this site.</td>
+              <td>—</td>
+              <td>Do not redistribute.</td>
+              <td>No OncoKB data is fetched, stored or displayed. A gate test fails if OncoKB appears.</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
         <div class="licence">
           <h3>ClinicalTrials.gov API v2</h3>
           <p>Trial records come from the U.S. National Library of Medicine’s <a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a> API v2. Downloading the data signifies acceptance of the <a href="https://clinicaltrials.gov/about-site/terms-conditions">ClinicalTrials.gov Terms and Conditions</a> (last updated 31 January 2023). The data are free to use, but they carry an international copyright outside the United States; some records may also be subject to third-party copyright. We attribute the source as ClinicalTrials.gov, display the processing date (<code>dataTimestamp</code>), keep weekly snapshots, and describe our selection (recruiting studies whose condition or eligibility inclusion requires the biomarker, closed biomarker queries, a country filter applied in the page). We assert no proprietary rights in the database and do not use extracted email addresses.</p>
@@ -51,7 +156,7 @@
           <p class="fine">This snapshot: 68 labels.</p>
         </div>
         <div class="licence">
-          <h3>FDA pharmacogenomic and companion-diagnostic tables; oncology approval notifications</h3>
+          <h3>FDA pharmacogenomic and companion-diagnostic tables</h3>
           <p>Associations between biomarkers and therapies are taken from the <a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">Table of Pharmacogenomic Biomarkers in Drug Labeling</a> and the <a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">list of FDA-authorized companion diagnostic devices</a>, then checked against the drug’s Indications and Usage. A therapy is shown on a biomarker page only when the label indication, the pharmacogenomic table, or a companion-diagnostic row ties the drug to that biomarker as a <em>selection criterion</em>. Mentions that are incidental, or that use the biomarker as an exclusion or an opposite-status criterion, stay in the snapshot data (with a <code>relation</code> field) and are not rendered. FDA website contents are, unless otherwise noted, in the public domain. Credit to the U.S. Food and Drug Administration is given; each copied table is dated and linked back, as FDA recommends.</p>
           <p class="fine">This snapshot: 692 pharmacogenomic rows, 244 companion-diagnostic rows.</p>
         </div>

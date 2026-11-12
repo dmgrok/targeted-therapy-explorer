@@ -219,6 +219,18 @@ def http_json(url: str, **kw) -> object:
     return json.loads(body.decode("utf-8", "replace"))
 
 
+def civic_absolute_url(url: str | None, fallback: str = "https://civicdb.org/") -> str:
+    """CIViC GraphQL `link` values are site-relative (`/features/19`); pages need an absolute URL."""
+    u = (url or "").strip()
+    if not u:
+        return fallback
+    if u.startswith("http://") or u.startswith("https://"):
+        return u
+    if u.startswith("/"):
+        return "https://civicdb.org" + u
+    return "https://civicdb.org/" + u.lstrip("/")
+
+
 def text_excerpt(s: str, n: int = 420) -> str:
     s = re.sub(r"\s+", " ", (s or "")).strip()
     if len(s) <= n:
@@ -503,17 +515,167 @@ def _clean_drug_token(name: str) -> str:
     return re.sub(r"\s+", " ", name).strip()
 
 
+# Salt / form words and formulation partners that are not a different INN.
+_SALT_WORDS = (
+    r"hydrochloride|hydrobromide|sodium|disodium|potassium|mesylate|besylate|"
+    r"tosylate|acetate|succinate|fumarate|maleate|phosphate|sulfate|sulphate|"
+    r"tartrate|citrate|malate|dimesylate|monohydrate|dihydrate|anhydrous|dimaleate"
+)
+# USAN prefixes on antibody-drug conjugates (ado-trastuzumab emtansine, etc.).
+_ADC_PREFIX = re.compile(r"^(?:ado|fam)-", re.I)
+_HYALURONIDASE = re.compile(
+    r"(?:and|&|,)?\s*\w*hyaluronidase(?:\s+alfa)?(?:-[a-z]{4})?",
+    re.I,
+)
+_BIOSIM_SUFFIX = re.compile(r"-([a-z]{4})\b", re.I)
+
+
+def primary_inn(name: str) -> str:
+    """Normalised active-ingredient key: salts, biosimilar suffixes, ado-/fam-
+    prefixes and hyaluronidase formulation partners are stripped. ADC payloads
+    (emtansine, deruxtecan) stay in the key, so trastuzumab and
+    ado-trastuzumab emtansine remain distinct ingredients.
+    """
+    s = _clean_drug_token(name or "").lower()
+    s = _HYALURONIDASE.sub(" ", s)
+    s = re.sub(r"\b(?:" + _SALT_WORDS + r")\b", " ", s)
+    s = _ADC_PREFIX.sub("", s.strip())
+    s = _BIOSIM_SUFFIX.sub("", s)
+    return re.sub(r"[^a-z0-9]+", "", s)
+
+
+def _is_combination_generic(name: str) -> bool:
+    """True when the name lists two or more distinct active ingredients.
+
+    "trastuzumab and hyaluronidase" is a formulation of one ingredient.
+    "pertuzumab, trastuzumab, and hyaluronidase" is a combination product.
+    """
+    # Split on combination separators before cleaning: _clean_drug_token
+    # turns commas into spaces, which would collapse "pertuzumab, trastuzumab"
+    # into one token list that is hard to recover.
+    s = _HYALURONIDASE.sub(" ", name or "")
+    parts = [p.strip() for p in re.split(r"\s*(?:,|;|&|\band\b)\s*", s, flags=re.I) if p.strip()]
+    keys = {primary_inn(p) for p in parts if primary_inn(p)}
+    return len(keys) > 1
+
+
+def same_active_ingredient(query: str, candidate: str) -> bool:
+    """True when *candidate* is the same INN as *query*, allowing salts,
+    biosimilar suffixes and ado-/fam- prefixes, but not a different conjugate
+    or a second antibody.
+    """
+    q, c = primary_inn(query), primary_inn(candidate)
+    if not q or not c:
+        return False
+    if _is_combination_generic(candidate) or _is_combination_generic(query):
+        # A combination matches only if the full key is identical.
+        return q == c
+    return q == c
+
+
+def label_belongs_to_drug(query: str, brands: list, generics: list) -> bool:
+    """True when an openFDA label is for *query*'s own active ingredient.
+
+    Combination products and conjugates of a different INN are rejected.
+    A brand-name query (e.g. Herceptin) matches that brand on a label whose
+    generic is compatible.
+    """
+    gens = [g for g in (generics or []) if g]
+    brands = [b for b in (brands or []) if b]
+    if any(_is_combination_generic(g) for g in gens):
+        # Only if the query itself is that combination.
+        if not (_is_combination_generic(query) and any(same_active_ingredient(query, g) for g in gens)):
+            return False
+    if any(same_active_ingredient(query, g) for g in gens):
+        return True
+    # Query is a brand of this label, and the generic is not a different INN.
+    if any(_clean_drug_token(b).lower() == _clean_drug_token(query).lower() for b in brands):
+        if gens and not any(same_active_ingredient(query, g) or primary_inn(query) == primary_inn(g) for g in gens):
+            # Brand "Kadcyla" queried as "Kadcyla" is fine (generic is the conjugate).
+            # Brand match alone is enough when the query IS the brand.
+            return True
+        return True
+    return False
+
+
+def _label_record(drug: str, r: dict, url: str) -> dict:
+    of = r.get("openfda") or {}
+    set_ids = of.get("spl_set_id") or of.get("set_id") or ([r.get("set_id")] if r.get("set_id") else [])
+    set_id = (set_ids[0] if set_ids else "") or r.get("set_id") or ""
+    brands = of.get("brand_name") or []
+    generics = of.get("generic_name") or []
+    apps = of.get("application_number") or []
+    indications = r.get("indications_and_usage") or []
+    indic_text = indications[0] if indications else ""
+    dailymed = (
+        f"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid={set_id}"
+        if set_id else "https://open.fda.gov/apis/drug/label/"
+    )
+    drugsfda = ""
+    if apps:
+        # Application numbers look like NDA021743 or BLA125514
+        drugsfda = (
+            "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm"
+            "?event=overview.process&ApplNo="
+            + re.sub(r"[^0-9]", "", apps[0])
+        )
+    return {
+        "drugQuery": drug,
+        "brandNames": brands[:4],
+        "genericNames": generics[:4],
+        "applicationNumbers": apps[:4],
+        "effectiveTime": r.get("effective_time") or "",
+        "indicationsText": indic_text,
+        "indicationsExcerpt": text_excerpt(indic_text, 420),
+        "dailymedUrl": dailymed,
+        "drugsfdaUrl": drugsfda,
+        "openfdaUrl": url,
+        "setId": set_id,
+    }
+
+
+def _prefer_label(drug: str, records: list[dict]) -> dict | None:
+    """Pick the label for *drug*'s own ingredient, preferring an exact generic."""
+    owned = []
+    for r in records:
+        of = r.get("openfda") or {}
+        if label_belongs_to_drug(drug, of.get("brand_name") or [], of.get("generic_name") or []):
+            owned.append(r)
+    if not owned:
+        return None
+
+    def score(r: dict) -> tuple:
+        of = r.get("openfda") or {}
+        gens = [g.lower() for g in (of.get("generic_name") or [])]
+        brands = [b.lower() for b in (of.get("brand_name") or [])]
+        q = (_clean_drug_token(drug) or "").lower()
+        exact_generic = any(g == q for g in gens)
+        exact_brand = any(b == q for b in brands)
+        # Prefer a single-ingredient exact generic (Herceptin for trastuzumab)
+        # over a biosimilar suffix or a formulation.
+        short_generic = any(primary_inn(g) == primary_inn(drug) and len(g) <= len(q) + 2 for g in gens)
+        return (
+            1 if exact_generic else 0,
+            1 if exact_brand else 0,
+            1 if short_generic else 0,
+            -min((len(g) for g in gens), default=99),
+        )
+    owned.sort(key=score, reverse=True)
+    return owned[0]
+
+
 def fetch_openfda_label(drug: str) -> dict | None:
     token = _clean_drug_token(drug)
     if not token:
         return None
-    # Prefer generic name, then brand. Limit payload via search, take first.
+    # Prefer generic name, then brand. Take several hits and keep only the
+    # label whose generic/brand is this drug's own active ingredient — a
+    # limit-1 search for "trastuzumab" otherwise returns Kadcyla
+    # (ado-trastuzumab emtansine) first.
     for field in ("openfda.generic_name", "openfda.brand_name", "openfda.substance_name"):
-        q = f'{field}:"{token.split()[0]}"' if " " not in token else f'{field}:"{token}"'
-        # For multi-word, also try exact token
         url = (
             "https://api.fda.gov/drug/label.json?"
-            + urlencode({"search": f'{field}:"{token}"', "limit": "1"})
+            + urlencode({"search": f'{field}:"{token}"', "limit": "25"})
         )
         try:
             data = http_json(url, timeout=40)
@@ -524,40 +686,9 @@ def fetch_openfda_label(drug: str) -> dict | None:
         results = data.get("results") or []
         if not results:
             continue
-        r = results[0]
-        of = r.get("openfda") or {}
-        set_ids = of.get("set_id") or ([r.get("set_id")] if r.get("set_id") else [])
-        set_id = (set_ids[0] if set_ids else "") or r.get("set_id") or ""
-        brands = of.get("brand_name") or []
-        generics = of.get("generic_name") or []
-        apps = of.get("application_number") or []
-        indications = r.get("indications_and_usage") or []
-        indic_text = indications[0] if indications else ""
-        dailymed = (
-            f"https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid={set_id}"
-            if set_id else "https://open.fda.gov/apis/drug/label/"
-        )
-        drugsfda = ""
-        if apps:
-            # Application numbers look like NDA021743 or BLA125514
-            drugsfda = (
-                "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm"
-                "?event=overview.process&ApplNo="
-                + re.sub(r"[^0-9]", "", apps[0])
-            )
-        return {
-            "drugQuery": drug,
-            "brandNames": brands[:4],
-            "genericNames": generics[:4],
-            "applicationNumbers": apps[:4],
-            "effectiveTime": r.get("effective_time") or "",
-            "indicationsText": indic_text,
-            "indicationsExcerpt": text_excerpt(indic_text, 420),
-            "dailymedUrl": dailymed,
-            "drugsfdaUrl": drugsfda,
-            "openfdaUrl": url,
-            "setId": set_id,
-        }
+        chosen = _prefer_label(drug, results)
+        if chosen:
+            return _label_record(drug, chosen, url)
     return None
 
 
@@ -701,17 +832,32 @@ def fetch_ema_medicines() -> list[dict]:
 
 
 def match_ema(ema_rows: list[dict], drug: str) -> list[dict]:
+    """Match EMA rows whose INN (or name) is this drug's own active ingredient.
+
+    Substring matching is not enough: "trastuzumab" must not pick up
+    "trastuzumab emtansine" (Kadcyla) or "trastuzumab deruxtecan" (Enhertu).
+    Combination products whose INN lists this ingredient as a component
+    (for example Phesgo, pertuzumab;trastuzumab) are kept.
+    """
     token = _clean_drug_token(drug).lower()
     if not token:
         return []
-    parts = [p for p in re.split(r"[+/,-]", token) if len(p.strip()) > 3]
-    if not parts:
-        parts = [token]
+    q = primary_inn(token)
+    if not q:
+        return []
     hits = []
     for row in ema_rows:
-        hay = f"{row.get('name','')} {row.get('inn','')}".lower()
-        if any(p in hay for p in parts):
+        inn = row.get("inn") or ""
+        name = row.get("name") or ""
+        # Split combination INNs on ; or /
+        inn_parts = [p.strip() for p in re.split(r"[;/]", inn) if p.strip()] or [inn]
+        if any(same_active_ingredient(token, p) for p in inn_parts if p):
             hits.append(row)
+            continue
+        # Brand-name exact match, only if the INN is compatible or empty.
+        if primary_inn(name) == q or _clean_drug_token(name).lower() == token:
+            if not inn_parts or any(same_active_ingredient(token, p) for p in inn_parts if p):
+                hits.append(row)
     return hits[:4]
 
 
@@ -836,7 +982,10 @@ def fetch_civic(bm: dict) -> dict:
             "id": gid,
             "name": g.get("name"),
             "description": text_excerpt(g.get("description") or "", 700),
-            "url": g.get("link") or (f"https://civicdb.org/genes/{gid}/summary" if gid else "https://civicdb.org/"),
+            "url": civic_absolute_url(
+                g.get("link"),
+                fallback=(f"https://civicdb.org/genes/{gid}/summary" if gid else "https://civicdb.org/"),
+            ),
         })
     return {"ok": True, "genes": gene_out, "assertions": assertions[:40]}
 
@@ -1056,7 +1205,7 @@ def summary_for(bm: dict, civic: dict) -> tuple[str, list[dict]]:
     for g in civic.get("genes") or []:
         if g.get("description"):
             texts.append(g["description"])
-            sources.append({"source": "CIViC (CC0)", "url": g.get("url"), "detail": f"{g.get('name')} gene summary."})
+            sources.append({"source": "CIViC (CC0)", "url": civic_absolute_url(g.get("url")), "detail": f"{g.get('name')} gene summary."})
             break
     if not texts:
         # Short educational fallback, clearly sourced to the FDA table
