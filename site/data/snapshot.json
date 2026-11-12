@@ -6,7 +6,7 @@
   },
   "counts": {
     "biomarkers": 7,
-    "therapies": 55,
+    "therapies": 52,
     "trials": 508,
     "civicAssertions": 69,
     "literature": 35,
@@ -14,6 +14,6 @@
     "fdaCdxRows": 244,
     "emaRows": 2357,
     "openfdaLabels": 68,
-    "therapiesAll": 105
+    "therapiesAll": 104
   }
 }

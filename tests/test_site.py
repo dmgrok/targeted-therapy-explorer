@@ -18,6 +18,9 @@ from matching import (  # noqa: E402
     is_her2_negative_only,
     targeting_therapies,
     TARGETS,
+    NOT_SHOWN,
+    dedupe_therapies,
+    therapies_are_same_drug,
 )
 DISCLAIMER = "Not medical advice. Talk to your oncologist."
 BIOMARKER_IDS = ["EGFR", "ALK", "BRAF-V600E", "KRAS-G12C", "HER2", "NTRK", "MSI-H-dMMR"]
@@ -288,12 +291,133 @@ def test_matching_correctness() -> None:
         ok(f"EGFR keeps atezolizumab in the data as relation={atezo[0].get('relation')}")
 
 
+def _therapies_section(page: str) -> str:
+    """The approved-therapies block, excluding later trial lists."""
+    if 'id="therapies"' not in page:
+        return page
+    section = page.split('id="therapies"', 1)[1]
+    if 'id="trials"' in section:
+        section = section.split('id="trials"', 1)[0]
+    return section
+
+
+def _therapy_headings(section: str) -> list[str]:
+    """Visible therapy titles (h3 text, including any brand in parentheses)."""
+    return re.findall(r"<h3>(.*?)</h3>", section, flags=re.I | re.S)
+
+
+def test_her2_partners_and_brand_dedup() -> None:
+    """HER2 must not show palbociclib or capecitabine; EGFR shows sunvozertinib once.
+
+    Palbociclib and capecitabine stay in the snapshot, flagged as not shown.
+    The Zegfrovy / sunvozertinib brand-generic collision is a single entry,
+    and the same dedup is applied generally (sharing a brand is not enough).
+    """
+    snap = json.loads(DATA.read_text(encoding="utf-8"))
+    by_id = {b["id"]: b for b in snap.get("biomarkers") or []}
+
+    her2 = by_id.get("HER2") or {}
+    shown_her2 = targeting_therapies(her2)
+    page_her2 = (SITE / "b" / "HER2.html").read_text(encoding="utf-8")
+    th_her2 = _therapies_section(page_her2)
+    headings_her2 = _therapy_headings(th_her2)
+    heading_text = [re.sub(r"<[^>]+>", "", h) for h in headings_her2]
+    for drug in ("palbociclib", "capecitabine"):
+        for rec in shown_her2:
+            if re.search(drug, rec.get("name") or "", re.I):
+                err(f"HER2 targeting data lists {drug}")
+        # Only the therapy title, not excerpts of other drugs that are used
+        # "in combination with capecitabine".
+        titled = [h for h in heading_text if re.search(drug, h, re.I)]
+        if titled:
+            err(f"HER2 page lists {drug} as a therapy: {titled}")
+        kept = [rec for rec in (her2.get("therapies") or []) if re.search(drug, rec.get("name") or "", re.I)]
+        if not kept:
+            err(f"HER2 data should still keep {drug}, flagged as not shown")
+        elif kept[0].get("relation") == TARGETS:
+            err(f"HER2 {drug} is still marked as targeting")
+        else:
+            ok(f"HER2 keeps {drug} in the data as relation={kept[0].get('relation')}, not shown")
+    ok("HER2 page and targeting data do not list palbociclib or capecitabine")
+
+    egfr = by_id.get("EGFR") or {}
+    shown_egfr = targeting_therapies(egfr)
+    page_egfr = (SITE / "b" / "EGFR.html").read_text(encoding="utf-8")
+    th_egfr = _therapies_section(page_egfr)
+    headings = _therapy_headings(th_egfr)
+    # Headings include the brand in parentheses, e.g. "Sunvozertinib (Zegfrovy)".
+    sunvo = [h for h in headings if re.search(r"sunvozertinib", h, re.I)]
+    zeg_alone = []
+    for h in headings:
+        # The main name is the text before a brand span or parenthesis.
+        main = re.sub(r"<[^>]+>", "", h)
+        main_name = re.split(r"\s*\(", main, maxsplit=1)[0].strip()
+        if re.fullmatch(r"zegfrovy", main_name, re.I):
+            zeg_alone.append(h)
+    if len(sunvo) != 1:
+        err(f"EGFR page should show sunvozertinib exactly once, got {len(sunvo)}: {sunvo}")
+    else:
+        ok(f"EGFR page shows sunvozertinib once: {re.sub(r'<[^>]+>', '', sunvo[0])}")
+    if zeg_alone:
+        err(f"EGFR page has a separate Zegfrovy entry: {zeg_alone}")
+    else:
+        ok("EGFR page has no separate Zegfrovy entry")
+
+    shown_names = [t.get("name") or "" for t in shown_egfr]
+    sunvo_data = [n for n in shown_names if re.search(r"sunvozertinib", n, re.I)]
+    zeg_data = [n for n in shown_names if re.fullmatch(r"zegfrovy", n, re.I)]
+    if len(sunvo_data) != 1:
+        err(f"EGFR targeting data should list sunvozertinib exactly once, got {sunvo_data}")
+    if zeg_data:
+        err(f"EGFR targeting data still has a separate Zegfrovy entry: {zeg_data}")
+    # After the merge, the raw therapies list also has a single record.
+    all_egfr = [t.get("name") or "" for t in (egfr.get("therapies") or [])]
+    sunvo_all = [n for n in all_egfr if re.search(r"sunvozertinib|zegfrovy", n, re.I)]
+    if len(sunvo_all) != 1 or not re.search(r"sunvozertinib", sunvo_all[0], re.I):
+        err(f"EGFR snapshot should have one sunvozertinib record, not {sunvo_all}")
+    else:
+        ok(f"EGFR snapshot has one merged record: {sunvo_all[0]}")
+
+    # Dedup is general: brand-vs-generic merges, shared-brand-only does not.
+    a = {
+        "name": "Sunvozertinib",
+        "brandNames": ["ZEGFROVY"],
+        "genericNames": ["SUNVOZERTINIB"],
+    }
+    b = {"name": "Zegfrovy", "brandNames": [], "genericNames": []}
+    out, reports = dedupe_therapies([a, b])
+    if len(out) != 1 or not reports:
+        err("dedupe_therapies did not merge a brand/generic pair")
+    else:
+        display_brands = " ".join(out[0].get("brandNames") or [])
+        if not re.search(r"zegfrovy", display_brands, re.I) or not re.search(r"sunvozertinib", out[0].get("name") or "", re.I):
+            err(f"merged entry should be sunvozertinib with Zegfrovy as brand, got {out[0].get('name')} ({display_brands})")
+        else:
+            ok("dedupe_therapies merges a brand/generic pair into one entry")
+
+    trast = {"name": "Trastuzumab", "brandNames": ["Herceptin", "KADCYLA"], "genericNames": []}
+    tdm1 = {
+        "name": "Ado-Trastuzumab Emtansine",
+        "brandNames": ["KADCYLA"],
+        "genericNames": ["ADO-TRASTUZUMAB EMTANSINE"],
+    }
+    if therapies_are_same_drug(trast, tdm1):
+        err("Trastuzumab and Ado-Trastuzumab Emtansine must not be treated as the same drug")
+    out2, reports2 = dedupe_therapies([trast, tdm1])
+    if len(out2) != 2 or reports2:
+        err(f"shared-brand-only pair was merged: {reports2}")
+    else:
+        ok("dedupe_therapies does not merge distinct drugs that only share a brand")
+
+
+
 def main() -> int:
     test_snapshot_schema()
     test_pages()
     test_css_identity()
     test_matching_patterns()
     test_matching_correctness()
+    test_her2_partners_and_brand_dedup()
     if errors:
         print(f"\n{len(errors)} failure(s)")
         return 1

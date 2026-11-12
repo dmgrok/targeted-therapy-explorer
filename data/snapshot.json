@@ -1280,7 +1280,7 @@
         {
           "name": "Sunvozertinib",
           "brandNames": [
-            "ZEGFROVY"
+            "Zegfrovy"
           ],
           "genericNames": [
             "SUNVOZERTINIB"
@@ -1294,7 +1294,13 @@
             "drugsfdaUrl": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=219839"
           },
           "ema": [],
-          "companionDiagnostics": [],
+          "companionDiagnostics": [
+            {
+              "diagnostic": "Oncomine Dx Express Test (Life Technologies Corporation)",
+              "indication": "Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+              "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools"
+            }
+          ],
           "citations": [
             {
               "source": "FDA Table of Pharmacogenomic Biomarkers in Drug Labeling",
@@ -1310,6 +1316,11 @@
               "source": "Drugs@FDA",
               "url": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=219839",
               "detail": "Application NDA219839"
+            },
+            {
+              "source": "FDA-authorized companion diagnostic devices",
+              "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+              "detail": "Oncomine Dx Express Test (Life Technologies Corporation): Non-Small Cell Lung Cancer (NSCLC) - Tissue"
             }
           ],
           "relation": "targets",
@@ -1442,31 +1453,6 @@
           "relation": "exclusion",
           "relationReason": "negative-or-exclusion-mention",
           "relationEvidence": "patients with metastatic non-small cell lung cancer (NSCLC) with no sensitizing epidermal growth factor receptor (EGFR) mutation or anaplastic lymphoma kinase (ALK) genomic tumor aberrations. ( 1.2 )"
-        },
-        {
-          "name": "Zegfrovy",
-          "brandNames": [],
-          "genericNames": [],
-          "indicationsExcerpt": "…INDICATIONS AND USAGE ZEGFROVY is indicated for the treatment of adult patients with locally advanced or metastatic non-small cell lung cancer (NSCLC) with epidermal growth factor receptor (EGFR) exon 20 insertion mutations, as detected by an FDA-approved test [see Dosage and Administration (2.1) ] , whose disease has progressed on or after platinum-based chemotherapy. This indication is approved under accelerated ap…",
-          "fda": null,
-          "ema": [],
-          "companionDiagnostics": [
-            {
-              "diagnostic": "Oncomine Dx Express Test (Life Technologies Corporation)",
-              "indication": "Non-Small Cell Lung Cancer (NSCLC) - Tissue",
-              "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools"
-            }
-          ],
-          "citations": [
-            {
-              "source": "FDA-authorized companion diagnostic devices",
-              "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
-              "detail": "Oncomine Dx Express Test (Life Technologies Corporation): Non-Small Cell Lung Cancer (NSCLC) - Tissue"
-            }
-          ],
-          "relation": "targets",
-          "relationReason": "label-or-cdx-selection",
-          "relationEvidence": "nts with locally advanced or metastatic non-small cell lung cancer (NSCLC) with epidermal growth factor receptor (EGFR) exon 20 insertion mutations, as detected by an FDA-approved test [see Dosage an"
         }
       ],
       "civic": {
@@ -39329,8 +39315,8 @@
               "detail": "Capecitabine Medac (capecitabine). Authorised Capecitabine Medac is indicated for the adjuvant treatment of patients following surgery of stage-III (Dukes’ stage-C) colon cancer. Capecitabine Medac is indicated for the treatment of metastatic colorectal cancer. Capecitabine Meda…"
             }
           ],
-          "relation": "targets",
-          "relationReason": "label-or-cdx-selection",
+          "relation": "not-shown",
+          "relationReason": "combination-partner-not-targeted-therapy",
           "relationEvidence": "onent of a combination chemotherapy regimen. ( 1.3 ) • treatment of adults with HER2-overexpressing metastatic gastric or gastroesophageal junction adenocarcinoma w"
         },
         {
@@ -40226,8 +40212,8 @@
               "detail": "Ibrance (palbociclib). Authorised Ibrance is indicated for the treatment of hormone receptor (HR) positive, human epidermal growth factor receptor 2 (HER2) negative locally advanced or metastatic breast cancer: in combination with an aromatase inhibitor; in combination with fulv…"
             }
           ],
-          "relation": "targets",
-          "relationReason": "label-or-cdx-selection",
+          "relation": "not-shown",
+          "relationReason": "combination-partner-not-targeted-therapy",
           "relationEvidence": "crine therapy for the maintenance treatment of adult patients with HR-positive, HER2-positive locally advanced or metastatic breast cancer following induction treat"
         },
         {
@@ -70507,7 +70493,7 @@
   "failures": [],
   "counts": {
     "biomarkers": 7,
-    "therapies": 55,
+    "therapies": 52,
     "trials": 508,
     "civicAssertions": 69,
     "literature": 35,
@@ -70515,6 +70501,6 @@
     "fdaCdxRows": 244,
     "emaRows": 2357,
     "openfdaLabels": 68,
-    "therapiesAll": 105
+    "therapiesAll": 104
   }
 }

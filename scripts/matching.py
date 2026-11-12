@@ -12,7 +12,10 @@ opposite-status indications ("HER2-negative"), or incidental ("biomarker
 mentioned in the label") are kept in the snapshot with a relation other than
 "targets", and must not be rendered on the pages.
 
-This module is deliberately text-driven: it does not hard-code drug names.
+This module is deliberately text-driven for polarity classification. A small
+QC override list drops named combination partners (currently palbociclib and
+capecitabine on HER2) from the rendered pages; they stay in the snapshot,
+flagged as not shown. Brand/generic duplicates are merged into one entry.
 """
 from __future__ import annotations
 
@@ -23,6 +26,17 @@ import unicodedata
 TARGETS = "targets"
 MENTIONED = "mentioned"  # mentioned in the label / tables, not a selection criterion
 EXCLUSION = "exclusion"  # mentioned as a negative / opposite-status criterion
+NOT_SHOWN = "not-shown"  # kept in the data, never rendered (QC combination-partner drop)
+
+# Explicit page drops: (biomarker_id, normalised drug name). Aliases (brand /
+# generic) of the same record are also matched. These agents appear in a
+# HER2-positive combination indication or the PGx table, but they are not
+# HER2-targeted therapies themselves (a CDK4/6 inhibitor and a fluoropyrimidine
+# chemotherapy). Weekly snapshots re-apply the same rule.
+NOT_SHOWN_OVERRIDES: dict[tuple[str, str], str] = {
+    ("HER2", "palbociclib"): "combination-partner-not-targeted-therapy",
+    ("HER2", "capecitabine"): "combination-partner-not-targeted-therapy",
+}
 
 # Patterns that identify the biomarker in running text (label, CDx, PGx).
 # Longer, more specific forms come first.
@@ -391,6 +405,43 @@ def _pgx_selection(therapy: dict) -> bool:
     return "indications and usage" in sections.lower()
 
 
+
+def _norm_drug(name: str) -> str:
+    """Lowercase alphanumeric-only form for name comparisons."""
+    return re.sub(r"[^a-z0-9]+", "", (name or "").lower())
+
+
+def _therapy_name_keys(therapy: dict) -> set[str]:
+    keys = {_norm_drug(therapy.get("name") or "")}
+    for n in (therapy.get("brandNames") or []) + (therapy.get("genericNames") or []):
+        keys.add(_norm_drug(n))
+    keys.discard("")
+    return keys
+
+
+def not_shown_reason(biomarker_id: str, therapy: dict) -> str | None:
+    """Return an override reason if this therapy must not be rendered."""
+    for key in _therapy_name_keys(therapy):
+        reason = NOT_SHOWN_OVERRIDES.get((biomarker_id, key))
+        if reason:
+            return reason
+    return None
+
+
+def _apply_not_shown_override(biomarker_id: str, therapy: dict, result: dict) -> dict:
+    reason = not_shown_reason(biomarker_id, therapy)
+    if not reason:
+        return result
+    # Always flag as not-shown, even if the text classifier said "targets".
+    return {
+        "relation": NOT_SHOWN,
+        "reason": reason,
+        "evidence": result.get("evidence") or (
+            "QC: combination partner, not a therapy that itself targets this biomarker."
+        ),
+    }
+
+
 def classify_relation(
     biomarker_id: str,
     therapy: dict,
@@ -420,41 +471,39 @@ def classify_relation(
     negatives = analysis["negatives"]
 
     if positives and not _only_negative_indication(analysis, biomarker_id):
-        return {
+        result = {
             "relation": TARGETS,
             "reason": "label-or-cdx-selection",
             "evidence": (positives[0]["left"] + positives[0]["matched"] + positives[0]["right"])[:280],
         }
-
     # CDx is positive evidence, but it must not override a clearly negative
     # indication (for example a HER2-negative-only label that happens to
     # share a multi-gene panel CDx).
-    if cdx_ok and not negatives:
-        return {
+    elif cdx_ok and not negatives:
+        result = {
             "relation": TARGETS,
             "reason": "companion-diagnostic",
             "evidence": (cdx_text or "FDA companion-diagnostic row for this biomarker")[:280],
         }
-
-    if negatives and not positives:
-        return {
+    elif negatives and not positives:
+        result = {
             "relation": EXCLUSION,
             "reason": "negative-or-exclusion-mention",
             "evidence": (negatives[0]["left"] + negatives[0]["matched"] + negatives[0]["right"])[:280],
         }
-
-    if analysis["has_mention"] or _pgx_selection(therapy):
-        return {
+    elif analysis["has_mention"] or _pgx_selection(therapy):
+        result = {
             "relation": MENTIONED,
             "reason": "mentioned-in-label",
             "evidence": (body or (therapy.get("fda") or {}).get("labelingSections") or "")[:280],
         }
-
-    return {
-        "relation": MENTIONED,
-        "reason": "no-selection-evidence",
-        "evidence": "",
-    }
+    else:
+        result = {
+            "relation": MENTIONED,
+            "reason": "no-selection-evidence",
+            "evidence": "",
+        }
+    return _apply_not_shown_override(biomarker_id, therapy, result)
 
 
 def _only_negative_indication(analysis: dict, biomarker_id: str) -> bool:
@@ -505,13 +554,18 @@ def annotate_snapshot(snap: dict, extra_texts: dict | None = None) -> dict:
     for b in snap.get("biomarkers") or []:
         before = len(b.get("therapies") or [])
         annotate_biomarker(b, extra_texts=extra_texts)
+        merged, reports = dedupe_therapies(b.get("therapies") or [])
+        for rec in merged:
+            rec.pop("_mergedFrom", None)
+        b["therapies"] = merged
         shown = targeting_therapies(b)
-        dropped = [t["name"] for t in (b.get("therapies") or []) if t.get("relation") != TARGETS]
+        dropped = [t["name"] for t in merged if t.get("relation") != TARGETS]
         summary[b["id"]] = {
             "before": before,
             "after": len(shown),
             "dropped": dropped,
             "kept": [t["name"] for t in shown],
+            "merges": reports,
         }
     counts = snap.setdefault("counts", {})
     counts["therapiesAll"] = sum(
@@ -567,3 +621,224 @@ def relevant_excerpt(text: str, biomarker_id: str, n: int = 420) -> str:
     if start > 0:
         chunk = "\u2026" + chunk.lstrip()
     return chunk
+
+
+# ---------------------------------------------------------------------------
+# Brand / generic deduplication
+# ---------------------------------------------------------------------------
+
+def _titleish(name: str) -> str:
+    """Prefer ordinary title case over ALL-CAPS trade-name tokens."""
+    s = (name or "").strip()
+    if s.isupper() and any(c.isalpha() for c in s):
+        return s.title()
+    return s
+
+
+def _alias_set(therapy: dict, include_name: bool = True) -> set[str]:
+    names = []
+    if include_name:
+        names.append(therapy.get("name") or "")
+    names.extend(therapy.get("brandNames") or [])
+    names.extend(therapy.get("genericNames") or [])
+    return {_norm_drug(n) for n in names if n and _norm_drug(n)}
+
+
+def _name_is_alias_of(name: str, other: dict) -> bool:
+    """True if *name* is a brand or generic of *other* (not merely other's own name)."""
+    key = _norm_drug(name)
+    if not key:
+        return False
+    aliases = {_norm_drug(n) for n in (other.get("brandNames") or []) + (other.get("genericNames") or []) if n}
+    return key in aliases
+
+
+def therapies_are_same_drug(a: dict, b: dict) -> bool:
+    """True when one entry's name is a brand or generic of the other.
+
+    Sharing a brand on both lists (for example Trastuzumab and
+    Ado-Trastuzumab Emtansine both carrying KADCYLA from a label-search
+    artefact) is *not* enough: those are different drugs.
+    Identical normalised names also count as the same drug.
+    """
+    a_name, b_name = a.get("name") or "", b.get("name") or ""
+    if not a_name or not b_name:
+        return False
+    if _norm_drug(a_name) == _norm_drug(b_name):
+        return True
+    if _name_is_alias_of(a_name, b) or _name_is_alias_of(b_name, a):
+        return True
+    return False
+
+
+def _keeper_score(t: dict) -> tuple:
+    """Higher is a better canonical record (generic INN, richer metadata)."""
+    name = t.get("name") or ""
+    gens = {_norm_drug(n) for n in (t.get("genericNames") or [])}
+    brands = {_norm_drug(n) for n in (t.get("brandNames") or [])}
+    is_generic = _norm_drug(name) in gens or (bool(gens) and _norm_drug(name) not in brands)
+    return (
+        1 if is_generic else 0,
+        1 if t.get("genericNames") else 0,
+        1 if t.get("fda") else 0,
+        1 if t.get("indicationsExcerpt") else 0,
+        len(t.get("brandNames") or []),
+        len(t.get("citations") or []),
+        len(t.get("companionDiagnostics") or []),
+        -len(name),  # shorter INN over a long brand phrase, all else equal
+    )
+
+
+def _unique_extend(dst: list, src: list, keyfn) -> None:
+    seen = {keyfn(x) for x in dst}
+    for item in src:
+        k = keyfn(item)
+        if k and k not in seen:
+            dst.append(item)
+            seen.add(k)
+
+
+def _merge_two(keeper: dict, other: dict) -> dict:
+    """Merge *other* into a copy of *keeper*; prefer the generic as the name."""
+    merged = dict(keeper)
+
+    # Display name: generic INN, with the other name kept as a brand when it is one.
+    k_name, o_name = keeper.get("name") or "", other.get("name") or ""
+    k_gens = {_norm_drug(n) for n in (keeper.get("genericNames") or []) + (other.get("genericNames") or [])}
+    k_brands = {_norm_drug(n) for n in (keeper.get("brandNames") or []) + (other.get("brandNames") or [])}
+    if _norm_drug(o_name) in k_gens and _norm_drug(k_name) not in k_gens:
+        merged["name"] = o_name
+        # The previous name is a brand.
+        brands = list(keeper.get("brandNames") or [])
+        if k_name and _norm_drug(k_name) not in {_norm_drug(x) for x in brands}:
+            brands.insert(0, _titleish(k_name))
+        merged["brandNames"] = brands
+    else:
+        merged["name"] = k_name
+
+    brands = list(merged.get("brandNames") or [])
+    # Bring in the dropped entry's name as a brand, in ordinary title case,
+    # replacing an ALL-CAPS copy of the same token when present.
+    dropped_name = o_name if _norm_drug(merged["name"]) != _norm_drug(o_name) else ""
+    if dropped_name and (_name_is_alias_of(dropped_name, keeper) or _name_is_alias_of(dropped_name, other) or not (other.get("genericNames") or other.get("brandNames"))):
+        pretty = _titleish(dropped_name)
+        brands = [pretty if _norm_drug(b) == _norm_drug(pretty) else b for b in brands]
+        if _norm_drug(pretty) not in {_norm_drug(b) for b in brands}:
+            brands.append(pretty)
+    _unique_extend(brands, other.get("brandNames") or [], _norm_drug)
+    merged["brandNames"] = brands
+
+    gens = list(merged.get("genericNames") or [])
+    _unique_extend(gens, other.get("genericNames") or [], _norm_drug)
+    # If the keeper's name is the generic, ensure it is listed.
+    if _norm_drug(merged["name"]) not in {_norm_drug(g) for g in gens}:
+        # only add if it looks like an INN already present on either side
+        pass
+    merged["genericNames"] = gens
+
+    if not merged.get("indicationsExcerpt") and other.get("indicationsExcerpt"):
+        merged["indicationsExcerpt"] = other["indicationsExcerpt"]
+    elif other.get("indicationsExcerpt") and len(other["indicationsExcerpt"]) > len(merged.get("indicationsExcerpt") or ""):
+        # Prefer the longer excerpt only when the keeper's is empty or shorter
+        # and does not already include a selection clause; keep keeper's if both ok.
+        if not merged.get("indicationsExcerpt"):
+            merged["indicationsExcerpt"] = other["indicationsExcerpt"]
+
+    if not merged.get("fda") and other.get("fda"):
+        merged["fda"] = other["fda"]
+
+    ema = list(merged.get("ema") or [])
+    _unique_extend(ema, other.get("ema") or [], lambda e: (e.get("name") or "", e.get("url") or ""))
+    merged["ema"] = ema
+
+    cdx = list(merged.get("companionDiagnostics") or [])
+    _unique_extend(
+        cdx,
+        other.get("companionDiagnostics") or [],
+        lambda c: (c.get("diagnostic") or "", c.get("indication") or ""),
+    )
+    merged["companionDiagnostics"] = cdx
+
+    cites = list(merged.get("citations") or [])
+    _unique_extend(
+        cites,
+        other.get("citations") or [],
+        lambda c: (c.get("source") or "", c.get("url") or "", c.get("detail") or ""),
+    )
+    merged["citations"] = cites
+
+    # Relation: "targets" wins; otherwise keep the keeper's, then the other's.
+    rank = {TARGETS: 3, MENTIONED: 1, EXCLUSION: 1, NOT_SHOWN: 0, None: 0}
+    if rank.get(other.get("relation"), 0) > rank.get(merged.get("relation"), 0):
+        merged["relation"] = other.get("relation")
+        merged["relationReason"] = other.get("relationReason")
+        merged["relationEvidence"] = other.get("relationEvidence")
+
+    origins = list(merged.get("origins") or [])
+    _unique_extend(origins, other.get("origins") or [], lambda x: x)
+    if origins:
+        merged["origins"] = origins
+
+    merged["_mergedFrom"] = list(dict.fromkeys(
+        (merged.get("_mergedFrom") or []) + [o_name] + (other.get("_mergedFrom") or [])
+    ))
+    return merged
+
+
+def dedupe_therapies(therapies: list[dict]) -> tuple[list[dict], list[dict]]:
+    """Merge brand/generic duplicates. Returns (deduped, merge-reports).
+
+    A merge report is {kept, dropped, biomarker-agnostic display}. Reports
+    are useful for the PR write-up; they are not written into the snapshot
+    beyond a `_mergedFrom` list on the kept record (stripped at annotate
+    time if we decide not to persist it — we persist it so the merge is
+    visible in the data).
+    """
+    items = list(therapies)
+    reports: list[dict] = []
+    changed = True
+    while changed:
+        changed = False
+        n = len(items)
+        skip = set()
+        new_items = []
+        for i in range(n):
+            if i in skip:
+                continue
+            a = items[i]
+            for j in range(i + 1, n):
+                if j in skip:
+                    continue
+                b = items[j]
+                if not therapies_are_same_drug(a, b):
+                    continue
+                # Pick the richer / generic-named record as keeper.
+                if _keeper_score(a) >= _keeper_score(b):
+                    keeper, other = a, b
+                else:
+                    keeper, other = b, a
+                merged = _merge_two(keeper, other)
+                reports.append({
+                    "kept": merged.get("name"),
+                    "keptBrands": list(merged.get("brandNames") or []),
+                    "dropped": other.get("name"),
+                    "droppedWas": {
+                        "brands": list(other.get("brandNames") or []),
+                        "generics": list(other.get("genericNames") or []),
+                    },
+                    "display": _display_name(merged),
+                })
+                a = merged
+                skip.add(j)
+                changed = True
+            new_items.append(a)
+        items = new_items
+    return items, reports
+
+
+def _display_name(t: dict) -> str:
+    brands = ", ".join(t.get("brandNames") or [])
+    name = t.get("name") or ""
+    if brands:
+        return f"{name} ({brands})"
+    return name
