@@ -15,7 +15,7 @@
       "summarySources": [
         {
           "source": "CIViC (CC0)",
-          "url": "/features/19",
+          "url": "https://civicdb.org/features/19",
           "detail": "EGFR gene summary."
         }
       ],
@@ -1461,7 +1461,7 @@
             "id": 19,
             "name": "EGFR",
             "description": "EGFR is widely recognized for its importance in cancer. Amplification and mutations have been shown to be driving events in many cancer types. Its role in non-small cell lung cancer, glioblastoma and basal-like breast cancers has spurred many research and drug development efforts. Tyrosine kinase inhibitors have shown efficacy in EGFR amplfied tumors, most notably gefitinib and erlotinib. Mutations in EGFR have been shown to confer resistance to these drugs, particularly the variant T790M, which has been functionally characterized as a resistance marker for both of these drugs. The later generation TKI's have seen some success in treating these resistant cases, and targeted sequencing of th…",
-            "url": "/features/19"
+            "url": "https://civicdb.org/features/19"
           }
         ],
         "assertions": [
@@ -16037,7 +16037,7 @@
       "summarySources": [
         {
           "source": "CIViC (CC0)",
-          "url": "/features/1",
+          "url": "https://civicdb.org/features/1",
           "detail": "ALK gene summary."
         }
       ],
@@ -17145,7 +17145,7 @@
             "id": 1,
             "name": "ALK",
             "description": "ALK amplifications, fusions and mutations have been shown to be driving events in non-small cell lung cancer. While crizontinib has demonstrated efficacy in treating the amplification, mutations in ALK have been shown to confer resistance to current tyrosine kinase inhibitors. Second-generation TKI's have seen varied success in treating these resistant cases, and the HSP90 inhibitor 17-AAG has been shown to be cytostatic in ALK-altered cell lines.",
-            "url": "/features/1"
+            "url": "https://civicdb.org/features/1"
           }
         ],
         "assertions": [
@@ -22498,7 +22498,7 @@
       "summarySources": [
         {
           "source": "CIViC (CC0)",
-          "url": "/features/5",
+          "url": "https://civicdb.org/features/5",
           "detail": "BRAF gene summary."
         }
       ],
@@ -23309,7 +23309,7 @@
             "id": 5,
             "name": "BRAF",
             "description": "BRAF mutations are found to be recurrent in many cancer types. Of these, the mutation of valine 600 to glutamic acid (V600E) is the most prevalent. V600E has been determined to be an activating mutation, and cells that harbor it, along with other V600 mutations are sensitive to the BRAF inhibitor dabrafenib. It is also common to use MEK inhibition as a substitute for BRAF inhibitors, and the MEK inhibitor trametinib has seen some success in BRAF mutant melanomas. BRAF mutations have also been correlated with poor prognosis in many cancer types, although there is at least one study that questions this conclusion in papillary thyroid cancer. Oncogenic BRAF mutations are divided into three cat…",
-            "url": "/features/5"
+            "url": "https://civicdb.org/features/5"
           }
         ],
         "assertions": [
@@ -29092,7 +29092,7 @@
       "summarySources": [
         {
           "source": "CIViC (CC0)",
-          "url": "/features/30",
+          "url": "https://civicdb.org/features/30",
           "detail": "KRAS gene summary."
         }
       ],
@@ -29380,7 +29380,7 @@
             "id": 30,
             "name": "KRAS",
             "description": "Mutations in the RAS family of proteins are frequently observed across cancer types. The amino acid positions that account for the overwhelming majority of these mutations are G12, G13 and Q61. The different protein isoforms, despite their raw similarity, also behave very differently when expressed in non-native tissue types, likely due to differences in the C-terminal hyper-variable regions. Mis-regulation of isoform expression has been shown to be a driving event in cancer, as well as missense mutations at the three hotspots previously mentioned. While highly recurrent in cancer, attempts to target these RAS mutants with inhibitors have not been successful, and has not yet become common p…",
-            "url": "/features/30"
+            "url": "https://civicdb.org/features/30"
           }
         ],
         "assertions": [
@@ -39868,7 +39868,7 @@
       "summarySources": [
         {
           "source": "CIViC (CC0)",
-          "url": "/features/20",
+          "url": "https://civicdb.org/features/20",
           "detail": "ERBB2 gene summary."
         }
       ],
@@ -41512,26 +41512,20 @@
         {
           "name": "Trastuzumab",
           "brandNames": [
-            "Herceptin",
-            "KADCYLA"
+            "Herceptin"
           ],
-          "genericNames": [],
-          "indicationsExcerpt": "1 INDICATIONS AND USAGE KADCYLA is a HER2-targeted antibody and microtubule inhibitor conjugate indicated, as a single agent, for: the treatment of patients with HER2-positive, metastatic breast cancer who previously received trastuzumab and a taxane, separately or in combination. Patients should have either: received prior therapy for metastatic disease, or developed disease recurrence during or within six months o…",
+          "genericNames": [
+            "TRASTUZUMAB"
+          ],
+          "indicationsExcerpt": "1 INDICATIONS AND USAGE Herceptin is a HER2/neu receptor antagonist indicated in adults for: The treatment of HER2-overexpressing breast cancer. ( 1.1 , 1.2 ) The treatment of HER2-overexpressing metastatic gastric or gastroesophageal junction adenocarcinoma. ( 1.3 ) Select patients for therapy based on an FDA-authorized companion diagnostic for Herceptin ( 1 , 2.2 ). 1.1 Adjuvant Breast Cancer Herceptin is indicate…",
           "fda": {
             "pgxBiomarker": "ERBB2(HER2)",
             "pgxArea": "Oncology",
             "labelingSections": "Indications and Usage, Dosage and Administration, Clinical Pharmacology, Clinical Studies",
-            "dailymedUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=23f3c1f4-0fc8-4804-a9e3-04cf25dd302e",
-            "drugsfdaUrl": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=125427"
+            "dailymedUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=492dbdb2-077e-4064-bff3-372d6af0a7a2",
+            "drugsfdaUrl": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=103792"
           },
           "ema": [
-            {
-              "name": "Enhertu",
-              "inn": "trastuzumab deruxtecan",
-              "status": "Authorised",
-              "authorisationDate": "10/12/2020",
-              "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/enhertu"
-            },
             {
               "name": "Herwenda",
               "inn": "trastuzumab",
@@ -41552,13 +41546,6 @@
               "status": "Authorised",
               "authorisationDate": "12/11/2020",
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/phesgo"
-            },
-            {
-              "name": "Kadcyla",
-              "inn": "trastuzumab emtansine",
-              "status": "Authorised",
-              "authorisationDate": "19/09/2013",
-              "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/kadcyla"
             }
           ],
           "companionDiagnostics": [
@@ -41601,18 +41588,13 @@
             },
             {
               "source": "FDA drug label (openFDA / DailyMed)",
-              "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=23f3c1f4-0fc8-4804-a9e3-04cf25dd302e",
+              "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=492dbdb2-077e-4064-bff3-372d6af0a7a2",
               "detail": "Excerpt of Indications and Usage; see the official label for the complete, current text."
             },
             {
               "source": "Drugs@FDA",
-              "url": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=125427",
-              "detail": "Application BLA125427"
-            },
-            {
-              "source": "European Medicines Agency",
-              "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/enhertu",
-              "detail": "Enhertu (trastuzumab deruxtecan). Authorised Breast cancerHER2-positive breast cancerEnhertu as monotherapy is indicated for the treatment of adult patients with unresectable or metastatic HER2-positive breast cancer who have received one or more prior anti-HER2-based regimens.H…"
+              "url": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=103792",
+              "detail": "Application BLA103792"
             },
             {
               "source": "European Medicines Agency",
@@ -41628,16 +41610,11 @@
               "source": "European Medicines Agency",
               "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/phesgo",
               "detail": "Phesgo (pertuzumab;trastuzumab). Authorised Early breast cancer (EBC) Phesgo is indicated for use in combination with chemotherapy in: the neoadjuvant treatment of adult patients with HER2-positive, locally advanced, inflammatory, or early stage breast cancer at high risk of rec…"
-            },
-            {
-              "source": "European Medicines Agency",
-              "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/kadcyla",
-              "detail": "Kadcyla (trastuzumab emtansine). Authorised Early Breast Cancer (EBC) Kadcyla, as a single agent, is indicated for the adjuvant treatment of adult patients with HER2-positive early breast cancer who have residual invasive disease, in the breast and/or lymph nodes, after neoadjuv…"
             }
           ],
           "relation": "targets",
           "relationReason": "label-or-cdx-selection",
-          "relationEvidence": "1 INDICATIONS AND USAGE KADCYLA is a HER2-targeted antibody and microtubule inhibitor conjugate indicated, as a single ag"
+          "relationEvidence": "1 INDICATIONS AND USAGE Herceptin is a HER2/neu receptor antagonist indicated in adults for: The treatment of HER2-overe"
         },
         {
           "name": "Tucatinib",
@@ -41880,7 +41857,7 @@
             "id": 20,
             "name": "ERBB2",
             "description": "ERBB2, commonly referred to as HER2, is amplified and/or overexpressed in 20-30% of invasive breast carcinomas. HER2-positive breast cancer is treated in a separate manner from other subtypes of breast cancer and commonly presents as more aggressive disease. Metastatic HER2-positive breast cancer is now commonly treated with HER2-targeted therapy. Apart from being amplified/overexpressed, ERBB2 activating mutations have been shown to have clinical importance in HER2-negative breast cancer. These mutations have shown sensitivity to the tyrosine kinase inhibitor neratinib, and highlight the importance of clinical sequencing efforts in treating breast cancer.",
-            "url": "/features/20"
+            "url": "https://civicdb.org/features/20"
           }
         ],
         "assertions": [
@@ -56615,19 +56592,19 @@
             "id": 3983,
             "name": "NTRK1",
             "description": "",
-            "url": "/features/3983"
+            "url": "https://civicdb.org/features/3983"
           },
           {
             "id": 3984,
             "name": "NTRK2",
             "description": "",
-            "url": "/features/3984"
+            "url": "https://civicdb.org/features/3984"
           },
           {
             "id": 3985,
             "name": "NTRK3",
             "description": "",
-            "url": "/features/3985"
+            "url": "https://civicdb.org/features/3985"
           }
         ],
         "assertions": [
@@ -62250,7 +62227,7 @@
       "summarySources": [
         {
           "source": "CIViC (CC0)",
-          "url": "/features/3532",
+          "url": "https://civicdb.org/features/3532",
           "detail": "MLH1 gene summary."
         }
       ],
@@ -62764,25 +62741,25 @@
             "id": 3532,
             "name": "MLH1",
             "description": "MLH1 is a tumor suppressor gene involved in DNA mismatch repair. Germline mutations in this gene are known to cause Lynch syndrome. The most common malignancies in Lynch syndrome are colorectal and endometrial carcinomas. In addition to germline mutations, somatic mutations in this gene have been described in colorectal and endometrial cancers.",
-            "url": "/features/3532"
+            "url": "https://civicdb.org/features/3532"
           },
           {
             "id": 3628,
             "name": "MSH2",
             "description": "",
-            "url": "/features/3628"
+            "url": "https://civicdb.org/features/3628"
           },
           {
             "id": 2478,
             "name": "MSH6",
             "description": "",
-            "url": "/features/2478"
+            "url": "https://civicdb.org/features/2478"
           },
           {
             "id": 4371,
             "name": "PMS2",
             "description": "",
-            "url": "/features/4371"
+            "url": "https://civicdb.org/features/4371"
           }
         ],
         "assertions": []
