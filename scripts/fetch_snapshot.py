@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from matching import classify_relation, relevant_excerpt, TARGETS, analyse_text  # noqa: E402
+from matching import classify_relation, relevant_excerpt, TARGETS, analyse_text, dedupe_therapies  # noqa: E402
 UA = (
     "targeted-therapy-explorer/0.1 "
     "(https://dmgrok.github.io/targeted-therapy-explorer/; "
@@ -1016,6 +1016,16 @@ def therapies_for(bm: dict, pgx: list[dict], cdx: list[dict],
                 therapy["indicationsExcerpt"] = relevant_excerpt(full, bm["id"], 420)
         elif not therapy.get("indicationsExcerpt") and full:
             therapy["indicationsExcerpt"] = relevant_excerpt(full, bm["id"], 420)
+    therapies, _reports = dedupe_therapies(therapies)
+    for rec in therapies:
+        rec.pop("_mergedFrom", None)
+    # Re-classify after a merge so combined CDx / label evidence is considered,
+    # and so the QC not-shown override still applies.
+    for therapy in therapies:
+        result = classify_relation(bm["id"], therapy)
+        therapy["relation"] = result["relation"]
+        therapy["relationReason"] = result["reason"]
+        therapy["relationEvidence"] = result["evidence"]
     return therapies
 
 
