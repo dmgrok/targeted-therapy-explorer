@@ -215,12 +215,35 @@ h1 {
 
 .context { margin: 0 0 0.4rem; font-size: 1.05rem; }
 
+/* Ink on white. style.css .notice sets cream text on pink; without an
+   explicit colour here the cream (#f4efe4) was inherited onto this white
+   background and the banner looked washed out (well below WCAG AA). */
+.notice.notice-short,
 .notice-short {
   font-size: 1rem;
   margin: 0 0 0.6rem;
   padding: 0.45rem 0.7rem;
-  border-left: 4px solid var(--ink, #1b4f4c);
+  border: 0;
+  border-left: 4px solid #1b4f4c;
   background: #fff;
+  color: #1b4f4c;
+  font-weight: 600;
+}
+.notice.notice-short a,
+.notice-short a {
+  color: #b02058;
+  text-decoration: underline;
+}
+.notice.notice-short strong,
+.notice-short strong {
+  color: #122e2c;
+  font-family: inherit;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: inherit;
+  font-weight: 700;
+  display: inline;
+  margin: 0;
 }
 .notice-full {
   font-size: 0.98rem;
@@ -240,3 +263,90 @@ h1 {
   margin: 0.35rem 0 0;
   font-weight: 600;
 }
+
+.mock-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+.mock-nav a { color: var(--ink, #1b4f4c); text-decoration: none; }
+.mock-nav a:hover, .mock-nav a:focus-visible { color: var(--pink, #b02058); text-decoration: underline; }
+
+/* Case studies: one person's story, never an option in the tables. */
+.case-banner {
+  background: #fff;
+  color: #1b4f4c;
+  border: 2px solid #b02058;
+  padding: 0.85rem 1rem;
+  margin: 0.8rem 0 1.2rem;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+.case-banner strong {
+  color: #122e2c;
+  display: inline;
+}
+.case-died {
+  background: #fff;
+  color: #1b4f4c;
+  border-left: 4px solid #1b4f4c;
+  padding: 0.85rem 1rem;
+  margin: 0 0 1.4rem;
+}
+.case-died p { margin: 0 0 0.6rem; }
+.case-died p:last-child { margin-bottom: 0; }
+.case-quote {
+  margin: 0.8rem 0 1.1rem;
+  padding: 0.6rem 0 0.6rem 1rem;
+  border-left: 3px solid #b02058;
+  background: transparent;
+}
+.case-quote p {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  color: #122e2c;
+}
+.case-quote footer {
+  font-size: 0.9rem;
+  color: #1b4f4c;
+}
+.case-timeline {
+  list-style: none;
+  margin: 0.6rem 0 1.6rem;
+  padding: 0;
+  border-left: 3px solid #1b4f4c;
+}
+.case-timeline li {
+  margin: 0 0 1.15rem 0;
+  padding: 0 0 0.2rem 1.1rem;
+  position: relative;
+}
+.case-timeline li::before {
+  content: "";
+  position: absolute;
+  left: -0.45rem;
+  top: 0.45rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  background: #b02058;
+  border-radius: 50%;
+}
+.case-date {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #b02058;
+  margin: 0 0 0.25rem;
+}
+.case-helpers {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+.case-pointers { margin: 0.4rem 0 1.2rem; padding-left: 1.2rem; }
+.case-choices .fine { margin: 0.25rem 0 0.8rem; }

@@ -1,7 +1,7 @@
 {
   "biomarker_id": "BRAF-V600E",
-  "generated_at": "2026-11-13T18:24:55+01:00",
-  "source_hash": "ec52e126601d8bcf78acd9f028c55348111903fe07b2268855442ef0e4d7cf37",
+  "generated_at": "2026-11-13T21:09:03+01:00",
+  "source_hash": "51b12850c84434b9822bf0d31fc5973eb84bb9fc6c377d401dfd3ca2d77ff42e",
   "intro": {
     "what": [
       "BRAF V600E is a change in the BRAF gene.",
@@ -299,7 +299,7 @@
     {
       "id": "therapy:Trametinib",
       "category": "mainstream",
-      "text": "Trametinib (Mekinist): a drug that blocks the BRAF signal. Approved for melanoma (a skin cancer) with a BRAF V600E change. Authorised in Europe since 2020.",
+      "text": "Trametinib (Mekinist): a drug that blocks the BRAF signal. Approved for melanoma (a skin cancer) with a BRAF V600E change. Authorised in Europe since 2014.",
       "sources": [
         {
           "id": "therapy:BRAF-V600E:Trametinib",
@@ -311,7 +311,7 @@
     {
       "id": "therapy:Vemurafenib",
       "category": "mainstream",
-      "text": "Vemurafenib (ZELBORAF): a drug that blocks the BRAF signal. Approved for melanoma (a skin cancer) with a BRAF V600E change. Authorised in Europe since 2011.",
+      "text": "Vemurafenib (ZELBORAF): a drug that blocks the BRAF signal. Approved for melanoma (a skin cancer) with a BRAF V600E change. Authorised in Europe since 2012.",
       "sources": [
         {
           "id": "therapy:BRAF-V600E:Vemurafenib",

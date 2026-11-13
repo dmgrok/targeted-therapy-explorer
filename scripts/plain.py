@@ -344,6 +344,33 @@ def build_source_index(snap: dict, biomarker: dict) -> dict[str, dict]:
                     e.get("url") or "",
                 ]
             )
+        # EPAR "Marketing authorisation issued" dates (opened 13 Nov 2026).
+        # These can differ from snapshot authorisationDate (often the CHMP
+        # opinion). The year on the page comes from this issued field.
+        ema_path = Path(__file__).resolve().parents[1] / "data" / "ema_dates.json"
+        if ema_path.is_file():
+            try:
+                ema_cat = json.loads(ema_path.read_text(encoding="utf-8"))
+            except Exception:
+                ema_cat = {}
+            by_url = {
+                (e.get("url") or "").rstrip("/"): e
+                for e in (ema_cat.get("entries") or [])
+            }
+            for e in t.get("ema") or []:
+                v = by_url.get((e.get("url") or "").rstrip("/"))
+                if not v:
+                    continue
+                issued = v.get("marketing_authorisation_issued") or ""
+                bits.extend(
+                    [
+                        issued,
+                        v.get("marketing_authorisation_issued_iso") or "",
+                        issued[-4:] if len(issued) >= 4 else "",
+                        v.get("url") or "",
+                        "Marketing authorisation issued",
+                    ]
+                )
         fda = t.get("fda") or {}
         url = (
             fda.get("dailymedUrl")
@@ -757,8 +784,86 @@ def validate_all(snap: dict) -> list[str]:
         errors.extend(validate_biomarker(snap, b, catalog, name_pat))
     errors.extend(validate_withdrawn(snap))
     errors.extend(validate_completeness(snap))
+    errors.extend(validate_combinations(snap))
     return errors
 
+
+
+
+def validate_combinations(snap: dict) -> list[str]:
+    """A Mainstream row must not list combination partners from a neighbouring
+    label unit that belongs to a different use (cancer, gene change, or when).
+
+    A row that joins more than one partner set with "and", as if they were
+    one simultaneous combination, also fails. Alternative uses on the same
+    leaf are phrased with "or with".
+    """
+    from labels import combo_note, combinations_in, partner_sets
+    from tree import build_tree, leaf_clauses, therapy_branches, whens_in
+    from withdrawn import display_mainstream
+    from categories import on_the_edge_assertions, trial_options
+    from withdrawn import withdrawn_therapies
+
+    errors: list[str] = []
+    for b in snap.get("biomarkers") or []:
+        bid = b.get("id") or ""
+        therapies = display_mainstream(b)
+        # Ensure _leaf_clauses is populated.
+        for t in therapies:
+            therapy_branches(t, bid)
+        tree = build_tree(
+            therapies,
+            trial_options(b),
+            on_the_edge_assertions(b),
+            withdrawn_therapies(b),
+            bid,
+        )
+        for cnode in tree:
+            for mnode in cnode["mutations"]:
+                for wnode in mnode["whens"]:
+                    triple = (cnode["cancer"], mnode["mutation"], wnode["when"])
+                    for opt in wnode["options"]:
+                        if opt.get("kind") != "mainstream":
+                            continue
+                        rec = opt["record"]
+                        units = leaf_clauses(rec, triple)
+                        note = combo_note(units)
+                        name = rec.get("name") or "?"
+                        loc = f"{bid}: {name} at {triple[0]} / {triple[1]} / {triple[2]}"
+                        # Partners on this row must come only from units whose
+                        # 'when' matches this leaf (or is unstated).
+                        leaked = []
+                        for u in units:
+                            u_whens = whens_in(u)
+                            u_partners = combinations_in(u)
+                            if not u_partners:
+                                continue
+                            if u_whens and triple[2] not in u_whens and not any(
+                                "does not say" in w for w in u_whens
+                            ):
+                                leaked.extend(u_partners)
+                        if leaked:
+                            errors.append(
+                                f"{loc}: combination partners {leaked!r} leaked "
+                                f"from a neighbouring unit whose 'when' is not "
+                                f"{triple[2]!r} (note={note!r})"
+                            )
+                        sets = partner_sets(units)
+                        if len(sets) > 1:
+                            # More than one partner set on the row: must not
+                            # be joined with "and" as a single simultaneous use.
+                            joined_and = (
+                                "used together with" in (note or "").lower()
+                                and " and " in (note or "")
+                                and " or with " not in (note or "").lower()
+                            )
+                            if joined_and or not note:
+                                errors.append(
+                                    f"{loc}: row has more than one partner set "
+                                    f"{sets!r} joined as one combination "
+                                    f"(note={note!r})"
+                                )
+    return errors
 
 
 def validate_completeness(snap: dict) -> list[str]:

@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-"""EGFR-only clickable mockup: home → gene → cancer → mutation → when → table.
+"""Decision-tree site: home → gene → cancer → mutation → when → table.
 
 Built from the same snapshot, plain-language lines, decision-tree rules
-and withdrawal catalog as the rest of the repo. Other biomarkers are
-listed on the mockup home but are not built — David asked to judge the
-shape on EGFR first.
-
-Pages are static HTML with relative links. No JavaScript is required.
+and withdrawal catalog as the rest of the repo. Every biomarker in the
+closed list is built the same way. Pages are static HTML with relative
+links. No JavaScript is required to walk the tree.
 """
 from __future__ import annotations
 
@@ -50,8 +48,9 @@ from withdrawn import (  # noqa: E402
     withdrawn_therapies,
 )
 
-OUT = ROOT / "site" / "mockup"
-BIOMARKER_ID = "EGFR"
+SITE = ROOT / "site"
+OUT = SITE  # trees live under site/b/<id>/
+TREE = SITE / "b"
 
 # Visible level names in this mockup (renamed from the first PR).
 LEVELS = {
@@ -76,6 +75,15 @@ MUTATION_DEFS = {
     "EGFR gene change (no more precise subtype in the text)": "an EGFR gene change, without a more precise subtype in the text",
     "KRAS wild-type (no KRAS change)": "the KRAS gene has no change at the places the label names",
     "HER2 mutation": "a change in the HER2 gene itself",
+    "HER2-positive": "a test showing too much HER2 protein, or a HER2 gene gain",
+    "HER2-low": "a test showing a low amount of HER2 protein",
+    "ALK fusion or ALK-positive": "an ALK gene joined to another gene, or a test that is ALK-positive",
+    "BRAF V600E": "a specific change in the BRAF gene, named V600E",
+    "BRAF V600K": "a specific change in the BRAF gene, named V600K",
+    "BRAF V600": "a change at position 600 of the BRAF gene",
+    "KRAS G12C": "a specific change in the KRAS gene, named G12C",
+    "NTRK fusion": "an NTRK gene joined to another gene",
+    "MSI-H or dMMR": "a test finding of high microsatellite instability or deficient mismatch repair",
 }
 
 CANCER_DEFS = {
@@ -95,13 +103,15 @@ TREE_HOW_SHORT = (
 
 CLOSED_LIST = [
     ("EGFR", True, "EGFR"),
-    ("ALK", False, "ALK"),
-    ("BRAF V600E", False, "BRAF-V600E"),
-    ("KRAS G12C", False, "KRAS-G12C"),
-    ("HER2", False, "HER2"),
-    ("NTRK", False, "NTRK"),
-    ("MSI-H / dMMR", False, "MSI-H-dMMR"),
+    ("ALK", True, "ALK"),
+    ("BRAF V600E", True, "BRAF-V600E"),
+    ("KRAS G12C", True, "KRAS-G12C"),
+    ("HER2", True, "HER2"),
+    ("NTRK", True, "NTRK"),
+    ("MSI-H / dMMR", True, "MSI-H-dMMR"),
 ]
+
+BIOMARKER_LABEL = {bid: label for label, _ready, bid in CLOSED_LIST}
 
 
 def slug(s: str) -> str:
@@ -137,8 +147,7 @@ def mock_head(title: str, depth: int) -> str:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="EGFR mockup of a decision-tree explorer. {DISCLAIMER_SHORT}">
-  <meta name="robots" content="noindex,follow">
+  <meta name="description" content="A plain-language map of approved targeted therapies and recruiting trials, by gene finding. {DISCLAIMER_SHORT}">
   <title>{esc(title)}</title>
   <link rel="stylesheet" href="{prefix}assets/css/style.css">
   <link rel="stylesheet" href="{prefix}assets/css/mockup.css">
@@ -151,12 +160,15 @@ def mock_foot(depth: int) -> str:
     prefix = asset_prefix(depth)
     return f"""
     <footer class="mock-foot">
-      <p class="fine">{esc(DISCLAIMER_SHORT)} This mockup uses only public sources. It does not recommend a treatment.</p>
-      <p class="fine"><a href="{prefix}about.html">About and sources</a>
-      · <a href="https://github.com/dmgrok/targeted-therapy-explorer">Source code</a>
-      · <a href="{prefix}index.html">Current site (earlier design)</a></p>
+      <p class="fine">{esc(DISCLAIMER_SHORT)} This site uses only public sources. It does not recommend a treatment. Options in a table are listed alphabetically within each level. That order is not a ranking.</p>
+      <p class="fine"><a href="{prefix}index.html">Home</a>
+      · <a href="{prefix}cases/index.html">Case studies</a>
+      · <a href="{prefix}about.html">About and sources</a>
+      · <a href="{prefix}notice.html">Notice</a>
+      · <a href="https://github.com/dmgrok/targeted-therapy-explorer">Source code</a></p>
     </footer>
   </div>
+  <script src="{prefix}assets/js/app.js" defer></script>
 </body>
 </html>
 """
@@ -395,7 +407,7 @@ def raw_sources(kind: str, rec) -> str:
     return excerpt_h + ema_block
 
 
-def table_html(options: list, plain: dict) -> str:
+def table_html(options: list, plain: dict, biomarker_id: str = "") -> str:
     # Group by level, alphabetical within. Level order is fixed, not a ranking.
     order = ["mainstream", "trials", "on-the-edge", "withdrawn"]
     grouped: dict[str, list] = {k: [] for k in order}
@@ -416,7 +428,7 @@ def table_html(options: list, plain: dict) -> str:
             if kind == "withdrawn" and isinstance(rec, dict) and "therapy" in rec:
                 therapy_rec = rec["therapy"]
             if kind == "mainstream":
-                what = what_it_is(therapy_rec, "EGFR")
+                what = what_it_is(therapy_rec, biomarker_id)
                 # Capitalise for the cell: "A once-daily pill..."
                 if what:
                     what = what[0].upper() + what[1:]
@@ -504,7 +516,7 @@ def choice_list(items: list[dict], heading: str, question: str) -> str:
 def page_shell(title: str, depth: int, snap: dict, body: str, crumbs_h: str, full_notice: bool = False) -> str:
     ct_ts = (snap.get("clinicalTrials") or {}).get("dataTimestamp") or ""
     data_rel = asset_prefix(depth) + "data/snapshot.json"
-    notice_rel = asset_prefix(depth) + "mockup/notice.html"
+    notice_rel = asset_prefix(depth) + "notice.html"
     short = (
         f'<div class="notice notice-short" role="note">'
         f'<strong>{esc(DISCLAIMER_SHORT)}</strong> '
@@ -526,14 +538,17 @@ def page_shell(title: str, depth: int, snap: dict, body: str, crumbs_h: str, ful
     <div class="stale" id="stale-banner" hidden>
       This snapshot is more than eight days old. Figures may be out of date — please check the original FDA, EMA and ClinicalTrials.gov records, and do not rely on this page alone.
     </div>
-    <p class="snapshot-meta">Snapshot date: <time id="snapshot-date" datetime="{esc(snap['snapshotDate'])}">{esc(fmt_date(snap['snapshotDate']))}</time>
-    · Mockup of a new page design, EGFR only.</p>
+    <p class="snapshot-meta">Snapshot date: <time id="snapshot-date" datetime="{esc(snap['snapshotDate'])}">{esc(fmt_date(snap['snapshotDate']))}</time></p>
     """
     prefix = asset_prefix(depth)
     mast = f"""
     <header class="mock-head">
-      <p class="site-title"><a href="{prefix}mockup/index.html">Targeted Therapy Explorer</a></p>
-      <p class="mock-flag">Design mockup</p>
+      <p class="site-title"><a href="{prefix}index.html">Targeted Therapy Explorer</a></p>
+      <nav class="mock-nav" aria-label="Site">
+        <a href="{prefix}index.html">Home</a>
+        <a href="{prefix}cases/index.html">Case studies</a>
+        <a href="{prefix}about.html">About</a>
+      </nav>
     </header>
     """
     return (
@@ -566,11 +581,15 @@ def indication_notes_html(therapies: list) -> str:
                 f'<p class="fine"><a href="{esc(url)}">{esc(src.get("label") or "Source")}</a> '
                 f'{esc(src.get("date") or "")}.</p>'
             )
+            name = t.get("name") or ""
+            plain = (note.get("plain") or "").strip() or (
+                f"A later public record notes that one listed use of {name} "
+                "was withdrawn; another approved use remains in this snapshot, "
+                "so the drug is still tagged Mainstream. See Sources."
+            )
             items.append(
                 '<div class="indication-note">'
-                '<p>A later public record notes that one listed use of '
-                f'{esc(t.get("name") or "")} was withdrawn; another approved use remains '
-                "in this snapshot, so the drug is still tagged Mainstream. See Sources.</p>"
+                f"<p>{esc(plain)}</p>"
                 + sources_block(raw, "Sources for this indication note")
                 + "</div>"
             )
@@ -664,167 +683,122 @@ def write_notice(snap: dict) -> None:
     body = (
         "<h1>Notice</h1>"
         f"<p>{esc(DISCLAIMER_LONG)}</p>"
-        "<p>This mockup is general information from public FDA, EMA and "
+        "<p>This site is general information from public FDA, EMA and "
         "ClinicalTrials.gov records in a dated snapshot. It is not a medical "
         "device, and it does not take account of any person’s medical situation.</p>"
         "<p>Talk to your oncologist before making any decision about your care. "
         "Check the original FDA drug label, the EMA record and ClinicalTrials.gov "
         "for the complete, current text.</p>"
-        f'<p class="fine"><a href="index.html">Back to the mockup home</a>.</p>'
+        "<p>A Case studies page, kept separate from these decision trees, tells "
+        "one person’s published story. A case study is not evidence that a "
+        "treatment works, and it is not an option in the tables.</p>"
+        f'<p class="fine"><a href="index.html">Back to the home page</a>.</p>'
     )
     write(
-        OUT / "notice.html",
+        SITE / "notice.html",
         page_shell(
-            "Notice — Targeted Therapy Explorer (mockup)",
-            1,
+            "Notice — Targeted Therapy Explorer",
+            0,
             snap,
             body,
-            crumbs([("index.html", "Home"), ("notice.html", "Notice")], 1),
+            crumbs([("index.html", "Home"), ("notice.html", "Notice")], 0),
             full_notice=True,
         ),
     )
 
 
-def build(snap: dict) -> dict:
-    """Build the EGFR mockup. Returns a report dict."""
-    b = next(x for x in snap.get("biomarkers") or [] if x["id"] == BIOMARKER_ID)
-    plain = load_plain(BIOMARKER_ID)
+def _wipe_previous_trees() -> None:
+    """Remove leftover long pages and the EGFR-only mockup directory."""
+    import shutil
+
+    mock = SITE / "mockup"
+    if mock.exists():
+        shutil.rmtree(mock)
+    if TREE.exists():
+        # Drop old one-file biomarker pages and previous trees.
+        for p in TREE.glob("*.html"):
+            p.unlink()
+        for d in TREE.iterdir():
+            if d.is_dir():
+                shutil.rmtree(d)
+    TREE.mkdir(parents=True, exist_ok=True)
+
+
+def _withdrawn_banner_html(withdrawn: list, tree: list) -> str:
+    if not withdrawn:
+        return ""
+    links = []
+    src_h = ""
+    for rec in withdrawn:
+        t = rec["therapy"]
+        entry = rec["entry"]
+        name = t.get("name") or ""
+        brands = ", ".join(_unique_brands(t))
+        if not brands and "Exkivity" in (entry.get("names") or []):
+            brands = "Exkivity"
+        headn = f"{name} ({brands})" if brands else name
+        year = ""
+        m = re.search(r"(19|20)\d{2}", entry.get("effective_date") or "")
+        if m:
+            year = m.group(0)
+        href = ""
+        for cnode in tree:
+            for mnode in cnode["mutations"]:
+                for wnode in mnode["whens"]:
+                    if any(o["kind"] == "withdrawn" for o in wnode["options"]):
+                        href = (
+                            f"{slug(cnode['cancer'])}/{slug(mnode['mutation'])}/"
+                            f"{slug(wnode['when'])}.html"
+                        )
+                        break
+                if href:
+                    break
+            if href:
+                break
+        yr = f", US approval withdrawn in {year}" if year else ""
+        if href:
+            links.append(
+                f'<a href="{esc(href)}">{esc(headn)}</a>{esc(yr)}. '
+                "It is not tagged Mainstream."
+            )
+        else:
+            links.append(f"{esc(headn)}{esc(yr)}. It is not tagged Mainstream.")
+        for s in entry.get("sources") or []:
+            src_h += (
+                f'<li><a href="{esc(s.get("url") or "")}">{esc(s.get("label") or "Source")}</a> '
+                f'{esc(s.get("date") or "")}. {esc(s.get("detail") or "")}</li>'
+            )
+    return (
+        '<div class="wd-banner">'
+        f'<p>{level_tag("withdrawn")} {" ".join(links)}</p>'
+        + sources_block(f"<ul class='cites'>{src_h}</ul>", "Sources for this withdrawal")
+        + "</div>"
+    )
+
+
+def build_biomarker(snap: dict, bid: str) -> dict:
+    """Build one biomarker tree under site/b/<id>/. Returns a report dict."""
+    b = next(x for x in snap.get("biomarkers") or [] if x["id"] == bid)
+    plain = load_plain(bid)
     therapies = display_mainstream(b)
     withdrawn = withdrawn_therapies(b)
     trials = trial_options(b)
     edge = on_the_edge_assertions(b)
-    tree = build_tree(therapies, trials, edge, withdrawn, BIOMARKER_ID)
+    tree = build_tree(therapies, trials, edge, withdrawn, bid)
     notes = indication_notes_html(therapies)
+    intro = plain.get("intro") or {}
+    label = BIOMARKER_LABEL.get(bid, bid)
 
-    # Wipe previous mockup pages (keep directory).
-    if OUT.exists():
-        for p in OUT.rglob("*.html"):
-            p.unlink()
-        # Drop leftover empty directories from renamed branches.
-        for d in sorted((x for x in OUT.rglob("*") if x.is_dir()), reverse=True):
-            try:
-                d.rmdir()
-            except OSError:
-                pass
-    OUT.mkdir(parents=True, exist_ok=True)
-    write_notice(snap)
+    root = TREE / bid
+    root.mkdir(parents=True, exist_ok=True)
 
     n_leaves = 0
     n_pages = 0
     leaf_report = []
+    level_counts = {"mainstream": 0, "trials": 0, "on-the-edge": 0, "withdrawn": 0}
 
-    # --- Home ---
-    cards = []
-    for label, ready, bid in CLOSED_LIST:
-        if ready:
-            cards.append(
-                f'<li><a class="choice bm-ready" href="EGFR/index.html">'
-                f'<span class="choice-name">{esc(label)}</span>'
-                f'<span class="choice-n">Open the decision tree</span>'
-                "</a></li>"
-            )
-        else:
-            cards.append(
-                f'<li><span class="choice bm-later">'
-                f'<span class="choice-name">{esc(label)}</span>'
-                f'<span class="choice-n">Not in this mockup yet</span>'
-                "</span></li>"
-            )
-    intro = plain.get("intro") or {}
-    # Home uses short site intro, not the EGFR intro.
-    home_body = (
-        "<h1>Choose a gene finding</h1>"
-        '<p class="lede">This site maps a short list of tumour gene findings to approved '
-        "drugs and recruiting studies, from public sources only. It is general information. "
-        "It is not medical advice, a diagnosis or a treatment recommendation.</p>"
-        '<p class="lede">Pick a gene finding. You will walk a decision tree: cancer type, '
-        "then the gene change, then when a drug is used. At the end you will see one table "
-        "of options, tagged Mainstream, In testing, or On the edge.</p>"
-        '<p class="mock-note">This is a design mockup of the new page shape, built from '
-        "the real public snapshot, for EGFR only. The other six gene findings will be "
-        "built the same way once this shape is judged.</p>"
-        f'<ul class="choices home-choices">{"".join(cards)}</ul>'
-        + level_legend()
-        + tree_note()
-    )
-    write(
-        OUT / "index.html",
-        page_shell(
-            "Choose a gene finding — Targeted Therapy Explorer (mockup)",
-            1,
-            snap,
-            home_body,
-            crumbs([("index.html", "Home")], 1),
-            full_notice=True,
-        ),
-    )
-    n_pages += 1
+    wd_h = _withdrawn_banner_html(withdrawn, tree)
 
-    # --- EGFR cancer list ---
-    # Withdrawal banner with a link into the actual branch.
-    wd_h = ""
-    if withdrawn:
-        links = []
-        for rec in withdrawn:
-            t = rec["therapy"]
-            entry = rec["entry"]
-            name = t.get("name") or ""
-            brands = ", ".join(_unique_brands(t))
-            if not brands and "Exkivity" in (entry.get("names") or []):
-                brands = "Exkivity"
-            headn = f"{name} ({brands})" if brands else name
-            year = ""
-            m = re.search(r"(19|20)\d{2}", entry.get("effective_date") or "")
-            if m:
-                year = m.group(0)
-            # Find its first leaf path.
-            href = ""
-            for cnode in tree:
-                for mnode in cnode["mutations"]:
-                    for wnode in mnode["whens"]:
-                        if any(o["kind"] == "withdrawn" for o in wnode["options"]):
-                            href = (
-                                f"{slug(cnode['cancer'])}/{slug(mnode['mutation'])}/"
-                                f"{slug(wnode['when'])}.html"
-                            )
-                            break
-                    if href:
-                        break
-                if href:
-                    break
-            yr = f", US approval withdrawn in {year}" if year else ""
-            links.append(
-                f'<a href="{esc(href)}">{esc(headn)}</a>{esc(yr)}. '
-                "It is not tagged Mainstream. This snapshot has no FDA label excerpt "
-                "for it, so the tree places it under “label does not say the cancer type”."
-            )
-        src_h = ""
-        for rec in withdrawn:
-            for s in rec["entry"].get("sources") or []:
-                src_h += (
-                    f'<li><a href="{esc(s.get("url") or "")}">{esc(s.get("label") or "Source")}</a> '
-                    f'{esc(s.get("date") or "")}. {esc(s.get("detail") or "")}</li>'
-                )
-        wd_h = (
-            '<div class="wd-banner">'
-            f'<p>{level_tag("withdrawn")} {"".join(links)}</p>'
-            + sources_block(f"<ul class='cites'>{src_h}</ul>", "Sources for this withdrawal")
-            + "</div>"
-        )
-
-    cancer_items = []
-    for cnode in tree:
-        cancer_items.append(
-            {
-                "label": cnode["cancer"],
-                "label_html": inline_def(cnode["cancer"]),
-                "count": cnode["count"],
-                "href": f"{slug(cnode['cancer'])}.html"
-                if False
-                else f"{slug(cnode['cancer'])}/index.html",
-            }
-        )
-    # Use EGFR/lung-cancer/index.html for mutation lists
     cancer_items = []
     for cnode in tree:
         cancer_items.append(
@@ -838,7 +812,6 @@ def build(snap: dict) -> dict:
     what = intro.get("what") or []
     report = intro.get("test_report") or ""
     what_h = "".join(f'<p class="lede">{esc(s)}</p>' for s in what)
-    # Raw CIViC in Sources only.
     raw_intro = ""
     for g in (b.get("civic") or {}).get("genes") or []:
         if g.get("description"):
@@ -847,27 +820,37 @@ def build(snap: dict) -> dict:
                 f'<a href="{esc(g.get("url") or "")}">CIViC gene summary for '
                 f'{esc(g.get("name") or "")}</a> (CC0).</p>'
             )
-    egfr_body = (
+    for a in (b.get("civic") or {}).get("assertions") or []:
+        raw_intro += (
+            f'<p class="excerpt">CIViC assertion {esc(a.get("id") or "")}: '
+            f'{esc(a.get("summary") or "")} '
+            f'assertionType={esc(a.get("assertionType") or "")} '
+            f'significance={esc(a.get("significance") or "")} '
+            f'ampLevel={esc(a.get("ampLevel") or "")} '
+            f'status={esc(a.get("status") or "")}. '
+            f'<a href="{esc(a.get("url") or "")}">CIViC record</a> (CC0).</p>'
+        )
+    bm_body = (
         what_h
-        + f'<p class="fine">{esc(report)}</p>'
+        + (f'<p class="fine">{esc(report)}</p>' if report else "")
         + sources_block(raw_intro, "Sources for this introduction")
         + wd_h
         + notes
-        + choice_list(cancer_items, "EGFR", "Which kind of cancer is this about?")
+        + choice_list(cancer_items, label, "Which kind of cancer is this about?")
         + level_legend()
         + tree_note()
     )
     write(
-        OUT / "EGFR" / "index.html",
+        root / "index.html",
         page_shell(
-            "EGFR — choose a cancer type (mockup)",
+            f"{label} — choose a cancer type",
             2,
             snap,
-            egfr_body,
+            bm_body,
             crumbs(
                 [
-                    ("../index.html", "Home"),
-                    ("index.html", "EGFR"),
+                    ("../../index.html", "Home"),
+                    ("index.html", label),
                 ],
                 2,
             ),
@@ -875,10 +858,9 @@ def build(snap: dict) -> dict:
     )
     n_pages += 1
 
-    # --- Mutation lists, when lists, leaf tables ---
     for cnode in tree:
         cslug = slug(cnode["cancer"])
-        cdir = OUT / "EGFR" / cslug
+        cdir = root / cslug
         mut_items = []
         for mnode in cnode["mutations"]:
             mut_items.append(
@@ -902,14 +884,14 @@ def build(snap: dict) -> dict:
         write(
             cdir / "index.html",
             page_shell(
-                f"{title_case_cancer(cnode['cancer'])} — EGFR mockup",
+                f"{title_case_cancer(cnode['cancer'])} — {label}",
                 3,
                 snap,
                 mut_body,
                 crumbs(
                     [
-                        ("../../index.html", "Home"),
-                        ("../index.html", "EGFR"),
+                        ("../../../index.html", "Home"),
+                        ("../index.html", label),
                         ("index.html", title_case_cancer(cnode["cancer"])),
                     ],
                     3,
@@ -944,14 +926,14 @@ def build(snap: dict) -> dict:
             write(
                 mdir / "index.html",
                 page_shell(
-                    f"{mnode['mutation']} — EGFR mockup",
+                    f"{mnode['mutation']} — {label}",
                     4,
                     snap,
                     when_body,
                     crumbs(
                         [
-                            ("../../../index.html", "Home"),
-                            ("../../index.html", "EGFR"),
+                            ("../../../../index.html", "Home"),
+                            ("../../index.html", label),
                             ("../index.html", title_case_cancer(cnode["cancer"])),
                             ("index.html", mnode["mutation"]),
                         ],
@@ -967,14 +949,17 @@ def build(snap: dict) -> dict:
                 kinds = {}
                 for o in wnode["options"]:
                     kinds[o["kind"]] = kinds.get(o["kind"], 0) + 1
+                    if o["kind"] in level_counts:
+                        level_counts[o["kind"]] += 1
                 leaf_report.append(
                     {
+                        "biomarker": bid,
                         "cancer": cnode["cancer"],
                         "mutation": mnode["mutation"],
                         "when": wnode["when"],
                         "counts": {LEVELS[k][0]: n for k, n in kinds.items()},
                         "n": wnode["count"],
-                        "path": f"EGFR/{cslug}/{mslug}/{wslug}.html",
+                        "path": f"b/{bid}/{cslug}/{mslug}/{wslug}.html",
                     }
                 )
                 combo_errors = _attach_combos(
@@ -985,8 +970,7 @@ def build(snap: dict) -> dict:
                     raise SystemExit(
                         "Combination gate failed:\n" + "\n".join(combo_errors)
                     )
-                table = table_html(wnode["options"], plain)
-                # Indication notes if a named mainstream drug on this leaf has one.
+                table = table_html(wnode["options"], plain, bid)
                 leaf_notes = indication_notes_html(
                     [
                         o["record"]
@@ -996,7 +980,7 @@ def build(snap: dict) -> dict:
                 )
                 leaf_body = (
                     f"<h1>Options</h1>"
-                    f'<p class="path-plain">EGFR · {esc(title_case_cancer(cnode["cancer"]))} · '
+                    f'<p class="path-plain">{esc(label)} · {esc(title_case_cancer(cnode["cancer"]))} · '
                     f'{inline_def(mnode["mutation"])} · {esc(wnode["when"])}.</p>'
                     f"{leaf_notes}"
                     f"{table}"
@@ -1009,14 +993,14 @@ def build(snap: dict) -> dict:
                 write(
                     mdir / f"{wslug}.html",
                     page_shell(
-                        f"Options — {wnode['when']} — EGFR mockup",
+                        f"Options — {wnode['when']} — {label}",
                         4,
                         snap,
                         leaf_body,
                         crumbs(
                             [
-                                ("../../../index.html", "Home"),
-                                ("../../index.html", "EGFR"),
+                                ("../../../../index.html", "Home"),
+                                ("../../index.html", label),
                                 ("../index.html", title_case_cancer(cnode["cancer"])),
                                 ("index.html", mnode["mutation"]),
                                 (f"{wslug}.html", wnode["when"]),
@@ -1028,17 +1012,99 @@ def build(snap: dict) -> dict:
                 )
                 n_pages += 1
 
-    report = {
+    # Count unique branches (cancer + mutation + when choice pages, not leaves)
+    n_cancers = len(tree)
+    n_mutations = sum(len(c["mutations"]) for c in tree)
+    n_whens = sum(len(m["whens"]) for c in tree for m in c["mutations"])
+    return {
+        "id": bid,
         "pages": n_pages,
         "leaves": n_leaves,
-        "cancers": len(tree),
+        "cancers": n_cancers,
+        "mutation_branches": n_mutations,
+        "when_branches": n_whens,
+        "branches": n_cancers + n_mutations + n_whens,
         "mainstream": len(therapies),
         "withdrawn": len(withdrawn),
         "trials": len(trials),
         "edge": len(edge),
+        "level_counts": level_counts,
         "leaf_report": leaf_report,
     }
-    return report
+
+
+def write_home(snap: dict) -> None:
+    cards = []
+    for label, ready, bid in CLOSED_LIST:
+        cards.append(
+            f'<li><a class="choice bm-ready" href="b/{esc(bid)}/index.html">'
+            f'<span class="choice-name">{esc(label)}</span>'
+            f'<span class="choice-n">Open the decision tree</span>'
+            "</a></li>"
+        )
+    home_body = (
+        "<h1>Choose a gene finding</h1>"
+        '<p class="lede">This site maps a short list of tumour gene findings to approved '
+        "drugs and recruiting studies, from public sources only. It is general information. "
+        "It is not medical advice, a diagnosis or a treatment recommendation.</p>"
+        '<p class="lede">Pick a gene finding. You will walk a decision tree: cancer type, '
+        "then the gene change, then when a drug is used. At the end you will see one table "
+        "of options, tagged Mainstream, In testing, or On the edge.</p>"
+        '<p class="lede">A separate <a href="cases/index.html">Case studies</a> page tells '
+        "one person’s published story. A case study is not evidence that a treatment works, "
+        "and it is not an option in the tables.</p>"
+        f'<ul class="choices home-choices">{"".join(cards)}</ul>'
+        + level_legend()
+        + tree_note()
+    )
+    write(
+        SITE / "index.html",
+        page_shell(
+            "Choose a gene finding — Targeted Therapy Explorer",
+            0,
+            snap,
+            home_body,
+            crumbs([("index.html", "Home")], 0),
+            full_notice=True,
+        ),
+    )
+
+
+def build(snap: dict) -> dict:
+    """Build the decision-tree site for every biomarker. Returns a report."""
+    _wipe_previous_trees()
+    write_notice(snap)
+    write_home(snap)
+
+    reports = {}
+    all_leaves = []
+    n_pages = 2  # home + notice
+    n_leaves = 0
+    for _label, _ready, bid in CLOSED_LIST:
+        rep = build_biomarker(snap, bid)
+        reports[bid] = {k: v for k, v in rep.items() if k != "leaf_report"}
+        all_leaves.extend(rep["leaf_report"])
+        n_pages += rep["pages"]
+        n_leaves += rep["leaves"]
+        print(
+            f"  {bid}: {rep['pages']} pages, {rep['leaves']} leaves, "
+            f"{rep['cancers']} cancer branches, "
+            f"mainstream listings {rep['level_counts']['mainstream']}, "
+            f"in testing {rep['level_counts']['trials']}, "
+            f"on the edge {rep['level_counts']['on-the-edge']}."
+        )
+
+    from build_cases import build as build_case_pages
+    case_rep = build_case_pages(snap)
+    n_pages += case_rep["pages"]
+
+    return {
+        "pages": n_pages,
+        "leaves": n_leaves,
+        "biomarkers": reports,
+        "leaf_report": all_leaves,
+        "cases": case_rep,
+    }
 
 
 def main() -> int:
@@ -1047,11 +1113,9 @@ def main() -> int:
     snap = json.loads((ROOT / "data" / "snapshot.json").read_text(encoding="utf-8"))
     report = build(snap)
     print(
-        f"Wrote EGFR mockup to {OUT.relative_to(ROOT)}: "
+        f"Wrote decision-tree site to {SITE.relative_to(ROOT)}: "
         f"{report['pages']} pages, {report['leaves']} leaves, "
-        f"{report['cancers']} cancer branches, "
-        f"{report['mainstream']} mainstream, {report['trials']} in testing, "
-        f"{report['edge']} on the edge, {report['withdrawn']} withdrawn."
+        f"{len(report['biomarkers'])} biomarkers."
     )
     return 0
 

@@ -1,0 +1,140 @@
+{
+  "slug": "sijbrandij",
+  "name": "Sid Sijbrandij",
+  "short": "Osteosarcoma of the spine",
+  "order": 1,
+  "died": null,
+  "summary": [
+    "Sid Sijbrandij has bone cancer, called osteosarcoma, in the T5 vertebrae of the upper spine.",
+    "On his own cancer page, he wrote that he has taken agency in that treatment.",
+    "He was diagnosed in November 2022, according to osteosarc.com, a site that shares his data.",
+    "The primary tumour was removed from his spine in December 2022 at UCSF.",
+    "The cancer came back at the Th4 vertebra in June 2024, at UCLA.",
+    "It came back again at Th4 to Th5 in January 2025, also at UCLA, and was removed in April 2025 at MSKCC.",
+    "On his cancer page, he wrote that he had run out of standard treatment options, and that no trials were available for him.",
+    "He then started what he calls maximum diagnostics, created new treatments, used more than one treatment at a time, and began to scale this for others.",
+    "In a 20 January 2026 post, he looked back at late 2024. He said his doctors told him he had exhausted the standard of care. He said there were no trials for his situation.",
+    "He called that path Founder Mode. This page does not present that path as advice, and it does not say it works for anyone else.",
+    "His cancer page links to a recording of an OpenAI Forum talk. The pages we opened do not spell out, in his own words, how he used any AI tool, so this page does not describe that."
+  ],
+  "quotes": [
+    {
+      "text": "I’ve taken agency in the treatment of my bone cancer (osteosarcoma in the T5 vertebrae of the upper spine).",
+      "url": "https://sytse.com/cancer/",
+      "label": "his cancer page",
+      "opened": "13 November 2026"
+    },
+    {
+      "text": "After I ran out of standard-of-care treatment options and there were no trials available for me, I started doing maximum diagnostics, created new treatments, started doing treatments in parallel, and began scaling this for others.",
+      "url": "https://sytse.com/cancer/",
+      "label": "his cancer page",
+      "opened": "13 November 2026"
+    },
+    {
+      "text": "I currently have no evidence of disease. But my fight with cancer is far from over.",
+      "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
+      "label": "his Substack post of 20 January 2026",
+      "opened": "13 November 2026"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "November 2022",
+      "decision": "He was diagnosed with osteosarcoma.",
+      "helpers": [],
+      "url": "https://osteosarc.com/",
+      "label": "osteosarc.com",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "16 December 2022",
+      "decision": "The primary tumour was removed from his spine (T0). The page lists this as a spine tumour and rib resection.",
+      "helpers": [
+        "UCSF"
+      ],
+      "url": "https://osteosarc.com/",
+      "label": "osteosarc.com (table and prose)",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "June 2024",
+      "decision": "The disease came back at the Th4 vertebra (T1). The table lists procedures on 6 and 11 June 2024.",
+      "helpers": [
+        "UCLA"
+      ],
+      "url": "https://osteosarc.com/",
+      "label": "osteosarc.com (table and prose)",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "late 2024",
+      "decision": "He wrote that his cancer reappeared, that his doctors told him he had exhausted the standard of care, and that there were no trials for his situation. He wrote that Founder Mode was his only option.",
+      "helpers": [],
+      "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
+      "label": "his Substack post of 20 January 2026",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "28 January 2025",
+      "decision": "Disease at Th4 to Th5 was recorded again (T2).",
+      "helpers": [
+        "UCLA"
+      ],
+      "url": "https://osteosarc.com/",
+      "label": "osteosarc.com (table and prose)",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "17 April 2025",
+      "decision": "The disease at Th4 to Th5 was excised (T3).",
+      "helpers": [
+        "MSKCC"
+      ],
+      "url": "https://osteosarc.com/",
+      "label": "osteosarc.com (table and prose)",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "20 January 2026",
+      "decision": "He wrote that he currently has no evidence of disease, but that his fight with cancer is far from over. In that post he thanked people who helped.",
+      "helpers": [
+        "his wife Karen",
+        "Jacob Stern",
+        "Alfredo Gonzalez",
+        "Jeremiah Wala",
+        "Private Health Management (he names Jenn and Eva)",
+        "Willy Hoos",
+        "Pathfinder Oncology"
+      ],
+      "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
+      "label": "his Substack post of 20 January 2026",
+      "opened": "13 November 2026"
+    }
+  ],
+  "status": {
+    "as_of": "20 January 2026",
+    "label": "his Substack post",
+    "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
+    "opened": "13 November 2026",
+    "quote": "I currently have no evidence of disease. But my fight with cancer is far from over.",
+    "note": "A later Cancer Letter essay was requested as a source for a line about the word “cured.” That page returned only a bot-check wall when opened on 13 November 2026, so this page does not use that line."
+  },
+  "pointers": [
+    {
+      "label": "His cancer page",
+      "url": "https://sytse.com/cancer/"
+    },
+    {
+      "label": "His data and treatment timeline (osteosarc.com)",
+      "url": "https://osteosarc.com/"
+    },
+    {
+      "label": "I’m going Founder Mode on my cancer (20 January 2026)",
+      "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer"
+    },
+    {
+      "label": "Sijbrandij Foundation, FCCT (the page says FCCT is not a medical provider)",
+      "url": "https://sijbrandijfoundation.org/fcct"
+    }
+  ]
+}

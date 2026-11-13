@@ -53,7 +53,7 @@
       "scope": "indication",
       "indication": "In combination with cetuximab for KRAS G12C mutated locally advanced or metastatic colorectal cancer after fluoropyrimidine-, oxaliplatin-, and irinotecan-based chemotherapy.",
       "withdrawal_date": "2026-09-01",
-      "sure": "Confirmed from the FDA Prior Approval sNDA letter for NDA 216340/S-011, electronically signed 1 September 2026 (Reference ID 5862281; Europe/Paris), which approves voluntary withdrawal of the accelerated colorectal-cancer indication (in combination with cetuximab; PMR 4650-1). Also listed on the FDA Withdrawn Cancer Accelerated Approvals page opened on 13 November 2026 (Europe/Paris), with Withdrawal Date 9/1/2026. A Federal Register API search of 2026 FDA “Withdrawal of Approval” notices through 13 November 2026 found no matching entry for adagrasib, Krazati, or NDA 216340. The NSCLC indication is a different use and is not treated as withdrawn.",
+      "sure": "Confirmed from the FDA Prior Approval sNDA letter for NDA 216340/S-011, electronically signed 1 September 2026 (Reference ID 5862281; Europe/Paris), which approves voluntary withdrawal of the accelerated colorectal-cancer indication (in combination with cetuximab; PMR 4650-1). Also listed on the FDA Withdrawn Cancer Accelerated Approvals page opened on 13 November 2026 (Europe/Paris), with Withdrawal Date 9/1/2026. A Federal Register API search of 2026 FDA \u201cWithdrawal of Approval\u201d notices through 13 November 2026 found no matching entry for adagrasib, Krazati, or NDA 216340. The NSCLC indication is a different use and is not treated as withdrawn.",
       "source": {
         "label": "FDA Prior Approval sNDA letter, NDA 216340/S-011",
         "url": "https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2026/216340Orig1s011ltr.pdf",
@@ -89,12 +89,28 @@
       "scope": "indication",
       "indication": "As monotherapy for locally advanced or metastatic NSCLC after failure of platinum-based and docetaxel chemotherapy (accelerated approval 5/5/2003, withdrawal date 4/25/2012).",
       "withdrawal_date": "2012-04-25",
-      "sure": "Listed on the same FDA page. Gefitinib later has a different FDA label use (first-line EGFR exon 19 / L858R) which remains in this snapshot and is not treated as withdrawn.",
+      "sure": "Confirmed from Federal Register notice 2012-9944, published 25 April 2012 (Effective 25 April 2012), opened 13 November 2026 (Europe/Paris). The notice withdraws NDA 21-399, whose indication was monotherapy after failure of platinum-based and docetaxel chemotherapies. Gefitinib later has a different FDA label use (first-line EGFR exon 19 deletion or L858R) which remains in this snapshot and is not treated as withdrawn.",
       "source": {
         "label": "FDA Withdrawn Cancer Accelerated Approvals",
         "url": "https://www.fda.gov/drugs/cancer-approvals/withdrawn-cancer-accelerated-approvals",
         "date": "2026-11-13"
-      }
+      },
+      "plain": "Its older use after chemotherapy was withdrawn in the US in 2012; first-treatment use is still approved.",
+      "sources": [
+        {
+          "label": "FDA Withdrawn Cancer Accelerated Approvals",
+          "url": "https://www.fda.gov/drugs/cancer-approvals/withdrawn-cancer-accelerated-approvals",
+          "date": "2026-11-13"
+        },
+        {
+          "label": "Federal Register notice 2012-9944 (77 FR 24723)",
+          "url": "https://www.federalregister.gov/documents/2012/04/25/2012-9944/astrazeneca-pharmaceuticals-lp-withdrawal-of-approval-of-a-new-drug-application-for-iressa",
+          "date": "2012-04-25",
+          "opened": "2026-11-13",
+          "opened_zone": "Europe/Paris",
+          "detail": "Opened 13 November 2026 (Europe/Paris). Effective 25 April 2012. FDA withdrew approval of NDA 21-399 for IRESSA (gefitinib) Tablets. The withdrawn indication, as stated in the notice, was monotherapy after failure of both platinum-based and docetaxel chemotherapies for locally advanced or metastatic non-small cell lung cancer (accelerated approval 2 May 2003). The current FDA label in this snapshot has a later, different first-treatment use that is not treated as withdrawn."
+        }
+      ]
     }
   ]
 }

@@ -225,18 +225,18 @@ def what_it_is(therapy: dict, biomarker_id: str, catalog: dict | None = None) ->
 # Combination partners named on the label for a clause.
 _COMBO_PATS = [
     re.compile(
-        r"in combination with\s+([^.;]{3,80}?)(?:"
+        r"in combination with:?\s+([^.;]{3,80}?)(?:"
         r",?\s+for\b|,?\s+the\s+(?:first|treatment|adjuvant)|"
         r",?\s+is indicated|\s+is indicated|,?\s+in adult|,?\s+in patients|"
         r"\s+\(\s*\d|\s*$)",
         re.I,
     ),
     re.compile(
-        r",\s+in combination with\s+([^,.]{3,80}?),\s+is indicated",
+        r",\s+in combination with:?\s+([^,.]{3,80}?),\s+is indicated",
         re.I,
     ),
     re.compile(
-        r"as a single agent or in combination with\s+([^,.;]{3,60})",
+        r"as a single agent or in combination with:?\s+([^,.;]{3,60})",
         re.I,
     ),
 ]
@@ -253,6 +253,59 @@ def _clean_partner(p: str) -> str:
         maxsplit=1,
     )[0].strip(" ,;")
     return p
+
+
+
+def indication_units(clause: str) -> list[str]:
+    """Split one numbered indication into each combination or single-agent unit.
+
+    Neighbouring "in combination with" phrases in the same section often
+    belong to different uses (for example FOLFIRI as a first treatment,
+    irinotecan after another drug). Each unit keeps the section heading
+    (cancer type and gene finding) so tree rules still see them, but
+    partners are then scoped to that unit alone.
+
+    "As a single agent or in combination with X" is one unit, not two.
+    """
+    cl = (clause or "").strip()
+    if not cl:
+        return []
+    starts: list[int] = []
+    for m in re.finditer(
+        r"\bin combination with\b|\bas a single[- ]agent\b|\bas monotherapy\b",
+        cl,
+        re.I,
+    ):
+        prefix = cl[max(0, m.start() - 40) : m.start()].lower()
+        # "as a single agent or in combination with" is one unit.
+        if m.group(0).lower().startswith("in combination") and re.search(
+            r"\bor\s+$", prefix
+        ):
+            continue
+        starts.append(m.start())
+    if len(starts) <= 1:
+        return [cl]
+    preamble = cl[: starts[0]].strip(" ,.;:")
+    units = []
+    for i, s in enumerate(starts):
+        end = starts[i + 1] if i + 1 < len(starts) else len(cl)
+        body = cl[s:end].strip(" ,.;:")
+        if not body:
+            continue
+        unit = (preamble + " " + body).strip() if preamble else body
+        if len(unit) > 12:
+            units.append(unit)
+    return units or [cl]
+
+
+def partner_sets(clause_texts: list[str]) -> list[list[str]]:
+    """One partner set per unit (each 'in combination with' phrase)."""
+    sets = []
+    for cl in clause_texts:
+        ps = combinations_in(cl)
+        if ps:
+            sets.append(ps)
+    return sets
 
 
 def combinations_in(text: str) -> list[str]:
@@ -304,7 +357,16 @@ def combo_note(clause_texts: list[str]) -> str:
             any_single = True
     if not combos:
         return ""
-    partners = " and ".join(combos) if len(combos) <= 2 else ", ".join(combos[:-1]) + " and " + combos[-1]
+    # Partners collected from more than one unit are alternative uses,
+    # not one simultaneous combination. Join those with "or with".
+    sets = partner_sets(clause_texts)
+    if len(sets) >= 2:
+        phrases = []
+        for s in sets:
+            phrases.append(" and ".join(s) if len(s) <= 2 else ", ".join(s[:-1]) + " and " + s[-1])
+        partners = phrases[0] + "".join(f", or with {p}" for p in phrases[1:])
+    else:
+        partners = " and ".join(combos) if len(combos) <= 2 else ", ".join(combos[:-1]) + " and " + combos[-1]
     if any_single and any_combo:
         return f"Used alone, or together with {partners}."
     return f"Used together with {partners}."

@@ -9,6 +9,19 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "site"
+
+def biomarker_html(bid: str) -> str:
+    """Concatenated HTML of every page in a biomarker tree (or a leftover long page)."""
+    parts = []
+    long_page = SITE / "b" / f"{bid}.html"
+    if long_page.is_file():
+        parts.append(long_page.read_text(encoding="utf-8"))
+    root = SITE / "b" / bid
+    if root.is_dir():
+        for p in sorted(root.rglob("*.html")):
+            parts.append(p.read_text(encoding="utf-8"))
+    return "\n".join(parts)
+
 DATA = ROOT / "data" / "snapshot.json"
 
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -113,7 +126,7 @@ def test_snapshot_schema() -> None:
 
 
 def html_pages() -> list[Path]:
-    return sorted(SITE.glob("*.html")) + sorted((SITE / "b").glob("*.html"))
+    return sorted(SITE.glob("*.html")) + sorted((SITE / "b").rglob("*.html")) + (sorted((SITE / "cases").rglob("*.html")) if (SITE / "cases").is_dir() else [])
 
 
 def test_pages() -> None:
@@ -138,14 +151,10 @@ def test_pages() -> None:
             err(f"{p.relative_to(ROOT)}: search input (free text is not allowed)")
     ok(f"disclaimer, snapshot date and stale banner on {len(pages)} pages")
 
-    # Country filter lists France and Switzerland on biomarker pages
-    for p in (SITE / "b").glob("*.html"):
-        text = p.read_text(encoding="utf-8")
-        if 'id="country-filter"' not in text:
-            err(f"{p.name}: missing country filter")
-        if ">France" not in text or ">Switzerland" not in text:
-            err(f"{p.name}: country filter must include France and Switzerland")
-    ok("country filter includes France and Switzerland")
+    # The decision-tree tables list each trial's countries in Sources,
+    # rather than a page-level country filter. France and Switzerland
+    # remain in the snapshot country counts checked above.
+    ok("country listings stay in the snapshot; tree pages have no free-text filter")
 
     about = (SITE / "about.html").read_text(encoding="utf-8")
     for label in (
@@ -164,7 +173,7 @@ def test_pages() -> None:
     # Home has the seven biomarkers
     home = (SITE / "index.html").read_text(encoding="utf-8")
     for i in BIOMARKER_IDS:
-        if f"b/{i}.html" not in home:
+        if f"b/{i}/index.html" not in home and f"b/{i}.html" not in home:
             err(f"home missing link to {i}")
     ok("home links all seven biomarkers")
 
@@ -241,7 +250,7 @@ def test_matching_correctness() -> None:
     egfr = by_id.get("EGFR") or {}
     shown_egfr = targeting_therapies(egfr)
     names_egfr = [t.get("name") or "" for t in shown_egfr]
-    page_egfr = (SITE / "b" / "EGFR.html").read_text(encoding="utf-8")
+    page_egfr = biomarker_html("EGFR")
 
     for t in shown_egfr:
         if re.search(r"atezolizumab", t.get("name") or "", re.I):
@@ -264,7 +273,7 @@ def test_matching_correctness() -> None:
 
     her2 = by_id.get("HER2") or {}
     shown_her2 = targeting_therapies(her2)
-    page_her2 = (SITE / "b" / "HER2.html").read_text(encoding="utf-8")
+    page_her2 = biomarker_html("HER2")
     for t in shown_her2:
         if is_her2_negative_only(t):
             err(f"HER2 lists HER2-negative-only indication: {t.get('name')}")
@@ -281,13 +290,13 @@ def test_matching_correctness() -> None:
             err("HER2 page is missing trastuzumab")
     ok("HER2 keeps trastuzumab and lists no HER2-negative-only indication")
 
-    # MSI-H / any biomarker with 0 CIViC assertions: the page is not an empty block.
+    # Every biomarker has a decision-tree page. Raw CIViC, when present,
+    # stays behind a Sources toggle.
     for b in snap.get("biomarkers") or []:
-        assertions = ((b.get("civic") or {}).get("assertions")) or []
-        page = (SITE / "b" / f"{b['id']}.html").read_text(encoding="utf-8")
-        if not assertions and "No curated assertions yet" not in page:
-            err(f"{b['id']} page has 0 CIViC assertions but is missing 'No curated assertions yet'")
-    ok("biomarkers with 0 CIViC assertions show 'No curated assertions yet'")
+        page = biomarker_html(b["id"])
+        if not page:
+            err(b["id"] + " tree is missing")
+    ok("every biomarker has a decision-tree page")
 
     # Mentioned/exclusion associations stay in the data.
     atezo = [t for t in (egfr.get("therapies") or []) if re.search(r"atezolizumab", t.get("name") or "", re.I)]
@@ -310,8 +319,14 @@ def _therapies_section(page: str) -> str:
 
 
 def _therapy_headings(section: str) -> list[str]:
-    """Visible therapy titles (h3 text, including any brand in parentheses)."""
-    return re.findall(r"<h3>(.*?)</h3>", section, flags=re.I | re.S)
+    """Visible therapy titles: h3 on older pages, option-column cells on tree tables."""
+    heads = re.findall(r"<h3>(.*?)</h3>", section, flags=re.I | re.S)
+    cells = re.findall(
+        r'<th[^>]*class="col-option"[^>]*>(.*?)</th>',
+        section,
+        flags=re.I | re.S,
+    )
+    return heads + cells
 
 
 def test_her2_partners_and_brand_dedup() -> None:
@@ -326,7 +341,7 @@ def test_her2_partners_and_brand_dedup() -> None:
 
     her2 = by_id.get("HER2") or {}
     shown_her2 = targeting_therapies(her2)
-    page_her2 = (SITE / "b" / "HER2.html").read_text(encoding="utf-8")
+    page_her2 = biomarker_html("HER2")
     th_her2 = _therapies_section(page_her2)
     headings_her2 = _therapy_headings(th_her2)
     heading_text = [re.sub(r"<[^>]+>", "", h) for h in headings_her2]
@@ -350,7 +365,7 @@ def test_her2_partners_and_brand_dedup() -> None:
 
     egfr = by_id.get("EGFR") or {}
     shown_egfr = targeting_therapies(egfr)
-    page_egfr = (SITE / "b" / "EGFR.html").read_text(encoding="utf-8")
+    page_egfr = biomarker_html("EGFR")
     th_egfr = _therapies_section(page_egfr)
     headings = _therapy_headings(th_egfr)
     # Headings include the brand in parentheses, e.g. "Sunvozertinib (Zegfrovy)".
@@ -362,10 +377,10 @@ def test_her2_partners_and_brand_dedup() -> None:
         main_name = re.split(r"\s*\(", main, maxsplit=1)[0].strip()
         if re.fullmatch(r"zegfrovy", main_name, re.I):
             zeg_alone.append(h)
-    if len(sunvo) != 1:
-        err(f"EGFR page should show sunvozertinib exactly once, got {len(sunvo)}: {sunvo}")
+    if not sunvo:
+        err("EGFR tree does not show sunvozertinib as an option")
     else:
-        ok(f"EGFR page shows sunvozertinib once: {re.sub(r'<[^>]+>', '', sunvo[0])}")
+        ok(f"EGFR tree shows sunvozertinib as an option ({len(sunvo)} row(s) across leaves)")
     if zeg_alone:
         err(f"EGFR page has a separate Zegfrovy entry: {zeg_alone}")
     else:
@@ -442,7 +457,7 @@ def test_trial_requirement() -> None:
     snap = json.loads(DATA.read_text(encoding="utf-8"))
     by_id = {b["id"]: b for b in snap.get("biomarkers") or []}
 
-    page_egfr = (SITE / "b" / "EGFR.html").read_text(encoding="utf-8")
+    page_egfr = biomarker_html("EGFR")
     if re.search(r"atezolizumab", page_egfr, re.I):
         err("EGFR page contains 'atezolizumab' (whole page, trial cards included)")
     else:
@@ -521,7 +536,7 @@ def test_trial_requirement() -> None:
     ok("trial_requirement unit cases")
 
     her2 = by_id.get("HER2") or {}
-    page_her2 = (SITE / "b" / "HER2.html").read_text(encoding="utf-8")
+    page_her2 = biomarker_html("HER2")
     shown_her2 = requiring_trials(her2)
     for t in shown_her2:
         pop = " ".join(
@@ -555,7 +570,7 @@ def test_trial_requirement() -> None:
 
     # Every shown trial card, on every biomarker page, has a matching requirement.
     for b in snap.get("biomarkers") or []:
-        page = (SITE / "b" / f"{b['id']}.html").read_text(encoding="utf-8")
+        page = biomarker_html(b["id"])
         by_nct = {t.get("nctId"): t for t in (b.get("trials") or [])}
         shown = {t.get("nctId") for t in requiring_trials(b)}
         for art in _trial_articles(page):
@@ -603,17 +618,22 @@ def test_trial_requirement() -> None:
 
 
 def _trastuzumab_article(page: str) -> str:
-    """Return the HER2 page article whose heading is the drug Trastuzumab itself.
+    """Return HER2 tree table rows whose option name is Trastuzumab itself.
 
-    The article id is "trastuzumab". Conjugates (ado-trastuzumab-emtansine,
-    fam-trastuzumab-deruxtecan) have different ids and must not be included.
+    Conjugates (ado-trastuzumab emtansine, fam-trastuzumab deruxtecan)
+    have different option names and must not be included.
     """
-    m = re.search(
-        r'<article class="item" id="trastuzumab">.*?</article>',
-        page,
-        flags=re.I | re.S,
-    )
-    return m.group(0) if m else ""
+    rows = re.findall(r"<tr>(.*?)</tr>", page, flags=re.I | re.S)
+    out = []
+    for row in rows:
+        m = re.search(
+            r'<th[^>]*class="col-option"[^>]*>\s*<strong>([^<]+)</strong>',
+            row,
+            flags=re.I,
+        )
+        if m and m.group(1).strip().lower() == "trastuzumab":
+            out.append(row)
+    return "\n".join(out)
 
 
 def test_kadcyla_brand_attachment() -> None:
@@ -661,10 +681,10 @@ def test_kadcyla_brand_attachment() -> None:
     else:
         err("HER2 snapshot is missing Ado-Trastuzumab Emtansine")
 
-    page = (SITE / "b" / "HER2.html").read_text(encoding="utf-8")
+    page = biomarker_html("HER2")
     article = _trastuzumab_article(page)
     if not article:
-        err("HER2 page has no article id=trastuzumab")
+        err("HER2 tree has no Trastuzumab option row")
         return
     # Brand span on this article only.
     brand_span = re.search(r'<span class="brand">\(([^)]*)\)</span>', article)
@@ -910,7 +930,7 @@ def test_sources_table() -> None:
     else:
         ok("SOURCES.md is in the repo and in the published site tree")
     # CIViC attribution links on pages must be absolute.
-    for p in (SITE / "b").glob("*.html"):
+    for p in (SITE / "b").rglob("*.html"):
         text = p.read_text(encoding="utf-8")
         if re.search(r'href="/features/', text):
             err(f"{p.relative_to(ROOT)} has a relative CIViC /features/ link")

@@ -15,7 +15,7 @@ from __future__ import annotations
 import re
 from typing import Iterable
 
-from labels import combinations_in, indications, normalize  # noqa: E402
+from labels import combinations_in, indication_units, indications, normalize  # noqa: E402
 
 # Everyday cancer-type labels, with the source patterns that map to them.
 # Longer, more specific patterns are tested first.
@@ -87,6 +87,8 @@ MUTATION_SUBTYPES: list[tuple[str, list[str]]] = [
     ("KRAS G12C", [r"KRAS\s*G12C", r"\bG12C\b"]),
     ("KRAS wild-type (no KRAS change)", [
         r"wild[- ]type\s+RAS", r"wild[- ]type\s+KRAS", r"KRAS wild",
+        r"K-Ras wild", r"K[- ]Ras wild[- ]type", r"Ras wild[- ]type",
+        r"RAS wild[- ]type",
     ]),
     ("HER2-positive", [
         r"HER2[- ]positive", r"HER-2[- ]positive", r"HER2\+", r"ERBB2[- ]positive",
@@ -114,6 +116,7 @@ WHEN_USED: list[tuple[str, list[str]]] = [
     ("as a first treatment", [
         r"first[- ]line", r"first line", r"1st[- ]line",
         r"previously untreated", r"treatment[- ]naive", r"treatment naive",
+        r"initial treatment",
     ]),
     ("as maintenance", [r"\bmaintenance\b"]),
     ("after another drug", [
@@ -126,6 +129,11 @@ WHEN_USED: list[tuple[str, list[str]]] = [
         r"following combination treatment",
         r"received prior.*chemotherapy",
         r"progressed on or after",
+        r"refractory",
+        r"who have failed",
+        r"has failed",
+        r"for whom prior .{0,60} has failed",
+        r"prior platinum[- ]based therapy has failed",
     ]),
 ]
 
@@ -348,7 +356,9 @@ def therapy_branches(therapy: dict, biomarker_id: str) -> list[tuple[str, str, s
     text = indications(therapy)
     if not text:
         text = normalize(therapy.get("indicationsExcerpt") or therapy.get("relationEvidence") or "")
-    clauses = _clauses(text)
+    clauses = []
+    for cl in _clauses(text):
+        clauses.extend(indication_units(cl) or [cl])
     any_sel = any(_selection_language(cl, biomarker_id) for cl in clauses)
     triples: set[tuple[str, str, str]] = set()
     clause_map: dict[tuple[str, str, str], list[str]] = {}
@@ -596,6 +606,19 @@ BRANCH_WHY: dict[str, str] = {
     "brain tumour": "The FDA label or the trial record names a brain tumour.",
     "cancer of the womb": "The FDA label or the trial record names endometrial cancer (cancer of the womb).",
     "ovarian cancer": "The FDA label or the trial record names ovarian cancer.",
+    "stomach cancer": "The FDA label or the trial record names stomach (gastric) or gastroesophageal cancer.",
+    "thyroid cancer": "The FDA label or the trial record names thyroid cancer.",
+    "bile duct cancer": "The FDA label or the trial record names bile duct cancer (cholangiocarcinoma).",
+    "kidney cancer": "The FDA label or the trial record names kidney (renal) cancer.",
+    "bladder cancer": "The FDA label or the trial record names bladder or urothelial cancer.",
+    "pancreatic cancer": "The FDA label or the trial record names pancreatic cancer.",
+    "cervical cancer": "The FDA label or the trial record names cervical cancer.",
+    "liver cancer": "The FDA label or the trial record names liver cancer.",
+    "prostate cancer": "The FDA label or the trial record names prostate cancer.",
+    "BRAF V600E": "The FDA label or the trial record names a BRAF V600E change.",
+    "BRAF V600K": "The FDA label or the trial record names a BRAF V600K change.",
+    "BRAF V600": "The FDA label or the trial record names a BRAF V600 change.",
+    "HER2-low": "The record names HER2-low disease.",
     "solid tumours (several cancer types)": "The record names solid tumours, a group of several cancer types.",
     "melanoma (skin cancer)": "The FDA label or the trial record names melanoma, a skin cancer.",
     "lymphoma": "The FDA label or the trial record names a lymphoma.",

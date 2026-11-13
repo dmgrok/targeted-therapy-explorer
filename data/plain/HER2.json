@@ -1,7 +1,7 @@
 {
   "biomarker_id": "HER2",
-  "generated_at": "2026-11-13T18:24:55+01:00",
-  "source_hash": "08fe18dfa49d09bde8cad9db83ad4795d7f89820ac2bc6377e8941ea4bd727a8",
+  "generated_at": "2026-11-13T21:09:03+01:00",
+  "source_hash": "7e02c4e77ed2de2be577fb6af521e5f4512409615cdb83b0360e357e55ed51e5",
   "intro": {
     "what": [
       "HER2, also called ERBB2, is a gene.",
@@ -203,7 +203,7 @@
     {
       "id": "therapy:Fam-trastuzumab deruxtecan",
       "category": "mainstream",
-      "text": "Fam-trastuzumab deruxtecan (ENHERTU): a lab-made antibody linked to a drug. Approved for breast cancer with HER2-positive disease. Authorised in Europe since 2020.",
+      "text": "Fam-trastuzumab deruxtecan (ENHERTU): a lab-made antibody linked to a drug. Approved for breast cancer with HER2-positive disease. Authorised in Europe since 2021.",
       "sources": [
         {
           "id": "therapy:HER2:Fam-trastuzumab deruxtecan",
@@ -311,7 +311,7 @@
     {
       "id": "therapy:Tucatinib",
       "category": "mainstream",
-      "text": "Tucatinib (TUKYSA): a drug that blocks the HER2 signal. Approved for breast cancer with HER2-positive disease. Authorised in Europe since 2020.",
+      "text": "Tucatinib (TUKYSA): a drug that blocks the HER2 signal. Approved for breast cancer with HER2-positive disease. Authorised in Europe since 2021.",
       "sources": [
         {
           "id": "therapy:HER2:Tucatinib",

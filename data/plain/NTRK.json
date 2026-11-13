@@ -1,7 +1,7 @@
 {
   "biomarker_id": "NTRK",
-  "generated_at": "2026-11-13T18:24:55+01:00",
-  "source_hash": "ae8770cd4a7924ff85359db4f101e5b206b53d8e91d507c407a24be034dbb69a",
+  "generated_at": "2026-11-13T21:09:03+01:00",
+  "source_hash": "9f1bf00b1e9d4403a9f98b24ad1cce060b2fafcce9396116e2eb8c49115ca8a8",
   "intro": {
     "what": [
       "NTRK is a group of three genes: NTRK1, NTRK2 and NTRK3.",
@@ -102,7 +102,7 @@
     {
       "id": "therapy:Repotrectinib",
       "category": "mainstream",
-      "text": "Repotrectinib (Augtyro): a drug that blocks the NTRK signal. Approved for advanced lung cancer with an NTRK fusion. Authorised in Europe since 2024.",
+      "text": "Repotrectinib (Augtyro): a drug that blocks the NTRK signal. Approved for advanced lung cancer with an NTRK fusion. Authorised in Europe since 2025.",
       "sources": [
         {
           "id": "therapy:NTRK:Repotrectinib",

@@ -1,0 +1,109 @@
+{
+  "slug": "freeman-daily",
+  "name": "Janet Freeman-Daily",
+  "short": "ROS1-positive lung cancer, crizotinib",
+  "order": 2,
+  "died": null,
+  "summary": [
+    "Janet Freeman-Daily learned she had lung cancer in 2011.",
+    "She first had chemotherapy and radiation. The cancer later spread outside her chest, and then to her other lung.",
+    "On 25 September 2012, the University of Colorado told her that her tumour had a ROS1 gene change.",
+    "She was eligible for a trial of a daily pill called crizotinib.",
+    "She started that trial in November 2012 in Denver.",
+    "A University of Colorado article dated 3 June 2025 quotes her account of meeting Paul Bunn, MD, there.",
+    "This page uses her own words for how she is now."
+  ],
+  "quotes": [
+    {
+      "text": "But on this date, the University of Colorado notified me that my tumor tissue tested positive for a gene rearrangement called ROS1, and I was eligible for a clinical trial of the targeted therapy pill crizotinib.",
+      "url": "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/",
+      "label": "her blog post of 25 September 2025",
+      "opened": "13 November 2026"
+    },
+    {
+      "text": "Today I’m still on the same daily pill.",
+      "url": "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/",
+      "label": "her blog post of 25 September 2025",
+      "opened": "13 November 2026"
+    },
+    {
+      "text": "I’ve been on the same oral therapy (with a couple of dose reductions) for over thirteen years. My scans have shown no sign of cancer since I started on that drug.",
+      "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+      "label": "her blog post of 10 May 2026",
+      "opened": "13 November 2026"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2011",
+      "decision": "She learned she had lung cancer. She and her doctor decided to try for a cure, and she had chemotherapy and radiation.",
+      "helpers": [],
+      "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+      "label": "her blog post of 10 May 2026",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "mid September 2012",
+      "decision": "She learned her cancer had grown despite two lines of chemotherapy plus radiation.",
+      "helpers": [],
+      "url": "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/",
+      "label": "her blog post of 25 September 2025",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "25 September 2012",
+      "decision": "The University of Colorado told her that her tumour tested positive for a ROS1 gene change, and that she was eligible for a trial of crizotinib.",
+      "helpers": [
+        "University of Colorado"
+      ],
+      "url": "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/",
+      "label": "her blog post of 25 September 2025",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "November 2012",
+      "decision": "She started the trial in Denver.",
+      "helpers": [],
+      "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+      "label": "her blog post of 10 May 2026",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "2012 (month not given)",
+      "decision": "A University of Colorado article quotes her account of meeting Paul Bunn, MD, at the CU Cancer Center while visiting Denver, before joining the trial.",
+      "helpers": [
+        "Paul Bunn, MD",
+        "University of Colorado Cancer Center"
+      ],
+      "url": "https://news.cuanschutz.edu/cancer-center/patient-janet-freeman-daily",
+      "label": "University of Colorado article, 3 June 2025",
+      "opened": "13 November 2026"
+    }
+  ],
+  "status": {
+    "as_of": "10 May 2026",
+    "label": "her blog post",
+    "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+    "opened": "13 November 2026",
+    "quote": "I’ve been on the same oral therapy (with a couple of dose reductions) for over thirteen years. My scans have shown no sign of cancer since I started on that drug.",
+    "note": "On 25 September 2025 she had also written: “Today I’m still on the same daily pill.”"
+  },
+  "pointers": [
+    {
+      "label": "Her blog, Gray Connections",
+      "url": "https://grayconnections.net/"
+    },
+    {
+      "label": "Reflections on 15 years living with lung cancer (10 May 2026)",
+      "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/"
+    },
+    {
+      "label": "A moment in my cancer history (25 September 2025)",
+      "url": "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/"
+    },
+    {
+      "label": "University of Colorado article (3 June 2025)",
+      "url": "https://news.cuanschutz.edu/cancer-center/patient-janet-freeman-daily"
+    }
+  ]
+}

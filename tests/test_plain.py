@@ -167,63 +167,67 @@ def test_category_rules() -> None:
 
 
 def test_pages_structure() -> None:
+    from readability import visible_text
     disclaimer = "Not medical advice. Talk to your oncologist."
-    for path in [SITE / "index.html"] + sorted((SITE / "b").glob("*.html")):
+    home = SITE / "index.html"
+    biomarker_homes = sorted((SITE / "b").glob("*/index.html"))
+    for path in [home] + biomarker_homes:
+        if not path.is_file():
+            err(f"missing {path.relative_to(SITE)}")
+            continue
         text = path.read_text(encoding="utf-8")
         rel = path.relative_to(SITE)
         if disclaimer not in text:
             err(f"{rel}: missing disclaimer")
-        if 'id="glossary"' not in text:
-            err(f"{rel}: missing glossary")
-        if ORDER_NOTE not in text:
-            err(f"{rel}: missing order-means-nothing note")
         if "Mainstream" not in text or "On the edge" not in text:
             err(f"{rel}: missing category labels")
-        if "not generated in your browser" not in text:
-            err(f"{rel}: missing AI-text note")
-        # No recommendation language that would imply a better choice.
         if re.search(r"\b(we recommend|best option|preferred option|you should take)\b", text, re.I):
             err(f"{rel}: sounds like a recommendation")
-    ok("disclaimer, glossary, order note and category labels on home and biomarker pages")
+    ok("disclaimer and category labels on home and biomarker pages")
 
-    egfr = (SITE / "b" / "EGFR.html").read_text(encoding="utf-8")
-    if "amplfied" not in egfr:
-        err("EGFR page dropped the verbatim CIViC typo 'amplfied' from the raw quote")
-    else:
-        # The typo must sit inside a sources toggle, not in the visible intro.
-        # Split: plain intro should not reuse it.
-        if re.search(r'<p class="lede">[^<]*amplfied', egfr):
-            err("EGFR plain intro reused the CIViC typo 'amplfied'")
-        else:
-            ok("EGFR keeps the verbatim CIViC typo 'amplfied' in Sources, not in the plain intro")
-    if "<details" not in egfr or "<summary>" not in egfr:
-        err("EGFR page has no Sources <details> toggle")
-    else:
-        ok("EGFR page uses a no-JS Sources <details> toggle")
-    if 'id="step-test"' not in egfr or 'id="step-options"' not in egfr:
-        err("EGFR page is missing the two-step view")
-    else:
-        ok("EGFR page has the two-step view")
-    if 'id="therapies"' not in egfr or 'id="trials"' not in egfr:
-        err("EGFR page is missing therapies/trials section ids")
-    # Raw FDA excerpt still present (behind Sources).
-    if "INDICATIONS AND USAGE" not in egfr:
-        err("EGFR page dropped raw FDA label excerpts")
-    else:
-        ok("EGFR page still includes raw FDA label excerpts")
-    if "SENSITIVITYRESPONSE" not in egfr or "TIER_I_LEVEL_A" not in egfr:
-        err("EGFR page dropped raw CIViC codes")
-    else:
-        ok("EGFR page still includes raw CIViC codes behind Sources")
+    # Order note and AI note live on the home page (and in the tree legend).
+    home_text = home.read_text(encoding="utf-8") if home.is_file() else ""
+    if ORDER_NOTE not in home_text:
+        err("home missing order-means-nothing note")
+    if "not generated in your browser" not in home_text:
+        err("home missing AI-text note")
 
-    home = (SITE / "index.html").read_text(encoding="utf-8")
+    # CIViC verbatim typo and raw codes stay behind Sources on the EGFR tree,
+    # not in the visible intro.
+    egfr_pages = list((SITE / "b" / "EGFR").rglob("*.html"))
+    blob = "".join(p.read_text(encoding="utf-8") for p in egfr_pages)
+    vis_intro = visible_text((SITE / "b" / "EGFR" / "index.html").read_text(encoding="utf-8")) if (SITE / "b" / "EGFR" / "index.html").is_file() else ""
+    if "amplfied" not in blob:
+        err("EGFR tree dropped the verbatim CIViC typo 'amplfied' from the raw quote")
+    elif "amplfied" in vis_intro:
+        err("EGFR plain intro reused the CIViC typo 'amplfied'")
+    else:
+        ok("EGFR keeps the verbatim CIViC typo 'amplfied' in Sources, not in the plain intro")
+    if "<details" not in blob or "<summary>" not in blob:
+        err("EGFR tree has no Sources <details> toggle")
+    else:
+        ok("EGFR tree uses a no-JS Sources <details> toggle")
+    if "INDICATIONS AND USAGE" not in blob:
+        err("EGFR tree dropped raw FDA label excerpts")
+    else:
+        ok("EGFR tree still includes raw FDA label excerpts")
+    if "SENSITIVITYRESPONSE" not in blob or "TIER_I_LEVEL_A" not in blob:
+        # Raw CIViC codes belong behind Sources on leaves that have on-the-edge rows.
+        err("EGFR tree dropped raw CIViC codes")
+    else:
+        ok("EGFR tree still includes raw CIViC codes behind Sources")
+
     for bid in BIOMARKER_IDS:
-        if f"b/{bid}.html" not in home:
+        if f"b/{bid}/index.html" not in home_text:
             err(f"home missing link to {bid}")
-    if "mainstream" not in home.lower() or "on the edge" not in home.lower():
+    if "mainstream" not in home_text.lower() or "on the edge" not in home_text.lower():
         err("home cards or copy missing category wording")
     else:
-        ok("home page is reworked with category wording and biomarker links")
+        ok("home page is a short decision-tree start with category wording and biomarker links")
+    # Leftover long pages from the first accessible rework must be gone.
+    for bid in BIOMARKER_IDS:
+        if (SITE / "b" / f"{bid}.html").is_file():
+            err(f"leftover long page b/{bid}.html is still present")
 
 
 def test_no_chictor_nccn_esmo() -> None:

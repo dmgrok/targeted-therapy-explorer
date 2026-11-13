@@ -314,24 +314,61 @@ def _mutation_short(text: str, biomarker_id: str) -> str:
     return nice.get(ms[0], ms[0])
 
 
+def _load_ema_verified() -> dict:
+    """EPAR 'Marketing authorisation issued' dates, keyed by EPAR URL."""
+    path = ROOT / "data" / "ema_dates.json"
+    if not path.is_file():
+        return {}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    out = {}
+    for e in data.get("entries") or []:
+        url = (e.get("url") or "").rstrip("/")
+        if url:
+            out[url] = e
+    return out
+
+
+_EMA_VERIFIED = None
+
+
+def _ema_verified() -> dict:
+    global _EMA_VERIFIED
+    if _EMA_VERIFIED is None:
+        _EMA_VERIFIED = _load_ema_verified()
+    return _EMA_VERIFIED
+
+
 def _ema_year(therapy: dict) -> tuple[str, str]:
     """(name, year) of the earliest authorised EMA record with a date.
 
     Using the first record in the list would pick a later biosimilar
     (for example Herwenda in 2023) over the original (Herceptin in 2000).
-    The year itself comes from the authorisationDate field.
+    The year comes from the EPAR "Marketing authorisation issued" field
+    in data/ema_dates.json (opened 13 November 2026, Europe/Paris), not
+    from the CHMP "Opinion adopted" date that some snapshot records
+    stored as authorisationDate. For Tagrisso, the opinion is 17 December
+    2015 and the issued date is 1 February 2016.
     """
+    verified = _ema_verified()
     found = []
     for e in therapy.get("ema") or []:
         if (e.get("status") or "").lower() != "authorised":
             continue
-        date = (e.get("authorisationDate") or "").strip()
+        url = (e.get("url") or "").rstrip("/")
+        v = verified.get(url)
         name = (e.get("name") or "").strip()
+        if v and v.get("marketing_authorisation_issued"):
+            date = v["marketing_authorisation_issued"]
+            iso = v.get("marketing_authorisation_issued_iso") or ""
+        else:
+            date = (e.get("authorisationDate") or "").strip()
+            iso = ""
         if not date:
             continue
         m = re.search(r"(19|20)\d{2}", date)
         if m:
-            found.append((int(m.group(0)), name, m.group(0)))
+            sort_key = iso or f"{m.group(0)}-99-99"
+            found.append((sort_key, name, m.group(0)))
     if not found:
         return "", ""
     found.sort()

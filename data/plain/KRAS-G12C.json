@@ -1,7 +1,7 @@
 {
   "biomarker_id": "KRAS-G12C",
-  "generated_at": "2026-11-13T18:24:55+01:00",
-  "source_hash": "26650a78aff655fd80d55edaa4da046d310f586c10e1c606d2e912ae25669442",
+  "generated_at": "2026-11-13T21:09:03+01:00",
+  "source_hash": "e281220b9f2662197385e9bbea292516e7e24ced7f276396c45b0671320770f0",
   "intro": {
     "what": [
       "KRAS G12C is a change in the KRAS gene, which belongs to a family of genes called RAS.",
@@ -191,7 +191,7 @@
     {
       "id": "therapy:Sotorasib",
       "category": "mainstream",
-      "text": "Sotorasib (LUMAKRAS): a drug that blocks the KRAS signal. Approved for advanced lung cancer with a KRAS G12C change. Authorised in Europe since 2021.",
+      "text": "Sotorasib (LUMAKRAS): a drug that blocks the KRAS signal. Approved for advanced lung cancer with a KRAS G12C change. Authorised in Europe since 2022.",
       "sources": [
         {
           "id": "therapy:KRAS-G12C:Sotorasib",

@@ -471,7 +471,7 @@ def page_about(snap: dict) -> str:
         <div class="licence">
           <h3>ClinicalTrials.gov API v2</h3>
           <p>Trial records come from the U.S. National Library of Medicine’s <a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a> API v2. Downloading the data signifies acceptance of the <a href="https://clinicaltrials.gov/about-site/terms-conditions">ClinicalTrials.gov Terms and Conditions</a> (last updated 31 January 2023). The data are free to use, but they carry an international copyright outside the United States; some records may also be subject to third-party copyright. We attribute the source as ClinicalTrials.gov, display the processing date (<code>dataTimestamp</code>), keep weekly snapshots, and describe our selection (recruiting studies whose condition or eligibility inclusion requires the biomarker, closed biomarker queries, a country filter applied in the page). We assert no proprietary rights in the database and do not use extracted email addresses.</p>
-          <p class="fine">This snapshot: {trials} recruiting records. Processing date: {ct}.</p>
+          <p class="fine">This snapshot: {trials} recruiting records. Processing date: {ct_human}.</p>
         </div>
         <div class="licence">
           <h3>openFDA drug labels and Drugs@FDA</h3>
@@ -505,12 +505,13 @@ def page_about(snap: dict) -> str:
         </div>
         <h2>This snapshot</h2>
         {fail}
-        <p>Generated at {gen}. Counts: {th} therapies, {tr} trials, {cv} CIViC assertions, {li} literature cards.</p>
+        <p>Generated on {gen_human}. Counts: {th} therapies, {tr} trials, {cv} CIViC assertions, {li} literature cards.</p>
         <h2>Licence for the code</h2>
         <p>The code of this site is offered under the MIT License. The data remains under each source’s own terms, as set out above.</p>
         """.format(
             trials=counts.get("trials", 0),
             ct=esc(ct_ts or "not available"),
+            ct_human=esc(fmt_date(ct_ts) if ct_ts else "not available"),
             labels=counts.get("openfdaLabels", 0),
             pgx=counts.get("fdaPgxRows", 0),
             cdx=counts.get("fdaCdxRows", 0),
@@ -519,6 +520,7 @@ def page_about(snap: dict) -> str:
             lit=counts.get("literature", 0),
             fail=fail_h,
             gen=esc(snap.get("generatedAt") or ""),
+            gen_human=esc(fmt_date(snap.get("generatedAt") or "") or (snap.get("generatedAt") or "")),
             th=counts.get("therapies", 0),
             tr=counts.get("trials", 0),
             cv=counts.get("civicAssertions", 0),
@@ -538,8 +540,6 @@ def main() -> int:
     # the browser. Fail the build if a line is unsourced, a number/date/drug
     # is not in its source, or the source hash is stale.
     from plain import validate_all
-    from pages_accessible import page_biomarker as render_biomarker
-    from pages_accessible import page_home as render_home
     errors = validate_all(snap)
     if errors:
         print(f"plain-text validation failed ({len(errors)} errors):", file=sys.stderr)
@@ -558,17 +558,17 @@ def main() -> int:
         }, indent=2) + "\n",
         encoding="utf-8",
     )
-    (SITE / "index.html").write_text(render_home(snap), encoding="utf-8")
     (SITE / "about.html").write_text(page_about(snap), encoding="utf-8")
     sources_md = ROOT / "SOURCES.md"
     if sources_md.is_file():
         (SITE / "SOURCES.md").write_text(sources_md.read_text(encoding="utf-8"), encoding="utf-8")
-    for b in snap.get("biomarkers") or []:
-        (SITE / "b" / f"{b['id']}.html").write_text(render_biomarker(snap, b), encoding="utf-8")
-    print(f"Wrote site to {SITE}")
-    from build_mockup import build as build_mockup
-    report = build_mockup(snap)
-    print(f"Wrote EGFR mockup: {report['pages']} pages, {report['leaves']} leaves")
+    print(f"Wrote about page and snapshot to {SITE}")
+    from build_mockup import build as build_tree_site
+    report = build_tree_site(snap)
+    print(
+        f"Wrote decision-tree site: {report['pages']} pages, "
+        f"{report['leaves']} leaves, {len(report['biomarkers'])} biomarkers"
+    )
     return 0
 
 if __name__ == "__main__":

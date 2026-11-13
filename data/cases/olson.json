@@ -1,0 +1,146 @@
+{
+  "slug": "olson",
+  "name": "Linnea Olson",
+  "short": "ALK-positive lung cancer",
+  "order": 5,
+  "died": {
+    "date": "15 November 2021",
+    "age": "61",
+    "text": "Linnea Olson died on 15 November 2021, at the age of 61. A tribute posted on her blog on 3 December 2021 says she died at home, and that her adult children and family members were with her.",
+    "quote": "Evalynn Linnea Olson, known to all as “Linnea”, died at the age of 61 on Monday, November 15, 2021.",
+    "quote2": "She was able to pass away at home, her adult children and family members were with her.",
+    "url": "https://lifeandbreath.wordpress.com/2021/12/03/a-tribute-to-linnea/",
+    "label": "a tribute on her blog, 3 December 2021",
+    "opened": "13 November 2026",
+    "also": {
+      "url": "https://alkpositive.org/blog/honoring-the-memory-of-linnea-olson-long-term-alk-survivor-clinical-trial-pioneer-fierce-lung-cancer-advocate-loving-mother-of-three/",
+      "label": "ALK Positive tribute",
+      "note": "This page also gives the date as 15 November 2021.",
+      "opened": "13 November 2026"
+    }
+  },
+  "summary": [
+    "Linnea Olson wrote for years about living with ALK-positive lung cancer. This page records what she and her family published.",
+    "It is not evidence that a treatment works, and it is not a claim that she was cured.",
+    "She wrote that she was diagnosed with stage IB non-small cell lung cancer in 2005.",
+    "She switched her care to Thomas J. Lynch, Jr, MD, and wrote that she was sure that decision saved her life.",
+    "After surgery and chemotherapy, the cancer was later classed as stage IV. By 2008, she was told she had three to five months to live.",
+    "In October 2008, she became the fourth person with this cancer to take experimental crizotinib.",
+    "She later took ceritinib, then lorlatinib.",
+    "The tribute on her blog said she had lived with lung cancer for 17 years. That is a fact about her life, not a claim that a drug cured her."
+  ],
+  "quotes": [
+    {
+      "text": "Eleven years after being diagnosed with stage 4 lung cancer, my focus is no longer on a cure but rather on living a high-quality life with my disease.",
+      "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+      "label": "The ASCO Post, 25 August 2016, by Linnea Olson, as told to Jo Cavallo",
+      "opened": "13 November 2026"
+    },
+    {
+      "text": "When I was finally diagnosed with stage IB NSCLC in 2005, the tumor was confined to my lower left lobe and was 5 cm.",
+      "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+      "label": "The ASCO Post, 25 August 2016",
+      "opened": "13 November 2026"
+    },
+    {
+      "text": "I’m sure the decision saved my life.",
+      "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+      "label": "The ASCO Post, 25 August 2016, about switching her care to Thomas J. Lynch, Jr, MD",
+      "opened": "13 November 2026"
+    },
+    {
+      "text": "In October 2008, I became the fourth person in the world with NSCLC to take the then-experimental drug crizotinib (Xalkori).",
+      "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+      "label": "The ASCO Post, 25 August 2016",
+      "opened": "13 November 2026"
+    },
+    {
+      "text": "Although the drug has given me 2 years of disease stability, there are now signs of cancer progression.",
+      "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+      "label": "The ASCO Post, 25 August 2016, about lorlatinib",
+      "opened": "13 November 2026"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2005",
+      "decision": "She was diagnosed with stage IB non-small cell lung cancer. She switched her care to Thomas J. Lynch, Jr, MD, at Massachusetts General. She had surgery to remove the lower lobe of her left lung, then chemotherapy.",
+      "helpers": [
+        "Thomas J. Lynch, Jr, MD",
+        "Massachusetts General"
+      ],
+      "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+      "label": "The ASCO Post, 25 August 2016",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "by 2008",
+      "decision": "The cancer was reclassified as stage IV. She wrote that she was told she had three to five months to live. A biopsy showed she was ALK-positive.",
+      "helpers": [],
+      "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+      "label": "The ASCO Post, 25 August 2016",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "October 2008",
+      "decision": "She became the fourth person with this cancer to take experimental crizotinib. She later wrote that it gave her three years of high-quality life before she became resistant to it.",
+      "helpers": [],
+      "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+      "label": "The ASCO Post, 25 August 2016",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "after crizotinib (exact start date not given in the 2016 essay)",
+      "decision": "She joined a phase I study of another ALK drug, ceritinib. She wrote that it bought her enough time to enter a trial of lorlatinib.",
+      "helpers": [],
+      "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+      "label": "The ASCO Post, 25 August 2016",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "as of 25 August 2016",
+      "decision": "She still took lorlatinib. She wrote that it had given her two years of disease stability, and that there were then signs of cancer progression. She named her oncologist at that time.",
+      "helpers": [
+        "Alice Shaw, MD, PhD",
+        "Massachusetts General Hospital"
+      ],
+      "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+      "label": "The ASCO Post, 25 August 2016",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "15 November 2021",
+      "decision": "She died at home, at the age of 61, with her adult children and family members with her, according to the tribute on her blog.",
+      "helpers": [],
+      "url": "https://lifeandbreath.wordpress.com/2021/12/03/a-tribute-to-linnea/",
+      "label": "a tribute on her blog, 3 December 2021",
+      "opened": "13 November 2026"
+    }
+  ],
+  "status": {
+    "as_of": "15 November 2021",
+    "label": "the tribute on her blog",
+    "url": "https://lifeandbreath.wordpress.com/2021/12/03/a-tribute-to-linnea/",
+    "opened": "13 November 2026",
+    "quote": "Evalynn Linnea Olson, known to all as “Linnea”, died at the age of 61 on Monday, November 15, 2021.",
+    "note": "Her last first-person treatment update that we opened is the 25 August 2016 ASCO Post essay, when she still took lorlatinib and there were signs of progression. A 6 April 2022 American Lung Association page is dated after her death, so this page does not treat it as a living update."
+  },
+  "pointers": [
+    {
+      "label": "Her blog, Life and Breath",
+      "url": "https://lifeandbreath.wordpress.com/"
+    },
+    {
+      "label": "A Tribute to Linnea (3 December 2021)",
+      "url": "https://lifeandbreath.wordpress.com/2021/12/03/a-tribute-to-linnea/"
+    },
+    {
+      "label": "My Oncologists Make Me Feel Safe (The ASCO Post, 25 August 2016)",
+      "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer"
+    },
+    {
+      "label": "When dying is a rebirth (Harvard Health, 22 March 2018)",
+      "url": "https://www.harvardhealth.org/blog/when-dying-is-a-rebirth-2018031913413"
+    }
+  ]
+}

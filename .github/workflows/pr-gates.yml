@@ -23,8 +23,10 @@ jobs:
         run: python3 tests/test_site.py
       - name: Plain-language sources, stale-hash and category rules
         run: python3 tests/test_plain.py
-      - name: EGFR mockup gates
+      - name: Decision-tree and mockup gates
         run: python3 tests/test_mockup.py
+      - name: Case study gates
+        run: python3 tests/test_cases.py
       - name: No OncoKB and no secrets in the tree
         run: |
           if grep -RIn --exclude-dir=.git --exclude-dir=site/assets/fonts \
