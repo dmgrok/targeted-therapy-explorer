@@ -870,6 +870,102 @@ def test_what_it_is_matches_mechanism() -> None:
     ok("what_it_is follows the label mechanism; Lapatinib uses the required wording")
 
 
+
+def test_indication_specific_extension_years() -> None:
+    """Matcher must date a leaf from the extension whose 4.1 text fits that
+    line, biomarker and prior-treatment condition — not a sibling variation.
+
+    Nine cases from the 13 November 2026 QC of commit 7d202cc (Europe/Paris).
+    """
+    from build_mockup import approval_cell, slug
+
+    snap = json.loads((ROOT / "data" / "snapshot.json").read_text(encoding="utf-8"))
+    cases = [
+        # 1. Cetuximab H&N after another drug: II/0026 CD 24/11/2008
+        # (2006 was II/0005, locally advanced + RT — first-line).
+        ("EGFR", "Cetuximab",
+         ("head and neck cancer", "label does not say the gene-change subtype",
+          "after another drug"),
+         "Europe since 2008", "Europe since 2006",
+         "EGFR/head-and-neck-cancer/label-does-not-say-the-gene-change-subtype/after-another-drug.html"),
+        # 2. Enhertu HER2+ breast first treatment: EMA/VR/0000322236 CD 28/08/2026
+        # (2022 was II/0014, after prior anti-HER2).
+        ("HER2", "Fam-trastuzumab deruxtecan",
+         ("breast cancer", "HER2-positive", "as a first treatment"),
+         "Europe since 2026", "Europe since 2022",
+         "HER2/breast-cancer/her2-positive/as-a-first-treatment.html"),
+        # 3. Lapatinib HER2+ breast after another drug: original MA 10/06/2008
+        # (2010 was a later extension, not this capecitabine use).
+        ("HER2", "Lapatinib",
+         ("breast cancer", "HER2-positive", "after another drug"),
+         "Europe since 2008", "Europe since 2010",
+         "HER2/breast-cancer/her2-positive/after-another-drug.html"),
+        # 4. Lapatinib HER2+ breast, when not stated: same original MA 2008.
+        ("HER2", "Lapatinib",
+         ("breast cancer", "HER2-positive", "label does not say when it is used"),
+         "Europe since 2008", "Europe since 2010",
+         "HER2/breast-cancer/her2-positive/label-does-not-say-when-it-is-used.html"),
+        # 5. Pembrolizumab HER2+ stomach first treatment: II/0133 CD 23/08/2023
+        # (2021 was a different indication).
+        ("HER2", "Pembrolizumab",
+         ("stomach cancer", "HER2-positive", "as a first treatment"),
+         "Europe since 2023", "Europe since 2021",
+         "HER2/stomach-cancer/her2-positive/as-a-first-treatment.html"),
+        # 6. Pembrolizumab MSI-H womb after another drug: II/0109 CD 25/04/2022
+        # (2021 II/0105 was pembrolizumab + lenvatinib, not MSI monotherapy).
+        ("MSI-H-dMMR", "Pembrolizumab",
+         ("cancer of the womb", "MSI-H or dMMR", "after another drug"),
+         "Europe since 2022", "Europe since 2021",
+         "MSI-H-dMMR/cancer-of-the-womb/msi-h-or-dmmr/after-another-drug.html"),
+        # 7. Pertuzumab HER2+ breast after another drug: EU 4.1 excludes prior
+        # anti-HER2 or chemo for metastatic disease. 2015 is neoadjuvant II/0010.
+        ("HER2", "Pertuzumab",
+         ("breast cancer", "HER2-positive", "after another drug"),
+         "Europe: approved for other uses", "Europe since 2015",
+         "HER2/breast-cancer/her2-positive/after-another-drug.html"),
+        # 8. Tislelizumab HER2+ stomach first treatment: Tevimbra gastric 4.1
+        # is HER2-negative only.
+        ("HER2", "Tislelizumab",
+         ("stomach cancer", "HER2-positive", "as a first treatment"),
+         "Europe: approved for other uses", "Europe since 2024",
+         "HER2/stomach-cancer/her2-positive/as-a-first-treatment.html"),
+        # 9. Trastuzumab HER2+ breast, when not stated: no 2007 indication
+        # extension (II/0034 is a manufacturing-site change). Show approved
+        # (incomplete parse of the original MA) rather than 2007.
+        ("HER2", "Trastuzumab",
+         ("breast cancer", "HER2-positive", "label does not say when it is used"),
+         "Europe: approved", "Europe since 2007",
+         "HER2/breast-cancer/her2-positive/label-does-not-say-when-it-is-used.html"),
+    ]
+    for bid, name, triple, expect, banned, rel in cases:
+        rec = _therapy(snap, bid, name)
+        if rec is None:
+            err(f"{name} missing from the {bid} snapshot")
+            continue
+        cell = approval_cell("mainstream", rec, triple=triple)
+        if banned in cell and expect != banned:
+            err(f"{name} {triple[0]} / {triple[2]} still shows {banned}: {cell!r}")
+        if expect not in cell:
+            err(f"{name} {triple[0]} / {triple[2]} should show {expect}, got {cell!r}")
+        else:
+            ok(f"{name} {triple[0]} / {triple[2]} shows {expect}")
+        leaf = TREE / rel
+        if not leaf.is_file():
+            err(f"missing table {rel} for {name}")
+            continue
+        vis = visible_text(leaf.read_text(encoding="utf-8"))
+        window = _row_window(vis, name)
+        if not window:
+            err(f"{name} not on table {rel}")
+            continue
+        if banned in window and expect != banned:
+            err(f"{name} on {rel} still shows {banned}: {window!r}")
+        if expect not in window:
+            err(f"{name} on {rel} should show {expect}, got {window!r}")
+        else:
+            ok(f"{name} table on {rel} shows {expect}")
+
+
 def main() -> int:
     if not TREE.is_dir() or not (SITE / 'index.html').is_file():
         err("site/b is missing — run scripts/build_site.py")
@@ -895,6 +991,7 @@ def main() -> int:
     test_named_cancer_types_from_labels()
     test_unknown_cancer_fallback_remains()
     test_what_it_is_matches_mechanism()
+    test_indication_specific_extension_years()
     if errors:
         print(f"\n{len(errors)} FAIL(S)")
         return 1
