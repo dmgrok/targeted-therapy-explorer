@@ -1,7 +1,8 @@
 # Targeted Therapy Explorer
 
-A design mockup of a new page shape — a decision tree that narrows to one options table — is at [`site/mockup/`](site/mockup/index.html), built from the real snapshot for EGFR only. Other gene findings are not built in that shape yet.
+The front door is a **steps page**: a shared path for personalised cancer treatment, with a plain-language explanation and a static “how AI can help — and its limits” box at each step, and official public lists of places to start looking. There is no live AI, no form, and no collection of patient data.
 
+The decision-tree **drug pages** — a closed list of tumour gene findings, narrowing to one options table — are linked from the “matching to options or trials” step, at [`site/options/`](site/options/index.html). They stay reachable from the nav.
 
 **Not medical advice. Talk to your oncologist.**
 

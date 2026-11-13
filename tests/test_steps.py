@@ -1,0 +1,274 @@
+#!/usr/bin/env python3
+"""Gates for the steps front door (site/index.html) and the drug-pages start."""
+from __future__ import annotations
+
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+
+from readability import flesch_kincaid, visible_text  # noqa: E402
+
+SITE = ROOT / "site"
+INDEX = SITE / "index.html"
+OPTIONS = SITE / "options" / "index.html"
+BIOMARKER_IDS = ["EGFR", "ALK", "BRAF-V600E", "KRAS-G12C", "HER2", "NTRK", "MSI-H-dMMR"]
+STEPS = [
+    "step-diagnosis",
+    "step-testing",
+    "step-second-opinion",
+    "step-tumour-board",
+    "step-matching",
+    "step-monitoring",
+    "step-access",
+]
+# 8th-to-early-high-school is the target; medical names inflate the score a little.
+FK_MAX = 9.0
+
+errors: list[str] = []
+
+
+def err(msg: str) -> None:
+    errors.append(msg)
+    print(f"FAIL: {msg}")
+
+
+def ok(msg: str) -> None:
+    print(f"ok: {msg}")
+
+
+def section(html: str, sid: str) -> str:
+    m = re.search(
+        rf'<section[^>]*id="{re.escape(sid)}"[^>]*>(.*?)</section>',
+        html,
+        flags=re.S | re.I,
+    )
+    return m.group(1) if m else ""
+
+
+def test_front_door() -> None:
+    if not INDEX.is_file():
+        err("missing site/index.html")
+        return
+    html = INDEX.read_text(encoding="utf-8")
+    vis = visible_text(html)
+    if "<h1>" not in html or "Steps people take today" not in html:
+        err("home is not the steps front door")
+    else:
+        ok("index is the steps front door")
+    if "Not medical advice. Talk to your oncologist." not in html:
+        err("steps page missing short banner")
+    if "This site is general information only" not in html:
+        err("steps page missing full notice")
+    if "notice.html" not in html:
+        err("steps page does not link to the full notice")
+    if re.search(r"<form\b", html, re.I):
+        err("steps page has a form")
+    if re.search(r"<(input|textarea|select)\b", html, re.I):
+        err("steps page collects input")
+    if re.search(r"\b(we recommend|best option|preferred option|you should take)\b", html, re.I):
+        err("steps page sounds like a recommendation")
+    if "not a ranking" not in vis.lower() and "not a ranking" not in html.lower():
+        err("steps page does not say the lists are not a ranking")
+    # No live AI: static boxes only, no chat widget.
+    if re.search(r"\b(chat\s*widget|ask the assistant|type your question)\b", vis, re.I):
+        err("steps page looks like a live AI chat")
+    if "no live ai" not in vis.lower() and "no live ai" not in html.lower():
+        err("steps page does not say there is no live AI")
+    if "no patient data" not in vis.lower() and "stores no patient data" not in vis.lower():
+        # The phrase is in a details-stripped visible box ("This site stores no patient data")
+        if "stores no patient data" not in html.lower() and "no patient data" not in html.lower():
+            err("steps page does not say it stores no patient data")
+    ok("banner, notice, no form, no live AI, no recommendation")
+
+
+def test_each_step() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    for sid in STEPS:
+        chunk = section(html, sid)
+        if not chunk:
+            err(f"missing step section #{sid}")
+            continue
+        if 'class="ai-explainer"' not in chunk:
+            err(f"{sid} missing static AI explainer box")
+        if "How AI can help" not in chunk:
+            err(f"{sid} AI box missing heading")
+        if "must not" not in chunk.lower() and "must not" not in visible_text(chunk).lower():
+            err(f"{sid} AI box missing a limit")
+        if "Opened" not in chunk and "Re-opened" not in chunk:
+            err(f"{sid} missing an opened date on sources")
+        if "November 2026" not in chunk:
+            err(f"{sid} sources missing the 2026 opened date")
+    ok("each of the 7 steps has an explanation, a static AI box, and dated sources")
+
+
+def test_matching_links_drug_pages() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    chunk = section(html, "step-matching")
+    if 'href="options/index.html"' not in chunk:
+        err("matching step does not link to options/index.html")
+    else:
+        ok("matching step links to the drug pages")
+    for bid in BIOMARKER_IDS:
+        if f'href="b/{bid}/index.html"' not in html:
+            err(f"steps page missing link to {bid}")
+    if not OPTIONS.is_file():
+        err("missing options/index.html (drug-pages start)")
+        return
+    opt = OPTIONS.read_text(encoding="utf-8")
+    if "Choose a gene finding" not in opt:
+        err("options page is not the decision-tree start")
+    for bid in BIOMARKER_IDS:
+        if f'href="../b/{bid}/index.html"' not in opt:
+            err(f"options page missing link to {bid}")
+    if "Mainstream" not in opt or "On the edge" not in opt:
+        err("options page missing category labels")
+    if "Not medical advice. Talk to your oncologist." not in opt:
+        err("options page missing disclaimer")
+    ok("drug pages remain reachable from the matching step")
+
+
+def test_where_to_start() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    chunk = section(html, "where-to-start")
+    if not chunk:
+        err("missing #where-to-start")
+        return
+    vis = visible_text("<section>" + chunk + "</section>")
+    if "not a ranking" not in chunk.lower():
+        err("where-to-start does not say the order is not a ranking")
+    for heading in (
+        "Testing and expert networks",
+        "Early and compassionate access",
+        "Trial finders",
+    ):
+        if heading not in chunk:
+            err(f"where-to-start missing category {heading!r}")
+    # A–Z within each group: extract place-name text.
+    groups = re.findall(
+        r'<div class="places-group">(.*?)</div>',
+        chunk,
+        flags=re.S,
+    )
+    if len(groups) != 3:
+        err(f"expected 3 place groups, got {len(groups)}")
+    for g in groups:
+        names = re.findall(r'class="place-name"><a[^>]*>(.*?)</a>', g, flags=re.S)
+        names = [re.sub(r"<[^>]+>", "", n).strip() for n in names]
+        if names != sorted(names, key=lambda s: s.lower()):
+            err(f"place names are not A–Z: {names}")
+    if "ChiCTR" not in chunk:
+        err("where-to-start does not mention ChiCTR")
+    # Mention only: no finder card and no search-tool link.
+    if re.search(r'href="[^"]*chictr[^"]*"', chunk, re.I):
+        err("ChiCTR must be a mention only, not a search-tool link")
+    if "not used here as a search tool" not in chunk:
+        err("ChiCTR mention does not say it is not a search tool")
+    # Country is a fact, not an organising axis: no country-switch UI.
+    if re.search(r'role="tablist"|country-switch|data-country', chunk, re.I):
+        err("where-to-start has a country switch")
+    ok("where-to-start is category then A–Z, no ranking, ChiCTR mention only")
+
+
+def test_sid_example() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    chunk = section(html, "sid-sijbrandij")
+    if not chunk:
+        err("missing #sid-sijbrandij")
+        return
+    if "This is one person’s story, not evidence that a treatment works." not in chunk:
+        err("Sid section missing the case-study opener")
+    if "I currently have no evidence of disease." not in chunk:
+        err("Sid section missing verified Substack quote")
+    if "But my fight with cancer is far from over." not in chunk:
+        err("Sid section missing the second Substack quote")
+    if "maximum diagnostics" not in chunk:
+        err("Sid section missing the cancer-page quote")
+    if "AIS helped us work through enormous amounts of data" not in chunk:
+        err("Sid section missing the Forum quote")
+    if "I’m not gonna trust this out of the box" not in chunk and "I'm not gonna trust this out of the box" not in chunk:
+        err("Sid section missing Stern’s verified quote")
+    if "As of 20 January 2026, per his Substack post" not in chunk:
+        err("Sid status is not 'As of <date>, per <source>'")
+    if 'href="cases/sijbrandij.html"' not in chunk:
+        err("Sid section does not link to the case study page")
+    # Must not claim Kilo Code as his cancer tool.
+    if re.search(r"used Kilo Code", chunk) and "Unverified" not in chunk:
+        err("Sid section claims Kilo Code use without the unverified caveat")
+    if "does not claim Kilo Code as his cancer tool" not in chunk:
+        err("Sid section does not state that Kilo Code is not claimed as his cancer tool")
+    ok("Sid example uses the opener, verified quotes, and dated status")
+
+
+def test_gpt35_and_newer_evidence() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    vis = visible_text(html)
+    if "2023 studies of GPT-3.5" not in vis and "2023 studies of GPT-3.5" not in html:
+        err("2023 GPT-3.5 figures are not clearly labelled as 2023 studies of an older model")
+    if "older model" not in vis and "older model" not in html:
+        err("GPT-3.5 is not labelled as an older model")
+    if "13 of 104" not in html or "12.5%" not in html:
+        err("2023 JAMA hallucination figure missing")
+    # 2024 evidence that was actually opened this work.
+    if "23 October 2024" not in html or "JAMA Network Open" not in html:
+        err("2024 JAMA Network Open study is missing")
+    if "57 out of 79" not in html and "57 of 79" not in html:
+        err("2024 multiple-choice figure missing")
+    if "30 out of 79" not in html and "30 of 79" not in html:
+        err("2024 free-text figure missing")
+    if "14 November 2026" not in html:
+        err("2024 paper is not cited with the date it was opened")
+    if "jamanetworkopen.2024.37711" not in html and "fullarticle/2825235" not in html:
+        err("2024 paper is not linked")
+    ok("2023 GPT-3.5 figures are labelled; 2024 opened evidence is cited")
+
+
+def test_readability() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    vis = visible_text(html)
+    score = flesch_kincaid(vis)
+    grade = score["grade"]
+    print(f"FK grade for steps page: {grade} ({score['words']} words, {score['sentences']} sentences)")
+    if grade is None:
+        err("could not score FK grade")
+    elif grade > FK_MAX:
+        err(f"steps page FK grade {grade} is above {FK_MAX}")
+    else:
+        ok(f"steps page FK grade {grade} is at or under {FK_MAX}")
+
+
+def test_identity() -> None:
+    css = (SITE / "assets" / "css" / "mockup.css").read_text(encoding="utf-8")
+    if re.search(r"#d97[0-9a-fA-F]{3}|#c65[0-9a-fA-F]{3}|#e67e22|#ff6b00|#f97316|#ea580c", css):
+        err("mockup CSS appears to contain orange")
+    html = INDEX.read_text(encoding="utf-8")
+    # No product-look class names.
+    if re.search(r"copilot|chatgpt-widget|claude-box|grok-box", html, re.I):
+        err("steps page uses a forbidden assistant-product look")
+    ok("Risograph identity, no orange, no assistant-product look")
+
+
+def main() -> int:
+    if not INDEX.is_file():
+        err("site/index.html is missing — run scripts/build_site.py")
+        print("FAIL")
+        return 1
+    test_front_door()
+    test_each_step()
+    test_matching_links_drug_pages()
+    test_where_to_start()
+    test_sid_example()
+    test_gpt35_and_newer_evidence()
+    test_readability()
+    test_identity()
+    if errors:
+        print(f"\n{len(errors)} FAIL(S)")
+        return 1
+    print("\nPASS")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """WCAG AA contrast gate: every visible text element, in a headless browser.
 
-For a sample of pages (home, one biomarker page, one table per biomarker,
+For a sample of pages (the steps home, the drug-pages start, one biomarker page, one table per biomarker,
 the cases index, and one case page), compute the effective foreground and
 background colour of every visible text element, accounting for opacity
 and inherited backgrounds. The build fails if any pair is below 4.5:1.
@@ -32,6 +32,7 @@ THRESHOLD = 4.5
 
 SAMPLE = [
     "index.html",
+    "options/index.html",
     "b/EGFR/index.html",
     "b/EGFR/lung-cancer/egfr-exon-19-deletion-or-l858r/as-a-first-treatment.html",
     "b/ALK/lung-cancer/alk-fusion-or-alk-positive/as-a-first-treatment.html",

@@ -170,12 +170,18 @@ def test_pages() -> None:
             err(f"about.html missing {label}")
     ok("about page carries source attributions")
 
-    # Home has the seven biomarkers
+    # The steps home and/or the drug-pages start link the seven biomarkers.
     home = (SITE / "index.html").read_text(encoding="utf-8")
+    options = SITE / "options" / "index.html"
+    options_text = options.read_text(encoding="utf-8") if options.is_file() else ""
     for i in BIOMARKER_IDS:
-        if f"b/{i}/index.html" not in home and f"b/{i}.html" not in home:
-            err(f"home missing link to {i}")
-    ok("home links all seven biomarkers")
+        if (
+            f"b/{i}/index.html" not in home
+            and f"b/{i}.html" not in home
+            and f"../b/{i}/index.html" not in options_text
+        ):
+            err(f"home/options missing link to {i}")
+    ok("steps home or drug pages start links all seven biomarkers")
 
     # JS has stale-after-8-days and no cookies
     js = (SITE / "assets" / "js" / "app.js").read_text(encoding="utf-8")

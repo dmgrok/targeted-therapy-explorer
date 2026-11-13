@@ -374,3 +374,120 @@ h1 {
 }
 .case-pointers { margin: 0.4rem 0 1.2rem; padding-left: 1.2rem; }
 .case-choices .fine { margin: 0.25rem 0 0.8rem; }
+
+/* Steps front door: static explainers, official lists, one-person example.
+   Same Risograph identity. No orange. Nothing that looks like a chat product. */
+.confidence {
+  background: #fff;
+  color: #1b4f4c;
+  border: 1px solid #1b4f4c;
+  padding: 0.85rem 1rem;
+  max-width: 42rem;
+  margin: 1rem 0 1.6rem;
+}
+.confidence h2 {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #122e2c;
+  margin: 0 0 0.4rem;
+}
+.confidence p { margin: 0; }
+.path-step {
+  margin: 2.2rem 0;
+  max-width: 46rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(27, 79, 76, 0.18);
+}
+.path-step h2, .places h2, .ai-limits h2, .sid-example h2, #process h2 {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: #122e2c;
+  margin: 0 0 0.6rem;
+}
+.path-step-num {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #b02058;
+  margin: 0 0 0.2rem;
+}
+.ai-explainer {
+  background: #fff;
+  color: #1b4f4c;
+  border: 1px solid #1b4f4c;
+  border-left: 4px solid #1b4f4c;
+  padding: 0.85rem 1rem;
+  margin: 1rem 0;
+  max-width: 42rem;
+}
+.ai-explainer h3 {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 650;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #122e2c;
+  margin: 0 0 0.45rem;
+}
+.ai-explainer p { margin: 0 0 0.5rem; }
+.ai-explainer p:last-child { margin-bottom: 0; }
+.drug-pages-panel {
+  margin: 1.2rem 0;
+  padding: 1rem 0 0;
+}
+.drug-pages-panel h3 {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 650;
+  color: #122e2c;
+  margin: 0 0 0.5rem;
+}
+a.choice-cta {
+  display: inline-flex;
+  flex-direction: column;
+  margin: 0.6rem 0 1rem;
+  text-decoration: none;
+}
+.places, .ai-limits, .sid-example, #process {
+  max-width: 46rem;
+  margin: 2.2rem 0;
+}
+.places-group { margin: 1.3rem 0; }
+.places-group h3, .sid-example h3, .drug-pages-panel h3, .ai-limits h3 {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+  color: #122e2c;
+  margin: 0 0 0.55rem;
+}
+.places-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.places-list li {
+  background: #fff;
+  color: #1b4f4c;
+  border: 1px solid #1b4f4c;
+  margin: 0.65rem 0;
+  padding: 0.8rem 1rem;
+}
+.places-list .place-name {
+  font-weight: 650;
+  margin: 0 0 0.3rem;
+}
+.places-list .place-name a { color: #1b4f4c; }
+.places-list p { margin: 0 0 0.35rem; }
+.places-list p:last-child { margin-bottom: 0; }
+.chict-mention {
+  max-width: 42rem;
+  margin: 1rem 0 0;
+}
+#where-to-start { scroll-margin-top: 0.5rem; }
+#sid-sijbrandij, #step-matching, #ai-limits, .path-step { scroll-margin-top: 0.5rem; }
+.source-dates { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+.source-dates li { margin: 0.25rem 0; }

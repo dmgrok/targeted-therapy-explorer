@@ -170,8 +170,9 @@ def test_pages_structure() -> None:
     from readability import visible_text
     disclaimer = "Not medical advice. Talk to your oncologist."
     home = SITE / "index.html"
+    options = SITE / "options" / "index.html"
     biomarker_homes = sorted((SITE / "b").glob("*/index.html"))
-    for path in [home] + biomarker_homes:
+    for path in [home, options] + biomarker_homes:
         if not path.is_file():
             err(f"missing {path.relative_to(SITE)}")
             continue
@@ -179,18 +180,24 @@ def test_pages_structure() -> None:
         rel = path.relative_to(SITE)
         if disclaimer not in text:
             err(f"{rel}: missing disclaimer")
-        if "Mainstream" not in text or "On the edge" not in text:
-            err(f"{rel}: missing category labels")
         if re.search(r"\b(we recommend|best option|preferred option|you should take)\b", text, re.I):
             err(f"{rel}: sounds like a recommendation")
-    ok("disclaimer and category labels on home and biomarker pages")
+    for path in [options] + biomarker_homes:
+        if not path.is_file():
+            continue
+        text = path.read_text(encoding="utf-8")
+        rel = path.relative_to(SITE)
+        if "Mainstream" not in text or "On the edge" not in text:
+            err(f"{rel}: missing category labels")
+    ok("disclaimer on the steps home, drug pages and biomarker pages; category labels on the drug-page tree")
 
-    # Order note and AI note live on the home page (and in the tree legend).
+    # Order note and AI note live on the drug-pages start (and in the tree legend).
     home_text = home.read_text(encoding="utf-8") if home.is_file() else ""
-    if ORDER_NOTE not in home_text:
-        err("home missing order-means-nothing note")
-    if "not generated in your browser" not in home_text:
-        err("home missing AI-text note")
+    options_text = options.read_text(encoding="utf-8") if options.is_file() else ""
+    if ORDER_NOTE not in options_text:
+        err("drug pages start missing order-means-nothing note")
+    if "not generated in your browser" not in options_text:
+        err("drug pages start missing AI-text note")
 
     # CIViC verbatim typo and raw codes stay behind Sources on the EGFR tree,
     # not in the visible intro.
@@ -218,12 +225,14 @@ def test_pages_structure() -> None:
         ok("EGFR tree still includes raw CIViC codes behind Sources")
 
     for bid in BIOMARKER_IDS:
-        if f"b/{bid}/index.html" not in home_text:
-            err(f"home missing link to {bid}")
-    if "mainstream" not in home_text.lower() or "on the edge" not in home_text.lower():
-        err("home cards or copy missing category wording")
+        if f"b/{bid}/index.html" not in home_text and f"../b/{bid}/index.html" not in options_text:
+            err(f"neither the steps home nor the drug pages start links to {bid}")
+    if "mainstream" not in options_text.lower() or "on the edge" not in options_text.lower():
+        err("drug pages start missing category wording")
     else:
-        ok("home page is a short decision-tree start with category wording and biomarker links")
+        ok("drug pages start is a short decision-tree start with category wording and biomarker links")
+    if "options/index.html" not in home_text:
+        err("steps home does not link to the drug pages")
     # Leftover long pages from the first accessible rework must be gone.
     for bid in BIOMARKER_IDS:
         if (SITE / "b" / f"{bid}.html").is_file():
@@ -250,7 +259,9 @@ def test_no_chictor_nccn_esmo() -> None:
         text = path.read_text(encoding="utf-8")
         for word in ("ChiCTR", "NCCN", "ESMO"):
             # Allow the words only in this comment-like exclusion in tests.
-            if word in text and path.name not in {"pages_accessible.py", "generate_plain.py", "plain.py", "categories.py", "build_site.py"}:
+            # build_steps.py may mention ChiCTR and link ESMO/NCCN documents;
+            # it must not reproduce guideline content (checked in test_steps).
+            if word in text and path.name not in {"pages_accessible.py", "generate_plain.py", "plain.py", "categories.py", "build_site.py", "build_steps.py"}:
                 hits.append(f"{path.relative_to(ROOT)} contains {word}")
     if hits:
         err("forbidden source content: " + "; ".join(hits))
