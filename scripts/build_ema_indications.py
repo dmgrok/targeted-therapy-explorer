@@ -231,7 +231,10 @@ def build(fetch_dir: Path) -> dict:
                 "name": r["name"],
                 "slug": slug,
                 "url": r["url"],
+                "html_therapeutic_indication": clean(r.get("therapeutic_indication") or ""),
                 "therapeutic_indication": clean(r.get("therapeutic_indication") or ""),
+                "smpc_4_1": "",
+                "product_information_url": "",
                 "marketing_authorisation_issued": ma,
                 "marketing_authorisation_issued_iso": ma_iso,
                 "ma_year": ma_iso[:4] if ma_iso else "",
@@ -243,12 +246,56 @@ def build(fetch_dir: Path) -> dict:
                 "archive_pdf_url": (r.get("archive_pdf") or {}).get("url") or "",
             }
         )
+
+    # Prefer the committed SmPC 4.1 sidecar; fall back to a fresh /tmp
+    # fetch, then to a previously built catalog, so a rebuild never
+    # silently reverts to the incomplete EPAR-webpage field.
+    smpc_candidates = [
+        ROOT / "data" / "ema_smpc_4_1.json",
+        Path("/tmp/ema-smpc/index.json"),
+    ]
+    smpc = {}
+    for smpc_path in smpc_candidates:
+        if smpc_path.is_file():
+            raw = json.loads(smpc_path.read_text(encoding="utf-8"))
+            entries = raw.get("products", raw) if isinstance(raw, dict) else raw
+            smpc = {e["slug"]: e for e in entries}
+            break
+    prev_path = ROOT / "data" / "ema_indications.json"
+    prev = {}
+    if prev_path.is_file():
+        prev = {
+            e["slug"]: e
+            for e in json.loads(prev_path.read_text(encoding="utf-8")).get("products", [])
+        }
+    for p in products:
+        s = smpc.get(p["slug"]) or {}
+        prev_p = prev.get(p["slug"]) or {}
+        body = (s.get("smpc_4_1") or prev_p.get("smpc_4_1") or "").strip()
+        p["smpc_4_1"] = body
+        p["product_information_url"] = (
+            s.get("pi_url") or prev_p.get("product_information_url") or ""
+        )
+        # SmPC section 4.1 is the authorised indication wording.
+        # The EPAR webpage "Therapeutic indication" field is sometimes
+        # incomplete (Tarceva omitted first-line NSCLC; Cyramza omitted
+        # the erlotinib combination). Prefer 4.1 when it is present.
+        if body:
+            p["therapeutic_indication"] = body
+            p["indication_source"] = "smpc_4.1"
+        else:
+            p["indication_source"] = "epar_html"
+
     return {
         "note": (
-            "EU therapeutic indications and indication-extension dates taken "
-            "from each product's EMA EPAR page (the 'Therapeutic indication' "
-            "field and the 'Marketing authorisation issued' field) and from "
-            "the EPAR 'Procedural steps taken and scientific information "
+            "EU therapeutic indications taken from each product's EMA EPAR "
+            "English product-information PDF, section 4.1 (Therapeutic "
+            "indications), which is the authorised SmPC wording. The EPAR "
+            "webpage 'Therapeutic indication' field is kept as a cross-check; "
+            "it is sometimes incomplete relative to section 4.1 (Tarceva "
+            "omitted first-line NSCLC; Cyramza omitted the erlotinib "
+            "combination). Indication-extension dates are taken from the EPAR "
+            "'Marketing authorisation issued' field and from the EPAR 'Procedural steps taken and scientific information "
             "after authorisation' PDFs (current and archive). The year an "
             "indication was added is the Commission Decision date of the "
             "Type II / worksharing 'Extension of indication' (C.I.6.a) "

@@ -410,6 +410,101 @@ def test_vemurafenib_melanoma_europe_2012() -> None:
             ok("Vemurafenib melanoma table shows Europe since 2012")
 
 
+
+def _therapy(snapshot: dict, biomarker_id: str, name: str) -> dict | None:
+    for b in snapshot["biomarkers"]:
+        if b["id"] != biomarker_id:
+            continue
+        for rec in b.get("therapies") or []:
+            if rec.get("name") == name:
+                return rec
+    return None
+
+
+def test_erlotinib_first_line_europe() -> None:
+    """Tarceva first-line EGFR-activating NSCLC is in SmPC 4.1; II/0020 CD 24/08/2011.
+
+    The EPAR webpage Therapeutic indication field omitted this paragraph, which
+    previously made the row read 'Europe: approved for other uses'.
+    """
+    from build_mockup import approval_cell
+    snap = json.loads((ROOT / "data" / "snapshot.json").read_text(encoding="utf-8"))
+    rec = _therapy(snap, "EGFR", "Erlotinib")
+    if rec is None:
+        err("Erlotinib missing from the EGFR snapshot")
+        return
+    triple = (
+        "lung cancer",
+        "EGFR exon 19 deletion or L858R",
+        "as a first treatment",
+    )
+    cell = approval_cell("mainstream", rec, triple=triple)
+    if "approved for other uses" in cell:
+        err(f"Erlotinib first-treatment still says approved for other uses: {cell!r}")
+    if "Europe since 2011" not in cell:
+        err(f"Erlotinib first-treatment should show Europe since 2011, got {cell!r}")
+    else:
+        ok("Erlotinib first-treatment shows Europe since 2011, from Tarceva II/0020")
+
+    leaf = (
+        TREE / "EGFR" / "lung-cancer" / "egfr-exon-19-deletion-or-l858r"
+        / "as-a-first-treatment.html"
+    )
+    if not leaf.is_file():
+        err("missing first-treatment leaf for erlotinib check")
+        return
+    vis = visible_text(leaf.read_text(encoding="utf-8"))
+    window = _row_window(vis, "Erlotinib")
+    if "approved for other uses" in window:
+        err(f"Erlotinib first-treatment table still says approved for other uses: {window!r}")
+    if "Europe since 2011" not in window:
+        err(f"Erlotinib first-treatment table does not show Europe since 2011: {window!r}")
+    else:
+        ok("Erlotinib first-treatment table shows Europe since 2011")
+
+
+def test_ramucirumab_erlotinib_first_line_europe() -> None:
+    """Cyramza + erlotinib first-line EGFR-mutant NSCLC is in SmPC 4.1; II/0033 CD 23/01/2020.
+
+    The EPAR webpage Therapeutic indication field omitted this paragraph, which
+    previously made the row read 'Europe: approved for other uses'.
+    """
+    from build_mockup import approval_cell
+    snap = json.loads((ROOT / "data" / "snapshot.json").read_text(encoding="utf-8"))
+    rec = _therapy(snap, "EGFR", "Ramucirumab")
+    if rec is None:
+        err("Ramucirumab missing from the EGFR snapshot")
+        return
+    triple = (
+        "lung cancer",
+        "EGFR exon 19 deletion or L858R",
+        "as a first treatment",
+    )
+    cell = approval_cell("mainstream", rec, triple=triple)
+    if "approved for other uses" in cell:
+        err(f"Ramucirumab first-treatment still says approved for other uses: {cell!r}")
+    if "Europe since 2020" not in cell:
+        err(f"Ramucirumab first-treatment should show Europe since 2020, got {cell!r}")
+    else:
+        ok("Ramucirumab first-treatment shows Europe since 2020, from Cyramza II/0033")
+
+    leaf = (
+        TREE / "EGFR" / "lung-cancer" / "egfr-exon-19-deletion-or-l858r"
+        / "as-a-first-treatment.html"
+    )
+    if not leaf.is_file():
+        err("missing first-treatment leaf for ramucirumab check")
+        return
+    vis = visible_text(leaf.read_text(encoding="utf-8"))
+    window = _row_window(vis, "Ramucirumab")
+    if "approved for other uses" in window:
+        err(f"Ramucirumab first-treatment table still says approved for other uses: {window!r}")
+    if "Europe since 2020" not in window:
+        err(f"Ramucirumab first-treatment table does not show Europe since 2020: {window!r}")
+    else:
+        ok("Ramucirumab first-treatment table shows Europe since 2020")
+
+
 def test_gefitinib_plain_note() -> None:
     # The indication note should appear on the EGFR tree and use the plain wording.
     found = False
@@ -792,6 +887,8 @@ def main() -> int:
     test_osimertinib_europe_year()
     test_vemurafenib_ecd_no_europe_2012()
     test_vemurafenib_melanoma_europe_2012()
+    test_erlotinib_first_line_europe()
+    test_ramucirumab_erlotinib_first_line_europe()
     test_gefitinib_plain_note()
     test_every_biomarker_tree()
     test_lapatinib_letrozole_not_dropped()

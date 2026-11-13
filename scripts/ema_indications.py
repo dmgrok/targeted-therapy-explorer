@@ -160,8 +160,21 @@ def split_indication_units(text: str) -> list[str]:
     if not text:
         return []
     t = text.strip()
-    # Split on a sentence end, including list items that start with "the ".
-    parts = re.split(r"(?<=\.)\s+(?=(?:[A-Z]|the\s))", t)
+    # Normalise bullets so list items can be split.
+    t = re.sub(r"[•●◦▪‣\uf0a0]\s*", " • ", t)
+    # Split on a sentence end, including list items that start with
+    # lowercase "in combination" / "as monotherapy" (Rybrevant, Erbitux).
+    parts = re.split(
+        r"(?<=\.)\s+(?=(?:[A-Z]|the\s|in combination|as monotherapy|"
+        r"as a single agent|as a first|•))",
+        t,
+    )
+    # Also split at bullets.
+    finer0: list[str] = []
+    for p0 in parts:
+        bits0 = re.split(r"\s*•\s+", p0)
+        finer0.extend(b.strip() for b in bits0 if b.strip())
+    parts = finer0
     # Also split Tyverb-style "; in combination" / "; for patients" lists.
     finer: list[str] = []
     for p in parts:
@@ -196,7 +209,27 @@ def split_indication_units(text: str) -> list[str]:
         )
         bits = [b.strip() for b in bits if b.strip()]
         expanded.extend(bits if len(bits) > 1 else [u])
-    return expanded or [t]
+    # A list item such as "in combination with …" or "as monotherapy …"
+    # dropped the parent "X is indicated for … [cancer, mutation]" heading.
+    # Attach that heading so each item keeps its cancer and biomarker.
+    list_start = re.compile(
+        r"^(in combination|as monotherapy|as a single agent|as a first|"
+        r"in first-line|in first line|the neoadjuvant|the adjuvant|"
+        r"for the first|as a single)\b",
+        re.I,
+    )
+    inherited: list[str] = []
+    heading = ""
+    for u in (expanded or [t]):
+        if re.search(r"\bis indicated\b", u, re.I):
+            heading = u
+            inherited.append(u)
+            continue
+        if heading and list_start.search(u):
+            inherited.append((heading + " " + u).strip())
+        else:
+            inherited.append(u)
+    return inherited or [t]
 
 
 def mutation_compatible(eu_muts: list[str], eu_text: str, leaf_mut: str) -> bool:
