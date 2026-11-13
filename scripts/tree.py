@@ -15,6 +15,8 @@ from __future__ import annotations
 import re
 from typing import Iterable
 
+from labels import combinations_in, indications, normalize  # noqa: E402
+
 # Everyday cancer-type labels, with the source patterns that map to them.
 # Longer, more specific patterns are tested first.
 CANCER_TYPES: list[tuple[str, list[str]]] = [
@@ -68,10 +70,10 @@ MUTATION_SUBTYPES: list[tuple[str, list[str]]] = [
         r"exon\s*21\s*\(?\s*L858R", r"\bL858R\b", r"exon\s*19\s+delet",
     ]),
     ("EGFR T790M", [r"\bT790M\b"]),
-    ("EGFR mutations the label calls non-resistant", [
+    ("EGFR gene changes the label lists as non-resistant", [
         r"non[- ]resistant\s+.*EGFR", r"non[- ]resistant epidermal",
     ]),
-    ("EGFR mutation (subtype not further named)", [
+    ("EGFR gene change (no more precise subtype in the text)", [
         r"EGFR[- ]mutat", r"EGFR-mutated", r"epidermal growth factor receptor \(EGFR\)[- ]mutat",
         r"EGFR mutation",
     ]),
@@ -101,6 +103,10 @@ MUTATION_SUBTYPES: list[tuple[str, list[str]]] = [
 ]
 
 WHEN_USED: list[tuple[str, list[str]]] = [
+    ("after chemoradiation", [
+        r"following concurrent or sequential platinum-based chemoradiation",
+        r"following.{0,40}chemoradiation", r"after chemoradiation",
+    ]),
     ("after surgery", [
         r"\badjuvant\b", r"following tumor resection", r"following surgical",
         r"after surgery", r"post[- ]operative",
@@ -149,8 +155,9 @@ TREE_HOW = (
 def _search(text: str, patterns: list[str]) -> bool:
     if not text:
         return False
+    t = normalize(text)
     for pat in patterns:
-        if re.search(pat, text, flags=re.I):
+        if re.search(pat, t, flags=re.I):
             return True
     return False
 
@@ -166,12 +173,21 @@ def cancers_in(text: str) -> list[str]:
 def mutations_in(text: str, biomarker_id: str = "") -> list[str]:
     found = []
     for label, pats in MUTATION_SUBTYPES:
-        if _search(text, pats):
+        if _search(normalize(text), pats):
             found.append(label)
-    # If a more specific EGFR subtype was found, drop the generic one.
-    specific = [m for m in found if m.startswith("EGFR") and "not further named" not in m]
-    if specific:
-        found = [m for m in found if "not further named" not in m]
+    # Prefer a named EGFR subtype over "no more precise subtype" and over
+    # "non-resistant" when the same text also names exon 19 / L858R / T790M
+    # / exon 20 (as Afatinib's detailed indication does).
+    named = [
+        m for m in found
+        if m.startswith("EGFR")
+        and "no more precise" not in m
+        and "non-resistant" not in m
+    ]
+    if named:
+        found = [m for m in found if "no more precise" not in m and "non-resistant" not in m]
+    elif any("no more precise" in m for m in found):
+        found = [m for m in found if "no more precise" not in m or not named]
     return found
 
 
@@ -183,30 +199,170 @@ def whens_in(text: str) -> list[str]:
     return found
 
 
+def _is_limitation(text: str) -> bool:
+    return bool(
+        re.search(
+            r"limitations of use|not indicated for|not recommended for|"
+            r"safety and efficacy.{0,80}not (?:been )?established|"
+            r"were not established|has not been established|"
+            r"use has not been established",
+            text or "",
+            re.I,
+        )
+    ) and not re.search(r"is indicated", text or "", re.I)
+
+
 def _clauses(text: str) -> list[str]:
-    """Split a label excerpt into rough indication clauses."""
+    """Split a full Indications and Usage section into indication clauses.
+
+    Numbered subsections (1.1, 1.2, …) are preferred over the opening
+    highlights list, which otherwise merges every use into one blob and
+    produces a cross-product of mutations and 'when' values. A numbered
+    subsection that holds two 'is indicated' sentences is split so that
+    (for example) ramucirumab with erlotinib is not mixed with ramucirumab
+    with docetaxel.
+    """
     if not text:
         return []
-    t = text.replace("\u2022", "\n").replace("•", "\n")
-    t = re.sub(r"\s+", " ", t)
-    parts = re.split(r"(?:;\s+|\n+|\(\s*\d+(?:\.\d+)?\s*\))", t)
-    parts = [p.strip(" .;,-") for p in parts if p and len(p.strip()) > 12]
-    return parts or [text]
+    t = normalize(text)
+    t = t.replace("\u2022", "\n").replace("•", "\n")
+    t = re.sub(r"(?<!\d)(\d+\.\d+\s+[A-Z(])", r"\n\1", t)
+    t = re.sub(r"Limitations of Use\s*:", "\nLimitations of Use: ", t, flags=re.I)
+    t = re.sub(r"(?<=\.)\s+(?=Vectibix is indicated)", "\n", t)
+    t = re.sub(r"(?<=\.)\s+(?=Vectibix, in combination)", "\n", t)
+    t = re.sub(r"(?<=\.)\s+(?=ERBITUX is indicated)", "\n", t)
+    t = re.sub(r"\s+(?=As first-line therapy)", "\n", t)
+    t = re.sub(r"\s+(?=As monotherapy)", "\n", t)
+    t = re.sub(r"(?<=\.)\s+(?=(?:Metastatic Colorectal|RAS Wild-Type|KRAS G12C))", "\n", t)
+    raw = [p.strip(" .;,-") for p in re.split(r"\n+", t) if p and len(p.strip()) > 12]
+    # Prefer detailed numbered sections over the highlights preamble.
+    has_detailed = any(re.match(r"\d+\.\d+\s", p) for p in raw)
+    parts: list[str] = []
+    in_detailed = not has_detailed
+    for p in raw:
+        if re.match(r"\d+\.\d+\s", p):
+            in_detailed = True
+        if has_detailed and not in_detailed:
+            continue
+        if re.match(r"1\s+INDICATIONS AND USAGE\b", p, re.I) and has_detailed:
+            continue
+        if _is_limitation(p):
+            continue
+        # Drop a trailing Limitations sentence inside an otherwise valid clause.
+        p = re.split(r"Limitations of Use\s*:", p, maxsplit=1, flags=re.I)[0].strip()
+        if len(p) < 12:
+            continue
+        parts.append(p)
+    # Split a section that contains more than one 'is indicated'.
+    out: list[str] = []
+    for p in parts:
+        bits = re.split(
+            r"(?<=\.)\s+(?=(?:[A-Z][A-Za-z0-9®™ \-]{1,40})(?:is indicated|, in combination|, as a single))",
+            p,
+        )
+        out.extend(b.strip() for b in bits if b and len(b.strip()) > 12)
+    detailed = [
+        c for c in out
+        if re.search(r"is indicated", c, re.I)
+        and not re.match(r"1\s+INDICATIONS AND USAGE\b", c, re.I)
+    ]
+    if detailed:
+        out = [
+            c for c in out
+            if not re.match(r"1\s+INDICATIONS AND USAGE\b", c, re.I)
+        ]
+    return out or ([normalize(text)] if text else [])
+
+
+def _selection_language(text: str, biomarker_id: str) -> bool:
+    """True when a clause selects patients by this gene finding."""
+    t = normalize(text)
+    if biomarker_id == "EGFR":
+        return bool(
+            re.search(
+                r"EGFR\s+exon|exon\s*19|exon\s*21\s*\(?L858R|\bL858R\b|\bT790M\b|"
+                r"EGFR[- ]mutat|EGFR mutation|EGFR Mutation-Positive|"
+                r"non[- ]resistant.{0,80}EGFR|"
+                r"epidermal growth factor receptor\s*\(EGFR\)\s*(?:exon|mutat)|"
+                r"non[- ]resistant epidermal",
+                t,
+                re.I,
+            )
+        )
+    if biomarker_id == "ALK":
+        return bool(re.search(r"\bALK[- ]positive\b|ALK[- ]fusion|ALK-rearrang|anaplastic lymphoma kinase", t, re.I))
+    if biomarker_id == "BRAF-V600E":
+        return bool(re.search(r"BRAF\s*V600|\bV600E\b", t, re.I))
+    if biomarker_id == "KRAS-G12C":
+        return bool(re.search(r"KRAS\s*G12C|\bG12C\b", t, re.I))
+    if biomarker_id == "HER2":
+        return bool(re.search(r"HER2[- ]positive|HER2[- ]low|HER2[- ]mutat|HER-2|ERBB2|HER2-overexpress", t, re.I))
+    if biomarker_id == "NTRK":
+        return bool(re.search(r"\bNTRK|neurotrophic", t, re.I))
+    if biomarker_id == "MSI-H-dMMR":
+        return bool(re.search(r"MSI[- ]?H|dMMR|microsatellite instability|mismatch repair deficien", t, re.I))
+    return False
+
+
+
+
+def _mentions_biomarker(text: str, biomarker_id: str) -> bool:
+    """A clause is used on this biomarker page only if it talks about the gene."""
+    t = normalize(text)
+    if biomarker_id == "EGFR":
+        return bool(re.search(
+            r"\bEGFR\b|epidermal growth factor receptor|exon\s*19|exon\s*20|L858R|T790M",
+            t, re.I,
+        ))
+    if biomarker_id == "ALK":
+        return bool(re.search(r"\bALK\b|anaplastic lymphoma kinase", t, re.I))
+    if biomarker_id == "BRAF-V600E":
+        return bool(re.search(r"\bBRAF\b|V600", t, re.I))
+    if biomarker_id == "KRAS-G12C":
+        return bool(re.search(r"\bKRAS\b|\bG12C\b", t, re.I))
+    if biomarker_id == "HER2":
+        return bool(re.search(r"\bHER2\b|\bERBB2\b|HER-2", t, re.I))
+    if biomarker_id == "NTRK":
+        return bool(re.search(r"\bNTRK|neurotrophic", t, re.I))
+    if biomarker_id == "MSI-H-dMMR":
+        return bool(re.search(r"MSI|dMMR|microsatellite|mismatch repair", t, re.I))
+    return True
+
+
+def _new_section(clause: str) -> bool:
+    """True when a clause starts a new numbered indication (reset inherit)."""
+    return bool(re.match(r"\s*\d+\.\d+", clause or ""))
 
 
 def therapy_branches(therapy: dict, biomarker_id: str) -> list[tuple[str, str, str]]:
-    """Unique (cancer, mutation, when) triples from the FDA excerpt."""
-    text = therapy.get("indicationsExcerpt") or therapy.get("relationEvidence") or ""
+    """Unique (cancer, mutation, when) triples from the full FDA label.
+
+    If any clause selects patients by this gene finding, only those
+    clauses are used, so a gastric-cancer paragraph on a multi-use drug
+    does not inherit an EGFR mutation. If no clause uses selection
+    language (an EGFR-targeting antibody with no mutation requirement),
+    every clause is used except those that select on a different gene.
+    If a (cancer, mutation) pair already has a named 'when', a leftover
+    'label does not say when' for that pair is dropped.
+    """
+    text = indications(therapy)
+    if not text:
+        text = normalize(therapy.get("indicationsExcerpt") or therapy.get("relationEvidence") or "")
     clauses = _clauses(text)
-    # Also consider the full text as a fallback clause so a mention that
-    # only appears as a header is not lost.
-    if text and text not in clauses:
-        clauses.append(text)
+    any_sel = any(_selection_language(cl, biomarker_id) for cl in clauses)
     triples: set[tuple[str, str, str]] = set()
-    # Inherit cancer/mutation from earlier clauses when a short clause
-    # only names the "when".
+    clause_map: dict[tuple[str, str, str], list[str]] = {}
     inherit_c, inherit_m = [], []
     for cl in clauses:
+        if _new_section(cl):
+            inherit_c, inherit_m = [], []
+        if any_sel:
+            if not _selection_language(cl, biomarker_id):
+                inherit_c, inherit_m = [], []
+                continue
+        elif _selection_language(cl, "") is False and _other_gene_selection(cl, biomarker_id):
+            inherit_c, inherit_m = [], []
+            continue
         cs = cancers_in(cl) or inherit_c
         ms = mutations_in(cl, biomarker_id) or inherit_m
         ws = whens_in(cl)
@@ -224,9 +380,64 @@ def therapy_branches(therapy: dict, biomarker_id: str) -> list[tuple[str, str, s
             for m in ms:
                 for w in ws:
                     triples.add((c, m, w))
+                    clause_map.setdefault((c, m, w), []).append(cl)
+    # Drop a 'does not say' value when the same other two axes already
+    # have a named value, and drop a fully unknown leaf if any specific
+    # leaf exists.
+    def _unknown(s: str) -> bool:
+        return "does not say" in (s or "")
+
+    named_cm = {(c, m) for (c, m, w) in triples if not _unknown(w)}
+    named_cw = {(c, w) for (c, m, w) in triples if not _unknown(m)}
+    named_mw = {(m, w) for (c, m, w) in triples if not _unknown(c)}
+    has_specific = any(not (_unknown(c) and _unknown(m) and _unknown(w)) for (c, m, w) in triples)
+    kept = set()
+    for (c, m, w) in triples:
+        if _unknown(w) and (c, m) in named_cm:
+            continue
+        if _unknown(m) and (c, w) in named_cw:
+            continue
+        if _unknown(c) and (m, w) in named_mw:
+            continue
+        if has_specific and _unknown(c) and _unknown(m) and _unknown(w):
+            continue
+        kept.add((c, m, w))
+    triples = kept
     if not triples:
         triples.add((LABEL_UNKNOWN_CANCER, LABEL_UNKNOWN_MUTATION, LABEL_UNKNOWN_WHEN))
+    therapy["_leaf_clauses"] = {
+        f"{c}|{m}|{w}": clause_map.get((c, m, w), [])
+        for (c, m, w) in triples
+    }
     return sorted(triples)
+
+
+def _other_gene_selection(text: str, biomarker_id: str) -> bool:
+    """True when a clause clearly selects on a gene that is not this page."""
+    t = normalize(text)
+    other = {
+        "EGFR": r"\bBRAF\s*V600|\bALK[- ]positive\b|KRAS\s*G12C|\bNTRK\s+fusion|HER2[- ]positive",
+        "ALK": r"EGFR\s+exon|\bBRAF\s*V600|KRAS\s*G12C",
+        "BRAF-V600E": r"EGFR\s+exon|\bALK[- ]positive\b|KRAS\s*G12C",
+        "KRAS-G12C": r"EGFR\s+exon|\bBRAF\s*V600|\bALK[- ]positive\b",
+        "HER2": r"EGFR\s+exon|\bBRAF\s*V600|KRAS\s*G12C",
+        "NTRK": r"EGFR\s+exon|\bBRAF\s*V600|KRAS\s*G12C",
+        "MSI-H-dMMR": r"EGFR\s+exon|\bBRAF\s*V600|KRAS\s*G12C",
+    }.get(biomarker_id, "")
+    return bool(other and re.search(other, t, re.I))
+
+
+def leaf_clauses(therapy: dict, triple: tuple[str, str, str]) -> list[str]:
+    c, m, w = triple
+    stored = (therapy.get("_leaf_clauses") or {}).get(f"{c}|{m}|{w}") or []
+    if stored:
+        return stored
+    # Fallback: whole indications text.
+    return [indications(therapy)]
+
+
+def is_unknown_leaf(triple: tuple[str, str, str]) -> bool:
+    return all("does not say" in x for x in triple)
 
 
 def trial_branches(trial: dict, biomarker_id: str) -> list[tuple[str, str, str]]:
@@ -375,3 +586,63 @@ def trial_count_summary(trials: list[dict], biomarker_id: str, fr: int, ch: int)
         head += ": " + "; ".join(bits)
     head += f". {fr} with a site in France, {ch} with a site in Switzerland."
     return head
+
+# One plain line per branch, shown on the mockup, explaining why it exists.
+BRANCH_WHY: dict[str, str] = {
+    "lung cancer": "The FDA label or the trial record names lung cancer (often as NSCLC, a type of lung cancer).",
+    "bowel cancer": "The FDA label or the trial record names colorectal (bowel) cancer.",
+    "head and neck cancer": "The FDA label or the trial record names head and neck cancer.",
+    "breast cancer": "The FDA label or the trial record names breast cancer.",
+    "brain tumour": "The FDA label or the trial record names a brain tumour.",
+    "cancer of the womb": "The FDA label or the trial record names endometrial cancer (cancer of the womb).",
+    "ovarian cancer": "The FDA label or the trial record names ovarian cancer.",
+    "solid tumours (several cancer types)": "The record names solid tumours, a group of several cancer types.",
+    "melanoma (skin cancer)": "The FDA label or the trial record names melanoma, a skin cancer.",
+    "lymphoma": "The FDA label or the trial record names a lymphoma.",
+    "EGFR exon 19 deletion or L858R": "The FDA label names these two EGFR gene changes.",
+    "EGFR exon 20 insertion": "The FDA label or the trial record names an EGFR exon 20 insertion (an extra piece of DNA in that part of the gene).",
+    "EGFR T790M": "The FDA label names an EGFR T790M change, often after an earlier EGFR drug.",
+    "EGFR gene changes the label lists as non-resistant": "The label uses the wording “non-resistant EGFR mutations” and does not only name one subtype in that clause.",
+    "EGFR gene change (no more precise subtype in the text)": "The text says there is an EGFR gene change but does not name a more precise subtype.",
+    "KRAS wild-type (no KRAS change)": "The label is for people whose KRAS gene has no change at the places the label names.",
+    "KRAS G12C": "The FDA label or the trial record names a KRAS G12C change.",
+    "HER2 mutation": "The record names a HER2 gene change.",
+    "HER2-positive": "The record names HER2-positive disease.",
+    "ALK fusion or ALK-positive": "The record names an ALK gene change or an ALK-positive test.",
+    "NTRK fusion": "The record names an NTRK fusion (an NTRK gene joined to another gene).",
+    "MSI-H or dMMR": "The record names an MSI-H or dMMR test finding.",
+    "as a first treatment": "The label or trial record says this is used as a first treatment.",
+    "after another drug": "The label or trial record says this is used after another drug, or after the disease has progressed.",
+    "after surgery": "The label says this is used after surgery (adjuvant treatment).",
+    "after chemoradiation": "The label says this is used after chemoradiation (chemotherapy given with radiotherapy).",
+    "as maintenance": "The label says this is used as maintenance treatment.",
+    "label does not say the cancer type": "The FDA label text in this snapshot does not name a cancer type that the tree rule recognises.",
+    "label does not say the gene-change subtype": "The FDA label text does not name a gene-change subtype that the tree rule recognises.",
+    "label does not say when it is used": "The FDA label text does not say whether this is a first treatment or used after another drug.",
+    "trial record does not say the cancer type": "The trial record does not name a cancer type that the tree rule recognises.",
+    "trial record does not say the gene-change subtype": "The trial record does not name a gene-change subtype that the tree rule recognises.",
+    "trial record does not say when it is used": "The trial record does not say whether the study is a first treatment or is used after another drug.",
+}
+
+
+def branch_why(label: str) -> str:
+    return BRANCH_WHY.get(label, "This branch exists because the label or trial record used this wording.")
+
+
+def mainstream_completeness(biomarker: dict, therapies: list) -> list[str]:
+    """Every Mainstream therapy must land in at least one leaf that is not
+    only 'does not say' branches. Returns a list of failure messages.
+    """
+    errors = []
+    bid = biomarker.get("id") or ""
+    for t in therapies:
+        branches = therapy_branches(t, bid)
+        ok = [b for b in branches if not is_unknown_leaf(b) and "does not say" not in b[0]]
+        # At least one leaf with a recognised cancer type.
+        if not ok:
+            errors.append(
+                f"{bid}: {(t.get('name') or '?')} has no Mainstream leaf with a "
+                f"recognised cancer type (branches={branches})"
+            )
+    return errors
+

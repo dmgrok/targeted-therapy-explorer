@@ -47,8 +47,22 @@ def test_click_path() -> None:
     vis = visible_text(leaf)
     if "Amivantamab" not in vis or "Gefitinib" not in vis:
         err("first-treatment table is missing expected Mainstream drugs")
+    if "Osimertinib" not in vis:
+        err("Osimertinib is missing from the first-treatment table (full-label completeness)")
+    if "Erlotinib" not in vis:
+        err("Erlotinib is missing from the first-treatment table (full-label completeness)")
     if "Mobocertinib" in vis:
         err("Mobocertinib appeared on the exon 19 first-treatment leaf")
+    # Combination wording from the label, never as a standalone option.
+    if "together with erlotinib" not in vis.lower():
+        err("Ramucirumab first-treatment row does not say it is used together with erlotinib")
+    if "together with lazertinib" not in vis.lower():
+        err("Amivantamab first-treatment row does not say it is used together with lazertinib")
+    if "together with amivantamab" not in vis.lower():
+        err("Lazertinib first-treatment row does not say it is used together with amivantamab")
+    # What-it-is must not be a route alone or a nameless fallback.
+    if "a drug named on the FDA label" in vis:
+        err("a 'drug named on the FDA label' fallback is visible")
     if "<table" not in leaf:
         err("leaf page has no options table")
     for col in ("Option", "What it is", "Level", "Approved where", "Source"):
@@ -112,6 +126,60 @@ def test_no_js_required() -> None:
     ok("leaf works as a static page with Sources <details>")
 
 
+
+def test_notice_and_banner() -> None:
+    notice = MOCK / "notice.html"
+    if not notice.is_file():
+        err("missing mockup/notice.html full-notice page")
+        return
+    if "Talk to your oncologist" not in notice.read_text(encoding="utf-8"):
+        err("notice page is missing the full disclaimer")
+    # Intermediate steps: short banner + link, not only the long text as the sole banner.
+    step = MOCK / "EGFR" / "lung-cancer" / "index.html"
+    html = step.read_text(encoding="utf-8")
+    if "Not medical advice. Talk to your oncologist." not in html:
+        err("cancer-step page missing short disclaimer")
+    if "notice.html" not in html:
+        err("cancer-step page does not link to the full notice")
+    home = (MOCK / "index.html").read_text(encoding="utf-8")
+    leaf = (
+        MOCK / "EGFR" / "lung-cancer" / "egfr-exon-19-deletion-or-l858r" / "as-a-first-treatment.html"
+    ).read_text(encoding="utf-8")
+    if "This site is general information only" not in home or "This site is general information only" not in leaf:
+        err("full disclaimer is missing from the home or the table page")
+    ok("short banner, notice page, and full text on home and table")
+
+
+def test_what_it_is_and_combo() -> None:
+    leaf = (
+        MOCK / "EGFR" / "lung-cancer" / "egfr-exon-19-deletion-or-l858r" / "as-a-first-treatment.html"
+    ).read_text(encoding="utf-8")
+    vis = visible_text(leaf)
+    if "once-daily pill" not in vis and "a once-daily pill" not in vis.lower():
+        err("first-treatment 'what it is' does not say how a pill is given")
+    if "blocks the EGFR signal" not in vis:
+        err("first-treatment 'what it is' does not say what a kinase inhibitor does")
+    if "drip into a vein" not in vis:
+        err("first-treatment table has no drip-into-a-vein route for an infusion drug")
+    ok("what-it-is cells have a route and a plain-language class")
+
+
+def test_confusing_branch_labels_gone() -> None:
+    for p in MOCK.rglob("*.html"):
+        html = p.read_text(encoding="utf-8")
+        vis = visible_text(html)
+        if "subtype not further named" in vis:
+            err(f"{p.relative_to(SITE)}: old confusing branch label is still visible")
+        if "the label calls non-resistant" in vis:
+            err(f"{p.relative_to(SITE)}: old 'non-resistant' branch label is still visible")
+    # Featured mutation page should explain why the branch exists.
+    mut = MOCK / "EGFR" / "lung-cancer" / "index.html"
+    vis = visible_text(mut.read_text(encoding="utf-8"))
+    if "FDA label names these two EGFR gene changes" not in vis and "these two EGFR gene changes" not in vis:
+        err("mutation choice page has no plain explanation of why the exon 19 / L858R branch exists")
+    ok("confusing branch labels were renamed and each branch has a why line")
+
+
 def main() -> int:
     if not MOCK.is_dir():
         err("site/mockup is missing — run scripts/build_mockup.py")
@@ -121,6 +189,9 @@ def main() -> int:
     test_mobocertinib_withdrawn()
     test_visible_layer()
     test_no_js_required()
+    test_notice_and_banner()
+    test_what_it_is_and_combo()
+    test_confusing_branch_labels_gone()
     if errors:
         print(f"\n{len(errors)} FAIL(S)")
         return 1

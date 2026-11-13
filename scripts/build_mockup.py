@@ -37,8 +37,11 @@ from categories import (  # noqa: E402
 )
 from generate_plain import _ema_year, _unique_brands  # noqa: E402
 from plain import load_plain, line_by_id  # noqa: E402
+from labels import combo_note, entry_for, what_it_is  # noqa: E402
 from tree import (  # noqa: E402
     TREE_HOW,
+    branch_why,
+    leaf_clauses,
     build_tree,
 )
 from withdrawn import (  # noqa: E402
@@ -69,8 +72,8 @@ MUTATION_DEFS = {
     "EGFR exon 20 insertion": "an extra piece of DNA in that part of the EGFR gene",
     "EGFR exon 19 deletion or L858R": "two EGFR gene changes named on many labels",
     "EGFR T790M": "an EGFR gene change often named as resistance to earlier drugs",
-    "EGFR mutations the label calls non-resistant": "EGFR gene changes the label lists as non-resistant",
-    "EGFR mutation (subtype not further named)": "an EGFR gene change, without a more precise subtype in the text",
+    "EGFR gene changes the label lists as non-resistant": "EGFR gene changes the label lists as non-resistant",
+    "EGFR gene change (no more precise subtype in the text)": "an EGFR gene change, without a more precise subtype in the text",
     "KRAS wild-type (no KRAS change)": "the KRAS gene has no change at the places the label names",
     "HER2 mutation": "a change in the HER2 gene itself",
 }
@@ -357,6 +360,7 @@ def raw_sources(kind: str, rec) -> str:
             f'{esc(rec.get("id"))}</a>. Status: {esc(rec.get("status") or "")}.</p>'
         )
     excerpt = rec.get("indicationsExcerpt") or ""
+    label_entry = entry_for(rec) or {}
     ema_h = ""
     for e in rec.get("ema") or []:
         name = e.get("name") or e.get("inn") or "EMA"
@@ -369,11 +373,24 @@ def raw_sources(kind: str, rec) -> str:
             if url
             else f"<li>{esc(label)}</li>"
         )
+    iu = label_entry.get("indications_and_usage") or excerpt
+    meta = ""
+    if label_entry:
+        meta = (
+            f'<p class="fine">Committed FDA label snapshot: set id '
+            f'{esc(label_entry.get("set_id") or "")}, version {esc(label_entry.get("version") or "")}, '
+            f'effective {esc(label_entry.get("effective_time") or "")}, '
+            f'retrieved {esc(label_entry.get("retrieval_date") or "")}. '
+            f'<a href="{esc(label_entry.get("dailymed_url") or "")}">DailyMed</a> · '
+            f'<a href="{esc(label_entry.get("openfda_url") or "")}">openFDA</a>.</p>'
+        )
     excerpt_h = (
-        f'<p class="excerpt">{esc(excerpt)}</p>'
-        '<p class="fine">Excerpt of Indications and Usage from the FDA drug label. '
-        "See the official label for the complete, current text.</p>"
-    ) if excerpt else ""
+        f'<p class="excerpt">{esc(iu)}</p>'
+        + (meta or (
+            '<p class="fine">Excerpt of Indications and Usage from the FDA drug label. '
+            "See the official label for the complete, current text.</p>"
+        ))
+    ) if iu else (meta or "")
     ema_block = f'<ul class="cites">{ema_h}</ul>' if ema_h else ""
     return excerpt_h + ema_block
 
@@ -394,9 +411,19 @@ def table_html(options: list, plain: dict) -> str:
             name, brand = display_name(kind, rec)
             line = line_for(kind, rec, plain)
             what = (line or {}).get("text") or ""
-            # "What it is" is the everyday description. Approval place and
-            # date live in their own column, so drop a trailing approval clause.
-            if ". " in what:
+            combo = ""
+            therapy_rec = rec
+            if kind == "withdrawn" and isinstance(rec, dict) and "therapy" in rec:
+                therapy_rec = rec["therapy"]
+            if kind == "mainstream":
+                what = what_it_is(therapy_rec, "EGFR")
+                # Capitalise for the cell: "A once-daily pill..."
+                if what:
+                    what = what[0].upper() + what[1:]
+                combo = opt.get("combo") or ""
+            elif ". " in what:
+                # "What it is" is the everyday description. Approval place and
+                # date live in their own column, so drop a trailing approval clause.
                 first, rest = what.split(". ", 1)
                 if rest.lower().startswith("approved") or rest.lower().startswith("authorised"):
                     what = first + "."
@@ -412,12 +439,13 @@ def table_html(options: list, plain: dict) -> str:
             brand_h = f' <span class="brand">({esc(brand)})</span>' if brand else ""
             option_cell = f"<strong>{esc(name)}</strong>{brand_h}"
             if kind == "trials" and (rec.get("title") or ""):
-                # Visible trial title stays short — the plain line already is.
                 pass
+            combo_h = f'<p class="combo">{esc(combo)}</p>' if combo else ""
+            what_h = esc(what) + combo_h
             rows.append(
                 "<tr>"
                 f'<th scope="row" class="col-option">{option_cell}</th>'
-                f'<td class="col-what" data-label="What it is">{esc(what)}</td>'
+                f'<td class="col-what" data-label="What it is">{what_h}</td>'
                 f'<td class="col-level" data-label="Level">{level_tag(kind)}</td>'
                 f'<td class="col-approved" data-label="Approved">{esc(approved) if kind != "trials" else approved}</td>'
                 f'<td class="col-source" data-label="Source">{slink}{sources_block(raw)}</td>'
@@ -457,9 +485,12 @@ def choice_list(items: list[dict], heading: str, question: str) -> str:
         cls = "choice unknown" if unknown else "choice"
         n = it["count"]
         noun = "listing" if n == 1 else "listings"
+        why = it.get("why") or branch_why(it["label"])
+        why_h = f'<span class="choice-why">{esc(why)}</span>' if why else ""
         cards.append(
             f'<li><a class="{cls}" href="{esc(it["href"])}">'
             f'<span class="choice-name">{it["label_html"]}</span>'
+            f'{why_h}'
             f'<span class="choice-n">{n} {noun} this way</span>'
             "</a></li>"
         )
@@ -470,21 +501,28 @@ def choice_list(items: list[dict], heading: str, question: str) -> str:
     )
 
 
-def page_shell(title: str, depth: int, snap: dict, body: str, crumbs_h: str) -> str:
+def page_shell(title: str, depth: int, snap: dict, body: str, crumbs_h: str, full_notice: bool = False) -> str:
     ct_ts = (snap.get("clinicalTrials") or {}).get("dataTimestamp") or ""
-    # notice() uses root= to pick data path; mockup is under site/mockup/...
-    # Data file: from mockup/index (depth 1) → ../data; from deeper, still site-relative.
-    # The published site copies data to site/data. notice(root=False) uses ../data/snapshot.json
-    # which is correct from site/b/ but from site/mockup/EGFR/lung/... need more ..
-    # We'll write our own short notice using the same wording, with a correct relative data link.
     data_rel = asset_prefix(depth) + "data/snapshot.json"
+    notice_rel = asset_prefix(depth) + "mockup/notice.html"
+    short = (
+        f'<div class="notice notice-short" role="note">'
+        f'<strong>{esc(DISCLAIMER_SHORT)}</strong> '
+        f'<a href="{esc(notice_rel)}">Full notice</a>.'
+        f'</div>'
+    )
+    long = ""
+    if full_notice:
+        long = (
+            f'<div class="notice notice-full" role="note">'
+            f'{esc(DISCLAIMER_LONG)} '
+            f'Data is a snapshot as of <time datetime="{esc(snap["snapshotDate"])}">{esc(fmt_date(snap["snapshotDate"]))}</time>. '
+            f'ClinicalTrials.gov processed this trial data on <time datetime="{esc(ct_ts)}">{esc(fmt_date(ct_ts))}</time>.'
+            f'</div>'
+        )
     notice_h = f"""
-    <div class="notice" role="note">
-      <strong>{esc(DISCLAIMER_SHORT)}</strong>
-      {esc(DISCLAIMER_LONG)}
-      Data is a snapshot as of <time datetime="{esc(snap['snapshotDate'])}">{esc(fmt_date(snap['snapshotDate']))}</time>.
-      ClinicalTrials.gov processed this trial data on <time datetime="{esc(ct_ts)}">{esc(fmt_date(ct_ts))}</time>.
-    </div>
+    {short}
+    {long}
     <div class="stale" id="stale-banner" hidden>
       This snapshot is more than eight days old. Figures may be out of date — please check the original FDA, EMA and ClinicalTrials.gov records, and do not rely on this page alone.
     </div>
@@ -574,6 +612,79 @@ def leaf_count(node) -> int:
     return sum(len(w["options"]) for m in node.get("mutations", node) for w in (m.get("whens") if "whens" in m else [m]))
 
 
+
+def _combo_only(clauses: list[str]) -> bool:
+    """True when every placing clause is combination-only (no standalone use)."""
+    if not clauses:
+        return False
+    any_combo = False
+    for cl in clauses:
+        low = (cl or "").lower()
+        if "in combination with" in low:
+            any_combo = True
+            # "as a single agent or in combination" is not combination-only.
+            if "as a single agent or in combination" in low or "as monotherapy or in combination" in low:
+                return False
+        elif "as a single agent" in low or "as monotherapy" in low:
+            return False
+        else:
+            # An indication with no combination wording is a standalone use.
+            return False
+    return any_combo
+
+
+def _attach_combos(options: list, triple: tuple[str, str, str]) -> list[str]:
+    """Set opt['combo'] from the label; fail if a combo-only drug looks standalone."""
+    errors = []
+    c, m, w = triple
+    for opt in options:
+        if opt.get("kind") != "mainstream":
+            continue
+        rec = opt["record"]
+        clauses = leaf_clauses(rec, triple)
+        note = combo_note(clauses)
+        opt["combo"] = note
+        if _combo_only(clauses):
+            if "together with" not in (note or "").lower():
+                errors.append(
+                    f"{rec.get('name')} at {c} / {m} / {w}: combination-only on the "
+                    f"label but the row does not say 'used together with' (note={note!r})"
+                )
+            # A combination partner must not read as a standalone option.
+            if note and "used alone" in note.lower() and "or together" not in note.lower():
+                errors.append(
+                    f"{rec.get('name')} at {c} / {m} / {w}: combination-only but "
+                    f"the note implies a standalone use: {note!r}"
+                )
+    return errors
+
+
+def write_notice(snap: dict) -> None:
+    """One full-notice page, linked from the short banner on every step."""
+    body = (
+        "<h1>Notice</h1>"
+        f"<p>{esc(DISCLAIMER_LONG)}</p>"
+        "<p>This mockup is general information from public FDA, EMA and "
+        "ClinicalTrials.gov records in a dated snapshot. It is not a medical "
+        "device, and it does not take account of any person’s medical situation.</p>"
+        "<p>Talk to your oncologist before making any decision about your care. "
+        "Check the original FDA drug label, the EMA record and ClinicalTrials.gov "
+        "for the complete, current text.</p>"
+        f'<p class="fine"><a href="index.html">Back to the mockup home</a>.</p>'
+    )
+    write(
+        OUT / "notice.html",
+        page_shell(
+            "Notice — Targeted Therapy Explorer (mockup)",
+            1,
+            snap,
+            body,
+            crumbs([("index.html", "Home"), ("notice.html", "Notice")], 1),
+            full_notice=True,
+        ),
+    )
+
+
 def build(snap: dict) -> dict:
     """Build the EGFR mockup. Returns a report dict."""
     b = next(x for x in snap.get("biomarkers") or [] if x["id"] == BIOMARKER_ID)
@@ -589,7 +700,14 @@ def build(snap: dict) -> dict:
     if OUT.exists():
         for p in OUT.rglob("*.html"):
             p.unlink()
+        # Drop leftover empty directories from renamed branches.
+        for d in sorted((x for x in OUT.rglob("*") if x.is_dir()), reverse=True):
+            try:
+                d.rmdir()
+            except OSError:
+                pass
     OUT.mkdir(parents=True, exist_ok=True)
+    write_notice(snap)
 
     n_leaves = 0
     n_pages = 0
@@ -637,6 +755,7 @@ def build(snap: dict) -> dict:
             snap,
             home_body,
             crumbs([("index.html", "Home")], 1),
+            full_notice=True,
         ),
     )
     n_pages += 1
@@ -858,6 +977,14 @@ def build(snap: dict) -> dict:
                         "path": f"EGFR/{cslug}/{mslug}/{wslug}.html",
                     }
                 )
+                combo_errors = _attach_combos(
+                    wnode["options"],
+                    (cnode["cancer"], mnode["mutation"], wnode["when"]),
+                )
+                if combo_errors:
+                    raise SystemExit(
+                        "Combination gate failed:\n" + "\n".join(combo_errors)
+                    )
                 table = table_html(wnode["options"], plain)
                 # Indication notes if a named mainstream drug on this leaf has one.
                 leaf_notes = indication_notes_html(
@@ -896,6 +1023,7 @@ def build(snap: dict) -> dict:
                             ],
                             4,
                         ),
+                        full_notice=True,
                     ),
                 )
                 n_pages += 1

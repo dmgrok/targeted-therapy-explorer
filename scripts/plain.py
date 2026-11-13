@@ -71,7 +71,10 @@ ROUTE_CLAIMS = {
     "pill": (r"\btablets?\b", r"\bpills?\b", r"\borally\b", r"\boral use\b", r"\bfor oral\b"),
     "capsule": (r"\bcapsules?\b",),
     "infusion": (r"\binfusion\b", r"\bintravenous(?:ly)?\b"),
-    "daily": (r"\bdaily\b", r"\bonce a day\b", r"\bevery day\b"),
+    "drip": (r"\binfusion\b", r"\bintravenous(?:ly)?\b", r"\bdrip\b"),
+    "vein": (r"\binfusion\b", r"\bintravenous(?:ly)?\b", r"\bvein\b"),
+    "injection": (r"\binjection\b", r"\bsubcutaneous(?:ly)?\b"),
+    "daily": (r"\bdaily\b", r"\bonce a day\b", r"\bevery day\b", r"\bonce daily\b"),
 }
 
 
@@ -316,6 +319,13 @@ def build_source_index(snap: dict, biomarker: dict) -> dict[str, dict]:
             " ".join(t.get("brandNames") or []),
             " ".join(t.get("genericNames") or []),
             t.get("indicationsExcerpt") or "",
+        ]
+        try:
+            from labels import label_blob
+            bits.append(label_blob(t))
+        except Exception:
+            pass
+        bits = bits + [
             t.get("relationEvidence") or "",
             t.get("relationReason") or "",
             json.dumps(t.get("fda") or {}, ensure_ascii=False),
@@ -746,6 +756,20 @@ def validate_all(snap: dict) -> list[str]:
             continue
         errors.extend(validate_biomarker(snap, b, catalog, name_pat))
     errors.extend(validate_withdrawn(snap))
+    errors.extend(validate_completeness(snap))
+    return errors
+
+
+
+def validate_completeness(snap: dict) -> list[str]:
+    """Every Mainstream drug must land in at least one leaf that is not
+    only 'does not say' branches, using the full committed label text.
+    """
+    from tree import mainstream_completeness
+    from withdrawn import display_mainstream
+    errors = []
+    for b in snap.get("biomarkers") or []:
+        errors.extend(mainstream_completeness(b, display_mainstream(b)))
     return errors
 
 

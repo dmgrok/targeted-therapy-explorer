@@ -1,7 +1,7 @@
 {
   "biomarker_id": "EGFR",
-  "generated_at": "2026-11-13T17:58:15+01:00",
-  "source_hash": "40e0cd0c3da058bef42cdda30fdb4fd6f9b489b52850006b7746c972ff595d74",
+  "generated_at": "2026-11-13T18:24:55+01:00",
+  "source_hash": "1bf727eac159a87d02f90223ee416c1d97c5d9c6abd09df7f400690caa67fa43",
   "intro": {
     "what": [
       "EGFR is a gene.",
