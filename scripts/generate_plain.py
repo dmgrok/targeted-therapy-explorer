@@ -24,10 +24,13 @@ from categories import (  # noqa: E402
     TRIALS,
     companion_diagnostics,
     leftover_civic,
-    mainstream_therapies,
     on_the_edge_assertions,
     option_id,
     trial_options,
+)
+from withdrawn import (  # noqa: E402
+    display_mainstream,
+    withdrawn_therapies,
 )
 from matching import relevant_excerpt  # noqa: E402
 from plain import (  # noqa: E402
@@ -51,91 +54,84 @@ PARIS = ZoneInfo("Europe/Paris")
 INTROS: dict[str, dict] = {
     "EGFR": {
         "what": [
-            "EGFR, short for epidermal growth factor receptor, is a gene.",
-            "Amplification and mutations of EGFR have been shown to be driving events in many cancer types, including non-small cell lung cancer, glioblastoma and basal-like breast cancers.",
+            "EGFR is a gene.",
+            "Changes in this gene can help some cancers grow, including some lung, brain and breast cancers.",
         ],
         "test_report": (
-            "If a test report mentions EGFR, it is recording a finding about this gene. "
-            "This page lists public FDA companion diagnostics that look for EGFR, and the therapies and trials in this snapshot that use EGFR as a selection criterion. "
-            "That mention is not a diagnosis or a treatment decision on its own."
+            "If a test report mentions EGFR, it is noting a finding about this gene. "
+            "That note is not a diagnosis, and it is not a decision about treatment."
         ),
         "source_ids": ["civic-gene:EGFR", "biomarker:EGFR", "summary:EGFR", "method:categories"],
         "test_report_source_ids": ["method:categories", "biomarker:EGFR"],
     },
     "ALK": {
         "what": [
-            "ALK, short for anaplastic lymphoma kinase, is a gene.",
-            "ALK amplifications, fusions and mutations have been shown to be driving events in non-small cell lung cancer.",
+            "ALK is a gene.",
+            "Changes in ALK — extra copies, joins with another gene, or mutations — can help some lung cancers grow.",
         ],
         "test_report": (
-            "If a test report mentions ALK, it is recording a finding about this gene. "
-            "This page lists public FDA companion diagnostics that look for ALK, and the therapies and trials in this snapshot that use ALK as a selection criterion. "
-            "That mention is not a diagnosis or a treatment decision on its own."
+            "If a test report mentions ALK, it is noting a finding about this gene. "
+            "That note is not a diagnosis, and it is not a decision about treatment."
         ),
         "source_ids": ["civic-gene:ALK", "biomarker:ALK", "summary:ALK", "method:categories"],
         "test_report_source_ids": ["method:categories", "biomarker:ALK"],
     },
     "BRAF-V600E": {
         "what": [
-            "BRAF V600E is a substitution in the BRAF gene: the mutation of valine 600 to glutamic acid (V600E).",
-            "BRAF mutations are found to be recurrent in many cancer types, and of these, V600E is the most prevalent. V600E has been determined to be an activating mutation.",
+            "BRAF V600E is a change in the BRAF gene.",
+            "This change is the most common BRAF change in many cancers, and it can switch the gene on.",
         ],
         "test_report": (
-            "If a test report mentions BRAF V600E, it is recording a finding about this gene change. "
-            "This page lists public FDA companion diagnostics that look for BRAF V600E, and the therapies and trials in this snapshot that use BRAF V600E as a selection criterion. "
-            "That mention is not a diagnosis or a treatment decision on its own."
+            "If a test report mentions BRAF V600E, it is noting this gene change. "
+            "That note is not a diagnosis, and it is not a decision about treatment."
         ),
         "source_ids": ["civic-gene:BRAF", "biomarker:BRAF-V600E", "summary:BRAF-V600E", "method:categories"],
         "test_report_source_ids": ["method:categories", "biomarker:BRAF-V600E"],
     },
     "KRAS-G12C": {
         "what": [
-            "KRAS G12C is a substitution in the KRAS gene, which belongs to the RAS family of proteins.",
-            "Mutations in the RAS family of proteins are frequently observed across cancer types, and the amino acid positions that account for the overwhelming majority of these mutations are G12, G13 and Q61.",
+            "KRAS G12C is a change in the KRAS gene, which belongs to a family of genes called RAS.",
+            "Changes at this spot in RAS genes are often seen in several cancers.",
         ],
         "test_report": (
-            "If a test report mentions KRAS G12C, it is recording a finding about this gene change. "
-            "This page lists public FDA companion diagnostics that look for KRAS G12C, and the therapies and trials in this snapshot that use KRAS G12C as a selection criterion. "
-            "That mention is not a diagnosis or a treatment decision on its own."
+            "If a test report mentions KRAS G12C, it is noting this gene change. "
+            "That note is not a diagnosis, and it is not a decision about treatment."
         ),
         "source_ids": ["civic-gene:KRAS", "biomarker:KRAS-G12C", "summary:KRAS-G12C", "method:categories"],
         "test_report_source_ids": ["method:categories", "biomarker:KRAS-G12C"],
     },
     "HER2": {
         "what": [
-            "HER2, also called ERBB2 or human epidermal growth factor receptor 2, is a gene.",
-            "According to the CIViC gene summary in this snapshot, ERBB2 is amplified and/or overexpressed in 20-30% of invasive breast carcinomas.",
+            "HER2, also called ERBB2, is a gene.",
+            "The public summary in this snapshot says extra HER2 is found in 20 to 30 percent of invasive breast cancers.",
         ],
         "test_report": (
-            "If a test report mentions HER2, it is recording a finding about this gene. "
-            "This page lists public FDA companion diagnostics that look for HER2, and the therapies and trials in this snapshot that use HER2 as a selection criterion. "
-            "That mention is not a diagnosis or a treatment decision on its own."
+            "If a test report mentions HER2, it is noting a finding about this gene. "
+            "That note is not a diagnosis, and it is not a decision about treatment."
         ),
         "source_ids": ["civic-gene:ERBB2", "biomarker:HER2", "summary:HER2", "method:categories"],
         "test_report_source_ids": ["method:categories", "biomarker:HER2"],
     },
     "NTRK": {
         "what": [
-            "NTRK stands for neurotrophic tyrosine receptor kinase.",
-            "This page covers fusions involving NTRK1, NTRK2 or NTRK3, as named in this explorer's biomarker list. This snapshot does not include a CIViC gene summary for these genes.",
+            "NTRK is a group of three genes: NTRK1, NTRK2 and NTRK3.",
+            "This page is about when one of these genes joins onto another gene. This snapshot has no public gene summary for them.",
         ],
         "test_report": (
-            "If a test report mentions an NTRK fusion, it is recording a finding about NTRK1, NTRK2 or NTRK3. "
-            "This page lists public FDA companion diagnostics that look for NTRK, and the therapies and trials in this snapshot that use NTRK as a selection criterion. "
-            "That mention is not a diagnosis or a treatment decision on its own."
+            "If a test report mentions an NTRK fusion, it is noting a finding about NTRK1, NTRK2 or NTRK3. "
+            "That note is not a diagnosis, and it is not a decision about treatment."
         ),
         "source_ids": ["biomarker:NTRK", "summary:NTRK", "method:categories"],
         "test_report_source_ids": ["method:categories", "biomarker:NTRK"],
     },
     "MSI-H-dMMR": {
         "what": [
-            "MSI-H / dMMR stands for microsatellite instability-high or mismatch-repair deficient.",
-            "The CIViC summary in this snapshot is for MLH1, a tumor suppressor gene involved in DNA mismatch repair. Germline mutations in this gene are known to cause Lynch syndrome.",
+            "MSI-H and dMMR are test findings about how a tumour repairs its DNA.",
+            "The public summary in this snapshot is only about MLH1, one gene in that repair system, and says inherited changes in MLH1 can cause Lynch syndrome.",
         ],
         "test_report": (
-            "If a test report mentions MSI-H or dMMR, it is recording a finding about microsatellite instability-high or mismatch-repair deficient status. "
-            "This page lists public FDA companion diagnostics that look for MSI-H / dMMR, and the therapies and trials in this snapshot that use MSI-H / dMMR as a selection criterion. "
-            "That mention is not a diagnosis or a treatment decision on its own."
+            "If a test report mentions MSI-H or dMMR, it is noting that finding. "
+            "That note is not a diagnosis, and it is not a decision about treatment."
         ),
         "source_ids": ["civic-gene:MLH1", "biomarker:MSI-H-dMMR", "summary:MSI-H-dMMR", "method:categories"],
         "test_report_source_ids": ["method:categories", "biomarker:MSI-H-dMMR"],
@@ -144,38 +140,25 @@ INTROS: dict[str, dict] = {
 
 HOME_INTRO = {
     "what": [
-        "This site maps a closed list of tumour biomarkers to approved targeted therapies and recruiting clinical trials, using public sources only.",
-        "It is general information. It is not medical advice, a diagnosis or a treatment recommendation, and it is not a medical device.",
+        "This site maps a short list of tumour gene findings to approved drugs and recruiting trials, from public sources only.",
+        "It is general information. It is not medical advice, a diagnosis or a treatment recommendation.",
     ],
     "how": (
-        "Pick a biomarker to see today's options in this snapshot, tagged Mainstream (FDA-approved for that biomarker), "
-        "Trials (recruiting studies that require it), or On the edge (earlier CIViC evidence). "
-        "The order of options does not mean one is better than another. Talk to your oncologist."
+        "Pick a gene finding. You will see a decision tree: cancer type, then the gene change, then when a drug is used. "
+        "Tags are Mainstream, Trials, or On the edge. Order is not a ranking. Talk to your oncologist."
     ),
 }
 
 # ---------------------------------------------------------------------------
-# Therapy line composition. Connecting words are ours; every number,
-# date and drug name comes from the therapy record.
+# Short everyday option lines, about 25 words. Connecting words are ours.
+# Route words (pill, capsule, infusion) only if the label names a form.
+# "Daily" only if the excerpt says daily. Dates only from EMA records.
 # ---------------------------------------------------------------------------
 
 CLASS_RE = re.compile(
     r"(?:is|are)\s+(a|an)\s+([^.]{3,160}?)\s+indicated",
     re.I,
 )
-ROUTE_RES = [
-    (re.compile(r"\btablets\b", re.I), "tablets"),
-    (re.compile(r"\bcapsules\b", re.I), "capsules"),
-    (re.compile(r"\borally\b", re.I), "orally"),
-    (re.compile(r"\bintravenously\b", re.I), "intravenously"),
-    (re.compile(r"\bintravenous\b", re.I), "intravenous"),
-    (re.compile(r"\bsubcutaneously\b", re.I), "subcutaneously"),
-    (re.compile(r"\bsubcutaneous\b", re.I), "subcutaneous"),
-    (re.compile(r"\binfusion\b", re.I), "infusion"),
-    (re.compile(r"\binjection\b", re.I), "injection"),
-]
-SECTION_HEAD = re.compile(r"^\s*(?:\d+\.?\s*)?INDICATIONS AND USAGE\s*", re.I)
-CITE_NUM = re.compile(r"\(\s*[\d.,\s]+(?:\s*,\s*[\d.]+)*\s*\)")
 PHASE_LABEL = {
     "PHASE1": "phase 1",
     "PHASE2": "phase 2",
@@ -186,6 +169,10 @@ PHASE_LABEL = {
 }
 
 
+def word_count(text: str) -> int:
+    return len(re.findall(r"[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)?", text or ""))
+
+
 def _unique_brands(therapy: dict) -> list[str]:
     name = (therapy.get("name") or "").strip().lower()
     out = []
@@ -194,165 +181,201 @@ def _unique_brands(therapy: dict) -> list[str]:
         b = (b or "").strip()
         if not b:
             continue
-        key = b.lower()
-        if key in seen:
+        k = b.lower()
+        if k in seen:
             continue
-        seen.add(key)
-        # Prefer ordinary casing over ALL CAPS when both exist.
+        seen.add(k)
         out.append(b)
-    # Drop an all-caps duplicate of a mixed-case brand already kept.
-    cleaned = []
-    lowers = set()
+    cleaned, lowers = [], set()
     for b in out:
         k = b.lower()
         if k in lowers:
             continue
-        # If we have both RYBREVANT and Rybrevant, keep the not-all-caps one.
         siblings = [x for x in out if x.lower() == k]
         pick = next((x for x in siblings if not x.isupper()), siblings[0])
-        if pick not in cleaned:
-            cleaned.append(pick)
-            lowers.add(k)
+        cleaned.append(pick)
+        lowers.add(k)
     return cleaned
 
 
-def _tidy_excerpt(text: str) -> str:
-    t = text or ""
-    leading = t.startswith("\u2026") or t.startswith("...")
-    trailing = t.endswith("\u2026") or t.endswith("...")
-    t = t.strip(".\u2026 ")
-    t = SECTION_HEAD.sub("", t)
-    t = t.replace("\u2022", "; ")
-    t = CITE_NUM.sub("", t)
-    t = re.sub(r"\[see[^\]]*\]\s*\.?", "", t)
-    t = re.sub(r"\[see[^\]]*$", "", t)
-    t = re.sub(r"\s+", " ", t)
-    t = re.sub(r"\s+:\s+", ": ", t)
-    t = t.strip(" ;,.")
-    if leading:
-        m = re.search(r"(?:\.|;)\s+([A-Z].*)", t)
-        if m and len(m.group(1)) >= 40:
-            t = m.group(1)
-        elif t and t[0].islower():
-            rest = t.split(" ", 1)
-            t = rest[1] if len(rest) > 1 else t
-    # Drop a trailing stub that is clearly a new section heading cut short
-    # (e.g. "1.1 Adjuvant Treatme") or a mid-word ending from a truncated excerpt.
-    t = re.sub(r"\s+\d+\.\d+\s+[A-Z][A-Za-z]*\.?$", "", t)
-    if trailing:
-        last = t.split()[-1] if t else ""
-        # A leftover letter or obvious mid-word stump ("m", "non-", "fluorouraci", "ob").
-        stump = bool(re.search(r"[A-Za-z]$", last)) and (
-            len(last) <= 2
-            or last.endswith("-")
-            or (
-                last[0].islower()
-                and len(last) >= 6
-                and not re.search(
-                    r"(ing|ed|ion|ent|est|ous|ive|ity|ies|ted|ble|ine|ase|oma|amp|test|label|use)$",
-                    last,
-                    re.I,
-                )
-            )
-        )
-        if stump:
-            t = t[: t.rfind(last)].strip(" ;,.")
-            # If what remains after a sentence break is a short leftover clause, drop it.
-            for sep in (". ", "; ", ": "):
-                i = t.rfind(sep)
-                if i >= 80 and (len(t) - i) < 90:
-                    t = t[:i].strip()
-                    break
-    return t.strip(" ;,.")
-
-
-def _class_phrase(excerpt: str) -> str:
-    m = CLASS_RE.search(excerpt or "")
-    if not m:
-        return ""
-    article, body = m.group(1).lower(), m.group(2).strip()
-    # Keep scientific abbreviations as they appear; just squeeze space.
-    body = re.sub(r"\s+", " ", body)
-    return f"{article} {body}"
-
-
-def _route_phrase(excerpt: str) -> str:
-    for pat, label in ROUTE_RES:
-        if pat.search(excerpt or ""):
-            return label
+def _route(excerpt: str) -> str:
+    """Everyday form/route, only if the label names it. Never guess 'daily'."""
+    t = excerpt or ""
+    if re.search(r"\btablets?\b", t, re.I):
+        return "pill"
+    if re.search(r"\bcapsules?\b", t, re.I):
+        return "capsule"
+    if re.search(r"\bintravenous(?:ly)?\b|\binfusion\b", t, re.I):
+        return "infusion"
+    if re.search(r"\bsubcutaneous(?:ly)?\b", t, re.I):
+        return "injection under the skin"
+    if re.search(r"\binjection\b", t, re.I):
+        return "injection"
+    if re.search(r"\borally\b|\boral use\b|\boral\b", t, re.I):
+        return "pill"
     return ""
 
 
-def _ema_bits(therapy: dict) -> list[str]:
-    bits = []
+def _a(word: str) -> str:
+    return "an" if (word or "")[:1].lower() in "aeiou" else "a"
+
+
+def _kind_phrase(excerpt: str, route: str, biomarker_id: str) -> str:
+    m = CLASS_RE.search(excerpt or "")
+    body = (m.group(2).strip().lower() if m else "")
+    low = (excerpt or "").lower()
+    gene = {
+        "EGFR": "EGFR",
+        "ALK": "ALK",
+        "BRAF-V600E": "BRAF",
+        "KRAS-G12C": "KRAS",
+        "HER2": "HER2",
+        "NTRK": "NTRK",
+        "MSI-H-dMMR": "",
+    }.get(biomarker_id, "")
+    blocks = (
+        "kinase inhibitor" in body or "kinase inhibitor" in low
+        or "inhibitor of the ras" in body or "antagonist" in body
+        or "antagonist" in low
+    )
+    if blocks:
+        if route and gene:
+            return f"{_a(route)} {route} that blocks the {gene} signal"
+        if gene:
+            return "a drug that blocks the " + gene + " signal"
+        if route:
+            return f"{_a(route)} {route} that blocks a growth signal"
+        return "a drug that blocks a growth signal"
+    if "antibody" in body or "antibody" in low:
+        base = "a lab-made antibody"
+        if "conjugate" in body or "conjugate" in low:
+            base = "a lab-made antibody linked to a drug"
+        if route:
+            base += f", given as {_a(route)} {route}"
+        return base
+    if route:
+        return f"{_a(route)} {route}"
+    return ""
+
+
+def _cancer_short(text: str) -> str:
+    from tree import cancers_in
+    cs = cancers_in(text)
+    # Prefer a single everyday name.
+    if "lung cancer" in cs:
+        return "advanced lung cancer"
+    if "bowel cancer" in cs:
+        return "advanced bowel cancer"
+    if "head and neck cancer" in cs:
+        return "head and neck cancer"
+    if "breast cancer" in cs:
+        return "breast cancer"
+    if "melanoma (skin cancer)" in cs:
+        return "melanoma (a skin cancer)"
+    if "thyroid cancer" in cs:
+        return "thyroid cancer"
+    if "stomach cancer" in cs:
+        return "stomach cancer"
+    if "cancer of the womb" in cs:
+        return "cancer of the womb"
+    if "solid tumours (several cancer types)" in cs:
+        return "several types of solid tumour"
+    if cs:
+        return cs[0]
+    return ""
+
+
+def _mutation_short(text: str, biomarker_id: str) -> str:
+    from tree import mutations_in
+    ms = mutations_in(text, biomarker_id)
+    # Drop generic if specific exists — mutations_in already does this for EGFR.
+    if not ms:
+        return ""
+    nice = {
+        "EGFR exon 20 insertion": "an EGFR exon 20 insertion",
+        "EGFR exon 19 deletion or L858R": "an EGFR exon 19 deletion or L858R change",
+        "EGFR T790M": "an EGFR T790M change",
+        "EGFR mutations the label calls non-resistant": "certain EGFR mutations",
+        "EGFR mutation (subtype not further named)": "an EGFR mutation",
+        "ALK fusion or ALK-positive": "an ALK change",
+        "BRAF V600E": "a BRAF V600E change",
+        "BRAF V600K": "a BRAF V600K change",
+        "BRAF V600": "a BRAF V600 change",
+        "KRAS G12C": "a KRAS G12C change",
+        "HER2-positive": "HER2-positive disease",
+        "HER2-low": "HER2-low disease",
+        "HER2 mutation": "a HER2 mutation",
+        "NTRK fusion": "an NTRK fusion",
+        "MSI-H or dMMR": "an MSI-H or dMMR finding",
+        "KRAS wild-type (no KRAS change)": "no KRAS gene change",
+    }
+    return nice.get(ms[0], ms[0])
+
+
+def _ema_year(therapy: dict) -> tuple[str, str]:
+    """(name, year) of the earliest authorised EMA record with a date.
+
+    Using the first record in the list would pick a later biosimilar
+    (for example Herwenda in 2023) over the original (Herceptin in 2000).
+    The year itself comes from the authorisationDate field.
+    """
+    found = []
     for e in therapy.get("ema") or []:
-        status = (e.get("status") or "").strip()
-        if status.lower() != "authorised":
+        if (e.get("status") or "").lower() != "authorised":
             continue
-        name = (e.get("name") or "").strip()
         date = (e.get("authorisationDate") or "").strip()
-        if not name:
+        name = (e.get("name") or "").strip()
+        if not date:
             continue
-        if date:
-            bits.append(
-                f"An EMA record for {name} lists the status as {status}, "
-                f"with an authorisation date of {date}."
-            )
-        else:
-            bits.append(f"An EMA record for {name} lists the status as {status}.")
-    return bits
+        m = re.search(r"(19|20)\d{2}", date)
+        if m:
+            found.append((int(m.group(0)), name, m.group(0)))
+    if not found:
+        return "", ""
+    found.sort()
+    return found[0][1], found[0][2]
 
 
 def therapy_line(biomarker: dict, therapy: dict) -> dict:
     bid = biomarker["id"]
     name = (therapy.get("name") or "").strip()
     brands = _unique_brands(therapy)
-    brand_bit = f" ({', '.join(brands)})" if brands else ""
+    head = f"{name} ({', '.join(brands)})" if brands else name
     excerpt = therapy.get("indicationsExcerpt") or ""
-    rel = relevant_excerpt(excerpt, bid, n=520) if excerpt else ""
-    tidy = _tidy_excerpt(rel or excerpt)
-    klass = _class_phrase(excerpt)
-    route = _route_phrase(excerpt)
+    from matching import relevant_excerpt
+    rel = relevant_excerpt(excerpt, bid, n=520) if excerpt else excerpt
+    route = _route(excerpt)
+    kind = _kind_phrase(excerpt, route, bid)
+    cancer = _cancer_short(rel or excerpt)
+    mut = _mutation_short(rel or excerpt, bid)
+    ema_name, year = _ema_year(therapy)
 
-    head = f"{name}{brand_bit}"
-    if klass:
-        head += f" is {klass}"
-        if route:
-            head += f", and the label mentions {route}"
-        head += "."
+    bits = [f"{head}:"]
+    if kind:
+        bits[0] += f" {kind}."
     else:
-        head += " is listed on an FDA label in this snapshot."
-        if route:
-            head += f" The label mentions {route}."
-
-    if tidy and klass:
-        # Avoid repeating "X is a kinase inhibitor indicated for" after the head.
-        tidy = re.sub(
-            r"^.{0,80}?\bindicated(?:\s+for)?\s*:?\s*",
-            "",
-            tidy,
-            count=1,
-            flags=re.I,
-        ).strip(" ;,.")
-    # Stop before a Limitations of Use sentence that the excerpt cut mid-word.
-    tidy = re.sub(
-        r"\s*Limitations of Use:?\s*Safety and efficacy[^.]*$",
-        "",
-        tidy,
-        flags=re.I,
-    ).strip(" ;,.")
-    # Stop before a truncated accelerated-approval tail.
-    tidy = re.sub(
-        r"\s*This indication is approved under accelerated approval based on.*$",
-        " This indication is approved under accelerated approval",
-        tidy,
-        flags=re.I,
-    ).strip(" ;,.")
-    parts = [head]
-    if tidy:
-        parts.append(f"The FDA label lists this use: {tidy}.")
-    parts.extend(_ema_bits(therapy))
-    text = " ".join(parts)
+        bits[0] += " a drug named on the FDA label in this snapshot."
+    use = "Approved"
+    if cancer:
+        use += f" for {cancer}"
+    if mut:
+        use += f" with {mut}"
+    if not cancer and not mut:
+        use += " for a use named on the FDA label"
+    use += "."
+    bits.append(use)
+    if year:
+        bits.append(f"Authorised in Europe since {year}.")
+    text = " ".join(bits)
+    # If over the soft cap, drop the Europe clause first, then shorten use.
+    if word_count(text) > 25 and year:
+        text = " ".join(bits[:2])
+    if word_count(text) > 28:
+        # Last-resort trim of the use clause.
+        short_use = "Approved for a use named on the FDA label."
+        text = bits[0] + " " + short_use
+        if year and word_count(text + f" Authorised in Europe since {year}.") <= 28:
+            text = text + f" Authorised in Europe since {year}."
     fda = therapy.get("fda") or {}
     url = fda.get("dailymedUrl") or fda.get("drugsfdaUrl") or ""
     if not url:
@@ -374,35 +397,85 @@ def therapy_line(biomarker: dict, therapy: dict) -> dict:
     }
 
 
+def withdrawn_line(biomarker: dict, therapy: dict, entry: dict) -> dict:
+    bid = biomarker["id"]
+    name = (therapy.get("name") or "").strip()
+    brands = _unique_brands(therapy)
+    # Prefer Exkivity as the brand if the catalog names it.
+    head = f"{name} ({', '.join(brands)})" if brands else name
+    if not brands and "Exkivity" in (entry.get("names") or []):
+        head = f"{name} (Exkivity)"
+    date = entry.get("effective_date") or ""
+    year = ""
+    if date:
+        m = re.search(r"(19|20)\d{2}", date)
+        year = m.group(0) if m else date
+    # "15 July 2024" — 15 and 2024 are in 2024-07-15? "15" is in "2024-07-15"? 
+    # 2024-07-15 contains 2024, 07, 15. "15" appears. "July" does not.
+    # Use 15/07/2024 or "2024-07-15" as in the catalog, or "since 2024".
+    if year:
+        text = (
+            f"{head}: withdrawn from the US market. "
+            f"The FDA withdrew approval in {year}."
+        )
+    else:
+        text = f"{head}: withdrawn from the US market, according to the FDA."
+    url = ""
+    for s in entry.get("sources") or []:
+        if s.get("url"):
+            url = s["url"]
+            break
+    return {
+        "id": f"withdrawn:{name}",
+        "category": "withdrawn",
+        "text": text,
+        "sources": [
+            {
+                "id": f"withdrawn:{entry.get('id')}",
+                "url": url,
+                "label": (entry.get("sources") or [{}])[0].get("label") or "Withdrawal record",
+            }
+        ],
+    }
+
+
 def _phase_phrase(phases: list) -> str:
     if not phases:
         return ""
     labels = [PHASE_LABEL.get(p, p) for p in phases]
-    if len(labels) == 1:
-        return labels[0]
     return " / ".join(labels)
+
+
+def _short_trial_title(title: str) -> str:
+    """Keep a short everyday title; do not invent drugs or numbers."""
+    t = (title or "").strip()
+    # Drop leading "A Study of " / "Study of "
+    t = re.sub(r"^(?:a\s+)?(?:phase\s+\w+\s+)?(?:study of|trial of)\s+", "", t, flags=re.I)
+    # Truncate at a clause boundary under ~18 words.
+    words = t.split()
+    if len(words) > 16:
+        t = " ".join(words[:14]).rstrip(",;:") + "…"
+    return t
 
 
 def trial_line(trial: dict) -> dict:
     nct = (trial.get("nctId") or "").strip()
-    title = (trial.get("title") or "").strip()
-    status = (trial.get("status") or "").strip()
+    title = _short_trial_title(trial.get("title") or "")
     phase = _phase_phrase(trial.get("phases") or [])
-    cond = "; ".join(trial.get("conditions") or [])
-    iv = "; ".join(trial.get("interventions") or [])
-    start = (trial.get("startDate") or "").strip()
-    parts = [f"{nct} is a {status} study"]
-    if phase:
-        parts[0] += f" ({phase})"
-    parts[0] += "."
+    n_countries = len(trial.get("countries") or [])
+    parts = [nct]
     if title:
-        parts.append(f"It is titled “{title}”.")
-    if cond:
-        parts.append(f"Conditions listed: {cond}.")
-    if iv:
-        parts.append(f"Interventions listed: {iv}.")
-    if start:
-        parts.append(f"The record lists a start date of {start}.")
+        parts[0] += f": {title}."
+    else:
+        parts[0] += "."
+    mid = "A recruiting study"
+    if phase:
+        mid += f" ({phase})"
+    mid += "."
+    parts.append(mid)
+    if n_countries:
+        noun = "country" if n_countries == 1 else "countries"
+        parts.append(f"Sites in {n_countries} {noun}.")
     return {
         "id": option_id(TRIALS, trial),
         "category": TRIALS,
@@ -419,46 +492,38 @@ def trial_line(trial: dict) -> dict:
 
 def edge_line(assertion: dict) -> dict:
     aid = assertion.get("id")
-    th = ", ".join(assertion.get("therapies") or []) or "a named therapy"
-    summary = (assertion.get("summary") or "").strip()
-    amp = assertion.get("ampLevel") or ""
-    status = assertion.get("status") or ""
+    th = ", ".join(assertion.get("therapies") or []) or "a named drug"
     disease = assertion.get("disease") or ""
     mp = assertion.get("molecularProfile") or ""
-    parts = [
-        f"CIViC assertion {aid} is early evidence about {th}"
-    ]
+    # Everyday, no ampLevel / TIER / CIViC codes in the visible text.
+    # "early evidence" is our category wording; status is a source word.
+    status = assertion.get("status") or ""
+    bits = [f"{th}: early evidence"]
     extra = []
     if mp:
-        extra.append(f"molecular profile {mp}")
+        extra.append(mp)
     if disease:
-        extra.append(f"disease {disease}")
+        extra.append(disease)
     if extra:
-        parts[0] += " (" + "; ".join(extra) + ")"
-    parts[0] += "."
-    if summary:
-        parts.append(f"CIViC’s summary is: {summary}")
-        if not summary.endswith("."):
-            parts[-1] += "."
-    level_bits = []
-    if amp:
-        level_bits.append(f"evidence level {amp}")
+        bits[0] += " for " + ", ".join(extra)
+    bits[0] += "."
     if status:
-        level_bits.append(f"status {status}")
-    if level_bits:
-        parts.append(
-            "The record lists " + " and ".join(level_bits) + "."
-        )
-    parts.append("This is not an FDA approval.")
+        bits.append(f"The public record lists this as {status}.")
+    bits.append("This is not an FDA approval.")
+    text = " ".join(bits)
+    if word_count(text) > 28:
+        text = f"{th}: early evidence, not an FDA approval."
+        if status and word_count(text + f" Listed as {status}.") <= 28:
+            text += f" Listed as {status}."
     return {
         "id": option_id(ON_THE_EDGE, assertion),
         "category": ON_THE_EDGE,
-        "text": " ".join(parts),
+        "text": text,
         "sources": [
             {
                 "id": f"civic:{aid}",
                 "url": assertion.get("url") or "",
-                "label": f"CIViC assertion {aid}",
+                "label": "Public evidence record",
             }
         ],
     }
@@ -468,12 +533,22 @@ def cdx_line(cdx: dict) -> dict:
     diag = cdx["diagnostic"]
     ind = cdx["indication"]
     sample = cdx.get("sampleType") or ""
-    via = cdx.get("viaTherapy") or ""
-    text = f"{diag} is an FDA companion diagnostic listed for {ind}."
-    if sample:
-        text += f" The indication column lists the sample type as {sample}."
-    if via:
-        text += f" It appears on the snapshot record for {via}."
+    # Everyday sample words.
+    sample_nice = sample
+    low = (sample or "").lower()
+    if low == "tissue":
+        sample_nice = "a tissue sample"
+    elif low == "plasma":
+        sample_nice = "a blood (plasma) sample"
+    elif "tissue or plasma" in low or "tissue / plasma" in low:
+        sample_nice = "a tissue or blood (plasma) sample"
+    cancer = _cancer_short(ind)
+    text = f"{diag} is an FDA companion test"
+    if cancer:
+        text += f" for {cancer}"
+    text += "."
+    if sample_nice:
+        text += f" It uses {sample_nice}."
     return {
         "id": option_id("cdx", cdx),
         "category": "cdx",
@@ -482,7 +557,7 @@ def cdx_line(cdx: dict) -> dict:
             {
                 "id": f"cdx:{diag}|{ind}",
                 "url": cdx.get("url") or "",
-                "label": "FDA companion diagnostic list",
+                "label": "FDA companion test list",
             }
         ],
     }
@@ -533,8 +608,10 @@ def generate_biomarker(snap: dict, biomarker: dict, generated_at: str) -> dict:
     lines = []
     for c in companion_diagnostics(biomarker):
         lines.append(cdx_line(c))
-    for t in mainstream_therapies(biomarker):
+    for t in display_mainstream(biomarker):
         lines.append(therapy_line(biomarker, t))
+    for rec in withdrawn_therapies(biomarker):
+        lines.append(withdrawn_line(biomarker, rec["therapy"], rec["entry"]))
     for t in trial_options(biomarker):
         lines.append(trial_line(t))
     for a in on_the_edge_assertions(biomarker):
@@ -598,7 +675,7 @@ def generate_glossary() -> dict:
             },
             {
                 "term": "FDA",
-                "text": "The U.S. Food and Drug Administration, which approves drugs and some tests in the United States. This site uses FDA labels, the pharmacogenomic-biomarker table, and the companion-diagnostic list.",
+                "text": "The U.S. Food and Drug Administration, which approves drugs and some tests in the United States. This site uses FDA labels, an FDA table of gene findings and drugs, and the companion-test list.",
             },
             {
                 "term": "EMA",
@@ -623,10 +700,6 @@ def generate_glossary() -> dict:
             {
                 "term": "Recruiting",
                 "text": "A clinical trial whose ClinicalTrials.gov record in this snapshot lists the status as recruiting, meaning it was listed as enrolling participants at the time of that record.",
-            },
-            {
-                "term": "ampLevel",
-                "text": "The evidence level CIViC records on an assertion, such as TIER_I_LEVEL_A or TIER_II_LEVEL_D. This site uses that field as written. It does not add a meaning beyond what the field itself says.",
             },
             {
                 "term": "Indication",

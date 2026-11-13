@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T17:42:22+01:00",
+  "generated_at": "2026-11-13T17:58:15+01:00",
   "terms": [
     {
       "term": "Biomarker",
@@ -19,7 +19,7 @@
     },
     {
       "term": "FDA",
-      "text": "The U.S. Food and Drug Administration, which approves drugs and some tests in the United States. This site uses FDA labels, the pharmacogenomic-biomarker table, and the companion-diagnostic list."
+      "text": "The U.S. Food and Drug Administration, which approves drugs and some tests in the United States. This site uses FDA labels, an FDA table of gene findings and drugs, and the companion-test list."
     },
     {
       "term": "EMA",
@@ -44,10 +44,6 @@
     {
       "term": "Recruiting",
       "text": "A clinical trial whose ClinicalTrials.gov record in this snapshot lists the status as recruiting, meaning it was listed as enrolling participants at the time of that record."
-    },
-    {
-      "term": "ampLevel",
-      "text": "The evidence level CIViC records on an assertion, such as TIER_I_LEVEL_A or TIER_II_LEVEL_D. This site uses that field as written. It does not add a meaning beyond what the field itself says."
     },
     {
       "term": "Indication",

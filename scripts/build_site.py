@@ -44,7 +44,7 @@ def notice(snapshot_date: str, ct_ts: str = "", root: bool = True) -> str:
     # data is in repo data/, also copy into site/data/
     data_file = "data/snapshot.json" if root else "../data/snapshot.json"
     ct = (
-        f' ClinicalTrials.gov processed this trial data at <time datetime="{esc(ct_ts)}">{esc(ct_ts)}</time>.'
+        f' ClinicalTrials.gov processed this trial data on <time datetime="{esc(ct_ts)}">{esc(fmt_date(ct_ts))}</time>.'
         if ct_ts else ""
     )
     return f'''
@@ -566,6 +566,9 @@ def main() -> int:
     for b in snap.get("biomarkers") or []:
         (SITE / "b" / f"{b['id']}.html").write_text(render_biomarker(snap, b), encoding="utf-8")
     print(f"Wrote site to {SITE}")
+    from build_mockup import build as build_mockup
+    report = build_mockup(snap)
+    print(f"Wrote EGFR mockup: {report['pages']} pages, {report['leaves']} leaves")
     return 0
 
 if __name__ == "__main__":

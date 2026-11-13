@@ -62,8 +62,33 @@ DATE_RE = re.compile(
 )
 
 
+WORD_LIMIT = 28  # "about 25 words"; fail a little above that ("25ish").
+TRIAL_LINE_PREFIXES = ("trial:",)
+
+# Route words may appear in a plain line only when the cited source names
+# a matching dosage form or schedule.
+ROUTE_CLAIMS = {
+    "pill": (r"\btablets?\b", r"\bpills?\b", r"\borally\b", r"\boral use\b", r"\bfor oral\b"),
+    "capsule": (r"\bcapsules?\b",),
+    "infusion": (r"\binfusion\b", r"\bintravenous(?:ly)?\b"),
+    "daily": (r"\bdaily\b", r"\bonce a day\b", r"\bevery day\b"),
+}
+
+
+def word_count(text: str) -> int:
+    return len(re.findall(r"[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)?", text or ""))
+
+
 def _canon(obj) -> str:
     return json.dumps(obj, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+
+
+def _withdrawn_payload() -> dict:
+    try:
+        from withdrawn import load_catalog
+        return load_catalog()
+    except FileNotFoundError:
+        return {}
 
 
 def source_payload(snap: dict, biomarker: dict) -> dict:
@@ -115,6 +140,7 @@ def source_payload(snap: dict, biomarker: dict) -> dict:
         "literature": biomarker.get("literature") or [],
         "cdx": companion_diagnostics(biomarker),
         "edgeIds": [a.get("id") for a in on_the_edge_assertions(biomarker)],
+        "withdrawn": _withdrawn_payload(),
     }
 
 
@@ -346,6 +372,8 @@ def build_source_index(snap: dict, biomarker: dict) -> dict[str, dict]:
             " ".join(t.get("conditions") or []),
             " ".join(t.get("interventions") or []),
             " ".join(t.get("countries") or []),
+            f"{len(t.get('countries') or [])} countries",
+            f"{len(t.get('countries') or [])} country",
             t.get("startDate") or "",
             t.get("url") or "",
             src_text,
@@ -404,6 +432,43 @@ def build_source_index(snap: dict, biomarker: dict) -> dict[str, dict]:
         ),
         "Category and method rules in this repository",
     )
+
+    # Whole-product withdrawal records (committed catalog, opened sources).
+    try:
+        from withdrawn import load_catalog
+        catalog = load_catalog()
+    except Exception:
+        catalog = {"entries": []}
+    for entry in list(catalog.get("entries") or []) + list(catalog.get("indication_level_noted") or []):
+        bits = [
+            entry.get("id") or "",
+            " ".join(entry.get("names") or []),
+            entry.get("effective_date") or entry.get("withdrawal_date") or "",
+            entry.get("status") or "",
+            entry.get("indication") or "",
+            json.dumps(entry, ensure_ascii=False),
+        ]
+        url = ""
+        for s in entry.get("sources") or []:
+            if s.get("url"):
+                url = s["url"]
+                bits.extend([s.get("label") or "", s.get("url") or "", s.get("date") or "", s.get("detail") or ""])
+        if not url and isinstance(entry.get("source"), dict):
+            url = entry["source"].get("url") or ""
+            bits.append(json.dumps(entry["source"], ensure_ascii=False))
+        add(
+            f"withdrawn:{entry.get('id')}",
+            url,
+            "\n".join(bits),
+            "Withdrawal record",
+        )
+        add(
+            "method:withdrawn",
+            "",
+            "\n".join(bits),
+            "Withdrawal catalog",
+        )
+
     return idx
 
 
@@ -465,6 +530,30 @@ def check_line(
         if not _appears(drug, hay):
             errors.append(
                 f"{where}: drug name {drug!r} in {text!r} is not in the cited source"
+            )
+    # Route / schedule claims: only if the label (or cited source) names them.
+    low = text.lower()
+    for claim, pats in ROUTE_CLAIMS.items():
+        if re.search(r"\b" + re.escape(claim) + r"\b", low):
+            if not any(re.search(p, hay, re.I) for p in pats):
+                errors.append(
+                    f"{where}: claimed {claim!r} in {text!r} but the cited source "
+                    "does not name a matching dosage form or schedule"
+                )
+    # Word-count gate for option lines (not trial title lines, not the test-report sentence).
+    lid = (line.get("id") or "")
+    cat = (line.get("category") or "")
+    skip_wc = (
+        cat == "trials"
+        or lid.startswith("trial:")
+        or "test_report" in where
+        or lid.startswith("home:")
+    )
+    if not skip_wc:
+        n = word_count(text)
+        if n > WORD_LIMIT:
+            errors.append(
+                f"{where}: {n} words (limit {WORD_LIMIT}, target about 25) in {text!r}"
             )
     return errors
 
@@ -656,6 +745,36 @@ def validate_all(snap: dict) -> list[str]:
             errors.append(f"snapshot missing biomarker {bid}")
             continue
         errors.extend(validate_biomarker(snap, b, catalog, name_pat))
+    errors.extend(validate_withdrawn(snap))
+    return errors
+
+
+def validate_withdrawn(snap: dict) -> list[str]:
+    """Whole-product withdrawals must not appear as Mainstream.
+
+    Indication-level notes are reported, not treated as whole-product drops.
+    A stale catalog entry (names match no snapshot therapy) fails the gate.
+    """
+    from withdrawn import (
+        display_mainstream,
+        is_withdrawn,
+        report_catalog_against_snapshot,
+    )
+
+    errors: list[str] = []
+    report = report_catalog_against_snapshot(snap)
+    for sid in report.get("stale_entries") or []:
+        errors.append(
+            f"withdrawn catalog entry {sid} matches no therapy in this snapshot; "
+            "update data/withdrawn.json"
+        )
+    for b in snap.get("biomarkers") or []:
+        for t in display_mainstream(b):
+            if is_withdrawn(t):
+                errors.append(
+                    f"{b['id']}: {t.get('name')} is a whole-product withdrawal "
+                    "but is still in the displayed Mainstream list"
+                )
     return errors
 
 

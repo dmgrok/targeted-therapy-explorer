@@ -1,5 +1,8 @@
 # Targeted Therapy Explorer
 
+A design mockup of a new page shape — a decision tree that narrows to one options table — is at [`site/mockup/`](site/mockup/index.html), built from the real snapshot for EGFR only. Other gene findings are not built in that shape yet.
+
+
 **Not medical advice. Talk to your oncologist.**
 
 This site is general information only. It is not medical advice, a diagnosis or a treatment recommendation, and it is not a medical device. It does not take account of any person’s medical situation. Talk to your oncologist before making any decision about your care.

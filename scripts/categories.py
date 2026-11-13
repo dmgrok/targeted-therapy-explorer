@@ -24,16 +24,37 @@ ON_THE_EDGE = "on-the-edge"
 # placed in this category, because the snapshot does not tell us the level.
 HIGHEST_AMP = "TIER_I_LEVEL_A"
 
+# Exact field rules, shown only in Sources (not in the visible layer).
+RAW_CATEGORY_RULES = (
+    "Mainstream: a therapy is included when the snapshot's targeting rule "
+    "includes it — the FDA label indication, the FDA pharmacogenomic-biomarker "
+    "table, or an FDA companion-diagnostic row ties the drug to this biomarker "
+    "as a selection criterion — and the drug is not a whole-product withdrawal "
+    "in data/withdrawn.json. "
+    "Trials: a recruiting ClinicalTrials.gov record whose condition or "
+    "eligibility inclusion criteria require this biomarker as a selection "
+    "criterion. "
+    "On the edge: a CIViC assertion that is PREDICTIVE, that names at least "
+    "one therapy, and whose ampLevel is present and is not TIER_I_LEVEL_A. "
+    "TIER_I_LEVEL_A is the highest evidence level recorded on CIViC "
+    "assertions in this snapshot; lower recorded levels (for example "
+    "TIER_II_LEVEL_C or TIER_II_LEVEL_D) are treated as earlier evidence. "
+    "Assertions with no ampLevel are not placed here. Status (ACCEPTED or "
+    "SUBMITTED) is shown, not used as a filter. Diagnostic, prognostic or "
+    "oncogenic assertions, and TIER_I_LEVEL_A predictive assertions about a "
+    "Mainstream therapy, stay in Sources rather than as a separate option. "
+    "A whole-product withdrawal is tagged Withdrawn and is not Mainstream."
+)
+
 CATEGORY_DEFS: list[dict] = [
     {
         "id": MAINSTREAM,
         "label": "Mainstream",
         "short": "FDA-approved for this biomarker, in this snapshot.",
         "rule": (
-            "A therapy is Mainstream when the existing targeting_therapies() "
-            "rule includes it: the FDA label indication, the FDA "
-            "pharmacogenomic-biomarker table, or an FDA companion-diagnostic "
-            "row ties the drug to this biomarker as a selection criterion."
+            "A drug is Mainstream when an FDA label, FDA table or companion "
+            "test in this snapshot ties it to this gene finding as a selection "
+            "criterion, and the drug has not been withdrawn as a whole product."
         ),
     },
     {
@@ -41,10 +62,8 @@ CATEGORY_DEFS: list[dict] = [
         "label": "Trials",
         "short": "A recruiting study that requires this biomarker.",
         "rule": (
-            "A study is in Trials when the existing requiring_trials() rule "
-            "includes it: it is a recruiting ClinicalTrials.gov record whose "
-            "condition or eligibility inclusion criteria require this "
-            "biomarker as a selection criterion."
+            "A study is in Trials when it is recruiting and its condition or "
+            "entry rules require this gene finding as a selection criterion."
         ),
     },
     {
@@ -52,17 +71,9 @@ CATEGORY_DEFS: list[dict] = [
         "label": "On the edge",
         "short": "Early evidence, not an FDA approval in this snapshot.",
         "rule": (
-            "A CIViC assertion is On the edge when all of these hold: it is "
-            "PREDICTIVE (it names a therapy effect), it names at least one "
-            "therapy, and its ampLevel is present and is not TIER_I_LEVEL_A. "
-            "TIER_I_LEVEL_A is the highest evidence level recorded on CIViC "
-            "assertions in this snapshot; lower recorded levels (for example "
-            "TIER_II_LEVEL_C or TIER_II_LEVEL_D) are treated as earlier "
-            "evidence. Assertions with no ampLevel are not placed here. "
-            "Status (ACCEPTED or SUBMITTED) is shown, not used as a filter. "
-            "Diagnostic, prognostic or oncogenic assertions, and "
-            "TIER_I_LEVEL_A predictive assertions about a Mainstream therapy, "
-            "stay in Sources rather than as a separate option."
+            "On the edge is early public evidence that names a drug and is "
+            "not an FDA approval in this snapshot. The exact field rule is "
+            "in Sources on this page."
         ),
     },
 ]
@@ -230,7 +241,12 @@ def option_id(kind: str, record: dict) -> str:
 
 
 def all_option_ids(biomarker: dict) -> list[str]:
-    ids = [option_id(MAINSTREAM, t) for t in mainstream_therapies(biomarker)]
+    from withdrawn import display_mainstream, withdrawn_therapies
+
+    ids = [option_id(MAINSTREAM, t) for t in display_mainstream(biomarker)]
+    for rec in withdrawn_therapies(biomarker):
+        name = (rec["therapy"].get("name") or "").strip()
+        ids.append(f"withdrawn:{name}")
     ids += [option_id(TRIALS, t) for t in trial_options(biomarker)]
     ids += [option_id(ON_THE_EDGE, a) for a in on_the_edge_assertions(biomarker)]
     ids += [option_id("cdx", c) for c in companion_diagnostics(biomarker)]

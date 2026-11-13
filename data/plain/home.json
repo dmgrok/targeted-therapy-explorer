@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-13T17:42:22+01:00",
+  "generated_at": "2026-11-13T17:58:15+01:00",
   "source_hash": "683b2fc0ee4f1301650000fcb0f4fe877cc784607ed28f71cb9b410725c3fb20",
   "intro": {
     "what": [
-      "This site maps a closed list of tumour biomarkers to approved targeted therapies and recruiting clinical trials, using public sources only.",
-      "It is general information. It is not medical advice, a diagnosis or a treatment recommendation, and it is not a medical device."
+      "This site maps a short list of tumour gene findings to approved drugs and recruiting trials, from public sources only.",
+      "It is general information. It is not medical advice, a diagnosis or a treatment recommendation."
     ],
-    "how": "Pick a biomarker to see today's options in this snapshot, tagged Mainstream (FDA-approved for that biomarker), Trials (recruiting studies that require it), or On the edge (earlier CIViC evidence). The order of options does not mean one is better than another. Talk to your oncologist.",
+    "how": "Pick a gene finding. You will see a decision tree: cancer type, then the gene change, then when a drug is used. Tags are Mainstream, Trials, or On the edge. Order is not a ranking. Talk to your oncologist.",
     "sources": [
       {
         "id": "method:home",
@@ -18,7 +18,7 @@
   "lines": [
     {
       "id": "home:how",
-      "text": "Pick a biomarker to see today's options in this snapshot, tagged Mainstream (FDA-approved for that biomarker), Trials (recruiting studies that require it), or On the edge (earlier CIViC evidence). The order of options does not mean one is better than another. Talk to your oncologist.",
+      "text": "Pick a gene finding. You will see a decision tree: cancer type, then the gene change, then when a drug is used. Tags are Mainstream, Trials, or On the edge. Order is not a ranking. Talk to your oncologist.",
       "sources": [
         {
           "id": "method:home",

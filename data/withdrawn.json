@@ -1,0 +1,70 @@
+{
+  "comment": "Whole-product and indication-level withdrawals verified from sources opened on 13 November 2026 (Europe/Paris). Only whole-product entries remove a drug from Mainstream. Indication-level entries are reported by the gate and must not silently drop a drug that still has another approved use.",
+  "opened_at": "2026-11-13",
+  "entries": [
+    {
+      "id": "exkivity-mobocertinib",
+      "names": ["Mobocertinib", "Exkivity", "mobocertinib succinate"],
+      "scope": "whole-product",
+      "status": "withdrawn",
+      "region": "US",
+      "effective_date": "2024-07-15",
+      "announcement_date": "2023-10-02",
+      "detail": "FDA withdrew approval of NDA 215310 for EXKIVITY (mobocertinib succinate) capsule, effective 15 July 2024, after Takeda asked for withdrawal. Takeda announced on 2 October 2023 that it would work with the FDA towards a voluntary withdrawal. The EMA application was withdrawn earlier, on 20 July 2022; that is a different event (the EU marketing application, not a US approval withdrawal).",
+      "sources": [
+        {
+          "label": "Federal Register 89 FR 57418",
+          "url": "https://www.federalregister.gov/documents/2024/07/15/2024-15371/takeda-pharmaceuticals-usa-inc-withdrawal-of-approval-of-new-drug-application-for-exkivity",
+          "date": "2024-07-15",
+          "detail": "Approval is withdrawn as of July 15, 2024. NDA 215310. Published 15 July 2024. Opened 13 November 2026."
+        },
+        {
+          "label": "FDA Withdrawn Cancer Accelerated Approvals",
+          "url": "https://www.fda.gov/drugs/cancer-approvals/withdrawn-cancer-accelerated-approvals",
+          "date": "2026-11-13",
+          "detail": "Row for Exkivity (mobocertinib): Accelerated Approval Date 9/15/2021, Withdrawal Date 7/15/2024. Page opened 13 November 2026."
+        },
+        {
+          "label": "Takeda press release",
+          "url": "https://www.takeda.com/newsroom/newsreleases/2023/takeda-provides-update-on-exkivity-mobocertinib/",
+          "date": "2023-10-02",
+          "detail": "Takeda announced it will be working with the FDA towards a voluntary withdrawal of EXKIVITY in the U.S. Opened 13 November 2026."
+        },
+        {
+          "label": "EMA EPAR Exkivity",
+          "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/exkivity",
+          "date": "2022-07-20",
+          "detail": "EMA application withdrawn on 20 July 2022. This is withdrawal of the EU marketing application, not the US NDA. Opened 13 November 2026."
+        }
+      ]
+    }
+  ],
+  "indication_level_noted": [
+    {
+      "id": "krazati-adagrasib-crc",
+      "names": ["Adagrasib", "Krazati"],
+      "scope": "indication",
+      "indication": "In combination with cetuximab for KRAS G12C mutated locally advanced or metastatic colorectal cancer after fluoropyrimidine-, oxaliplatin-, and irinotecan-based chemotherapy.",
+      "withdrawal_date": "2026-09-01",
+      "sure": "Listed on the FDA Withdrawn Cancer Accelerated Approvals page opened on 13 November 2026, with Withdrawal Date 9/1/2026. A Federal Register notice for this row was not opened this turn. The NSCLC indication is a different use and is not treated as withdrawn.",
+      "source": {
+        "label": "FDA Withdrawn Cancer Accelerated Approvals",
+        "url": "https://www.fda.gov/drugs/cancer-approvals/withdrawn-cancer-accelerated-approvals",
+        "date": "2026-11-13"
+      }
+    },
+    {
+      "id": "iressa-gefitinib-2003-indication",
+      "names": ["Gefitinib", "Iressa"],
+      "scope": "indication",
+      "indication": "As monotherapy for locally advanced or metastatic NSCLC after failure of platinum-based and docetaxel chemotherapy (accelerated approval 5/5/2003, withdrawal date 4/25/2012).",
+      "withdrawal_date": "2012-04-25",
+      "sure": "Listed on the same FDA page. Gefitinib later has a different FDA label use (first-line EGFR exon 19 / L858R) which remains in this snapshot and is not treated as withdrawn.",
+      "source": {
+        "label": "FDA Withdrawn Cancer Accelerated Approvals",
+        "url": "https://www.fda.gov/drugs/cancer-approvals/withdrawn-cancer-accelerated-approvals",
+        "date": "2026-11-13"
+      }
+    }
+  ]
+}
