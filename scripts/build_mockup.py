@@ -33,7 +33,8 @@ from categories import (  # noqa: E402
     option_id,
     trial_options,
 )
-from generate_plain import _ema_year, _unique_brands  # noqa: E402
+from generate_plain import _unique_brands  # noqa: E402
+from ema_indications import europe_phrase  # noqa: E402
 from plain import load_plain, line_by_id  # noqa: E402
 from labels import combo_note, entry_for, what_it_is  # noqa: E402
 from tree import (  # noqa: E402
@@ -261,7 +262,7 @@ def line_for(kind: str, rec, plain: dict) -> dict | None:
     return None
 
 
-def approval_cell(kind: str, rec) -> str:
+def approval_cell(kind: str, rec, triple: tuple[str, str, str] | None = None) -> str:
     if kind == "withdrawn":
         entry = rec.get("entry") or {}
         date = entry.get("effective_date") or ""
@@ -290,7 +291,13 @@ def approval_cell(kind: str, rec) -> str:
         return f"Recruiting ({esc(phase)})."
     if kind == "on-the-edge":
         return "Not an FDA approval"
-    # Mainstream: FDA label in the snapshot; Europe year if EMA authorised.
+    # Mainstream: FDA presence is indication-level (the leaf is built from
+    # that use on the FDA label) but this snapshot has no complete
+    # indication-level FDA approval-date catalog, so the US part names
+    # the snapshot label and does not show a year. A drug-level first-
+    # approval year on a later indication would be the same bug as a
+    # drug-level EMA year. The Europe part is indication-specific: see
+    # ema_indications.europe_phrase.
     bits = []
     fda = rec.get("fda") or {}
     if (
@@ -300,9 +307,9 @@ def approval_cell(kind: str, rec) -> str:
         or True  # targeting therapies are on an FDA list in this snapshot
     ):
         bits.append("United States (FDA label in this snapshot)")
-    _name, year = _ema_year(rec)
-    if year:
-        bits.append(f"Europe since {year}")
+    europe = europe_phrase(rec, triple)
+    if europe:
+        bits.append(europe)
     return "; ".join(bits) if bits else "The snapshot does not give a place or date"
 
 
@@ -407,7 +414,7 @@ def raw_sources(kind: str, rec) -> str:
     return excerpt_h + ema_block
 
 
-def table_html(options: list, plain: dict, biomarker_id: str = "") -> str:
+def table_html(options: list, plain: dict, biomarker_id: str = "", triple: tuple[str, str, str] | None = None) -> str:
     # Group by level, alphabetical within. Level order is fixed, not a ranking.
     order = ["mainstream", "trials", "on-the-edge", "withdrawn"]
     grouped: dict[str, list] = {k: [] for k in order}
@@ -441,7 +448,7 @@ def table_html(options: list, plain: dict, biomarker_id: str = "") -> str:
                     what = first + "."
                 elif ". Authorised" in what or ". Approved" in what:
                     what = what.split(". Authorised")[0].split(". Approved")[0] + "."
-            approved = approval_cell(kind, rec)
+            approved = approval_cell(kind, rec, triple=triple)
             url, slabel = source_link(kind, rec)
             if url:
                 slink = f'<a href="{esc(url)}">{esc(slabel)}</a>'
@@ -970,7 +977,12 @@ def build_biomarker(snap: dict, bid: str) -> dict:
                     raise SystemExit(
                         "Combination gate failed:\n" + "\n".join(combo_errors)
                     )
-                table = table_html(wnode["options"], plain, bid)
+                table = table_html(
+                    wnode["options"],
+                    plain,
+                    bid,
+                    triple=(cnode["cancer"], mnode["mutation"], wnode["when"]),
+                )
                 leaf_notes = indication_notes_html(
                     [
                         o["record"]

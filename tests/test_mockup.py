@@ -277,7 +277,20 @@ def test_combination_gate_catches_merged_sets() -> None:
     ok(f"scoped note for two first-line-vs-refractory units is {note!r}")
 
 
+def _row_window(vis: str, name: str, n: int = 400) -> str:
+    i = vis.find(name)
+    if i < 0:
+        return ""
+    return vis[i:i + n]
+
+
 def test_osimertinib_europe_year() -> None:
+    """First-line Tagrisso was added by II/0019, Commission Decision 07/06/2018.
+
+    The 2016 marketing-authorisation year is the original T790M indication,
+    not first-line. Showing 2016 here is the same drug-level-year bug as
+    Zelboraf 2012 on Erdheim-Chester disease.
+    """
     leaf = (
         TREE / "EGFR" / "lung-cancer" / "egfr-exon-19-deletion-or-l858r"
         / "as-a-first-treatment.html"
@@ -289,15 +302,112 @@ def test_osimertinib_europe_year() -> None:
     if "Osimertinib" not in vis:
         err("osimertinib missing from first-treatment table")
         return
-    # Window around osimertinib
-    i = vis.find("Osimertinib")
-    window = vis[i:i+500]
+    window = _row_window(vis, "Osimertinib")
     if "Europe since 2015" in window:
         err("osimertinib still shows Europe since 2015 (CHMP opinion year, not marketing authorisation)")
-    if "Europe since 2016" not in window:
-        err(f"osimertinib does not show Europe since 2016 in {window!r}")
+    if "Europe since 2016" in window:
+        err("osimertinib first-treatment still shows Europe since 2016 (T790M MA year, not first-line)")
+    if "Europe since 2018" not in window:
+        err(f"osimertinib does not show Europe since 2018 in {window!r}")
     else:
-        ok("osimertinib shows Europe since 2016, from the EPAR marketing authorisation issued date")
+        ok("osimertinib first-treatment shows Europe since 2018, from the Tagrisso II/0019 Commission Decision")
+
+
+def test_vemurafenib_ecd_no_europe_2012() -> None:
+    """Zelboraf's 2012 EU marketing authorisation is melanoma, not ECD.
+
+    The current EPAR therapeutic indication is BRAF-V600 melanoma only.
+    The procedural archive has no extension for Erdheim-Chester disease.
+    """
+    from build_mockup import approval_cell, slug
+    from tree import therapy_branches
+    snap = json.loads((ROOT / "data" / "snapshot.json").read_text(encoding="utf-8"))
+    rec = None
+    for b in snap["biomarkers"]:
+        if b["id"] != "BRAF-V600E":
+            continue
+        for t in b.get("therapies") or []:
+            if t.get("name") == "Vemurafenib":
+                rec = t
+                break
+    if rec is None:
+        err("Vemurafenib missing from the BRAF snapshot")
+        return
+    triple = (
+        "Erdheim-Chester disease",
+        "BRAF V600",
+        "label does not say when it is used",
+    )
+    cell = approval_cell("mainstream", rec, triple=triple)
+    if "2012" in cell:
+        err(f"Vemurafenib ECD still shows a 2012 Europe year: {cell!r}")
+    if "Europe: approved for other uses" not in cell:
+        err(f"Vemurafenib ECD should say Europe is approved for other uses, got {cell!r}")
+    else:
+        ok("Vemurafenib ECD does not show Europe 2012; Europe is approved for other uses")
+
+    leaf = (
+        TREE / "BRAF-V600E" / slug("Erdheim-Chester disease") / slug("BRAF V600")
+        / "label-does-not-say-when-it-is-used.html"
+    )
+    if not leaf.is_file():
+        err("missing BRAF Erdheim-Chester leaf")
+        return
+    vis = visible_text(leaf.read_text(encoding="utf-8"))
+    window = _row_window(vis, "Vemurafenib")
+    if not window:
+        err("Vemurafenib missing from the Erdheim-Chester table")
+        return
+    if "Europe since 2012" in window:
+        err(f"Vemurafenib ECD table still shows Europe since 2012: {window!r}")
+    if "Europe: approved for other uses" not in window:
+        err(f"Vemurafenib ECD table does not say Europe is approved for other uses: {window!r}")
+    else:
+        ok("Vemurafenib ECD table does not show Europe 2012")
+
+
+def test_vemurafenib_melanoma_europe_2012() -> None:
+    """A row where the EU indication matches: Zelboraf melanoma, MA 17/02/2012.
+
+    The current EPAR therapeutic indication is melanoma only, and the
+    procedural history has no later extension of indication, so 2012 is
+    the year this indication was added.
+    """
+    from build_mockup import approval_cell, slug
+    snap = json.loads((ROOT / "data" / "snapshot.json").read_text(encoding="utf-8"))
+    rec = None
+    for b in snap["biomarkers"]:
+        if b["id"] != "BRAF-V600E":
+            continue
+        for t in b.get("therapies") or []:
+            if t.get("name") == "Vemurafenib":
+                rec = t
+                break
+    if rec is None:
+        err("Vemurafenib missing from the BRAF snapshot")
+        return
+    triple = (
+        "melanoma (skin cancer)",
+        "BRAF V600E",
+        "label does not say when it is used",
+    )
+    cell = approval_cell("mainstream", rec, triple=triple)
+    if "Europe since 2012" not in cell:
+        err(f"Vemurafenib melanoma should show Europe since 2012, got {cell!r}")
+    else:
+        ok("Vemurafenib melanoma shows Europe since 2012, from the Zelboraf EPAR MA issued date")
+
+    leaf = (
+        TREE / "BRAF-V600E" / slug("melanoma (skin cancer)") / slug("BRAF V600E")
+        / "label-does-not-say-when-it-is-used.html"
+    )
+    if leaf.is_file():
+        vis = visible_text(leaf.read_text(encoding="utf-8"))
+        window = _row_window(vis, "Vemurafenib")
+        if "Europe since 2012" not in window:
+            err(f"Vemurafenib melanoma table does not show Europe since 2012: {window!r}")
+        else:
+            ok("Vemurafenib melanoma table shows Europe since 2012")
 
 
 def test_gefitinib_plain_note() -> None:
@@ -680,6 +790,8 @@ def main() -> int:
     test_cetuximab_partners_scoped()
     test_combination_gate_catches_merged_sets()
     test_osimertinib_europe_year()
+    test_vemurafenib_ecd_no_europe_2012()
+    test_vemurafenib_melanoma_europe_2012()
     test_gefitinib_plain_note()
     test_every_biomarker_tree()
     test_lapatinib_letrozole_not_dropped()
