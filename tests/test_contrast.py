@@ -339,34 +339,102 @@ class _SiteServer(threading.Thread):
         self._httpd.shutdown()
 
 
-def _launch_chrome(chrome: str, port: int) -> subprocess.Popen:
+def _chrome_ready(port: int) -> bool:
+    try:
+        urllib.request.urlopen(f"http://127.0.0.1:{port}/json/version", timeout=1)
+        return True
+    except Exception:
+        return False
+
+
+def _port_from_devtools_file(profile: Path) -> int | None:
+    path = profile / "DevToolsActivePort"
+    if not path.is_file():
+        return None
+    try:
+        first = path.read_text().splitlines()[0].strip()
+    except OSError:
+        return None
+    return int(first) if first.isdigit() else None
+
+
+def _launch_chrome(chrome: str, port: int) -> tuple[subprocess.Popen, int]:
+    """Start headless Chrome and return (process, actual DevTools port).
+
+    Newer Chrome sometimes writes a different port to DevToolsActivePort,
+    and `--headless=new` has been known not to bind the debug port on
+    some CI images. We wait on both the requested port and that file,
+    capture logs, and fall back to classic `--headless` if needed.
+    """
     profile = Path("/tmp/tte-chrome-contrast")
-    if profile.exists():
-        shutil.rmtree(profile, ignore_errors=True)
-    profile.mkdir(parents=True)
-    cmd = [
-        chrome,
-        "--headless=new",
-        "--no-sandbox",
-        "--disable-gpu",
-        "--disable-dev-shm-usage",
-        f"--remote-debugging-port={port}",
-        f"--user-data-dir={profile}",
-        "about:blank",
-    ]
-    proc = subprocess.Popen(
-        cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
-    )
-    # Wait for the debug port.
-    for _ in range(50):
-        try:
-            urllib.request.urlopen(f"http://127.0.0.1:{port}/json/version", timeout=1)
-            return proc
-        except Exception:
+    log_path = Path("/tmp/tte-chrome-contrast.log")
+
+    def start(headless_flag: str) -> subprocess.Popen:
+        if profile.exists():
+            shutil.rmtree(profile, ignore_errors=True)
+        profile.mkdir(parents=True)
+        cmd = [
+            chrome,
+            headless_flag,
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--disable-gpu",
+            "--disable-dev-shm-usage",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-extensions",
+            f"--remote-debugging-port={port}",
+            "--remote-debugging-address=127.0.0.1",
+            "--remote-allow-origins=*",
+            f"--user-data-dir={profile}",
+            "about:blank",
+        ]
+        log_f = open(log_path, "wb")
+        return subprocess.Popen(cmd, stdout=log_f, stderr=subprocess.STDOUT)
+
+    def wait(proc: subprocess.Popen, seconds: float = 20.0) -> int | None:
+        deadline = time.time() + seconds
+        while time.time() < deadline:
             if proc.poll() is not None:
-                raise RuntimeError(f"Chrome exited early with {proc.returncode}")
-            time.sleep(0.15)
-    raise RuntimeError("Chrome DevTools port did not open")
+                return None
+            actual = _port_from_devtools_file(profile)
+            if actual is not None and _chrome_ready(actual):
+                return actual
+            if _chrome_ready(port):
+                return port
+            time.sleep(0.2)
+        return None
+
+    def log_tail() -> str:
+        try:
+            return log_path.read_text(errors="replace")[-4000:]
+        except OSError:
+            return ""
+
+    flags = ["--headless=new", "--headless"]
+    last_proc = None
+    for flag in flags:
+        if last_proc is not None and last_proc.poll() is None:
+            last_proc.terminate()
+            try:
+                last_proc.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                last_proc.kill()
+        proc = start(flag)
+        actual = wait(proc)
+        if actual is not None:
+            return proc, actual
+        err = log_tail()
+        print(
+            f"chrome {flag} did not open DevTools "
+            f"(exit={proc.poll()}). log:\n{err}",
+            flush=True,
+        )
+        last_proc = proc
+    raise RuntimeError(
+        "Chrome DevTools port did not open. "
+        f"binary={chrome} log:\n{log_tail()}"
+    )
 
 
 def _connect_page(debug_port: int) -> _WS:
@@ -435,7 +503,8 @@ def main() -> int:
     failures = []
     n_checked = 0
     try:
-        proc = _launch_chrome(chrome, debug_port)
+        print(f"contrast gate using {chrome}", flush=True)
+        proc, debug_port = _launch_chrome(chrome, debug_port)
         ws = _connect_page(debug_port)
         for rel in SAMPLE:
             url = f"http://127.0.0.1:{http_port}/{rel}"
