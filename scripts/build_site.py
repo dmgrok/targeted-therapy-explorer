@@ -76,7 +76,7 @@ def masthead(snap: dict, page: str, root: bool = True) -> str:
       <p class="kicker">A watch-and-explain gazette · not a medical device</p>
       {title_html}
       <p class="issue"><span class="label">Snapshot</span>{esc(fmt_date(snap["snapshotDate"]))}</p>
-      <p class="standfirst">Approved targeted therapies and recruiting trials, organised by biomarker, from public regulatory and trial registers.</p>
+      <p class="standfirst">A plain-language map of approved targeted therapies and recruiting trials, organised by biomarker, from public regulatory and trial registers.</p>
     </header>
     <nav class="sections" aria-label="Sections">
       <a href="{prefix}index.html"{cur("home")}>Biomarkers</a>
@@ -534,6 +534,18 @@ def main() -> int:
         print(f"missing {DATA}", file=sys.stderr)
         return 1
     snap = json.loads(DATA.read_text(encoding="utf-8"))
+    # Plain-language text is committed data, not generated at build or in
+    # the browser. Fail the build if a line is unsourced, a number/date/drug
+    # is not in its source, or the source hash is stale.
+    from plain import validate_all
+    from pages_accessible import page_biomarker as render_biomarker
+    from pages_accessible import page_home as render_home
+    errors = validate_all(snap)
+    if errors:
+        print(f"plain-text validation failed ({len(errors)} errors):", file=sys.stderr)
+        for e in errors:
+            print(" ", e, file=sys.stderr)
+        return 1
     SITE.mkdir(parents=True, exist_ok=True)
     (SITE / "b").mkdir(exist_ok=True)
     (SITE / "data").mkdir(exist_ok=True)
@@ -546,13 +558,13 @@ def main() -> int:
         }, indent=2) + "\n",
         encoding="utf-8",
     )
-    (SITE / "index.html").write_text(page_home(snap), encoding="utf-8")
+    (SITE / "index.html").write_text(render_home(snap), encoding="utf-8")
     (SITE / "about.html").write_text(page_about(snap), encoding="utf-8")
     sources_md = ROOT / "SOURCES.md"
     if sources_md.is_file():
         (SITE / "SOURCES.md").write_text(sources_md.read_text(encoding="utf-8"), encoding="utf-8")
     for b in snap.get("biomarkers") or []:
-        (SITE / "b" / f"{b['id']}.html").write_text(page_biomarker(snap, b), encoding="utf-8")
+        (SITE / "b" / f"{b['id']}.html").write_text(render_biomarker(snap, b), encoding="utf-8")
     print(f"Wrote site to {SITE}")
     return 0
 

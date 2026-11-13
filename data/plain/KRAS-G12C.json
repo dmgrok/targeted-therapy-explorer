@@ -1,0 +1,852 @@
+{
+  "biomarker_id": "KRAS-G12C",
+  "generated_at": "2026-11-13T17:42:22+01:00",
+  "source_hash": "b05ec81395ea90516dcdc7234fb419c700cebd89be259d87243570c441e0bb64",
+  "intro": {
+    "what": [
+      "KRAS G12C is a substitution in the KRAS gene, which belongs to the RAS family of proteins.",
+      "Mutations in the RAS family of proteins are frequently observed across cancer types, and the amino acid positions that account for the overwhelming majority of these mutations are G12, G13 and Q61."
+    ],
+    "test_report": "If a test report mentions KRAS G12C, it is recording a finding about this gene change. This page lists public FDA companion diagnostics that look for KRAS G12C, and the therapies and trials in this snapshot that use KRAS G12C as a selection criterion. That mention is not a diagnosis or a treatment decision on its own.",
+    "sources": [
+      {
+        "id": "civic-gene:KRAS",
+        "url": "https://civicdb.org/features/30",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "biomarker:KRAS-G12C",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      },
+      {
+        "id": "summary:KRAS-G12C",
+        "url": "https://civicdb.org/features/30",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      }
+    ],
+    "test_report_sources": [
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      },
+      {
+        "id": "biomarker:KRAS-G12C",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "cdx:Agilent Resolution ctDx FIRST assay (Resolution Bioscience, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Plasma",
+      "category": "cdx",
+      "text": "Agilent Resolution ctDx FIRST assay (Resolution Bioscience, Inc.) is an FDA companion diagnostic listed for Non-Small Cell Lung Cancer (NSCLC) - Plasma. The indication column lists the sample type as Plasma. It appears on the snapshot record for Adagrasib.",
+      "sources": [
+        {
+          "id": "cdx:Agilent Resolution ctDx FIRST assay (Resolution Bioscience, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:cobas KRAS Mutation Test (Roche Molecular Systems, Inc.)|Colorectal Cancer - Tissue",
+      "category": "cdx",
+      "text": "cobas KRAS Mutation Test (Roche Molecular Systems, Inc.) is an FDA companion diagnostic listed for Colorectal Cancer - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Panitumumab.",
+      "sources": [
+        {
+          "id": "cdx:cobas KRAS Mutation Test (Roche Molecular Systems, Inc.)|Colorectal Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Colorectal Cancer - Tissue",
+      "category": "cdx",
+      "text": "FoundationOne CDx (Foundation Medicine, Inc.) is an FDA companion diagnostic listed for Colorectal Cancer - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Panitumumab.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Colorectal Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Guardant360 CDx (Guardant Health, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Plasma",
+      "category": "cdx",
+      "text": "Guardant360 CDx (Guardant Health, Inc.) is an FDA companion diagnostic listed for Non-Small Cell Lung Cancer (NSCLC) - Plasma. The indication column lists the sample type as Plasma. It appears on the snapshot record for Sotorasib.",
+      "sources": [
+        {
+          "id": "cdx:Guardant360 CDx (Guardant Health, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Guardant360® Liquid CDx (Guardant Health, Inc.)|Non-small cell lung cancer (NSCLC) - Plasma",
+      "category": "cdx",
+      "text": "Guardant360® Liquid CDx (Guardant Health, Inc.) is an FDA companion diagnostic listed for Non-small cell lung cancer (NSCLC) - Plasma. The indication column lists the sample type as Plasma. It appears on the snapshot record for Sotorasib.",
+      "sources": [
+        {
+          "id": "cdx:Guardant360® Liquid CDx (Guardant Health, Inc.)|Non-small cell lung cancer (NSCLC) - Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:ONCO/Reveal Dx Lung & Colon Cancer Assay (O/RDx-LCCA) (Pillar Biosciences, Inc.)|Colorectal Cancer - Tissue",
+      "category": "cdx",
+      "text": "ONCO/Reveal Dx Lung & Colon Cancer Assay (O/RDx-LCCA) (Pillar Biosciences, Inc.) is an FDA companion diagnostic listed for Colorectal Cancer - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Panitumumab.",
+      "sources": [
+        {
+          "id": "cdx:ONCO/Reveal Dx Lung & Colon Cancer Assay (O/RDx-LCCA) (Pillar Biosciences, Inc.)|Colorectal Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:therascreen KRAS RGQ PCR Kit (Qiagen Manchester, Ltd.)|Colorectal Cancer - Tissue",
+      "category": "cdx",
+      "text": "therascreen KRAS RGQ PCR Kit (Qiagen Manchester, Ltd.) is an FDA companion diagnostic listed for Colorectal Cancer - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Adagrasib.",
+      "sources": [
+        {
+          "id": "cdx:therascreen KRAS RGQ PCR Kit (Qiagen Manchester, Ltd.)|Colorectal Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:therascreen KRAS RGQ PCR Kit (Qiagen Manchester, Ltd.)|Colorectal Cancer – Tissue",
+      "category": "cdx",
+      "text": "therascreen KRAS RGQ PCR Kit (Qiagen Manchester, Ltd.) is an FDA companion diagnostic listed for Colorectal Cancer – Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Sotorasib.",
+      "sources": [
+        {
+          "id": "cdx:therascreen KRAS RGQ PCR Kit (Qiagen Manchester, Ltd.)|Colorectal Cancer – Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:therascreen KRAS RGQ PCR Kit (Qiagen Manchester, Ltd.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "therascreen KRAS RGQ PCR Kit (Qiagen Manchester, Ltd.) is an FDA companion diagnostic listed for Non-Small Cell Lung Cancer (NSCLC) - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Adagrasib.",
+      "sources": [
+        {
+          "id": "cdx:therascreen KRAS RGQ PCR Kit (Qiagen Manchester, Ltd.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:xT CDx (Tempus Labs, Inc.)|Colorectal Cancer (CRC) - Tissue (Matching Blood/Saliva)",
+      "category": "cdx",
+      "text": "xT CDx (Tempus Labs, Inc.) is an FDA companion diagnostic listed for Colorectal Cancer (CRC) - Tissue (Matching Blood/Saliva). The indication column lists the sample type as Tissue (Matching Blood/Saliva). It appears on the snapshot record for Panitumumab.",
+      "sources": [
+        {
+          "id": "cdx:xT CDx (Tempus Labs, Inc.)|Colorectal Cancer (CRC) - Tissue (Matching Blood/Saliva)",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Adagrasib",
+      "category": "mainstream",
+      "text": "Adagrasib (KRAZATI) is listed on an FDA label in this snapshot. The FDA label lists this use: KRAZATI, as a single-agent, is indicated for the treatment of adult patients with KRAS G12C-mutated locally advanced or metastatic non-small cell lung cancer (NSCLC), as determined by an FDA-approved test , who have received at least one prior systemic therapy. This indication is approved under accelerated approval. An EMA record for Krazati lists the status as Authorised, with an authorisation date of 09/11/2023.",
+      "sources": [
+        {
+          "id": "therapy:KRAS-G12C:Adagrasib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0b8bf078-34c2-4f45-9012-38a8ac082b01",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Panitumumab",
+      "category": "mainstream",
+      "text": "Panitumumab (Vectibix) is listed on an FDA label in this snapshot. The FDA label lists this use: As monotherapy following disease progression after prior treatment with fluoropyrimidine, oxaliplatin, and irinotecan-containing chemotherapy. KRAS G12C-mutated Metastatic Colorectal Cancer (mCRC)* In combination with sotorasib, for the treatment of adult patients with KRAS G12C- mutated mCRC, as determined by an FDA-approved test, who have received prior.",
+      "sources": [
+        {
+          "id": "therapy:KRAS-G12C:Panitumumab",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Sotorasib",
+      "category": "mainstream",
+      "text": "Sotorasib (LUMAKRAS) is an inhibitor of the RAS GTPase family. The FDA label lists this use: KRAS G12C-mutated Locally Advanced or Metastatic Non-Small Cell Lung Cancer (NSCLC) As a single agent, for the treatment of adult patients with KRAS G12C-mutated locally advanced or metastatic NSCLC, as determined by an FDA-approved test, who have received at least one prior systemic therapy. This indication is approved. An EMA record for Lumykras lists the status as Authorised, with an authorisation date of 11/11/2021.",
+      "sources": [
+        {
+          "id": "therapy:KRAS-G12C:Sotorasib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c80a362c-7ac3-4894-a076-0691e68ef8c1",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04613596",
+      "category": "trials",
+      "text": "NCT04613596 is a RECRUITING study (phase 2 / phase 3). It is titled “Phase 2 Trial of Adagrasib Monotherapy and in Combination With Pembrolizumab and a Phase 3 Trial of Adagrasib in Combination in Patients With a KRAS G12C Mutation KRYSTAL-7”. Conditions listed: Advanced Non-Small Cell Lung Cancer; Metastatic Non-Small Cell Lung Cancer. Interventions listed: DRUG: Adagrasib; DRUG: Adagrasib; DRUG: Adagrasib; DRUG: Adagrasib; DRUG: Pembrolizumab. The record lists a start date of 2020-12-02.",
+      "sources": [
+        {
+          "id": "trial:NCT04613596",
+          "url": "https://clinicaltrials.gov/study/NCT04613596",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05067283",
+      "category": "trials",
+      "text": "NCT05067283 is a RECRUITING study (phase 1). It is titled “A Study of Calderasib (MK-1084) in KRAS Mutant Advanced Solid Tumors (MK-1084-001)”. Conditions listed: Advanced Solid Tumors. Interventions listed: DRUG: Calderasib; BIOLOGICAL: Pembrolizumab; DRUG: carboplatin; DRUG: pemetrexed; BIOLOGICAL: cetuximab; DRUG: oxaliplatin; DRUG: leucovorin; DRUG: 5-fluorouracil. The record lists a start date of 2021-12-17.",
+      "sources": [
+        {
+          "id": "trial:NCT05067283",
+          "url": "https://clinicaltrials.gov/study/NCT05067283",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05276726",
+      "category": "trials",
+      "text": "NCT05276726 is a RECRUITING study (phase 1 / phase 2). It is titled “A Study of JAB-21822 in Advanced or Metastatic NSCLC With KRAS p.G12C and STK11 Co-mutation and Wild-type KEAP1”. Conditions listed: Non-small Cell Lung Cancer. Interventions listed: DRUG: JAB 21822. The record lists a start date of 2022-08-17.",
+      "sources": [
+        {
+          "id": "trial:NCT05276726",
+          "url": "https://clinicaltrials.gov/study/NCT05276726",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05288205",
+      "category": "trials",
+      "text": "NCT05288205 is a RECRUITING study (phase 1 / phase 2). It is titled “Phase 1/2a Study of JAB-21822 Plus JAB-3312 in Patients With Advanced Solid Tumors Harboring KRAS p.G12C Mutation”. Conditions listed: KRAS P.G12C; Non-small Cell Lung Cancer; Colorectal Cancer; Pancreatic Ductal Carcinoma. Interventions listed: DRUG: JAB-21822; DRUG: JAB-3312. The record lists a start date of 2022-04-14.",
+      "sources": [
+        {
+          "id": "trial:NCT05288205",
+          "url": "https://clinicaltrials.gov/study/NCT05288205",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05398094",
+      "category": "trials",
+      "text": "NCT05398094 is a RECRUITING study (phase 2). It is titled “Clinical Trial of AMG510 in Stage III Unresectable NSCLC KRAS p.G12C Patients and Ineligible for Chemo-radiotherapy”. Conditions listed: Non-small Cell Lung Cancer Stage III; KRAS P.G12C. Interventions listed: DRUG: Sotorasib. The record lists a start date of 2022-03-21.",
+      "sources": [
+        {
+          "id": "trial:NCT05398094",
+          "url": "https://clinicaltrials.gov/study/NCT05398094",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05410145",
+      "category": "trials",
+      "text": "NCT05410145 is a RECRUITING study (phase 1 / phase 2). It is titled “A Study of D3S-001 Monotherapy or Combination Therapy in Subjects With Advanced Solid Tumors With a KRAS p.G12C Mutation”. Conditions listed: KRAS P.G12C. Interventions listed: DRUG: D3S-001; DRUG: Pembrolizumab; DRUG: Cisplatin; DRUG: Carboplatin; DRUG: Pemetrexed; DRUG: Cetuximab. The record lists a start date of 2022-08-03.",
+      "sources": [
+        {
+          "id": "trial:NCT05410145",
+          "url": "https://clinicaltrials.gov/study/NCT05410145",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05631249",
+      "category": "trials",
+      "text": "NCT05631249 is a RECRUITING study (phase 2). It is titled “Sotorasib in Previously Treated Locally Advanced or Metastatic NSCLC Subjects With Mutated KRAS p.G12C”. Conditions listed: KRAS P.G12C; Non Small Cell Lung Cancer. Interventions listed: DRUG: Sotorasib 120Mg Tab. The record lists a start date of 2022-12-13.",
+      "sources": [
+        {
+          "id": "trial:NCT05631249",
+          "url": "https://clinicaltrials.gov/study/NCT05631249",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05786924",
+      "category": "trials",
+      "text": "NCT05786924 is a RECRUITING study (phase 1 / phase 2). It is titled “Phase 1/2 Trial of S241656 in Selected RAS/MAPK Mutation- Positive Malignancies”. Conditions listed: Non-small Cell Lung Cancer; Histiocytic Neoplasm; Histiocytosis; BRAF Gene Mutation; BRAF V600E; BRAF V600 Mutation; BRAF Mutation-Related Tumors; BRAF. Interventions listed: DRUG: S241656; DRUG: FOLFOX6/FOLFOX7; DRUG: FOLFIRI; DRUG: Cetuximab; DRUG: Panitumumab; DRUG: Gemcitabine; DRUG: Nab-paclitaxel. The record lists a start date of 2023-04-18.",
+      "sources": [
+        {
+          "id": "trial:NCT05786924",
+          "url": "https://clinicaltrials.gov/study/NCT05786924",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05789082",
+      "category": "trials",
+      "text": "NCT05789082 is a RECRUITING study (phase 1 / phase 2). It is titled “A Study Evaluating the Safety, Activity, and Pharmacokinetics of Divarasib as a Single Agent or in Combination With Other Anti-Cancer Therapies in Participants With Previously Untreated Advanced or Metastatic Non-Small Cell Lung Cancer With a KRAS G12C Mutation”. Conditions listed: Non-Small Cell Lung Cancer. Interventions listed: DRUG: Divarasib; DRUG: Pembrolizumab; DRUG: Carboplatin; DRUG: Cisplatin; DRUG: Pemetrexed. The record lists a start date of 2023-06-20.",
+      "sources": [
+        {
+          "id": "trial:NCT05789082",
+          "url": "https://clinicaltrials.gov/study/NCT05789082",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05845450",
+      "category": "trials",
+      "text": "NCT05845450 is a RECRUITING study (phase 2). It is titled “Pre-operative Targeted Treatments in Molecularly Selected Resectable Colorectal Cancer (UNICORN)”. Conditions listed: Colorectal Cancer; Resectable Colorectal Carcinoma. Interventions listed: DRUG: Trastuzumab deruxtecan; DRUG: Durvalumab; DRUG: Panitumumab; DRUG: Botensilimab; DRUG: Balstilimab; DRUG: Sotorasib; DRUG: Vorbipiprant; DRUG: Nivolumab. The record lists a start date of 2023-05-11.",
+      "sources": [
+        {
+          "id": "trial:NCT05845450",
+          "url": "https://clinicaltrials.gov/study/NCT05845450",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05920356",
+      "category": "trials",
+      "text": "NCT05920356 is a RECRUITING study (phase 3). It is titled “A Study Evaluating Sotorasib Platinum Doublet Combination Versus Pembrolizumab Platinum Doublet Combination as a Front-Line Therapy in Participants With Stage IV or Advanced Stage IIIB/C Nonsquamous Non-Small Cell Lung Cancers (CodeBreaK 202)”. Conditions listed: Non-Small Cell Lung Cancer (NSCLC). Interventions listed: DRUG: Sotorasib; DRUG: Pembrolizumab. The record lists a start date of 2023-11-16.",
+      "sources": [
+        {
+          "id": "trial:NCT05920356",
+          "url": "https://clinicaltrials.gov/study/NCT05920356",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06008288",
+      "category": "trials",
+      "text": "NCT06008288 is a RECRUITING study (phase 2). It is titled “A Phase II Study Evaluating JAB-21822 Monotherapy in Adult Patients With Pancreatic Cancer and Other Solid Tumors Harboring the KRAS p.G12C Mutation.”. Conditions listed: KRAS P.G12C; Pancreatic Cancer; Solid Tumor. Interventions listed: DRUG: JAB-21822. The record lists a start date of 2023-10-27.",
+      "sources": [
+        {
+          "id": "trial:NCT06008288",
+          "url": "https://clinicaltrials.gov/study/NCT06008288",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06026410",
+      "category": "trials",
+      "text": "NCT06026410 is a RECRUITING study (phase 1). It is titled “KO-2806 Monotherapy and Combination Therapies in Advanced Solid Tumors”. Conditions listed: Solid Tumors With HRAS Alterations; Non Small Cell Lung Cancer (NSCLC); Colorectal Cancer (CRC); Pancreatic Ductal Adenocarcinoma (PDAC); Clear Cell Renal Cell Carcinoma (ccRCC); Renal Cell Carcinoma (Kidney Cancer); Non Clear Cell Renal Cell Carcinoma (nccRCC). Interventions listed: DRUG: Darlifarnib; DRUG: Cabozantinib; DRUG: Adagrasib. The record lists a start date of 2023-10-18.",
+      "sources": [
+        {
+          "id": "trial:NCT06026410",
+          "url": "https://clinicaltrials.gov/study/NCT06026410",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06119581",
+      "category": "trials",
+      "text": "NCT06119581 is a RECRUITING study (phase 3). It is titled “A Study of First-Line Olomorasib (LY3537982) and Pembrolizumab With or Without Chemotherapy in Patients With Advanced KRAS G12C-Mutant Non-small Cell Lung Cancer”. Conditions listed: Carcinoma, Non-Small-Cell Lung; Neoplasm Metastasis. Interventions listed: DRUG: LY3537982; DRUG: Pembrolizumab; DRUG: Placebo; DRUG: Cisplatin; DRUG: Carboplatin; DRUG: Pemetrexed. The record lists a start date of 2023-12-21.",
+      "sources": [
+        {
+          "id": "trial:NCT06119581",
+          "url": "https://clinicaltrials.gov/study/NCT06119581",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06128551",
+      "category": "trials",
+      "text": "NCT06128551 is a RECRUITING study (phase 1 / phase 2). It is titled “Study of Elironrasib and Daraxonrasib as Monotherapies and Combination Therapy in Participants With Advanced KRAS G12C Mutant Solid Tumors”. Conditions listed: Non-Small Cell Lung Cancer (NSCLC); Colorectal Cancer; Pancreatic Ductal Adenocarcinoma. Interventions listed: DRUG: Elironrasib; DRUG: Daraxonrasib. The record lists a start date of 2023-11-14.",
+      "sources": [
+        {
+          "id": "trial:NCT06128551",
+          "url": "https://clinicaltrials.gov/study/NCT06128551",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06162221",
+      "category": "trials",
+      "text": "NCT06162221 is a RECRUITING study (phase 1 / phase 2). It is titled “Study of RAS(ON) Inhibitors in Patients With Advanced RAS-mutated NSCLC”. Conditions listed: Non-Small Cell Lung Cancer, NSCLC; KRAS, NRAS, HRAS-mutated NSCLC; KRAS G12C-mutated Solid Tumors, Lung Cancer; Lung Cancer Stage IV, Advanced Solid Tumor, Cancer; RAS G12D-mutated NSCLC. Interventions listed: DRUG: RMC-6291; DRUG: RMC-6236; DRUG: Pembrolizumab; DRUG: Cisplatin; DRUG: Carboplatin; DRUG: Pemetrexed; DRUG: RMC-9805. The record lists a start date of 2024-01-18.",
+      "sources": [
+        {
+          "id": "trial:NCT06162221",
+          "url": "https://clinicaltrials.gov/study/NCT06162221",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06244771",
+      "category": "trials",
+      "text": "NCT06244771 is a RECRUITING study (phase 1 / phase 2). It is titled “A Study Evaluating FMC-376 in Participants With KRAS G12C Mutated Solid Tumors”. Conditions listed: Advanced Solid Tumors With KRAS G12C Mutations; Solid Tumor, Adult; Unresectable Solid Tumor; Metastatic Solid Tumor; Non Small Cell Lung Cancer; KRAS G12C. Interventions listed: DRUG: FMC-376. The record lists a start date of 2024-02-12.",
+      "sources": [
+        {
+          "id": "trial:NCT06244771",
+          "url": "https://clinicaltrials.gov/study/NCT06244771",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06248606",
+      "category": "trials",
+      "text": "NCT06248606 is a RECRUITING study (phase 2). It is titled “Adagrasib + SRS for Patients With Metastatic KRAS G12C-mutated NSCLC With Untreated Brain Metastases”. Conditions listed: Non Small Cell Lung Cancer; NSCLC; KRAS G12C. Interventions listed: DRUG: Adagrasib; RADIATION: Stereotactic Radiosurgery. The record lists a start date of 2024-08-06.",
+      "sources": [
+        {
+          "id": "trial:NCT06248606",
+          "url": "https://clinicaltrials.gov/study/NCT06248606",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06249282",
+      "category": "trials",
+      "text": "NCT06249282 is a RECRUITING study (phase 1). It is titled “Carfilzomib in Combination With Sotorasib for the Treatment of Patients With KRAS G12C Mutated Advanced or Metastatic Non-small Cell Lung Cancer”. Conditions listed: Advanced Lung Non-Small Cell Carcinoma; Metastatic Lung Non-Small Cell Carcinoma; Stage III Lung Cancer AJCC v8; Stage IV Lung Cancer AJCC v8. Interventions listed: PROCEDURE: Biopsy; PROCEDURE: Biospecimen Collection; DRUG: Carfilzomib; PROCEDURE: Computed Tomography; PROCEDURE: Echocardiography; PROCEDURE: Magnetic Resonance Imaging; DRUG: Sotorasib. The record lists a start date of 2024-04-24.",
+      "sources": [
+        {
+          "id": "trial:NCT06249282",
+          "url": "https://clinicaltrials.gov/study/NCT06249282",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06252649",
+      "category": "trials",
+      "text": "NCT06252649 is a RECRUITING study (phase 3). It is titled “Study of Sotorasib, Panitumumab and FOLFIRI Versus FOLFIRI With or Without Bevacizumab-awwb in Treatment-naïve Participants With Metastatic Colorectal Cancer With KRAS p.G12C Mutation”. Conditions listed: Metastatic Colorectal Cancer. Interventions listed: DRUG: FOLFIRI Regimen; DRUG: Sotorasib; DRUG: Panitumumab; DRUG: Bevacizumab-awwb. The record lists a start date of 2024-07-17.",
+      "sources": [
+        {
+          "id": "trial:NCT06252649",
+          "url": "https://clinicaltrials.gov/study/NCT06252649",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06343402",
+      "category": "trials",
+      "text": "NCT06343402 is a RECRUITING study (phase 1). It is titled “Open-label Study of BBO-8520 in Adult Subjects With KRASG12C Non-small Cell Lung Cancer”. Conditions listed: Non-small Cell Lung Cancer; Metastatic Non-Small Cell Lung Cancer; NSCLC; KRAS G12C; Metastatic Lung Cancer; Advanced Lung Carcinoma. Interventions listed: DRUG: BBO-8520; DRUG: Pembrolizumab; DRUG: BBO-10203. The record lists a start date of 2024-05-22.",
+      "sources": [
+        {
+          "id": "trial:NCT06343402",
+          "url": "https://clinicaltrials.gov/study/NCT06343402",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06345729",
+      "category": "trials",
+      "text": "NCT06345729 is a RECRUITING study (phase 3). It is titled “A Study of Calderasib (MK-1084) Plus Pembrolizumab (MK-3475) in Participants With KRAS G12C Mutant Non-small Cell Lung Cancer (NSCLC) With Programmed Cell Death Ligand 1 (PD-L1) Tumor Proportion Score (TPS) ≥50% (MK-1084-004/KANDLELIT-004)”. Conditions listed: Non-small Cell Lung Cancer. Interventions listed: DRUG: Calderasib; OTHER: Placebo; BIOLOGICAL: Pembrolizumab. The record lists a start date of 2024-05-24.",
+      "sources": [
+        {
+          "id": "trial:NCT06345729",
+          "url": "https://clinicaltrials.gov/study/NCT06345729",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06383871",
+      "category": "trials",
+      "text": "NCT06383871 is a RECRUITING study (phase 1). It is titled “A Phase I Clinical Study of HRS-7058 in Patients With Advanced Malignant Tumour”. Conditions listed: Advanced Malignant Tumour. Interventions listed: DRUG: HRS-7058 capsule/ HRS-7058 tablet. The record lists a start date of 2024-06-06.",
+      "sources": [
+        {
+          "id": "trial:NCT06383871",
+          "url": "https://clinicaltrials.gov/study/NCT06383871",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06412198",
+      "category": "trials",
+      "text": "NCT06412198 is a RECRUITING study (phase 1 / phase 2). It is titled “A Multicenter Phase 1b/2 Study of Adagrasib, Cetuximab, and Cemiplimab for Metastatic Colorectal Cancer Harboring KRAS G12C Mutations”. Conditions listed: Metastatic Colorectal Cancer; KRAS G12C Mutations. Interventions listed: DRUG: Cetuximab; DRUG: Cemiplimab; DRUG: Adagrasib. The record lists a start date of 2024-08-28.",
+      "sources": [
+        {
+          "id": "trial:NCT06412198",
+          "url": "https://clinicaltrials.gov/study/NCT06412198",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06416410",
+      "category": "trials",
+      "text": "NCT06416410 is a RECRUITING study (phase 3). It is titled “JAB-21822 Combined With JAB-3312 Compared SOC in the First Line for Treatment of Advanced Non-small Cell Lung Cancer With KRAS p.G12C Mutation”. Conditions listed: Advanced Non-squamous Non-small-cell Lung Cancer; Metastatic Non-squamous Non Small Cell Lung Cancer. Interventions listed: DRUG: JAB-21822; DRUG: Tislelizumab; DRUG: JAB-3312; DRUG: Pemetrexed; DRUG: Carboplatin. The record lists a start date of 2024-08-07.",
+      "sources": [
+        {
+          "id": "trial:NCT06416410",
+          "url": "https://clinicaltrials.gov/study/NCT06416410",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06481813",
+      "category": "trials",
+      "text": "NCT06481813 is a RECRUITING study (NA). It is titled “Prospective, Longitudinal Biocollection in Thoracic Oncology, Including Newly Diagnosed Lung Cancer Patients”. Conditions listed: Lung Cancer; Carcinoma, Non-Small-Cell Lung; Small Cell Lung Carcinoma; Metastatic Lung Cancer. Interventions listed: OTHER: Blood Sampling (2*8mL Tubes); OTHER: PBMC Sampling (1*8mL Tubes); OTHER: Paxgene Sampling; PROCEDURE: Extended biopsies of tumor lesions. The record lists a start date of 2024-12-10.",
+      "sources": [
+        {
+          "id": "trial:NCT06481813",
+          "url": "https://clinicaltrials.gov/study/NCT06481813",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06582771",
+      "category": "trials",
+      "text": "NCT06582771 is a RECRUITING study (phase 2). It is titled “A Study of Sotorasib in People With Non-Small Cell Lung Cancer”. Conditions listed: Non Small Lung Cancer. Interventions listed: DRUG: Sotorasib. The record lists a start date of 2024-08-30.",
+      "sources": [
+        {
+          "id": "trial:NCT06582771",
+          "url": "https://clinicaltrials.gov/study/NCT06582771",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06659341",
+      "category": "trials",
+      "text": "NCT06659341 is a RECRUITING study (phase 1). It is titled “A Phase I Study of BAY3498264 Given Together With Sotorasib in Participants Who Have Advanced Solid Cancers With Specific Genetic Changes Called KRASG12C Mutation”. Conditions listed: Advanced Solid Tumors Harboring KRAS G12C Mutation. Interventions listed: DRUG: BAY3498264. The record lists a start date of 2024-11-08.",
+      "sources": [
+        {
+          "id": "trial:NCT06659341",
+          "url": "https://clinicaltrials.gov/study/NCT06659341",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06720987",
+      "category": "trials",
+      "text": "NCT06720987 is a RECRUITING study (phase 1). It is titled “A Study to Investigate the Safety and Efficacy of KQB365 as Monotherapy and in Combination in Participants With Advanced Solid Malignancies”. Conditions listed: KRAS G12C Mutation; KRAS G12S Mutation; Solid Tumor Malignancies; CRC (Colorectal Cancer); NSCLC; NSCLC (Non-small-cell Lung Cancer); NSCLC Non-small Cell Lung Cancer; Lung Cancer (Non-Small Cell). Interventions listed: DRUG: KQB365; DRUG: Cetuximab; DRUG: KQB198. The record lists a start date of 2025-02-04.",
+      "sources": [
+        {
+          "id": "trial:NCT06720987",
+          "url": "https://clinicaltrials.gov/study/NCT06720987",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06793215",
+      "category": "trials",
+      "text": "NCT06793215 is a RECRUITING study (phase 3). It is titled “A Study Evaluating the Efficacy and Safety of Divarasib and Pembrolizumab Versus Pembrolizumab and Pemetrexed and Carboplatin or Cisplatin in Participants With Previously Untreated, KRAS G12C-Mutated, Advanced or Metastatic Non-Squamous Non-Small Cell Lung Cancer”. Conditions listed: Non-Small Cell Lung Cancer; KRAS G12C Lung Cancer. Interventions listed: DRUG: Divarasib; DRUG: Pembrolizumab; DRUG: Pemetrexed; DRUG: Carboplatin; DRUG: Cisplatin. The record lists a start date of 2025-10-24.",
+      "sources": [
+        {
+          "id": "trial:NCT06793215",
+          "url": "https://clinicaltrials.gov/study/NCT06793215",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06875310",
+      "category": "trials",
+      "text": "NCT06875310 is a RECRUITING study (phase 3). It is titled “A Study of Adagrasib Plus Pembrolizumab Plus Chemotherapy vs. Placebo Plus Pembrolizumab Plus Chemotherapy in Participants With Previously Untreated Non-squamous Non-small Cell Lung Cancer With KRAS G12C Mutation (KRYSTAL-4)”. Conditions listed: Carcinoma, Non-Small-Cell Lung. Interventions listed: DRUG: Adagrasib; DRUG: Pembrolizumab; DRUG: Carboplatin; DRUG: Pemetrexed; DRUG: Placebo; DRUG: Cisplatin. The record lists a start date of 2025-04-24.",
+      "sources": [
+        {
+          "id": "trial:NCT06875310",
+          "url": "https://clinicaltrials.gov/study/NCT06875310",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06890598",
+      "category": "trials",
+      "text": "NCT06890598 is a RECRUITING study (phase 3). It is titled “Study of Olomorasib (LY3537982) in Combination With Standard of Care in Participants With Resected or Unresectable KRAS G12C-mutant Non-Small Cell Lung Cancer”. Conditions listed: Carcinoma, Non-Small-Cell Lung. Interventions listed: DRUG: Olomorasib; DRUG: Pembrolizumab; DRUG: Durvalumab; DRUG: Placebo. The record lists a start date of 2025-03-27.",
+      "sources": [
+        {
+          "id": "trial:NCT06890598",
+          "url": "https://clinicaltrials.gov/study/NCT06890598",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06917079",
+      "category": "trials",
+      "text": "NCT06917079 is a RECRUITING study (phase 1). It is titled “BBO-11818 in Adult Subjects With KRAS Mutant Cancer”. Conditions listed: Non-Small Cell Lung Cancer; NSCLC; PDAC - Pancreatic Ductal Adenocarcinoma; CRC (Colorectal Cancer); Metastatic Non-Small Lung Cell Cancer; Metastatic Colorectal Cancer (CRC); KRAS G12A; KRAS G12C. Interventions listed: DRUG: BBO-11818; DRUG: Pembrolizumab; DRUG: Platinum chemotherapy (cisplatin or carboplatin); DRUG: Pemetrexed; DRUG: Cetuximab; DRUG: mFOLFOX6; DRUG: mFOLFOX6; DRUG: BBO-10203. The record lists a start date of 2025-03-31.",
+      "sources": [
+        {
+          "id": "trial:NCT06917079",
+          "url": "https://clinicaltrials.gov/study/NCT06917079",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06997497",
+      "category": "trials",
+      "text": "NCT06997497 is a RECRUITING study (phase 3). It is titled “A Clinical Study of Calderasib (MK-1084) With Targeted Therapy and Chemotherapy in People With Colorectal Cancer (MK-1084-012/KANDLELIT-012)”. Conditions listed: Colon Adenocarcinoma; Rectal Adenocarcinoma. Interventions listed: DRUG: Calderasib; DRUG: Oxaliplatin; DRUG: Leucovorin/levofolinate calcium; DRUG: 5-Fluorouracil; BIOLOGICAL: Cetuximab; DRUG: Bevacizumab; DRUG: Bevacizumab biosimilar. The record lists a start date of 2025-07-16.",
+      "sources": [
+        {
+          "id": "trial:NCT06997497",
+          "url": "https://clinicaltrials.gov/study/NCT06997497",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07012031",
+      "category": "trials",
+      "text": "NCT07012031 is a RECRUITING study (phase 1 / phase 2). It is titled “Sotorasib in Combination With Trastuzumab Deruxtecan for the Treatment of Locally Advanced and Metastatic Non-small Cell Lung Cancer With a KRAS G12C Mutation”. Conditions listed: Locally Advanced Lung Non-Small Cell Carcinoma; Metastatic Lung Non-Small Cell Carcinoma; Stage III Lung Cancer AJCC v8; Stage IV Lung Cancer AJCC v8. Interventions listed: PROCEDURE: Biopsy Procedure; PROCEDURE: Biospecimen Collection; PROCEDURE: Computed Tomography; PROCEDURE: Echocardiography Test; PROCEDURE: Magnetic Resonance Imaging; PROCEDURE: Multigated Acquisition Scan; DRUG: Sotorasib; BIOLOGICAL: Trastuzumab Deruxtecan. The record lists a start date of 2026-06-17.",
+      "sources": [
+        {
+          "id": "trial:NCT07012031",
+          "url": "https://clinicaltrials.gov/study/NCT07012031",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07094204",
+      "category": "trials",
+      "text": "NCT07094204 is a RECRUITING study (phase 1). It is titled “A Study to Find a Suitable Dose of ASP5834 in Adults With Solid Tumors”. Conditions listed: Solid Tumor; Non-Small-Cell Lung Cancer; Pancreatic Ductal Adenocarcinoma; Colorectal Cancer. Interventions listed: DRUG: ASP5834; DRUG: panitumumab. The record lists a start date of 2025-07-25.",
+      "sources": [
+        {
+          "id": "trial:NCT07094204",
+          "url": "https://clinicaltrials.gov/study/NCT07094204",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07164170",
+      "category": "trials",
+      "text": "NCT07164170 is a RECRUITING study (phase 2). It is titled “A Phase 2 Clinical Study of Combination Therapy With ABSK043 and Glecirasib”. Conditions listed: Non-Small Cell Lung Cancer. Interventions listed: DRUG: ABSK043 in combination with Glecirasib. The record lists a start date of 2025-09-22.",
+      "sources": [
+        {
+          "id": "trial:NCT07164170",
+          "url": "https://clinicaltrials.gov/study/NCT07164170",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07172919",
+      "category": "trials",
+      "text": "NCT07172919 is a RECRUITING study (phase 2). It is titled “A Rollover Study Evaluating Sotorasib With or Without Panitumumab in Participants With KRAS p.G12C Mutation”. Conditions listed: Advanced Solid Tumors. Interventions listed: DRUG: Sotorasib; DRUG: Panitumumab. The record lists a start date of 2026-01-02.",
+      "sources": [
+        {
+          "id": "trial:NCT07172919",
+          "url": "https://clinicaltrials.gov/study/NCT07172919",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07174908",
+      "category": "trials",
+      "text": "NCT07174908 is a RECRUITING study (phase 3). It is titled “A Phase 3 Study of IN10018 in Combination With D-1553 Versus Standard Therapy for First Line Non-squamous Non-small Cell Lung Cancer With KRAS G12C Mutation”. Conditions listed: Non-Small Cell Lung Cancer. Interventions listed: DRUG: IN10018 in combination with D-1553; DRUG: anti-PD-1 monoclonal antibody in combination with platinum and pemetrexed. The record lists a start date of 2025-09-10.",
+      "sources": [
+        {
+          "id": "trial:NCT07174908",
+          "url": "https://clinicaltrials.gov/study/NCT07174908",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07190248",
+      "category": "trials",
+      "text": "NCT07190248 is a RECRUITING study (phase 3). It is titled “A Clinical Study of Calderasib (MK-1084) and Other Treatments for Participants With Non-Small Cell Lung Cancer (MK-1084-007/KANDLELIT-007)”. Conditions listed: Non-small Cell Lung Cancer. Interventions listed: DRUG: Calderasib; BIOLOGICAL: Pembrolizumab (+) Berahyaluronidase alfa; DRUG: Pemetrexed; DRUG: Cisplatin; DRUG: Carboplatin. The record lists a start date of 2025-10-08.",
+      "sources": [
+        {
+          "id": "trial:NCT07190248",
+          "url": "https://clinicaltrials.gov/study/NCT07190248",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07198841",
+      "category": "trials",
+      "text": "NCT07198841 is a RECRUITING study (phase 2). It is titled “IBI351 Plus Cetuximab β in Untreated Advanced Non-small Cell Lung Cancer With KRAS G12C Mutation”. Conditions listed: Lung Cancer (Non-Small Cell). Interventions listed: DRUG: IBI351 combined with cetuximab β. The record lists a start date of 2025-11-03.",
+      "sources": [
+        {
+          "id": "trial:NCT07198841",
+          "url": "https://clinicaltrials.gov/study/NCT07198841",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07209111",
+      "category": "trials",
+      "text": "NCT07209111 is a RECRUITING study (phase 2). It is titled “A Clinical Study of Calderasib (MK-1084) in People With Advanced Solid Tumors (MK-1084-014)”. Conditions listed: Neoplasm Malignant. Interventions listed: DRUG: Calderasib; BIOLOGICAL: Cetuximab. The record lists a start date of 2025-12-04.",
+      "sources": [
+        {
+          "id": "trial:NCT07209111",
+          "url": "https://clinicaltrials.gov/study/NCT07209111",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07227025",
+      "category": "trials",
+      "text": "NCT07227025 is a RECRUITING study (phase 1 / phase 2). It is titled “A Study of Amivantamab and Olomorasib Combination Therapy in Participants With Metastatic Non-Small Cell Lung Cancer”. Conditions listed: Carcinoma, Non-Small-Cell Lung. Interventions listed: DRUG: Amivantamab; DRUG: Olomorasib. The record lists a start date of 2026-03-03.",
+      "sources": [
+        {
+          "id": "trial:NCT07227025",
+          "url": "https://clinicaltrials.gov/study/NCT07227025",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07252739",
+      "category": "trials",
+      "text": "NCT07252739 is a RECRUITING study (phase 2). It is titled “KEYMAKER-U01 Substudy 01J: A Study of Pembrolizumab Plus MK-1084 in Participants With Non-Small Cell Lung Cancer (NSCLC) With Kirsten Rat Sarcoma Viral Oncogene Homolog (KRAS) G12C Mutations (MK-3475-01J/KEYMAKER-U01J)”. Conditions listed: Malignant Neoplasm. Interventions listed: DRUG: MK-1084; BIOLOGICAL: Pembrolizumab; BIOLOGICAL: Cetuximab; BIOLOGICAL: Sacituzumab tirumotecan (sac-TMT); DRUG: Rescue medication. The record lists a start date of 2025-12-19.",
+      "sources": [
+        {
+          "id": "trial:NCT07252739",
+          "url": "https://clinicaltrials.gov/study/NCT07252739",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07286149",
+      "category": "trials",
+      "text": "NCT07286149 is a RECRUITING study (phase 1 / phase 2). It is titled “A Clinical Study of MK-1084 With Other Treatments for Non-small Cell Lung Cancer (MK-3475-01F)”. Conditions listed: Lung Neoplasm Malignant. Interventions listed: DRUG: MK-1084; BIOLOGICAL: Patritumab deruxtecan; BIOLOGICAL: Sacituzumab tirumotecan; BIOLOGICAL: Cetuximab; DRUG: Rescue Medications. The record lists a start date of 2026-04-30.",
+      "sources": [
+        {
+          "id": "trial:NCT07286149",
+          "url": "https://clinicaltrials.gov/study/NCT07286149",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07431827",
+      "category": "trials",
+      "text": "NCT07431827 is a RECRUITING study (phase 3). It is titled “MK-3475A±Calderasib (MK-1084) in Completely Resected Stage IIA-IIIB (N2) KRAS G12Cm NSCLC (MK-1084-013)”. Conditions listed: Non-small Cell Lung Cancer. Interventions listed: DRUG: Calderasib; BIOLOGICAL: MK-3475A; DRUG: Placebo. The record lists a start date of 2026-03-18.",
+      "sources": [
+        {
+          "id": "trial:NCT07431827",
+          "url": "https://clinicaltrials.gov/study/NCT07431827",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07472478",
+      "category": "trials",
+      "text": "NCT07472478 is a RECRUITING study (phase 2). It is titled “Phase II Neoadjuvant Study of Garsorasib Followed by Ivonescimab Plus Chemotherapy in Resectable Stage IIA-IIIB KRAS G12C-Mutant NSCLC (GIVEN Study)”. Conditions listed: Lung Cancer (NSCLC); KRAS G12C Lung Cancer. Interventions listed: DRUG: Garsorasib; DRUG: Ivonescimab Combined With Chemotherapy; PROCEDURE: Surgery; DRUG: Garsorasib; DRUG: Ivonescimab; BEHAVIORAL: Observation. The record lists a start date of 2026-03-20.",
+      "sources": [
+        {
+          "id": "trial:NCT07472478",
+          "url": "https://clinicaltrials.gov/study/NCT07472478",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07492342",
+      "category": "trials",
+      "text": "NCT07492342 is a RECRUITING study (phase 2). It is titled “Fulzerasib Sequential Sintilimab Plus Platinum-Doublet Neoadjuvant Therapy for Resectable KRAS G12C-Mutant NSCLC”. Conditions listed: Resectable NSCLC; KRAS G12C Mutation; Stage IB-IIIA NSCLC; Neoadjuvant Therapy. Interventions listed: DRUG: fulzerasib. The record lists a start date of 2026-01-29.",
+      "sources": [
+        {
+          "id": "trial:NCT07492342",
+          "url": "https://clinicaltrials.gov/study/NCT07492342",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07541170",
+      "category": "trials",
+      "text": "NCT07541170 is a RECRUITING study (phase 3). It is titled “A Study to Evaluate the Efficacy and Safety of Divarasib Compared With Investigator's Choice of Immunotherapy or Observation in Participants With Resected Stage II-III KRAS G12C-Positive Non-Small Cell Lung Cancer (NSCLC)”. Conditions listed: Non-small Cell Lung Cancer. Interventions listed: DRUG: Divarasib; DRUG: Pembrolizumab; DRUG: Nivolumab. The record lists a start date of 2026-10-06.",
+      "sources": [
+        {
+          "id": "trial:NCT07541170",
+          "url": "https://clinicaltrials.gov/study/NCT07541170",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07542704",
+      "category": "trials",
+      "text": "NCT07542704 is a RECRUITING study (phase 1). It is titled “A Study to Investigate the Safety and Efficacy of KQB368 as Monotherapy in Participants With Advanced Solid Malignancies”. Conditions listed: Advanced Solid Tumors; Colorectal Cancer (CRC); Non-Small Cell Lung Cancer; Uterine Cancer; KRAS G12C Mutations; KRAS G12S Mutations. Interventions listed: DRUG: KQB368. The record lists a start date of 2026-05-27.",
+      "sources": [
+        {
+          "id": "trial:NCT07542704",
+          "url": "https://clinicaltrials.gov/study/NCT07542704",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07554339",
+      "category": "trials",
+      "text": "NCT07554339 is a RECRUITING study (phase 3). It is titled “A Clinical Trial of Calderasib (MK-1084) and Durvalumab in People With Non-Small Cell Lung Cancer (MK-1084-015/KANDLELIT-015)”. Conditions listed: Non-small Cell Lung Cancer. Interventions listed: DRUG: Calderasib; BIOLOGICAL: Durvalumab; OTHER: Placebo to MK-1084. The record lists a start date of 2026-06-18.",
+      "sources": [
+        {
+          "id": "trial:NCT07554339",
+          "url": "https://clinicaltrials.gov/study/NCT07554339",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07581912",
+      "category": "trials",
+      "text": "NCT07581912 is a RECRUITING study (phase 2). It is titled “Neoadjuvant Treatment of Fulzerasib Plus Cetuximab N01 in KRAS G12C Mutated Locally Advanced Colorectal Cancer With or Without Resectable Metastases”. Conditions listed: Colorectal Cancer; KRAS G12C Mutant Advanced Solid Tumors; Fulzerasib; Cetuximab N01. Interventions listed: DRUG: fulzerasib; cetuximab N01. The record lists a start date of 2026-04-30.",
+      "sources": [
+        {
+          "id": "trial:NCT07581912",
+          "url": "https://clinicaltrials.gov/study/NCT07581912",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07589569",
+      "category": "trials",
+      "text": "NCT07589569 is a RECRUITING study (phase 2). It is titled “An Open-label, Multicenter, Phase II Clinical Study to Evaluate HRS-7058 in Patients With Pancreatic Cancer”. Conditions listed: Pancreatic Cancer. Interventions listed: DRUG: HRS-7058. The record lists a start date of 2026-06-04.",
+      "sources": [
+        {
+          "id": "trial:NCT07589569",
+          "url": "https://clinicaltrials.gov/study/NCT07589569",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07670013",
+      "category": "trials",
+      "text": "NCT07670013 is a RECRUITING study (phase 2). It is titled “SKB264 Plus Glecirasib in Advanced KRAS G12C-Mutant NSCLC: A Phase II Study”. Conditions listed: NSCLC. Interventions listed: DRUG: SKB264; DRUG: Goleirex. The record lists a start date of 2026-04-01.",
+      "sources": [
+        {
+          "id": "trial:NCT07670013",
+          "url": "https://clinicaltrials.gov/study/NCT07670013",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    }
+  ]
+}

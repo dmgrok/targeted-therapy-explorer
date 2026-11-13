@@ -1,0 +1,768 @@
+{
+  "biomarker_id": "ALK",
+  "generated_at": "2026-11-13T17:42:22+01:00",
+  "source_hash": "57430eb679ac3fb315152f48562e8b6469c748714970ed34e5c16bccb9179bf4",
+  "intro": {
+    "what": [
+      "ALK, short for anaplastic lymphoma kinase, is a gene.",
+      "ALK amplifications, fusions and mutations have been shown to be driving events in non-small cell lung cancer."
+    ],
+    "test_report": "If a test report mentions ALK, it is recording a finding about this gene. This page lists public FDA companion diagnostics that look for ALK, and the therapies and trials in this snapshot that use ALK as a selection criterion. That mention is not a diagnosis or a treatment decision on its own.",
+    "sources": [
+      {
+        "id": "civic-gene:ALK",
+        "url": "https://civicdb.org/features/1",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "biomarker:ALK",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      },
+      {
+        "id": "summary:ALK",
+        "url": "https://civicdb.org/features/1",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      }
+    ],
+    "test_report_sources": [
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      },
+      {
+        "id": "biomarker:ALK",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "cdx:FoundationOne CDx (Foundation Medicine Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "FoundationOne CDx (Foundation Medicine Inc.) is an FDA companion diagnostic listed for Non-Small Cell Lung Cancer (NSCLC) - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Brigatinib.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne CDx (Foundation Medicine Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "FoundationOne CDx (Foundation Medicine, Inc.) is an FDA companion diagnostic listed for Non-Small Cell Lung Cancer (NSCLC) - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Alectinib.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:FoundationOne Liquid CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Plasma",
+      "category": "cdx",
+      "text": "FoundationOne Liquid CDx (Foundation Medicine, Inc.) is an FDA companion diagnostic listed for Non-Small Cell Lung Cancer (NSCLC) - Plasma. The indication column lists the sample type as Plasma. It appears on the snapshot record for Alectinib.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne Liquid CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Ventana ALK (D5F3) CDx Assay (Ventana Medical Systems, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "Ventana ALK (D5F3) CDx Assay (Ventana Medical Systems, Inc.) is an FDA companion diagnostic listed for Non-Small Cell Lung Cancer (NSCLC) - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Alectinib.",
+      "sources": [
+        {
+          "id": "cdx:Ventana ALK (D5F3) CDx Assay (Ventana Medical Systems, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Vysis ALK Break Apart FISH Probe Kit (Abbott Molecular Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "Vysis ALK Break Apart FISH Probe Kit (Abbott Molecular Inc.) is an FDA companion diagnostic listed for Non-Small Cell Lung Cancer (NSCLC) - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Brigatinib.",
+      "sources": [
+        {
+          "id": "cdx:Vysis ALK Break Apart FISH Probe Kit (Abbott Molecular Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Alectinib",
+      "category": "mainstream",
+      "text": "Alectinib (Alecensa) is a kinase inhibitor. The FDA label lists this use: adjuvant treatment in adult patients following tumor resection of anaplastic lymphoma kinase (ALK)-positive non-small cell lung cancer (NSCLC) (tumors ≥ 4 cm or node positive) as detected by an FDA-approved test. treatment of adult patients with ALK-positive metastatic NSCLC as detected by an FDA-approved test. 1.1 Adjuvant Treatme. An EMA record for Alecensa lists the status as Authorised, with an authorisation date of 15/12/2016.",
+      "sources": [
+        {
+          "id": "therapy:ALK:Alectinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=42c49deb-713b-427a-9670-08af08adcffb",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Brigatinib",
+      "category": "mainstream",
+      "text": "Brigatinib (Alunbrig) is a kinase inhibitor. The FDA label lists this use: the treatment of adult patients with anaplastic lymphoma kinase (ALK)-positive metastatic non-small cell lung cancer (NSCLC) as detected by an FDA-approved test ALUNBRIG is a kinase inhibitor indicated for the treatment of adult patients with anaplastic lymphoma kinase (ALK)-positive metastatic non-small cell lung cancer (NSCL. An EMA record for Alunbrig lists the status as Authorised, with an authorisation date of 19/09/2018.",
+      "sources": [
+        {
+          "id": "therapy:ALK:Brigatinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0fe9ff20-d402-41f3-bc1e-7002ea7007db",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Ceritinib",
+      "category": "mainstream",
+      "text": "Ceritinib (ZYKADIA) is a kinase inhibitor. The FDA label lists this use: the treatment of adult patients with metastatic non-small cell lung cancer (NSCLC) whose tumors are anaplastic lymphoma kinase (ALK)-positive as detected by an FDA-approved test ZYKADIA is a kinase inhibitor indicated for the treatment of adults with metastatic non-small cell lung cancer (NSCLC) whose tumors are anaplastic lym. An EMA record for Zykadia lists the status as Authorised, with an authorisation date of 26/02/2015.",
+      "sources": [
+        {
+          "id": "therapy:ALK:Ceritinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fff5d805-4ffd-4e8e-8e63-6f129697563e",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Crizotinib",
+      "category": "mainstream",
+      "text": "Crizotinib (Xalkori) is listed on an FDA label in this snapshot. The FDA label lists this use: S1-positive as detected by an FDA-approved test. ; pediatric patients 1 year of age and older and young adults with relapsed or refractory, systemic anaplastic large cell lymphoma (ALCL) that is ALK-positive. o Limitations of Use: The safety and efficacy of XALKORI have not been established in older adults with relapsed or refractory, systemic ALK-positive ALCL. ; adult and pediatric patie. An EMA record for Xalkori lists the status as Authorised, with an authorisation date of 19/07/2012.",
+      "sources": [
+        {
+          "id": "therapy:ALK:Crizotinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2a51b0de-47d6-455e-a94c-d2c737b04ff7",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Ensartinib",
+      "category": "mainstream",
+      "text": "Ensartinib (ENSACOVE) is a kinase inhibitor. The FDA label lists this use: the treatment of adult patients with anaplastic lymphoma kinase (ALK)-positive locally advanced or metastatic non-small cell lung cancer (NSCLC)as detected by an FDA-approved test who have not previously received an ALK-inhibitor. ENSACOVE is a kinase inhibitor indicated for the treatment of adult patients with anaplastic lymph.",
+      "sources": [
+        {
+          "id": "therapy:ALK:Ensartinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1e1b2f79-678a-472a-b924-66909c8a4b2e",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Lorlatinib",
+      "category": "mainstream",
+      "text": "Lorlatinib (Lorbrena) is a kinase inhibitor. The FDA label lists this use: the treatment of adult patients with metastatic non-small cell lung cancer (NSCLC) whose tumors are anaplastic lymphoma kinase (ALK)-positive as detected by an FDA-approved test. LORBRENA is a kinase inhibitor indicated for the treatment of adult patients with metastatic non-small cell lung cancer (NSCLC) whose tumors are anaplastic lymphoma kinase (ALK)-positive. An EMA record for Lorviqua lists the status as Authorised, with an authorisation date of 28/02/2019.",
+      "sources": [
+        {
+          "id": "therapy:ALK:Lorlatinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=004f93d7-a1cd-4b67-9207-31cdcb5c5976",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT02285582",
+      "category": "trials",
+      "text": "NCT02285582 is a RECRUITING study. It is titled “International Rare Histiocytic Disorders Registry (IRHDR)”. Conditions listed: Rare Histiocytic Disorders (RHDs); Erdheim-Chester Disease (ECD); Rosai-Dorfman Disease (RDD); Xanthogranuloma Family (XG); Indeterminate Dendritic Cell Histiocytosis; Malignant Histiocytic Neoplasm (MHN); ALK-positive Histiocytosis; Mixed Histiocytosis (MXH). Interventions listed: OTHER: Registry study. The record lists a start date of 2014-10.",
+      "sources": [
+        {
+          "id": "trial:NCT02285582",
+          "url": "https://clinicaltrials.gov/study/NCT02285582",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT03126916",
+      "category": "trials",
+      "text": "NCT03126916 is a RECRUITING study (phase 3). It is titled “Testing the Addition of 131I-MIBG or Lorlatinib to Intensive Therapy in People With High-Risk Neuroblastoma (NBL)”. Conditions listed: Ganglioneuroblastoma; Ganglioneuroblastoma, Nodular; Neuroblastoma. Interventions listed: PROCEDURE: Autologous Hematopoietic Stem Cell Transplantation; PROCEDURE: Biospecimen Collection; PROCEDURE: Bone Marrow Aspiration and Biopsy; DRUG: Busulfan; DRUG: Carboplatin; DRUG: Cisplatin; PROCEDURE: Computed Tomography; DRUG: Cyclophosphamide. The record lists a start date of 2018-05-14.",
+      "sources": [
+        {
+          "id": "trial:NCT03126916",
+          "url": "https://clinicaltrials.gov/study/NCT03126916",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04322890",
+      "category": "trials",
+      "text": "NCT04322890 is a RECRUITING study (phase 2). It is titled “Treatment Strategies and Survival Outcome for Non-small Cell Lung Cancer With Oncogenic Mutation”. Conditions listed: Non Small Cell Lung Cancer; EGFR Gene Mutation; ALK Gene Mutation; ROS1 Gene Mutation; MET Gene Mutation. Interventions listed: DRUG: Osimertinib; DRUG: Alectinib 150 MG; DRUG: Crizotinib 250 MG; DRUG: Savolitinib, Crizotinib.; DRUG: Chemotherapy. The record lists a start date of 2020-04-16.",
+      "sources": [
+        {
+          "id": "trial:NCT04322890",
+          "url": "https://clinicaltrials.gov/study/NCT04322890",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04423185",
+      "category": "trials",
+      "text": "NCT04423185 is a RECRUITING study (phase 2). It is titled “PLATFORM Study of Precision Medicine for Rare Tumors”. Conditions listed: Rare Tumor. Interventions listed: DRUG: Almonertinib 110 MG; DRUG: Dacomitinib 45 MG; DRUG: Alectinib 150 MG; DRUG: Crizotinib 250 MG; DRUG: Pyrotinib 160/80 MG; DRUG: Imatinib 400 MG; DRUG: Niraparib 200/300 MG; DRUG: Palbociclib 125mg. The record lists a start date of 2020-08-15.",
+      "sources": [
+        {
+          "id": "trial:NCT04423185",
+          "url": "https://clinicaltrials.gov/study/NCT04423185",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04777084",
+      "category": "trials",
+      "text": "NCT04777084 is a RECRUITING study (phase 2). It is titled “The Efficacy and Safety of the Bispecific Anti-PD-1/PD-L1 Antibody IBI318 Combined with Lenvatinib in NSCLC.”. Conditions listed: Non-Small Cell Lung Cancer. Interventions listed: DRUG: IBI318. The record lists a start date of 2021-08-01.",
+      "sources": [
+        {
+          "id": "trial:NCT04777084",
+          "url": "https://clinicaltrials.gov/study/NCT04777084",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04900935",
+      "category": "trials",
+      "text": "NCT04900935 is a RECRUITING study (NA). It is titled “Patient-centered, Optimal Integration of Survivorship and Palliative Care”. Conditions listed: Stage IV Non-small Cell Lung Cancer; Targeted Therapy; Nonsmall Cell Lung Cancer; Carcinoma, Non-Small-Cell Lung; ALK-positive Non-small Cell Lung Cancer; EGFR Positive Non-small Cell Lung Cancer; Palliative Care; Survivorship. Interventions listed: BEHAVIORAL: POISE. The record lists a start date of 2023-09-29.",
+      "sources": [
+        {
+          "id": "trial:NCT04900935",
+          "url": "https://clinicaltrials.gov/study/NCT04900935",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04925609",
+      "category": "trials",
+      "text": "NCT04925609 is a RECRUITING study (phase 1 / phase 2). It is titled “Brigatinib in Pediatric and Young Adult Patients With ALK+ ALCL, IMT or Other Solid Tumors”. Conditions listed: Anaplastic Large Cell Lymphoma, ALK-Positive; Inflammatory Myofibroblastic Tumor; Other Solid Tumor. Interventions listed: DRUG: Brigatinib. The record lists a start date of 2022-08-18.",
+      "sources": [
+        {
+          "id": "trial:NCT04925609",
+          "url": "https://clinicaltrials.gov/study/NCT04925609",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05014464",
+      "category": "trials",
+      "text": "NCT05014464 is a RECRUITING study (phase 2). It is titled “ALK Tyrosine Kinase Inhibitors in ALK-rearranged Advanced Squamous Cell Carcinoma”. Conditions listed: Non-small Cell Lung Cancer. Interventions listed: DRUG: Crizotinib. The record lists a start date of 2021-11-13.",
+      "sources": [
+        {
+          "id": "trial:NCT05014464",
+          "url": "https://clinicaltrials.gov/study/NCT05014464",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05122806",
+      "category": "trials",
+      "text": "NCT05122806 is a RECRUITING study (NA). It is titled “Analysis of Biological Characteristics of Advanced ALK-rearranged NSCLC”. Conditions listed: Non-small Cell Lung Cancer; ALK Gene Rearrangement Positive. Interventions listed: GENETIC: RNAseq. The record lists a start date of 2021-09-22.",
+      "sources": [
+        {
+          "id": "trial:NCT05122806",
+          "url": "https://clinicaltrials.gov/study/NCT05122806",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05142189",
+      "category": "trials",
+      "text": "NCT05142189 is a RECRUITING study (phase 1). It is titled “Clinical Trial Evaluating the Safety, Tolerability and Preliminary Efficacy of BNT116 Alone and in Combinations in Patients With Advanced Non-small Cell Lung Cancer”. Conditions listed: Non-Small Cell Lung Cancer. Interventions listed: BIOLOGICAL: BNT116; BIOLOGICAL: Cemiplimab; DRUG: Docetaxel; DRUG: Carboplatin; DRUG: Paclitaxel; BIOLOGICAL: BNT316; BIOLOGICAL: anti-B7-H3 antibody conjugated to topoisomerase I inhibitor; BIOLOGICAL: anti-HER3 antibody conjugated to topoisomerase I inhibitor. The record lists a start date of 2022-06-17.",
+      "sources": [
+        {
+          "id": "trial:NCT05142189",
+          "url": "https://clinicaltrials.gov/study/NCT05142189",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05241028",
+      "category": "trials",
+      "text": "NCT05241028 is a RECRUITING study (phase 2). It is titled “Adjuvant Therapy of Ensartinib in Stage IB-IIIA ALK-positive Non-small Cell Lung Cancer”. Conditions listed: Non-small Cell Lung Cancer. Interventions listed: DRUG: Ensartinib. The record lists a start date of 2022-05-01.",
+      "sources": [
+        {
+          "id": "trial:NCT05241028",
+          "url": "https://clinicaltrials.gov/study/NCT05241028",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05384626",
+      "category": "trials",
+      "text": "NCT05384626 is a RECRUITING study (phase 1 / phase 2). It is titled “A Study of Neladalkib (NVL-655) in Patients With Advanced NSCLC and Other Solid Tumors Harboring ALK Rearrangement or Activating ALK Mutation (ALKOVE-1)”. Conditions listed: Locally Advanced Solid Tumor; Metastatic Solid Tumor. Interventions listed: DRUG: Neladalkib (NVL-655); DRUG: Midazolam; DRUG: Repaglinide; DRUG: Itraconazole. The record lists a start date of 2022-06-09.",
+      "sources": [
+        {
+          "id": "trial:NCT05384626",
+          "url": "https://clinicaltrials.gov/study/NCT05384626",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05498064",
+      "category": "trials",
+      "text": "NCT05498064 is a RECRUITING study. It is titled “A Real World Study of Ensartinib in Advanced ALK-positive NSCLC”. Conditions listed: Carcinoma, Non-Small-Cell Lung; Anaplastic Lymphoma Kinase I1171N; Ensartinib. Interventions listed: DRUG: Ensartinib. The record lists a start date of 2022-05-13.",
+      "sources": [
+        {
+          "id": "trial:NCT05498064",
+          "url": "https://clinicaltrials.gov/study/NCT05498064",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05525338",
+      "category": "trials",
+      "text": "NCT05525338 is a RECRUITING study (phase 4). It is titled “Comparison of Standard Dose Alectinib to Alectinib in Adjusted Dose Based on Alectinib Bloodlevels”. Conditions listed: Drug Monitoring; Carcinoma, Non-Small-Cell Lung; Lung Cancer; Anaplastic Lymphoma Kinase Gene Mutation; Anaplastic Lymphoma Kinase Gene Translocation. Interventions listed: DRUG: Alectinib. The record lists a start date of 2022-03-23.",
+      "sources": [
+        {
+          "id": "trial:NCT05525338",
+          "url": "https://clinicaltrials.gov/study/NCT05525338",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05599412",
+      "category": "trials",
+      "text": "NCT05599412 is a RECRUITING study. It is titled “Post Marketing Surveillance(PMS) Study of Lorviqua in Korea”. Conditions listed: Metastatic ALK+ Non Small Cell Lung Cancer. Interventions listed: DRUG: Lorviqua. The record lists a start date of 2023-05-22.",
+      "sources": [
+        {
+          "id": "trial:NCT05599412",
+          "url": "https://clinicaltrials.gov/study/NCT05599412",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05713006",
+      "category": "trials",
+      "text": "NCT05713006 is a RECRUITING study (phase 1 / phase 2). It is titled “Alectinib Pharmacokinetic in Patients With NSCLC”. Conditions listed: Non-small Cell Lung Cancer Stage IIIB; ALK Gene Mutation. Interventions listed: DRUG: Alectinib Oral Product. The record lists a start date of 2022-05-01.",
+      "sources": [
+        {
+          "id": "trial:NCT05713006",
+          "url": "https://clinicaltrials.gov/study/NCT05713006",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05724004",
+      "category": "trials",
+      "text": "NCT05724004 is a RECRUITING study (NA). It is titled “Alectinib Followed by Concomitant Consolidation Radiation Therapy in Advanced NSCLC With ALK-rearrangement (A-SAB)”. Conditions listed: Radiotherapy Side Effect; Non-small Cell Lung Cancer; ALK Gene Mutation. Interventions listed: RADIATION: SBRT/SRS/radiation therapy. The record lists a start date of 2023-10-05.",
+      "sources": [
+        {
+          "id": "trial:NCT05724004",
+          "url": "https://clinicaltrials.gov/study/NCT05724004",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05765877",
+      "category": "trials",
+      "text": "NCT05765877 is a RECRUITING study (phase 2). It is titled “Neoadjuvant WX-0593 in Resectable ALK-positive or ROS1-positive Non-small Cell Lung Cancer”. Conditions listed: Non-Small Cell Lung Cancer(NSCLC). Interventions listed: DRUG: WX-0593 Tablets. The record lists a start date of 2023-03-01.",
+      "sources": [
+        {
+          "id": "trial:NCT05765877",
+          "url": "https://clinicaltrials.gov/study/NCT05765877",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05770037",
+      "category": "trials",
+      "text": "NCT05770037 is a RECRUITING study (phase 2 / phase 3). It is titled “DETERMINE Trial Treatment Arm 01: Alectinib in Adult, Paediatric and Teenage/Young Adult Patients With ALK Positive Cancers”. Conditions listed: Haematological Malignancy; Malignant Neoplasm; Lymphoproliferative Disorders; Neoplasms by Histologic Type; Neoplasms by Site; Cancer; Anaplastic Large Cell Lymphoma; Lymphoma. Interventions listed: DRUG: Alectinib. The record lists a start date of 2023-12-18.",
+      "sources": [
+        {
+          "id": "trial:NCT05770037",
+          "url": "https://clinicaltrials.gov/study/NCT05770037",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05950139",
+      "category": "trials",
+      "text": "NCT05950139 is a RECRUITING study (phase 1 / phase 2). It is titled “Peptide Vaccine To Prevent Acquired Resistance In Patients With Advanced ALK+ NSCLC”. Conditions listed: NSCLC Stage IV; ALK Fusion Protein Expression. Interventions listed: BIOLOGICAL: Peptide vaccine. The record lists a start date of 2024-05-13.",
+      "sources": [
+        {
+          "id": "trial:NCT05950139",
+          "url": "https://clinicaltrials.gov/study/NCT05950139",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05978141",
+      "category": "trials",
+      "text": "NCT05978141 is a RECRUITING study. It is titled “A Registry for People With T-cell Lymphoma”. Conditions listed: T-cell Lymphoma; NK-Cell Lymphoma; T-cell Prolymphocytic Leukemia; T-cell Large Granular Lymphocytic Leukemia; Chronic Lymphoproliferative Disorder of NK Cells; Aggressive NK-cell Leukemia; Systemic Epstein-Barr Virus Positive T-Cell Lymphoproliferative Disease of Childhood (Disorder); Systemic Epstein Barr Virus Positive T-Cell Lymphoproliferative Disease of Childhood. Interventions listed: OTHER: Optional Blood Sample and Nail Sample. The record lists a start date of 2023-07-27.",
+      "sources": [
+        {
+          "id": "trial:NCT05978141",
+          "url": "https://clinicaltrials.gov/study/NCT05978141",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06081907",
+      "category": "trials",
+      "text": "NCT06081907 is a RECRUITING study (phase 1 / phase 2). It is titled “The Efficacy and Safety of IBI363 in Solid Tumors”. Conditions listed: Advanced Solid Tumor. Interventions listed: DRUG: IBI363; DRUG: IBI363; DRUG: IBI363; DRUG: IBI363; DRUG: IBI363. The record lists a start date of 2023-12-25.",
+      "sources": [
+        {
+          "id": "trial:NCT06081907",
+          "url": "https://clinicaltrials.gov/study/NCT06081907",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06092086",
+      "category": "trials",
+      "text": "NCT06092086 is a RECRUITING study (phase 2). It is titled “Lorlatinib as the First-line Treatment in China Advanced ALK+ NSCLC”. Conditions listed: ALK Positive Non-small Cell Lung Cancer. Interventions listed: DRUG: Loratinib. The record lists a start date of 2023-08-18.",
+      "sources": [
+        {
+          "id": "trial:NCT06092086",
+          "url": "https://clinicaltrials.gov/study/NCT06092086",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06176690",
+      "category": "trials",
+      "text": "NCT06176690 is a RECRUITING study (phase 1). It is titled “Constitutive IL7R (C7R) Modified Banked Allogeneic CD30.CAR EBVSTS for CD30-Positive Lymphomas”. Conditions listed: CD30-Positive Diffuse Large B-Cell Lymphoma; Anaplastic Large Cell Lymphoma, T Cell and Null Cell Type; Anaplastic Large Cell Lymphoma, ALK-Positive; Peripheral T-cell Lymphoma; Anaplastic Large Cell Lymphoma, ALK-negative; Non-Hodgkin Lymphoma; Hodgkin Lymphoma. Interventions listed: BIOLOGICAL: C7R.CD30.CAR-EBVST cells. The record lists a start date of 2025-10-27.",
+      "sources": [
+        {
+          "id": "trial:NCT06176690",
+          "url": "https://clinicaltrials.gov/study/NCT06176690",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06221670",
+      "category": "trials",
+      "text": "NCT06221670 is a RECRUITING study (phase 2). It is titled “Toripalimab Therapy After Resection in High-risk Stage IA2-IB NSCLC With no Driver Alterations (EGFR or ALK)”. Conditions listed: NSCLC. Interventions listed: DRUG: Toripalimab. The record lists a start date of 2024-03-20.",
+      "sources": [
+        {
+          "id": "trial:NCT06221670",
+          "url": "https://clinicaltrials.gov/study/NCT06221670",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06225427",
+      "category": "trials",
+      "text": "NCT06225427 is a RECRUITING study (phase 1). It is titled “Gilteritinib for the Treatment of ALK NSCLC”. Conditions listed: Lung Non-Small Cell Carcinoma; Stage IV Lung Cancer AJCC v8. Interventions listed: PROCEDURE: Biopsy; PROCEDURE: Biospecimen Collection; PROCEDURE: Computed Tomography; PROCEDURE: Echocardiography; DRUG: Gilteritinib; PROCEDURE: Magnetic Resonance Imaging; OTHER: Questionnaire Administration. The record lists a start date of 2024-07-25.",
+      "sources": [
+        {
+          "id": "trial:NCT06225427",
+          "url": "https://clinicaltrials.gov/study/NCT06225427",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06333899",
+      "category": "trials",
+      "text": "NCT06333899 is a RECRUITING study (early phase 1). It is titled “Lorlatinib for Newly-Diagnosed High-Grade Glioma With ROS or ALK Fusion”. Conditions listed: High Grade Glioma; Diffuse Intrinsic Pontine Glioma; Anaplastic Astrocytoma; Infant Type Hemispheric Glioma; Glioblastoma; Glioblastoma Multiforme; WHO Grade III Glioma; WHO Grade IV Glioma. Interventions listed: DRUG: Lorlatinib; DRUG: Lorlatinib with chemotherapy1; DRUG: Lorlatinib with chemotherapy 2; DRUG: Lorlatinib post Radiation. The record lists a start date of 2025-08-03.",
+      "sources": [
+        {
+          "id": "trial:NCT06333899",
+          "url": "https://clinicaltrials.gov/study/NCT06333899",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06361589",
+      "category": "trials",
+      "text": "NCT06361589 is a RECRUITING study. It is titled “Real World Study of Lolatinib for Advanced ALK+ NSCLC Patients”. Conditions listed: ALK-positive Non-small Cell Lung Cancer; Real World Study. Interventions listed: DRUG: Lorlatinib. The record lists a start date of 2024-05-01.",
+      "sources": [
+        {
+          "id": "trial:NCT06361589",
+          "url": "https://clinicaltrials.gov/study/NCT06361589",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06378892",
+      "category": "trials",
+      "text": "NCT06378892 is a RECRUITING study (phase 2). It is titled “A Study to Evaluate the Combination of Platinum-pemetrexed Based Chemotherapy Plus Lorlatinib in ALK Positive Non-Small Cell Lung Cancer (NSCLC) With Exclusively Extracranial Disease Progression on Lorlatinib”. Conditions listed: Non Small Cell Lung Cancer Metastatic; ALK Gene Mutation. Interventions listed: DRUG: Lorlatinib. The record lists a start date of 2024-03-15.",
+      "sources": [
+        {
+          "id": "trial:NCT06378892",
+          "url": "https://clinicaltrials.gov/study/NCT06378892",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06487078",
+      "category": "trials",
+      "text": "NCT06487078 is a RECRUITING study (NA). It is titled “Analysis of the Effectiveness and Safety of Lorlatinib in Untreated ALK-Positive NSCLC Patients in a French Real-World Context”. Conditions listed: ALK+ Non-Small-Cell Lung Carcinoma. Interventions listed: DRUG: Lorlatinib. The record lists a start date of 2025-01-20.",
+      "sources": [
+        {
+          "id": "trial:NCT06487078",
+          "url": "https://clinicaltrials.gov/study/NCT06487078",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06528847",
+      "category": "trials",
+      "text": "NCT06528847 is a RECRUITING study (phase 2). It is titled “Adjuvant Benmelstobart for Stage IB, Grade 3 Invasive Lung Adenocarcinoma”. Conditions listed: Non-Small Cell Lung Cancer. Interventions listed: DRUG: Benmelstobart. The record lists a start date of 2024-06-05.",
+      "sources": [
+        {
+          "id": "trial:NCT06528847",
+          "url": "https://clinicaltrials.gov/study/NCT06528847",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06563999",
+      "category": "trials",
+      "text": "NCT06563999 is a RECRUITING study (phase 2). It is titled “Neoadjuvant Umbrella Trial for Patients With Unresectable Stage III NSCLC Harboring Rare Mutations.”. Conditions listed: Lung Cancer Stage III; Mutation. Interventions listed: DRUG: Sunvozertinib; DRUG: Crizotinib; DRUG: Pralsetinib; DRUG: Larotrectinib; DRUG: Savolitinib; DRUG: Pyrotinib; DRUG: Dabrafenib+Trametinib; DRUG: Glecirasib. The record lists a start date of 2024-11-01.",
+      "sources": [
+        {
+          "id": "trial:NCT06563999",
+          "url": "https://clinicaltrials.gov/study/NCT06563999",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06620835",
+      "category": "trials",
+      "text": "NCT06620835 is a RECRUITING study (phase 2). It is titled “Trial for Local Ablative Treatment (LAT) Optimization in Patients With Advanced Non-Small Cells Lung Cancer (NSCLC) Presenting an Anaplastic Lymphoma Kinase (ALK) Rearrangement Treated by Brigatinib”. Conditions listed: NSCLC. Interventions listed: BIOLOGICAL: Blood samples for Hematology; BIOLOGICAL: Blood samples for Chemistry; BIOLOGICAL: Blood sample for liver function tests; BIOLOGICAL: Pregnancy test; PROCEDURE: Tumour assessment; PROCEDURE: Local Ablative Therapy (LAT). The record lists a start date of 2025-06-19.",
+      "sources": [
+        {
+          "id": "trial:NCT06620835",
+          "url": "https://clinicaltrials.gov/study/NCT06620835",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06765109",
+      "category": "trials",
+      "text": "NCT06765109 is a RECRUITING study (phase 3). It is titled “Neladalkib (NVL-655) for TKI-naive Patients With Advanced ALK-Positive NSCLC”. Conditions listed: Non-small Cell Lung Cancer; Anaplastic Lymphoma Kinase-positive. Interventions listed: DRUG: Neladalkib (NVL-655); DRUG: Alectinib. The record lists a start date of 2025-07-17.",
+      "sources": [
+        {
+          "id": "trial:NCT06765109",
+          "url": "https://clinicaltrials.gov/study/NCT06765109",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06834373",
+      "category": "trials",
+      "text": "NCT06834373 is a RECRUITING study (phase 2). It is titled “Golcadomide and Rituximab as Bridging Therapy for Relapsed or Refractory Aggressive B-cell Non-Hodgkin Lymphoma Before CAR T-cell Therapy”. Conditions listed: Large B-Cell Lymphoma With IRF4 Rearrangement; Recurrent Aggressive B-Cell Non-Hodgkin Lymphoma; Recurrent ALK-Positive Large B-Cell Lymphoma; Recurrent Diffuse Large B-Cell Lymphoma Activated B-Cell Type; Recurrent Diffuse Large B-Cell Lymphoma Associated With Chronic Inflammation; Recurrent Diffuse Large B-Cell Lymphoma Germinal Center B-Cell Type; Recurrent Diffuse Large B-Cell Lymphoma, Not Otherwise Specified; Recurrent EBV-Positive Diffuse Large B-Cell Lymphoma, Not Otherwise Specified. Interventions listed: PROCEDURE: Biospecimen Collection; PROCEDURE: Bone Marrow Aspiration; PROCEDURE: Bone Marrow Biopsy; BIOLOGICAL: Chimeric Antigen Receptor T-Cell Therapy; PROCEDURE: Computed Tomography; DRUG: Golcadomide; PROCEDURE: Leukapheresis; PROCEDURE: Positron Emission Tomography. The record lists a start date of 2025-04-02.",
+      "sources": [
+        {
+          "id": "trial:NCT06834373",
+          "url": "https://clinicaltrials.gov/study/NCT06834373",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06862869",
+      "category": "trials",
+      "text": "NCT06862869 is a RECRUITING study. It is titled “Real World Clinical Outcomes of Resected ALK-Positive Early Stage NSCLC Patients Treated With Alectinib as Adjuvant Therapy”. Conditions listed: Carcinoma, Non-Small-Cell Lung. Interventions listed: DRUG: Alectinib. The record lists a start date of 2025-04-30.",
+      "sources": [
+        {
+          "id": "trial:NCT06862869",
+          "url": "https://clinicaltrials.gov/study/NCT06862869",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07001384",
+      "category": "trials",
+      "text": "NCT07001384 is a RECRUITING study (phase 1). It is titled “A Study of Alectinib and Duvelisib in People With Anaplastic Lymphoma Kinase-Positive Anaplastic Large Cell Lymphoma (ALK+ALCL)”. Conditions listed: Anaplastic Lymphoma Kinase; Anaplastic Large Cell Lymphoma. Interventions listed: DRUG: Alectinib; DRUG: Duvelisib. The record lists a start date of 2025-08-08.",
+      "sources": [
+        {
+          "id": "trial:NCT07001384",
+          "url": "https://clinicaltrials.gov/study/NCT07001384",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07013565",
+      "category": "trials",
+      "text": "NCT07013565 is a RECRUITING study (phase 2). It is titled “Chemoimmunotherapy for ALK+ Relapsed/Refractory ALCL”. Conditions listed: Anaplastic Large Cell Lymphoma, ALK-Positive. Interventions listed: DRUG: Vinblastine (Velban); DRUG: Brentuximab vedotin (Adcetris); DRUG: Nivolumab (Opdivo). The record lists a start date of 2025-08-07.",
+      "sources": [
+        {
+          "id": "trial:NCT07013565",
+          "url": "https://clinicaltrials.gov/study/NCT07013565",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07140016",
+      "category": "trials",
+      "text": "NCT07140016 is a RECRUITING study (phase 1). It is titled “A Study of Gilteritinib in Adults With Advanced ALK-positive Non-small Cell Lung Cancer (NSCLC)”. Conditions listed: Non-small Cell Lung Cancer (NSCLC); Anaplastic Lymphoma Kinase (ALK) Positive. Interventions listed: DRUG: gilteritinib. The record lists a start date of 2025-09-22.",
+      "sources": [
+        {
+          "id": "trial:NCT07140016",
+          "url": "https://clinicaltrials.gov/study/NCT07140016",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07330596",
+      "category": "trials",
+      "text": "NCT07330596 is a RECRUITING study (phase 2). It is titled “QL1706 Combined With Chemotherapy in the Treatment of Immune-mediated NSCLC”. Conditions listed: NSCLC (Advanced Non-small Cell Lung Cancer). Interventions listed: DRUG: QL1706 combined with Chemotherapy; DRUG: Chemotherapy. The record lists a start date of 2025-10-30.",
+      "sources": [
+        {
+          "id": "trial:NCT07330596",
+          "url": "https://clinicaltrials.gov/study/NCT07330596",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07354061",
+      "category": "trials",
+      "text": "NCT07354061 is a RECRUITING study (phase 1 / phase 2). It is titled “Neoadjuvant Therapy With Ensartinib Combined With Chemotherapy for ALK-positive Non - Small Cell Lung Cancer (NSCLC)”. Conditions listed: NSCLC (Non-small Cell Lung Cancer). Interventions listed: DRUG: Ensartinib + Chemotherapy. The record lists a start date of 2026-03-25.",
+      "sources": [
+        {
+          "id": "trial:NCT07354061",
+          "url": "https://clinicaltrials.gov/study/NCT07354061",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07374614",
+      "category": "trials",
+      "text": "NCT07374614 is a RECRUITING study. It is titled “Iruplinalkib in ALK-Positive Advanced Lung Adenocarcinoma After Lorlatinib”. Conditions listed: Non-Small Cell Lung Cancer; ALK; Iruplinalkib; Lorlatinib; Real-world Study; Observational Study. Interventions listed: DRUG: Iruplinalkib tablets. The record lists a start date of 2026-01-31.",
+      "sources": [
+        {
+          "id": "trial:NCT07374614",
+          "url": "https://clinicaltrials.gov/study/NCT07374614",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07415005",
+      "category": "trials",
+      "text": "NCT07415005 is a RECRUITING study (phase 2). It is titled “Lorlatinib Plus Local Consolidation Therapy In ALK Positive Advanced Non-Small Cell Lung Cancer”. Conditions listed: Advanced Non-Small Cell Lung Cancer. Interventions listed: DRUG: Lorlatinib. The record lists a start date of 2026-04-24.",
+      "sources": [
+        {
+          "id": "trial:NCT07415005",
+          "url": "https://clinicaltrials.gov/study/NCT07415005",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07491497",
+      "category": "trials",
+      "text": "NCT07491497 is a RECRUITING study (phase 1 / phase 2). It is titled “A Phase 1/2 Study of TRI-611 in ALK-Positive NSCLC”. Conditions listed: ALK-positive NSCLC; ALK-Positive Lung Cancer; ALK-positive Non-small Cell Lung Cancer. Interventions listed: DRUG: TRI-611. The record lists a start date of 2026-03-11.",
+      "sources": [
+        {
+          "id": "trial:NCT07491497",
+          "url": "https://clinicaltrials.gov/study/NCT07491497",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07617337",
+      "category": "trials",
+      "text": "NCT07617337 is a RECRUITING study (phase 1). It is titled “AQUA07 in Patients With ALK-Positive Non-Small Cell Lung Cancer”. Conditions listed: ALK Positive Non-small Cell Lung Cancer. Interventions listed: DRUG: AQUA07; DRUG: Lorlatinib. The record lists a start date of 2026-07-24.",
+      "sources": [
+        {
+          "id": "trial:NCT07617337",
+          "url": "https://clinicaltrials.gov/study/NCT07617337",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07633626",
+      "category": "trials",
+      "text": "NCT07633626 is a RECRUITING study. It is titled “Vortioxetine for Cognitive Function in ALK-positive NSCLC Treated With Lorlatinib”. Conditions listed: Advanced ALK/ROS1-positive NSCLC; Carcinoma, Non-Small-Cell Lung (NSCLC); Lung Adenocarcinoma; ALK-positive Non-small Cell Lung Cancer (NSCLC); Cognitive Dysfunction; Depression. The record lists a start date of 2026-03-10.",
+      "sources": [
+        {
+          "id": "trial:NCT07633626",
+          "url": "https://clinicaltrials.gov/study/NCT07633626",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07696832",
+      "category": "trials",
+      "text": "NCT07696832 is a RECRUITING study. It is titled “Efficacy and Safety of Ivonescimab Monotherapy as First-Line Treatment for PD-L1-Positive, Driver Gene-Negative, Locally Advanced or Metastatic NSCLC: A Multicenter, Prospective, Real-World Cohort Study”. Conditions listed: Patients Must Have Histologically or Cytologically Confirmed Locally Advanced or Metastatic NSCLC; EGFR Mutation-negative and ALK Rearrangement-negative; Eastern Cooperative Oncology Group Performance Status (ECOG PS) Score of 0 to 2; No Prior Systemic Therapy Received for the Advanced or Metastatic Disease; PD-L1 Positive, as Determined by a Validated Assay. Interventions listed: DRUG: Ivonescimab Injection. The record lists a start date of 2026-01-20.",
+      "sources": [
+        {
+          "id": "trial:NCT07696832",
+          "url": "https://clinicaltrials.gov/study/NCT07696832",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07784959",
+      "category": "trials",
+      "text": "NCT07784959 is a RECRUITING study (phase 1). It is titled “Study of NXP900 With Lorlatinib in ALK+ Lung Cancer”. Conditions listed: ALK Positive; ALK Positive Non-small Cell Lung Cancer; NSCLC; ALK+ Non-Small-Cell Lung Carcinoma. Interventions listed: DRUG: NXP900; DRUG: Lorlatinib. The record lists a start date of 2026-08-17.",
+      "sources": [
+        {
+          "id": "trial:NCT07784959",
+          "url": "https://clinicaltrials.gov/study/NCT07784959",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07810933",
+      "category": "trials",
+      "text": "NCT07810933 is a RECRUITING study (phase 1 / phase 2). It is titled “A Phase 1/2 Study of SY-12321 in Patients With ALK-positive Advanced Malignancies”. Conditions listed: ALK Positive Advanced Malignancies. Interventions listed: DRUG: SY-12321. The record lists a start date of 2026-08-12.",
+      "sources": [
+        {
+          "id": "trial:NCT07810933",
+          "url": "https://clinicaltrials.gov/study/NCT07810933",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    }
+  ]
+}

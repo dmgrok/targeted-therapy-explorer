@@ -21,6 +21,8 @@ jobs:
         run: python3 scripts/build_site.py
       - name: Disclaimer, schema and source checks
         run: python3 tests/test_site.py
+      - name: Plain-language sources, stale-hash and category rules
+        run: python3 tests/test_plain.py
       - name: No OncoKB and no secrets in the tree
         run: |
           if grep -RIn --exclude-dir=.git --exclude-dir=site/assets/fonts \

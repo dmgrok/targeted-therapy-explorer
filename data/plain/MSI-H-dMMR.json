@@ -1,0 +1,732 @@
+{
+  "biomarker_id": "MSI-H-dMMR",
+  "generated_at": "2026-11-13T17:42:22+01:00",
+  "source_hash": "db19df1a9de2b40653b6bee6dc7e3287d62e591ac5027dee600231c789867217",
+  "intro": {
+    "what": [
+      "MSI-H / dMMR stands for microsatellite instability-high or mismatch-repair deficient.",
+      "The CIViC summary in this snapshot is for MLH1, a tumor suppressor gene involved in DNA mismatch repair. Germline mutations in this gene are known to cause Lynch syndrome."
+    ],
+    "test_report": "If a test report mentions MSI-H or dMMR, it is recording a finding about microsatellite instability-high or mismatch-repair deficient status. This page lists public FDA companion diagnostics that look for MSI-H / dMMR, and the therapies and trials in this snapshot that use MSI-H / dMMR as a selection criterion. That mention is not a diagnosis or a treatment decision on its own.",
+    "sources": [
+      {
+        "id": "civic-gene:MLH1",
+        "url": "https://civicdb.org/features/3532",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "biomarker:MSI-H-dMMR",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      },
+      {
+        "id": "summary:MSI-H-dMMR",
+        "url": "https://civicdb.org/features/3532",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      }
+    ],
+    "test_report_sources": [
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      },
+      {
+        "id": "biomarker:MSI-H-dMMR",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Solid Tumors - Tissue",
+      "category": "cdx",
+      "text": "FoundationOne CDx (Foundation Medicine, Inc.) is an FDA companion diagnostic listed for Solid Tumors - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Pembrolizumab.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Solid Tumors - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Endometrial Carcinoma (EC) - Tissue",
+      "category": "cdx",
+      "text": "MI Cancer Seek (MCS) (Caris Life Sciences) is an FDA companion diagnostic listed for Endometrial Carcinoma (EC) - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Pembrolizumab.",
+      "sources": [
+        {
+          "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Endometrial Carcinoma (EC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Solid Tumors - Tissue",
+      "category": "cdx",
+      "text": "MI Cancer Seek (MCS) (Caris Life Sciences) is an FDA companion diagnostic listed for Solid Tumors - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Pembrolizumab.",
+      "sources": [
+        {
+          "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Solid Tumors - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:OncoMate MSI Dx Analysis System (Promega Corporation)|Endometrial Carcinoma (EC) – Tissue",
+      "category": "cdx",
+      "text": "OncoMate MSI Dx Analysis System (Promega Corporation) is an FDA companion diagnostic listed for Endometrial Carcinoma (EC) – Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Pembrolizumab.",
+      "sources": [
+        {
+          "id": "cdx:OncoMate MSI Dx Analysis System (Promega Corporation)|Endometrial Carcinoma (EC) – Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:OncoMate MSI Dx Analysis System (Promega Corporation)|Solid Tumors - Tissue",
+      "category": "cdx",
+      "text": "OncoMate MSI Dx Analysis System (Promega Corporation) is an FDA companion diagnostic listed for Solid Tumors - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Pembrolizumab.",
+      "sources": [
+        {
+          "id": "cdx:OncoMate MSI Dx Analysis System (Promega Corporation)|Solid Tumors - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Ventana MMR RxDx Panel (Ventana Medical Systems, Inc.)|Endometrial Carcinoma (EC) - Tissue",
+      "category": "cdx",
+      "text": "Ventana MMR RxDx Panel (Ventana Medical Systems, Inc.) is an FDA companion diagnostic listed for Endometrial Carcinoma (EC) - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Durvalumab.",
+      "sources": [
+        {
+          "id": "cdx:Ventana MMR RxDx Panel (Ventana Medical Systems, Inc.)|Endometrial Carcinoma (EC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Ventana MMR RxDx Panel (Ventana Medical Systems, Inc.)|Solid Tumors",
+      "category": "cdx",
+      "text": "Ventana MMR RxDx Panel (Ventana Medical Systems, Inc.) is an FDA companion diagnostic listed for Solid Tumors. It appears on the snapshot record for Pembrolizumab.",
+      "sources": [
+        {
+          "id": "cdx:Ventana MMR RxDx Panel (Ventana Medical Systems, Inc.)|Solid Tumors",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Dostarlimab",
+      "category": "mainstream",
+      "text": "Dostarlimab (Jemperli) is listed on an FDA label in this snapshot. The FDA label lists this use: with carboplatin and paclitaxel, followed by JEMPERLI as a single agent, for the treatment of adult patients with primary advanced or recurrent endometrial cancer (EC). ; as a single agent for the treatment of adult patients with mismatch repair deficient (dMMR) recurrent or advanced EC, as determined by an FDA-authorized test, that has progressed on or following prior treatment with a. An EMA record for Jemperli lists the status as Authorised, with an authorisation date of 25/02/2021.",
+      "sources": [
+        {
+          "id": "therapy:MSI-H-dMMR:Dostarlimab",
+          "url": "https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Durvalumab",
+      "category": "mainstream",
+      "text": "Durvalumab (IMFINZI) is listed on an FDA label in this snapshot. The FDA label lists this use: combination with carboplatin and paclitaxel followed by IMFINZI as a single agent, for the treatment of adult patients with primary advanced or recurrent endometrial cancer that is mismatch repair deficient (dMMR) as determined by an FDA-authorized test. ; in combination with Bacillus Calmette-Guérin (BCG) for the treatment of adult patients with BCG-naive, high-risk non-muscle-invasive bla. An EMA record for Imfinzi lists the status as Authorised, with an authorisation date of 26/07/2018.",
+      "sources": [
+        {
+          "id": "therapy:MSI-H-dMMR:Durvalumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8baba4ea-2855-42fa-9bd9-5a7548d4cec3",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Ipilimumab",
+      "category": "mainstream",
+      "text": "Ipilimumab (YERVOY) is listed on an FDA label in this snapshot. The FDA label lists this use: Colorectal Cancer ; Treatment of adults and pediatric patients 12 years and older with unresectable or metastatic microsatellite instability-high (MSI-H) or mismatch repair deficient (dMMR) colorectal cancer (CRC) as determined by an FDA-authorized test in combination. An EMA record for Yervoy lists the status as Authorised, with an authorisation date of 19/05/2011.",
+      "sources": [
+        {
+          "id": "therapy:MSI-H-dMMR:Ipilimumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2265ef30-253e-11df-8a39-0800200c9a66",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Nivolumab",
+      "category": "mainstream",
+      "text": "Nivolumab (OPDIVO QVANTIG) is listed on an FDA label in this snapshot. The label mentions intravenous. The FDA label lists this use: Colorectal Cancer (CRC) ; adult and pediatric (12 years and older who weigh 30 kg or greater) patients with unresectable or metastatic microsatellite instability-high (MSI-H) or mismatch repair deficient (dMMR) colorectal cancer (CRC), following combination treatment with intravenous. An EMA record for Opdivo lists the status as Authorised, with an authorisation date of 23/04/2015. An EMA record for Opdualag lists the status as Authorised, with an authorisation date of 21/07/2022.",
+      "sources": [
+        {
+          "id": "therapy:MSI-H-dMMR:Nivolumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7f8c38fa-42f4-4387-9e8c-7a1c66855d8b",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Pembrolizumab",
+      "category": "mainstream",
+      "text": "Pembrolizumab (Keytruda, KEYTRUDA QLEX) is listed on an FDA label in this snapshot. The FDA label lists this use: Microsatellite Instability-High or Mismatch Repair Deficient Cancer for the treatment of adult and pediatric patients 12 years and older with unresectable or metastatic microsatellite instability-high (MSI-H) or mismatch repair deficient (dMMR) solid. An EMA record for Keytruda lists the status as Authorised, with an authorisation date of 20/05/2015.",
+      "sources": [
+        {
+          "id": "therapy:MSI-H-dMMR:Pembrolizumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=097d166f-b73b-41d3-9b37-7653cd2a0c41",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT03026140",
+      "category": "trials",
+      "text": "NCT03026140 is a RECRUITING study (phase 2). It is titled “Neoadjuvant Immune Checkpoint Inhibition and Novel IO Combinations in Early-stage Colon Cancer”. Conditions listed: Colon Carcinoma. Interventions listed: DRUG: Nivolumab; DRUG: Ipilimumab; DRUG: Celecoxib 200mg; DRUG: BMS-986253; DRUG: Relatlimab (BMS-986016). The record lists a start date of 2017-03-29.",
+      "sources": [
+        {
+          "id": "trial:NCT03026140",
+          "url": "https://clinicaltrials.gov/study/NCT03026140",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT03736889",
+      "category": "trials",
+      "text": "NCT03736889 is a RECRUITING study (phase 2). It is titled “Tislelizumab (Anti-Programmed Cell Death Protein-1 (PD-1) Antibody) in MSI-H or dMMR Solid Tumors”. Conditions listed: MSI-H/dMMR Solid Tumors. Interventions listed: DRUG: Tislelizumab (BGB-A317). The record lists a start date of 2018-09-19.",
+      "sources": [
+        {
+          "id": "trial:NCT03736889",
+          "url": "https://clinicaltrials.gov/study/NCT03736889",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT03816345",
+      "category": "trials",
+      "text": "NCT03816345 is a RECRUITING study (phase 1). It is titled “Testing an Immunotherapy Anti-cancer Drug, Nivolumab, for Advanced Cancers in Patients With Autoimmune Disorders, AIM-NIVO”. Conditions listed: Autoimmune Disease; Crohn Disease; Dermatomyositis; Hematopoietic and Lymphoid Cell Neoplasm; Inflammatory Bowel Disease; Malignant Solid Neoplasm; Multiple Sclerosis; Psoriasis. Interventions listed: PROCEDURE: Biospecimen Collection; DRUG: Cabozantinib; DRUG: Fluoropyrimidine; BIOLOGICAL: Ipilimumab; BIOLOGICAL: Nivolumab; DRUG: Platinum Compound; DRUG: Platinum Doublet. The record lists a start date of 2019-07-16.",
+      "sources": [
+        {
+          "id": "trial:NCT03816345",
+          "url": "https://clinicaltrials.gov/study/NCT03816345",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04165772",
+      "category": "trials",
+      "text": "NCT04165772 is a RECRUITING study (phase 2). It is titled “Study of Induction PD-1 Blockade in Subjects With Locally Advanced Mismatch Repair Deficient Solid Tumors”. Conditions listed: Rectal Adenocarcinoma; Clinical Stage: Stage II (T3-4, N-); Stage III (Any T, N+); Solid Tumor; Solid Tumor, Adult; Endometrial Cancer. Interventions listed: DRUG: TSR-042 or Dostarlimab; DRUG: capecitabine or 5-FU; RADIATION: Intensity Modulated Radiation Therapy (IMRT). The record lists a start date of 2019-12-11.",
+      "sources": [
+        {
+          "id": "trial:NCT04165772",
+          "url": "https://clinicaltrials.gov/study/NCT04165772",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04198766",
+      "category": "trials",
+      "text": "NCT04198766 is a RECRUITING study (phase 1 / phase 2). It is titled “Study of INBRX-106 and INBRX-106 in Combination With Pembrolizumab (Keytruda®) in Subjects With Locally Advanced or Metastatic Solid Tumors (Hexavalent OX40 Agonist)”. Conditions listed: Solid Tumor; Non-Small Cell Lung Cancer; Head and Neck Cancer; Melanoma; Gastric Cancer; Renal Cell Carcinoma; Urothelial Carcinoma; Resectable Non-Small-Cell Lung Cancer. Interventions listed: DRUG: INBRX-106 - Hexavalent OX40 agonist antibody; DRUG: pembrolizumab 200 mg; DRUG: pembrolizumab 400 mg; DRUG: Carboplatin AUC-5; DRUG: Carboplatin AUC-6; DRUG: Pemetrexed 500 mg/m2; DRUG: Cisplatin 75mg/m2; DRUG: Paclitaxel 200mg/m2. The record lists a start date of 2019-12-10.",
+      "sources": [
+        {
+          "id": "trial:NCT04198766",
+          "url": "https://clinicaltrials.gov/study/NCT04198766",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04774419",
+      "category": "trials",
+      "text": "NCT04774419 is a RECRUITING study (phase 2). It is titled “Radiation and TSR-042 (Dostarlimab) in People With Endometrial Cancer After They Receive Surgery”. Conditions listed: Endometrial Cancer. Interventions listed: RADIATION: Intensity modulated radiation therapy (IMRT); DRUG: Dostarlimab; RADIATION: Hypofractionated IMRT. The record lists a start date of 2021-04-02.",
+      "sources": [
+        {
+          "id": "trial:NCT04774419",
+          "url": "https://clinicaltrials.gov/study/NCT04774419",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04777994",
+      "category": "trials",
+      "text": "NCT04777994 is a RECRUITING study (phase 1). It is titled “Study With ABBV-CLS-484 in Participants With Locally Advanced or Metastatic Tumors”. Conditions listed: Advanced Solid Tumor Cancer. Interventions listed: DRUG: ABBV-CLS-484; DRUG: Vascular Endothelial Growth Factor Receptor (VEGFR) Tyrosine Kinase Inhibitor (TKI); DRUG: Programmed Cell Death-1 (PD-1) Inhibitor. The record lists a start date of 2021-03-09.",
+      "sources": [
+        {
+          "id": "trial:NCT04777994",
+          "url": "https://clinicaltrials.gov/study/NCT04777994",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05112601",
+      "category": "trials",
+      "text": "NCT05112601 is a RECRUITING study (phase 2). It is titled “Testing Nivolumab With or Without Ipilimumab in Deficient Mismatch Repair System (dMMR) Recurrent Endometrial Carcinoma”. Conditions listed: Endometrial Adenocarcinoma; Endometrial Clear Cell Adenocarcinoma; Endometrial Dedifferentiated Carcinoma; Endometrial Endometrioid Adenocarcinoma; Endometrial Mixed Cell Adenocarcinoma; Endometrial Mucinous Adenocarcinoma; Endometrial Undifferentiated Carcinoma; Endometrioid Adenocarcinoma. Interventions listed: PROCEDURE: Biospecimen Collection; PROCEDURE: Computed Tomography; BIOLOGICAL: Ipilimumab; PROCEDURE: Magnetic Resonance Imaging; BIOLOGICAL: Nivolumab. The record lists a start date of 2022-06-02.",
+      "sources": [
+        {
+          "id": "trial:NCT05112601",
+          "url": "https://clinicaltrials.gov/study/NCT05112601",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05129605",
+      "category": "trials",
+      "text": "NCT05129605 is a RECRUITING study. It is titled “Prostate Cancer Genetic Risk Evaluation and Screening Study”. Conditions listed: Prostatic Neoplasm; Prostate Cancer; BRCA2 Mutation; BRCA1 Mutation; ATM Gene Mutation; MMR Mutation; Lynch Syndrome; Genetic Predisposition to Disease. Interventions listed: DIAGNOSTIC_TEST: Prostate cancer screening. The record lists a start date of 2020-02-12.",
+      "sources": [
+        {
+          "id": "trial:NCT05129605",
+          "url": "https://clinicaltrials.gov/study/NCT05129605",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05272709",
+      "category": "trials",
+      "text": "NCT05272709 is a RECRUITING study (phase 1 / phase 2). It is titled “TT-702 in Patients With Advanced Solid Tumours.”. Conditions listed: Advanced Solid Tumors. Interventions listed: DRUG: TT-702; DRUG: Anti-PD-1 and PD-L1 agent. The record lists a start date of 2022-01-19.",
+      "sources": [
+        {
+          "id": "trial:NCT05272709",
+          "url": "https://clinicaltrials.gov/study/NCT05272709",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05310643",
+      "category": "trials",
+      "text": "NCT05310643 is a RECRUITING study (phase 2). It is titled “Nivolumab and Ipilimumab in Anti-PD1-Resistant dMMR/MSI mCRC”. Conditions listed: Metastatic Colorectal Cancer. Interventions listed: DRUG: Nivolumab; DRUG: Ipilimumab. The record lists a start date of 2022-05-05.",
+      "sources": [
+        {
+          "id": "trial:NCT05310643",
+          "url": "https://clinicaltrials.gov/study/NCT05310643",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05592626",
+      "category": "trials",
+      "text": "NCT05592626 is a RECRUITING study (phase 1 / phase 2). It is titled “A Study of a Selective T Cell Receptor (TCR) Targeting, Bifunctional Antibody-fusion Molecule STAR0602 in Participants With Advanced Solid Tumors”. Conditions listed: Advanced Solid Tumors; Genital Neoplasm, Female; Urogenital Neoplasms; Lung Neoplasm; Neoplasms by Site; Papillomavirus Infection; Epstein-Barr Virus Infections; Carcinoma. Interventions listed: DRUG: STAR0602; COMBINATION_PRODUCT: Irinotecan (Camptosar); COMBINATION_PRODUCT: Docetaxel (Taxotere). The record lists a start date of 2023-01-04.",
+      "sources": [
+        {
+          "id": "trial:NCT05592626",
+          "url": "https://clinicaltrials.gov/study/NCT05592626",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05845450",
+      "category": "trials",
+      "text": "NCT05845450 is a RECRUITING study (phase 2). It is titled “Pre-operative Targeted Treatments in Molecularly Selected Resectable Colorectal Cancer (UNICORN)”. Conditions listed: Colorectal Cancer; Resectable Colorectal Carcinoma. Interventions listed: DRUG: Trastuzumab deruxtecan; DRUG: Durvalumab; DRUG: Panitumumab; DRUG: Botensilimab; DRUG: Balstilimab; DRUG: Sotorasib; DRUG: Vorbipiprant; DRUG: Nivolumab. The record lists a start date of 2023-05-11.",
+      "sources": [
+        {
+          "id": "trial:NCT05845450",
+          "url": "https://clinicaltrials.gov/study/NCT05845450",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05855200",
+      "category": "trials",
+      "text": "NCT05855200 is a RECRUITING study (phase 3). It is titled “Study of Perioperative Dostarlimab in Participants With Untreated T4N0 or Stage III dMMR/MSI-H Resectable Colon Cancer”. Conditions listed: Colonic Neoplasms; Neoplasms, Colon. Interventions listed: BIOLOGICAL: Dostarlimab; DRUG: CAPEOX; DRUG: FOLFOX. The record lists a start date of 2023-08-01.",
+      "sources": [
+        {
+          "id": "trial:NCT05855200",
+          "url": "https://clinicaltrials.gov/study/NCT05855200",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05919264",
+      "category": "trials",
+      "text": "NCT05919264 is a RECRUITING study (phase 1 / phase 2). It is titled “FOG-001 in Locally Advanced or Metastatic Solid Tumors”. Conditions listed: Cancer; Colorectal Cancer; Solid Tumor; Locally Advanced Solid Tumor; Metastatic Cancer; WNT Pathway; HCC; Desmoid. Interventions listed: DRUG: FOG-001; DRUG: mFOLFOX-6; DRUG: Nivolumab; DRUG: Trifluridine/tipiracil; DRUG: Bevacizumab; DRUG: FOG-001. The record lists a start date of 2023-05-23.",
+      "sources": [
+        {
+          "id": "trial:NCT05919264",
+          "url": "https://clinicaltrials.gov/study/NCT05919264",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06004245",
+      "category": "trials",
+      "text": "NCT06004245 is a RECRUITING study (phase 1). It is titled “A Study to Evaluate the Safety, Pharmacokinetics, and Anti-Tumor Activity of VVD-133214 as Monotherapy and in Combination in Participants With Advanced Solid Tumors”. Conditions listed: Advanced Solid Tumors; Colorectal Cancer. Interventions listed: DRUG: VVD-133214; DRUG: Pembrolizumab; DRUG: Bevacizumab. The record lists a start date of 2024-01-25.",
+      "sources": [
+        {
+          "id": "trial:NCT06004245",
+          "url": "https://clinicaltrials.gov/study/NCT06004245",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06059495",
+      "category": "trials",
+      "text": "NCT06059495 is a RECRUITING study (phase 2). It is titled “DEWI: Watch-and-Wait With Dostarlimab in Localized dMMR/MSI-H Gastric/GEJ Adenocarcinoma Phase II Study”. Conditions listed: Adenocarcinoma - GEJ; Gastric Adenocarcinoma. Interventions listed: DRUG: Dostarlimab. The record lists a start date of 2024-01-22.",
+      "sources": [
+        {
+          "id": "trial:NCT06059495",
+          "url": "https://clinicaltrials.gov/study/NCT06059495",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06305962",
+      "category": "trials",
+      "text": "NCT06305962 is a RECRUITING study (early phase 1). It is titled “177Lu-anti-PD-L1 sdAb in Metastatic Solid Tumors”. Conditions listed: PDL1 Gene Mutation; Non Small Cell Lung Cancer; Small Cell Lung Cancer ( SCLC ); TNBC, Triple Negative Breast Cancer; Cutaneous Melanoma; HNSCC; Endometrial Cancer; Mmr Deficiency. Interventions listed: DRUG: 177Lu-RAD204. The record lists a start date of 2024-06-03.",
+      "sources": [
+        {
+          "id": "trial:NCT06305962",
+          "url": "https://clinicaltrials.gov/study/NCT06305962",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06333314",
+      "category": "trials",
+      "text": "NCT06333314 is a RECRUITING study (phase 2). It is titled “Dostarlimab for Locally Advanced or Metastatic Cancer (Non-colorectal/Non-endometrial) With Tumor dMMR/MSI”. Conditions listed: Pancreatic Adenocarcinoma; Ampulla of Vater Carcinoma; Adrenocortical Carcinoma; Neuroendocrine Carcinoma; Soft Tissue Sarcoma; Small Bowel Adenocarcinoma; Duodenum Adenocarcinoma; Gastric Adenocarcinoma. Interventions listed: DRUG: Dostarlimab; DRUG: Chemotherapy. The record lists a start date of 2024-07-23.",
+      "sources": [
+        {
+          "id": "trial:NCT06333314",
+          "url": "https://clinicaltrials.gov/study/NCT06333314",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06346197",
+      "category": "trials",
+      "text": "NCT06346197 is a RECRUITING study (phase 3). It is titled “Combination of Immune Checkpoint in Locally Advanced or Metastatic MSI/dMMR Esogastric Adenocarcinomas”. Conditions listed: Gastric Cancer; MSI-H; Metastatic Cancer; Advanced Cancer. Interventions listed: DRUG: Balstilimab; DRUG: Botensilimab; DRUG: Folfox Protocol; DRUG: XELOX; DRUG: Nivolumab. The record lists a start date of 2025-12-08.",
+      "sources": [
+        {
+          "id": "trial:NCT06346197",
+          "url": "https://clinicaltrials.gov/study/NCT06346197",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06353854",
+      "category": "trials",
+      "text": "NCT06353854 is a RECRUITING study. It is titled “Prospective National Cohort Evaluating Predictive Biomarkers of Resistance to Immunotherapy in Patients With MSI/dMMR Metastatic Colorectal Cancer (CORESIM)”. Conditions listed: Colorectal Cancer Metastatic; Microsatellite Instability-High Colorectal Cancer. The record lists a start date of 2024-02-12.",
+      "sources": [
+        {
+          "id": "trial:NCT06353854",
+          "url": "https://clinicaltrials.gov/study/NCT06353854",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06449989",
+      "category": "trials",
+      "text": "NCT06449989 is a RECRUITING study. It is titled “Comparison of Molecular-Genetic Concordance of the Primary Tumor and Brain Metastases of Colorectal Cancer”. Conditions listed: Colorectal Cancer Metastatic; Brain Metastases, Adult; Ras (KRAS or NRAS) Gene Mutation; BRAF Gene Mutation; HER2 Gene Mutation; MSI. Interventions listed: DIAGNOSTIC_TEST: Tumor samples will be tested for mutation status of KRAS, NRAS, BRAF, HER2 and MSI. The record lists a start date of 2024-04-01.",
+      "sources": [
+        {
+          "id": "trial:NCT06449989",
+          "url": "https://clinicaltrials.gov/study/NCT06449989",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06529523",
+      "category": "trials",
+      "text": "NCT06529523 is a RECRUITING study (phase 2). It is titled “Tislelizumab in People With Colorectal Cancer”. Conditions listed: Colorectal Cancer. Interventions listed: DRUG: Tislelizumab. The record lists a start date of 2024-07-26.",
+      "sources": [
+        {
+          "id": "trial:NCT06529523",
+          "url": "https://clinicaltrials.gov/study/NCT06529523",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06549855",
+      "category": "trials",
+      "text": "NCT06549855 is a RECRUITING study (NA). It is titled “PD-1 Inhibitor Combined With Progesterone Treatment in FST for Patients With MMRd Endometrial Cancer”. Conditions listed: Endometrial Cancer; Endometrioid Carcinoma; Mismatch Repair Deficiency. Interventions listed: DRUG: Sintilimab or Pembrolizumab and medroxyprogesterone acetate (MPA)/ megestrol acetate (MA). The record lists a start date of 2024-09-02.",
+      "sources": [
+        {
+          "id": "trial:NCT06549855",
+          "url": "https://clinicaltrials.gov/study/NCT06549855",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06567782",
+      "category": "trials",
+      "text": "NCT06567782 is a RECRUITING study (phase 2). It is titled “A Study of Neoadjuvant Dostarlimab Plus Capecitabine Plus Oxaliplatin (CAPEOX) Vs CAPEOX With Previously Untreated T4N0 or Stage III Mismatch Repair Proficient (MMRp)/Microsatellite Stable (MSS) Colon Cancer”. Conditions listed: Neoplasms, Colon. Interventions listed: BIOLOGICAL: Dostarlimab; DRUG: CAPEOX. The record lists a start date of 2025-02-18.",
+      "sources": [
+        {
+          "id": "trial:NCT06567782",
+          "url": "https://clinicaltrials.gov/study/NCT06567782",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06762405",
+      "category": "trials",
+      "text": "NCT06762405 is a RECRUITING study (phase 3). It is titled “PRODIGE 90 - (FFCD 2204) Neoadjuvant Dostarlimab with Short Course Radiotherapy in a Watch-and-wait Strategy for Microsatellite Unstable or Mismatch Repair-deficient Locally Advanced Rectal Cancer Patients”. Conditions listed: Rectal Adenocarcinoma with Mismatch-repair Deficient (dMMR)/ Microsatellite Instability-high (MSI-H). Interventions listed: RADIATION: radiotherapy; DRUG: Dostarlimab; BIOLOGICAL: Biological study on circulating tumor DNA (optional for the patient). The record lists a start date of 2025-02-06.",
+      "sources": [
+        {
+          "id": "trial:NCT06762405",
+          "url": "https://clinicaltrials.gov/study/NCT06762405",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06890273",
+      "category": "trials",
+      "text": "NCT06890273 is a RECRUITING study. It is titled “NIS to Examine the Effectiveness and Safety of Durvalumab and Olaparib in Patients With Endometrial Cancer (DUOLife)”. Conditions listed: Endometrial Cancer. The record lists a start date of 2025-05-20.",
+      "sources": [
+        {
+          "id": "trial:NCT06890273",
+          "url": "https://clinicaltrials.gov/study/NCT06890273",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06898450",
+      "category": "trials",
+      "text": "NCT06898450 is a RECRUITING study (phase 1 / phase 2). It is titled “A Study to Assess the Safety, Tolerability, and Efficacy of NDI-219216 in Patients With Advanced Solid Tumors.”. Conditions listed: Advanced Solid Tumors Cancer; MSI-H Cancer. Interventions listed: DRUG: NDI-219216. The record lists a start date of 2025-03-31.",
+      "sources": [
+        {
+          "id": "trial:NCT06898450",
+          "url": "https://clinicaltrials.gov/study/NCT06898450",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06948448",
+      "category": "trials",
+      "text": "NCT06948448 is a RECRUITING study (phase 2). It is titled “A Study to Evaluate the Safety and Efficacy of Two Dose Levels of ONO-4578 With Opdivo®, in Combination With mFOLFOX6 and Bevacizumab Versus Standard of Care in Participants With Non-MSI-H/dMMR, PD-L1 Positive Advanced Colorectal Cancer”. Conditions listed: Colorectal Cancer. Interventions listed: DRUG: ONO-4578; DRUG: Opdivo®; DRUG: Oxaliplatin; DRUG: 5-Fluorouracil; DRUG: Bevacizumab; DRUG: Leucovorin. The record lists a start date of 2025-11-18.",
+      "sources": [
+        {
+          "id": "trial:NCT06948448",
+          "url": "https://clinicaltrials.gov/study/NCT06948448",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07127822",
+      "category": "trials",
+      "text": "NCT07127822 is a RECRUITING study (phase 2). It is titled “Assessing Iparomlimab and Tuvonralimab in Recurrent or Metastatic MSI-H/dMMR Gastric Cancer”. Conditions listed: Gastric / Gastroesophageal Junction Adenocarcinoma; MSI-H Cancer. Interventions listed: DRUG: Iparomlimab and Tuvonralimab; DRUG: First line chemotherapy plus PD-1/PD-L1 antibody. The record lists a start date of 2025-12-15.",
+      "sources": [
+        {
+          "id": "trial:NCT07127822",
+          "url": "https://clinicaltrials.gov/study/NCT07127822",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07140679",
+      "category": "trials",
+      "text": "NCT07140679 is a RECRUITING study (phase 2). It is titled “Immunotherapy (Toripalimab) for Reducing Recurrence Risk After Surgery for Mismatch Repair Deficient Stage IIB, IIC, or III Colon Cancer”. Conditions listed: Localized Colon Carcinoma; Stage IIB Colon Cancer AJCC v8; Stage IIC Colon Cancer AJCC v8; Stage III Colon Cancer AJCC v8. Interventions listed: PROCEDURE: Biopsy Procedure; PROCEDURE: Biospecimen Collection; PROCEDURE: Colonoscopy; PROCEDURE: Computed Tomography; OTHER: Questionnaire Administration; DRUG: Toripalimab. The record lists a start date of 2025-09-19.",
+      "sources": [
+        {
+          "id": "trial:NCT07140679",
+          "url": "https://clinicaltrials.gov/study/NCT07140679",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07213609",
+      "category": "trials",
+      "text": "NCT07213609 is a RECRUITING study (phase 1 / phase 2). It is titled “A Study to Investigate the Safety and Preliminary Efficacy of GSK5460025 Alone or in Combination With Other Anti-cancer Agents in Participants With Solid Tumors”. Conditions listed: Neoplasms, Colorectal; Neoplasms. Interventions listed: DRUG: GSK5460025. The record lists a start date of 2025-10-20.",
+      "sources": [
+        {
+          "id": "trial:NCT07213609",
+          "url": "https://clinicaltrials.gov/study/NCT07213609",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07262619",
+      "category": "trials",
+      "text": "NCT07262619 is a RECRUITING study (phase 1 / phase 2). It is titled “EIK1005-002: A Clinical Research Study Evaluating EIK1005, a Werner Helicase Inhibitor, as Monotherapy and in Combination With Pembrolizumab in Participants With Advanced Solid Tumors Including Microsatellite Instability High (MSI-H) Tumors”. Conditions listed: Advanced Solid Tumors; MSI-H or dMMR Advanced Solid Tumors; MSI-H/dMMR Gastric Cancer; MSI-H/dMMR Colorectal Cancer; MSI-H/dMMR Gastroesophageal-junction Cancer; Endometrial Cancer; Mismatch Repair Deficient or MSI-High Solid Tumors. Interventions listed: DRUG: EIK1005; DRUG: pembrolizumab (KEYTRUDA® ). The record lists a start date of 2026-01-20.",
+      "sources": [
+        {
+          "id": "trial:NCT07262619",
+          "url": "https://clinicaltrials.gov/study/NCT07262619",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07270666",
+      "category": "trials",
+      "text": "NCT07270666 is a RECRUITING study (NA). It is titled “ctDNA Testing to Inform Standard-of-Care Treatment Decisions in People With Endometrial Cancer”. Conditions listed: Endometrial Cancer. Interventions listed: GENETIC: ctDNA Testing; OTHER: Blood draw; OTHER: Surveys; OTHER: Semi-structured interviews. The record lists a start date of 2025-11-25.",
+      "sources": [
+        {
+          "id": "trial:NCT07270666",
+          "url": "https://clinicaltrials.gov/study/NCT07270666",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07274657",
+      "category": "trials",
+      "text": "NCT07274657 is a RECRUITING study (NA). It is titled “Superb Microvascular Imaging (SMI) and Two-Dimensional Endoscopic Ultrasound Guided Shear Wave Elastography (2D-SWE-EUS) in Differential Diagnosis of Pancreatic Adenocarcinoma (PA) From Other Pancreatic Solid Lesions (PSLs) and Pancreatic neuroendocrinE Tumors (pNETs) Malignancy”. Conditions listed: Pancreas Adenocarcinoma (MSI-H); Pancreatic Neuroendocrine Tumors (pNET). Interventions listed: DEVICE: SMI and 2D-SWE modes. The record lists a start date of 2026-02-24.",
+      "sources": [
+        {
+          "id": "trial:NCT07274657",
+          "url": "https://clinicaltrials.gov/study/NCT07274657",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07403721",
+      "category": "trials",
+      "text": "NCT07403721 is a RECRUITING study (phase 1). It is titled “AMG 436 as Monotherapy and Combination Therapy in Participants With MSI-H/dMMR Solid Tumors”. Conditions listed: Metastatic or Locally Advanced Solid Tumors With Microsatellite Instability-high (MSI-H) or Mismatched Repair Deficiency (dMMR). Interventions listed: DRUG: AMG 436. The record lists a start date of 2026-04-08.",
+      "sources": [
+        {
+          "id": "trial:NCT07403721",
+          "url": "https://clinicaltrials.gov/study/NCT07403721",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07472686",
+      "category": "trials",
+      "text": "NCT07472686 is a RECRUITING study. It is titled “Small Bowel Capsule Endoscopy in Lynch Syndrome”. Conditions listed: MMR Mutation; Small Bowel Adenoma; Small-bowel Adenocarcinoma; Lynch Syndrome; Cancer. The record lists a start date of 2025-06-16.",
+      "sources": [
+        {
+          "id": "trial:NCT07472686",
+          "url": "https://clinicaltrials.gov/study/NCT07472686",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07562347",
+      "category": "trials",
+      "text": "NCT07562347 is a RECRUITING study. It is titled “Clinical Experience and Real-world Safety and Effectiveness of Envafolimab: Patient Access Program”. Conditions listed: Advanced Solid Tumor. Interventions listed: DRUG: Envafolimab. The record lists a start date of 2026-08-07.",
+      "sources": [
+        {
+          "id": "trial:NCT07562347",
+          "url": "https://clinicaltrials.gov/study/NCT07562347",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07750951",
+      "category": "trials",
+      "text": "NCT07750951 is a RECRUITING study (phase 2). It is titled “Single-arm, Phase II Clinical Study Evaluating the Safety and Efficacy of Sintilimab Combined With IBI-310 and Chemotherapy as Neoadjuvant Therapy for Locally Advanced Rectal Cancer”. Conditions listed: MSI-H/dMMR Locally Advanced Rectal Adenocarcinoma. Interventions listed: DRUG: Cindilimab、IBI310、Capecitabine、Oxaliplatin. The record lists a start date of 2026-05-29.",
+      "sources": [
+        {
+          "id": "trial:NCT07750951",
+          "url": "https://clinicaltrials.gov/study/NCT07750951",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07775950",
+      "category": "trials",
+      "text": "NCT07775950 is a RECRUITING study (NA). It is titled “Research on Colorectal Cancer Recurrence Monitoring and Individualized Treatment Based on MRD”. Conditions listed: Colorectal Cancer (MSI-H); Molecular Residual Disease. Interventions listed: OTHER: Discontinue NA Treatment; OTHER: Continued Immunotherapy; OTHER: Observation. The record lists a start date of 2026-06-23.",
+      "sources": [
+        {
+          "id": "trial:NCT07775950",
+          "url": "https://clinicaltrials.gov/study/NCT07775950",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07780305",
+      "category": "trials",
+      "text": "NCT07780305 is a RECRUITING study. It is titled “ABCSG R07 Rectal Cancer Registry”. Conditions listed: Rectal Cancer; Adenocarcinoma of Rectum. The record lists a start date of 2026-09-16.",
+      "sources": [
+        {
+          "id": "trial:NCT07780305",
+          "url": "https://clinicaltrials.gov/study/NCT07780305",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07811193",
+      "category": "trials",
+      "text": "NCT07811193 is a RECRUITING study (phase 2). It is titled “A Study to Evaluate the Efficacy of VVD-133214 in Combination With Pembrolizumab Compared With Pembrolizumab Alone in Participants With Advanced Cancer of the Colon or Rectum”. Conditions listed: Colorectal Adenocarcinoma. Interventions listed: DRUG: VVD-133214; DRUG: Pembrolizumab. The record lists a start date of 2026-09-11.",
+      "sources": [
+        {
+          "id": "trial:NCT07811193",
+          "url": "https://clinicaltrials.gov/study/NCT07811193",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07829081",
+      "category": "trials",
+      "text": "NCT07829081 is a RECRUITING study. It is titled “Research on Effective Strategies After Immunotherapy for Mismatch Repair-deficient Early-stage GI Tumors”. Conditions listed: Quality of Life (QOL); Mismatch Repair Deficient Colorectal Cancer; Microsatellite Instability-High Colorectal Cancer; Stage II Colorectal Cancer; Stage III Colorectal Cancer; Mismatch Repair- Deficient Rectal Cancer; Microsatellite Instability-High Rectal Cancer; Mismatch Repair-Deficient Colon Cancer. Interventions listed: OTHER: Active surveillance after complete response to immunotherapy in MMRd GI cancers; OTHER: Stand of Care. The record lists a start date of 2026-09-01.",
+      "sources": [
+        {
+          "id": "trial:NCT07829081",
+          "url": "https://clinicaltrials.gov/study/NCT07829081",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07841236",
+      "category": "trials",
+      "text": "NCT07841236 is a RECRUITING study (phase 2). It is titled “ctDNA-Guided Immunotherapy for dMMR/MSI-H Colon Cancer”. Conditions listed: Colon Cancer; Deficient Mismatch Repair; Microsatellite Instability-High (MSI-H). Interventions listed: DRUG: PD-1 inhibitor; DRUG: CTLA-4 inhibitor; DIAGNOSTIC_TEST: ctDNA/MRD testing; PROCEDURE: Curative Surgery. The record lists a start date of 2026-09-14.",
+      "sources": [
+        {
+          "id": "trial:NCT07841236",
+          "url": "https://clinicaltrials.gov/study/NCT07841236",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07901582",
+      "category": "trials",
+      "text": "NCT07901582 is a RECRUITING study (NA). It is titled “Implementation of a Pain Management Plan in Major Open Abdominal Surgeries.”. Conditions listed: Abdomen Cancer; Pancreas Adenocarcinoma (MSI-H); Colectomy Left/Right/Total Under Laparotomy; Hepatectomy; Nephrectomy; Esophagectomy; Pelvic Cancer, Enteritis, Probiotics,Chemoradiotherapy; Hysterectomy and Salpingectomy and Oophorectomy. Interventions listed: PROCEDURE: Epidural administered opioid; PROCEDURE: Epidural administered opioid. The record lists a start date of 2025-11-22.",
+      "sources": [
+        {
+          "id": "trial:NCT07901582",
+          "url": "https://clinicaltrials.gov/study/NCT07901582",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    }
+  ]
+}

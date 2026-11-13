@@ -16,7 +16,7 @@
       <p class="kicker">A watch-and-explain gazette · not a medical device</p>
       <h1 class="site-title"><a href="index.html">Targeted Therapy Explorer</a></h1>
       <p class="issue"><span class="label">Snapshot</span>12 November 2026</p>
-      <p class="standfirst">Approved targeted therapies and recruiting trials, organised by biomarker, from public regulatory and trial registers.</p>
+      <p class="standfirst">A plain-language map of approved targeted therapies and recruiting trials, organised by biomarker, from public regulatory and trial registers.</p>
     </header>
     <nav class="sections" aria-label="Sections">
       <a href="index.html" aria-current="page">Biomarkers</a>
@@ -33,56 +33,93 @@
       This snapshot is more than eight days old. Figures may be out of date — please check the original FDA, EMA and ClinicalTrials.gov records, and do not rely on this page alone.
     </div>
     <p class="snapshot-meta">Snapshot date: <time id="snapshot-date" datetime="2026-11-12">12 November 2026</time></p>
-    <h2 id="biomarkers">Choose a biomarker</h2><p class="lede">Pick one entry from this closed list. There is no search box, no upload, and no place to enter personal or clinical information.</p><ul class="bm-grid">
+    <section class="intro" id="intro"><h2>What this site is</h2><p class='lede'>This site maps a closed list of tumour biomarkers to approved targeted therapies and recruiting clinical trials, using public sources only.</p><p class='lede'>It is general information. It is not medical advice, a diagnosis or a treatment recommendation, and it is not a medical device.</p><p class="plain">Pick a biomarker to see today&#x27;s options in this snapshot, tagged Mainstream (FDA-approved for that biomarker), Trials (recruiting studies that require it), or On the edge (earlier CIViC evidence). The order of options does not mean one is better than another. Talk to your oncologist. <span class="plain-cites"><span class="plain-src">This explorer&#x27;s method</span></span></p></section><div class="category-legend" id="categories"><h3>How options are tagged</h3><p class='fine'>Options are grouped by category, then listed alphabetically. That order does not mean one option is better than another. Colours and position do not rank options.</p><div class="legend-item">
+              <span class="tag tag-mainstream">Mainstream</span>
+              <p class="legend-short"><strong>FDA-approved for this biomarker, in this snapshot.</strong></p>
+              <p class="fine rule">A therapy is Mainstream when the existing targeting_therapies() rule includes it: the FDA label indication, the FDA pharmacogenomic-biomarker table, or an FDA companion-diagnostic row ties the drug to this biomarker as a selection criterion.</p>
+            </div><div class="legend-item">
+              <span class="tag tag-trials">Trials</span>
+              <p class="legend-short"><strong>A recruiting study that requires this biomarker.</strong></p>
+              <p class="fine rule">A study is in Trials when the existing requiring_trials() rule includes it: it is a recruiting ClinicalTrials.gov record whose condition or eligibility inclusion criteria require this biomarker as a selection criterion.</p>
+            </div><div class="legend-item">
+              <span class="tag tag-edge">On the edge</span>
+              <p class="legend-short"><strong>Early evidence, not an FDA approval in this snapshot.</strong></p>
+              <p class="fine rule">A CIViC assertion is On the edge when all of these hold: it is PREDICTIVE (it names a therapy effect), it names at least one therapy, and its ampLevel is present and is not TIER_I_LEVEL_A. TIER_I_LEVEL_A is the highest evidence level recorded on CIViC assertions in this snapshot; lower recorded levels (for example TIER_II_LEVEL_C or TIER_II_LEVEL_D) are treated as earlier evidence. Assertions with no ampLevel are not placed here. Status (ACCEPTED or SUBMITTED) is shown, not used as a filter. Diagnostic, prognostic or oncogenic assertions, and TIER_I_LEVEL_A predictive assertions about a Mainstream therapy, stay in Sources rather than as a separate option.</p>
+            </div><p class='fine ai-note'>Plain-language lines were written from the cited snapshot data, committed in the repository for review, and built into these pages. They are not generated in your browser.</p></div>
+        <section class="home-steps" id="path">
+          <h2>How a biomarker page is organised</h2>
+          <ol class="steps">
+            <li class="step">
+              <h3><span class="step-num" aria-hidden="true">1</span> A test confirms the biomarker</h3>
+              <p>Each biomarker page lists FDA companion diagnostics from this snapshot, including the sample type when the FDA table gives one.</p>
+            </li>
+            <li class="step">
+              <h3><span class="step-num" aria-hidden="true">2</span> Options on the public record</h3>
+              <p>Options are tagged Mainstream, Trials or On the edge, using the rules above. The three groups have equal weight. This is a map, not a decision procedure.</p>
+              <div class="branches home-branches">
+                <div class="branch"><span class="tag tag-mainstream">Mainstream</span><p class="fine">FDA-approved for that biomarker, in this snapshot.</p></div>
+                <div class="branch"><span class="tag tag-trials">Trials</span><p class="fine">A recruiting study that requires that biomarker.</p></div>
+                <div class="branch"><span class="tag tag-edge">On the edge</span><p class="fine">Early evidence from CIViC, not an FDA approval in this snapshot.</p></div>
+              </div>
+            </li>
+          </ol>
+        </section>
+        <h2 id="biomarkers">Choose a biomarker</h2><p class="lede">Pick one entry from this closed list. There is no search box, no upload, and no place to enter personal or clinical information. Counts are from this snapshot; they do not rank the biomarkers.</p><ul class="bm-grid">
         <li>
           <a class="bm-card" href="b/EGFR.html">
             <p class="name">EGFR</p>
             <p class="full">Epidermal growth factor receptor</p>
-            <p class="counts">13 therapies · 24 recruiting trials</p>
+            <p class="counts"><span>13 mainstream</span> <span>24 trials</span> <span>0 on the edge</span></p>
           </a>
         </li>
         <li>
           <a class="bm-card" href="b/ALK.html">
             <p class="name">ALK</p>
             <p class="full">Anaplastic lymphoma kinase</p>
-            <p class="counts">6 therapies · 49 recruiting trials</p>
+            <p class="counts"><span>6 mainstream</span> <span>49 trials</span> <span>0 on the edge</span></p>
           </a>
         </li>
         <li>
           <a class="bm-card" href="b/BRAF-V600E.html">
             <p class="name">BRAF V600E</p>
             <p class="full">BRAF V600E substitution</p>
-            <p class="counts">9 therapies · 40 recruiting trials</p>
+            <p class="counts"><span>9 mainstream</span> <span>40 trials</span> <span>1 on the edge</span></p>
           </a>
         </li>
         <li>
           <a class="bm-card" href="b/KRAS-G12C.html">
             <p class="name">KRAS G12C</p>
             <p class="full">KRAS G12C substitution</p>
-            <p class="counts">3 therapies · 54 recruiting trials</p>
+            <p class="counts"><span>3 mainstream</span> <span>54 trials</span> <span>0 on the edge</span></p>
           </a>
         </li>
         <li>
           <a class="bm-card" href="b/HER2.html">
             <p class="name">HER2</p>
             <p class="full">Human epidermal growth factor receptor 2 (ERBB2)</p>
-            <p class="counts">13 therapies · 37 recruiting trials</p>
+            <p class="counts"><span>13 mainstream</span> <span>37 trials</span> <span>1 on the edge</span></p>
           </a>
         </li>
         <li>
           <a class="bm-card" href="b/NTRK.html">
             <p class="name">NTRK</p>
             <p class="full">Neurotrophic tyrosine receptor kinase fusion (NTRK1/2/3)</p>
-            <p class="counts">3 therapies · 17 recruiting trials</p>
+            <p class="counts"><span>3 mainstream</span> <span>17 trials</span> <span>1 on the edge</span></p>
           </a>
         </li>
         <li>
           <a class="bm-card" href="b/MSI-H-dMMR.html">
             <p class="name">MSI-H / dMMR</p>
             <p class="full">Microsatellite instability-high or mismatch-repair deficient</p>
-            <p class="counts">5 therapies · 45 recruiting trials</p>
+            <p class="counts"><span>5 mainstream</span> <span>45 trials</span> <span>0 on the edge</span></p>
           </a>
-        </li></ul><h2 id="whats-new">What’s new this week</h2><p class="fine">Changes are computed from the difference between this snapshot and the previous one.</p><ol class="news"><li><span class="kind">first snapshot</span> This is the first snapshot (2026-11-12). Weekly additions, withdrawals and label changes will appear here after the next refresh is merged.</li></ol><p class="fine">This snapshot: 52 therapy rows, 266 recruiting trials, 69 CIViC assertions, 35 citation cards.</p></main>
+        </li></ul><h2 id="whats-new">What’s new this week</h2><p class="fine">Changes are computed from the difference between this snapshot and the previous one.</p><ol class="news"><li><span class="kind">first snapshot</span> This is the first snapshot (2026-11-12). Weekly additions, withdrawals and label changes will appear here after the next refresh is merged.</li></ol><p class="fine">This snapshot: 52 therapy rows, 266 recruiting trials, 69 CIViC assertions, 35 citation cards.</p>
+    <section class="glossary" id="glossary">
+      <h2>Short glossary</h2>
+      <p class="fine">Words that appear on these pages and are hard to avoid. These are general explanations, not medical advice.</p>
+      <dl><div class='gloss-item'><dt>Biomarker</dt><dd>A measurable feature of a tumour, such as a gene change, that can be used as a selection criterion for a therapy or a trial.</dd></div><div class='gloss-item'><dt>Mutation</dt><dd>A change in the DNA sequence of a gene.</dd></div><div class='gloss-item'><dt>TKI (tyrosine kinase inhibitor)</dt><dd>A type of targeted drug. The letters stand for tyrosine kinase inhibitor. The FDA labels in this snapshot sometimes describe a drug as a kinase inhibitor.</dd></div><div class='gloss-item'><dt>NSCLC</dt><dd>Non-small cell lung cancer, a type of lung cancer named in many of the FDA labels in this snapshot.</dd></div><div class='gloss-item'><dt>FDA</dt><dd>The U.S. Food and Drug Administration, which approves drugs and some tests in the United States. This site uses FDA labels, the pharmacogenomic-biomarker table, and the companion-diagnostic list.</dd></div><div class='gloss-item'><dt>EMA</dt><dd>The European Medicines Agency, which authorises medicines in the European Union. This site adds an EMA match when one is found.</dd></div><div class='gloss-item'><dt>Companion diagnostic</dt><dd>A test on the FDA’s list of authorised companion diagnostic devices, used to identify people who may be considered for a corresponding therapy.</dd></div><div class='gloss-item'><dt>CIViC</dt><dd>A public, volunteer-curated cancer knowledgebase released under a public-domain dedication. Its statements are not regulatory approvals.</dd></div><div class='gloss-item'><dt>Fusion</dt><dd>When parts of two genes join and form an abnormal gene. Reports may mention an ALK fusion or an NTRK fusion.</dd></div><div class='gloss-item'><dt>Exon</dt><dd>A numbered segment of a gene. A report may mention a change in a specific exon.</dd></div><div class='gloss-item'><dt>Recruiting</dt><dd>A clinical trial whose ClinicalTrials.gov record in this snapshot lists the status as recruiting, meaning it was listed as enrolling participants at the time of that record.</dd></div><div class='gloss-item'><dt>ampLevel</dt><dd>The evidence level CIViC records on an assertion, such as TIER_I_LEVEL_A or TIER_II_LEVEL_D. This site uses that field as written. It does not add a meaning beyond what the field itself says.</dd></div><div class='gloss-item'><dt>Indication</dt><dd>The use listed on a drug’s official label: what the drug was approved for, in which disease, and with which test or conditions, as written in the FDA label.</dd></div></dl>
+    </section>
+    </main>
     <footer>
       <div class="notice" role="note">
         <strong>Not medical advice. Talk to your oncologist.</strong>

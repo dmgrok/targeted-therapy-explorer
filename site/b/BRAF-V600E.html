@@ -16,7 +16,7 @@
       <p class="kicker">A watch-and-explain gazette · not a medical device</p>
       <p class="site-title"><a href="../index.html">Targeted Therapy Explorer</a></p>
       <p class="issue"><span class="label">Snapshot</span>12 November 2026</p>
-      <p class="standfirst">Approved targeted therapies and recruiting trials, organised by biomarker, from public regulatory and trial registers.</p>
+      <p class="standfirst">A plain-language map of approved targeted therapies and recruiting trials, organised by biomarker, from public regulatory and trial registers.</p>
     </header>
     <nav class="sections" aria-label="Sections">
       <a href="../index.html">Biomarkers</a>
@@ -33,82 +33,354 @@
       This snapshot is more than eight days old. Figures may be out of date — please check the original FDA, EMA and ClinicalTrials.gov records, and do not rely on this page alone.
     </div>
     <p class="snapshot-meta">Snapshot date: <time id="snapshot-date" datetime="2026-11-12">12 November 2026</time></p>
-    <h2>BRAF V600E</h2><p class="lede">BRAF V600E substitution</p><div class="prose"><p>BRAF mutations are found to be recurrent in many cancer types. Of these, the mutation of valine 600 to glutamic acid (V600E) is the most prevalent. V600E has been determined to be an activating mutation, and cells that harbor it, along with other V600 mutations are sensitive to the BRAF inhibitor dabrafenib. It is also common to use MEK inhibition as a substitute for BRAF inhibitors, and the MEK inhibitor trametinib has seen some success in BRAF mutant melanomas. BRAF mutations have also been correlated with poor prognosis in many cancer types, although there is at least one study that questions this conclusion in papillary thyroid cancer. Oncogenic BRAF mutations are divided into three cat…</p><ul class="cites"><li><span class="src"><a href="https://civicdb.org/features/5">CIViC (CC0)</a></span> BRAF gene summary.</li></ul></div><h2 id="therapies">Approved therapies</h2><p class="fine">9 approved therapies whose label indication, the FDA pharmacogenomic biomarker table, or an FDA companion-diagnostic row ties the drug to this biomarker as a selection criterion, with EMA matches where found. Mentions that are only incidental, or that use the biomarker as an exclusion or opposite-status criterion (for example “no EGFR or ALK aberrations”, or a HER2-negative indication), are kept in the snapshot data and are not shown here. Excerpts are not a substitute for the official label.</p>
+    <h2>BRAF V600E</h2><p class="lede">BRAF V600E substitution</p>
+    <section class="intro" id="intro">
+      <p class='lede'>BRAF V600E is a substitution in the BRAF gene: the mutation of valine 600 to glutamic acid (V600E).</p><p class='lede'>BRAF mutations are found to be recurrent in many cancer types, and of these, V600E is the most prevalent. V600E has been determined to be an activating mutation.</p>
+      <p class="plain">If a test report mentions BRAF V600E, it is recording a finding about this gene change. This page lists public FDA companion diagnostics that look for BRAF V600E, and the therapies and trials in this snapshot that use BRAF V600E as a selection criterion. That mention is not a diagnosis or a treatment decision on its own. <span class="plain-cites"><span class="plain-src">How this page is built</span> · <span class="plain-src">This snapshot’s biomarker record</span></span></p>
+      <details class="sources-toggle"><summary>Sources for this introduction</summary><div class="sources-body"><p class="excerpt">BRAF mutations are found to be recurrent in many cancer types. Of these, the mutation of valine 600 to glutamic acid (V600E) is the most prevalent. V600E has been determined to be an activating mutation, and cells that harbor it, along with other V600 mutations are sensitive to the BRAF inhibitor dabrafenib. It is also common to use MEK inhibition as a substitute for BRAF inhibitors, and the MEK inhibitor trametinib has seen some success in BRAF mutant melanomas. BRAF mutations have also been correlated with poor prognosis in many cancer types, although there is at least one study that questions this conclusion in papillary thyroid cancer. Oncogenic BRAF mutations are divided into three cat… <a href="https://civicdb.org/features/5">CIViC gene summary for BRAF</a> (CC0).</p><ul class="cites"><li><span class="src"><a href="https://civicdb.org/features/5">CIViC (CC0)</a></span> BRAF gene summary.</li></ul></div></details>
+    </section>
+    <h2 id="path">Options on the public record</h2><p class="fine">This is a map of what the public record in this snapshot contains, not a decision procedure and not a recommendation. Options are grouped by category, then listed alphabetically. That order does not mean one option is better than another.</p><div class="category-legend" id="categories"><h3>How options are tagged</h3><p class='fine'>Options are grouped by category, then listed alphabetically. That order does not mean one option is better than another. Colours and position do not rank options.</p><div class="legend-item">
+              <span class="tag tag-mainstream">Mainstream</span>
+              <p class="legend-short"><strong>FDA-approved for this biomarker, in this snapshot.</strong></p>
+              <p class="fine rule">A therapy is Mainstream when the existing targeting_therapies() rule includes it: the FDA label indication, the FDA pharmacogenomic-biomarker table, or an FDA companion-diagnostic row ties the drug to this biomarker as a selection criterion.</p>
+            </div><div class="legend-item">
+              <span class="tag tag-trials">Trials</span>
+              <p class="legend-short"><strong>A recruiting study that requires this biomarker.</strong></p>
+              <p class="fine rule">A study is in Trials when the existing requiring_trials() rule includes it: it is a recruiting ClinicalTrials.gov record whose condition or eligibility inclusion criteria require this biomarker as a selection criterion.</p>
+            </div><div class="legend-item">
+              <span class="tag tag-edge">On the edge</span>
+              <p class="legend-short"><strong>Early evidence, not an FDA approval in this snapshot.</strong></p>
+              <p class="fine rule">A CIViC assertion is On the edge when all of these hold: it is PREDICTIVE (it names a therapy effect), it names at least one therapy, and its ampLevel is present and is not TIER_I_LEVEL_A. TIER_I_LEVEL_A is the highest evidence level recorded on CIViC assertions in this snapshot; lower recorded levels (for example TIER_II_LEVEL_C or TIER_II_LEVEL_D) are treated as earlier evidence. Assertions with no ampLevel are not placed here. Status (ACCEPTED or SUBMITTED) is shown, not used as a filter. Diagnostic, prognostic or oncogenic assertions, and TIER_I_LEVEL_A predictive assertions about a Mainstream therapy, stay in Sources rather than as a separate option.</p>
+            </div><p class='fine ai-note'>Plain-language lines were written from the cited snapshot data, committed in the repository for review, and built into these pages. They are not generated in your browser.</p></div>
+        <ol class="steps">
+          <li class="step" id="step-test">
+            <h3><span class="step-num" aria-hidden="true">1</span> A test confirms this biomarker</h3>
+            <p>FDA companion diagnostics listed for this biomarker in this snapshot are below. The sample type, when the FDA table gives one, is the part of the indication after the dash.</p>
+        
+    <article class="item cdx">
+      <h3>cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.)</h3>
+      <p class="plain">cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.) is an FDA companion diagnostic listed for Melanoma - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Cobimetinib. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.)</p>
+      <p class="fine">Indication — sample type: Melanoma - Tissue
+      (sample type: Tissue).</p>
+      <p class="fine">Listed on the snapshot record for Cobimetinib.</p>
+      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item cdx">
+      <h3>FoundationOne CDx (Foundation Medicine, Inc.</h3>
+      <p class="plain">FoundationOne CDx (Foundation Medicine, Inc. is an FDA companion diagnostic listed for Low-Grade Glioma - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Tovorafenib. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">FoundationOne CDx (Foundation Medicine, Inc.</p>
+      <p class="fine">Indication — sample type: Low-Grade Glioma - Tissue
+      (sample type: Tissue).</p>
+      <p class="fine">Listed on the snapshot record for Tovorafenib.</p>
+      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item cdx">
+      <h3>FoundationOne CDx (Foundation Medicine, Inc.)</h3>
+      <p class="plain">FoundationOne CDx (Foundation Medicine, Inc.) is an FDA companion diagnostic listed for Melanoma - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Atezolizumab. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">FoundationOne CDx (Foundation Medicine, Inc.)</p>
+      <p class="fine">Indication — sample type: Melanoma - Tissue
+      (sample type: Tissue).</p>
+      <p class="fine">Listed on the snapshot record for Atezolizumab.</p>
+      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item cdx">
+      <h3>FoundationOne CDx (Foundation Medicine, Inc.)</h3>
+      <p class="plain">FoundationOne CDx (Foundation Medicine, Inc.) is an FDA companion diagnostic listed for Non-Small Cell Lung Cancer (NSCLC) - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Dabrafenib. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">FoundationOne CDx (Foundation Medicine, Inc.)</p>
+      <p class="fine">Indication — sample type: Non-Small Cell Lung Cancer (NSCLC) - Tissue
+      (sample type: Tissue).</p>
+      <p class="fine">Listed on the snapshot record for Dabrafenib.</p>
+      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item cdx">
+      <h3>FoundationOne Liquid CDx (Foundation Medicine, Inc.)</h3>
+      <p class="plain">FoundationOne Liquid CDx (Foundation Medicine, Inc.) is an FDA companion diagnostic listed for Metastatic Colorectal Cancer (mCRC) - Plasma. The indication column lists the sample type as Plasma. It appears on the snapshot record for Encorafenib. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">FoundationOne Liquid CDx (Foundation Medicine, Inc.)</p>
+      <p class="fine">Indication — sample type: Metastatic Colorectal Cancer (mCRC) - Plasma
+      (sample type: Plasma).</p>
+      <p class="fine">Listed on the snapshot record for Encorafenib.</p>
+      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item cdx">
+      <h3>FoundationOne Liquid CDx (Foundation Medicine, Inc.)</h3>
+      <p class="plain">FoundationOne Liquid CDx (Foundation Medicine, Inc.) is an FDA companion diagnostic listed for Non-Small Cell Lung Cancer (NSCLC) - Plasma. The indication column lists the sample type as Plasma. It appears on the snapshot record for Encorafenib. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">FoundationOne Liquid CDx (Foundation Medicine, Inc.)</p>
+      <p class="fine">Indication — sample type: Non-Small Cell Lung Cancer (NSCLC) - Plasma
+      (sample type: Plasma).</p>
+      <p class="fine">Listed on the snapshot record for Encorafenib.</p>
+      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item cdx">
+      <h3>Guardant360 CDx (Guardant Health, Inc.)</h3>
+      <p class="plain">Guardant360 CDx (Guardant Health, Inc.) is an FDA companion diagnostic listed for Colorectal Cancer (CRC) - Plasma. The indication column lists the sample type as Plasma. It appears on the snapshot record for Encorafenib. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">Guardant360 CDx (Guardant Health, Inc.)</p>
+      <p class="fine">Indication — sample type: Colorectal Cancer (CRC) - Plasma
+      (sample type: Plasma).</p>
+      <p class="fine">Listed on the snapshot record for Encorafenib.</p>
+      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item cdx">
+      <h3>Guardant360® Liquid CDx (Guardant Health, Inc.)</h3>
+      <p class="plain">Guardant360® Liquid CDx (Guardant Health, Inc.) is an FDA companion diagnostic listed for Colorectal cancer - Plasma. The indication column lists the sample type as Plasma. It appears on the snapshot record for Encorafenib. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">Guardant360® Liquid CDx (Guardant Health, Inc.)</p>
+      <p class="fine">Indication — sample type: Colorectal cancer - Plasma
+      (sample type: Plasma).</p>
+      <p class="fine">Listed on the snapshot record for Encorafenib.</p>
+      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item cdx">
+      <h3>MI Cancer Seek (MCS) (Caris Life Sciences)</h3>
+      <p class="plain">MI Cancer Seek (MCS) (Caris Life Sciences) is an FDA companion diagnostic listed for Colorectal Cancer - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Encorafenib. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">MI Cancer Seek (MCS) (Caris Life Sciences)</p>
+      <p class="fine">Indication — sample type: Colorectal Cancer - Tissue
+      (sample type: Tissue).</p>
+      <p class="fine">Listed on the snapshot record for Encorafenib.</p>
+      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item cdx">
+      <h3>MI Cancer Seek (MCS) (Caris Life Sciences)</h3>
+      <p class="plain">MI Cancer Seek (MCS) (Caris Life Sciences) is an FDA companion diagnostic listed for Melanoma - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Trametinib. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">MI Cancer Seek (MCS) (Caris Life Sciences)</p>
+      <p class="fine">Indication — sample type: Melanoma - Tissue
+      (sample type: Tissue).</p>
+      <p class="fine">Listed on the snapshot record for Trametinib.</p>
+      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item cdx">
+      <h3>Oncomine Dx Target Test (Life Technologies Corporation)</h3>
+      <p class="plain">Oncomine Dx Target Test (Life Technologies Corporation) is an FDA companion diagnostic listed for Anaplastic Thyroid Cancer (ATC) - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Dabrafenib. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">Oncomine Dx Target Test (Life Technologies Corporation)</p>
+      <p class="fine">Indication — sample type: Anaplastic Thyroid Cancer (ATC) - Tissue
+      (sample type: Tissue).</p>
+      <p class="fine">Listed on the snapshot record for Dabrafenib.</p>
+      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item cdx">
+      <h3>Oncomine Dx Target Test (Life Technologies Corporation)</h3>
+      <p class="plain">Oncomine Dx Target Test (Life Technologies Corporation) is an FDA companion diagnostic listed for Non-Small Cell Lung Cancer (NSCLC) - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Dabrafenib. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">Oncomine Dx Target Test (Life Technologies Corporation)</p>
+      <p class="fine">Indication — sample type: Non-Small Cell Lung Cancer (NSCLC) - Tissue
+      (sample type: Tissue).</p>
+      <p class="fine">Listed on the snapshot record for Dabrafenib.</p>
+      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item cdx">
+      <h3>therascreen BRAF V600E RGQ PCR Kit (QIAGEN GmbH)</h3>
+      <p class="plain">therascreen BRAF V600E RGQ PCR Kit (QIAGEN GmbH) is an FDA companion diagnostic listed for Colorectal Cancer - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Encorafenib. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">therascreen BRAF V600E RGQ PCR Kit (QIAGEN GmbH)</p>
+      <p class="fine">Indication — sample type: Colorectal Cancer - Tissue
+      (sample type: Tissue).</p>
+      <p class="fine">Listed on the snapshot record for Encorafenib.</p>
+      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item cdx">
+      <h3>THXID BRAF Kit (bioMérieux Inc.)</h3>
+      <p class="plain">THXID BRAF Kit (bioMérieux Inc.) is an FDA companion diagnostic listed for Melanoma - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Dabrafenib. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">THXID BRAF Kit (bioMérieux Inc.)</p>
+      <p class="fine">Indication — sample type: Melanoma - Tissue
+      (sample type: Tissue).</p>
+      <p class="fine">Listed on the snapshot record for Dabrafenib.</p>
+      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA companion diagnostic list</a></span></li></ul>
+    </div></details>
+    </article>
+    
+          </li>
+          <li class="step" id="step-options">
+            <h3><span class="step-num" aria-hidden="true">2</span> Options, tagged by how they appear in the public record</h3>
+            <p class="fine">The three groups have equal weight. Options are grouped by category, then listed alphabetically. That order does not mean one option is better than another.</p>
+            <div class="branches branches-legend" aria-hidden="false">
+              <div class="branch"><span class="tag tag-mainstream">Mainstream</span><p class="fine"><span class="count">9</span> in this snapshot.</p></div>
+              <div class="branch"><span class="tag tag-trials">Trials</span><p class="fine"><span class="count">40</span> in this snapshot, including 5 with a site in France and 1 with a site in Switzerland.</p></div>
+              <div class="branch"><span class="tag tag-edge">On the edge</span><p class="fine"><span class="count">1</span> in this snapshot.</p></div>
+            </div>
+            <div class="option-lists">
+              <section class="branch-list" id="therapies">
+                <h3>Mainstream <span class="count">9</span></h3>
+                <p class="fine">FDA-approved for this biomarker, in this snapshot. 9 in this snapshot, listed alphabetically.</p>
+                
     <article class="item" id="atezolizumab">
-      <h3>Atezolizumab <span class="brand">(TECENTRIQ, Tecentriq)</span></h3>
-      <p class="excerpt">…of adult patients with unresectable or metastatic HCC who have not received prior systemic therapy. ( 1.3 ) Melanoma in combination with cobimetinib and vemurafenib for the treatment of adult patients with BRAF V600 mutation-positive unresectable or metastatic melanoma. ( 1.4 ) Alveolar Soft Part Sarcoma (ASPS) for the treatment of adult and pediatric patients 2 years of age and older with unresectable or metastatic…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p>
-      <p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/tecentriq">Tecentriq — Authorised, authorised 19/07/2017</a></p>
-      <p class='fine'>Companion diagnostic (FDA): FoundationOne CDx (Foundation Medicine, Inc.)</p>
-      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Adverse Reactions, Clinical Studies.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6fa682c9-a312-4932-9831-f286908660ee">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=761034">Drugs@FDA</a></span> Application BLA761034</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/tecentriq">European Medicines Agency</a></span> Tecentriq (atezolizumab). Authorised Urothelial carcinoma&amp;nbsp;Tecentriq as monotherapy is indicated for the treatment of adult patients with locally advanced or metastatic urothelial carcinoma (UC): after prior platinum containing chemotherapy, or who are considered cisplatin i…</li><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA-authorized companion diagnostic devices</a></span> FoundationOne CDx (Foundation Medicine, Inc.): Melanoma - Tissue</li></ul>
+      <h3>Atezolizumab <span class="brand">(TECENTRIQ, Tecentriq)</span> <span class="tag tag-mainstream">Mainstream</span></h3>
+      <p class="plain">Atezolizumab (TECENTRIQ) is listed on an FDA label in this snapshot. The FDA label lists this use: Melanoma in combination with cobimetinib and vemurafenib for the treatment of adult patients with BRAF V600 mutation-positive unresectable or metastatic melanoma. Alveolar Soft Part Sarcoma (ASPS) for the treatment of adult and pediatric patients 2 years of age and older with unresectable or. An EMA record for Tecentriq lists the status as Authorised, with an authorisation date of 19/07/2017. <span class="plain-cites"><a class="plain-src" href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6fa682c9-a312-4932-9831-f286908660ee">FDA drug label / EMA record</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body"><p class="excerpt">…of adult patients with unresectable or metastatic HCC who have not received prior systemic therapy. ( 1.3 ) Melanoma in combination with cobimetinib and vemurafenib for the treatment of adult patients with BRAF V600 mutation-positive unresectable or metastatic melanoma. ( 1.4 ) Alveolar Soft Part Sarcoma (ASPS) for the treatment of adult and pediatric patients 2 years of age and older with unresectable or metastatic…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p><p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/tecentriq">Tecentriq — Authorised, authorised 19/07/2017</a></p><p class='fine'>Companion diagnostic (FDA): FoundationOne CDx (Foundation Medicine, Inc.)</p><ul class="cites"><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Adverse Reactions, Clinical Studies.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6fa682c9-a312-4932-9831-f286908660ee">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=761034">Drugs@FDA</a></span> Application BLA761034</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/tecentriq">European Medicines Agency</a></span> Tecentriq (atezolizumab). Authorised Urothelial carcinoma&amp;nbsp;Tecentriq as monotherapy is indicated for the treatment of adult patients with locally advanced or metastatic urothelial carcinoma (UC): after prior platinum containing chemotherapy, or who are considered cisplatin i…</li><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA-authorized companion diagnostic devices</a></span> FoundationOne CDx (Foundation Medicine, Inc.): Melanoma - Tissue</li></ul><h4>CIViC assertions about this therapy</h4><div class='cards'>
+            <article class="card">
+              <p>BRAF V600E-mutant melanoma is sensitive to atezolizumab, cobimetinib, and vemurafenib combination therapy.</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Atezolizumab, Vemurafenib, Cobimetinib — <a href="https://civicdb.org/assertions/279">CIViC assertion 279</a> (CC0).</p>
+            </article></div></div></details>
     </article>
     
     <article class="item" id="binimetinib">
-      <h3>Binimetinib <span class="brand">(MEKTOVI)</span></h3>
-      <p class="excerpt">1 INDICATIONS AND USAGE MEKTOVI is a kinase inhibitor indicated: • in combination with encorafenib, for the treatment of patients with unresectable or metastatic melanoma with a BRAF V600E or V600K mutation, as detected by an FDA-approved test. ( 1.1 , 2.1 ) • in combination with encorafenib, for the treatment of adult patients with metastatic non-small cell lung cancer (NSCLC) with a BRAF V600E mutation, as detecte…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p>
-      <p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/mektovi">Mektovi — Authorised, authorised 20/09/2018</a>; <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/balimek">Balimek — Application withdrawn</a></p>
-      
-      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Adverse Reactions, Use in Specific Populations, Clinical Pharmacology, Clinical Studies.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6c3408ac-d401-4925-8a03-26591afbc240">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=210498">Drugs@FDA</a></span> Application NDA210498</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/mektovi">European Medicines Agency</a></span> Mektovi (binimetinib). Authorised MelanomaBinimetinib in combination with encorafenib is indicated for the treatment of adult patients with unresectable or metastatic melanoma with a BRAF V600 mutation.Non-small cell lung cancer (NSCLC)Binimetinib in combination with encorafenib…</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/balimek">European Medicines Agency</a></span> Balimek (binimetinib). Application withdrawn Treatment of unresectable or metastatic melanoma. Treatment of unresectable melanoma, with NRA Q61 mutation.</li></ul>
+      <h3>Binimetinib <span class="brand">(MEKTOVI)</span> <span class="tag tag-mainstream">Mainstream</span></h3>
+      <p class="plain">Binimetinib (MEKTOVI) is a kinase inhibitor. The FDA label lists this use: in combination with encorafenib, for the treatment of patients with unresectable or metastatic melanoma with a BRAF V600E or V600K mutation, as detected by an FDA-approved test. ; in combination with encorafenib, for the treatment of adult patients with metastatic non-small cell lung cancer (NSCLC) with a BRAF V600E mutation, as. An EMA record for Mektovi lists the status as Authorised, with an authorisation date of 20/09/2018. <span class="plain-cites"><a class="plain-src" href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6c3408ac-d401-4925-8a03-26591afbc240">FDA drug label / EMA record</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body"><p class="excerpt">1 INDICATIONS AND USAGE MEKTOVI is a kinase inhibitor indicated: • in combination with encorafenib, for the treatment of patients with unresectable or metastatic melanoma with a BRAF V600E or V600K mutation, as detected by an FDA-approved test. ( 1.1 , 2.1 ) • in combination with encorafenib, for the treatment of adult patients with metastatic non-small cell lung cancer (NSCLC) with a BRAF V600E mutation, as detecte…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p><p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/mektovi">Mektovi — Authorised, authorised 20/09/2018</a>; <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/balimek">Balimek — Application withdrawn</a></p><ul class="cites"><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Adverse Reactions, Use in Specific Populations, Clinical Pharmacology, Clinical Studies.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6c3408ac-d401-4925-8a03-26591afbc240">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=210498">Drugs@FDA</a></span> Application NDA210498</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/mektovi">European Medicines Agency</a></span> Mektovi (binimetinib). Authorised MelanomaBinimetinib in combination with encorafenib is indicated for the treatment of adult patients with unresectable or metastatic melanoma with a BRAF V600 mutation.Non-small cell lung cancer (NSCLC)Binimetinib in combination with encorafenib…</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/balimek">European Medicines Agency</a></span> Balimek (binimetinib). Application withdrawn Treatment of unresectable or metastatic melanoma. Treatment of unresectable melanoma, with NRA Q61 mutation.</li></ul><h4>CIViC assertions about this therapy</h4><div class='cards'>
+            <article class="card">
+              <p>BRAF V600E-mutant melanoma is sensitive to encorafenib plus binimetinib.</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Encorafenib, Binimetinib — <a href="https://civicdb.org/assertions/276">CIViC assertion 276</a> (CC0).</p>
+            </article>
+            <article class="card">
+              <p>BRAF V600K-mutant melanoma is sensitive to encorafenib plus binimetinib.</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Encorafenib, Binimetinib — <a href="https://civicdb.org/assertions/313">CIViC assertion 313</a> (CC0).</p>
+            </article></div></div></details>
     </article>
     
     <article class="item" id="cetuximab">
-      <h3>Cetuximab <span class="brand">(ERBITUX)</span></h3>
-      <p class="excerpt">…( 1.2 , 5.7 , 12.1 , 14.2 ) Limitations of Use: ERBITUX is not indicated for treatment of Ras-mutant colorectal cancer or when the results of the Ras mutation tests are unknown. ( 5.7 ) BRAF V600E Mutation-Positive Metastatic Colorectal Cancer (CRC) in combination with encorafenib, for the treatment of adult patients with metastatic colorectal cancer (CRC) with a BRAF V600E mutation, as detected by an FDA-approved te…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p>
-      <p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/erbitux">Erbitux — Authorised, authorised 29/06/2004</a></p>
-      
-      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Adverse Reactions, Use in Specific Populations, Clinical Studies.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8bc6397e-4bd8-4d37-a007-a327e4da34d9">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=125084">Drugs@FDA</a></span> Application BLA125084</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/erbitux">European Medicines Agency</a></span> Erbitux (cetuximab). Authorised Erbitux is indicated for the treatment of patients with epidermal growth factor receptor (EGFR)-expressing, RAS wild-type metastatic colorectal cancer: in combination with irinotecan-based chemotherapy; in first-line in combination with FOLFOX; as…</li></ul>
+      <h3>Cetuximab <span class="brand">(ERBITUX)</span> <span class="tag tag-mainstream">Mainstream</span></h3>
+      <p class="plain">Cetuximab (ERBITUX) is listed on an FDA label in this snapshot. The FDA label lists this use: BRAF V600E Mutation-Positive Metastatic Colorectal Cancer (CRC) in combination with encorafenib, for the treatment of adult patients with metastatic colorectal cancer (CRC) with a BRAF V600E mutation, as detected by an FDA-approved. An EMA record for Erbitux lists the status as Authorised, with an authorisation date of 29/06/2004. <span class="plain-cites"><a class="plain-src" href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8bc6397e-4bd8-4d37-a007-a327e4da34d9">FDA drug label / EMA record</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body"><p class="excerpt">…( 1.2 , 5.7 , 12.1 , 14.2 ) Limitations of Use: ERBITUX is not indicated for treatment of Ras-mutant colorectal cancer or when the results of the Ras mutation tests are unknown. ( 5.7 ) BRAF V600E Mutation-Positive Metastatic Colorectal Cancer (CRC) in combination with encorafenib, for the treatment of adult patients with metastatic colorectal cancer (CRC) with a BRAF V600E mutation, as detected by an FDA-approved te…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p><p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/erbitux">Erbitux — Authorised, authorised 29/06/2004</a></p><ul class="cites"><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Adverse Reactions, Use in Specific Populations, Clinical Studies.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8bc6397e-4bd8-4d37-a007-a327e4da34d9">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=125084">Drugs@FDA</a></span> Application BLA125084</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/erbitux">European Medicines Agency</a></span> Erbitux (cetuximab). Authorised Erbitux is indicated for the treatment of patients with epidermal growth factor receptor (EGFR)-expressing, RAS wild-type metastatic colorectal cancer: in combination with irinotecan-based chemotherapy; in first-line in combination with FOLFOX; as…</li></ul></div></details>
     </article>
     
     <article class="item" id="cobimetinib">
-      <h3>Cobimetinib <span class="brand">(Cotellic)</span></h3>
-      <p class="excerpt">1 INDICATIONS AND USAGE COTELLIC ® is a kinase inhibitor indicated: For the treatment of adult patients with unresectable or metastatic melanoma with a BRAF V600E or V600K mutation, in combination with vemurafenib. ( 1.1 , 14.1 ) As a single agent for the treatment of adult patients with histiocytic neoplasms. ( 1.2 , 14.2 ) 1.1 Unresectable or Metastatic Melanoma COTELLIC ® is indicated for the treatment of adult p…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p>
-      <p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/cotellic">Cotellic — Authorised, authorised 24/09/2015</a></p>
-      <p class='fine'>Companion diagnostic (FDA): cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.)</p>
-      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Adverse Reactions, Clinical Studies.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c387579e-cee0-4334-bd1e-73f93ac1bde6">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=206192">Drugs@FDA</a></span> Application NDA206192</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/cotellic">European Medicines Agency</a></span> Cotellic (cobimetinib). Authorised Cotellic is indicated for use in combination with vemurafenib for the treatment of adult patients with unresectable or metastatic melanoma with a BRAF V600 mutation.</li><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA-authorized companion diagnostic devices</a></span> cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.): Melanoma - Tissue</li></ul>
+      <h3>Cobimetinib <span class="brand">(Cotellic)</span> <span class="tag tag-mainstream">Mainstream</span></h3>
+      <p class="plain">Cobimetinib (Cotellic) is a kinase inhibitor. The FDA label lists this use: For the treatment of adult patients with unresectable or metastatic melanoma with a BRAF V600E or V600K mutation, in combination with vemurafenib. As a single agent for the treatment of adult patients with histiocytic neoplasms. 1.1 Unresectable or Metastatic Melanoma COTELLIC ® is indicated for the treatment of adult. An EMA record for Cotellic lists the status as Authorised, with an authorisation date of 24/09/2015. <span class="plain-cites"><a class="plain-src" href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c387579e-cee0-4334-bd1e-73f93ac1bde6">FDA drug label / EMA record</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body"><p class="excerpt">1 INDICATIONS AND USAGE COTELLIC ® is a kinase inhibitor indicated: For the treatment of adult patients with unresectable or metastatic melanoma with a BRAF V600E or V600K mutation, in combination with vemurafenib. ( 1.1 , 14.1 ) As a single agent for the treatment of adult patients with histiocytic neoplasms. ( 1.2 , 14.2 ) 1.1 Unresectable or Metastatic Melanoma COTELLIC ® is indicated for the treatment of adult p…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p><p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/cotellic">Cotellic — Authorised, authorised 24/09/2015</a></p><p class='fine'>Companion diagnostic (FDA): cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.)</p><ul class="cites"><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Adverse Reactions, Clinical Studies.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c387579e-cee0-4334-bd1e-73f93ac1bde6">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=206192">Drugs@FDA</a></span> Application NDA206192</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/cotellic">European Medicines Agency</a></span> Cotellic (cobimetinib). Authorised Cotellic is indicated for use in combination with vemurafenib for the treatment of adult patients with unresectable or metastatic melanoma with a BRAF V600 mutation.</li><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA-authorized companion diagnostic devices</a></span> cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.): Melanoma - Tissue</li></ul><h4>CIViC assertions about this therapy</h4><div class='cards'>
+            <article class="card">
+              <p>BRAF V600E mutant melanoma is sensitive to vemurafenib and cobimetinib combination therapy</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Vemurafenib, Cobimetinib — <a href="https://civicdb.org/assertions/10">CIViC assertion 10</a> (CC0).</p>
+            </article>
+            <article class="card">
+              <p>BRAF V600K mutant melanoma is sensitive to vemurafenib and cobimetinib combination therapy</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Vemurafenib, Cobimetinib — <a href="https://civicdb.org/assertions/11">CIViC assertion 11</a> (CC0).</p>
+            </article>
+            <article class="card">
+              <p>BRAF V600E-mutant melanoma is sensitive to atezolizumab, cobimetinib, and vemurafenib combination therapy.</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Atezolizumab, Vemurafenib, Cobimetinib — <a href="https://civicdb.org/assertions/279">CIViC assertion 279</a> (CC0).</p>
+            </article></div></div></details>
     </article>
     
     <article class="item" id="dabrafenib">
-      <h3>Dabrafenib <span class="brand">(Tafinlar)</span></h3>
-      <p class="excerpt">1 INDICATIONS AND USAGE TAFINLAR is a kinase inhibitor indicated as a single agent for the treatment of patients with unresectable or metastatic melanoma with BRAF V600E mutation as detected by an FDA-approved test. ( 1.1 , 2.1 ) TAFINLAR is indicated, in combination with trametinib , for: the treatment of patients with unresectable or metastatic melanoma with BRAF V600E or V600K mutations as detected by an FDA-appr…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p>
-      <p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/tafinlar">Tafinlar — Authorised, authorised 27/06/2013</a>; <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/finlee">Finlee — Authorised, authorised 14/09/2023</a></p>
-      <p class='fine'>Companion diagnostic (FDA): THXID BRAF Kit (bioMérieux Inc.); FoundationOne CDx (Foundation Medicine, Inc.); Oncomine Dx Target Test (Life Technologies Corporation)</p>
-      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Warnings and Precautions, Adverse Reactions, Use in Specific Populations, Clinical Pharmacology, Clinical Studies.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fee1e6b1-e1a5-4254-9f2e-a70e0f8dbdea">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=202806">Drugs@FDA</a></span> Application NDA202806, NDA217514</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/tafinlar">European Medicines Agency</a></span> Tafinlar (dabrafenib). Authorised Melanoma Dabrafenib as monotherapy or in combination with trametinib is indicated for the treatment of adults and adolescents aged 12 years and older with unresectable or metastatic melanoma with a BRAF V600 mutation (see sections 4.4 and 5.1).…</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/finlee">European Medicines Agency</a></span> Finlee (dabrafenib). Authorised Low-grade glioma Finlee in combination with trametinib is indicated for the treatment of paediatric patients aged 1 year and older with low-grade glioma (LGG) with a BRAF V600E mutation who require systemic therapy. High-grade glioma Finlee in com…</li><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA-authorized companion diagnostic devices</a></span> THXID BRAF Kit (bioMérieux Inc.): Melanoma - Tissue</li></ul>
+      <h3>Dabrafenib <span class="brand">(Tafinlar)</span> <span class="tag tag-mainstream">Mainstream</span></h3>
+      <p class="plain">Dabrafenib (Tafinlar) is a kinase inhibitor. The FDA label lists this use: as a single agent for the treatment of patients with unresectable or metastatic melanoma with BRAF V600E mutation as detected by an FDA-approved test. TAFINLAR is indicated, in combination with trametinib , for: the treatment of patients with unresectable or metastatic melanoma with BRAF V600E or V600K mutations as detected by an FDA-appr. An EMA record for Tafinlar lists the status as Authorised, with an authorisation date of 27/06/2013. An EMA record for Finlee lists the status as Authorised, with an authorisation date of 14/09/2023. <span class="plain-cites"><a class="plain-src" href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fee1e6b1-e1a5-4254-9f2e-a70e0f8dbdea">FDA drug label / EMA record</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body"><p class="excerpt">1 INDICATIONS AND USAGE TAFINLAR is a kinase inhibitor indicated as a single agent for the treatment of patients with unresectable or metastatic melanoma with BRAF V600E mutation as detected by an FDA-approved test. ( 1.1 , 2.1 ) TAFINLAR is indicated, in combination with trametinib , for: the treatment of patients with unresectable or metastatic melanoma with BRAF V600E or V600K mutations as detected by an FDA-appr…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p><p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/tafinlar">Tafinlar — Authorised, authorised 27/06/2013</a>; <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/finlee">Finlee — Authorised, authorised 14/09/2023</a></p><p class='fine'>Companion diagnostic (FDA): THXID BRAF Kit (bioMérieux Inc.); FoundationOne CDx (Foundation Medicine, Inc.); Oncomine Dx Target Test (Life Technologies Corporation)…</p><ul class="cites"><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Warnings and Precautions, Adverse Reactions, Use in Specific Populations, Clinical Pharmacology, Clinical Studies.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fee1e6b1-e1a5-4254-9f2e-a70e0f8dbdea">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=202806">Drugs@FDA</a></span> Application NDA202806, NDA217514</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/tafinlar">European Medicines Agency</a></span> Tafinlar (dabrafenib). Authorised Melanoma Dabrafenib as monotherapy or in combination with trametinib is indicated for the treatment of adults and adolescents aged 12 years and older with unresectable or metastatic melanoma with a BRAF V600 mutation (see sections 4.4 and 5.1).…</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/finlee">European Medicines Agency</a></span> Finlee (dabrafenib). Authorised Low-grade glioma Finlee in combination with trametinib is indicated for the treatment of paediatric patients aged 1 year and older with low-grade glioma (LGG) with a BRAF V600E mutation who require systemic therapy. High-grade glioma Finlee in com…</li><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA-authorized companion diagnostic devices</a></span> THXID BRAF Kit (bioMérieux Inc.): Melanoma - Tissue</li></ul><h4>CIViC assertions about this therapy</h4><div class='cards'>
+            <article class="card">
+              <p>BRAF V600E mutant melanoma is sensitive to dabrafenib and trametinib combination therapy</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Trametinib, Dabrafenib — <a href="https://civicdb.org/assertions/7">CIViC assertion 7</a> (CC0).</p>
+            </article>
+            <article class="card">
+              <p>BRAF V600K mutant melanoma is sensitive to dabrafenib and trametinib combination therapy</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Trametinib, Dabrafenib — <a href="https://civicdb.org/assertions/13">CIViC assertion 13</a> (CC0).</p>
+            </article>
+            <article class="card">
+              <p>BRAF V600E mutant anaplastic thyroid carcinoma is sensitive to dabrafenib and trametinib combination therapy.</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Anaplastic Thyroid Carcinoma · Trametinib, Dabrafenib — <a href="https://civicdb.org/assertions/241">CIViC assertion 241</a> (CC0).</p>
+            </article></div></div></details>
     </article>
     
     <article class="item" id="encorafenib">
-      <h3>Encorafenib <span class="brand">(BRAFTOVI, Braftovi)</span></h3>
-      <p class="excerpt">1 INDICATIONS AND USAGE BRAFTOVI is a kinase inhibitor indicated: Melanoma • in combination with binimetinib, for the treatment of patients with unresectable or metastatic melanoma with a BRAF V600E or V600K mutation, as detected by an FDA-authorized test. ( 1.1 , 2.1 ) Colorectal Cancer (CRC) • in combination with cetuximab and fluorouracil-based chemotherapy, for the treatment of adult patients with metastatic col…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p>
-      <p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/braftovi">Braftovi — Authorised, authorised 26/07/2018</a></p>
-      <p class='fine'>Companion diagnostic (FDA): Guardant360® Liquid CDx (Guardant Health, Inc.); FoundationOne Liquid CDx (Foundation Medicine, Inc.); Guardant360 CDx (Guardant Health, Inc.)</p>
-      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA-authorized companion diagnostic devices</a></span> Guardant360® Liquid CDx (Guardant Health, Inc.): Colorectal cancer - Plasma</li><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Warnings and Precautions, Adverse Reactions, Use in Specific Populations, Clinical Pharmacology, Clinical Studies, Patient Counseling Information.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=235dfc38-0f0b-4037-b501-7a9f4294740c">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=210496">Drugs@FDA</a></span> Application NDA210496</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/braftovi">European Medicines Agency</a></span> Braftovi (encorafenib). Authorised MelanomaEncorafenib in combination with binimetinib is indicated for the treatment of adult patients with unresectable or metastatic melanoma with a BRAF V600 mutation.Colorectal cancer (CRC)Encorafenib in combination with cetuximab is indicate…</li></ul>
+      <h3>Encorafenib <span class="brand">(BRAFTOVI, Braftovi)</span> <span class="tag tag-mainstream">Mainstream</span></h3>
+      <p class="plain">Encorafenib (BRAFTOVI) is a kinase inhibitor. The FDA label lists this use: Melanoma ; in combination with binimetinib, for the treatment of patients with unresectable or metastatic melanoma with a BRAF V600E or V600K mutation, as detected by an FDA-authorized test. Colorectal Cancer (CRC) ; in combination with cetuximab and fluorouracil-based chemotherapy, for the treatment of adult patients with metastatic col. An EMA record for Braftovi lists the status as Authorised, with an authorisation date of 26/07/2018. <span class="plain-cites"><a class="plain-src" href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=235dfc38-0f0b-4037-b501-7a9f4294740c">FDA drug label / EMA record</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body"><p class="excerpt">1 INDICATIONS AND USAGE BRAFTOVI is a kinase inhibitor indicated: Melanoma • in combination with binimetinib, for the treatment of patients with unresectable or metastatic melanoma with a BRAF V600E or V600K mutation, as detected by an FDA-authorized test. ( 1.1 , 2.1 ) Colorectal Cancer (CRC) • in combination with cetuximab and fluorouracil-based chemotherapy, for the treatment of adult patients with metastatic col…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p><p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/braftovi">Braftovi — Authorised, authorised 26/07/2018</a></p><p class='fine'>Companion diagnostic (FDA): Guardant360® Liquid CDx (Guardant Health, Inc.); FoundationOne Liquid CDx (Foundation Medicine, Inc.); Guardant360 CDx (Guardant Health, Inc.)…</p><ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA-authorized companion diagnostic devices</a></span> Guardant360® Liquid CDx (Guardant Health, Inc.): Colorectal cancer - Plasma</li><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Warnings and Precautions, Adverse Reactions, Use in Specific Populations, Clinical Pharmacology, Clinical Studies, Patient Counseling Information.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=235dfc38-0f0b-4037-b501-7a9f4294740c">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=210496">Drugs@FDA</a></span> Application NDA210496</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/braftovi">European Medicines Agency</a></span> Braftovi (encorafenib). Authorised MelanomaEncorafenib in combination with binimetinib is indicated for the treatment of adult patients with unresectable or metastatic melanoma with a BRAF V600 mutation.Colorectal cancer (CRC)Encorafenib in combination with cetuximab is indicate…</li></ul><h4>CIViC assertions about this therapy</h4><div class='cards'>
+            <article class="card">
+              <p>BRAF V600E-mutant melanoma is sensitive to encorafenib plus binimetinib.</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Encorafenib, Binimetinib — <a href="https://civicdb.org/assertions/276">CIViC assertion 276</a> (CC0).</p>
+            </article>
+            <article class="card">
+              <p>BRAF V600K-mutant melanoma is sensitive to encorafenib plus binimetinib.</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Encorafenib, Binimetinib — <a href="https://civicdb.org/assertions/313">CIViC assertion 313</a> (CC0).</p>
+            </article></div></div></details>
     </article>
     
     <article class="item" id="tovorafenib">
-      <h3>Tovorafenib <span class="brand">(OJEMDA)</span></h3>
-      <p class="excerpt">1 INDICATIONS AND USAGE OJEMDA is indicated for the treatment of patients 6 months of age and older with relapsed or refractory pediatric low-grade glioma (LGG) harboring a BRAF fusion or rearrangement, or BRAF V600 mutation. This indication is approved under accelerated approval based on response rate and duration of response [see Clinical Studies (14) ]. Continued approval for this indication may be contingent upo…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p>
-      <p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/ojemda">Ojemda — Authorised, authorised 26/02/2026</a></p>
-      <p class='fine'>Companion diagnostic (FDA): FoundationOne CDx (Foundation Medicine, Inc.</p>
-      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA-authorized companion diagnostic devices</a></span> FoundationOne CDx (Foundation Medicine, Inc.: Low-Grade Glioma - Tissue</li><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Warnings and Precautions, Adverse Reactions, Use in Specific Populations, Clinical Studies.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ea3a9631-3a66-6a7c-e053-2995a90ae2ad">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=217700">Drugs@FDA</a></span> Application NDA217700, NDA218033</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/ojemda">European Medicines Agency</a></span> Ojemda (tovorafenib). Authorised Ojemda is indicated as monotherapy for the treatment of patients 6 months of age and older with paediatric low-grade glioma (LGG) harbouring a BRAF fusion or rearrangement, or BRAF V600 mutation, who have progressed after one or more prior system…</li></ul>
+      <h3>Tovorafenib <span class="brand">(OJEMDA)</span> <span class="tag tag-mainstream">Mainstream</span></h3>
+      <p class="plain">Tovorafenib (OJEMDA) is listed on an FDA label in this snapshot. The FDA label lists this use: OJEMDA is indicated for the treatment of patients 6 months of age and older with relapsed or refractory pediatric low-grade glioma (LGG) harboring a BRAF fusion or rearrangement, or BRAF V600 mutation. This indication is approved under accelerated approval. An EMA record for Ojemda lists the status as Authorised, with an authorisation date of 26/02/2026. <span class="plain-cites"><a class="plain-src" href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA drug label / EMA record</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body"><p class="excerpt">1 INDICATIONS AND USAGE OJEMDA is indicated for the treatment of patients 6 months of age and older with relapsed or refractory pediatric low-grade glioma (LGG) harboring a BRAF fusion or rearrangement, or BRAF V600 mutation. This indication is approved under accelerated approval based on response rate and duration of response [see Clinical Studies (14) ]. Continued approval for this indication may be contingent upo…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p><p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/ojemda">Ojemda — Authorised, authorised 26/02/2026</a></p><p class='fine'>Companion diagnostic (FDA): FoundationOne CDx (Foundation Medicine, Inc.</p><ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA-authorized companion diagnostic devices</a></span> FoundationOne CDx (Foundation Medicine, Inc.: Low-Grade Glioma - Tissue</li><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Warnings and Precautions, Adverse Reactions, Use in Specific Populations, Clinical Studies.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ea3a9631-3a66-6a7c-e053-2995a90ae2ad">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=217700">Drugs@FDA</a></span> Application NDA217700, NDA218033</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/ojemda">European Medicines Agency</a></span> Ojemda (tovorafenib). Authorised Ojemda is indicated as monotherapy for the treatment of patients 6 months of age and older with paediatric low-grade glioma (LGG) harbouring a BRAF fusion or rearrangement, or BRAF V600 mutation, who have progressed after one or more prior system…</li></ul></div></details>
     </article>
     
     <article class="item" id="trametinib">
-      <h3>Trametinib <span class="brand">(Mekinist)</span></h3>
-      <p class="excerpt">1 INDICATIONS AND USAGE MEKINIST is a kinase inhibitor indicated as a single agent for the treatment of BRAF-inhibitor treatment-naïve patients with unresectable or metastatic melanoma with BRAF V600E or V600K mutations as detected by an FDA-approved test. ( 1.1 , 2.1 ) MEKINIST is indicated, in combination with dabrafenib, for: the treatment of patients with unresectable or metastatic melanoma with BRAF V600E or V6…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p>
-      <p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/mekinist">Mekinist — Authorised, authorised 30/06/2020</a>; <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/spexotras">Spexotras — Authorised, authorised 09/11/2023</a></p>
-      <p class='fine'>Companion diagnostic (FDA): FoundationOne CDx (Foundation Medicine, Inc.); THXID BRAF Kit (bioMérieux Inc.); MI Cancer Seek (MCS) (Caris Life Sciences)</p>
-      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA-authorized companion diagnostic devices</a></span> FoundationOne CDx (Foundation Medicine, Inc.): Melanoma - Tissue</li><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Adverse Reactions, Use in Specific Populations, Clinical Pharmacology, Clinical Studies.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0002ad27-779d-42ab-83b5-bc65453412a1">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=204114">Drugs@FDA</a></span> Application NDA204114, NDA217513</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/mekinist">European Medicines Agency</a></span> Mekinist (trametinib). Authorised Melanoma Trametinib&amp;nbsp;as monotherapy or in combination with dabrafenib&amp;nbsp;is indicated for the treatment of adults and adolescents aged 12&amp;nbsp;years and older with unresectable or metastatic melanoma with a BRAF V600 mutation (see sections…</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/spexotras">European Medicines Agency</a></span> Spexotras (trametinib). Authorised Low-grade glioma Spexotras in combination with dabrafenib is indicated for the treatment of paediatric patients aged 1&amp;nbsp;year and older with low-grade glioma (LGG) with a BRAF V600E mutation who require systemic therapy. High-grade glioma Sp…</li></ul>
+      <h3>Trametinib <span class="brand">(Mekinist)</span> <span class="tag tag-mainstream">Mainstream</span></h3>
+      <p class="plain">Trametinib (Mekinist) is a kinase inhibitor. The FDA label lists this use: as a single agent for the treatment of BRAF-inhibitor treatment-naïve patients with unresectable or metastatic melanoma with BRAF V600E or V600K mutations as detected by an FDA-approved test. MEKINIST is indicated, in combination with dabrafenib, for: the treatment of patients with unresectable or metastatic melanoma with BRAF V600E or V6. An EMA record for Mekinist lists the status as Authorised, with an authorisation date of 30/06/2020. An EMA record for Spexotras lists the status as Authorised, with an authorisation date of 09/11/2023. <span class="plain-cites"><a class="plain-src" href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0002ad27-779d-42ab-83b5-bc65453412a1">FDA drug label / EMA record</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body"><p class="excerpt">1 INDICATIONS AND USAGE MEKINIST is a kinase inhibitor indicated as a single agent for the treatment of BRAF-inhibitor treatment-naïve patients with unresectable or metastatic melanoma with BRAF V600E or V600K mutations as detected by an FDA-approved test. ( 1.1 , 2.1 ) MEKINIST is indicated, in combination with dabrafenib, for: the treatment of patients with unresectable or metastatic melanoma with BRAF V600E or V6…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p><p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/mekinist">Mekinist — Authorised, authorised 30/06/2020</a>; <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/spexotras">Spexotras — Authorised, authorised 09/11/2023</a></p><p class='fine'>Companion diagnostic (FDA): FoundationOne CDx (Foundation Medicine, Inc.); THXID BRAF Kit (bioMérieux Inc.); MI Cancer Seek (MCS) (Caris Life Sciences)</p><ul class="cites"><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA-authorized companion diagnostic devices</a></span> FoundationOne CDx (Foundation Medicine, Inc.): Melanoma - Tissue</li><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Adverse Reactions, Use in Specific Populations, Clinical Pharmacology, Clinical Studies.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0002ad27-779d-42ab-83b5-bc65453412a1">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=204114">Drugs@FDA</a></span> Application NDA204114, NDA217513</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/mekinist">European Medicines Agency</a></span> Mekinist (trametinib). Authorised Melanoma Trametinib&amp;nbsp;as monotherapy or in combination with dabrafenib&amp;nbsp;is indicated for the treatment of adults and adolescents aged 12&amp;nbsp;years and older with unresectable or metastatic melanoma with a BRAF V600 mutation (see sections…</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/spexotras">European Medicines Agency</a></span> Spexotras (trametinib). Authorised Low-grade glioma Spexotras in combination with dabrafenib is indicated for the treatment of paediatric patients aged 1&amp;nbsp;year and older with low-grade glioma (LGG) with a BRAF V600E mutation who require systemic therapy. High-grade glioma Sp…</li></ul><h4>CIViC assertions about this therapy</h4><div class='cards'>
+            <article class="card">
+              <p>BRAF V600E mutant melanoma is sensitive to dabrafenib and trametinib combination therapy</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Trametinib, Dabrafenib — <a href="https://civicdb.org/assertions/7">CIViC assertion 7</a> (CC0).</p>
+            </article>
+            <article class="card">
+              <p>BRAF V600K mutant melanoma is sensitive to dabrafenib and trametinib combination therapy</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Trametinib, Dabrafenib — <a href="https://civicdb.org/assertions/13">CIViC assertion 13</a> (CC0).</p>
+            </article>
+            <article class="card">
+              <p>BRAF V600E mutant anaplastic thyroid carcinoma is sensitive to dabrafenib and trametinib combination therapy.</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Anaplastic Thyroid Carcinoma · Trametinib, Dabrafenib — <a href="https://civicdb.org/assertions/241">CIViC assertion 241</a> (CC0).</p>
+            </article></div></div></details>
     </article>
     
     <article class="item" id="vemurafenib">
-      <h3>Vemurafenib <span class="brand">(ZELBORAF, Zelboraf)</span></h3>
-      <p class="excerpt">1 INDICATIONS AND USAGE ZELBORAF ® is a kinase inhibitor indicated for the treatment of patients with unresectable or metastatic melanoma with BRAF V600E mutation as detected by an FDA-approved test. ( 1.1 , 2.1 ) ZELBORAF ® is indicated for the treatment of patients with Erdheim- Chester Disease with BRAF V600 mutation. ( 1.2 , 2.1 ) Limitation of Use: ZELBORAF is not indicated for treatment of patients with wild-t…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p>
-      <p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/zelboraf">Zelboraf — Authorised, authorised 15/12/2011</a></p>
-      <p class='fine'>Companion diagnostic (FDA): cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.)</p>
-      <ul class="cites"><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Warnings and Precautions, Adverse Reactions, Use in Specific Populations, Clinical Pharmacology, Clinical Studies, Patient Counseling Information.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=38eea320-7e0c-485a-bc30-98c3c45e2763">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=202429">Drugs@FDA</a></span> Application NDA202429</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/zelboraf">European Medicines Agency</a></span> Zelboraf (vemurafenib). Authorised Vemurafenib is indicated in monotherapy for the treatment of adult patients with BRAF-V600-mutation-positive unresectable or metastatic melanoma.</li><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA-authorized companion diagnostic devices</a></span> cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.): Melanoma - Tissue</li></ul>
+      <h3>Vemurafenib <span class="brand">(ZELBORAF, Zelboraf)</span> <span class="tag tag-mainstream">Mainstream</span></h3>
+      <p class="plain">Vemurafenib (ZELBORAF) is a kinase inhibitor. The FDA label lists this use: the treatment of patients with unresectable or metastatic melanoma with BRAF V600E mutation as detected by an FDA-approved test. ZELBORAF ® is indicated for the treatment of patients with Erdheim- Chester Disease with BRAF V600 mutation. An EMA record for Zelboraf lists the status as Authorised, with an authorisation date of 15/12/2011. <span class="plain-cites"><a class="plain-src" href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=38eea320-7e0c-485a-bc30-98c3c45e2763">FDA drug label / EMA record</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body"><p class="excerpt">1 INDICATIONS AND USAGE ZELBORAF ® is a kinase inhibitor indicated for the treatment of patients with unresectable or metastatic melanoma with BRAF V600E mutation as detected by an FDA-approved test. ( 1.1 , 2.1 ) ZELBORAF ® is indicated for the treatment of patients with Erdheim- Chester Disease with BRAF V600 mutation. ( 1.2 , 2.1 ) Limitation of Use: ZELBORAF is not indicated for treatment of patients with wild-t…</p><p class="fine">Excerpt of Indications and Usage from the FDA drug label (openFDA / DailyMed). See the official label for the complete, current text.</p><p class='fine'>EMA: <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/zelboraf">Zelboraf — Authorised, authorised 15/12/2011</a></p><p class='fine'>Companion diagnostic (FDA): cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.)</p><ul class="cites"><li><span class="src"><a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling">FDA Table of Pharmacogenomic Biomarkers in Drug Labeling</a></span> Biomarker listed as “BRAF”; labeling sections: Indications and Usage, Dosage and Administration, Warnings and Precautions, Adverse Reactions, Use in Specific Populations, Clinical Pharmacology, Clinical Studies, Patient Counseling Information.</li><li><span class="src"><a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=38eea320-7e0c-485a-bc30-98c3c45e2763">FDA drug label (openFDA / DailyMed)</a></span> Excerpt of Indications and Usage; see the official label for the complete, current text.</li><li><span class="src"><a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&amp;ApplNo=202429">Drugs@FDA</a></span> Application NDA202429</li><li><span class="src"><a href="https://www.ema.europa.eu/en/medicines/human/EPAR/zelboraf">European Medicines Agency</a></span> Zelboraf (vemurafenib). Authorised Vemurafenib is indicated in monotherapy for the treatment of adult patients with BRAF-V600-mutation-positive unresectable or metastatic melanoma.</li><li><span class="src"><a href="https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools">FDA-authorized companion diagnostic devices</a></span> cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.): Melanoma - Tissue</li></ul><h4>CIViC assertions about this therapy</h4><div class='cards'>
+            <article class="card">
+              <p>BRAF V600E mutant melanoma is sensitive to vemurafenib and cobimetinib combination therapy</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Vemurafenib, Cobimetinib — <a href="https://civicdb.org/assertions/10">CIViC assertion 10</a> (CC0).</p>
+            </article>
+            <article class="card">
+              <p>BRAF V600K mutant melanoma is sensitive to vemurafenib and cobimetinib combination therapy</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Vemurafenib, Cobimetinib — <a href="https://civicdb.org/assertions/11">CIViC assertion 11</a> (CC0).</p>
+            </article>
+            <article class="card">
+              <p>Expression of the KIAA1549-BRAF fusion in pilocytic astrocytoma exhibits resistance to vemurafenib due to paradoxical activation of the MAPK pathway.</p>
+              <p class="fine">RESISTANCE · TIER_II_LEVEL_D · Pilocytic Astrocytoma · Vemurafenib — <a href="https://civicdb.org/assertions/27">CIViC assertion 27</a> (CC0).</p>
+            </article>
+            <article class="card">
+              <p>BRAF V600E-mutant melanoma is sensitive to vemurafenib.</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Vemurafenib — <a href="https://civicdb.org/assertions/275">CIViC assertion 275</a> (CC0).</p>
+            </article>
+            <article class="card">
+              <p>BRAF V600E-mutant melanoma is sensitive to atezolizumab, cobimetinib, and vemurafenib combination therapy.</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Atezolizumab, Vemurafenib, Cobimetinib — <a href="https://civicdb.org/assertions/279">CIViC assertion 279</a> (CC0).</p>
+            </article>
+            <article class="card">
+              <p>BRAF V600K-mutant melanoma is sensitive to vemurafenib.</p>
+              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Vemurafenib — <a href="https://civicdb.org/assertions/305">CIViC assertion 305</a> (CC0).</p>
+            </article></div></div></details>
     </article>
-    <h2 id="trials">Recruiting trials</h2><p class="fine">40 recruiting studies from ClinicalTrials.gov whose condition or eligibility inclusion criteria require this biomarker as a selection criterion, including 5 with a site in France and 1 with a site in Switzerland. A mention only in exclusions, interventions or keywords is not enough; those records stay in the snapshot data and are not shown. Filter is applied on this page only; nothing is sent anywhere.</p><div class="filter-bar">
-          <label for="country-filter">Country
-            <select id="country-filter" name="country">
-              <option value="all" selected>All countries</option>
+    
+              </section>
+              <section class="branch-list" id="trials">
+                <h3>Trials <span class="count">40</span></h3>
+                <p class="fine">40 recruiting studies from ClinicalTrials.gov whose condition or eligibility inclusion criteria require this biomarker as a selection criterion, including 5 with a site in France and 1 with a site in Switzerland. A mention only in exclusions, interventions or keywords is not enough; those records stay in the snapshot data and are not shown. Filter is applied on this page only; nothing is sent anywhere. Listed alphabetically by NCT number.</p>
+                <div class="filter-bar">
+                  <label for="country-filter">Country
+                    <select id="country-filter" name="country">
+                      <option value="all" selected>All countries</option>
 <option value="France">France (5)</option>
 <option value="Switzerland">Switzerland (1)</option>
 <option value="Australia">Australia (2)</option>
@@ -128,506 +400,671 @@
 <option value="Sweden">Sweden (1)</option>
 <option value="United Kingdom">United Kingdom (4)</option>
 <option value="United States">United States (13)</option>
-            </select>
-          </label>
-          <p class="fine" id="filter-count" aria-live="polite"></p>
-        </div>
-    <article class="item trial" data-countries="France" data-nct="NCT04116541">
-      <h3><a href="https://clinicaltrials.gov/study/NCT04116541">NCT04116541</a>: A Study Evaluating the Activity of Anti-cancer Treatments Targeting Tumor Molecular Alterations/Characteristics in Advanced / Metastatic Tumors.</h3>
-      <p class="fine">
-        <span class="badge">RECRUITING</span>
-        <span class="badge">PHASE2</span>
-      </p>
-      <p class="excerpt">Malignant Solid Tumor</p>
-      <p class="fine">DRUG: HDM201; DRUG: Ribociclib; DRUG: Cabozantinib; DRUG: Alectinib; DRUG: Regorafenib; DRUG: Trametinib; DRUG: Dabrafenib; DRUG: Avapritinib</p>
-      <p class="fine">Locations: France</p>
-      <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT04116541">ClinicalTrials.gov</a></span> Record NCT04116541.</li></ul>
-    </article>
-    
-    <article class="item trial" data-countries="Australia Canada France Germany Italy Netherlands Norway South Korea Spain Sweden United Kingdom United States" data-nct="NCT05503797">
-      <h3><a href="https://clinicaltrials.gov/study/NCT05503797">NCT05503797</a>: A Study to Assess the Efficacy and Safety of FORE8394 in Participants With Cancer Harboring BRAF Alterations</h3>
-      <p class="fine">
-        <span class="badge">RECRUITING</span>
-        <span class="badge">PHASE2</span>
-      </p>
-      <p class="excerpt">Cancer Harboring BRAF Alterations, HGG, LGG, Solid Tumors</p>
-      <p class="fine">DRUG: Plixorafenib</p>
-      <p class="fine">Locations: Australia, Canada, France, Germany, Italy, Netherlands, Norway, South Korea, Spain, Sweden, United Kingdom, United States</p>
-      <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT05503797">ClinicalTrials.gov</a></span> Record NCT05503797.</li></ul>
-    </article>
-    
-    <article class="item trial" data-countries="France" data-nct="NCT05639413">
-      <h3><a href="https://clinicaltrials.gov/study/NCT05639413">NCT05639413</a>: A Clinical-biological Prospective Cohort of Patients With BRAFV600E-mutated Metastatic Colorectal Cancer</h3>
-      <p class="fine">
-        <span class="badge">RECRUITING</span>
-        <span class="badge">NA</span>
-      </p>
-      <p class="excerpt">Metastatic Colorectal Cancer, BRAF V600E Mutation Positive</p>
-      <p class="fine">OTHER: Collection of blood samples</p>
-      <p class="fine">Locations: France</p>
-      <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT05639413">ClinicalTrials.gov</a></span> Record NCT05639413.</li></ul>
-    </article>
-    
-    <article class="item trial" data-countries="France" data-nct="NCT05706779">
-      <h3><a href="https://clinicaltrials.gov/study/NCT05706779">NCT05706779</a>: Encorafenib Plus Cetuximab in a Neoadjuvant Setting in Patients With BRAF Mutation Localised Colon or Upper Rectum Cancer</h3>
-      <p class="fine">
-        <span class="badge">RECRUITING</span>
-        <span class="badge">PHASE2</span>
-      </p>
-      <p class="excerpt">Colorectal Cancer, BRAF V600E Mutation Positive</p>
-      <p class="fine">DRUG: Encorafenib Oral Capsule + Cetuximab</p>
-      <p class="fine">Locations: France</p>
-      <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT05706779">ClinicalTrials.gov</a></span> Record NCT05706779.</li></ul>
-    </article>
-    
-    <article class="item trial" data-countries="Australia China Denmark France Hong Kong Italy Japan Spain United Kingdom United States" data-nct="NCT05786924">
-      <h3><a href="https://clinicaltrials.gov/study/NCT05786924">NCT05786924</a>: Phase 1/2 Trial of S241656 in Selected RAS/MAPK Mutation- Positive Malignancies</h3>
-      <p class="fine">
-        <span class="badge">RECRUITING</span>
-        <span class="badge">PHASE1, PHASE2</span>
-      </p>
-      <p class="excerpt">Non-small Cell Lung Cancer, Histiocytic Neoplasm, Histiocytosis, BRAF Gene Mutation, BRAF V600E, BRAF V600 Mutation, BRAF Mutation-Related Tumors, BRAF</p>
-      <p class="fine">DRUG: S241656; DRUG: FOLFOX6/FOLFOX7; DRUG: FOLFIRI; DRUG: Cetuximab; DRUG: Panitumumab; DRUG: Gemcitabine; DRUG: Nab-paclitaxel</p>
-      <p class="fine">Locations: Australia, China, Denmark, France, Hong Kong, Italy, Japan, Spain, United Kingdom, United States</p>
-      <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT05786924">ClinicalTrials.gov</a></span> Record NCT05786924.</li></ul>
-    </article>
-    
-    <article class="item trial" data-countries="Switzerland" data-nct="NCT07617610">
-      <h3><a href="https://clinicaltrials.gov/study/NCT07617610">NCT07617610</a>: Primary and Acquired Resistance to Targeted Treatment in BRAF V600E-mutated Metastatic Colorectal Cancer</h3>
-      <p class="fine">
-        <span class="badge">RECRUITING</span>
-        <span class="badge">Phase not stated</span>
-      </p>
-      <p class="excerpt">Metastatic Colorectal Cancer, BRAF V600E Mutation</p>
-      <p class="fine">OTHER: Longitudinal translational sampling</p>
-      <p class="fine">Locations: Switzerland</p>
-      <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT07617610">ClinicalTrials.gov</a></span> Record NCT07617610.</li></ul>
-    </article>
-    
+                    </select>
+                  </label>
+                  <p class="fine" id="filter-count" aria-live="polite"></p>
+                </div>
+                
     <article class="item trial" data-countries="United States" data-nct="NCT03042221">
-      <h3><a href="https://clinicaltrials.gov/study/NCT03042221">NCT03042221</a>: Early Rebiopsy to Identify Biomarkers of Tumor Cell Survival Following EGFR, ALK, ROS1 or BRAF TKI Therapy</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT03042221">NCT03042221</a>: Early Rebiopsy to Identify Biomarkers of Tumor Cell Survival Following EGFR, ALK, ROS1 or BRAF TKI Therapy <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT03042221 is a RECRUITING study. It is titled “Early Rebiopsy to Identify Biomarkers of Tumor Cell Survival Following EGFR, ALK, ROS1 or BRAF TKI Therapy”. Conditions listed: Non-Small Cell Carcinoma of Lung, TNM Stage 4; Non-Small Cell Lung Cancer; EGFR Gene Mutation; ALK Gene Mutation; ROSE Cluster 1; BRAF V600E. The record lists a start date of 2016-05-10. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT03042221">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">Phase not stated</span>
+        <span class="badge">start 2016-05-10</span>
       </p>
       <p class="excerpt">Non-Small Cell Carcinoma of Lung, TNM Stage 4, Non-Small Cell Lung Cancer, EGFR Gene Mutation, ALK Gene Mutation, ROSE Cluster 1, BRAF V600E</p>
       <p class="fine"></p>
       <p class="fine">Locations: United States</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT03042221">ClinicalTrials.gov</a></span> Record NCT03042221.</li></ul>
+    </div></details>
     </article>
     
-    <article class="item trial" data-countries="United States" data-nct="NCT04511013">
-      <h3><a href="https://clinicaltrials.gov/study/NCT04511013">NCT04511013</a>: A Study to Compare the Administration of Encorafenib + Binimetinib + Nivolumab Versus Ipilimumab + Nivolumab in BRAF-V600 Mutant Melanoma With Brain Metastases</h3>
+    <article class="item trial" data-countries="France" data-nct="NCT04116541">
+      <h3><a href="https://clinicaltrials.gov/study/NCT04116541">NCT04116541</a>: A Study Evaluating the Activity of Anti-cancer Treatments Targeting Tumor Molecular Alterations/Characteristics in Advanced / Metastatic Tumors. <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT04116541 is a RECRUITING study (phase 2). It is titled “A Study Evaluating the Activity of Anti-cancer Treatments Targeting Tumor Molecular Alterations/Characteristics in Advanced / Metastatic Tumors.”. Conditions listed: Malignant Solid Tumor. Interventions listed: DRUG: HDM201; DRUG: Ribociclib; DRUG: Cabozantinib; DRUG: Alectinib; DRUG: Regorafenib; DRUG: Trametinib; DRUG: Dabrafenib; DRUG: Avapritinib. The record lists a start date of 2020-01-28. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT04116541">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2020-01-28</span>
+      </p>
+      <p class="excerpt">Malignant Solid Tumor</p>
+      <p class="fine">DRUG: HDM201; DRUG: Ribociclib; DRUG: Cabozantinib; DRUG: Alectinib; DRUG: Regorafenib; DRUG: Trametinib; DRUG: Dabrafenib; DRUG: Avapritinib</p>
+      <p class="fine">Locations: France</p>
+      <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT04116541">ClinicalTrials.gov</a></span> Record NCT04116541.</li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item trial" data-countries="United States" data-nct="NCT04511013">
+      <h3><a href="https://clinicaltrials.gov/study/NCT04511013">NCT04511013</a>: A Study to Compare the Administration of Encorafenib + Binimetinib + Nivolumab Versus Ipilimumab + Nivolumab in BRAF-V600 Mutant Melanoma With Brain Metastases <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT04511013 is a RECRUITING study (phase 2). It is titled “A Study to Compare the Administration of Encorafenib + Binimetinib + Nivolumab Versus Ipilimumab + Nivolumab in BRAF-V600 Mutant Melanoma With Brain Metastases”. Conditions listed: Acral Lentiginous Melanoma; Clinical Stage IV Cutaneous Melanoma AJCC v8; Metastatic Cutaneous Melanoma; Metastatic Malignant Neoplasm in the Brain; Metastatic Melanoma; Metastatic Mucosal Melanoma; Pathologic Stage IV Cutaneous Melanoma AJCC v8. Interventions listed: DRUG: Binimetinib; DRUG: Encorafenib; BIOLOGICAL: Ipilimumab; BIOLOGICAL: Nivolumab. The record lists a start date of 2021-01-06. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT04511013">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="fine">
+        <span class="badge">RECRUITING</span>
+        <span class="badge">PHASE2</span>
+        <span class="badge">start 2021-01-06</span>
       </p>
       <p class="excerpt">Acral Lentiginous Melanoma, Clinical Stage IV Cutaneous Melanoma AJCC v8, Metastatic Cutaneous Melanoma, Metastatic Malignant Neoplasm in the Brain, Metastatic Melanoma, Metastatic Mucosal Melanoma, Pathologic Stage IV Cutaneous Melanoma AJCC v8</p>
       <p class="fine">DRUG: Binimetinib; DRUG: Encorafenib; BIOLOGICAL: Ipilimumab; BIOLOGICAL: Nivolumab</p>
       <p class="fine">Locations: United States</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT04511013">ClinicalTrials.gov</a></span> Record NCT04511013.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="United States" data-nct="NCT04741997">
-      <h3><a href="https://clinicaltrials.gov/study/NCT04741997">NCT04741997</a>: Adjuvant Therapy Based on Pathologic Response After Neoadjuvant Encorafenib Binimetinib in Melanoma</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT04741997">NCT04741997</a>: Adjuvant Therapy Based on Pathologic Response After Neoadjuvant Encorafenib Binimetinib in Melanoma <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT04741997 is a RECRUITING study (early phase 1). It is titled “Adjuvant Therapy Based on Pathologic Response After Neoadjuvant Encorafenib Binimetinib in Melanoma”. Conditions listed: Melanoma Stage III; Melanoma Stage IV; BRAF V600 Mutation. Interventions listed: DRUG: Encorafenib Pill; DRUG: Binimetinib Pill; DRUG: Nivolumab. The record lists a start date of 2021-05-24. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT04741997">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">EARLY_PHASE1</span>
+        <span class="badge">start 2021-05-24</span>
       </p>
       <p class="excerpt">Melanoma Stage III, Melanoma Stage IV, BRAF V600 Mutation</p>
       <p class="fine">DRUG: Encorafenib Pill; DRUG: Binimetinib Pill; DRUG: Nivolumab</p>
       <p class="fine">Locations: United States</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT04741997">ClinicalTrials.gov</a></span> Record NCT04741997.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="United States" data-nct="NCT04903119">
-      <h3><a href="https://clinicaltrials.gov/study/NCT04903119">NCT04903119</a>: Nilotinib Plus Dabrafenib/Trametinib or Encorafenib/Binimetinib in Metastatic Melanoma</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT04903119">NCT04903119</a>: Nilotinib Plus Dabrafenib/Trametinib or Encorafenib/Binimetinib in Metastatic Melanoma <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT04903119 is a RECRUITING study (phase 1). It is titled “Nilotinib Plus Dabrafenib/Trametinib or Encorafenib/Binimetinib in Metastatic Melanoma”. Conditions listed: Metastatic Melanoma; BRAF Gene Mutation. Interventions listed: DRUG: Nilotinib 100mg; DRUG: Nilotinib 200mg; DRUG: Nilotinib 300mg; DRUG: Nilotinib 400mg; DRUG: Dabrafenib; DRUG: Trametinib; DRUG: Encorafenib; DRUG: Binimetinib. The record lists a start date of 2022-06-01. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT04903119">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE1</span>
+        <span class="badge">start 2022-06-01</span>
       </p>
       <p class="excerpt">Metastatic Melanoma, BRAF Gene Mutation</p>
       <p class="fine">DRUG: Nilotinib 100mg; DRUG: Nilotinib 200mg; DRUG: Nilotinib 300mg; DRUG: Nilotinib 400mg; DRUG: Dabrafenib; DRUG: Trametinib; DRUG: Encorafenib; DRUG: Binimetinib</p>
       <p class="fine">Locations: United States</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT04903119">ClinicalTrials.gov</a></span> Record NCT04903119.</li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item trial" data-countries="Australia Canada France Germany Italy Netherlands Norway South Korea Spain Sweden United Kingdom United States" data-nct="NCT05503797">
+      <h3><a href="https://clinicaltrials.gov/study/NCT05503797">NCT05503797</a>: A Study to Assess the Efficacy and Safety of FORE8394 in Participants With Cancer Harboring BRAF Alterations <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT05503797 is a RECRUITING study (phase 2). It is titled “A Study to Assess the Efficacy and Safety of FORE8394 in Participants With Cancer Harboring BRAF Alterations”. Conditions listed: Cancer Harboring BRAF Alterations; HGG; LGG; Solid Tumors. Interventions listed: DRUG: Plixorafenib. The record lists a start date of 2023-02-21. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT05503797">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="fine">
+        <span class="badge">RECRUITING</span>
+        <span class="badge">PHASE2</span>
+        <span class="badge">start 2023-02-21</span>
+      </p>
+      <p class="excerpt">Cancer Harboring BRAF Alterations, HGG, LGG, Solid Tumors</p>
+      <p class="fine">DRUG: Plixorafenib</p>
+      <p class="fine">Locations: Australia, Canada, France, Germany, Italy, Netherlands, Norway, South Korea, Spain, Sweden, United Kingdom, United States</p>
+      <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT05503797">ClinicalTrials.gov</a></span> Record NCT05503797.</li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item trial" data-countries="France" data-nct="NCT05639413">
+      <h3><a href="https://clinicaltrials.gov/study/NCT05639413">NCT05639413</a>: A Clinical-biological Prospective Cohort of Patients With BRAFV600E-mutated Metastatic Colorectal Cancer <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT05639413 is a RECRUITING study (NA). It is titled “A Clinical-biological Prospective Cohort of Patients With BRAFV600E-mutated Metastatic Colorectal Cancer”. Conditions listed: Metastatic Colorectal Cancer; BRAF V600E Mutation Positive. Interventions listed: OTHER: Collection of blood samples. The record lists a start date of 2023-07-24. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT05639413">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="fine">
+        <span class="badge">RECRUITING</span>
+        <span class="badge">NA</span>
+        <span class="badge">start 2023-07-24</span>
+      </p>
+      <p class="excerpt">Metastatic Colorectal Cancer, BRAF V600E Mutation Positive</p>
+      <p class="fine">OTHER: Collection of blood samples</p>
+      <p class="fine">Locations: France</p>
+      <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT05639413">ClinicalTrials.gov</a></span> Record NCT05639413.</li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item trial" data-countries="France" data-nct="NCT05706779">
+      <h3><a href="https://clinicaltrials.gov/study/NCT05706779">NCT05706779</a>: Encorafenib Plus Cetuximab in a Neoadjuvant Setting in Patients With BRAF Mutation Localised Colon or Upper Rectum Cancer <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT05706779 is a RECRUITING study (phase 2). It is titled “Encorafenib Plus Cetuximab in a Neoadjuvant Setting in Patients With BRAF Mutation Localised Colon or Upper Rectum Cancer”. Conditions listed: Colorectal Cancer; BRAF V600E Mutation Positive. Interventions listed: DRUG: Encorafenib Oral Capsule + Cetuximab. The record lists a start date of 2023-02-13. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT05706779">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="fine">
+        <span class="badge">RECRUITING</span>
+        <span class="badge">PHASE2</span>
+        <span class="badge">start 2023-02-13</span>
+      </p>
+      <p class="excerpt">Colorectal Cancer, BRAF V600E Mutation Positive</p>
+      <p class="fine">DRUG: Encorafenib Oral Capsule + Cetuximab</p>
+      <p class="fine">Locations: France</p>
+      <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT05706779">ClinicalTrials.gov</a></span> Record NCT05706779.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="United Kingdom" data-nct="NCT05768178">
-      <h3><a href="https://clinicaltrials.gov/study/NCT05768178">NCT05768178</a>: DETERMINE Trial Treatment Arm 05: Vemurafenib in Combination With Cobimetinib in Adult Patients With BRAF Positive Cancers.</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT05768178">NCT05768178</a>: DETERMINE Trial Treatment Arm 05: Vemurafenib in Combination With Cobimetinib in Adult Patients With BRAF Positive Cancers. <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT05768178 is a RECRUITING study (phase 2 / phase 3). It is titled “DETERMINE Trial Treatment Arm 05: Vemurafenib in Combination With Cobimetinib in Adult Patients With BRAF Positive Cancers.”. Conditions listed: Haematological Malignancy; Melanoma; Thyroid Cancer, Papillary; Ovarian Neoplasms; Colorectal Neoplasms; Laryngeal Neoplasms; Carcinoma, Non-Small-Cell Lung; Glioma. Interventions listed: DRUG: Vemurafenib; DRUG: Cobimetinib. The record lists a start date of 2023-03-01. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT05768178">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2, PHASE3</span>
+        <span class="badge">start 2023-03-01</span>
       </p>
       <p class="excerpt">Haematological Malignancy, Melanoma, Thyroid Cancer, Papillary, Ovarian Neoplasms, Colorectal Neoplasms, Laryngeal Neoplasms, Carcinoma, Non-Small-Cell Lung, Glioma</p>
       <p class="fine">DRUG: Vemurafenib; DRUG: Cobimetinib</p>
       <p class="fine">Locations: United Kingdom</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT05768178">ClinicalTrials.gov</a></span> Record NCT05768178.</li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item trial" data-countries="Australia China Denmark France Hong Kong Italy Japan Spain United Kingdom United States" data-nct="NCT05786924">
+      <h3><a href="https://clinicaltrials.gov/study/NCT05786924">NCT05786924</a>: Phase 1/2 Trial of S241656 in Selected RAS/MAPK Mutation- Positive Malignancies <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT05786924 is a RECRUITING study (phase 1 / phase 2). It is titled “Phase 1/2 Trial of S241656 in Selected RAS/MAPK Mutation- Positive Malignancies”. Conditions listed: Non-small Cell Lung Cancer; Histiocytic Neoplasm; Histiocytosis; BRAF Gene Mutation; BRAF V600E; BRAF V600 Mutation; BRAF Mutation-Related Tumors; BRAF. Interventions listed: DRUG: S241656; DRUG: FOLFOX6/FOLFOX7; DRUG: FOLFIRI; DRUG: Cetuximab; DRUG: Panitumumab; DRUG: Gemcitabine; DRUG: Nab-paclitaxel. The record lists a start date of 2023-04-18. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT05786924">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="fine">
+        <span class="badge">RECRUITING</span>
+        <span class="badge">PHASE1, PHASE2</span>
+        <span class="badge">start 2023-04-18</span>
+      </p>
+      <p class="excerpt">Non-small Cell Lung Cancer, Histiocytic Neoplasm, Histiocytosis, BRAF Gene Mutation, BRAF V600E, BRAF V600 Mutation, BRAF Mutation-Related Tumors, BRAF</p>
+      <p class="fine">DRUG: S241656; DRUG: FOLFOX6/FOLFOX7; DRUG: FOLFIRI; DRUG: Cetuximab; DRUG: Panitumumab; DRUG: Gemcitabine; DRUG: Nab-paclitaxel</p>
+      <p class="fine">Locations: Australia, China, Denmark, France, Hong Kong, Italy, Japan, Spain, United Kingdom, United States</p>
+      <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT05786924">ClinicalTrials.gov</a></span> Record NCT05786924.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="China" data-nct="NCT05800340">
-      <h3><a href="https://clinicaltrials.gov/study/NCT05800340">NCT05800340</a>: Neoadjuvant Immunotherapy in Rare Mutations Localized NSCLC</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT05800340">NCT05800340</a>: Neoadjuvant Immunotherapy in Rare Mutations Localized NSCLC <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT05800340 is a RECRUITING study (phase 2). It is titled “Neoadjuvant Immunotherapy in Rare Mutations Localized NSCLC”. Conditions listed: Non-Small Cell Lung Cancer; RET Driver Mutation; BRAF V600 Mutation; Erb-B2 Receptor Tyrosine Kinase Exon 20 Mutation; MET Amplification; MET Exon 14 Skipping Mutation. Interventions listed: BIOLOGICAL: Toripalimab; DRUG: Nab paclitaxel; DRUG: Pemetrexed; DRUG: Carboplatin. The record lists a start date of 2023-04-04. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT05800340">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2023-04-04</span>
       </p>
       <p class="excerpt">Non-Small Cell Lung Cancer, RET Driver Mutation, BRAF V600 Mutation, Erb-B2 Receptor Tyrosine Kinase Exon 20 Mutation, MET Amplification, MET Exon 14 Skipping Mutation</p>
       <p class="fine">BIOLOGICAL: Toripalimab; DRUG: Nab paclitaxel; DRUG: Pemetrexed; DRUG: Carboplatin</p>
       <p class="fine">Locations: China</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT05800340">ClinicalTrials.gov</a></span> Record NCT05800340.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="United States" data-nct="NCT05868629">
-      <h3><a href="https://clinicaltrials.gov/study/NCT05868629">NCT05868629</a>: Clinical Study To Further Evaluate The Efficacy Of Dabrafenib Plus Trametinib In Patients With Rare BRAF V600E Mutation-Positive Unresectable or Metastatic Solid Tumors</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT05868629">NCT05868629</a>: Clinical Study To Further Evaluate The Efficacy Of Dabrafenib Plus Trametinib In Patients With Rare BRAF V600E Mutation-Positive Unresectable or Metastatic Solid Tumors <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT05868629 is a RECRUITING study. It is titled “Clinical Study To Further Evaluate The Efficacy Of Dabrafenib Plus Trametinib In Patients With Rare BRAF V600E Mutation-Positive Unresectable or Metastatic Solid Tumors”. Conditions listed: Rare Unresectable or Metastatic BRAF V600E Mutation-positive Solid Tumors. Interventions listed: OTHER: Non-investigational. The record lists a start date of 2024-02-06. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT05868629">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">Phase not stated</span>
+        <span class="badge">start 2024-02-06</span>
       </p>
       <p class="excerpt">Rare Unresectable or Metastatic BRAF V600E Mutation-positive Solid Tumors</p>
       <p class="fine">OTHER: Non-investigational</p>
       <p class="fine">Locations: United States</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT05868629">ClinicalTrials.gov</a></span> Record NCT05868629.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="Italy" data-nct="NCT05940311">
-      <h3><a href="https://clinicaltrials.gov/study/NCT05940311">NCT05940311</a>: Versatile Ampification Single-Molecule Detection in Liquid Biopsy</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT05940311">NCT05940311</a>: Versatile Ampification Single-Molecule Detection in Liquid Biopsy <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT05940311 is a RECRUITING study. It is titled “Versatile Ampification Single-Molecule Detection in Liquid Biopsy”. Conditions listed: Liquid Biopsy; Melanoma (Skin); Melanoma Stage III; Melanoma Stage IV. Interventions listed: PROCEDURE: Blood sampling in addition to the blood normally required for their clinical management; PROCEDURE: Blood plasma and circulating tumor DNA (ctDNA). The record lists a start date of 2022-04-27. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT05940311">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">Phase not stated</span>
+        <span class="badge">start 2022-04-27</span>
       </p>
       <p class="excerpt">Liquid Biopsy, Melanoma (Skin), Melanoma Stage III, Melanoma Stage IV</p>
       <p class="fine">PROCEDURE: Blood sampling in addition to the blood normally required for their clinical management; PROCEDURE: Blood plasma and circulating tumor DNA (ctDNA)</p>
       <p class="fine">Locations: Italy</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT05940311">ClinicalTrials.gov</a></span> Record NCT05940311.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="United States" data-nct="NCT06007924">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06007924">NCT06007924</a>: A Study of Avutometinib and Defactinib in People With Thyroid Cancer</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06007924">NCT06007924</a>: A Study of Avutometinib and Defactinib in People With Thyroid Cancer <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06007924 is a RECRUITING study (phase 2). It is titled “A Study of Avutometinib and Defactinib in People With Thyroid Cancer”. Conditions listed: Thyroid Cancer. Interventions listed: DRUG: Avutometinib; DRUG: Defactinib. The record lists a start date of 2023-08-16. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06007924">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2023-08-16</span>
       </p>
       <p class="excerpt">Thyroid Cancer</p>
       <p class="fine">DRUG: Avutometinib; DRUG: Defactinib</p>
       <p class="fine">Locations: United States</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06007924">ClinicalTrials.gov</a></span> Record NCT06007924.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="China" data-nct="NCT06008119">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06008119">NCT06008119</a>: Efficacy and Safety of Tunlametinib Plus Vemurafenib in Patients With BRAF V600E-mutant Metastatic Colorectal Cancer</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06008119">NCT06008119</a>: Efficacy and Safety of Tunlametinib Plus Vemurafenib in Patients With BRAF V600E-mutant Metastatic Colorectal Cancer <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06008119 is a RECRUITING study (phase 3). It is titled “Efficacy and Safety of Tunlametinib Plus Vemurafenib in Patients With BRAF V600E-mutant Metastatic Colorectal Cancer”. Conditions listed: Colorectal Cancer Metastatic. Interventions listed: DRUG: Tunlametinib plus Vemurafenib; DRUG: Doublets Chemotherapy ± Bevacizumab or Doublets Chemotherapy ± Cetuximab. The record lists a start date of 2023-10-25. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06008119">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE3</span>
+        <span class="badge">start 2023-10-25</span>
       </p>
       <p class="excerpt">Colorectal Cancer Metastatic</p>
       <p class="fine">DRUG: Tunlametinib plus Vemurafenib; DRUG: Doublets Chemotherapy ± Bevacizumab or Doublets Chemotherapy ± Cetuximab</p>
       <p class="fine">Locations: China</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06008119">ClinicalTrials.gov</a></span> Record NCT06008119.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="United States" data-nct="NCT06102902">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06102902">NCT06102902</a>: Testing the Addition of Anti-cancer Drug, ZEN003694, to the Usual Chemotherapy Treatment, Cetuximab Plus Encorafenib, for Colorectal Cancer</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06102902">NCT06102902</a>: Testing the Addition of Anti-cancer Drug, ZEN003694, to the Usual Chemotherapy Treatment, Cetuximab Plus Encorafenib, for Colorectal Cancer <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06102902 is a RECRUITING study (phase 1). It is titled “Testing the Addition of Anti-cancer Drug, ZEN003694, to the Usual Chemotherapy Treatment, Cetuximab Plus Encorafenib, for Colorectal Cancer”. Conditions listed: Metastatic Colorectal Adenocarcinoma; Recurrent Colorectal Adenocarcinoma; Refractory Colorectal Adenocarcinoma; Stage IV Colorectal Cancer AJCC v8. Interventions listed: DRUG: BET Bromodomain Inhibitor ZEN-3694; PROCEDURE: Biopsy Procedure; PROCEDURE: Biospecimen Collection; BIOLOGICAL: Cetuximab; PROCEDURE: Computed Tomography; PROCEDURE: Echocardiography Test; DRUG: Encorafenib; PROCEDURE: Magnetic Resonance Imaging. The record lists a start date of 2024-06-05. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06102902">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE1</span>
+        <span class="badge">start 2024-06-05</span>
       </p>
       <p class="excerpt">Metastatic Colorectal Adenocarcinoma, Recurrent Colorectal Adenocarcinoma, Refractory Colorectal Adenocarcinoma, Stage IV Colorectal Cancer AJCC v8</p>
       <p class="fine">DRUG: BET Bromodomain Inhibitor ZEN-3694; PROCEDURE: Biopsy Procedure; PROCEDURE: Biospecimen Collection; BIOLOGICAL: Cetuximab; PROCEDURE: Computed Tomography; PROCEDURE: Echocardiography Test; DRUG: Encorafenib; PROCEDURE: Magnetic Resonance Imaging</p>
       <p class="fine">Locations: United States</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06102902">ClinicalTrials.gov</a></span> Record NCT06102902.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="Spain" data-nct="NCT06207656">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06207656">NCT06207656</a>: Study to Evaluate the Efficacy and Safety of Cetuximab in Combination with Encorafenib Plus Binimetinib As Induction Treatment in BRAF V600E Mutated MSS Initially Resectable or Potentially Resectable Advanced Colorectal Cancer</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06207656">NCT06207656</a>: Study to Evaluate the Efficacy and Safety of Cetuximab in Combination with Encorafenib Plus Binimetinib As Induction Treatment in BRAF V600E Mutated MSS Initially Resectable or Potentially Resectable Advanced Colorectal Cancer <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06207656 is a RECRUITING study (phase 2). It is titled “Study to Evaluate the Efficacy and Safety of Cetuximab in Combination with Encorafenib Plus Binimetinib As Induction Treatment in BRAF V600E Mutated MSS Initially Resectable or Potentially Resectable Advanced Colorectal Cancer”. Conditions listed: Colorectal Cancer. Interventions listed: DRUG: EBC. The record lists a start date of 2024-04-16. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06207656">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2024-04-16</span>
       </p>
       <p class="excerpt">Colorectal Cancer</p>
       <p class="fine">DRUG: EBC</p>
       <p class="fine">Locations: Spain</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06207656">ClinicalTrials.gov</a></span> Record NCT06207656.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="Japan" data-nct="NCT06262919">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06262919">NCT06262919</a>: Special Drug Use-results Surveillance of Tafinlar/Mekinist</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06262919">NCT06262919</a>: Special Drug Use-results Surveillance of Tafinlar/Mekinist <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06262919 is a RECRUITING study. It is titled “Special Drug Use-results Surveillance of Tafinlar/Mekinist”. Conditions listed: BRAF V600E Mutation-positive Unresectable Advanced or Recurrent Solid Tumor. Interventions listed: DRUG: Tafinlar/Mekinist. The record lists a start date of 2024-02-09. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06262919">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">Phase not stated</span>
+        <span class="badge">start 2024-02-09</span>
       </p>
       <p class="excerpt">BRAF V600E Mutation-positive Unresectable Advanced or Recurrent Solid Tumor</p>
       <p class="fine">DRUG: Tafinlar/Mekinist</p>
       <p class="fine">Locations: Japan</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06262919">ClinicalTrials.gov</a></span> Record NCT06262919.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="Spain" data-nct="NCT06411600">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06411600">NCT06411600</a>: Combination Therapy for BRAF-V600E Metastatic CRCm</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06411600">NCT06411600</a>: Combination Therapy for BRAF-V600E Metastatic CRCm <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06411600 is a RECRUITING study (phase 2). It is titled “Combination Therapy for BRAF-V600E Metastatic CRCm”. Conditions listed: Metastatic Colorectal Cancer. Interventions listed: DRUG: Encorafenib; DRUG: Cetuximab; DRUG: Bevacizumab. The record lists a start date of 2024-05-17. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06411600">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2024-05-17</span>
       </p>
       <p class="excerpt">Metastatic Colorectal Cancer</p>
       <p class="fine">DRUG: Encorafenib; DRUG: Cetuximab; DRUG: Bevacizumab</p>
       <p class="fine">Locations: Spain</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06411600">ClinicalTrials.gov</a></span> Record NCT06411600.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="United States" data-nct="NCT06475989">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06475989">NCT06475989</a>: Study of Targeted Therapy vs. Chemotherapy in Patients With Thyroid Cancer</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06475989">NCT06475989</a>: Study of Targeted Therapy vs. Chemotherapy in Patients With Thyroid Cancer <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06475989 is a RECRUITING study (phase 3). It is titled “Study of Targeted Therapy vs. Chemotherapy in Patients With Thyroid Cancer”. Conditions listed: Refractory Differentiated Thyroid Gland Carcinoma. Interventions listed: PROCEDURE: Biospecimen Collection; DRUG: Cabozantinib; PROCEDURE: Computed Tomography; DRUG: Dabrafenib; PROCEDURE: Magnetic Resonance Imaging; OTHER: Questionnaire Administration; DRUG: Trametinib. The record lists a start date of 2024-12-27. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06475989">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE3</span>
+        <span class="badge">start 2024-12-27</span>
       </p>
       <p class="excerpt">Refractory Differentiated Thyroid Gland Carcinoma</p>
       <p class="fine">PROCEDURE: Biospecimen Collection; DRUG: Cabozantinib; PROCEDURE: Computed Tomography; DRUG: Dabrafenib; PROCEDURE: Magnetic Resonance Imaging; OTHER: Questionnaire Administration; DRUG: Trametinib</p>
       <p class="fine">Locations: United States</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06475989">ClinicalTrials.gov</a></span> Record NCT06475989.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="China" data-nct="NCT06536400">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06536400">NCT06536400</a>: Phase I Study of HSK42360 in Solid Tumors With BRAF V600 Mutation</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06536400">NCT06536400</a>: Phase I Study of HSK42360 in Solid Tumors With BRAF V600 Mutation <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06536400 is a RECRUITING study (phase 1). It is titled “Phase I Study of HSK42360 in Solid Tumors With BRAF V600 Mutation”. Conditions listed: Solid Tumors. Interventions listed: DRUG: HSK42360. The record lists a start date of 2024-06-25. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06536400">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE1</span>
+        <span class="badge">start 2024-06-25</span>
       </p>
       <p class="excerpt">Solid Tumors</p>
       <p class="fine">DRUG: HSK42360</p>
       <p class="fine">Locations: China</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06536400">ClinicalTrials.gov</a></span> Record NCT06536400.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="United States" data-nct="NCT06610682">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06610682">NCT06610682</a>: A Trial to Evaluate CSF ctDNA and Safety of Plixorafenib Alone or With Retifanlimab in Patients With BRAF-altered Glioma</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06610682">NCT06610682</a>: A Trial to Evaluate CSF ctDNA and Safety of Plixorafenib Alone or With Retifanlimab in Patients With BRAF-altered Glioma <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06610682 is a RECRUITING study (early phase 1). It is titled “A Trial to Evaluate CSF ctDNA and Safety of Plixorafenib Alone or With Retifanlimab in Patients With BRAF-altered Glioma”. Conditions listed: BRAF V600E Mutation. Interventions listed: DRUG: Plixorafenib; DRUG: Retifanlimab. The record lists a start date of 2025-04-07. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06610682">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">EARLY_PHASE1</span>
+        <span class="badge">start 2025-04-07</span>
       </p>
       <p class="excerpt">BRAF V600E Mutation</p>
       <p class="fine">DRUG: Plixorafenib; DRUG: Retifanlimab</p>
       <p class="fine">Locations: United States</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06610682">ClinicalTrials.gov</a></span> Record NCT06610682.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="China" data-nct="NCT06653517">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06653517">NCT06653517</a>: Clinical Study of Neoadjuvant Targeted Therapy for Ameloblastoma</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06653517">NCT06653517</a>: Clinical Study of Neoadjuvant Targeted Therapy for Ameloblastoma <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06653517 is a RECRUITING study (phase 2). It is titled “Clinical Study of Neoadjuvant Targeted Therapy for Ameloblastoma”. Conditions listed: Ameloblastoma; BRAF V600E Mutation Positive. Interventions listed: DRUG: Dabrafenib; DRUG: Trametinib. The record lists a start date of 2023-01-01. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06653517">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2023-01-01</span>
       </p>
       <p class="excerpt">Ameloblastoma, BRAF V600E Mutation Positive</p>
       <p class="fine">DRUG: Dabrafenib; DRUG: Trametinib</p>
       <p class="fine">Locations: China</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06653517">ClinicalTrials.gov</a></span> Record NCT06653517.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="China" data-nct="NCT06749015">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06749015">NCT06749015</a>: A Study on Treatment for Patients With BRAFV600E Mutant Metastatic Colorectal Cancer (mCRC)</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06749015">NCT06749015</a>: A Study on Treatment for Patients With BRAFV600E Mutant Metastatic Colorectal Cancer (mCRC) <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06749015 is a RECRUITING study. It is titled “A Study on Treatment for Patients With BRAFV600E Mutant Metastatic Colorectal Cancer (mCRC)”. Conditions listed: Metastatic Colorectal Cancer; BRAF V600 Mutation. Interventions listed: OTHER: Non interventional study. The record lists a start date of 2021-03-01. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06749015">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">Phase not stated</span>
+        <span class="badge">start 2021-03-01</span>
       </p>
       <p class="excerpt">Metastatic Colorectal Cancer, BRAF V600 Mutation</p>
       <p class="fine">OTHER: Non interventional study</p>
       <p class="fine">Locations: China</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06749015">ClinicalTrials.gov</a></span> Record NCT06749015.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="China" data-nct="NCT06763029">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06763029">NCT06763029</a>: Irinotecan Liposomes Combined with Cetuximab + Vermofenib in First-line Failure of Advanced Colorectal Cancer</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06763029">NCT06763029</a>: Irinotecan Liposomes Combined with Cetuximab + Vermofenib in First-line Failure of Advanced Colorectal Cancer <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06763029 is a RECRUITING study (phase 2). It is titled “Irinotecan Liposomes Combined with Cetuximab + Vermofenib in First-line Failure of Advanced Colorectal Cancer”. Conditions listed: Colorectal Cancer Metastatic. Interventions listed: DRUG: Irinotecan liposomes combined with cetuximab + vermofenib. The record lists a start date of 2025-02-26. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06763029">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2025-02-26</span>
       </p>
       <p class="excerpt">Colorectal Cancer Metastatic</p>
       <p class="fine">DRUG: Irinotecan liposomes combined with cetuximab + vermofenib</p>
       <p class="fine">Locations: China</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06763029">ClinicalTrials.gov</a></span> Record NCT06763029.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="Spain" data-nct="NCT06887088">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06887088">NCT06887088</a>: Encorafenib and biNimetinib Followed by CEmiplimab and FiAnLimab in Patients With BRAF Mutant melanOma and Symptomatic Brain Metastases</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06887088">NCT06887088</a>: Encorafenib and biNimetinib Followed by CEmiplimab and FiAnLimab in Patients With BRAF Mutant melanOma and Symptomatic Brain Metastases <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06887088 is a RECRUITING study (phase 2). It is titled “Encorafenib and biNimetinib Followed by CEmiplimab and FiAnLimab in Patients With BRAF Mutant melanOma and Symptomatic Brain Metastases”. Conditions listed: Melanoma BRAF V600E/K Mutated; Melanoma and Brain Metastases. Interventions listed: DRUG: Encorafenib + Binimetinib; DRUG: cemiplimab+fianlimab. The record lists a start date of 2025-05-29. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06887088">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2025-05-29</span>
       </p>
       <p class="excerpt">Melanoma BRAF V600E/K Mutated, Melanoma and Brain Metastases</p>
       <p class="fine">DRUG: Encorafenib + Binimetinib; DRUG: cemiplimab+fianlimab</p>
       <p class="fine">Locations: Spain</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06887088">ClinicalTrials.gov</a></span> Record NCT06887088.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="United States" data-nct="NCT06902376">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06902376">NCT06902376</a>: XL092 and Cemiplimab in BRAF WT Thyroid Cancer</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06902376">NCT06902376</a>: XL092 and Cemiplimab in BRAF WT Thyroid Cancer <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06902376 is a RECRUITING study (phase 1). It is titled “XL092 and Cemiplimab in BRAF WT Thyroid Cancer”. Conditions listed: Anaplastic Thyroid Cancer; Thyroid Cancer; BRAF Mutation-Related Tumors. Interventions listed: BIOLOGICAL: Cemiplimab; DRUG: XL092. The record lists a start date of 2025-06-03. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06902376">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE1</span>
+        <span class="badge">start 2025-06-03</span>
       </p>
       <p class="excerpt">Anaplastic Thyroid Cancer, Thyroid Cancer, BRAF Mutation-Related Tumors</p>
       <p class="fine">BIOLOGICAL: Cemiplimab; DRUG: XL092</p>
       <p class="fine">Locations: United States</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06902376">ClinicalTrials.gov</a></span> Record NCT06902376.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="Russia" data-nct="NCT06978400">
-      <h3><a href="https://clinicaltrials.gov/study/NCT06978400">NCT06978400</a>: A Study of Dabrafenib Plus Cetuximab/Panitumumab With FOLFOX in the First Line of Therapy in People With Metastatic Colorectal Cancer</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT06978400">NCT06978400</a>: A Study of Dabrafenib Plus Cetuximab/Panitumumab With FOLFOX in the First Line of Therapy in People With Metastatic Colorectal Cancer <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT06978400 is a RECRUITING study (phase 2). It is titled “A Study of Dabrafenib Plus Cetuximab/Panitumumab With FOLFOX in the First Line of Therapy in People With Metastatic Colorectal Cancer”. Conditions listed: Neoplasms. Interventions listed: DRUG: mFOLFOX6 + dabrafenib and cetuximab or panitumumab in the first line of therapy. The record lists a start date of 2025-03-01. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT06978400">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2025-03-01</span>
       </p>
       <p class="excerpt">Neoplasms</p>
       <p class="fine">DRUG: mFOLFOX6 + dabrafenib and cetuximab or panitumumab in the first line of therapy</p>
       <p class="fine">Locations: Russia</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT06978400">ClinicalTrials.gov</a></span> Record NCT06978400.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="United States" data-nct="NCT07110246">
-      <h3><a href="https://clinicaltrials.gov/study/NCT07110246">NCT07110246</a>: Dabrafenib and Trametinib for BRAF V600 Mutant Low-Grade Gliomas</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT07110246">NCT07110246</a>: Dabrafenib and Trametinib for BRAF V600 Mutant Low-Grade Gliomas <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT07110246 is a RECRUITING study (phase 2). It is titled “Dabrafenib and Trametinib for BRAF V600 Mutant Low-Grade Gliomas”. Conditions listed: BRAF V600 Mutation; Low-grade Glioma; Low Grade Glioma of Brain; Recurrent Low Grade Glioma. Interventions listed: DRUG: Dabrafenib; DRUG: Trametinib; PROCEDURE: Magnetic Resonance Imaging (MRI); PROCEDURE: Specimen Collection; PROCEDURE: Optional Lumbar puncture. The record lists a start date of 2025-11-07. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT07110246">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2025-11-07</span>
       </p>
       <p class="excerpt">BRAF V600 Mutation, Low-grade Glioma, Low Grade Glioma of Brain, Recurrent Low Grade Glioma</p>
       <p class="fine">DRUG: Dabrafenib; DRUG: Trametinib; PROCEDURE: Magnetic Resonance Imaging (MRI); PROCEDURE: Specimen Collection; PROCEDURE: Optional Lumbar puncture</p>
       <p class="fine">Locations: United States</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT07110246">ClinicalTrials.gov</a></span> Record NCT07110246.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="China" data-nct="NCT07150247">
-      <h3><a href="https://clinicaltrials.gov/study/NCT07150247">NCT07150247</a>: Safety and Efficacy of IB-FOLFIRI in BRAF V600E-Mutant Metastatic Colorectal Cancer</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT07150247">NCT07150247</a>: Safety and Efficacy of IB-FOLFIRI in BRAF V600E-Mutant Metastatic Colorectal Cancer <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT07150247 is a RECRUITING study (phase 2). It is titled “Safety and Efficacy of IB-FOLFIRI in BRAF V600E-Mutant Metastatic Colorectal Cancer”. Conditions listed: BRAF V600 Colorectal Cancer. Interventions listed: DRUG: Iparomlimab and Tuvonralimab; DRUG: Bevacizumab; DRUG: 5-Fluorouracil; DRUG: Irinotecan (drug). The record lists a start date of 2025-06-01. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT07150247">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2025-06-01</span>
       </p>
       <p class="excerpt">BRAF V600 Colorectal Cancer</p>
       <p class="fine">DRUG: Iparomlimab and Tuvonralimab; DRUG: Bevacizumab; DRUG: 5-Fluorouracil; DRUG: Irinotecan (drug)</p>
       <p class="fine">Locations: China</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT07150247">ClinicalTrials.gov</a></span> Record NCT07150247.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="China" data-nct="NCT07158710">
-      <h3><a href="https://clinicaltrials.gov/study/NCT07158710">NCT07158710</a>: Phase I Study of HSK42360 in Malignant Brain Tumors With BRAF V600 Mutation</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT07158710">NCT07158710</a>: Phase I Study of HSK42360 in Malignant Brain Tumors With BRAF V600 Mutation <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT07158710 is a RECRUITING study (phase 1). It is titled “Phase I Study of HSK42360 in Malignant Brain Tumors With BRAF V600 Mutation”. Conditions listed: Malignant Brain Tumors. Interventions listed: DRUG: HSK42360. The record lists a start date of 2025-08-15. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT07158710">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE1</span>
+        <span class="badge">start 2025-08-15</span>
       </p>
       <p class="excerpt">Malignant Brain Tumors</p>
       <p class="fine">DRUG: HSK42360</p>
       <p class="fine">Locations: China</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT07158710">ClinicalTrials.gov</a></span> Record NCT07158710.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="United Kingdom" data-nct="NCT07440290">
-      <h3><a href="https://clinicaltrials.gov/study/NCT07440290">NCT07440290</a>: DETERMINE Trial Treatment Arm 07: Dabrafenib in Combination With Trametinib in Adult, Paediatric and Teenage/Young Adult Patients With BRAF V600 Mutation-Positive Cancers.</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT07440290">NCT07440290</a>: DETERMINE Trial Treatment Arm 07: Dabrafenib in Combination With Trametinib in Adult, Paediatric and Teenage/Young Adult Patients With BRAF V600 Mutation-Positive Cancers. <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT07440290 is a RECRUITING study (phase 2 / phase 3). It is titled “DETERMINE Trial Treatment Arm 07: Dabrafenib in Combination With Trametinib in Adult, Paediatric and Teenage/Young Adult Patients With BRAF V600 Mutation-Positive Cancers.”. Conditions listed: Haematological Malignancy; Malignant Neoplasm; Lymphoproliferative Disorders; Neoplasms by Histologic Type; Neoplasms by Site; Gastrointestinal Cancer; Non-Melanoma Skin Cancer (NMSC); Langerhans Cell Histiocytosis (LCH). Interventions listed: DRUG: Dabrafenib; DRUG: Trametinib. The record lists a start date of 2026-04-01. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT07440290">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2, PHASE3</span>
+        <span class="badge">start 2026-04-01</span>
       </p>
       <p class="excerpt">Haematological Malignancy, Malignant Neoplasm, Lymphoproliferative Disorders, Neoplasms by Histologic Type, Neoplasms by Site, Gastrointestinal Cancer, Non-Melanoma Skin Cancer (NMSC), Langerhans Cell Histiocytosis (LCH)</p>
       <p class="fine">DRUG: Dabrafenib; DRUG: Trametinib</p>
       <p class="fine">Locations: United Kingdom</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT07440290">ClinicalTrials.gov</a></span> Record NCT07440290.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="China" data-nct="NCT07506109">
-      <h3><a href="https://clinicaltrials.gov/study/NCT07506109">NCT07506109</a>: A Phase II Study of Sintilimab Combined With Ipilimumab N01, Cetuximab and Dabrafenib in Patients With Microsatellite-Stable, BRAF V600E-Mutated Metastatic Colorectal Cancer</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT07506109">NCT07506109</a>: A Phase II Study of Sintilimab Combined With Ipilimumab N01, Cetuximab and Dabrafenib in Patients With Microsatellite-Stable, BRAF V600E-Mutated Metastatic Colorectal Cancer <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT07506109 is a RECRUITING study (phase 2). It is titled “A Phase II Study of Sintilimab Combined With Ipilimumab N01, Cetuximab and Dabrafenib in Patients With Microsatellite-Stable, BRAF V600E-Mutated Metastatic Colorectal Cancer”. Conditions listed: BRAF V600E; Colorectal Cancer; Sintilimab; MSS (Microsatellite Stable); Cetuximab; Dabrafenib; Ipilimumab N01. Interventions listed: DRUG: Ipilimumab N01; DRUG: Sintilimab; DRUG: Cetuximab; DRUG: Dabrafenib. The record lists a start date of 2026-03-01. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT07506109">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2026-03-01</span>
       </p>
       <p class="excerpt">BRAF V600E, Colorectal Cancer, Sintilimab, MSS (Microsatellite Stable), Cetuximab, Dabrafenib, Ipilimumab N01</p>
       <p class="fine">DRUG: Ipilimumab N01; DRUG: Sintilimab; DRUG: Cetuximab; DRUG: Dabrafenib</p>
       <p class="fine">Locations: China</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT07506109">ClinicalTrials.gov</a></span> Record NCT07506109.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="China" data-nct="NCT07561554">
-      <h3><a href="https://clinicaltrials.gov/study/NCT07561554">NCT07561554</a>: Phase I Study of HSK42360-Na in Solid Tumors With BRAF V600 Mutation</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT07561554">NCT07561554</a>: Phase I Study of HSK42360-Na in Solid Tumors With BRAF V600 Mutation <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT07561554 is a RECRUITING study (phase 1). It is titled “Phase I Study of HSK42360-Na in Solid Tumors With BRAF V600 Mutation”. Conditions listed: Solid Tumors (Phase 1). Interventions listed: DRUG: HSK42360-Na. The record lists a start date of 2026-03-06. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT07561554">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE1</span>
+        <span class="badge">start 2026-03-06</span>
       </p>
       <p class="excerpt">Solid Tumors (Phase 1)</p>
       <p class="fine">DRUG: HSK42360-Na</p>
       <p class="fine">Locations: China</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT07561554">ClinicalTrials.gov</a></span> Record NCT07561554.</li></ul>
+    </div></details>
+    </article>
+    
+    <article class="item trial" data-countries="Switzerland" data-nct="NCT07617610">
+      <h3><a href="https://clinicaltrials.gov/study/NCT07617610">NCT07617610</a>: Primary and Acquired Resistance to Targeted Treatment in BRAF V600E-mutated Metastatic Colorectal Cancer <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT07617610 is a RECRUITING study. It is titled “Primary and Acquired Resistance to Targeted Treatment in BRAF V600E-mutated Metastatic Colorectal Cancer”. Conditions listed: Metastatic Colorectal Cancer; BRAF V600E Mutation. Interventions listed: OTHER: Longitudinal translational sampling. The record lists a start date of 2025-05-25. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT07617610">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="fine">
+        <span class="badge">RECRUITING</span>
+        <span class="badge">Phase not stated</span>
+        <span class="badge">start 2025-05-25</span>
+      </p>
+      <p class="excerpt">Metastatic Colorectal Cancer, BRAF V600E Mutation</p>
+      <p class="fine">OTHER: Longitudinal translational sampling</p>
+      <p class="fine">Locations: Switzerland</p>
+      <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT07617610">ClinicalTrials.gov</a></span> Record NCT07617610.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="South Korea" data-nct="NCT07688356">
-      <h3><a href="https://clinicaltrials.gov/study/NCT07688356">NCT07688356</a>: Belvarafenib for CNS Efficacy in Patients With BRAF-Altered Solid Tumors</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT07688356">NCT07688356</a>: Belvarafenib for CNS Efficacy in Patients With BRAF-Altered Solid Tumors <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT07688356 is a RECRUITING study (phase 2). It is titled “Belvarafenib for CNS Efficacy in Patients With BRAF-Altered Solid Tumors”. Conditions listed: Primary Brain Tumor; Metastatic Brain Tumor. Interventions listed: DRUG: Belvarafenib. The record lists a start date of 2026-06-15. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT07688356">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2026-06-15</span>
       </p>
       <p class="excerpt">Primary Brain Tumor, Metastatic Brain Tumor</p>
       <p class="fine">DRUG: Belvarafenib</p>
       <p class="fine">Locations: South Korea</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT07688356">ClinicalTrials.gov</a></span> Record NCT07688356.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="China" data-nct="NCT07789210">
-      <h3><a href="https://clinicaltrials.gov/study/NCT07789210">NCT07789210</a>: A Single-Arm, Phase II, Multicenter Clinical Study of Neoadjuvant Encorafenib Plus Cetuximab N01 and mFOLFOX6 in Patients With Locally Advanced BRAF V600E-Mutant Colorectal Cancer With or Without Resectable Metastases</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT07789210">NCT07789210</a>: A Single-Arm, Phase II, Multicenter Clinical Study of Neoadjuvant Encorafenib Plus Cetuximab N01 and mFOLFOX6 in Patients With Locally Advanced BRAF V600E-Mutant Colorectal Cancer With or Without Resectable Metastases <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT07789210 is a RECRUITING study (phase 2). It is titled “A Single-Arm, Phase II, Multicenter Clinical Study of Neoadjuvant Encorafenib Plus Cetuximab N01 and mFOLFOX6 in Patients With Locally Advanced BRAF V600E-Mutant Colorectal Cancer With or Without Resectable Metastases”. Conditions listed: Colorectal Cancer; BRAF V600E Mutation Positive; Encorafenib; Cetuximab N01. Interventions listed: DRUG: Neoadjuvant therapy of encorafenib plus cetuximab N01 and mFOLFOX6. The record lists a start date of 2026-06-30. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT07789210">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2026-06-30</span>
       </p>
       <p class="excerpt">Colorectal Cancer, BRAF V600E Mutation Positive, Encorafenib, Cetuximab N01</p>
       <p class="fine">DRUG: Neoadjuvant therapy of encorafenib plus cetuximab N01 and mFOLFOX6</p>
       <p class="fine">Locations: China</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT07789210">ClinicalTrials.gov</a></span> Record NCT07789210.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="China" data-nct="NCT07790510">
-      <h3><a href="https://clinicaltrials.gov/study/NCT07790510">NCT07790510</a>: HSK42360-Na Tablets Combined With Cetuximab With or Without Chemotherapy in BRAF V600-Mutant Metastatic Colorectal Cancer</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT07790510">NCT07790510</a>: HSK42360-Na Tablets Combined With Cetuximab With or Without Chemotherapy in BRAF V600-Mutant Metastatic Colorectal Cancer <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT07790510 is a RECRUITING study (phase 1 / phase 2). It is titled “HSK42360-Na Tablets Combined With Cetuximab With or Without Chemotherapy in BRAF V600-Mutant Metastatic Colorectal Cancer”. Conditions listed: Metastatic Colorectal Cancer (CRC). Interventions listed: DRUG: HSK42360-Na Tablets; DRUG: Cetuximab (EGFR inhibitor); DRUG: mFOLFOX6 Regimen (Oxaliplatin/Leucovorin/5-FU); DRUG: FOLFIRI Regimen (Irinotecan/Leucovorin/5-FU). The record lists a start date of 2026-08-12. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT07790510">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE1, PHASE2</span>
+        <span class="badge">start 2026-08-12</span>
       </p>
       <p class="excerpt">Metastatic Colorectal Cancer (CRC)</p>
       <p class="fine">DRUG: HSK42360-Na Tablets; DRUG: Cetuximab (EGFR inhibitor); DRUG: mFOLFOX6 Regimen (Oxaliplatin/Leucovorin/5-FU); DRUG: FOLFIRI Regimen (Irinotecan/Leucovorin/5-FU)</p>
       <p class="fine">Locations: China</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT07790510">ClinicalTrials.gov</a></span> Record NCT07790510.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="China" data-nct="NCT07809893">
-      <h3><a href="https://clinicaltrials.gov/study/NCT07809893">NCT07809893</a>: Ivosidenib Plus mFOLFOXIRI and Celecoxib for BRAF-targeted Therapy-refractory BRAF V600E-mutant Colorectal Cancer Patients</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT07809893">NCT07809893</a>: Ivosidenib Plus mFOLFOXIRI and Celecoxib for BRAF-targeted Therapy-refractory BRAF V600E-mutant Colorectal Cancer Patients <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT07809893 is a RECRUITING study (phase 2). It is titled “Ivosidenib Plus mFOLFOXIRI and Celecoxib for BRAF-targeted Therapy-refractory BRAF V600E-mutant Colorectal Cancer Patients”. Conditions listed: Colorectal Cancer. Interventions listed: DRUG: Ivonescimab +mFOLFOXIRI +celecoxib. The record lists a start date of 2026-08-10. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT07809893">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">PHASE2</span>
+        <span class="badge">start 2026-08-10</span>
       </p>
       <p class="excerpt">Colorectal Cancer</p>
       <p class="fine">DRUG: Ivonescimab +mFOLFOXIRI +celecoxib</p>
       <p class="fine">Locations: China</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT07809893">ClinicalTrials.gov</a></span> Record NCT07809893.</li></ul>
+    </div></details>
     </article>
     
     <article class="item trial" data-countries="Czechia" data-nct="NCT07870265">
-      <h3><a href="https://clinicaltrials.gov/study/NCT07870265">NCT07870265</a>: Detection of the BRAF V600E Mutation in Liquid Biopsy Using the CRISPR/Cas12a System</h3>
+      <h3><a href="https://clinicaltrials.gov/study/NCT07870265">NCT07870265</a>: Detection of the BRAF V600E Mutation in Liquid Biopsy Using the CRISPR/Cas12a System <span class="tag tag-trials">Trials</span></h3>
+      <p class="plain">NCT07870265 is a RECRUITING study (NA). It is titled “Detection of the BRAF V600E Mutation in Liquid Biopsy Using the CRISPR/Cas12a System”. Conditions listed: Unresectable Metastatic Melanoma. Interventions listed: DIAGNOSTIC_TEST: Novel CRISPR/Cas12a Electrochemical Bioassay; DIAGNOSTIC_TEST: Reference Standard Molecular Diagnostics (NGS and ddPCR); PROCEDURE: Serial Peripheral Blood Sampling for Liquid Biopsy. The record lists a start date of 2026-10-20. <span class="plain-cites"><a class="plain-src" href="https://clinicaltrials.gov/study/NCT07870265">ClinicalTrials.gov</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
       <p class="fine">
         <span class="badge">RECRUITING</span>
         <span class="badge">NA</span>
+        <span class="badge">start 2026-10-20</span>
       </p>
       <p class="excerpt">Unresectable Metastatic Melanoma</p>
       <p class="fine">DIAGNOSTIC_TEST: Novel CRISPR/Cas12a Electrochemical Bioassay; DIAGNOSTIC_TEST: Reference Standard Molecular Diagnostics (NGS and ddPCR); PROCEDURE: Serial Peripheral Blood Sampling for Liquid Biopsy</p>
       <p class="fine">Locations: Czechia</p>
       <ul class="cites"><li><span class="src"><a href="https://clinicaltrials.gov/study/NCT07870265">ClinicalTrials.gov</a></span> Record NCT07870265.</li></ul>
+    </div></details>
     </article>
-    <p class="trial-empty" id="trial-empty">No recruiting trials in the snapshot for that country. Try “All countries”, or check ClinicalTrials.gov directly.</p><h2 id="civic">Open evidence from CIViC</h2><p class="fine">CIViC is an educational knowledgebase released under CC0. These statements are not regulatory approvals.</p><p>BRAF mutations are found to be recurrent in many cancer types. Of these, the mutation of valine 600 to glutamic acid (V600E) is the most prevalent. V600E has been determined to be an activating mutation, and cells that harbor it, along with other V600 mutations are sensitive to the BRAF inhibitor dabrafenib. It is also common to use MEK inhibition as a substitute for BRAF inhibitors, and the MEK inhibitor trametinib has seen some success in BRAF mutant melanomas. BRAF mutations have also been correlated with poor prognosis in many cancer types, although there is at least one study that questions this conclusion in papillary thyroid cancer. Oncogenic BRAF mutations are divided into three cat… <a href="https://civicdb.org/features/5">CIViC gene summary for BRAF</a> (CC0).</p><div class='cards'>
-            <article class="card">
-              <p>BRAF V600E mutant melanoma is sensitive to dabrafenib and trametinib combination therapy</p>
-              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Trametinib, Dabrafenib — <a href="https://civicdb.org/assertions/7">CIViC assertion 7</a> (CC0).</p>
-            </article>
-            <article class="card">
-              <p>BRAF V600E mutant melanoma is sensitive to vemurafenib and cobimetinib combination therapy</p>
-              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Vemurafenib, Cobimetinib — <a href="https://civicdb.org/assertions/10">CIViC assertion 10</a> (CC0).</p>
-            </article>
-            <article class="card">
-              <p>BRAF V600K mutant melanoma is sensitive to vemurafenib and cobimetinib combination therapy</p>
-              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Vemurafenib, Cobimetinib — <a href="https://civicdb.org/assertions/11">CIViC assertion 11</a> (CC0).</p>
-            </article>
-            <article class="card">
-              <p>BRAF V600K mutant melanoma is sensitive to dabrafenib and trametinib combination therapy</p>
-              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Trametinib, Dabrafenib — <a href="https://civicdb.org/assertions/13">CIViC assertion 13</a> (CC0).</p>
-            </article>
+    
+                <p class="trial-empty" id="trial-empty">No recruiting trials in the snapshot for that country. Try “All countries”, or check ClinicalTrials.gov directly.</p>
+              </section>
+              <section class="branch-list" id="edge">
+                <h3>On the edge <span class="count">1</span></h3>
+                <p class="fine">Early evidence, not an FDA approval in this snapshot. 1 in this snapshot, listed alphabetically.</p>
+                
+    <article class="item edge" id="civic-27">
+      <h3>Vemurafenib <span class="tag tag-edge">On the edge</span></h3>
+      <p class="plain">CIViC assertion 27 is early evidence about Vemurafenib (molecular profile KIAA1549::BRAF Fusion; disease Pilocytic Astrocytoma). CIViC’s summary is: Expression of the KIAA1549-BRAF fusion in pilocytic astrocytoma exhibits resistance to vemurafenib due to paradoxical activation of the MAPK pathway. The record lists evidence level TIER_II_LEVEL_D and status SUBMITTED. This is not an FDA approval. <span class="plain-cites"><a class="plain-src" href="https://civicdb.org/assertions/27">CIViC assertion 27</a></span></p>
+      <details class="sources-toggle"><summary>Sources</summary><div class="sources-body">
+      <p class="excerpt">Expression of the KIAA1549-BRAF fusion in pilocytic astrocytoma exhibits resistance to vemurafenib due to paradoxical activation of the MAPK pathway.</p>
+      <p class="fine">RESISTANCE · TIER_II_LEVEL_D · Pilocytic Astrocytoma · Vemurafenib — <a href="https://civicdb.org/assertions/27">CIViC assertion 27</a> (CC0). Status: SUBMITTED.</p>
+    </div></details>
+    </article>
+    
+              </section>
+            </div>
+          </li>
+        </ol>
+        <h2 id="civic">Other open evidence from CIViC</h2><p class="fine">CIViC is an educational knowledgebase released under CC0. These statements are not regulatory approvals. They are diagnostic, prognostic or oncogenic assertions, or highest-level predictive assertions not already shown on a therapy. Raw wording is unchanged.</p><details class="sources-toggle"><summary>Sources: other CIViC assertions</summary><div class="sources-body"><div class='cards'>
             <article class="card">
               <p>BRAF V600E indicates poor prognosis in advanced colorectal cancer</p>
               <p class="fine">POOR_OUTCOME · TIER_I_LEVEL_A · Colorectal Cancer — <a href="https://civicdb.org/assertions/20">CIViC assertion 20</a> (CC0).</p>
@@ -637,41 +1074,21 @@
               <p class="fine">POSITIVE · TIER_I_LEVEL_A · Pilocytic Astrocytoma — <a href="https://civicdb.org/assertions/25">CIViC assertion 25</a> (CC0).</p>
             </article>
             <article class="card">
-              <p>Expression of the KIAA1549-BRAF fusion in pilocytic astrocytoma exhibits resistance to vemurafenib due to paradoxical activation of the MAPK pathway.</p>
-              <p class="fine">RESISTANCE · TIER_II_LEVEL_D · Pilocytic Astrocytoma · Vemurafenib — <a href="https://civicdb.org/assertions/27">CIViC assertion 27</a> (CC0).</p>
-            </article>
-            <article class="card">
-              <p>BRAF V600E mutant anaplastic thyroid carcinoma is sensitive to dabrafenib and trametinib combination therapy.</p>
-              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Anaplastic Thyroid Carcinoma · Trametinib, Dabrafenib — <a href="https://civicdb.org/assertions/241">CIViC assertion 241</a> (CC0).</p>
-            </article>
-            <article class="card">
-              <p>BRAF V600E-mutant melanoma is sensitive to vemurafenib.</p>
-              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Vemurafenib — <a href="https://civicdb.org/assertions/275">CIViC assertion 275</a> (CC0).</p>
-            </article>
-            <article class="card">
-              <p>BRAF V600E-mutant melanoma is sensitive to encorafenib plus binimetinib.</p>
-              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Encorafenib, Binimetinib — <a href="https://civicdb.org/assertions/276">CIViC assertion 276</a> (CC0).</p>
-            </article>
-            <article class="card">
-              <p>BRAF V600E-mutant melanoma is sensitive to atezolizumab, cobimetinib, and vemurafenib combination therapy.</p>
-              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Atezolizumab, Vemurafenib, Cobimetinib — <a href="https://civicdb.org/assertions/279">CIViC assertion 279</a> (CC0).</p>
-            </article>
-            <article class="card">
-              <p>BRAF V600K-mutant melanoma is sensitive to vemurafenib.</p>
-              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Vemurafenib — <a href="https://civicdb.org/assertions/305">CIViC assertion 305</a> (CC0).</p>
-            </article>
-            <article class="card">
-              <p>BRAF V600K-mutant melanoma is sensitive to encorafenib plus binimetinib.</p>
-              <p class="fine">SENSITIVITYRESPONSE · TIER_I_LEVEL_A · Melanoma · Encorafenib, Binimetinib — <a href="https://civicdb.org/assertions/313">CIViC assertion 313</a> (CC0).</p>
-            </article>
-            <article class="card">
               <p>BRAF V600E is oncogenic in anaplastic thyroid carcinoma.</p>
               <p class="fine">ONCOGENIC · Anaplastic Thyroid Carcinoma — <a href="https://civicdb.org/assertions/270">CIViC assertion 270</a> (CC0).</p>
             </article>
             <article class="card">
               <p>BRAF V600E is oncogenic in melanoma.</p>
               <p class="fine">ONCOGENIC · Melanoma — <a href="https://civicdb.org/assertions/281">CIViC assertion 281</a> (CC0).</p>
-            </article></div><h2 id="reading">Further reading</h2><p class="fine">Citation cards only — titles, authors, journal and a link to PubMed. Abstracts are not reproduced.</p><div class="cards">
+            </article>
+            <article class="card">
+              <p>BRAF V600E is oncogenic in colorectal cancer.</p>
+              <p class="fine">ONCOGENIC · Colorectal Cancer — <a href="https://civicdb.org/assertions/286">CIViC assertion 286</a> (CC0).</p>
+            </article>
+            <article class="card">
+              <p>BRAF V600K is likely oncogenic in melanoma.</p>
+              <p class="fine">LIKELY_ONCOGENIC · Melanoma — <a href="https://civicdb.org/assertions/320">CIViC assertion 320</a> (CC0).</p>
+            </article></div></div></details><h2 id="reading">Further reading</h2><p class="fine">Citation cards only — titles, authors, journal and a link to PubMed. Abstracts are not reproduced.</p><details class="sources-toggle"><summary>Sources: PubMed citation cards</summary><div class="sources-body"><div class="cards">
         <article class="card">
           <p><a href="https://pubmed.ncbi.nlm.nih.gov/41368991/">BRAF V600E in thyroid cancer: navigating prognostic uncertainty and therapeutic opportunity.</a></p>
           <p class="fine">Riesco-Eizaguirre G <em>European thyroid journal</em>, 2025 Dec 1. PMID 41368991.</p>
@@ -691,7 +1108,13 @@
         <article class="card">
           <p><a href="https://pubmed.ncbi.nlm.nih.gov/33914242/">Encorafenib: A Review in Metastatic Colorectal Cancer with a BRAF V600E Mutation.</a></p>
           <p class="fine">Al-Salama ZT <em>Drugs</em>, 2021 May. PMID 33914242.</p>
-        </article></div></main>
+        </article></div></div></details>
+    <section class="glossary" id="glossary">
+      <h2>Short glossary</h2>
+      <p class="fine">Words that appear on these pages and are hard to avoid. These are general explanations, not medical advice.</p>
+      <dl><div class='gloss-item'><dt>Biomarker</dt><dd>A measurable feature of a tumour, such as a gene change, that can be used as a selection criterion for a therapy or a trial.</dd></div><div class='gloss-item'><dt>Mutation</dt><dd>A change in the DNA sequence of a gene.</dd></div><div class='gloss-item'><dt>TKI (tyrosine kinase inhibitor)</dt><dd>A type of targeted drug. The letters stand for tyrosine kinase inhibitor. The FDA labels in this snapshot sometimes describe a drug as a kinase inhibitor.</dd></div><div class='gloss-item'><dt>NSCLC</dt><dd>Non-small cell lung cancer, a type of lung cancer named in many of the FDA labels in this snapshot.</dd></div><div class='gloss-item'><dt>FDA</dt><dd>The U.S. Food and Drug Administration, which approves drugs and some tests in the United States. This site uses FDA labels, the pharmacogenomic-biomarker table, and the companion-diagnostic list.</dd></div><div class='gloss-item'><dt>EMA</dt><dd>The European Medicines Agency, which authorises medicines in the European Union. This site adds an EMA match when one is found.</dd></div><div class='gloss-item'><dt>Companion diagnostic</dt><dd>A test on the FDA’s list of authorised companion diagnostic devices, used to identify people who may be considered for a corresponding therapy.</dd></div><div class='gloss-item'><dt>CIViC</dt><dd>A public, volunteer-curated cancer knowledgebase released under a public-domain dedication. Its statements are not regulatory approvals.</dd></div><div class='gloss-item'><dt>Fusion</dt><dd>When parts of two genes join and form an abnormal gene. Reports may mention an ALK fusion or an NTRK fusion.</dd></div><div class='gloss-item'><dt>Exon</dt><dd>A numbered segment of a gene. A report may mention a change in a specific exon.</dd></div><div class='gloss-item'><dt>Recruiting</dt><dd>A clinical trial whose ClinicalTrials.gov record in this snapshot lists the status as recruiting, meaning it was listed as enrolling participants at the time of that record.</dd></div><div class='gloss-item'><dt>ampLevel</dt><dd>The evidence level CIViC records on an assertion, such as TIER_I_LEVEL_A or TIER_II_LEVEL_D. This site uses that field as written. It does not add a meaning beyond what the field itself says.</dd></div><div class='gloss-item'><dt>Indication</dt><dd>The use listed on a drug’s official label: what the drug was approved for, in which disease, and with which test or conditions, as written in the FDA label.</dd></div></dl>
+    </section>
+    </main>
     <footer>
       <div class="notice" role="note">
         <strong>Not medical advice. Talk to your oncologist.</strong>

@@ -1,0 +1,804 @@
+{
+  "biomarker_id": "HER2",
+  "generated_at": "2026-11-13T17:42:22+01:00",
+  "source_hash": "68a0e0ff7d5c69d31d72c50e37856df226718d672f7ba474dd9c02d340839845",
+  "intro": {
+    "what": [
+      "HER2, also called ERBB2 or human epidermal growth factor receptor 2, is a gene.",
+      "According to the CIViC gene summary in this snapshot, ERBB2 is amplified and/or overexpressed in 20-30% of invasive breast carcinomas."
+    ],
+    "test_report": "If a test report mentions HER2, it is recording a finding about this gene. This page lists public FDA companion diagnostics that look for HER2, and the therapies and trials in this snapshot that use HER2 as a selection criterion. That mention is not a diagnosis or a treatment decision on its own.",
+    "sources": [
+      {
+        "id": "civic-gene:ERBB2",
+        "url": "https://civicdb.org/features/20",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "biomarker:HER2",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      },
+      {
+        "id": "summary:HER2",
+        "url": "https://civicdb.org/features/20",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      }
+    ],
+    "test_report_sources": [
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      },
+      {
+        "id": "biomarker:HER2",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "cdx:Bond Oracle HER2 IHC System (Leica Biosystems)|Breast Cancer - Tissue",
+      "category": "cdx",
+      "text": "Bond Oracle HER2 IHC System (Leica Biosystems) is an FDA companion diagnostic listed for Breast Cancer - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Trastuzumab.",
+      "sources": [
+        {
+          "id": "cdx:Bond Oracle HER2 IHC System (Leica Biosystems)|Breast Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Breast Cancer - Tissue",
+      "category": "cdx",
+      "text": "FoundationOne CDx (Foundation Medicine, Inc.) is an FDA companion diagnostic listed for Breast Cancer - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Ado-Trastuzumab Emtansine.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Breast Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Guardant360 CDx (Guardant Health, Inc.)|Non-small cell lung cancer (NSCLC) - Plasma",
+      "category": "cdx",
+      "text": "Guardant360 CDx (Guardant Health, Inc.) is an FDA companion diagnostic listed for Non-small cell lung cancer (NSCLC) - Plasma. The indication column lists the sample type as Plasma. It appears on the snapshot record for Zongertinib.",
+      "sources": [
+        {
+          "id": "cdx:Guardant360 CDx (Guardant Health, Inc.)|Non-small cell lung cancer (NSCLC) - Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:HER2 CISH pharmDx Kit (Dako Denmark A/S)|Breast Cancer - Tissue",
+      "category": "cdx",
+      "text": "HER2 CISH pharmDx Kit (Dako Denmark A/S) is an FDA companion diagnostic listed for Breast Cancer - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Trastuzumab.",
+      "sources": [
+        {
+          "id": "cdx:HER2 CISH pharmDx Kit (Dako Denmark A/S)|Breast Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:HER2 FISH pharmDx Kit (Dako Denmark A/S)|Breast Cancer - Tissue",
+      "category": "cdx",
+      "text": "HER2 FISH pharmDx Kit (Dako Denmark A/S) is an FDA companion diagnostic listed for Breast Cancer - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Ado-Trastuzumab Emtansine.",
+      "sources": [
+        {
+          "id": "cdx:HER2 FISH pharmDx Kit (Dako Denmark A/S)|Breast Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:HER2 FISH pharmDx Kit (Dako Denmark A/S)|Gastric and Gastroesophageal Cancer - Tissue",
+      "category": "cdx",
+      "text": "HER2 FISH pharmDx Kit (Dako Denmark A/S) is an FDA companion diagnostic listed for Gastric and Gastroesophageal Cancer - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Trastuzumab.",
+      "sources": [
+        {
+          "id": "cdx:HER2 FISH pharmDx Kit (Dako Denmark A/S)|Gastric and Gastroesophageal Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:HercepTest (Dako Denmark A/S)|Breast Cancer - Tissue",
+      "category": "cdx",
+      "text": "HercepTest (Dako Denmark A/S) is an FDA companion diagnostic listed for Breast Cancer - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Ado-Trastuzumab Emtansine.",
+      "sources": [
+        {
+          "id": "cdx:HercepTest (Dako Denmark A/S)|Breast Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Oncomine Dx Express Test (Life Technologies Corporation)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "Oncomine Dx Express Test (Life Technologies Corporation) is an FDA companion diagnostic listed for Non-Small Cell Lung Cancer (NSCLC) - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Sevabertinib.",
+      "sources": [
+        {
+          "id": "cdx:Oncomine Dx Express Test (Life Technologies Corporation)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Oncomine Dx Target Test (Life Technologies Corporation)|Non-Small Cell Lung cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "Oncomine Dx Target Test (Life Technologies Corporation) is an FDA companion diagnostic listed for Non-Small Cell Lung cancer (NSCLC) - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Sevabertinib.",
+      "sources": [
+        {
+          "id": "cdx:Oncomine Dx Target Test (Life Technologies Corporation)|Non-Small Cell Lung cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:PATHWAY anti-Her2/neu (4B5) Rabbit Monoclonal Primary Antibody (Ventana Medical Systems, Inc.)|Breast Cancer - Tissue",
+      "category": "cdx",
+      "text": "PATHWAY anti-Her2/neu (4B5) Rabbit Monoclonal Primary Antibody (Ventana Medical Systems, Inc.) is an FDA companion diagnostic listed for Breast Cancer - Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Ado-Trastuzumab Emtansine.",
+      "sources": [
+        {
+          "id": "cdx:PATHWAY anti-Her2/neu (4B5) Rabbit Monoclonal Primary Antibody (Ventana Medical Systems, Inc.)|Breast Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:PATHWAY anti-Her2/neu (4B5) Rabbit Monoclonal Primary Antibody (Ventana Medical Systems, Inc.)|Breast Cancer – Tissue",
+      "category": "cdx",
+      "text": "PATHWAY anti-Her2/neu (4B5) Rabbit Monoclonal Primary Antibody (Ventana Medical Systems, Inc.) is an FDA companion diagnostic listed for Breast Cancer – Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Fam-trastuzumab deruxtecan.",
+      "sources": [
+        {
+          "id": "cdx:PATHWAY anti-Her2/neu (4B5) Rabbit Monoclonal Primary Antibody (Ventana Medical Systems, Inc.)|Breast Cancer – Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Ventana HER2 Dual ISH DNA Probe Cocktail (Ventana Medical Systems, Inc.)|Breast Cancer – Tissue",
+      "category": "cdx",
+      "text": "Ventana HER2 Dual ISH DNA Probe Cocktail (Ventana Medical Systems, Inc.) is an FDA companion diagnostic listed for Breast Cancer – Tissue. The indication column lists the sample type as Tissue. It appears on the snapshot record for Fam-trastuzumab deruxtecan.",
+      "sources": [
+        {
+          "id": "cdx:Ventana HER2 Dual ISH DNA Probe Cocktail (Ventana Medical Systems, Inc.)|Breast Cancer – Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion diagnostic list"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Ado-Trastuzumab Emtansine",
+      "category": "mainstream",
+      "text": "Ado-Trastuzumab Emtansine (KADCYLA) is a HER2-targeted antibody and microtubule inhibitor conjugate. The FDA label lists this use: as a single agent, for: the treatment of patients with HER2-positive, metastatic breast cancer who previously received trastuzumab and a taxane, separately or in combination. Patients should have either: received prior therapy for metastatic disease, or developed disease recurrence during or within six months. An EMA record for Kadcyla lists the status as Authorised, with an authorisation date of 19/09/2013.",
+      "sources": [
+        {
+          "id": "therapy:HER2:Ado-Trastuzumab Emtansine",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=23f3c1f4-0fc8-4804-a9e3-04cf25dd302e",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Fam-trastuzumab deruxtecan",
+      "category": "mainstream",
+      "text": "Fam-trastuzumab deruxtecan (ENHERTU) is a HER2-directed antibody and topoisomerase inhibitor conjugate. The FDA label lists this use: HER2-Positive Early Breast Cancer as neoadjuvant treatment of adult patients with HER2-positive (IHC 3+ or ISH+) Stage II or III breast cancer, as determined by an FDA-authorized test followed by a taxane, trastuzumab, and pertuzumab (THP). as adjuvant treatment of adult patients with HER2-positiv. An EMA record for Enhertu lists the status as Authorised, with an authorisation date of 10/12/2020.",
+      "sources": [
+        {
+          "id": "therapy:HER2:Fam-trastuzumab deruxtecan",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Lapatinib",
+      "category": "mainstream",
+      "text": "Lapatinib is listed on an FDA label in this snapshot. The label mentions tablets. The FDA label lists this use: Lapatinib tablets are indicated in combination with: capecitabine for the treatment of patients with advanced or metastatic breast cancer whose tumors overexpress human epidermal growth factor receptor 2 (HER2) and who have received prior therapy, including an anthracycline, a taxane, and trastuzumab. An EMA record for Tyverb lists the status as Authorised, with an authorisation date of 10/06/2008.",
+      "sources": [
+        {
+          "id": "therapy:HER2:Lapatinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=302a4346-a68d-af3e-e063-6294a90a4a6f",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Margetuximab",
+      "category": "mainstream",
+      "text": "Margetuximab (MARGENZA) is a HER2/neu receptor antagonist. The FDA label lists this use: in combination with chemotherapy, for the treatment of adult patients with metastatic HER2-positive breast cancer who have received two or more prior anti-HER2 regimens, at least one of which was for metastatic disease MARGENZA is a HER2/neu receptor antagonist indicated, in combination with.",
+      "sources": [
+        {
+          "id": "therapy:HER2:Margetuximab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6a6d50c7-06ea-479c-83cc-f197a9e428c9",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Neratinib",
+      "category": "mainstream",
+      "text": "Neratinib (Nerlynx) is a kinase inhibitor. The FDA label lists this use: As a single agent, for the extended adjuvant treatment of adult patients with early-stage HER2-positive breast cancer, to follow adjuvant trastuzumab-based therapy. In combination with capecitabine, for the treatment of adult patients with advanced or metastatic HER2-positive breast cancer who have received two or more prior anti-HER2 based reg. An EMA record for Nerlynx lists the status as Authorised, with an authorisation date of 28/06/2018.",
+      "sources": [
+        {
+          "id": "therapy:HER2:Neratinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d1e41dcf-e82a-47c2-a0ad-6c6eef621834",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Pembrolizumab",
+      "category": "mainstream",
+      "text": "Pembrolizumab (KEYTRUDA QLEX) is listed on an FDA label in this snapshot. The FDA label lists this use: Gastric Cancer in combination with trastuzumab, fluoropyrimidine- and platinum-containing chemotherapy, for the first-line treatment of adults with locally advanced unresectable or metastatic HER2-positive gastric or gastroesophageal junction (GEJ) adenocarcinoma whose tumors express PD-L1 (CPS ≥1) as determined by an FDA-authorized test. An EMA record for Keytruda lists the status as Authorised, with an authorisation date of 20/05/2015.",
+      "sources": [
+        {
+          "id": "therapy:HER2:Pembrolizumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=097d166f-b73b-41d3-9b37-7653cd2a0c41",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Pertuzumab",
+      "category": "mainstream",
+      "text": "Pertuzumab (Perjeta) is a HER2/neu receptor antagonist. The FDA label lists this use: Use in combination with trastuzumab and docetaxel for treatment of adults with HER2-positive metastatic breast cancer (MBC) who have not received prior anti-HER2 therapy or chemotherapy for metastatic disease. Use in combination with trastuzumab and chemotherapy as neoadjuvant treatment of adults with HER2-positive, locally adva. An EMA record for Phesgo lists the status as Authorised, with an authorisation date of 12/11/2020. An EMA record for Poherdy lists the status as Authorised, with an authorisation date of 26/02/2026. An EMA record for Perjeta lists the status as Authorised, with an authorisation date of 04/03/2013.",
+      "sources": [
+        {
+          "id": "therapy:HER2:Pertuzumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=17f85d17-ab71-4f5b-9fe3-0b8c822f69ff",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Sevabertinib",
+      "category": "mainstream",
+      "text": "Sevabertinib (HYRNUO) is listed on an FDA label in this snapshot. The FDA label lists this use: HYRNUO is indicated for the treatment of adult patients with locally advanced or metastatic non-squamous non-small cell lung cancer (NSCLC) whose tumors have HER2 ( ERBB2 ) tyrosine kinase domain (TKD) activating mutations, as detected by an FDA-authorized test This indication is approved under accelerated approval.",
+      "sources": [
+        {
+          "id": "therapy:HER2:Sevabertinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d7a11334-6e7a-445b-9a16-bdcd9acbe61f",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Tislelizumab",
+      "category": "mainstream",
+      "text": "Tislelizumab (TEVIMBRA) is listed on an FDA label in this snapshot. The FDA label lists this use: Gastric, Gastroesophageal Junction, or Esophageal Adenocarcinoma in combination with zanidatamab-hrii and fluoropyrimidine- and platinum-containing chemotherapy in adults for the first line treatment of HER2-positive (IHC 3+ or IHC 2+/ISH+) unresectable locally advanced or metastatic gastric, gastroesophageal junction, or esophageal adenocarcinoma. 1.1 Esophageal Cancer First-Line Treatment of Esophag. An EMA record for Tevimbra lists the status as Authorised, with an authorisation date of 20/07/2023.",
+      "sources": [
+        {
+          "id": "therapy:HER2:Tislelizumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=08ef1e3e-496f-4b0b-94ee-fbba3cc1985a",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Trastuzumab",
+      "category": "mainstream",
+      "text": "Trastuzumab (Herceptin) is a HER2/neu receptor antagonist. The FDA label lists this use: in adults for: The treatment of HER2-overexpressing breast cancer. The treatment of HER2-overexpressing metastatic gastric or gastroesophageal junction adenocarcinoma. Select patients for therapy based on an FDA-authorized companion diagnostic for Herceptin. An EMA record for Herwenda lists the status as Authorised, with an authorisation date of 14/09/2023. An EMA record for Herceptin lists the status as Authorised, with an authorisation date of 28/08/2000. An EMA record for Phesgo lists the status as Authorised, with an authorisation date of 12/11/2020.",
+      "sources": [
+        {
+          "id": "therapy:HER2:Trastuzumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=492dbdb2-077e-4064-bff3-372d6af0a7a2",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Tucatinib",
+      "category": "mainstream",
+      "text": "Tucatinib (TUKYSA) is a kinase inhibitor. The FDA label lists this use: in combination with trastuzumab and pertuzumab for the maintenance treatment of adult patients with unresectable locally advanced or metastatic HER2-positive breast cancer following induction treatment. ; in combination with trastuzumab and capecitabine for treatment of adult patients with advanced unresectable or metastatic HER2-positive brea. An EMA record for Tukysa lists the status as Authorised, with an authorisation date of 10/12/2020.",
+      "sources": [
+        {
+          "id": "therapy:HER2:Tucatinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f27eb1b9-b7fc-424e-988f-84dd7bb195a3",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Zanidatamab",
+      "category": "mainstream",
+      "text": "Zanidatamab (ZIIHERA) is a bispecific HER2-directed antibody. The FDA label lists this use: Gastroesophageal Adenocarcinoma (GEA) ; in combination with fluoropyrimidine- and platinum-containing chemotherapy, and tislelizumab-jsgr, as first-line treatment of adult patients with HER2-positive (IHC 3+ or IHC 2+/ISH+) unresectable locally advanced or metastatic gastric, gastroesophageal junction, or esophageal adenocarcinoma. An EMA record for Ziihera lists the status as Authorised, with an authorisation date of 25/04/2025.",
+      "sources": [
+        {
+          "id": "therapy:HER2:Zanidatamab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ae5d9425-fae5-4541-a158-150998343348",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Zongertinib",
+      "category": "mainstream",
+      "text": "Zongertinib (HERNEXEOS) is listed on an FDA label in this snapshot. The FDA label lists this use: HERNEXEOS is indicated for the treatment of adult patients with unresectable or metastatic non-squamous non-small cell lung cancer (NSCLC) whose tumors have HER2 (ERBB2) tyrosine kinase domain activating mutations, as detected by an FDA-authorized test This indication is approved under accelerated approval.",
+      "sources": [
+        {
+          "id": "therapy:HER2:Zongertinib",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT03418961",
+      "category": "trials",
+      "text": "NCT03418961 is a RECRUITING study (phase 3). It is titled “S1501 Dual Observational and Randomized Cohort Study of Patients With Metastatic HER-2+ Breast Cancer at Risk of Cardiac Toxicity”. Conditions listed: Cardiotoxicity; HER2/Neu Positive; Metastatic Malignant Neoplasm in the Brain; Recurrent Breast Carcinoma; Stage IV Breast Cancer AJCC v6 and v7. Interventions listed: DRUG: Carvedilol; OTHER: Laboratory Biomarker Analysis; OTHER: Patient Observation. The record lists a start date of 2017-11-01.",
+      "sources": [
+        {
+          "id": "trial:NCT03418961",
+          "url": "https://clinicaltrials.gov/study/NCT03418961",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04886804",
+      "category": "trials",
+      "text": "NCT04886804 is a RECRUITING study (phase 1). It is titled “Beamion LUNG-1: A Study to Test Different Doses of Zongertinib in People With Different Types of Advanced Cancer (Solid Tumours With Changes in the HER2 Gene)”. Conditions listed: Neoplasm Metastasis; Non-Small Cell Lung Cancer. Interventions listed: DRUG: zongertinib. The record lists a start date of 2021-07-02.",
+      "sources": [
+        {
+          "id": "trial:NCT04886804",
+          "url": "https://clinicaltrials.gov/study/NCT04886804",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05058183",
+      "category": "trials",
+      "text": "NCT05058183 is a RECRUITING study (NA). It is titled “Safe De-escalation of Chemotherapy for Stage 1 Breast Cancer”. Conditions listed: Breast Cancer. Interventions listed: DIAGNOSTIC_TEST: ctDNA. The record lists a start date of 2023-06-05.",
+      "sources": [
+        {
+          "id": "trial:NCT05058183",
+          "url": "https://clinicaltrials.gov/study/NCT05058183",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05253651",
+      "category": "trials",
+      "text": "NCT05253651 is a RECRUITING study (phase 3). It is titled “A Study of Tucatinib With Trastuzumab and mFOLFOX6 Versus Standard of Care Treatment in First-line HER2+ Metastatic Colorectal Cancer”. Conditions listed: Colorectal Neoplasms. Interventions listed: DRUG: tucatinib; DRUG: trastuzumab; DRUG: bevacizumab; DRUG: cetuximab; DRUG: oxaliplatin; DRUG: leucovorin; DRUG: levoleucovorin; DRUG: fluorouracil. The record lists a start date of 2022-10-24.",
+      "sources": [
+        {
+          "id": "trial:NCT05253651",
+          "url": "https://clinicaltrials.gov/study/NCT05253651",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05315700",
+      "category": "trials",
+      "text": "NCT05315700 is a RECRUITING study (phase 1 / phase 2). It is titled “Study of ORIC-114 in Patients With Advanced Solid Tumors Harboring an EGFR or HER2 Alteration”. Conditions listed: Solid Tumors. Interventions listed: DRUG: ORIC-114; DRUG: Chemotherapy drug. The record lists a start date of 2022-03-10.",
+      "sources": [
+        {
+          "id": "trial:NCT05315700",
+          "url": "https://clinicaltrials.gov/study/NCT05315700",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05765851",
+      "category": "trials",
+      "text": "NCT05765851 is a RECRUITING study (phase 1). It is titled “A Study of DS-1103a Combination Therapy in Participants With Advanced Solid Tumors”. Conditions listed: Advanced Solid Tumor. Interventions listed: DRUG: DS-1103a; DRUG: T-DXd. The record lists a start date of 2023-05-30.",
+      "sources": [
+        {
+          "id": "trial:NCT05765851",
+          "url": "https://clinicaltrials.gov/study/NCT05765851",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05945732",
+      "category": "trials",
+      "text": "NCT05945732 is a RECRUITING study. It is titled “DESTINY Breast Respond HER2-(Ultra)Low Europe”. Conditions listed: Unresectable Breast Cancer; Metastatic Breast Cancer; HER2-low Expressing Breast Cancer; HER2-(Ultra)Low Expressing Breast Cancer. Interventions listed: DRUG: Trastuzumab deruxtecan. The record lists a start date of 2023-10-24.",
+      "sources": [
+        {
+          "id": "trial:NCT05945732",
+          "url": "https://clinicaltrials.gov/study/NCT05945732",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06058377",
+      "category": "trials",
+      "text": "NCT06058377 is a RECRUITING study (phase 3). It is titled “Adding an Immunotherapy Drug, MEDI4736 (Durvalumab), to the Usual Chemotherapy Treatment (Paclitaxel, Cyclophosphamide, and Doxorubicin) for Stage II-III Breast Cancer”. Conditions listed: Anatomic Stage II Breast Cancer AJCC v8; Anatomic Stage III Breast Cancer AJCC v8; HER2-Negative Breast Carcinoma; Hormone Receptor-Positive Breast Carcinoma. Interventions listed: PROCEDURE: Biospecimen Collection; DRUG: Cyclophosphamide; DRUG: Doxorubicin; BIOLOGICAL: Durvalumab; OTHER: Genetic Testing; PROCEDURE: Mammography; DRUG: Paclitaxel; OTHER: Quality-of-Life Assessment. The record lists a start date of 2023-11-27.",
+      "sources": [
+        {
+          "id": "trial:NCT06058377",
+          "url": "https://clinicaltrials.gov/study/NCT06058377",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06126276",
+      "category": "trials",
+      "text": "NCT06126276 is a RECRUITING study (phase 2). It is titled “Testing the Use of Neratinib or the Combination of Neratinib and Palbociclib Targeted Treatment for HER2+ Solid Tumors (A ComboMATCH Treatment Trial)”. Conditions listed: Malignant Female Reproductive System Neoplasm; Malignant Solid Neoplasm; Recurrent Malignant Female Reproductive System Neoplasm; Recurrent Malignant Solid Neoplasm. Interventions listed: PROCEDURE: Biopsy Procedure; PROCEDURE: Biospecimen Collection; PROCEDURE: Computed Tomography; PROCEDURE: Echocardiography Test; PROCEDURE: Magnetic Resonance Imaging; PROCEDURE: Multigated Acquisition Scan; DRUG: Neratinib Maleate; DRUG: Palbociclib. The record lists a start date of 2024-05-07.",
+      "sources": [
+        {
+          "id": "trial:NCT06126276",
+          "url": "https://clinicaltrials.gov/study/NCT06126276",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06274515",
+      "category": "trials",
+      "text": "NCT06274515 is a RECRUITING study (phase 4). It is titled “A Study to Investigate Mechanisms of Resistance to Breast Cancer Therapies”. Conditions listed: Breast Cancer. Interventions listed: PROCEDURE: Tumor Tissue and Blood Draw. The record lists a start date of 2024-04-02.",
+      "sources": [
+        {
+          "id": "trial:NCT06274515",
+          "url": "https://clinicaltrials.gov/study/NCT06274515",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06282575",
+      "category": "trials",
+      "text": "NCT06282575 is a RECRUITING study (phase 3). It is titled “Efficacy and Safety of Zanidatamab With Standard-of-care Therapy Against Standard-of-care Therapy for Advanced HER2-positive Biliary Tract Cancer”. Conditions listed: Biliary Tract Cancer. Interventions listed: DRUG: Zanidatamab; DRUG: Cisplatin; DRUG: Gemcitabine; DRUG: Pembrolizumab; DRUG: Durvalumab. The record lists a start date of 2024-07-19.",
+      "sources": [
+        {
+          "id": "trial:NCT06282575",
+          "url": "https://clinicaltrials.gov/study/NCT06282575",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06330064",
+      "category": "trials",
+      "text": "NCT06330064 is a RECRUITING study (phase 1 / phase 2). It is titled “A Study to Evaluate the Efficacy and Safety of Ifinatamab Deruxtecan (I-DXd) in Subjects With Recurrent or Metastatic Solid Tumors (IDeate-PanTumor02)”. Conditions listed: Recurrent or Metastatic Solid Tumors. Interventions listed: DRUG: Ifinatamab deruxtecan. The record lists a start date of 2024-04-10.",
+      "sources": [
+        {
+          "id": "trial:NCT06330064",
+          "url": "https://clinicaltrials.gov/study/NCT06330064",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06452277",
+      "category": "trials",
+      "text": "NCT06452277 is a RECRUITING study (phase 3). It is titled “A Study to Learn More About How Well Sevabertinib Works and How Safe it is Compared With Standard Treatment, in Participants Who Have Advanced Non-small Cell Lung Cancer (NSCLC) With Mutations of the Human Epidermal Growth Factor Receptor 2 (HER2)”. Conditions listed: Advanced Non-small Cell Lung Cancer, HER2 Mutation. Interventions listed: DRUG: Sevabertinib; DRUG: Pembrolizumab; DRUG: Cisplatin; DRUG: Carboplatin; DRUG: Pemetrexed. The record lists a start date of 2024-08-28.",
+      "sources": [
+        {
+          "id": "trial:NCT06452277",
+          "url": "https://clinicaltrials.gov/study/NCT06452277",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06581432",
+      "category": "trials",
+      "text": "NCT06581432 is a RECRUITING study (phase 2). It is titled “Beamion PANTUMOR-1: A Study to Test Whether Zongertinib Helps People With Advanced Cancers With HER2 Alterations”. Conditions listed: Solid Tumours. Interventions listed: DRUG: Zongertinib. The record lists a start date of 2024-10-11.",
+      "sources": [
+        {
+          "id": "trial:NCT06581432",
+          "url": "https://clinicaltrials.gov/study/NCT06581432",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06695845",
+      "category": "trials",
+      "text": "NCT06695845 is a RECRUITING study (phase 2). It is titled “A Phase 2 Study of Zanidatamab in Patients With HER2-expressing Tumors”. Conditions listed: Breast Cancer; Gastric Cancer; Esophageal Cancer; Gastroesophageal Cancer; Colorectal Cancer; Endometrial Cancer; Non-small Cell Lung Cancer; Ovarian Cancer. Interventions listed: DRUG: Zanidatamab. The record lists a start date of 2025-01-14.",
+      "sources": [
+        {
+          "id": "trial:NCT06695845",
+          "url": "https://clinicaltrials.gov/study/NCT06695845",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06706076",
+      "category": "trials",
+      "text": "NCT06706076 is a RECRUITING study (phase 1 / phase 2). It is titled “A Study of BH-30643 in Subjects With Locally Advanced or Metastatic NSCLC Harboring EGFR and/or HER2 Mutations”. Conditions listed: NSCLC (Advanced Non-small Cell Lung Cancer). Interventions listed: DRUG: BH-30643; DRUG: BH-30643 combo therapy with Carboplatin/Pemetrexed; DRUG: BH-30643. The record lists a start date of 2025-01-09.",
+      "sources": [
+        {
+          "id": "trial:NCT06706076",
+          "url": "https://clinicaltrials.gov/study/NCT06706076",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06760819",
+      "category": "trials",
+      "text": "NCT06760819 is a RECRUITING study (phase 2). It is titled “A Study to Learn More About How Well Treatment With Sevabertinib (BAY 2927088) Tablets Works and How Safe it is in Participants Who Have a Solid Tumor With Mutations of the Human Epidermal Growth Factor Receptor 2 (HER2)”. Conditions listed: Advanced Solid Tumors; HER2 Mutation. Interventions listed: DRUG: BAY2927088. The record lists a start date of 2025-02-13.",
+      "sources": [
+        {
+          "id": "trial:NCT06760819",
+          "url": "https://clinicaltrials.gov/study/NCT06760819",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06827236",
+      "category": "trials",
+      "text": "NCT06827236 is a RECRUITING study (phase 1 / phase 2). It is titled “A Clinical Study to Find the Optimal Dose of an Investigational Treatment Called BNT323 When Used in Combination With Another Investigational Treatment, BNT327, and to Test if That Combination Treatment is Safe and Beneficial for Patients With Advanced Breast Cancer”. Conditions listed: Locally Advanced Breast Cancer; Unresectable Breast Carcinoma; Metastatic Breast Cancer. Interventions listed: DRUG: BNT323; DRUG: BNT327. The record lists a start date of 2025-04-23.",
+      "sources": [
+        {
+          "id": "trial:NCT06827236",
+          "url": "https://clinicaltrials.gov/study/NCT06827236",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06949410",
+      "category": "trials",
+      "text": "NCT06949410 is a RECRUITING study (phase 1). It is titled “HER2 Vaccine for Locally Advanced Breast Cancer”. Conditions listed: Breast Cancer; HER2-positive Breast Cancer. Interventions listed: DRUG: HER2 Vaccine. The record lists a start date of 2027-01.",
+      "sources": [
+        {
+          "id": "trial:NCT06949410",
+          "url": "https://clinicaltrials.gov/study/NCT06949410",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07007559",
+      "category": "trials",
+      "text": "NCT07007559 is a RECRUITING study (phase 2). It is titled “ASPEN-09-03: A Study of Evorpacept in Combination With Trastuzumab and Chemotherapy in Metastatic HER2-Positive Breast Cancer”. Conditions listed: Breast Cancer, Metastatic. Interventions listed: DRUG: Evorpacept (ALX148); DRUG: Trastuzumab; DRUG: Paclitaxel; DRUG: Capecitabine; DRUG: Eribulin; DRUG: Gemcitabine; DRUG: Vinorelbine. The record lists a start date of 2025-12-10.",
+      "sources": [
+        {
+          "id": "trial:NCT07007559",
+          "url": "https://clinicaltrials.gov/study/NCT07007559",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07043725",
+      "category": "trials",
+      "text": "NCT07043725 is a RECRUITING study (phase 3). It is titled “A Clinical Study of Neoadjuvant Treatment With TQB2102 for Injection for Human Epidermal Growth Factor Receptor 2 (HER2) Positive Breast Cancer”. Conditions listed: HER2-positive Breast Cancer. Interventions listed: DRUG: TQB2102 for injection; DRUG: Trastuzumab injection and Pertuzumab Injection and Docetaxel Injection and Carboplatin Injection. The record lists a start date of 2025-09-15.",
+      "sources": [
+        {
+          "id": "trial:NCT07043725",
+          "url": "https://clinicaltrials.gov/study/NCT07043725",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07102381",
+      "category": "trials",
+      "text": "NCT07102381 is a RECRUITING study (phase 2). It is titled “A Phase 2 Neoadjuvant Study of Zanidatamab in Combination With Chemotherapy in Participants With HER2-positive Breast Cancer”. Conditions listed: HER2-positive Breast Cancer; Breast Cancer. Interventions listed: DRUG: Zanidatamab; DRUG: Paclitaxel; DRUG: Docetaxel; DRUG: Carboplatin; DRUG: Trastuzumab; DRUG: Pertuzumab. The record lists a start date of 2025-09-24.",
+      "sources": [
+        {
+          "id": "trial:NCT07102381",
+          "url": "https://clinicaltrials.gov/study/NCT07102381",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07112053",
+      "category": "trials",
+      "text": "NCT07112053 is a RECRUITING study (phase 2). It is titled “A Vaccine (STEMVAC) With Standard Endocrine-Based Therapy or Chemotherapy for the Treatment of Metastatic Hormone Receptor Positive, HER2 Negative Breast Cancer”. Conditions listed: Anatomic Stage IV Breast Cancer AJCC v8; Metastatic HER2-Negative Breast Carcinoma; Metastatic Hormone Receptor-Positive Breast Carcinoma. Interventions listed: BIOLOGICAL: CD105/Yb-1/SOX2/CDH3/MDM2-polyepitope Plasmid DNA Vaccine; DRUG: Capecitabine; PROCEDURE: Computed Tomography; DRUG: Cyclin-Dependent Kinase 4 Inhibitor; DRUG: Cyclin-Dependent Kinase 6 Inhibitor; DRUG: F-18 16 Alpha-Fluoroestradiol; DRUG: Hormone Therapy; PROCEDURE: Positron Emission Tomography. The record lists a start date of 2025-11-17.",
+      "sources": [
+        {
+          "id": "trial:NCT07112053",
+          "url": "https://clinicaltrials.gov/study/NCT07112053",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07137871",
+      "category": "trials",
+      "text": "NCT07137871 is a RECRUITING study (phase 1). It is titled “Clinical Trial of Avasopasem in Patients With Metastatic Hormone Receptor Positive Breast Cancer With Progression on a CDK 4/6 Inhibitor and Hormonal Therapy”. Conditions listed: Breast Cancer Metastatic. Interventions listed: DRUG: Avasopasem. The record lists a start date of 2025-10-02.",
+      "sources": [
+        {
+          "id": "trial:NCT07137871",
+          "url": "https://clinicaltrials.gov/study/NCT07137871",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07195695",
+      "category": "trials",
+      "text": "NCT07195695 is a RECRUITING study (phase 3). It is titled “Beamion LUNG-3: Adjuvant Zongertinib vs Standard Treatment in People With Completely Resected Stage II-IIIB NSCLC Harboring Activating HER2 TKD Mutations”. Conditions listed: Non-small Cell Lung Cancer. Interventions listed: DRUG: Zongertinib; DRUG: Pembrolizumab; DRUG: Atezolizumab; DRUG: Durvalumab; DRUG: Nivolumab. The record lists a start date of 2026-01-16.",
+      "sources": [
+        {
+          "id": "trial:NCT07195695",
+          "url": "https://clinicaltrials.gov/study/NCT07195695",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07407920",
+      "category": "trials",
+      "text": "NCT07407920 is a RECRUITING study (phase 2). It is titled “Ph2 Study for Optimization of Adjunct Systemic Therapy in HER2+ Patients, MolecularPCR Trial”. Conditions listed: Anatomic Stage I Breast Cancer AJCC v8; Anatomic Stage II Breast Cancer AJCC v8; Early Stage HER2-Positive Breast Carcinoma; Early Stage Triple-Negative Breast Carcinoma. Interventions listed: PROCEDURE: Biospecimen Collection; DRUG: Hormone Therapy; BIOLOGICAL: Pembrolizumab; BIOLOGICAL: Pertuzumab; BIOLOGICAL: Trastuzumab. The record lists a start date of 2025-10-09.",
+      "sources": [
+        {
+          "id": "trial:NCT07407920",
+          "url": "https://clinicaltrials.gov/study/NCT07407920",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07413939",
+      "category": "trials",
+      "text": "NCT07413939 is a RECRUITING study (phase 2 / phase 3). It is titled “RO7771950 Versus Tucatinib in Combination With Trastuzumab and Capecitabine in People With Locally Advanced or Metastatic Breast Cancer That is Human Epidermal Growth Factor Receptor 2 (HER2)-Positive”. Conditions listed: HER2-positive Breast Cancer. Interventions listed: DRUG: RO7771950; DRUG: Tucatinib; DRUG: Trastuzumab; DRUG: Capecitabine. The record lists a start date of 2026-05-21.",
+      "sources": [
+        {
+          "id": "trial:NCT07413939",
+          "url": "https://clinicaltrials.gov/study/NCT07413939",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07486817",
+      "category": "trials",
+      "text": "NCT07486817 is a RECRUITING study (phase 2). It is titled “Beamion 44: A Study to Test How Well Zongertinib is Tolerated by People With Advanced Non-small Cell Lung Cancer With HER2 Mutations When Given in Combination With Chemotherapy With or Without Pembrolizumab”. Conditions listed: Lung Cancer, Non-squamous, Non-small Cell. Interventions listed: DRUG: Zongertinib; DRUG: Cisplatin; DRUG: Carboplatin; DRUG: Pemetrexed; DRUG: Pembrolizumab. The record lists a start date of 2026-06-04.",
+      "sources": [
+        {
+          "id": "trial:NCT07486817",
+          "url": "https://clinicaltrials.gov/study/NCT07486817",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07527741",
+      "category": "trials",
+      "text": "NCT07527741 is a RECRUITING study. It is titled “A Study to Assess Treatment Patterns and Treatment Adherence in Early HER2-positive Breast Cancer Participants After Treatment Decentralization”. Conditions listed: Early-stage HER2+ Breast Cancer. The record lists a start date of 2026-02-23.",
+      "sources": [
+        {
+          "id": "trial:NCT07527741",
+          "url": "https://clinicaltrials.gov/study/NCT07527741",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07546695",
+      "category": "trials",
+      "text": "NCT07546695 is a RECRUITING study. It is titled “Role of Axillary Lymph Node Dissection for Residual MACROMETASTASES After NEOADJUVANT Chemotherapy in Patients With HER2+ and Triple Negative Breast Cancer: The OPBC-11/MACRONAC Study”. Conditions listed: Breast Cancer. Interventions listed: OTHER: Data Collection from medical records of from an already existing database \"ONCOLOGICAL BREAST SURGERY DATABASE OF THE UNIVERSITY HOSPITAL OF BASEL\" which was initiated in 2016.. The record lists a start date of 2026-02-01.",
+      "sources": [
+        {
+          "id": "trial:NCT07546695",
+          "url": "https://clinicaltrials.gov/study/NCT07546695",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07581795",
+      "category": "trials",
+      "text": "NCT07581795 is a RECRUITING study (phase 2). It is titled “Study of Paclitaxel Polymeric Micelles Combined With HP and Adebelimab Versus Taxane Combined With HP as First-Line Treatment for Advanced HER2-Positive Breast Cancer”. Conditions listed: Advanced HER2-positive Breast Cancer. Interventions listed: DRUG: Paclitaxel polymer micelles combined with trastuzumab, pertuzumab, and adrelumab; DRUG: Taxanes combined with trastuzumab and pertuzumab.. The record lists a start date of 2026-07-28.",
+      "sources": [
+        {
+          "id": "trial:NCT07581795",
+          "url": "https://clinicaltrials.gov/study/NCT07581795",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07613151",
+      "category": "trials",
+      "text": "NCT07613151 is a RECRUITING study. It is titled “Negative/Low Hormone Receptor And/or HER2 POsitive Lobular Invasive Breast Carcinoma - A Real-World International Cohort Study”. Conditions listed: Lobular Breast Carcinoma. Interventions listed: PROCEDURE: Upfront Breast Surgery; RADIATION: Adjuvant Radiotherapy; DRUG: Endocrine Therapy; DRUG: Chemotherapy. The record lists a start date of 2026-05-01.",
+      "sources": [
+        {
+          "id": "trial:NCT07613151",
+          "url": "https://clinicaltrials.gov/study/NCT07613151",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07619534",
+      "category": "trials",
+      "text": "NCT07619534 is a RECRUITING study. It is titled “Collection of CSF Samples From Participants With Metastatic Triple Negative Breast Cancer (TNBC) and HER2+ Breast Cancer With no Prior History Nor Active Radiographically Detectable Brain Metastases”. Conditions listed: Breast Cancer; Breast Carcinoma; Cancer of the Breast; Malignant Neoplasm of Breast. Interventions listed: OTHER: Arm 1. The record lists a start date of 2026-11-15.",
+      "sources": [
+        {
+          "id": "trial:NCT07619534",
+          "url": "https://clinicaltrials.gov/study/NCT07619534",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07660055",
+      "category": "trials",
+      "text": "NCT07660055 is a RECRUITING study (phase 1). It is titled “Study of [177Lu]Lu-DWJ155 and [68Ga]Ga-DWJ155 in Patients With Solid Tumors”. Conditions listed: Breast Cancer; Non-small Cell Lung Cancer (NSCLC); Gastric/Gastroesophageal Junction (GEJ) Cancer; Bladder Cancer. Interventions listed: DIAGNOSTIC_TEST: [68Ga]Ga-DWJ155; DRUG: [177Lu]Lu-DWJ155. The record lists a start date of 2026-06-16.",
+      "sources": [
+        {
+          "id": "trial:NCT07660055",
+          "url": "https://clinicaltrials.gov/study/NCT07660055",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07880353",
+      "category": "trials",
+      "text": "NCT07880353 is a RECRUITING study. It is titled “Real-World Outcomes of Sevabertinib in HER2-Mutant Advanced NSCLC: A Bidirectional Cohort Study”. Conditions listed: HER2-mutant Advanced Non-Small Cell Lung Cancer. Interventions listed: DRUG: Sevabertinib. The record lists a start date of 2026-10-20.",
+      "sources": [
+        {
+          "id": "trial:NCT07880353",
+          "url": "https://clinicaltrials.gov/study/NCT07880353",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07895511",
+      "category": "trials",
+      "text": "NCT07895511 is a RECRUITING study (NA). It is titled “A Study of Skipping Radiation Therapy in People With Breast Cancer”. Conditions listed: HER2-positive Breast Cancer; Breast Cancer. Interventions listed: DRUG: HER2-targeted therapy; DRUG: Tamoxifen; RADIATION: No Radiation Therapy. The record lists a start date of 2026-10-16.",
+      "sources": [
+        {
+          "id": "trial:NCT07895511",
+          "url": "https://clinicaltrials.gov/study/NCT07895511",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07911280",
+      "category": "trials",
+      "text": "NCT07911280 is a RECRUITING study (phase 2). It is titled “A Phase II, Trial of Neoadjuvant Trastuzumab + Durvalumab + FLOT Targeted Immunochemotherapy”. Conditions listed: Gastric Cancer. Interventions listed: DRUG: Trastuzumab + Durvalumab + FLOT. The record lists a start date of 2026-10-06.",
+      "sources": [
+        {
+          "id": "trial:NCT07911280",
+          "url": "https://clinicaltrials.gov/study/NCT07911280",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "civic:334",
+      "category": "on-the-edge",
+      "text": "CIViC assertion 334 is early evidence about Trastuzumab (molecular profile ERBB2 G292R; disease Cancer). CIViC’s summary is: ERBB2 G292R may be sensitive to HER2 inhibitors, but data are very limited. The record lists evidence level TIER_II_LEVEL_D and status SUBMITTED. This is not an FDA approval.",
+      "sources": [
+        {
+          "id": "civic:334",
+          "url": "https://civicdb.org/assertions/334",
+          "label": "CIViC assertion 334"
+        }
+      ]
+    }
+  ]
+}

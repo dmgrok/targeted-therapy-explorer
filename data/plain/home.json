@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-11-13T17:42:22+01:00",
+  "source_hash": "683b2fc0ee4f1301650000fcb0f4fe877cc784607ed28f71cb9b410725c3fb20",
+  "intro": {
+    "what": [
+      "This site maps a closed list of tumour biomarkers to approved targeted therapies and recruiting clinical trials, using public sources only.",
+      "It is general information. It is not medical advice, a diagnosis or a treatment recommendation, and it is not a medical device."
+    ],
+    "how": "Pick a biomarker to see today's options in this snapshot, tagged Mainstream (FDA-approved for that biomarker), Trials (recruiting studies that require it), or On the edge (earlier CIViC evidence). The order of options does not mean one is better than another. Talk to your oncologist.",
+    "sources": [
+      {
+        "id": "method:home",
+        "url": "",
+        "label": "This explorer's method"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "home:how",
+      "text": "Pick a biomarker to see today's options in this snapshot, tagged Mainstream (FDA-approved for that biomarker), Trials (recruiting studies that require it), or On the edge (earlier CIViC evidence). The order of options does not mean one is better than another. Talk to your oncologist.",
+      "sources": [
+        {
+          "id": "method:home",
+          "url": "",
+          "label": "This explorer's method"
+        }
+      ]
+    }
+  ]
+}
