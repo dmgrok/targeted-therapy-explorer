@@ -23,7 +23,7 @@ from build_mockup import (  # noqa: E402
     write,
     SITE,
 )
-from build_site import DISCLAIMER_SHORT  # noqa: E402
+from build_site import DISCLAIMER_SHORT, fmt_date  # noqa: E402
 
 # Opened dates, Europe/Paris (UTC+1). Official process and directory pages,
 # and the 2023 JAMA / NCI / Sid pages, were opened or re-opened 13 Nov 2026.
@@ -73,7 +73,7 @@ def src_item(href: str, label: str, note: str) -> str:
     )
 
 
-def src_block(items: list[str], summary: str = "Sources for this step, with the date each was opened") -> str:
+def src_block(items: list[str], summary: str = "Sources for this step") -> str:
     inner = "<ul class='source-dates'>" + "".join(items) + "</ul>"
     return sources_block(inner, summary)
 
@@ -85,7 +85,6 @@ def ai_box(step_id: str, help_text: str, limit_text: str) -> str:
         f'<h3 id="{esc(hid)}">How AI can help — and its limits</h3>'
         f"<p>{help_text}</p>"
         f"<p>{limit_text}</p>"
-        f'<p class="fine">This box is static text. This version of the site has no live AI and does not collect patient data.</p>'
         "</aside>"
     )
 
@@ -134,8 +133,8 @@ def place(name: str, href: str, body: str, note: str) -> str:
         "<li>"
         f'<p class="place-name"><a href="{esc(href)}">{esc(name)}</a></p>'
         f"<p>{body}</p>"
-        f'<p class="fine">{note}</p>'
-        "</li>"
+        + (f'<p class="fine">{note}</p>' if (note or "").strip() else "")
+        + "</li>"
     )
 
 
@@ -145,26 +144,26 @@ def where_to_start() -> str:
             "ERN EURACAN",
             URL["euracan"],
             "An EU network for rare adult solid cancers. It describes how it can help patients.",
-            f"EU. {OPENED_13}.",
+            "EU.",
         ),
         place(
             "INCa plateformes de génétique moléculaire",
             URL["inca_platforms"],
             "France’s national cancer institute describes hospital platforms that run molecular tests. The directory on that page is from 2020 and can change.",
-            f"France. Page dated 11 February 2022; directory from 2020. {OPENED_13}.",
+            "France. Page dated 11 February 2022; directory from 2020.",
         ),
         place(
             "INCa rare-cancer networks",
             URL["inca_rare"],
             "France’s rare-cancer networks include an expert tumour board. A related centre list seen on a companion page is dated March 2020 and can change. "
             f'<a href="{esc(URL["inca_rare_centres"])}">Centres de référence et de compétences</a>.',
-            f"France. Page dated 24 November 2024. {OPENED_13}.",
+            "France. Page dated 24 November 2024.",
         ),
         place(
             "Swiss Cancer League Q-Label",
             URL["krebsliga"],
             "A quality label. A tumour board is one criterion. This label is for breast centres only.",
-            f"Switzerland. {OPENED_13}.",
+            "Switzerland.",
         ),
     ]
     access = [
@@ -172,19 +171,19 @@ def where_to_start() -> str:
             "ANSM accès compassionnel (AAC)",
             URL["ansm_aac"],
             "A named-patient compassionate-access route in France, run by ANSM.",
-            f"France. {OPENED_13}.",
+            "France.",
         ),
         place(
             "EMA compassionate use",
             URL["ema_cu"],
             "The European Medicines Agency describes compassionate use. Member States run the programmes.",
-            f"EU. {OPENED_13}.",
+            "EU.",
         ),
         place(
             "HAS accès précoce (AAP)",
             URL["has_aap"],
             "An early-access route in France, run by HAS. The page lists four conditions. It was updated on 1 September 2026.",
-            f"France. Updated 1 September 2026. {OPENED_13}.",
+            "France. Updated 1 September 2026.",
         ),
     ]
     trials = [
@@ -192,38 +191,55 @@ def where_to_start() -> str:
             "ClinicalTrials.gov",
             URL["ctg"],
             "The U.S. public trial registry. Many studies that open in Europe are also listed here.",
-            f"{OPENED_13}.",
+            "",
         ),
         place(
             "EU Clinical Trials Information System (CTIS)",
             URL["ctis"],
             "The EU’s current public trial finder. Trials under Regulation 536/2014 are listed here.",
-            f"EU. {OPENED_13}.",
+            "EU.",
         ),
         place(
             "EU Clinical Trials Register",
             URL["eu_ctr"],
             "The older EudraCT register. Newer trials under the 2014 regulation are on CTIS.",
-            f"EU. {OPENED_13}.",
+            "EU.",
         ),
         place(
             "INCa registre des essais cliniques",
             URL["inca_trials"],
             "France’s national cancer institute trial register.",
-            f"France. {OPENED_13}.",
+            "France.",
         ),
         place(
             "Swiss Cancer Institute",
             URL["swiss_institute"],
             "A Swiss research organisation, formerly SAKK. Its patient page describes studies.",
-            f"Switzerland. {OPENED_13}.",
+            "Switzerland.",
         ),
         place(
             "Swiss HumRes",
             URL["humres"],
-            "Switzerland’s public search for human research studies. On 13 November 2026, kofam.ch redirected here.",
-            f'Switzerland. {OPENED_13}. <a href="{esc(URL["kofam"])}">kofam.ch</a> redirect observed the same day.',
+            "Switzerland’s public search for human research studies. kofam.ch redirects here.",
+            "Switzerland.",
         ),
+    ]
+    place_sources = [
+        src_item(URL["euracan"], "ERN EURACAN, How EURACAN helps you", f"EU. {OPENED_13}."),
+        src_item(URL["inca_platforms"], "INCa, Plateformes de génétique moléculaire des cancers", f"France. 11 February 2022; directory from 2020. {OPENED_13}."),
+        src_item(URL["inca_rare"], "INCa, Organisation des soins pour les cancers rares", f"France. 24 November 2024. {OPENED_13}."),
+        src_item(URL["inca_rare_centres"], "INCa, Centres de référence et de compétences", f"France. Centre list seen dated March 2020. {OPENED_13}."),
+        src_item(URL["krebsliga"], "Krebsliga, Qualität in der Behandlung (Q-Label)", f"Switzerland. Breast centres. {OPENED_13}."),
+        src_item(URL["ansm_aac"], "ANSM, Encadrer l’accès précoce aux produits de santé", f"France. {OPENED_13}."),
+        src_item(URL["ema_cu"], "EMA, Compassionate use", f"EU. {OPENED_13}."),
+        src_item(URL["has_aap"], "HAS, Accès précoce à un médicament", f"France. Updated 1 September 2026. {OPENED_13}."),
+        src_item(URL["ctg"], "ClinicalTrials.gov", f"{OPENED_13}."),
+        src_item(URL["ctis"], "EU Clinical Trials Information System (CTIS)", f"EU. {OPENED_13}."),
+        src_item(URL["eu_ctr"], "EU Clinical Trials Register", f"EU. {OPENED_13}."),
+        src_item(URL["inca_trials"], "INCa, Registre des essais cliniques", f"France. {OPENED_13}."),
+        src_item(URL["swiss_institute"], "Swiss Cancer Institute, For patients", f"Switzerland. {OPENED_13}."),
+        src_item(URL["humres"], "HumRes, Swiss human research study search", f"Switzerland. {OPENED_13}."),
+        src_item(URL["kofam"], "kofam.ch", f"Redirect to HumRes observed 13 November 2026. {OPENED_13}."),
     ]
     return (
         '<section class="places" id="where-to-start">'
@@ -247,9 +263,9 @@ def where_to_start() -> str:
         '<ul class="places-list">' + "".join(trials) + "</ul>"
         "</div>"
         '<p class="chict-mention" id="chict-mention">China also has a trial registry, ChiCTR. '
-        "This site mentions it only. It is not used here as a search tool, "
-        "and that registry was not opened as a working finder for this page.</p>"
-        "</section>"
+        "This site mentions it only. It is not used here as a search tool.</p>"
+        + src_block(place_sources, "Sources for these lists")
+        + "</section>"
     )
 
 
@@ -259,10 +275,6 @@ def sid_example() -> str:
         "no trials available for me, I started doing maximum diagnostics, "
         "created new treatments, started doing treatments in parallel, and "
         "began scaling this for others."
-    )
-    q2 = (
-        "emphasize along the way how AIS helped us work through enormous "
-        "amounts of data and navigate new treatments."
     )
     q3 = "I’m not gonna trust this out of the box, it can certainly make mistakes."
     q4 = "I currently have no evidence of disease."
@@ -277,42 +289,27 @@ def sid_example() -> str:
         "This is n=1, not a template to copy."
         "</div>"
         "<p>Sid Sijbrandij has bone cancer, called osteosarcoma, in the spine. "
-        "Quotes below are only from pages opened or re-opened on 13 November 2026. "
         "A longer telling, with a timeline, is on his "
         '<a href="cases/sijbrandij.html">case study page</a>.</p>'
         "<h3>In his own words</h3>"
         '<blockquote class="case-quote"><p>'
         + esc(q1)
         + "</p>"
-        '<footer>Per his <a href="' + esc(URL["sytse"]) + '">cancer page</a>. '
-        "Page re-opened 13 November 2026.</footer></blockquote>"
-        "<p>In an OpenAI Forum talk, posted 18 March 2026, he said he would "
-        "“" + esc(q2) + "” "
+        '<footer>Per his <a href="' + esc(URL["sytse"]) + '">cancer page</a>.</footer></blockquote>'
+        "<p>In an OpenAI Forum talk, posted 18 March 2026, he said AI tools "
+        "helped them work through enormous amounts of data and navigate new treatments. "
         "The talk describes ChatGPT, then expert review. A collaborator, Jacob Stern, "
         "said there, of a custom agent harness: "
         "“" + esc(q3) + "”</p>"
-        '<p class="fine">Per the <a href="' + esc(URL["forum"]) + '">OpenAI Forum on-page transcript</a>. '
-        "Posted 18 March 2026. Re-opened 13 November 2026. "
-        "The pages opened for this work do not spell out, in his own words, "
-        "how he used any AI tool, beyond what is quoted here.</p>"
+        '<p class="fine">Per the <a href="' + esc(URL["forum"]) + '">OpenAI Forum on-page transcript</a>, '
+        "posted 18 March 2026.</p>"
         '<blockquote class="case-quote"><p>'
         + esc(q4)
         + "</p><p>"
         + esc(q5)
         + "</p>"
-        '<footer>Per his <a href="' + esc(URL["substack"]) + '">Substack post of 20 January 2026</a>. '
-        "Re-opened 13 November 2026.</footer></blockquote>"
-        '<p><strong>As of 20 January 2026, per his Substack post.</strong> '
-        "That post, in his own text, does not mention ChatGPT. "
-        "A commenter mentioned “AI, Kilo”; that is not Sid. "
-        "The <a href=\"" + esc(URL["osteosarc"]) + "\">osteosarc.com</a> homepage, as opened, "
-        "did not describe AI use.</p>"
-        "<p><strong>Unverified:</strong> no page opened for this work shows him saying "
-        "he used Kilo Code for his cancer work. He and Stern describe ChatGPT "
-        "and a custom harness. This page does not claim Kilo Code as his cancer tool. "
-        "An OpenAI Academy article about him, dated 6 August 2026, was published by "
-        "OpenAI, so it is not an independent source. It was re-opened the same day "
-        "and is not used here for quotes.</p>"
+        '<footer>Per his <a href="' + esc(URL["substack"]) + '">Substack post of 20 January 2026</a>.</footer></blockquote>'
+        "<p><strong>As of 20 January 2026, per his Substack post.</strong></p>"
         "<p>The pattern worth taking is speed of digestion, under the care team. "
         "It is never a system that chooses treatment.</p>"
         + src_block(
@@ -323,7 +320,7 @@ def sid_example() -> str:
                 src_item(URL["osteosarc"], "osteosarc.com", f"Homepage text. {OPENED_13}. No AI-use description in that text."),
                 src_item(URL["academy"], "OpenAI Academy article", f"6 August 2026. Published by OpenAI, so not independent. {OPENED_13_RE}. Not used for quotes."),
             ],
-            "Sources for this example, with the date each was opened",
+            "Sources for this example",
         )
         + "</section>"
     )
@@ -333,7 +330,8 @@ def ai_limits() -> str:
     return (
         '<section class="ai-limits" id="ai-limits">'
         "<h2>Limits on every AI use</h2>"
-        '<p>The figures in this first paragraph are from <strong>2023 studies of GPT-3.5, an older model</strong>. '
+        "<p>The figures in this first paragraph are from "
+        "<strong>2023 studies of GPT-3.5, an older model</strong>. "
         "They may not describe current tools.</p>"
         "<p>A <a href=\"" + esc(URL["jama_2023"]) + "\">JAMA Oncology letter</a>, "
         "published online 24 August 2023, found chatbot responses "
@@ -345,8 +343,7 @@ def ai_limits() -> str:
         "NCI, on 3 October 2023, quoted the lead author: chatbots can "
         "“seamlessly combine correct and incorrect treatment recommendations, making it "
         "difficult even for experts to detect the errors.” "
-        "Those studies used GPT-3.5 and peers. "
-        f'<span class="fine">{OPENED_13_RE}.</span></p>'
+        "Those studies used GPT-3.5 and peers.</p>"
         "<p>A later, peer-reviewed study was published on 23 October 2024 in "
         '<a href="' + esc(URL["jama_2024"]) + '">JAMA Network Open</a>. '
         "It tested 10 chatbots, including later models, on 79 clinical oncology cases. "
@@ -356,20 +353,66 @@ def ai_limits() -> str:
         "Nine of the 10 chatbots, including all three that could read images, scored "
         "lower on free-text than on multiple-choice. "
         "The authors wrote that more work is needed to improve reliability in oncology. "
-        f'<span class="fine">{OPENED_14}. doi:10.1001/jamanetworkopen.2024.37711.</span></p>' 
-        "<p>No official privacy page for consumer chatbots was opened for this work. "
-        "Do not paste identifiable records into a public tool. "
-        "This site stores no patient data, has no forms that collect anything, "
-        "and has no live AI in this version.</p>"
+        "doi:10.1001/jamanetworkopen.2024.37711.</p>"
+        "<p>Do not paste identifiable records into a public tool. "
+        "This site has no forms that collect anything, and no live AI in this version.</p>"
         + src_block(
             [
                 src_item(URL["jama_2023"], "JAMA Oncology, “Use of Artificial Intelligence Chatbots for Cancer Treatment Information”", f"Published online 24 August 2023. {OPENED_13_RE}."),
                 src_item(URL["nci_chatbots"], "NCI Cancer Currents, “Can Artificial Intelligence–Driven Chatbots Correctly Answer Questions about Cancer?”", f"3 October 2023, Edward Winstead. {OPENED_13_RE}."),
                 src_item(URL["jama_2024"], "JAMA Network Open, “Performance of Multimodal Artificial Intelligence Chatbots Evaluated on Clinical Oncology Cases”", f"Published 23 October 2024. doi:10.1001/jamanetworkopen.2024.37711. {OPENED_14}."),
             ],
-            "Sources for these limits, with the date each was opened",
+            "Sources for these limits",
         )
         + "</section>"
+    )
+
+
+def how_we_checked() -> str:
+    """Verification notes for this page: not part of the reader-facing body."""
+    transcript = (
+        "emphasize along the way how AIS helped us work through enormous "
+        "amounts of data and navigate new treatments."
+    )
+    return (
+        '<details class="sources-toggle how-we-checked" id="how-we-checked">'
+        "<summary>How we checked</summary>"
+        '<div class="sources-body">'
+        "<p>Official process and directory pages were opened on 13 November 2026 "
+        "(Europe/Paris). High confidence for the steps and those lists. "
+        "Medium confidence for how widely a separate molecular tumour board is "
+        "used outside France. Some official directories are older than 2024 "
+        "and can change. The NCI biomarker-testing page was last updated on "
+        "14 December 2021; its wording that testing “is not yet part of routine "
+        "care for most patients” may be dated.</p>"
+        "<p>The 2023 JAMA Oncology letter and the NCI Cancer Currents commentary "
+        "were re-opened on 13 November 2026. The 2024 JAMA Network Open study "
+        f"was opened on 14 November 2026 (Europe/Paris). {OPENED_14}.</p>"
+        "<p>No official privacy page for consumer chatbots was opened for this work, "
+        "which is why this page says not to paste identifiable records into a "
+        "public tool.</p>"
+        "<p>ChiCTR is mentioned only. It was not opened as a working finder for "
+        "this page. A redirect from kofam.ch to Swiss HumRes was observed on "
+        "13 November 2026.</p>"
+        "<h3>Sid Sijbrandij’s story</h3>"
+        "<p>Quotes on this page are only from pages opened or re-opened on "
+        "13 November 2026. The OpenAI Forum on-page transcript, posted 18 March 2026, "
+        "reads: “" + esc(transcript) + "” "
+        "“AIS” looks like a transcript typing slip, so the visible page "
+        "paraphrases that part and does not print it as his words.</p>"
+        "<p>His Substack post of 20 January 2026, in his own text, does not "
+        "mention ChatGPT. A commenter mentioned “AI, Kilo”; that is not Sid. "
+        "The osteosarc.com homepage, as opened, did not describe AI use. "
+        "No page opened for this work shows him saying he used Kilo Code for "
+        "his cancer work. He and Stern describe ChatGPT and a custom harness. "
+        "This page does not claim Kilo Code as his cancer tool. "
+        "An OpenAI Academy article about him, dated 6 August 2026, was published "
+        "by OpenAI, so it is not an independent source. It was re-opened the "
+        "same day and is not used here for quotes. The pages opened for this "
+        "work do not spell out, in his own words, how he used any AI tool, "
+        "beyond what is quoted or paraphrased on this page.</p>"
+        "</div>"
+        "</details>"
     )
 
 
@@ -492,24 +535,10 @@ def page_body() -> str:
     )
     return (
         "<h1>Steps people take today for personalised cancer treatment</h1>"
-        '<p class="lede">This page sets out a common path, in plain language, '
-        "and types of official places to start looking — with your care team. "
-        "It is general information. It is not medical advice, a diagnosis or a "
-        "treatment recommendation. It is not a care plan.</p>"
         '<p class="lede">Each step has a short explanation, a static box on how AI '
-        "can help you digest this and what it must not do, and sources with the "
-        "date each was opened. There is no live AI on this site. There is no form "
-        "and no collection of patient data. This is one shared path. It is not "
-        "organised by country.</p>"
-        '<aside class="confidence" id="confidence" aria-labelledby="confidence-h">'
-        '<h2 id="confidence-h">Confidence</h2>'
-        "<p>High confidence for the steps and the official lists, from pages "
-        "opened on 13 November 2026 (Europe/Paris). Medium confidence for how "
-        "widely a separate molecular tumour board is used outside France. "
-        "Figures from 2023 studies used GPT-3.5, an older model. They may not "
-        "describe current tools. A 2024 study of later chatbots is also cited "
-        "below. Some official directories are older than 2024 and can change.</p>"
-        "</aside>"
+        "can help you digest this and what it must not do, and sources. "
+        "This is one shared path. It is not organised by country.</p>"
+        '<p class="confidence-line" id="confidence">Some figures come from studies of older AI models; dates are shown with each source.</p>'
         '<section id="process">'
         "<h2>The process</h2>"
         "<p>Personalised cancer care uses tests on the tumour’s genes, proteins "
@@ -518,14 +547,13 @@ def page_body() -> str:
         "routine to select treatment in some cancers. It names non-small cell lung "
         "cancer, breast cancer and colorectal cancer. The same page says this "
         "“is not yet part of routine care for most patients.” That page was last "
-        "updated on 14 December 2021. The wording may be dated. A result is a "
-        "snapshot.</p>"
+        "updated on 14 December 2021. A result is a snapshot.</p>"
         + src_block(
             [
                 src_item(URL["nci_biomarker"], "NCI, Biomarker testing for cancer treatment", f"Page last updated 14 December 2021. {OPENED_13}."),
                 src_item(URL["esmo_pcm"], "ESMO, Personalised Cancer Medicine: a guide for patients", f"2013 — dated; used for definition only. {OPENED_13}. Linked, not reproduced as guideline content."),
             ],
-            "Sources for this introduction, with the date each was opened",
+            "Sources for this introduction",
         )
         + "</section>"
         + diagnosis
@@ -538,9 +566,26 @@ def page_body() -> str:
         + ai_limits()
         + where_to_start()
         + sid_example()
+        + how_we_checked()
         + '<p class="fine">This site does not reproduce NCCN or ESMO guideline content. '
         "Where a professional document is named, it is linked. "
         f'{esc(DISCLAIMER_SHORT)}</p>'
+    )
+
+
+def merged_notice(snap: dict) -> str:
+    """One short notice: not medical advice, plus a link to the full notice page."""
+    return (
+        '<div class="notice notice-short" role="note">'
+        f"<strong>{esc(DISCLAIMER_SHORT)}</strong> "
+        "This page is general information about a common path and official "
+        "places to start looking, for use with your care team. It is not a "
+        "diagnosis, a treatment recommendation, or a care plan. There is no "
+        "live AI on this site, and no collection of patient data. "
+        "Data is a snapshot as of "
+        f'<time datetime="{esc(snap["snapshotDate"])}">{esc(fmt_date(snap["snapshotDate"]))}</time>. '
+        '<a href="notice.html">Full notice</a>.'
+        "</div>"
     )
 
 
@@ -553,7 +598,8 @@ def write_steps(snap: dict) -> None:
             snap,
             page_body(),
             crumbs([("index.html", "Home")], 0),
-            full_notice=True,
+            full_notice=False,
+            custom_notice=merged_notice(snap),
         ),
     )
 

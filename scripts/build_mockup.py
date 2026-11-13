@@ -521,25 +521,29 @@ def choice_list(items: list[dict], heading: str, question: str) -> str:
     )
 
 
-def page_shell(title: str, depth: int, snap: dict, body: str, crumbs_h: str, full_notice: bool = False) -> str:
+def page_shell(title: str, depth: int, snap: dict, body: str, crumbs_h: str, full_notice: bool = False, custom_notice: str | None = None) -> str:
     ct_ts = (snap.get("clinicalTrials") or {}).get("dataTimestamp") or ""
     data_rel = asset_prefix(depth) + "data/snapshot.json"
     notice_rel = asset_prefix(depth) + "notice.html"
-    short = (
-        f'<div class="notice notice-short" role="note">'
-        f'<strong>{esc(DISCLAIMER_SHORT)}</strong> '
-        f'<a href="{esc(notice_rel)}">Full notice</a>.'
-        f'</div>'
-    )
-    long = ""
-    if full_notice:
-        long = (
-            f'<div class="notice notice-full" role="note">'
-            f'{esc(DISCLAIMER_LONG)} '
-            f'Data is a snapshot as of <time datetime="{esc(snap["snapshotDate"])}">{esc(fmt_date(snap["snapshotDate"]))}</time>. '
-            f'ClinicalTrials.gov processed this trial data on <time datetime="{esc(ct_ts)}">{esc(fmt_date(ct_ts))}</time>.'
+    if custom_notice is not None:
+        short = custom_notice
+        long = ""
+    else:
+        short = (
+            f'<div class="notice notice-short" role="note">'
+            f'<strong>{esc(DISCLAIMER_SHORT)}</strong> '
+            f'<a href="{esc(notice_rel)}">Full notice</a>.'
             f'</div>'
         )
+        long = ""
+        if full_notice:
+            long = (
+                f'<div class="notice notice-full" role="note">'
+                f'{esc(DISCLAIMER_LONG)} '
+                f'Data is a snapshot as of <time datetime="{esc(snap["snapshotDate"])}">{esc(fmt_date(snap["snapshotDate"]))}</time>. '
+                f'ClinicalTrials.gov processed this trial data on <time datetime="{esc(ct_ts)}">{esc(fmt_date(ct_ts))}</time>.'
+                f'</div>'
+            )
     notice_h = f"""
     {short}
     {long}

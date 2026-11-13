@@ -60,9 +60,7 @@ def test_front_door() -> None:
         ok("index is the steps front door")
     if "Not medical advice. Talk to your oncologist." not in html:
         err("steps page missing short banner")
-    if "This site is general information only" not in html:
-        err("steps page missing full notice")
-    if "notice.html" not in html:
+    if "notice.html" not in html or "Full notice" not in html:
         err("steps page does not link to the full notice")
     if re.search(r"<form\b", html, re.I):
         err("steps page has a form")
@@ -77,10 +75,23 @@ def test_front_door() -> None:
         err("steps page looks like a live AI chat")
     if "no live ai" not in vis.lower() and "no live ai" not in html.lower():
         err("steps page does not say there is no live AI")
-    if "no patient data" not in vis.lower() and "stores no patient data" not in vis.lower():
-        # The phrase is in a details-stripped visible box ("This site stores no patient data")
-        if "stores no patient data" not in html.lower() and "no patient data" not in html.lower():
-            err("steps page does not say it stores no patient data")
+    if (
+        "no patient data" not in vis.lower()
+        and "stores no patient data" not in vis.lower()
+        and "no collection of patient data" not in vis.lower()
+    ):
+        if (
+            "stores no patient data" not in html.lower()
+            and "no patient data" not in html.lower()
+            and "no collection of patient data" not in html.lower()
+        ):
+            err("steps page does not say it collects no patient data")
+    if html.count('class="notice notice-full"') or html.count("notice-full"):
+        err("steps page still has a second, full disclaimer block; merge into one short notice")
+    if "Some figures come from studies of older AI models" not in vis:
+        err("confidence is not a single plain line about older AI models")
+    if "High confidence for the steps" in vis:
+        err("detailed confidence box is still in the visible body")
     ok("banner, notice, no form, no live AI, no recommendation")
 
 
@@ -186,19 +197,21 @@ def test_sid_example() -> None:
         err("Sid section missing the second Substack quote")
     if "maximum diagnostics" not in chunk:
         err("Sid section missing the cancer-page quote")
-    if "AIS helped us work through enormous amounts of data" not in chunk:
-        err("Sid section missing the Forum quote")
+    if "work through enormous amounts of data" not in chunk:
+        err("Sid section missing the Forum paraphrase")
+    if "AIS helped" in visible_text(chunk):
+        err("Sid visible text prints the transcript typo 'AIS helped' as his words")
     if "I’m not gonna trust this out of the box" not in chunk and "I'm not gonna trust this out of the box" not in chunk:
         err("Sid section missing Stern’s verified quote")
     if "As of 20 January 2026, per his Substack post" not in chunk:
         err("Sid status is not 'As of <date>, per <source>'")
     if 'href="cases/sijbrandij.html"' not in chunk:
         err("Sid section does not link to the case study page")
-    # Must not claim Kilo Code as his cancer tool.
-    if re.search(r"used Kilo Code", chunk) and "Unverified" not in chunk:
-        err("Sid section claims Kilo Code use without the unverified caveat")
-    if "does not claim Kilo Code as his cancer tool" not in chunk:
-        err("Sid section does not state that Kilo Code is not claimed as his cancer tool")
+    # Must not claim Kilo Code as his cancer tool, anywhere.
+    if re.search(r"used Kilo Code", chunk) and "does not claim" not in (section(html, "how-we-checked") + chunk):
+        err("page claims Kilo Code use")
+    if "Kilo Code" in visible_text(chunk):
+        err("Sid visible text mentions Kilo Code; keep that only in How we checked")
     ok("Sid example uses the opener, verified quotes, and dated status")
 
 
@@ -223,6 +236,54 @@ def test_gpt35_and_newer_evidence() -> None:
     if "jamanetworkopen.2024.37711" not in html and "fullarticle/2825235" not in html:
         err("2024 paper is not linked")
     ok("2023 GPT-3.5 figures are labelled; 2024 opened evidence is cited")
+
+
+def _reader_body(html: str) -> str:
+    """Visible body, outside sources toggles and the How we checked note."""
+    # visible_text already drops <details>. Also drop a How we checked
+    # section if it is ever rendered outside details.
+    html = re.sub(
+        r'<section[^>]*id="how-we-checked"[^>]*>.*?</section>',
+        " ",
+        html,
+        flags=re.I | re.S,
+    )
+    html = re.sub(
+        r'<details[^>]*id="how-we-checked"[^>]*>.*?</details>',
+        " ",
+        html,
+        flags=re.I | re.S,
+    )
+    return visible_text(html)
+
+
+def test_no_verification_chatter() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    body = _reader_body(html)
+    for phrase in ("opened", "Unverified", "commenter", "AIS helped"):
+        # Case-sensitive for Unverified and AIS; case-insensitive for opened/commenter
+        if phrase in ("opened", "commenter"):
+            hit = phrase.lower() in body.lower()
+        else:
+            hit = phrase in body
+        if hit:
+            # Show a short window for debugging.
+            low = body.lower() if phrase in ("opened", "commenter") else body
+            key = phrase.lower() if phrase in ("opened", "commenter") else phrase
+            i = low.find(key)
+            window = body[max(0, i - 40): i + 60]
+            err(f"reader-facing body contains {phrase!r}: …{window}…")
+    # How we checked (or a sources toggle) must still hold the moved notes.
+    checked = section(html, "how-we-checked")
+    if not checked and 'id="how-we-checked"' not in html:
+        err("missing How we checked note")
+    else:
+        blob = checked or html
+        if "Kilo Code" in blob and "does not claim Kilo Code" not in blob:
+            err("How we checked is missing the Kilo Code non-claim")
+        if "13 November 2026" not in blob and "Opened 13 November 2026" not in html:
+            err("opened dates are missing from sources / How we checked")
+    ok("reader-facing body has no verification chatter; notes are in sources / How we checked")
 
 
 def test_readability() -> None:
@@ -261,6 +322,7 @@ def main() -> int:
     test_where_to_start()
     test_sid_example()
     test_gpt35_and_newer_evidence()
+    test_no_verification_chatter()
     test_readability()
     test_identity()
     if errors:

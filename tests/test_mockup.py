@@ -165,9 +165,13 @@ def test_notice_and_banner() -> None:
     leaf = (
         TREE / "EGFR" / "lung-cancer" / "egfr-exon-19-deletion-or-l858r" / "as-a-first-treatment.html"
     ).read_text(encoding="utf-8")
-    if "This site is general information only" not in home or "This site is general information only" not in leaf:
-        err("full disclaimer is missing from the home or the table page")
-    ok("short banner, notice page, and full text on home and table")
+    # The steps front door has one short merged notice and a link to the
+    # full-notice page. Table pages still carry the full disclaimer text.
+    if "Not medical advice. Talk to your oncologist." not in home or "notice.html" not in home:
+        err("steps home is missing the short notice or the full-notice link")
+    if "This site is general information only" not in leaf:
+        err("full disclaimer is missing from the table page")
+    ok("short banner, notice page, and full text on the table; merged notice on home")
 
 
 def test_what_it_is_and_combo() -> None:

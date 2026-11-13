@@ -491,3 +491,10 @@ a.choice-cta {
 #sid-sijbrandij, #step-matching, #ai-limits, .path-step { scroll-margin-top: 0.5rem; }
 .source-dates { margin: 0.4rem 0 0; padding-left: 1.2rem; }
 .source-dates li { margin: 0.25rem 0; }
+
+.confidence-line {
+  max-width: 42rem;
+  margin: 0 0 1.4rem;
+  color: #1b4f4c;
+  font-size: 1rem;
+}
