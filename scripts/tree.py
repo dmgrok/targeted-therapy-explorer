@@ -93,7 +93,7 @@ MUTATION_SUBTYPES: list[tuple[str, list[str]]] = [
     ("HER2-positive", [
         r"HER2[- ]positive", r"HER-2[- ]positive", r"HER2\+", r"ERBB2[- ]positive",
         r"HER2-overexpress", r"HER2[- ]overexpress",
-        r"overexpress(?:ing)?\s+(?:human\s+)?(?:epidermal growth factor receptor 2|HER2)",
+        r"overexpress(?:es|ing)?\s+(?:the\s+)?(?:human\s+)?(?:epidermal growth factor receptor 2|HER2)",
     ]),
     ("HER2-low", [r"HER2[- ]low", r"HER2-low"]),
     ("HER2 mutation", [r"HER2[- ]mutat", r"ERBB2[- ]mutat"]),
@@ -220,6 +220,72 @@ def _is_limitation(text: str) -> bool:
     ) and not re.search(r"is indicated", text or "", re.I)
 
 
+
+# An indication that continues after a Limitations of Use sentence,
+# as in Lapatinib's highlights: capecitabine, then a Limitation, then
+# "letrozole for the treatment…". Section-numbered indications (1.2 …)
+# are not matched here; those already split on their own.
+_CONTINUATION_IND = re.compile(
+    r"(?:^|\.\s+)("
+    r"[A-Za-z][A-Za-z0-9\-]{1,40}"
+    r"(?:\s+[A-Za-z][A-Za-z0-9\-]{0,40}){0,2}"
+    r"\s+for the treatment\b[\s\S]*)",
+    re.I,
+)
+
+
+def _combo_preamble(text: str) -> str:
+    m = re.search(r"(.*?)\bin combination with:?", text or "", re.I)
+    return (m.group(0).strip() if m else "")
+
+
+
+def _trim_trailing_limitations(body: str) -> str:
+    """Drop trailing sentences that only qualify or limit a use."""
+    sents = re.split(r"(?<=\.)\s+", (body or "").strip())
+    kept = []
+    for s in sents:
+        if re.search(
+            r"has not been compared|has not been established|"
+            r"not indicated for|not recommended for|"
+            r"safety and efficacy.{0,80}not (?:been )?established|"
+            r"^Limitations of Use\b",
+            s,
+            re.I,
+        ):
+            break
+        kept.append(s)
+    return " ".join(kept).strip(" .;,-")
+
+
+def _indication_after_limitation(text: str, preamble: str = "") -> str:
+    """Keep an indication that follows a Limitations of Use sentence.
+
+    Some labels put a Limitations sentence between two partners of the
+    same "in combination with:" list. Splitting on "Limitations of Use:"
+    and keeping only the head, or dropping the whole Limitations
+    paragraph, silently drops that later indication.
+    """
+    mlim = re.search(r"Limitations of Use\s*:", text or "", re.I)
+    rest = text[mlim.end():] if mlim else (text or "")
+    if re.match(r"\s*\d+\.\d+", rest):
+        return ""
+    m = _CONTINUATION_IND.search(rest)
+    if not m:
+        return ""
+    body = m.group(1).strip(" .;,-")
+    if not body or len(body) < 12:
+        return ""
+    if re.match(r"\d+\.\d+", body):
+        return ""
+    body = _trim_trailing_limitations(body)
+    if not body:
+        return ""
+    if preamble:
+        return f"{preamble} {body}".strip()
+    return body
+
+
 def _clauses(text: str) -> list[str]:
     """Split a full Indications and Usage section into indication clauses.
 
@@ -247,6 +313,7 @@ def _clauses(text: str) -> list[str]:
     has_detailed = any(re.match(r"\d+\.\d+\s", p) for p in raw)
     parts: list[str] = []
     in_detailed = not has_detailed
+    last_preamble = ""
     for p in raw:
         if re.match(r"\d+\.\d+\s", p):
             in_detailed = True
@@ -254,10 +321,36 @@ def _clauses(text: str) -> list[str]:
             continue
         if re.match(r"1\s+INDICATIONS AND USAGE\b", p, re.I) and has_detailed:
             continue
-        if _is_limitation(p):
+        is_lim_para = bool(re.match(r"Limitations of Use\s*:", p, re.I)) or (
+            _is_limitation(p) and re.search(r"Limitations of Use\s*:", p, re.I)
+        )
+        # Only indication clauses (not Limitations paragraphs) may refresh
+        # the "in combination with:" preamble; otherwise the limitation
+        # sentence itself is prepended and swallows the next partner.
+        if _combo_preamble(p) and not is_lim_para:
+            last_preamble = _combo_preamble(p)
+        if is_lim_para:
+            cont = _indication_after_limitation(p, last_preamble)
+            if not cont:
+                continue
+            p = cont
+        elif re.search(r"Limitations of Use\s*:", p, re.I):
+            head = re.split(
+                r"Limitations of Use\s*:", p, maxsplit=1, flags=re.I
+            )[0].strip(" .;,-")
+            # Preamble from the head (a real indication), not from the
+            # Limitations sentence that follows it.
+            head_pre = _combo_preamble(head) or last_preamble
+            if _combo_preamble(head):
+                last_preamble = _combo_preamble(head)
+            cont = _indication_after_limitation(p, head_pre)
+            if len(head) >= 12:
+                parts.append(head)
+            if cont and cont != head:
+                parts.append(cont)
             continue
-        # Drop a trailing Limitations sentence inside an otherwise valid clause.
-        p = re.split(r"Limitations of Use\s*:", p, maxsplit=1, flags=re.I)[0].strip()
+        elif _is_limitation(p):
+            continue
         if len(p) < 12:
             continue
         parts.append(p)
@@ -304,7 +397,7 @@ def _selection_language(text: str, biomarker_id: str) -> bool:
     if biomarker_id == "KRAS-G12C":
         return bool(re.search(r"KRAS\s*G12C|\bG12C\b", t, re.I))
     if biomarker_id == "HER2":
-        return bool(re.search(r"HER2[- ]positive|HER2[- ]low|HER2[- ]mutat|HER-2|ERBB2|HER2-overexpress", t, re.I))
+        return bool(re.search(r"HER2[- ]positive|HER2[- ]low|HER2[- ]mutat|HER-2|ERBB2|HER2-overexpress|overexpress(?:es|ing)?\s+(?:the\s+)?(?:human\s+)?(?:epidermal growth factor receptor 2|HER2)", t, re.I))
     if biomarker_id == "NTRK":
         return bool(re.search(r"\bNTRK|neurotrophic", t, re.I))
     if biomarker_id == "MSI-H-dMMR":
@@ -401,14 +494,45 @@ def therapy_branches(therapy: dict, biomarker_id: str) -> list[tuple[str, str, s
     named_cw = {(c, w) for (c, m, w) in triples if not _unknown(m)}
     named_mw = {(m, w) for (c, m, w) in triples if not _unknown(c)}
     has_specific = any(not (_unknown(c) and _unknown(m) and _unknown(w)) for (c, m, w) in triples)
+
+    def _clause_sig(cl: str) -> str:
+        partners = combinations_in(cl)
+        if partners:
+            return "partners:" + " ".join(sorted(x.lower() for x in partners))
+        return "text:" + re.sub(r"\s+", " ", (cl or "").lower())[:160]
+
+    def _distinct_clauses(triple, others_axes):
+        """True when this leaf's clauses are not already on a more specific leaf."""
+        these = clause_map.get(triple, [])
+        other = []
+        for tr, cls in clause_map.items():
+            if tr == triple:
+                continue
+            if others_axes(tr):
+                other.extend(cls)
+        other_sigs = {_clause_sig(cl) for cl in other}
+        return any(_clause_sig(cl) not in other_sigs for cl in these)
+
     kept = set()
     for (c, m, w) in triples:
         if _unknown(w) and (c, m) in named_cm:
-            continue
+            if not _distinct_clauses(
+                (c, m, w),
+                lambda tr: tr[0] == c and tr[1] == m and not _unknown(tr[2]),
+            ):
+                continue
         if _unknown(m) and (c, w) in named_cw:
-            continue
+            if not _distinct_clauses(
+                (c, m, w),
+                lambda tr: tr[0] == c and tr[2] == w and not _unknown(tr[1]),
+            ):
+                continue
         if _unknown(c) and (m, w) in named_mw:
-            continue
+            if not _distinct_clauses(
+                (c, m, w),
+                lambda tr: tr[1] == m and tr[2] == w and not _unknown(tr[0]),
+            ):
+                continue
         if has_specific and _unknown(c) and _unknown(m) and _unknown(w):
             continue
         kept.add((c, m, w))

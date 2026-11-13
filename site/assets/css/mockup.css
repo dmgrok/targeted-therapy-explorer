@@ -245,11 +245,35 @@ h1 {
   display: inline;
   margin: 0;
 }
+/* Same trap as .notice-short: style.css .notice sets cream text on pink.
+   This box used a white background and inherited the cream, so the long
+   disclaimer was washed out (about 1.15:1). Ink on white is 9.25:1. */
+.notice.notice-full,
 .notice-full {
   font-size: 0.98rem;
   margin: 0 0 0.8rem;
   padding: 0.5rem 0.7rem;
+  border: 0;
+  border-left: 4px solid #1b4f4c;
   background: #fff;
+  color: #1b4f4c;
+  font-weight: 600;
+}
+.notice.notice-full a,
+.notice-full a {
+  color: #b02058;
+  text-decoration: underline;
+}
+.notice.notice-full strong,
+.notice-full strong {
+  color: #122e2c;
+  font-family: inherit;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: inherit;
+  font-weight: 700;
+  display: inline;
+  margin: 0;
 }
 .choice-why {
   display: block;

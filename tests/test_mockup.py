@@ -350,6 +350,101 @@ def test_every_biomarker_tree() -> None:
     ok("all seven biomarkers use the decision-tree design; leftover long pages are gone")
 
 
+
+def test_lapatinib_letrozole_not_dropped() -> None:
+    """The letrozole indication sits after a Limitations of Use sentence.
+
+    FDA label set_id 302a4346-a68d-af3e-e063-6294a90a4a6f, version 1
+    (effective 2025-03-12): Lapatinib is indicated in combination with
+    capecitabine (after prior therapy) and, after a Limitations sentence
+    that applies only to capecitabine, with letrozole for postmenopausal
+    women with hormone-receptor-positive, HER2-overexpressing metastatic
+    breast cancer. A split that drops everything after "Limitations of
+    Use:" must not silently drop that second indication.
+    """
+    from labels import entry_for, indications, combinations_in, combo_note
+    from tree import _clauses, therapy_branches, leaf_clauses
+
+    entry = entry_for({"name": "Lapatinib"})
+    if not entry:
+        err("Lapatinib is missing from data/labels.json")
+        return
+    set_id = entry.get("set_id") or ""
+    version = str(entry.get("version") or "")
+    if set_id != "302a4346-a68d-af3e-e063-6294a90a4a6f" or version != "1":
+        err(
+            f"Lapatinib label identity changed: set_id={set_id} version={version}; "
+            "re-check the letrozole indication against the new label"
+        )
+    text = indications({"name": "Lapatinib"})
+    if "letrozole" not in text.lower():
+        err("committed Lapatinib label no longer names letrozole")
+        return
+    clauses = _clauses(text)
+    letrozole_clauses = [c for c in clauses if "letrozole" in c.lower()]
+    if not letrozole_clauses:
+        err(
+            "Lapatinib letrozole indication was dropped by the "
+            "Limitations-of-Use split (set_id "
+            "302a4346-a68d-af3e-e063-6294a90a4a6f, version 1)"
+        )
+        return
+    if any("capecitabine" in c.lower() and "letrozole" in c.lower() for c in letrozole_clauses):
+        err("letrozole unit still contains the capecitabine clause")
+    therapy = {"name": "Lapatinib"}
+    triples = therapy_branches(therapy, "HER2")
+    after = ("breast cancer", "HER2-positive", "after another drug")
+    unknown = ("breast cancer", "HER2-positive", "label does not say when it is used")
+    if after not in triples:
+        err(f"Lapatinib capecitabine use missing from branches: {triples}")
+    if unknown not in triples:
+        err(
+            f"Lapatinib letrozole use missing from branches "
+            f"(silently dropped as an unknown-when leftover?): {triples}"
+        )
+    if after in triples:
+        note = combo_note(leaf_clauses(therapy, after))
+        if "capecitabine" not in note.lower():
+            err(f"after-another-drug Lapatinib note missing capecitabine: {note}")
+        if "letrozole" in note.lower():
+            err(f"letrozole leaked into the capecitabine leaf: {note}")
+    if unknown in triples:
+        note = combo_note(leaf_clauses(therapy, unknown))
+        if "letrozole" not in note.lower():
+            err(f"unknown-when Lapatinib note missing letrozole: {note}")
+        if "capecitabine" in note.lower():
+            err(f"capecitabine leaked into the letrozole leaf: {note}")
+    # Visible table rows, after a site build.
+    vis_after = TREE / "HER2" / "breast-cancer" / "her2-positive" / "after-another-drug.html"
+    vis_when = TREE / "HER2" / "breast-cancer" / "her2-positive" / "label-does-not-say-when-it-is-used.html"
+    if vis_when.is_file():
+        import re as _re
+        html = vis_when.read_text(encoding="utf-8")
+        vis = _re.sub(r"<details[\s\S]*?</details>", " ", html)
+        if "letrozole" not in vis.lower():
+            err("letrozole is not visible on the HER2 breast unknown-when table")
+        if "Lapatinib" not in vis:
+            err("Lapatinib is not visible on the HER2 breast unknown-when table")
+    else:
+        err("missing HER2 breast HER2-positive 'label does not say when' page")
+    if vis_after.is_file():
+        import re as _re
+        from readability import visible_text as _vis
+        html = vis_after.read_text(encoding="utf-8")
+        vis = _re.sub(r"<details[\s\S]*?</details>", " ", html)
+        if "Lapatinib" not in vis:
+            err("Lapatinib missing from after-another-drug table")
+        # Visible option row should still say capecitabine, not letrozole.
+        for m in _re.finditer(r"<tr[\s\S]*?</tr>", vis):
+            row = m.group(0)
+            if "Lapatinib" in row and "letrozole" in row.lower():
+                err("letrozole appeared on the after-another-drug Lapatinib row")
+    ok(
+        "Lapatinib letrozole indication is kept (label set_id "
+        "302a4346-a68d-af3e-e063-6294a90a4a6f, version 1)"
+    )
+
+
 def main() -> int:
     if not TREE.is_dir() or not (SITE / 'index.html').is_file():
         err("site/b is missing — run scripts/build_site.py")
@@ -367,6 +462,7 @@ def main() -> int:
     test_osimertinib_europe_year()
     test_gefitinib_plain_note()
     test_every_biomarker_tree()
+    test_lapatinib_letrozole_not_dropped()
     if errors:
         print(f"\n{len(errors)} FAIL(S)")
         return 1

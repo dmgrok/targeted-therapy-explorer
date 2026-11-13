@@ -299,12 +299,22 @@ def indication_units(clause: str) -> list[str]:
 
 
 def partner_sets(clause_texts: list[str]) -> list[list[str]]:
-    """One partner set per unit (each 'in combination with' phrase)."""
+    """One partner set per unit (each 'in combination with' phrase).
+
+    Identical sets from a repeated highlights/full-text pair are kept once,
+    so the visible note does not say "or with" the same partner twice.
+    """
     sets = []
+    seen: set[tuple[str, ...]] = set()
     for cl in clause_texts:
         ps = combinations_in(cl)
-        if ps:
-            sets.append(ps)
+        if not ps:
+            continue
+        key = tuple(x.lower() for x in ps)
+        if key in seen:
+            continue
+        seen.add(key)
+        sets.append(ps)
     return sets
 
 

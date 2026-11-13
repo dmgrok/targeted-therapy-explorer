@@ -27,6 +27,10 @@ jobs:
         run: python3 tests/test_mockup.py
       - name: Case study gates
         run: python3 tests/test_cases.py
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v2
+      - name: Contrast gate (WCAG AA 4.5:1)
+        run: python3 tests/test_contrast.py
       - name: No OncoKB and no secrets in the tree
         run: |
           if grep -RIn --exclude-dir=.git --exclude-dir=site/assets/fonts \
