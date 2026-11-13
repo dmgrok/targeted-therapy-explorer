@@ -43,8 +43,24 @@ CANCER_TYPES: list[tuple[str, list[str]]] = [
     ("stomach cancer", [
         r"gastric", r"gastroesophageal", r"\bGEJ\b", r"stomach",
     ]),
-    ("cancer of the womb", [r"endometrial", r"endometrium"]),
-    ("bile duct cancer", [r"cholangiocarcinoma", r"bile duct"]),
+    # Everyday name is already "cancer of the womb". The label abbreviation
+    # "EC" (as in Dostarlimab's "recurrent or advanced EC") is the same cancer.
+    ("cancer of the womb", [
+        r"endometrial", r"endometrium",
+        r"\bEC\b",
+    ]),
+    ("bile duct cancer", [
+        r"cholangiocarcinoma", r"bile duct",
+        r"biliary tract", r"\bBTC\b",
+    ]),
+    ("inflammatory myofibroblastic tumour", [
+        r"inflammatory myofibroblastic tumou?r",
+        r"\bIMT\b",
+    ]),
+    ("Erdheim-Chester disease", [
+        r"erdheim[\s\-]*chester",
+        r"\bECD\b",
+    ]),
     ("kidney cancer", [r"renal cell", r"kidney cancer"]),
     ("bladder cancer", [r"bladder", r"urothelial"]),
     ("pancreatic cancer", [r"pancreatic", r"pancreas"]),
@@ -732,7 +748,9 @@ BRANCH_WHY: dict[str, str] = {
     "ovarian cancer": "The FDA label or the trial record names ovarian cancer.",
     "stomach cancer": "The FDA label or the trial record names stomach (gastric) or gastroesophageal cancer.",
     "thyroid cancer": "The FDA label or the trial record names thyroid cancer.",
-    "bile duct cancer": "The FDA label or the trial record names bile duct cancer (cholangiocarcinoma).",
+    "bile duct cancer": "The FDA label or the trial record names bile duct cancer (cholangiocarcinoma) or biliary tract cancer.",
+    "inflammatory myofibroblastic tumour": "The FDA label or the trial record names an inflammatory myofibroblastic tumour.",
+    "Erdheim-Chester disease": "The FDA label or the trial record names Erdheim-Chester disease.",
     "kidney cancer": "The FDA label or the trial record names kidney (renal) cancer.",
     "bladder cancer": "The FDA label or the trial record names bladder or urothelial cancer.",
     "pancreatic cancer": "The FDA label or the trial record names pancreatic cancer.",

@@ -123,9 +123,125 @@ def class_source(therapy: dict, catalog: dict | None = None) -> str:
     return normalize("\n".join(lines))
 
 
-def _first_named_target(t: str) -> str:
+# Aliases the label uses for the same everyday target name.
+_TARGET_ALIASES = {
+    "EGFR": "EGFR", "ERBB1": "EGFR", "HER1": "EGFR", "EGF": "EGFR",
+    "HER2": "HER2", "HER-2": "HER2", "ERBB2": "HER2",
+    "HER4": "HER4", "ERBB4": "HER4",
+    "HER3": "HER3", "ERBB3": "HER3",
+    "MET": "MET",
+    "ALK": "ALK",
+    "ROS1": "ROS1",
+    "NTRK": "NTRK", "TRK": "NTRK", "TRKA": "NTRK", "TRKB": "NTRK", "TRKC": "NTRK",
+    "BRAF": "BRAF", "MEK": "MEK", "KRAS": "KRAS", "VEGFR2": "VEGFR2", "RET": "RET",
+}
+
+# Opening clause that names what the drug itself inhibits or binds to.
+# "family members, including EGFR" (Pertuzumab) is intentionally not an intro:
+# those are heterodimer partners, not the drug's target.
+_INHIBIT_INTRO = re.compile(
+    r"(?:"
+    r"kinase inhibitor of|"
+    r"inhibitor of(?: the intracellular tyrosine kinase domains of both)?|"
+    r"inhibitor of(?: the kinase activity of(?: the human EGFR family)?)?|"
+    r"covalently binds to|"
+    r"irreversibly binds to|"
+    r"binds to(?: the extracellular domains of)?|"
+    r"(?:EGF|MET|HER2|EGFR) receptor-directed|"
+    r"directed against(?: the)?"
+    r")\s+(.{0,360})",
+    re.I,
+)
+
+_TARGET_TOKEN = re.compile(
+    r"\b(EGFR|EGF|HER-?2|HER4|HER3|HER1|ERBB[1-4]|MET|ALK|ROS1|"
+    r"NTRK|TRK[ABC]?|BRAF|MEK|KRAS|VEGFR2|RET)\b",
+    re.I,
+)
+
+
+def _canonical_target(raw: str) -> str:
+    key = (raw or "").upper().replace("HER-2", "HER2")
+    return _TARGET_ALIASES.get(key, "")
+
+
+def _inhibited_targets(t: str) -> list[str]:
+    """Co-equal targets named in the opening 'inhibitor of' / 'binds to' clause.
+
+    The first such clause only; cut at a sentence end or an 'In vitro'
+    qualifier so a later 'including' family list is not read as a target.
+    """
+    for m in _INHIBIT_INTRO.finditer(t or ""):
+        span = m.group(0)
+        # Cut at a sentence end, an 'In vitro' qualifier, or 'including'
+        # (a laundry list of other kinases, as in Crizotinib and Ensartinib
+        # "inhibits other kinases including MET and ROS1").
+        span = re.split(
+            r"(?<=\.)\s+|\bIn vitro\b|\bincluding\b",
+            span,
+            maxsplit=1,
+            flags=re.I,
+        )[0]
+        found: list[str] = []
+        for tm in _TARGET_TOKEN.finditer(span):
+            name = _canonical_target(tm.group(1))
+            if name and name not in found:
+                found.append(name)
+        if found:
+            return found
+    return []
+
+
+def _opening_class_targets(t: str) -> list[str]:
+    """Target named in 'X is a HER2/neu receptor antagonist indicated'.
+
+    This is the drug's stated class, and beats a later family-member
+    mention (Pertuzumab: HER2 antagonist; mechanism then says it blocks
+    heterodimerization with family members including EGFR).
+    """
     m = re.search(
-        r"(?:kinase domains of|including|inhibitor of(?: the kinase activity of the human)?|"
+        r"\bis\s+(?:a|an)\s+(.{3,160}?)\s+(?:antagonist|inhibitor|antibody|conjugate)\s+indicated",
+        t or "",
+        re.I,
+    )
+    if not m:
+        return []
+    found: list[str] = []
+    for tm in _TARGET_TOKEN.finditer(m.group(1)):
+        name = _canonical_target(tm.group(1))
+        if name and name not in found:
+            found.append(name)
+    return found
+
+
+def _blocks_phrase(targets: list[str]) -> str:
+    """Everyday 'blocks the X signal(s)' line. Two targets use 'and'
+    ('blocks the EGFR and HER2 signals') to match the label's 'both'."""
+    if not targets:
+        return ""
+    if len(targets) == 1:
+        if targets[0] == "VEGFR2":
+            return "that blocks a blood-vessel growth signal (VEGFR2)"
+        if targets[0] == "MEK":
+            return "that blocks a MEK signal"
+        return f"that blocks the {targets[0]} signal"
+    if len(targets) == 2:
+        return f"that blocks the {targets[0]} and {targets[1]} signals"
+    return (
+        "that blocks the "
+        + ", ".join(targets[:-1])
+        + " and "
+        + targets[-1]
+        + " signals"
+    )
+
+
+def _first_named_target(t: str) -> str:
+    # Bare 'including' is not an intro: Pertuzumab "HER family members,
+    # including EGFR" is not the drug's target. Multi-kinase 'activity
+    # against multiple kinases including' stays.
+    m = re.search(
+        r"(?:kinase domains of|inhibitor of(?: the kinase activity of the human)?|"
         r"antagonist(?: indicated)?|directed(?: antibody)?|"
         r"activity (?:at clinically achievable concentrations )?against(?: multiple kinases including)?)\s+"
         r"(EGFR|ALK|HER2|BRAF|MEK|KRAS|NTRK|VEGFR2|ROS1|MET)",
@@ -139,7 +255,10 @@ def class_phrase(blob: str, biomarker_id: str = "") -> str:
     """What the drug does, from the opening class line and first sentences.
 
     The page gene is never a fallback. A later family mention (HER2 in an
-    EGFR-antagonist mechanism paragraph) is not in this source.
+    EGFR-antagonist mechanism paragraph, or EGFR in Pertuzumab's
+    "HER family members, including EGFR") is not treated as a target.
+    Co-equal targets the opening mechanism names ("both EGFR and HER2",
+    "EGFR, HER2, and HER4", "EGFR and MET") are all listed.
     """
     t = (blob or "").lower()
 
@@ -155,13 +274,22 @@ def class_phrase(blob: str, biomarker_id: str = "") -> str:
 
     action = ""
     first = _first_named_target(t)
+    coequal = _inhibited_targets(t)
     # Prefer a named target in the opening class line or first mechanism clause.
+    # When the label names two or more co-equal targets (Lapatinib "both
+    # EGFR and HER2", Neratinib "EGFR, HER2, and HER4", Amivantamab
+    # "EGFR and MET"), list them all. A single co-equal target is used
+    # the same way as the older first-named-target path.
     if has(r"\bvegfr2\b"):
         action = "that blocks a blood-vessel growth signal (VEGFR2)"
-    elif has(r"\bMEK\b") and has(r"inhibitor", r"kinase"):
+    elif has(r"\bMEK\b") and has(r"inhibitor", r"kinase") and not coequal:
         action = "that blocks a MEK signal"
     elif has(r"\bPD-L1\b", r"\bPD-1\b", r"programmed death"):
         action = ""
+    elif coequal:
+        action = _blocks_phrase(coequal)
+    elif _opening_class_targets(t):
+        action = _blocks_phrase(_opening_class_targets(t))
     elif first in {"EGFR", "ALK", "HER2", "BRAF", "MEK", "KRAS", "NTRK", "VEGFR2"}:
         if first == "VEGFR2":
             action = "that blocks a blood-vessel growth signal (VEGFR2)"
@@ -172,8 +300,6 @@ def class_phrase(blob: str, biomarker_id: str = "") -> str:
     elif has(r"\bEGFR\b", r"EGF receptor") and has(
         r"antagonist", r"inhibitor", r"kinase", r"directed", r"binds", r"against"
     ):
-        # Pan-HER inhibitors (afatinib, dacomitinib) name EGFR and HER2;
-        # EGFR is the named indication target and comes first.
         action = "that blocks the EGFR signal"
     elif has(r"\bHER2\b", r"HER-2", r"HER2/neu", r"\bERBB2\b") and has(
         r"antagonist", r"inhibitor", r"kinase", r"antibody", r"directed", r"binds"

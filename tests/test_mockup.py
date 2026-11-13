@@ -445,6 +445,226 @@ def test_lapatinib_letrozole_not_dropped() -> None:
     )
 
 
+
+
+def test_named_cancer_types_from_labels() -> None:
+    """Leftover 'cancer type not named' leaves whose label clearly names
+    a cancer must sit under that cancer. Each mapping is checked against
+    the committed label (set_id and version).
+    """
+    from labels import entry_for, indications
+    from tree import therapy_branches, cancers_in, LABEL_UNKNOWN_CANCER
+
+    cases = [
+        {
+            "name": "Crizotinib",
+            "biomarker": "ALK",
+            "set_id": "2a51b0de-47d6-455e-a94c-d2c737b04ff7",
+            "version": "47",
+            "snippet": "inflammatory myofibroblastic tumor (IMT) that is ALK-positive",
+            "cancer": "inflammatory myofibroblastic tumour",
+            "must_have": ("inflammatory myofibroblastic tumour", "ALK fusion or ALK-positive", "after another drug"),
+        },
+        {
+            "name": "Vemurafenib",
+            "biomarker": "BRAF-V600E",
+            "set_id": "38eea320-7e0c-485a-bc30-98c3c45e2763",
+            "version": "29",
+            "snippet": "Erdheim-Chester Disease (ECD) with BRAF V600 mutation",
+            "cancer": "Erdheim-Chester disease",
+            "must_have": ("Erdheim-Chester disease", "BRAF V600", "label does not say when it is used"),
+        },
+        {
+            "name": "Dostarlimab",
+            "biomarker": "MSI-H-dMMR",
+            "set_id": "095eab9f-545a-4f12-bfb7-19477fb901a5",
+            "version": "15",
+            "snippet": "dMMR recurrent or advanced EC",
+            "cancer": "cancer of the womb",
+            "must_have": ("cancer of the womb", "MSI-H or dMMR", "label does not say when it is used"),
+        },
+        {
+            "name": "Zanidatamab",
+            "biomarker": "HER2",
+            "set_id": "ae5d9425-fae5-4541-a158-150998343348",
+            "version": "3",
+            "snippet": "HER2-positive (IHC 3+) biliary tract cancer (BTC)",
+            "cancer": "bile duct cancer",
+            "must_have": ("bile duct cancer", "HER2-positive", "after another drug"),
+        },
+    ]
+    for c in cases:
+        entry = entry_for({"name": c["name"]})
+        if not entry:
+            err(f"{c['name']} is missing from data/labels.json")
+            continue
+        set_id = entry.get("set_id") or ""
+        version = str(entry.get("version") or "")
+        if set_id != c["set_id"] or version != c["version"]:
+            err(
+                f"{c['name']} label identity changed: set_id={set_id} version={version}; "
+                f"re-check the {c['cancer']} mapping against the new label "
+                f"(was {c['set_id']} v{c['version']})"
+            )
+        text = indications({"name": c["name"]})
+        if c["snippet"].lower() not in text.lower() and not (
+            "EC" in c["snippet"] and "recurrent or advanced EC" in text
+        ):
+            # unicode hyphen in dostarlimab: allow a looser check
+            import re as _re
+            loose = _re.sub(r"[\s\-‑–]+", " ", c["snippet"].lower())
+            hay = _re.sub(r"[\s\-‑–]+", " ", text.lower())
+            if loose not in hay and not all(w in hay for w in loose.split() if w not in {"(imt)", "(ecd)", "(btc)"}):
+                err(f"{c['name']} committed label no longer contains {c['snippet']!r}")
+        if c["cancer"] not in cancers_in(c["snippet"]) and c["cancer"] not in cancers_in(text):
+            # For EC-only snippet, cancers_in on the short phrase must hit womb
+            if c["cancer"] not in cancers_in(c["snippet"]):
+                err(f"cancers_in({c['snippet']!r}) does not include {c['cancer']!r}")
+        therapy = {"name": c["name"]}
+        triples = therapy_branches(therapy, c["biomarker"])
+        if c["must_have"] not in triples:
+            err(f"{c['name']} missing branch {c['must_have']}: {triples}")
+        unk = [tr for tr in triples if tr[0] == LABEL_UNKNOWN_CANCER]
+        # These four named uses must not remain on the unknown-cancer leaf.
+        if any(
+            (c["name"] == "Crizotinib" and tr[1].startswith("ALK"))
+            or (c["name"] == "Vemurafenib" and "V600" in tr[1])
+            or (c["name"] == "Dostarlimab" and "MSI" in tr[1])
+            or (c["name"] == "Zanidatamab" and "HER2" in tr[1])
+            for tr in unk
+        ):
+            # If an unknown-cancer leaf remains, it must not be this indication.
+            from tree import leaf_clauses
+            for tr in unk:
+                clauses = " ".join(leaf_clauses(therapy, tr)).lower()
+                if c["name"] == "Crizotinib" and "myofibroblastic" in clauses:
+                    err(f"Crizotinib IMT still on unknown-cancer leaf {tr}")
+                if c["name"] == "Vemurafenib" and "erdheim" in clauses:
+                    err(f"Vemurafenib Erdheim-Chester still on unknown-cancer leaf {tr}")
+                if c["name"] == "Dostarlimab" and re.search(r"\bEC\b", clauses, re.I) and "endometrial" not in " ".join(cancers_in(clauses)):
+                    err(f"Dostarlimab EC still on unknown-cancer leaf {tr}")
+                if c["name"] == "Zanidatamab" and "biliary" in clauses:
+                    err(f"Zanidatamab biliary tract still on unknown-cancer leaf {tr}")
+        # Visible page after a site build.
+    from build_mockup import slug
+    pages = [
+        TREE / "ALK" / slug("inflammatory myofibroblastic tumour") / slug("ALK fusion or ALK-positive") / "after-another-drug.html",
+        TREE / "BRAF-V600E" / slug("Erdheim-Chester disease") / slug("BRAF V600") / "label-does-not-say-when-it-is-used.html",
+        TREE / "MSI-H-dMMR" / slug("cancer of the womb") / slug("MSI-H or dMMR") / "label-does-not-say-when-it-is-used.html",
+        TREE / "HER2" / slug("bile duct cancer") / slug("HER2-positive") / "after-another-drug.html",
+    ]
+    drugs = ["Crizotinib", "Vemurafenib", "Dostarlimab", "Zanidatamab"]
+    for page, drug in zip(pages, drugs):
+        if not page.is_file():
+            err(f"missing page for {drug}: {page.relative_to(SITE)}")
+            continue
+        html = page.read_text(encoding="utf-8")
+        if drug not in html:
+            err(f"{drug} not on {page.relative_to(SITE)}")
+    # These drugs must not remain on a therapy unknown-cancer leaf page.
+    gone = [
+        (TREE / "ALK" / "label-does-not-say-the-cancer-type" / "alk-fusion-or-alk-positive" / "after-another-drug.html", "Crizotinib"),
+        (TREE / "BRAF-V600E" / "label-does-not-say-the-cancer-type" / "braf-v600" / "label-does-not-say-when-it-is-used.html", "Vemurafenib"),
+        (TREE / "MSI-H-dMMR" / "label-does-not-say-the-cancer-type" / "msi-h-or-dmmr" / "label-does-not-say-when-it-is-used.html", "Dostarlimab"),
+        (TREE / "HER2" / "label-does-not-say-the-cancer-type" / "her2-positive" / "after-another-drug.html", "Zanidatamab"),
+    ]
+    for page, drug in gone:
+        if page.is_file() and drug in page.read_text(encoding="utf-8"):
+            err(f"{drug} still on unknown-cancer page {page.relative_to(SITE)}")
+    ok(
+        "named cancers from labels sit under real types "
+        "(Crizotinib IMT set_id 2a51b0de-47d6-455e-a94c-d2c737b04ff7 v47; "
+        "Vemurafenib ECD 38eea320-7e0c-485a-bc30-98c3c45e2763 v29; "
+        "Dostarlimab EC 095eab9f-545a-4f12-bfb7-19477fb901a5 v15; "
+        "Zanidatamab BTC ae5d9425-fae5-4541-a158-150998343348 v3)"
+    )
+
+
+def test_unknown_cancer_fallback_remains() -> None:
+    """A 'cancer type not named' leaf remains for uses the rule cannot place."""
+    from tree import therapy_branches, LABEL_UNKNOWN_CANCER, CANCER_TYPES, cancers_in
+    # Mobocertinib: withdrawn, no full label in the catalog; the snapshot
+    # excerpt is truncated mid-word ("non-small ce") and does not match
+    # a recognised cancer type. It must stay on the fallback leaf.
+    triples = therapy_branches({"name": "Mobocertinib"}, "EGFR")
+    unk = [tr for tr in triples if tr[0] == LABEL_UNKNOWN_CANCER]
+    if not unk:
+        err(f"Mobocertinib lost the unknown-cancer fallback: {triples}")
+    else:
+        ok("Mobocertinib truncated excerpt stays on 'cancer type not named'")
+    # CIViC ERBB2 G292R assertion (disease 'Cancer') is On the edge;
+    # the record does not name a cancer the rule recognises.
+    page = TREE / "HER2" / "label-does-not-say-the-cancer-type" / "erbb2-g292r" / "label-does-not-say-when-it-is-used.html"
+    if not page.is_file():
+        err("HER2 ERBB2 G292R unknown-cancer fallback page is missing")
+    else:
+        html = page.read_text(encoding="utf-8")
+        if "Trastuzumab" not in html:
+            err("Trastuzumab G292R civic assertion missing from fallback page")
+        else:
+            ok("ERBB2 G292R civic assertion (disease 'Cancer') stays on fallback")
+    # The fallback label itself must still be produced for empty cancers_in.
+    if cancers_in("no named malignancy in this sentence") != []:
+        err("cancers_in no longer returns empty for unrecognised text")
+    labels = {name for name, _ in CANCER_TYPES}
+    if "inflammatory myofibroblastic tumour" not in labels:
+        err("IMT cancer type missing from CANCER_TYPES")
+
+
+def test_what_it_is_matches_mechanism() -> None:
+    """what_it_is must follow the label mechanism for co-equal targets.
+
+    Lapatinib (set_id 302a4346-a68d-af3e-e063-6294a90a4a6f, version 1):
+    'kinase inhibitor of the intracellular tyrosine kinase domains of both
+    Epidermal Growth Factor Receptor (EGFR [ErbB1]) and of Human Epidermal
+    Receptor Type 2 (HER2 [ErbB2])'. Exact wording required: 'blocks the
+    EGFR and HER2 signals'.
+    """
+    from labels import what_it_is, entry_for
+
+    entry = entry_for({"name": "Lapatinib"})
+    if not entry:
+        err("Lapatinib missing from labels.json")
+        return
+    if (entry.get("set_id") or "") != "302a4346-a68d-af3e-e063-6294a90a4a6f" or str(entry.get("version") or "") != "1":
+        err(f"Lapatinib label identity changed: {entry.get('set_id')} v{entry.get('version')}")
+    wit = what_it_is({"name": "Lapatinib"}, "HER2")
+    if "blocks the EGFR and HER2 signals" not in wit:
+        err(f"Lapatinib what_it_is is not the required wording: {wit!r}")
+    # Same-kind mismatches we also corrected, checked against the committed label.
+    others = [
+        ("Neratinib", "HER2", "blocks the EGFR, HER2 and HER4 signals",
+         "irreversibly binds to epidermal growth factor receptor (EGFR), HER2, and HER4"),
+        ("Pertuzumab", "HER2", "blocks the HER2 signal",
+         "HER2/neu receptor antagonist"),
+        ("Entrectinib", "NTRK", "blocks the NTRK, ROS1 and ALK signals",
+         "tropomyosin receptor tyrosine kinases"),
+        ("Repotrectinib", "NTRK", "blocks the ROS1 and NTRK signals",
+         "inhibitor of proto-oncogene tyrosine-protein kinase ROS1"),
+        ("Amivantamab", "EGFR", "blocks the EGFR and MET signals",
+         "binds to the extracellular domains of EGFR and MET"),
+        ("Afatinib", "EGFR", "blocks the EGFR, HER2 and HER4 signals",
+         "kinase domains of EGFR (ErbB1), HER2 (ErbB2), and HER4 (ErbB4)"),
+        ("Dacomitinib", "EGFR", "blocks the EGFR, HER2 and HER4 signals",
+         "EGFR family (EGFR/HER1, HER2, and HER4)"),
+    ]
+    from labels import indications, label_blob, class_source
+    for name, bid, phrase, snippet in others:
+        wit = what_it_is({"name": name}, bid)
+        if phrase not in wit:
+            err(f"{name} what_it_is missing {phrase!r}: {wit!r}")
+        src = class_source({"name": name})
+        if snippet.lower() not in (src or "").lower() and snippet.lower() not in (label_blob({"name": name}) or "").lower():
+            err(f"{name} committed label/class source no longer has {snippet!r}")
+    # Visible Lapatinib row on the letrozole leaf.
+    vis_when = TREE / "HER2" / "breast-cancer" / "her2-positive" / "label-does-not-say-when-it-is-used.html"
+    if vis_when.is_file():
+        html = vis_when.read_text(encoding="utf-8")
+        if "blocks the EGFR and HER2 signals" not in html:
+            err("Lapatinib required wording is not on the HER2 breast unknown-when table")
+    ok("what_it_is follows the label mechanism; Lapatinib uses the required wording")
+
+
 def main() -> int:
     if not TREE.is_dir() or not (SITE / 'index.html').is_file():
         err("site/b is missing — run scripts/build_site.py")
@@ -463,6 +683,9 @@ def main() -> int:
     test_gefitinib_plain_note()
     test_every_biomarker_tree()
     test_lapatinib_letrozole_not_dropped()
+    test_named_cancer_types_from_labels()
+    test_unknown_cancer_fallback_remains()
+    test_what_it_is_matches_mechanism()
     if errors:
         print(f"\n{len(errors)} FAIL(S)")
         return 1
