@@ -553,7 +553,7 @@ def step_figure(step_id: str) -> str:
 # Short labels keyed by the exact date string in data/cases/sijbrandij.json.
 # A date missing from this map fails the build, so the drawing cannot drift
 # from the verified case data.
-NOT_STATED = "Then. Reason not stated in his sources."
+NOT_STATED = "Then the next phase; his sources give no reason for this step."
 _MON = {m: m[:3] for m in ["January", "February", "March", "April", "May", "June", "July",
                             "August", "September", "October", "November", "December"]}
 
@@ -687,12 +687,9 @@ def _sid_svg(p: str, wide: bool) -> str:
                 body.append(lines_text(bx + 66, by + 26, lines, lh=21, size=15.5, weight=600,
                                        fill=WHITE, bg=PINK))
             else:
-                bh, gap = 34, 70
-                by = y + 18
+                # plain next-phase arrow: his sources give no reason for this link
+                gap = 52
                 body.append(line(cx, y + 6, cx, y + gap - 8, p))
-                body.append(f'<rect x="{bx:.1f}" y="{by}" width="{len(NOT_STATED) * 7.6 + 28:.0f}" height="{bh}" '
-                            f'fill="{PAPER}" stroke="{INK}" stroke-width="1.6" stroke-dasharray="5 4"/>')
-                body.append(text(bx + 14, by + 22, NOT_STATED, size=14.5, weight=600, fill=INK, bg=PAPER))
             y += gap
     H = int(y + 12)
     cls = "dg-wide" if wide else "dg-tall"

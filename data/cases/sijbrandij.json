@@ -168,10 +168,16 @@
         },
         {
           "when": "Nov 2022",
-          "what": "Biopsy at T5 (UCSF)",
+          "what": "Biopsy of the spine tumour (T5 vertebra, UCSF)",
           "url": "https://osteosarc.com/data/events.tsv",
           "evidence": [
             "2022-11-14 | Procedures | Biopsy | Biopsy | T5"
+          ],
+          "label_basis": [
+            {
+              "url": "https://sytse.com/cancer/",
+              "quote": "osteosarcoma in the T5 vertebrae of the upper spine"
+            }
           ]
         },
         {
@@ -256,11 +262,21 @@
       "actions": [
         {
           "when": "Jun 2024",
-          "what": "Biopsies at Th4 and Th4–Th5 (UCLA)",
+          "what": "Biopsies of the spine (Th4 and Th4–Th5 vertebrae, UCLA)",
           "url": "https://osteosarc.com/data/events.tsv",
           "evidence": [
             "2024-06-06 | Procedures | Biopsy | Biopsy | T4",
             "2024-06-11 | Procedures | Biopsy | Biopsy | T4/5"
+          ],
+          "label_basis": [
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "Disease recurred at the Th4 vertebra in June 2024 (T1, UCLA)"
+            },
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "2024-06-11 T1 UCLA (Th4–Th5 needle core biopsy)"
+            }
           ]
         },
         {

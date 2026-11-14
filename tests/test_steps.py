@@ -413,6 +413,14 @@ def test_sid_timeline_dates() -> None:
             whens.add(a["when"])
             if a["url"] not in src:
                 err(f"action {a['what']!r}: URL not in phase_sources")
+            backed = a.get("label_basis") or any("spine" in r for r in a.get("evidence", []))
+            if re.search(r"spine|vertebra", a["what"]) and not backed:
+                err(f"action {a['what']!r} says spine/vertebra without label_basis")
+            for lb in a.get("label_basis", []):
+                if lb.get("url") not in src or not lb.get("quote"):
+                    err(f"action {a['what']!r}: label_basis needs a sourced quote")
+                elif not re.search(r"spine|vertebra", lb["quote"]) and "biopsy" not in lb["quote"]:
+                    err(f"action {a['what']!r}: label_basis quote does not support the wording")
             if a.get("evidence"):
                 dates = []
                 for row in a["evidence"]:
@@ -459,12 +467,19 @@ def test_sid_timeline_dates() -> None:
             err(f"Sid timeline draws dates not in the phase data: {sorted(extra)}")
         if joined.count("WHY") != len(causes):
             err("number of WHY boxes differs from sourced causes")
-        if joined.count(dg.NOT_STATED) != len(links) - len(causes):
-            err("every link without a stated cause must say the reason is not stated")
+        if "reason not stated" in joined.lower() or dg.NOT_STATED in joined:
+            err("no visible 'reason not stated' boxes; plain arrows only")
+        if "stroke-dasharray" in s:
+            err("Sid diagram should have no dashed boxes or lines")
+        desc = re.search(r"<desc[^>]*>([^<]+)</desc>", s).group(1)
+        if desc.count("give no reason") != len(links) - len(causes):
+            err("screen-reader description must say which links have no stated reason")
+        if desc.count("Why the next phase:") != len(causes):
+            err("screen-reader description must give each sourced cause")
         if re.search(r"(?i)kilo", joined):
             err("Kilo Code must not appear in the Sid diagram")
     ok(f"Sid phases: {len(d['phases'])} phases, {len(causes)} sourced cause(s), "
-       f"{len(links) - len(causes)} links marked 'reason not stated', {n_quotes} quoted actions")
+       f"{len(links) - len(causes)} plain arrows, {n_quotes} quoted actions")
 
 
 def test_diagram_wording() -> None:
