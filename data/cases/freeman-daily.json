@@ -105,5 +105,272 @@
       "label": "University of Colorado article (3 June 2025)",
       "url": "https://news.cuanschutz.edu/cancer-center/patient-janet-freeman-daily"
     }
-  ]
+  ],
+  "phase_sources": {
+    "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/": {
+      "label": "her blog post of 10 May 2026",
+      "published": "10 May 2026",
+      "kind": "own",
+      "opened": "14 November 2026"
+    },
+    "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/": {
+      "label": "her blog post of 25 September 2025",
+      "published": "25 September 2025",
+      "kind": "own",
+      "opened": "14 November 2026"
+    }
+  },
+  "phases": [
+    {
+      "id": "p1",
+      "title": "Aiming for a cure",
+      "actions": [
+        {
+          "when": "2011",
+          "what": "Lung cancer found; it had not spread outside her chest",
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "I was fortunate that my cancer had not yet spread outside my chest, so my doctor and I decided to go for a cure.",
+          "event": true,
+          "date_basis": [
+            "In 2011, when I learned I had lung cancer"
+          ]
+        },
+        {
+          "when": "2011",
+          "what": "She and her doctor decided to aim for a cure",
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "I was fortunate that my cancer had not yet spread outside my chest, so my doctor and I decided to go for a cure.",
+          "date_basis": [
+            "In 2011, when I learned I had lung cancer"
+          ]
+        },
+        {
+          "when": "2011",
+          "what": "Chemotherapy and radiation together for two months",
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "I received concurrent chemotherapy and radiation for two months.",
+          "event": true,
+          "date_basis": [
+            "In 2011, when I learned I had lung cancer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "title": "A second try for a cure",
+      "span_label": "Up to Sep 2012",
+      "span_note": "Her 25 September 2025 post: by mid September 2012 the cancer had grown again.",
+      "actions": [
+        {
+          "when": "By Sep 2012",
+          "what": "She learned about gene testing and trials in the Inspire patient community",
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "The Inspire community I had joined taught me about biomarker testing (called molecular testing back then) and clinical trials.",
+          "date_basis": [
+            {
+              "url": "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/",
+              "quote": "In mid September 2012, I had learned my cancer had grown despite two different lines of chemotherapy plus radiation."
+            }
+          ],
+          "date_note": "Told before her second treatment in her 10 May 2026 post, so before her September 2012 test result."
+        },
+        {
+          "when": "By Sep 2012",
+          "what": "Lymph node tissue sent to the University of Colorado for gene testing; no useful result then",
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "About 8 months before, I had sent my biopsied lymph node tissue to a laboratory at the University of Colorado for biomarker testing. Unfortunately, my results did not show any actionable biomarkers.",
+          "event": true,
+          "date_basis": [
+            {
+              "url": "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/",
+              "quote": "In mid September 2012, I had learned my cancer had grown despite two different lines of chemotherapy plus radiation."
+            }
+          ]
+        },
+        {
+          "when": "By Sep 2012",
+          "what": "More chemotherapy, then radiation to the one place it had spread",
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "I had more chemo followed by radiation to the single site of cancer progression.",
+          "event": true,
+          "date_basis": [
+            {
+              "url": "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/",
+              "quote": "In mid September 2012, I had learned my cancer had grown despite two different lines of chemotherapy plus radiation."
+            }
+          ]
+        },
+        {
+          "when": "By Sep 2012",
+          "what": "Known tumours went away, then the cancer spread to her other lung",
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "All the known tumors disappeared, but alas, my cancer was particularly aggressive and spread again shortly after treatment stopped, this time appearing my other lung.",
+          "event": true,
+          "date_basis": [
+            {
+              "url": "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/",
+              "quote": "In mid September 2012, I had learned my cancer had grown despite two different lines of chemotherapy plus radiation."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "title": "A gene test and a trial",
+      "span_label": "From Sep 2012",
+      "span_note": "From the 25 September 2012 test result.",
+      "actions": [
+        {
+          "when": "25 Sep 2012",
+          "what": "Her tumour tested positive for ROS1 (University of Colorado)",
+          "url": "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/",
+          "quote": "But on this date, the University of Colorado notified me that my tumor tissue tested positive for a gene rearrangement called ROS1, and I was eligible for a clinical trial of the targeted therapy pill crizotinib. I had options again!",
+          "event": true,
+          "date_basis": [
+            {
+              "url": "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/",
+              "quote": "In mid September 2012, I had learned my cancer had grown despite two different lines of chemotherapy plus radiation."
+            },
+            "Thirteen years ago today, I experienced a revival of hope."
+          ],
+          "milestone": [
+            {
+              "url": "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/",
+              "quote": "But on this date, the University of Colorado notified me that my tumor tissue tested positive for a gene rearrangement called ROS1, and I was eligible for a clinical trial of the targeted therapy pill crizotinib. I had options again!"
+            }
+          ]
+        },
+        {
+          "when": "Nov 2012",
+          "what": "Started the crizotinib trial in Denver",
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "a series of amazing coincidences and good timing resulted in my cancer testing positive for the ROS1 biomarker and my getting one of the last slots in the associated clinical trial, which I started in November 2012 in Denver.",
+          "event": true,
+          "milestone": [
+            {
+              "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+              "quote": "my getting one of the last slots in the associated clinical trial, which I started in November 2012 in Denver."
+            }
+          ],
+          "label_basis": [
+            {
+              "url": "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/",
+              "quote": "But on this date, the University of Colorado notified me that my tumor tissue tested positive for a gene rearrangement called ROS1, and I was eligible for a clinical trial of the targeted therapy pill crizotinib. I had options again!"
+            }
+          ]
+        },
+        {
+          "when": "First year",
+          "what": "Flew between Seattle and Denver for the trial",
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "The first year or so after starting the trial, my energies were consumed with flying back and forth between Seattle and Denver for the trial, dealing with side effects, and coping with scanxiety every couple of months.",
+          "event": true
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "title": "Giving back, on the same pill",
+      "actions": [
+        {
+          "when": "2013",
+          "what": "Joined #LCSM Chat and moderated online chats",
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "In 2013 I joined #LCSM (Lung Cancer Social Media) Chat on Twitter and moderated scheduled online chats with a wide variety of lung cancer stakeholders",
+          "event": true
+        },
+        {
+          "when": "2015",
+          "what": "Co-founded a small group that became The ROS1ders",
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "In 2015, I co-founded a small group that became The ROS1ders",
+          "event": true,
+          "milestone": [
+            {
+              "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+              "quote": "In 2015, I co-founded a small group that became The ROS1ders"
+            }
+          ]
+        },
+        {
+          "when": "2019",
+          "what": "Co-founded the IASLC STARS programme for research advocates",
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "In 2019, I co-founded the IASLC STARS program that empowers lung cancer survivors and their loved ones to evolve into active research advocates.",
+          "event": true,
+          "milestone": [
+            {
+              "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+              "quote": "In 2019, I co-founded the IASLC STARS program that empowers lung cancer survivors and their loved ones to evolve into active research advocates."
+            }
+          ]
+        },
+        {
+          "when": "10 May 2026",
+          "what": "She wrote that she has cut back on advocacy and is healthier",
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "I’ve cut back on lung cancer advocacy travel, projects, and its more visible aspects. I’m healthier. I’ve found more joy."
+        },
+        {
+          "when": "10 May 2026",
+          "what": "Same pill for over 13 years; scans show no sign of cancer since she started it",
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "I’ve been on the same oral therapy (with a couple of dose reductions) for over thirteen years. My scans have shown no sign of cancer since I started on that drug.",
+          "milestone": [
+            {
+              "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+              "quote": "My scans have shown no sign of cancer since I started on that drug."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "phase_links": [
+    {
+      "from": "p1",
+      "to": "p2",
+      "cause": "A new tumour appeared outside her chest, in lymph nodes on her collarbone. Her oncologist said they could “try again for a cure.”",
+      "sources": [
+        {
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "However, a new tumor popped up outside my chest a few months after treatment ended. A PET scan detected “hot” lymph nodes on my collarbone, and a biopsy confirmed they contained lung cancer."
+        },
+        {
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "My oncologist said we could try again for a cure."
+        }
+      ]
+    },
+    {
+      "from": "p2",
+      "to": "p3",
+      "cause": "Her tumour then tested positive for ROS1, which made her eligible for a crizotinib trial. She wrote: “I had options again!”",
+      "sources": [
+        {
+          "url": "https://grayconnections.net/2025/09/25/a-moment-in-my-cancer-history/",
+          "quote": "But on this date, the University of Colorado notified me that my tumor tissue tested positive for a gene rearrangement called ROS1, and I was eligible for a clinical trial of the targeted therapy pill crizotinib. I had options again!"
+        }
+      ]
+    },
+    {
+      "from": "p3",
+      "to": "p4",
+      "cause": "Once her body adjusted to the drug and she felt better, she “began looking for ways to give back.”",
+      "sources": [
+        {
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "After my body adjusted to the drug and my “new normal,” I started feeling better."
+        },
+        {
+          "url": "https://grayconnections.net/2026/05/10/reflections-on-15-years-living-with-lung-cancer/",
+          "quote": "I began looking for ways to give back."
+        }
+      ]
+    }
+  ],
+  "pronoun": "her",
+  "chain_caption": "Every line comes from her own blog posts; bold lines are events, plain-weight lines are her views and decisions."
 }

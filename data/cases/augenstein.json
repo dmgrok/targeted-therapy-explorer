@@ -104,5 +104,195 @@
       "label": "3 years after Stage 4 lung cancer diagnosis, what’s next (23 November 2025)",
       "url": "https://wtop.com/inside-wtop/2025/11/wtops-neal-augenstein-3-years-after-stage-4-lung-cancer-diagnosis-whats-next/"
     }
-  ]
+  ],
+  "phase_sources": {
+    "https://wtop.com/inside-wtop/2023/03/wtops-neal-augenstein-one-pill-a-day-therapy-clearing-my-stage-4-lung-cancer-hoping-for-surgery/": {
+      "label": "his WTOP article of 31 March 2023",
+      "published": "31 March 2023",
+      "kind": "own",
+      "opened": "14 November 2026"
+    },
+    "https://wtop.com/inside-wtop/2025/11/wtops-neal-augenstein-3-years-after-stage-4-lung-cancer-diagnosis-whats-next/": {
+      "label": "his WTOP article of 23 November 2025",
+      "published": "23 November 2025",
+      "kind": "own",
+      "opened": "14 November 2026"
+    }
+  },
+  "phases": [
+    {
+      "id": "p1",
+      "title": "Diagnosis and gene testing",
+      "actions": [
+        {
+          "when": "Nov 2022",
+          "what": "Lung cancer found in his left lung",
+          "url": "https://wtop.com/inside-wtop/2023/03/wtops-neal-augenstein-one-pill-a-day-therapy-clearing-my-stage-4-lung-cancer-hoping-for-surgery/",
+          "quote": "In November, when I was diagnosed with EGFR-mutated lung cancer, I had adenocarcinoma in my left lung.",
+          "event": true,
+          "date_basis": [
+            {
+              "url": "https://wtop.com/inside-wtop/2025/11/wtops-neal-augenstein-3-years-after-stage-4-lung-cancer-diagnosis-whats-next/",
+              "quote": "just before Thanksgiving 2022"
+            }
+          ]
+        },
+        {
+          "when": "Nov 2022",
+          "what": "Tests showed spread to both lungs and a lymph node in the centre of his chest",
+          "url": "https://wtop.com/inside-wtop/2023/03/wtops-neal-augenstein-one-pill-a-day-therapy-clearing-my-stage-4-lung-cancer-hoping-for-surgery/",
+          "quote": "With follow-up tests in the hospital, I learned it had spread to include lesions and lymph nodes in both lungs, and a cancerous lymph node in the center of my chest.",
+          "event": true,
+          "date_basis": [
+            {
+              "url": "https://wtop.com/inside-wtop/2025/11/wtops-neal-augenstein-3-years-after-stage-4-lung-cancer-diagnosis-whats-next/",
+              "quote": "just before Thanksgiving 2022"
+            },
+            "In November, when I was diagnosed with EGFR-mutated lung cancer"
+          ]
+        },
+        {
+          "when": "After the biopsy",
+          "what": "Gene testing found an EGFR exon 19 deletion",
+          "url": "https://wtop.com/inside-wtop/2023/03/wtops-neal-augenstein-one-pill-a-day-therapy-clearing-my-stage-4-lung-cancer-hoping-for-surgery/",
+          "quote": "The biomarker testing showed I have EGFR exon 19 deletion.",
+          "event": true,
+          "date_basis": [
+            "After a biopsy showed I had lung cancer, it went through what’s called biomarker testing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "title": "One pill a day",
+      "actions": [
+        {
+          "when": "Dec 2022",
+          "what": "Started osimertinib (Tagrisso), one pill a day",
+          "url": "https://wtop.com/inside-wtop/2023/03/wtops-neal-augenstein-one-pill-a-day-therapy-clearing-my-stage-4-lung-cancer-hoping-for-surgery/",
+          "quote": "it appears the one-pill-a-day targeted therapy I’ve taken since December has cleared all but the tiniest remnants of my stage 4 lung cancer",
+          "event": true,
+          "date_basis": [
+            {
+              "url": "https://wtop.com/inside-wtop/2025/11/wtops-neal-augenstein-3-years-after-stage-4-lung-cancer-diagnosis-whats-next/",
+              "quote": "just before Thanksgiving 2022"
+            }
+          ],
+          "date_note": "“Since December” in his 31 March 2023 article, after his November 2022 diagnosis.",
+          "label_basis": [
+            {
+              "url": "https://wtop.com/inside-wtop/2023/03/wtops-neal-augenstein-one-pill-a-day-therapy-clearing-my-stage-4-lung-cancer-hoping-for-surgery/",
+              "quote": "For that particular mutation, there’s a drug called osimertinib, with a brand name of Tagrisso"
+            }
+          ]
+        },
+        {
+          "when": "By Mar 2023",
+          "what": "Scans showed the pill had shrunk the tumours",
+          "url": "https://wtop.com/inside-wtop/2023/03/wtops-neal-augenstein-one-pill-a-day-therapy-clearing-my-stage-4-lung-cancer-hoping-for-surgery/",
+          "quote": "My first post-diagnosis CT scan, and a follow-up PET scan showed the Tagrisso had shrunk the tumors.",
+          "event": true
+        },
+        {
+          "when": "Mar 2023",
+          "what": "Lung scope check (bronchoscopy): almost all visible cancer gone from both lungs",
+          "url": "https://wtop.com/inside-wtop/2023/03/wtops-neal-augenstein-one-pill-a-day-therapy-clearing-my-stage-4-lung-cancer-hoping-for-surgery/",
+          "quote": "It showed that four months after starting targeted therapy, almost all visible cancer has been resolved in both my lungs.",
+          "event": true,
+          "date_basis": [
+            "On Thursday, I had what’s called a restaging bronchoscopy"
+          ],
+          "milestone": [
+            {
+              "url": "https://wtop.com/inside-wtop/2023/03/wtops-neal-augenstein-one-pill-a-day-therapy-clearing-my-stage-4-lung-cancer-hoping-for-surgery/",
+              "quote": "It showed that four months after starting targeted therapy, almost all visible cancer has been resolved in both my lungs."
+            }
+          ],
+          "label_basis": [
+            {
+              "url": "https://wtop.com/inside-wtop/2023/03/wtops-neal-augenstein-one-pill-a-day-therapy-clearing-my-stage-4-lung-cancer-hoping-for-surgery/",
+              "quote": "On Thursday, I had what’s called a restaging bronchoscopy, at Inova Schar Cancer Institute in Fairfax, Virginia"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "title": "Surgery, then regular checks",
+      "actions": [
+        {
+          "when": "By May 2023",
+          "what": "Robotic-assisted surgery on his lung (lobectomy)",
+          "url": "https://wtop.com/inside-wtop/2025/11/wtops-neal-augenstein-3-years-after-stage-4-lung-cancer-diagnosis-whats-next/",
+          "quote": "Within six months of being diagnosed with Stage 4 non-small cell lung cancer just before Thanksgiving 2022, after great results with one-pill-a-day targeted therapy that shrank cancerous tumors and lymph nodes in both lungs, I became eligible for a robotic-assisted lung lobectomy.",
+          "event": true,
+          "date_basis": [
+            "I’ve had no evidence of disease, and have remained cancer-free since May 2023, while continuing to take my daily pill."
+          ],
+          "milestone": [
+            {
+              "url": "https://wtop.com/inside-wtop/2025/11/wtops-neal-augenstein-3-years-after-stage-4-lung-cancer-diagnosis-whats-next/",
+              "quote": "Within six months of being diagnosed with Stage 4 non-small cell lung cancer just before Thanksgiving 2022, after great results with one-pill-a-day targeted therapy that shrank cancerous tumors and lymph nodes in both lungs, I became eligible for a robotic-assisted lung lobectomy."
+            }
+          ]
+        },
+        {
+          "when": "Since May 2023",
+          "what": "No evidence of disease, still taking his daily pill",
+          "url": "https://wtop.com/inside-wtop/2025/11/wtops-neal-augenstein-3-years-after-stage-4-lung-cancer-diagnosis-whats-next/",
+          "quote": "I’ve had no evidence of disease, and have remained cancer-free since May 2023, while continuing to take my daily pill.",
+          "milestone": [
+            {
+              "url": "https://wtop.com/inside-wtop/2025/11/wtops-neal-augenstein-3-years-after-stage-4-lung-cancer-diagnosis-whats-next/",
+              "quote": "I’ve had no evidence of disease, and have remained cancer-free since May 2023, while continuing to take my daily pill."
+            }
+          ]
+        },
+        {
+          "when": "2025",
+          "what": "Checks: lung CT every four months; brain MRI and liquid biopsies twice a year",
+          "url": "https://wtop.com/inside-wtop/2025/11/wtops-neal-augenstein-3-years-after-stage-4-lung-cancer-diagnosis-whats-next/",
+          "quote": "The key is aggressive surveillance, which in my case involves low-dose CT scans every four months, as well as brain MRIs and liquid biopsies twice a year.",
+          "event": true,
+          "date_basis": [
+            "In 2025, life with lung cancer can be similar to life with other chronic diseases"
+          ]
+        },
+        {
+          "when": "23 Nov 2025",
+          "what": "He wrote that he and his doctors would not call him “cured”",
+          "url": "https://wtop.com/inside-wtop/2025/11/wtops-neal-augenstein-3-years-after-stage-4-lung-cancer-diagnosis-whats-next/",
+          "quote": "Despite having no evidence of cancer now, I (and my doctors) wouldn’t say that I’m “cured,” since I was originally diagnosed after cancer had spread from the original site in my left lung."
+        }
+      ]
+    }
+  ],
+  "phase_links": [
+    {
+      "from": "p1",
+      "to": "p2",
+      "cause": "Testing found an EGFR exon 19 deletion. He wrote: “For that particular mutation, there’s a drug called osimertinib.”",
+      "sources": [
+        {
+          "url": "https://wtop.com/inside-wtop/2023/03/wtops-neal-augenstein-one-pill-a-day-therapy-clearing-my-stage-4-lung-cancer-hoping-for-surgery/",
+          "quote": "The biomarker testing showed I have EGFR exon 19 deletion. For that particular mutation, there’s a drug called osimertinib, with a brand name of Tagrisso"
+        }
+      ]
+    },
+    {
+      "from": "p2",
+      "to": "p3",
+      "cause": "After the pill shrank tumours and lymph nodes in both lungs, he “became eligible for a robotic-assisted lung lobectomy.”",
+      "sources": [
+        {
+          "url": "https://wtop.com/inside-wtop/2025/11/wtops-neal-augenstein-3-years-after-stage-4-lung-cancer-diagnosis-whats-next/",
+          "quote": "Within six months of being diagnosed with Stage 4 non-small cell lung cancer just before Thanksgiving 2022, after great results with one-pill-a-day targeted therapy that shrank cancerous tumors and lymph nodes in both lungs, I became eligible for a robotic-assisted lung lobectomy."
+        }
+      ]
+    }
+  ],
+  "pronoun": "his",
+  "chain_caption": "Every line comes from his own WTOP articles; bold lines are events, plain-weight lines are his views and decisions."
 }

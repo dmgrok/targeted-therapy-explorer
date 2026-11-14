@@ -140,19 +140,24 @@
   "phase_sources": {
     "https://osteosarc.com/data/events.tsv": {
       "label": "osteosarc.com treatment timeline data (events.tsv, from osteosarc.com/timeline/)",
-      "opened": "14 November 2026"
+      "opened": "14 November 2026",
+      "kind": "record"
     },
     "https://osteosarc.com/": {
       "label": "osteosarc.com",
-      "opened": "14 November 2026"
+      "opened": "14 November 2026",
+      "kind": "record"
     },
     "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer": {
       "label": "his Substack post of 20 January 2026",
-      "opened": "14 November 2026"
+      "opened": "14 November 2026",
+      "kind": "own",
+      "published": "20 January 2026"
     },
     "https://sytse.com/cancer/": {
       "label": "his cancer page",
-      "opened": "14 November 2026"
+      "opened": "14 November 2026",
+      "kind": "own"
     }
   },
   "phases": [
@@ -168,7 +173,7 @@
         },
         {
           "when": "Nov 2022",
-          "what": "Biopsy of the spine tumour (T5 vertebra, UCSF)",
+          "what": "Biopsy of the spine tumour (T5 vertebra)",
           "url": "https://osteosarc.com/data/events.tsv",
           "evidence": [
             "2022-11-14 | Procedures | Biopsy | Biopsy | T5"
@@ -191,6 +196,12 @@
             {
               "url": "https://osteosarc.com/",
               "quote": "The primary tumor was resected from the spine in December 2022 (T0)."
+            }
+          ],
+          "label_basis": [
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "2022-12-16 T0 UCSF (spine tumor and rib resection)"
             }
           ]
         },
@@ -488,5 +499,7 @@
       "cause": null
     }
   ],
-  "phases_note": "Phases group dated rows from osteosarc.com and his own words. A reason is given on a link only where his own sources state one; otherwise the link is plain sequence. Shown up to 20 January 2026."
+  "phases_note": "Phases group dated rows from osteosarc.com and his own words. A reason is given on a link only where his own sources state one; otherwise the link is plain sequence. Shown up to 20 January 2026.",
+  "pronoun": "his",
+  "chain_caption": "Dates and actions come from osteosarc.com records and his own posts; plain-weight lines are his own words."
 }

@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from build_mockup import crumbs, page_shell, sources_block, write  # noqa: E402
 from build_site import esc  # noqa: E402
+from diagrams import chain_figure  # noqa: E402
 
 CASES_DIR = ROOT / "data" / "cases"
 SITE = ROOT / "site" / "cases"
@@ -235,6 +236,8 @@ def sources_list(case: dict) -> str:
         add(q.get("url"), q.get("label"), q.get("opened"))
     for ev in case.get("timeline") or []:
         add(ev.get("url"), ev.get("label"), ev.get("opened"))
+    for u, ps in (case.get("phase_sources") or {}).items():
+        add(u, ps.get("label"), ps.get("opened"))
     st = case.get("status") or {}
     add(st.get("url"), st.get("label"), st.get("opened"))
     died = case.get("died") or {}
@@ -268,6 +271,9 @@ def case_body(case: dict) -> str:
     if quotes:
         parts.append("<h2>In their own words</h2>")
         parts.append(quotes)
+    if case.get("phases"):
+        parts.append("<h2>How one step led to the next</h2>")
+        parts.append(chain_figure(case["slug"], f"chain-{case['slug']}", f"{case['slug']}-chain"))
     parts.append(timeline_html(case))
     parts.append(status_html(case))
     parts.append(pointers_html(case))

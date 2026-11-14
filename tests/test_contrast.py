@@ -2,7 +2,7 @@
 """WCAG AA contrast gate: every visible text element, in a headless browser.
 
 For a sample of pages (the steps home, the drug-pages start, one biomarker page, one table per biomarker,
-the cases index, and one case page), compute the effective foreground and
+the cases index, and every case page, each case page also at 390px), compute the effective foreground and
 background colour of every visible text element, accounting for opacity
 and inherited backgrounds. The build fails if any pair is below 4.5:1.
 
@@ -43,7 +43,13 @@ SAMPLE = [
     "b/MSI-H-dMMR/bowel-cancer/msi-h-or-dmmr/as-a-first-treatment.html",
     "cases/index.html",
     "cases/sijbrandij.html",
+    "cases/freeman-daily.html",
+    "cases/augenstein.html",
+    "cases/feldman.html",
+    "cases/olson.html",
 ]
+# Pages also checked at a 390px phone width (mobile diagram variants).
+MOBILE = ["index.html"] + [p for p in SAMPLE if p.startswith("cases/") and p != "cases/index.html"]
 
 # JS: walk visible text, compose colours, return ratios.
 COLLECT_JS = r"""
@@ -521,7 +527,7 @@ def main() -> int:
         print(f"contrast gate using {chrome}", flush=True)
         proc, debug_port = _launch_chrome(chrome, debug_port)
         ws = _connect_page(debug_port)
-        runs = [(rel, None) for rel in SAMPLE] + [("index.html", 390)]
+        runs = [(rel, None) for rel in SAMPLE] + [(rel, 390) for rel in MOBILE]
         for rel, width in runs:
             url = f"http://127.0.0.1:{http_port}/{rel}"
             if width:
@@ -565,7 +571,7 @@ def main() -> int:
         f"{lowest['desc']} — {lowest['fg']} on {lowest['bg']} "
         f"«{lowest['text']}»"
     )
-    print(f"Checked {n_checked} visible text elements on {len(SAMPLE)} pages (+ steps page at 390px).")
+    print(f"Checked {n_checked} visible text elements on {len(SAMPLE)} pages (+ {len(MOBILE)} pages at 390px).")
     if failures:
         print(f"\n{len(failures)} FAIL(S) below {THRESHOLD}:1")
         for r in failures[:25]:

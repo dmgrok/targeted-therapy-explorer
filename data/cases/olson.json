@@ -142,5 +142,236 @@
       "label": "When dying is a rebirth (Harvard Health, 22 March 2018)",
       "url": "https://www.harvardhealth.org/blog/when-dying-is-a-rebirth-2018031913413"
     }
-  ]
+  ],
+  "phase_sources": {
+    "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer": {
+      "label": "her ASCO Post essay of 25 August 2016 (as told to Jo Cavallo)",
+      "published": "25 August 2016",
+      "kind": "own",
+      "opened": "14 November 2026"
+    },
+    "https://www.harvardhealth.org/blog/when-dying-is-a-rebirth-2018031913413": {
+      "label": "her Harvard Health essay of 22 March 2018",
+      "published": "22 March 2018",
+      "kind": "own",
+      "opened": "14 November 2026"
+    },
+    "https://lifeandbreath.wordpress.com/2021/12/03/a-tribute-to-linnea/": {
+      "label": "a tribute on her blog, 3 December 2021",
+      "published": "3 December 2021",
+      "kind": "tribute",
+      "opened": "14 November 2026"
+    }
+  },
+  "phases": [
+    {
+      "id": "p1",
+      "title": "Diagnosis and surgery",
+      "actions": [
+        {
+          "when": "2005",
+          "what": "Early lung cancer (stage IB): a 5 cm tumour in the lower part of her left lung",
+          "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+          "quote": "When I was finally diagnosed with stage IB NSCLC in 2005, the tumor was confined to my lower left lobe and was 5 cm.",
+          "event": true,
+          "label_basis": [
+            {
+              "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+              "quote": "surgery to remove the lower lobe of my left lung"
+            }
+          ]
+        },
+        {
+          "when": "After diagnosis",
+          "what": "Switched her care to Thomas J. Lynch, Jr, MD",
+          "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+          "quote": "After a bad experience with the oncologist who had diagnosed me, I switched my care to Thomas J. Lynch, Jr, MD (now CEO and Chairman of Massachusetts General Physicians Organization). I’m sure the decision saved my life.",
+          "event": true,
+          "date_note": "Her 2016 essay tells this after her 2005 diagnosis and gives no separate date.",
+          "milestone": [
+            {
+              "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+              "quote": "I switched my care to Thomas J. Lynch, Jr, MD (now CEO and Chairman of Massachusetts General Physicians Organization). I’m sure the decision saved my life."
+            }
+          ]
+        },
+        {
+          "when": "After diagnosis",
+          "what": "Surgery removed the lower lobe of her left lung, then four rounds of chemotherapy",
+          "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+          "quote": "After undergoing surgery to remove the lower lobe of my left lung, I was prescribed four rounds of a combination regimen of docetaxel and cisplatin chemotherapy to kill any errant malignant cells and potentially cure my disease.",
+          "event": true,
+          "date_note": "Her 2016 essay tells this after her 2005 diagnosis and gives no separate date."
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "title": "The cancer spread",
+      "span_label": "Within months – 2008",
+      "span_note": "Her 2016 essay says “within months” and “by 2008”.",
+      "actions": [
+        {
+          "when": "Within months",
+          "what": "Tumours in both lungs; now stage IV",
+          "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+          "quote": "I was unresponsive to the chemotherapy, and within months, tumors began invading both lungs, and my cancer was reclassified to stage IV.",
+          "event": true
+        },
+        {
+          "when": "By 2008",
+          "what": "Told she had 3 to 5 months to live",
+          "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+          "quote": "By 2008, with few other treatment options to deploy and the cancer rapidly advancing, I was told I had 3 to 5 months to live.",
+          "event": true
+        },
+        {
+          "when": "By 2008",
+          "what": "She and her son started counselling; she said goodbye to relatives",
+          "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+          "quote": "To prepare both my young son, just 11 at the time, and myself for my impending death, we started counseling, and I made a cross-country trip to say my goodbyes to relatives.",
+          "date_basis": [
+            "By 2008, with few other treatment options to deploy and the cancer rapidly advancing, I was told I had 3 to 5 months to live."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "title": "The first ALK drug trial",
+      "span_label": "October 2008 – about three years",
+      "span_note": "Her 2016 essay: crizotinib from October 2008 gave her 3 years before resistance.",
+      "actions": [
+        {
+          "when": "Oct 2008",
+          "what": "Fourth person in the world with this cancer to take crizotinib, then experimental",
+          "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+          "quote": "In October 2008, I became the fourth person in the world with NSCLC to take the then-experimental drug crizotinib (Xalkori).",
+          "event": true,
+          "milestone": [
+            {
+              "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+              "quote": "In October 2008, I became the fourth person in the world with NSCLC to take the then-experimental drug crizotinib (Xalkori)."
+            }
+          ]
+        },
+        {
+          "when": "3 years",
+          "what": "High-quality life on the drug, then resistance",
+          "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+          "quote": "instead it gave me 3 years of high-quality life before I became resistant to it and the chance to enroll in a phase I study investigating another ALK inhibitor ceritinib (Zykadia).",
+          "event": true
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "title": "More ALK drug trials",
+      "span_label": "After crizotinib – August 2016",
+      "span_note": "Her 2016 essay gives no start date for ceritinib.",
+      "actions": [
+        {
+          "when": "After crizotinib",
+          "what": "An early trial of ceritinib, which bought her time",
+          "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+          "quote": "Although I didn’t get as long a delay from disease progression with ceritinib as I did with crizotinib, it bought me enough time to enter a phase I trial for the next-generation ALK/ROS1 tyrosine kinase inhibitor lorlatinib",
+          "event": true,
+          "date_note": "After resistance to crizotinib, as told in her 2016 essay."
+        },
+        {
+          "when": "After ceritinib",
+          "what": "An early trial of lorlatinib",
+          "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+          "quote": "Although I didn’t get as long a delay from disease progression with ceritinib as I did with crizotinib, it bought me enough time to enter a phase I trial for the next-generation ALK/ROS1 tyrosine kinase inhibitor lorlatinib",
+          "event": true,
+          "date_note": "After ceritinib, as told in her 2016 essay."
+        },
+        {
+          "when": "25 Aug 2016",
+          "what": "Two years stable on lorlatinib; now signs of progression",
+          "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+          "quote": "which I still take today. Although the drug has given me 2 years of disease stability, there are now signs of cancer progression.",
+          "event": true
+        },
+        {
+          "when": "25 Aug 2016",
+          "what": "She wrote that she advocates for patients’ rights and research funding",
+          "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+          "quote": "I’ve become a staunch advocate for patients’ rights and work to increase funding for cancer research, and the work is rewarding.",
+          "milestone": [
+            {
+              "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+              "quote": "I’ve become a staunch advocate for patients’ rights and work to increase funding for cancer research"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "title": "Later years",
+      "actions": [
+        {
+          "when": "22 Mar 2018",
+          "what": "She wrote that she had gone back to chemotherapy and joined two more early trials",
+          "url": "https://www.harvardhealth.org/blog/when-dying-is-a-rebirth-2018031913413",
+          "quote": "In the years hence, I have returned to chemotherapy, but also enrolled in two more phase I clinical trials."
+        },
+        {
+          "when": "15 Nov 2021",
+          "what": "She died at home, aged 61, with her family",
+          "url": "https://lifeandbreath.wordpress.com/2021/12/03/a-tribute-to-linnea/",
+          "quote": "Evalynn Linnea Olson, known to all as “Linnea”, died at the age of 61 on Monday, November 15, 2021.",
+          "event": true,
+          "label_basis": [
+            {
+              "url": "https://lifeandbreath.wordpress.com/2021/12/03/a-tribute-to-linnea/",
+              "quote": "She was able to pass away at home, her adult children and family members were with her"
+            }
+          ],
+          "died": true
+        }
+      ]
+    }
+  ],
+  "phase_links": [
+    {
+      "from": "p1",
+      "to": "p2",
+      "cause": null
+    },
+    {
+      "from": "p2",
+      "to": "p3",
+      "cause": "A gene test of a tumour found an ALK change, and she joined the first trial of a drug aimed at it. She wrote: “Just in the nick of time medical science intervened.”",
+      "sources": [
+        {
+          "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+          "quote": "A biopsy of one of my tumors used for genetic sequencing revealed I was positive for the fusion oncogene anaplastic lymphoma kinase (ALK)."
+        },
+        {
+          "url": "https://www.harvardhealth.org/blog/when-dying-is-a-rebirth-2018031913413",
+          "quote": "Just in the nick of time medical science intervened, as I was found to have a newly identified driver in lung cancer, an ALK (anaplastic lymphoma kinase) mutation. On October 1, 2008, I became the fourth person in the world with NSCLC to enroll in a first-in-human trial targeting ALK."
+        }
+      ]
+    },
+    {
+      "from": "p3",
+      "to": "p4",
+      "cause": "After 3 years she became resistant to crizotinib. She wrote that the drug also gave her “the chance to enroll in a phase I study” of another ALK drug.",
+      "sources": [
+        {
+          "url": "https://ascopost.com/issues/august-25-2016/my-oncologists-make-me-feel-safe-even-while-living-with-terminal-cancer",
+          "quote": "instead it gave me 3 years of high-quality life before I became resistant to it and the chance to enroll in a phase I study investigating another ALK inhibitor ceritinib (Zykadia)."
+        }
+      ]
+    },
+    {
+      "from": "p4",
+      "to": "p5",
+      "cause": null
+    }
+  ],
+  "pronoun": "her",
+  "chain_caption": "Lines come from her 2016 account (as told to Jo Cavallo, ASCO Post) and her 2018 essay, and the last from a tribute on her blog; bold lines are events, plain-weight lines are her views and decisions."
 }
