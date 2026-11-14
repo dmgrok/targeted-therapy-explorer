@@ -65,6 +65,8 @@ URL = {
     "sytse": "https://sytse.com/cancer/",
     "substack": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
     "osteosarc": "https://osteosarc.com/",
+    "osteosarc_timeline": "https://osteosarc.com/timeline/",
+    "osteosarc_events": "https://osteosarc.com/data/events.tsv",
 }
 
 
@@ -321,6 +323,8 @@ def sid_example() -> str:
                 src_item(URL["forum"], "OpenAI Forum talk and on-page transcript", f"Posted 18 March 2026. {OPENED_13_RE}."),
                 src_item(URL["substack"], "Substack, “I’m going Founder Mode on my cancer”", f"20 January 2026. {OPENED_13_RE}."),
                 src_item(URL["osteosarc"], "osteosarc.com", f"Homepage text. {OPENED_13}. No AI-use description in that text."),
+                src_item(URL["osteosarc_timeline"], "osteosarc.com treatment timeline", f"Source of the dated actions in the phase diagram, via its events table. {OPENED_14}."),
+                src_item(URL["osteosarc_events"], "osteosarc.com events table (TSV)", f"Each diagram row lists its matching table rows in the case data. {OPENED_14}."),
                 src_item(URL["academy"], "OpenAI Academy article", f"6 August 2026. Published by OpenAI, so not independent. {OPENED_13_RE}. Not used for quotes."),
             ],
             "Sources for this example",

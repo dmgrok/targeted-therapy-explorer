@@ -384,35 +384,87 @@ def test_diagrams() -> None:
 
 
 def test_sid_timeline_dates() -> None:
+    """Sid phase chain: every phase, date and cause traces to a source entry."""
     import json
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import diagrams as dg
     html = INDEX.read_text(encoding="utf-8")
     fig = _figure(html, "sid-timeline")
     if not fig:
         err("Sid timeline #sid-timeline missing")
         return
-    data = json.loads((ROOT / "data" / "cases" / "sijbrandij.json").read_text(encoding="utf-8"))
-    def dates_in(obj):
-        if isinstance(obj, dict):
-            for k, v in obj.items():
-                if k == "date" and isinstance(v, str):
-                    yield v.strip().lower()
-                else:
-                    yield from dates_in(v)
-        elif isinstance(obj, list):
-            for v in obj:
-                yield from dates_in(v)
-    known = set(dates_in(data))
-    shown = set()
-    for s in _svgs(fig):
+    if "One person’s story, not evidence that a treatment works" not in fig:
+        err("Sid timeline caption must say it is one person’s story, not evidence")
+    d = json.loads((ROOT / "data" / "cases" / "sijbrandij.json").read_text(encoding="utf-8"))
+    src = d.get("phase_sources", {})
+    own = {"https://osteosarc.com/", "https://osteosarc.com/data/events.tsv",
+           "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
+           "https://sytse.com/cancer/"}
+    if set(src) - own:
+        err(f"phase sources must be his own sources only: {sorted(set(src) - own)}")
+    mon = {m: i for i, m in enumerate(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
+                                       "Sep", "Oct", "Nov", "Dec"], 1)}
+    def ym(s):  # 'Feb 2023' -> (2023, 2); '2022' -> (2022, None); 'Late 2024' -> (2024, None)
+        parts = s.split()
+        return (int(parts[-1]), mon.get(parts[-2][:3]) if len(parts) >= 2 else None)
+    whens, n_quotes = set(), 0
+    for ph in d.get("phases", []):
+        for a in ph["actions"]:
+            whens.add(a["when"])
+            if a["url"] not in src:
+                err(f"action {a['what']!r}: URL not in phase_sources")
+            if a.get("evidence"):
+                dates = []
+                for row in a["evidence"]:
+                    m = re.match(r"(\d{4})-(\d{2})-\d{2}(?:–(\d{4})-(\d{2})-\d{2})?", row)
+                    if not m:
+                        err(f"evidence row without an ISO date: {row!r}")
+                        continue
+                    dates.append((int(m.group(1)), int(m.group(2))))
+                    if m.group(3):
+                        dates.append((int(m.group(3)), int(m.group(4))))
+                start, end = dg.when_bounds(a["when"])
+                if dates and ym(start) != min(dates):
+                    err(f"{a['when']!r} start does not match its earliest evidence row {min(dates)}")
+                if dates and not a["when"].startswith("From ") and ym(end) != max(dates):
+                    err(f"{a['when']!r} end does not match its latest evidence row {max(dates)}")
+            elif a.get("quote"):
+                n_quotes += 1
+                basis = (a.get("date_basis") or a["quote"]).lower()
+                w = a["when"].lower()
+                post = "substack" in a["url"] and w == "20 jan 2026"
+                if not post and w not in basis:
+                    err(f"quote action {a['what']!r}: its date {a['when']!r} is not in the quoted text")
+            else:
+                err(f"action {a['what']!r} has neither evidence rows nor a quote")
+    links = d.get("phase_links", [])
+    causes = [ln for ln in links if ln.get("cause")]
+    for ln in causes:
+        if not ln.get("sources") or any(s.get("url") not in src or not s.get("quote") for s in ln["sources"]):
+            err(f"cause on {ln['from']}->{ln['to']} lacks a sourced quote")
+        for frag in re.findall(r"“([^”]+)”", ln["cause"]):
+            if not any(frag in s.get("quote", "") for s in ln.get("sources", [])):
+                err(f"quoted words {frag!r} on a link are not in its source quote")
+    svgs = _svgs(fig)
+    for s in svgs:
         _check_svg_a11y(s, "sid-timeline")
-        for d in re.findall(r'fill="#b02058"[^>]*>([^<]+)</text>', s):
-            shown.add(d.strip().lower())
-    if not shown:
-        err("Sid timeline shows no dates")
-    extra = shown - known
-    if extra:
-        err(f"Sid timeline shows dates not in sijbrandij.json: {sorted(extra)}")
-    ok(f"Sid timeline: {len(shown)} dates, all from the verified case file")
+        labels = re.findall(r">([^<>]+)</text>", s)
+        joined = " ".join(labels)
+        for ph in d["phases"]:
+            if dg.phase_span(ph) not in joined:
+                err(f"phase span {dg.phase_span(ph)!r} not drawn")
+        shown_dates = set(re.findall(r'fill="#b02058"[^>]*>([^<]+)</text>', s))
+        extra = shown_dates - whens
+        if extra:
+            err(f"Sid timeline draws dates not in the phase data: {sorted(extra)}")
+        if joined.count("WHY") != len(causes):
+            err("number of WHY boxes differs from sourced causes")
+        if joined.count(dg.NOT_STATED) != len(links) - len(causes):
+            err("every link without a stated cause must say the reason is not stated")
+        if re.search(r"(?i)kilo", joined):
+            err("Kilo Code must not appear in the Sid diagram")
+    ok(f"Sid phases: {len(d['phases'])} phases, {len(causes)} sourced cause(s), "
+       f"{len(links) - len(causes)} links marked 'reason not stated', {n_quotes} quoted actions")
 
 
 def test_diagram_wording() -> None:
@@ -423,7 +475,7 @@ def test_diagram_wording() -> None:
         if bad in words:
             err(f"diagram still says {bad!r}")
     for good in ("Hospital platforms (France)", "wherever you live", "Off-label use", "A use not listed on the label",
-                 "Cancer came back in the spine (Th4 vertebra)"):
+                 "Cancer came back in the spine"):
         if good not in words:
             err(f"diagram should say {good!r}")
     no_svg = re.sub(r"<svg\b.*?</svg>", "", html, flags=re.S)

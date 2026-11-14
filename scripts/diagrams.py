@@ -553,110 +553,157 @@ def step_figure(step_id: str) -> str:
 # Short labels keyed by the exact date string in data/cases/sijbrandij.json.
 # A date missing from this map fails the build, so the drawing cannot drift
 # from the verified case data.
-SID_LABELS = {
-    "November 2022": "Diagnosed with osteosarcoma",
-    "16 December 2022": "Primary tumour removed",
-    "June 2024": "Cancer came back in the spine (Th4 vertebra)",
-    "late 2024": "He wrote: standard of care exhausted, no trials",
-    "28 January 2025": "Cancer came back again in the spine (Th4–Th5)",
-    "17 April 2025": "Tumour at Th4–Th5 removed",
-    "20 January 2026": "He wrote: no evidence of disease",
-}
+NOT_STATED = "Then. Reason not stated in his sources."
+_MON = {m: m[:3] for m in ["January", "February", "March", "April", "May", "June", "July",
+                            "August", "September", "October", "November", "December"]}
 
 
-def sid_events() -> list[tuple[str, str, str]]:
-    data = json.loads((ROOT / "data" / "cases" / "sijbrandij.json").read_text(encoding="utf-8"))
-    events = []
-    for ev in data.get("timeline") or []:
-        d = ev["date"]
-        if d not in SID_LABELS:
-            raise SystemExit(f"Sid timeline date {d!r} has no diagram label; add one in diagrams.py")
-        year = d.split()[-1]
-        events.append((d, SID_LABELS[d], year))
-    return events
+def sid_case() -> dict:
+    return json.loads((ROOT / "data" / "cases" / "sijbrandij.json").read_text(encoding="utf-8"))
 
 
-def _cap(d: str) -> str:
-    return d[:1].upper() + d[1:]
+def when_bounds(when: str) -> tuple[str, str]:
+    """'Jan–Feb 2023' -> ('Jan 2023', 'Feb 2023'); 'From Oct 2023' -> ('Oct 2023', 'Oct 2023')."""
+    w = when.replace("From ", "").strip()
+    parts = [x.strip() for x in w.replace(" – ", "–").split("–")]
+    start, end = parts[0], parts[-1]
+    if not any(ch.isdigit() for ch in start):
+        start = f"{start} {end.split()[-1]}"
+    return start, end
+
+
+def phase_span(ph: dict) -> str:
+    s = when_bounds(ph["actions"][0]["when"])[0]
+    e_ = when_bounds(ph["actions"][-1]["when"])[1]
+    if s == e_:
+        return s
+    if s.split()[-1] == e_.split()[-1] and len(s.split()) == 2 and len(e_.split()) == 2:
+        return f"{s.split()[0]} – {e_[0].lower() + e_[1:]}"
+    return f"{s} – {e_}"
+
+
+def sid_phases() -> tuple[list[dict], list[dict]]:
+    d = sid_case()
+    phases, links = d["phases"], d["phase_links"]
+    src = d["phase_sources"]
+    for ph in phases:
+        for a in ph["actions"]:
+            if a["url"] not in src:
+                raise SystemExit(f"Sid phase action {a['what']!r} has a URL not in phase_sources")
+            if not a.get("evidence") and not a.get("quote"):
+                raise SystemExit(f"Sid phase action {a['what']!r} has no evidence rows or quote")
+    for ln in links:
+        if ln.get("cause") and not all(s.get("quote") and s.get("url") in src for s in ln.get("sources", [])):
+            raise SystemExit(f"Sid link {ln['from']}->{ln['to']} states a cause without a sourced quote")
+        if ln.get("cause") and not ln.get("sources"):
+            raise SystemExit(f"Sid link {ln['from']}->{ln['to']} states a cause without sources")
+    return phases, links
+
+
+SID_TITLE = "Sid Sijbrandij’s published story in five phases, and what led from one to the next"
+
+
+def _sid_desc(phases, links) -> str:
+    out = []
+    for i, ph in enumerate(phases):
+        acts = "; ".join(f"{a['when']}: {a['what']}" for a in ph["actions"])
+        out.append(f"Phase {i + 1}, {ph['title'].strip('“”')}, {phase_span(ph)}. {acts}.")
+        if i < len(links):
+            ln = links[i]
+            out.append(("Why the next phase: " + ln["cause"]) if ln.get("cause") else NOT_STATED)
+    out.append("One person’s story, not evidence that a treatment works.")
+    return " ".join(out)
+
+
+def _sid_svg(p: str, wide: bool) -> str:
+    phases, links = sid_phases()
+    W = 860 if wide else 400
+    body = []
+    y = 8
+    for i, ph in enumerate(phases):
+        rows = ph["actions"]
+        if wide:
+            lw, rx = 214, 228
+            dcol = 132
+            tchars = int((W - rx - dcol - 30) / 7.6)
+            row_lines = [wrap(a["what"], tchars) for a in rows]
+            rows_h = sum(max(1, len(l)) * 21 + 10 for l in row_lines) + 26
+            tlines = wrap(ph["title"], 15)
+            left_h = 30 + 24 + 14 + len(tlines) * 28 + 18
+            h = max(rows_h, left_h)
+            body.append(plate(0, y, lw, h, p, dx=5, dy=5, opacity=0.5))
+            body.append(f'<rect x="0" y="{y}" width="{lw}" height="{h}" fill="{INK}"/>')
+            body.append(text(18, y + 28, f"Phase {i + 1}", size=13, weight=700, fill=PAPER, bg=INK,
+                             spacing="1.6", upper=True))
+            body.append(text(18, y + 52, phase_span(ph), size=15.5, weight=600, fill=PAPER, bg=INK))
+            body.append(lines_text(18, y + 88, tlines, lh=28, size=26, weight=700, fill=PAPER,
+                                   bg=INK, family=HEAD))
+            body.append(f'<rect x="{rx}" y="{y}" width="{W - rx - 2}" height="{h}" fill="{WHITE}" '
+                        f'stroke="{INK}" stroke-width="2"/>')
+            ry = y + 30
+            for a, ls in zip(rows, row_lines):
+                body.append(text(rx + 16, ry, a["when"], size=14.5, weight=700, fill=PINK, bg=WHITE))
+                body.append(lines_text(rx + 16 + dcol, ry, ls, lh=21, size=16, weight=600 if "evidence" in a else 400,
+                                       fill=DEEP if "evidence" in a else INK, bg=WHITE))
+                ry += max(1, len(ls)) * 21 + 10
+            cx = lw / 2
+        else:
+            tlines = wrap(ph["title"], 24)
+            band = 26 + 22 + len(tlines) * 26 + 12
+            tchars = 36
+            row_lines = [wrap(a["what"], tchars) for a in rows]
+            rows_h = sum(20 + len(l) * 20 + 10 for l in row_lines) + 18
+            h = band + rows_h
+            body.append(plate(8, y, W - 16, band, p, dx=4, dy=4, opacity=0.5))
+            body.append(f'<rect x="8" y="{y}" width="{W - 16}" height="{band}" fill="{INK}"/>')
+            body.append(text(24, y + 26, f"Phase {i + 1} · {phase_span(ph)}", size=14, weight=700,
+                             fill=PAPER, bg=INK))
+            body.append(lines_text(24, y + 54, tlines, lh=26, size=24, weight=700, fill=PAPER, bg=INK,
+                                   family=HEAD))
+            body.append(f'<rect x="8" y="{y + band}" width="{W - 16}" height="{rows_h}" fill="{WHITE}" '
+                        f'stroke="{INK}" stroke-width="2"/>')
+            ry = y + band + 26
+            for a, ls in zip(rows, row_lines):
+                body.append(text(24, ry, a["when"], size=14, weight=700, fill=PINK, bg=WHITE))
+                body.append(lines_text(24, ry + 20, ls, lh=20, size=15.5, weight=600 if "evidence" in a else 400,
+                                       fill=DEEP if "evidence" in a else INK, bg=WHITE))
+                ry += 20 + len(ls) * 20 + 10
+            cx = 40
+        y += h
+        if i < len(links):
+            ln = links[i]
+            bx = (cx + 40) if wide else 64
+            bw = (W - bx - 8) if not wide else 560
+            if ln.get("cause"):
+                lines = wrap(ln["cause"], int((bw - 90) / 8.0))
+                bh = 22 + len(lines) * 21
+                gap = bh + 36
+                by = y + 18
+                body.append(line(cx, y + 6, cx, y + gap - 8, p))
+                body.append(plate(bx, by, bw, bh, p, dx=4, dy=4, opacity=0.45))
+                body.append(f'<rect x="{bx:.1f}" y="{by}" width="{bw}" height="{bh}" fill="{PINK}"/>')
+                body.append(text(bx + 14, by + 26, "WHY", size=13, weight=700, fill=WHITE, bg=PINK,
+                                 spacing="1.6"))
+                body.append(lines_text(bx + 66, by + 26, lines, lh=21, size=15.5, weight=600,
+                                       fill=WHITE, bg=PINK))
+            else:
+                bh, gap = 34, 70
+                by = y + 18
+                body.append(line(cx, y + 6, cx, y + gap - 8, p))
+                body.append(f'<rect x="{bx:.1f}" y="{by}" width="{len(NOT_STATED) * 7.6 + 28:.0f}" height="{bh}" '
+                            f'fill="{PAPER}" stroke="{INK}" stroke-width="1.6" stroke-dasharray="5 4"/>')
+                body.append(text(bx + 14, by + 22, NOT_STATED, size=14.5, weight=600, fill=INK, bg=PAPER))
+            y += gap
+    H = int(y + 12)
+    cls = "dg-wide" if wide else "dg-tall"
+    return svg_open(p, W, H, SID_TITLE, _sid_desc(phases, links), cls) + "".join(body) + "</svg>"
 
 
 def sid_figure() -> str:
-    evs = sid_events()
-    title = "Sid Sijbrandij’s published timeline, one person’s story"
-    desc = " ".join(f"{_cap(d)}: {lab}." for d, lab, _y in evs) + (
-        " Dates are from osteosarc.com and his Substack post of 20 January 2026. "
-        "This is one person’s story, not evidence that a treatment works."
-    )
-    years = []
-    for _d, _l, y in evs:
-        if not years or years[-1][0] != y:
-            years.append([y, 0])
-        years[-1][1] += 1
-    # wide: two rows of year bands so labels stay near body size in the 46rem column
-    p = "sid-w"
-    W, pad, gap, bgap = 860, 16, 12, 20
-    rows = [years[:2], years[2:]]
-    per_row = max(sum(c for _y, c in r) for r in rows)
-    cw = (W - 2 * pad - (per_row - 1) * gap - bgap) / per_row
-    card_h, band_h, row_h = 128, 34, 196
-    H = 12 + len(rows) * row_h
-    out = [svg_open(p, W, H, title, desc, "dg-wide")]
-    idx = 0
-    for r, row in enumerate(rows):
-        x = pad
-        top = 12 + r * row_h
-        for y, count in row:
-            bw = count * cw + (count - 1) * gap
-            out.append(plate(x, top, bw, band_h, p, dx=4, dy=4, opacity=0.5))
-            out.append(f'<rect x="{x:.1f}" y="{top}" width="{bw:.1f}" height="{band_h}" fill="{INK}"/>')
-            out.append(text(x + 14, top + 24, y, size=20, weight=700, fill=PAPER, bg=INK, family=HEAD,
-                            spacing="1"))
-            for k in range(count):
-                d, lab, _ = evs[idx]
-                cx = x + k * (cw + gap)
-                cy = top + band_h + 12
-                out.append(f'<rect x="{cx:.1f}" y="{cy}" width="{cw:.1f}" height="{card_h}" fill="{WHITE}" '
-                           f'stroke="{INK}" stroke-width="2"/>')
-                out.append(f'<rect x="{cx:.1f}" y="{cy}" width="{cw:.1f}" height="6" fill="{PINK}"/>')
-                out.append(text(cx + 14, cy + 32, _cap(d), size=15, weight=700, fill=PINK, bg=WHITE))
-                out.append(lines_text(cx + 14, cy + 60, wrap(lab, int((cw - 24) / 8.6)), lh=22,
-                                      size=17, weight=600, fill=DEEP, bg=WHITE))
-                idx += 1
-            x += bw + gap + bgap
-    out.append("</svg>")
-    wide = "".join(out)
-    # tall
-    p = "sid-t"
-    W, rgap = 400, 10
-    labs = [wrap(lab, 33) for _d, lab, _y in evs]
-    hs = [40 + len(l) * 20 + 4 for l in labs]
-    H = 16 + sum(hs) + rgap * len(hs) + 10
-    out = [svg_open(p, W, H, title, desc, "dg-tall")]
-    yy = 16
-    idx = 0
-    for y, count in years:
-        bh = sum(hs[idx:idx + count]) + (count - 1) * rgap
-        out.append(plate(8, yy, 64, bh, p, dx=4, dy=4, opacity=0.5))
-        out.append(f'<rect x="8" y="{yy}" width="64" height="{bh}" fill="{INK}"/>')
-        out.append(text(40, yy + 30, y, size=20, weight=700, fill=PAPER, bg=INK, family=HEAD,
-                        anchor="middle"))
-        ry = yy
-        for k in range(count):
-            d, _lab, _ = evs[idx]
-            rh = hs[idx]
-            out.append(f'<rect x="84" y="{ry}" width="306" height="{rh}" fill="{WHITE}" '
-                       f'stroke="{INK}" stroke-width="2"/>')
-            out.append(f'<rect x="84" y="{ry}" width="6" height="{rh}" fill="{PINK}"/>')
-            out.append(text(102, ry + 24, _cap(d), size=14.5, weight=700, fill=PINK, bg=WHITE))
-            out.append(lines_text(102, ry + 47, labs[idx], lh=20, size=16, weight=600,
-                                  fill=DEEP, bg=WHITE))
-            ry += rh + rgap
-            idx += 1
-        yy += bh + rgap
-    out.append("</svg>")
-    tall = "".join(out)
     return (
-        '<figure class="dg dg-sid" id="sid-timeline">' + wide + tall
-        + "<figcaption>His published timeline, from osteosarc.com and his Substack post. "
-        "One person’s story, not evidence that a treatment works.</figcaption></figure>"
+        '<figure class="dg dg-sid" id="sid-timeline">' + _sid_svg("sid-w", True) + _sid_svg("sid-t", False)
+        + "<figcaption>One person’s story, not evidence that a treatment works. Dates and actions "
+        "come from osteosarc.com records and his own posts; plain-weight lines are his own words. "
+        "A reason is shown only where his sources give one."
+        "</figcaption></figure>"
     )
