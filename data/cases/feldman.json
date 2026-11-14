@@ -94,5 +94,218 @@
       "label": "IASLC: A Journey Unlike Any Other",
       "url": "https://www.iaslc.org/journey-unlike-any-other-jill-feldman"
     }
-  ]
+  ],
+  "phase_sources": {
+    "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer": {
+      "label": "her blog post of 12 June 2020",
+      "published": "12 June 2020",
+      "kind": "own",
+      "opened": "14 November 2026"
+    },
+    "https://thepatientstory.com/patient-stories/lung-cancer/non-small-cell/jill-f/": {
+      "label": "her interview with The Patient Story, 10 January 2025 (her own words)",
+      "published": "10 January 2025",
+      "kind": "own",
+      "opened": "14 November 2026"
+    }
+  },
+  "phases": [
+    {
+      "id": "p1",
+      "title": "Diagnosis and first surgery",
+      "actions": [
+        {
+          "when": "2009",
+          "what": "A lung nodule watched for three and a half years grew",
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "My scans were not concerning until 2009, when a nodule we had been following for three and a half years became aggressive, and I was diagnosed with lung cancer at 39 years old.",
+          "event": true
+        },
+        {
+          "when": "2009",
+          "what": "Surgery: early lung cancer (stage Ia) with an EGFR gene change",
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "I had surgery and was diagnosed with stage Ia adenocarcinoma, positive for an EGFR mutation (EGFR & KRAS were all they tested for).",
+          "event": true,
+          "date_basis": [
+            "My scans were not concerning until 2009"
+          ],
+          "milestone": [
+            {
+              "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+              "quote": "I had surgery and was diagnosed with stage Ia adenocarcinoma, positive for an EGFR mutation"
+            }
+          ],
+          "label_basis": [
+            {
+              "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+              "quote": "I was diagnosed with lung cancer at 39 years old."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "title": "A pill after surgery",
+      "span_label": "After her first surgery",
+      "span_note": "Her 2020 post gives no year for this.",
+      "actions": [
+        {
+          "when": "After her first surgery",
+          "what": "Erlotinib (off label) as extra treatment after surgery",
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "Even though the cancer was stage Ia, I knew I was at risk for recurrence. I didn’t want my kids to ever go through what I went through, so I took Erlotinib (off label) as adjuvant therapy.",
+          "event": true,
+          "date_basis": [
+            "My oncologist (Phil Bonomi) knew I wanted adjuvant therapy after my first surgery, even though it wasn’t standard of care."
+          ]
+        },
+        {
+          "when": "While on it",
+          "what": "She wrote that it worked until she stopped taking it",
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "And it worked…. until I stopped taking it.",
+          "date_note": "Her 2020 post gives no dates for this."
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "title": "The cancer came back",
+      "span_label": "Year not given",
+      "span_note": "Her 2020 post counts months, not years, here.",
+      "actions": [
+        {
+          "when": "Eight months later",
+          "what": "A new nodule on her scan",
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "Eight months after I stopped taking Erlotinib there was a new nodule on my scan, and four months later I had surgery to remove it, another stage Ia EGFR mutant lung cancer.",
+          "event": true
+        },
+        {
+          "when": "Four months later",
+          "what": "Second surgery removed it: another early EGFR lung cancer",
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "Eight months after I stopped taking Erlotinib there was a new nodule on my scan, and four months later I had surgery to remove it, another stage Ia EGFR mutant lung cancer.",
+          "event": true,
+          "milestone": [
+            {
+              "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+              "quote": "Eight months after I stopped taking Erlotinib there was a new nodule on my scan, and four months later I had surgery to remove it, another stage Ia EGFR mutant lung cancer."
+            }
+          ]
+        },
+        {
+          "when": "After that surgery",
+          "what": "New growth on scans; the same disease, still in her chest",
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "The surgery was successful, but unfortunately, there was new tumor growth on my post-op scan, and even more on my next scan. I was lucky the cancer was contained to my chest, but after looking closer at the pathology of the two resections we learned it was the same disease and not a new primary.",
+          "event": true
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "title": "Focused radiation when needed",
+      "span_label": "Early 2013 – 2019",
+      "span_note": "From early 2013; it ended “last year” in her post of 12 June 2020, so 2019.",
+      "actions": [
+        {
+          "when": "Early 2013",
+          "what": "Chose focused radiation to the lung spots (SBRT)",
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "Erlotinib was still the only TKI approved for EGFR mutant lung cancer in early 2013. SBRT for intrapulmonary metastasis wasn’t a thing, but risks were low, so my care team and I decided it was a better option for me rather than going back on Erlotinib.",
+          "event": true
+        },
+        {
+          "when": "Five years",
+          "what": "Focused radiation as needed: wait, watch, treat",
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "I was willing to take the risk and was fortunate to use SBRT as needed for five years.",
+          "event": true
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "title": "Back on a targeted pill",
+      "span_label": "2019 – January 2025",
+      "span_note": "“Last year” in her 12 June 2020 post; status from her interview of 10 January 2025.",
+      "actions": [
+        {
+          "when": "2019",
+          "what": "Back on a targeted pill (TKI)",
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "Going back on a TKI was definitely a hard pill to swallow (literally), but it was the first time in 10 years I was not overcome with fear.",
+          "event": true,
+          "date_basis": [
+            "The wait, watch, treat with local therapy as needed approach ended last year when one nodule continued to misbehave. Nothing else was imminent, but SBRT was risky because of the location of the nodule. It was time to treat the disease, not the scan."
+          ],
+          "date_note": "“Last year” in her post of 12 June 2020, so 2019."
+        },
+        {
+          "when": "Spring (year not given)",
+          "what": "Cancer grew in one area; radiation there, staying on the same treatment",
+          "url": "https://thepatientstory.com/patient-stories/lung-cancer/non-small-cell/jill-f/",
+          "quote": "That just happened to me in the spring. I had progression, and I ended up being able to radiate the area where the cancer was growing. Now, I stay on the same treatment, which is so important to be able to do that and get more mileage out of that treatment.",
+          "event": true
+        }
+      ]
+    }
+  ],
+  "phase_links": [
+    {
+      "from": "p1",
+      "to": "p2",
+      "cause": "She knew she was at risk of it coming back. Her oncologist asked her “What are your goals?” She said she needed to live to raise her children, and he recommended the pill.",
+      "sources": [
+        {
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "Even though the cancer was stage Ia, I knew I was at risk for recurrence. I didn’t want my kids to ever go through what I went through, so I took Erlotinib (off label) as adjuvant therapy."
+        },
+        {
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "But, let me ask you a question: What are your goals?"
+        },
+        {
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "I just need to do everything in my power to live to raise my children."
+        },
+        {
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "Without hesitation he said, “I recommend you take Erlotinib as adjuvant therapy”."
+        }
+      ]
+    },
+    {
+      "from": "p2",
+      "to": "p3",
+      "cause": null
+    },
+    {
+      "from": "p3",
+      "to": "p4",
+      "cause": "Risks were low, so she and her care team chose focused radiation (SBRT) over going back on erlotinib.",
+      "sources": [
+        {
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "Erlotinib was still the only TKI approved for EGFR mutant lung cancer in early 2013. SBRT for intrapulmonary metastasis wasn’t a thing, but risks were low, so my care team and I decided it was a better option for me rather than going back on Erlotinib."
+        }
+      ]
+    },
+    {
+      "from": "p4",
+      "to": "p5",
+      "cause": "One nodule kept growing, and radiation was risky where it sat. She wrote: “It was time to treat the disease, not the scan.”",
+      "sources": [
+        {
+          "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+          "quote": "The wait, watch, treat with local therapy as needed approach ended last year when one nodule continued to misbehave. Nothing else was imminent, but SBRT was risky because of the location of the nodule. It was time to treat the disease, not the scan."
+        }
+      ]
+    }
+  ],
+  "pronoun": "her",
+  "chain_caption": "Every line comes from her own blog post and her interview; bold lines are events, plain-weight lines are her views and decisions."
 }

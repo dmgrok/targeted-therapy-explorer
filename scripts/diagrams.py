@@ -548,23 +548,41 @@ def step_figure(step_id: str) -> str:
     return f'<figure class="dg dg-step" id="dg-{e(step_id)}">' + wide + tall + "</figure>"
 
 
-# --------------------------------------------------------------- Sid timeline
+# --------------------------------------------------------------- case chains
+# One person's published story as phases linked by plain arrows, or by a pink
+# WHY box only where that person's own sources state a cause. Drawn from the
+# verified case data in data/cases/<slug>.json; used for Sid on the steps page
+# and for every case page.
 
-# Short labels keyed by the exact date string in data/cases/sijbrandij.json.
-# A date missing from this map fails the build, so the drawing cannot drift
-# from the verified case data.
-NOT_STATED = "Then the next phase; his sources give no reason for this step."
 _MON = {m: m[:3] for m in ["January", "February", "March", "April", "May", "June", "July",
                             "August", "September", "October", "November", "December"]}
+_NUM = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+
+
+def not_stated(pron: str = "his") -> str:
+    return f"Then the next phase; {pron} sources give no reason for this step."
+
+
+NOT_STATED = not_stated("his")
+
+
+def case_data(slug: str) -> dict:
+    return json.loads((ROOT / "data" / "cases" / f"{slug}.json").read_text(encoding="utf-8"))
 
 
 def sid_case() -> dict:
-    return json.loads((ROOT / "data" / "cases" / "sijbrandij.json").read_text(encoding="utf-8"))
+    return case_data("sijbrandij")
 
 
 def when_bounds(when: str) -> tuple[str, str]:
-    """'Jan–Feb 2023' -> ('Jan 2023', 'Feb 2023'); 'From Oct 2023' -> ('Oct 2023', 'Oct 2023')."""
-    w = when.replace("From ", "").strip()
+    """'Jan–Feb 2023' -> ('Jan 2023', 'Feb 2023'); 'From Oct 2023' -> ('Oct 2023', 'Oct 2023').
+    A when with no year at all ('Eight months later') is returned as it is."""
+    w = when.strip()
+    for pre in ("From ", "Since ", "By "):
+        if w.startswith(pre):
+            w = w[len(pre):]
+    if not any(ch.isdigit() for ch in w) or "(" in w:
+        return w, w
     parts = [x.strip() for x in w.replace(" – ", "–").split("–")]
     start, end = parts[0], parts[-1]
     if not any(ch.isdigit() for ch in start):
@@ -572,9 +590,17 @@ def when_bounds(when: str) -> tuple[str, str]:
     return start, end
 
 
+def _dated(s: str) -> bool:
+    return any(ch.isdigit() for ch in s) and "(" not in s
+
+
 def phase_span(ph: dict) -> str:
+    if ph.get("span_label"):
+        return ph["span_label"]
     s = when_bounds(ph["actions"][0]["when"])[0]
     e_ = when_bounds(ph["actions"][-1]["when"])[1]
+    if not _dated(e_):
+        e_ = s
     if s == e_:
         return s
     if s.split()[-1] == e_.split()[-1] and len(s.split()) == 2 and len(e_.split()) == 2:
@@ -582,22 +608,31 @@ def phase_span(ph: dict) -> str:
     return f"{s} – {e_}"
 
 
-def sid_phases() -> tuple[list[dict], list[dict]]:
-    d = sid_case()
+def chain_phases(slug: str) -> tuple[list[dict], list[dict]]:
+    d = case_data(slug)
     phases, links = d["phases"], d["phase_links"]
     src = d["phase_sources"]
+    who = d["name"]
     for ph in phases:
         for a in ph["actions"]:
             if a["url"] not in src:
-                raise SystemExit(f"Sid phase action {a['what']!r} has a URL not in phase_sources")
+                raise SystemExit(f"{who}: phase action {a['what']!r} has a URL not in phase_sources")
             if not a.get("evidence") and not a.get("quote"):
-                raise SystemExit(f"Sid phase action {a['what']!r} has no evidence rows or quote")
+                raise SystemExit(f"{who}: phase action {a['what']!r} has no evidence rows or quote")
+            if src[a["url"]].get("kind") == "tribute" and not a.get("died"):
+                raise SystemExit(f"{who}: a tribute source may back only the death row")
     for ln in links:
         if ln.get("cause") and not all(s.get("quote") and s.get("url") in src for s in ln.get("sources", [])):
-            raise SystemExit(f"Sid link {ln['from']}->{ln['to']} states a cause without a sourced quote")
+            raise SystemExit(f"{who}: link {ln['from']}->{ln['to']} states a cause without a sourced quote")
         if ln.get("cause") and not ln.get("sources"):
-            raise SystemExit(f"Sid link {ln['from']}->{ln['to']} states a cause without sources")
+            raise SystemExit(f"{who}: link {ln['from']}->{ln['to']} states a cause without sources")
+    if len(links) != len(phases) - 1:
+        raise SystemExit(f"{who}: need one link between each pair of phases")
     return phases, links
+
+
+def sid_phases() -> tuple[list[dict], list[dict]]:
+    return chain_phases("sijbrandij")
 
 
 def _ms_mark(x, y) -> str:
@@ -605,10 +640,26 @@ def _ms_mark(x, y) -> str:
     return f'<rect class="ms-mark" x="{x:.1f}" y="{y:.1f}" width="10" height="10" fill="{PINK}"/>'
 
 
-SID_TITLE = "Sid Sijbrandij’s published story in five phases, and what led from one to the next"
+def chain_title(slug: str) -> str:
+    d = case_data(slug)
+    return f"{d['name']}’s published story in {_NUM[len(d['phases'])]} phases, and what led from one to the next"
 
 
-def _sid_desc(phases, links) -> str:
+SID_TITLE = chain_title("sijbrandij")
+
+
+def _when_lines(w: str) -> list[str]:
+    """Date column is 132 px wide: wrap long or wordy dates, keep short dated ones on one line."""
+    if len(w) > 19 or (len(w) > 15 and not any(ch.isdigit() for ch in w)):
+        return wrap(w, 14)
+    return [w]
+
+
+def _bold(a: dict) -> bool:
+    return "evidence" in a or bool(a.get("event"))
+
+
+def _chain_desc(phases, links, pron) -> str:
     out = []
     for i, ph in enumerate(phases):
         acts = "; ".join(f"{a['when']}: {'Milestone: ' if 'milestone' in a else ''}{a['what']}"
@@ -616,25 +667,30 @@ def _sid_desc(phases, links) -> str:
         out.append(f"Phase {i + 1}, {ph['title'].strip('“”')}, {phase_span(ph)}. {acts}.")
         if i < len(links):
             ln = links[i]
-            out.append(("Why the next phase: " + ln["cause"]) if ln.get("cause") else NOT_STATED)
+            out.append(("Why the next phase: " + ln["cause"]) if ln.get("cause") else not_stated(pron))
     out.append("One person’s story, not evidence that a treatment works.")
     return " ".join(out)
 
 
-def _sid_svg(p: str, wide: bool) -> str:
-    phases, links = sid_phases()
+def _sid_desc(phases, links) -> str:
+    return _chain_desc(phases, links, "his")
+
+
+def chain_svg(slug: str, p: str, wide: bool) -> str:
+    phases, links = chain_phases(slug)
+    pron = case_data(slug).get("pronoun", "their")
     W = 860 if wide else 400
     body = []
     ky = 18
     body.append(_ms_mark(8 if wide else 10, ky - 9))
     body.append(text(26 if wide else 28, ky, "Milestone", size=13, weight=700, fill=PINK, bg=PAPER,
                      spacing="1.4", upper=True))
-    key = "a key step we picked; each is described in his own sources"
+    key = f"a key step we picked; each is described in {pron} own sources"
     if wide:
         body.append(text(118, ky, key, size=14.5, fill=INK, bg=PAPER))
         y = 40
     else:
-        body.append(lines_text(120, ky, ["a key step we picked; each is", "described in his own sources"],
+        body.append(lines_text(120, ky, ["a key step we picked; each is", f"described in {pron} own sources"],
                                lh=19, size=14.5, fill=INK, bg=PAPER))
         y = 58
     for i, ph in enumerate(phases):
@@ -644,30 +700,41 @@ def _sid_svg(p: str, wide: bool) -> str:
             dcol = 132
             tchars = int((W - rx - dcol - 42) / 7.6)
             row_lines = [wrap(a["what"], tchars) for a in rows]
-            nl = [max(len(l), 2 if "milestone" in a else 1) for a, l in zip(rows, row_lines)]
+            when_lines = [_when_lines(a["when"]) for a in rows]
+            nl = [max(len(l), len(wl) + (1 if "milestone" in a else 0))
+                  for a, l, wl in zip(rows, row_lines, when_lines)]
             rows_h = sum(n * 21 + 10 for n in nl) + 26
             tlines = wrap(ph["title"], 15)
             left_h = 30 + 24 + 14 + len(tlines) * 28 + 18
+            span_lines = wrap(phase_span(ph), 22)
+            left_h += (len(span_lines) - 1) * 20
             h = max(rows_h, left_h)
             body.append(plate(0, y, lw, h, p, dx=5, dy=5, opacity=0.5))
             body.append(f'<rect x="0" y="{y}" width="{lw}" height="{h}" fill="{INK}"/>')
             body.append(text(18, y + 28, f"Phase {i + 1}", size=13, weight=700, fill=PAPER, bg=INK,
                              spacing="1.6", upper=True))
-            body.append(text(18, y + 52, phase_span(ph), size=15.5, weight=600, fill=PAPER, bg=INK))
-            body.append(lines_text(18, y + 88, tlines, lh=28, size=26, weight=700, fill=PAPER,
+            if len(span_lines) == 1:
+                body.append(text(18, y + 52, span_lines[0], size=15.5, weight=600, fill=PAPER, bg=INK))
+            else:
+                body.append(lines_text(18, y + 52, span_lines, lh=20, size=15.5, weight=600, fill=PAPER, bg=INK))
+            ty = y + 88 + (len(span_lines) - 1) * 20
+            body.append(lines_text(18, ty, tlines, lh=28, size=26, weight=700, fill=PAPER,
                                    bg=INK, family=HEAD))
             body.append(f'<rect x="{rx}" y="{y}" width="{W - rx - 2}" height="{h}" fill="{WHITE}" '
                         f'stroke="{INK}" stroke-width="2"/>')
             ry = y + 30
-            for a, ls, n in zip(rows, row_lines, nl):
+            for a, ls, wl, n in zip(rows, row_lines, when_lines, nl):
                 if "milestone" in a:
                     body.append(f'<rect class="ms-rule" x="{rx + 1}" y="{ry - 20}" width="4" height="{n * 21 + 8}" fill="{PINK}"/>')
                     body.append(_ms_mark(rx + 12, ry - 10))
-                    body.append(text(rx + 28, ry + 20, "Milestone", size=11.5, weight=700, fill=PINK,
-                                     bg=WHITE, spacing="1.3", upper=True))
-                body.append(text(rx + 28, ry, a["when"], size=14.5, weight=700, fill=PINK, bg=WHITE))
-                body.append(lines_text(rx + 28 + dcol, ry, ls, lh=21, size=16, weight=600 if "evidence" in a else 400,
-                                       fill=DEEP if "evidence" in a else INK, bg=WHITE))
+                    body.append(text(rx + 28, ry + 20 + (len(wl) - 1) * 21, "Milestone", size=11.5, weight=700,
+                                     fill=PINK, bg=WHITE, spacing="1.3", upper=True))
+                if len(wl) == 1:
+                    body.append(text(rx + 28, ry, a["when"], size=14.5, weight=700, fill=PINK, bg=WHITE))
+                else:
+                    body.append(lines_text(rx + 28, ry, wl, lh=21, size=14.5, weight=700, fill=PINK, bg=WHITE))
+                body.append(lines_text(rx + 28 + dcol, ry, ls, lh=21, size=16, weight=600 if _bold(a) else 400,
+                                       fill=DEEP if _bold(a) else INK, bg=WHITE))
                 ry += n * 21 + 10
             cx = lw / 2
         else:
@@ -693,8 +760,8 @@ def _sid_svg(p: str, wide: bool) -> str:
                     body.append(text(W - 24, ry, "Milestone", size=11.5, weight=700, fill=PINK, bg=WHITE,
                                      spacing="1.3", upper=True, anchor="end"))
                 body.append(text(38 if "milestone" in a else 24, ry, a["when"], size=14, weight=700, fill=PINK, bg=WHITE))
-                body.append(lines_text(24, ry + 20, ls, lh=20, size=15.5, weight=600 if "evidence" in a else 400,
-                                       fill=DEEP if "evidence" in a else INK, bg=WHITE))
+                body.append(lines_text(24, ry + 20, ls, lh=20, size=15.5, weight=600 if _bold(a) else 400,
+                                       fill=DEEP if _bold(a) else INK, bg=WHITE))
                 ry += 20 + len(ls) * 20 + 10
             cx = 40
         y += h
@@ -715,21 +782,34 @@ def _sid_svg(p: str, wide: bool) -> str:
                 body.append(lines_text(bx + 66, by + 26, lines, lh=21, size=15.5, weight=600,
                                        fill=WHITE, bg=PINK))
             else:
-                # plain next-phase arrow: his sources give no reason for this link
+                # plain next-phase arrow: the person's sources give no reason for this link
                 gap = 52
                 body.append(line(cx, y + 6, cx, y + gap - 8, p))
             y += gap
     H = int(y + 12)
     cls = "dg-wide" if wide else "dg-tall"
-    return svg_open(p, W, H, SID_TITLE, _sid_desc(phases, links), cls) + "".join(body) + "</svg>"
+    return svg_open(p, W, H, chain_title(slug), _chain_desc(phases, links, pron), cls) + "".join(body) + "</svg>"
+
+
+def _sid_svg(p: str, wide: bool) -> str:
+    return chain_svg("sijbrandij", p, wide)
+
+
+def chain_caption(slug: str) -> str:
+    d = case_data(slug)
+    pron = d.get("pronoun", "their")
+    return (f"One person’s story, not evidence that a treatment works. {d['chain_caption']} "
+            f"A reason is shown only where {pron} sources give one. A small pink square marks a key step "
+            f"we picked; each one is described in {pron} own sources.")
+
+
+def chain_figure(slug: str, fig_id: str, prefix: str) -> str:
+    return (
+        f'<figure class="dg dg-sid" id="{fig_id}">' + chain_svg(slug, f"{prefix}-w", True)
+        + chain_svg(slug, f"{prefix}-t", False)
+        + f"<figcaption>{e(chain_caption(slug))}</figcaption></figure>"
+    )
 
 
 def sid_figure() -> str:
-    return (
-        '<figure class="dg dg-sid" id="sid-timeline">' + _sid_svg("sid-w", True) + _sid_svg("sid-t", False)
-        + "<figcaption>One person’s story, not evidence that a treatment works. Dates and actions "
-        "come from osteosarc.com records and his own posts; plain-weight lines are his own words. "
-        "A reason is shown only where his sources give one. A small pink square marks a key step "
-        "we picked; each one is described in his own sources."
-        "</figcaption></figure>"
-    )
+    return chain_figure("sijbrandij", "sid-timeline", "sid")
