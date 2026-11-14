@@ -445,6 +445,13 @@ def test_sid_timeline_dates() -> None:
                     err(f"quote action {a['what']!r}: its date {a['when']!r} is not in the quoted text")
             else:
                 err(f"action {a['what']!r} has neither evidence rows nor a quote")
+    milestones = [a for ph in d.get("phases", []) for a in ph["actions"] if "milestone" in a]
+    for m in milestones:
+        basis = m["milestone"]
+        if not basis or any(b.get("url") not in src or not b.get("quote") for b in basis):
+            err(f"milestone {m['what']!r} lacks a sourced backing quote or row")
+    if not milestones:
+        err("Sid diagram should mark the milestones his sources name")
     links = d.get("phase_links", [])
     causes = [ln for ln in links if ln.get("cause")]
     for ln in causes:
@@ -462,6 +469,7 @@ def test_sid_timeline_dates() -> None:
             if dg.phase_span(ph) not in joined:
                 err(f"phase span {dg.phase_span(ph)!r} not drawn")
         shown_dates = set(re.findall(r'fill="#b02058"[^>]*>([^<]+)</text>', s))
+        shown_dates.discard("MILESTONE")
         extra = shown_dates - whens
         if extra:
             err(f"Sid timeline draws dates not in the phase data: {sorted(extra)}")
@@ -476,10 +484,19 @@ def test_sid_timeline_dates() -> None:
             err("screen-reader description must say which links have no stated reason")
         if desc.count("Why the next phase:") != len(causes):
             err("screen-reader description must give each sourced cause")
+        marks = len(re.findall(r'<rect class="ms-mark"', s))
+        if marks != len(milestones) + 1:  # one per milestone row + the key
+            err(f"milestone markers ({marks - 1}) differ from milestones in the data ({len(milestones)})")
+        if joined.upper().count("MILESTONE") != len(milestones) + 1:
+            err("each milestone row (and the key) needs the word Milestone")
+        if desc.count("Milestone: ") != len(milestones):
+            err("screen-reader description must name each milestone")
+        if re.search(r"(?i)[★☆✓✔🏆🎉]|congrat|victory|triumph", s):
+            err("milestones must stay quiet: no stars, trophies, emoji or celebration words")
         if re.search(r"(?i)kilo", joined):
             err("Kilo Code must not appear in the Sid diagram")
     ok(f"Sid phases: {len(d['phases'])} phases, {len(causes)} sourced cause(s), "
-       f"{len(links) - len(causes)} plain arrows, {n_quotes} quoted actions")
+       f"{len(links) - len(causes)} plain arrows, {n_quotes} quoted actions, {len(milestones)} milestones")
 
 
 def test_diagram_wording() -> None:

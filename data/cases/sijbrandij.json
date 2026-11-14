@@ -186,6 +186,12 @@
           "url": "https://osteosarc.com/data/events.tsv",
           "evidence": [
             "2022-12-16 | Procedures | Surgery | Surgery | T4/5"
+          ],
+          "milestone": [
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "The primary tumor was resected from the spine in December 2022 (T0)."
+            }
           ]
         },
         {
@@ -239,6 +245,16 @@
             "2023-10-10 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv1)",
             "2023-10-17 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv1)",
             "2023-10-20 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv1)"
+          ],
+          "milestone": [
+            {
+              "url": "https://osteosarc.com/data/events.tsv",
+              "quote": "2023-10-10 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv1)"
+            },
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "neoantigen targets of personalized vaccines"
+            }
           ]
         },
         {
@@ -326,7 +342,13 @@
           "what": "He built a team of doctors and scientists",
           "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
           "quote": "Founder Mode meant going deep on every diagnostic and treatment option. It meant assembling a team of physicians and scientists to work from first principles to understand what was possible beyond standard protocols.",
-          "date_basis": "In late 2024, when my cancer reappeared and my doctors told me I had exhausted the standard of care and there were no trials for my situation, I realized that assumption might, quite literally, kill me. Founder Mode was my only option."
+          "date_basis": "In late 2024, when my cancer reappeared and my doctors told me I had exhausted the standard of care and there were no trials for my situation, I realized that assumption might, quite literally, kill me. Founder Mode was my only option.",
+          "milestone": [
+            {
+              "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
+              "quote": "It meant assembling a team of physicians and scientists to work from first principles to understand what was possible beyond standard protocols."
+            }
+          ]
         },
         {
           "when": "Jan 2025",
@@ -352,6 +374,12 @@
           "evidence": [
             "2025-04-17 | Procedures | Surgery | Surgery | T4/5",
             "2025-04-17 | Procedures | Surgery | Surgery | T4/5 resection"
+          ],
+          "milestone": [
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "Disease recurred at the Th4 vertebra in June 2024 (T1, UCLA), at Th4–Th5 in January 2025 (T2, UCLA), and was excised in April 2025 (T3, MSKCC)."
+            }
           ]
         }
       ]
@@ -395,7 +423,13 @@
           "when": "20 Jan 2026",
           "what": "He wrote that he has no evidence of disease",
           "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
-          "quote": "Today, thanks to the efforts of many people around the world and the support of my wife Karen, I currently have no evidence of disease."
+          "quote": "Today, thanks to the efforts of many people around the world and the support of my wife Karen, I currently have no evidence of disease.",
+          "milestone": [
+            {
+              "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
+              "quote": "I currently have no evidence of disease."
+            }
+          ]
         }
       ]
     }

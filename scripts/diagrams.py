@@ -600,13 +600,19 @@ def sid_phases() -> tuple[list[dict], list[dict]]:
     return phases, links
 
 
+def _ms_mark(x, y) -> str:
+    """Quiet milestone marker: a small filled pink square (no icon, no star)."""
+    return f'<rect class="ms-mark" x="{x:.1f}" y="{y:.1f}" width="10" height="10" fill="{PINK}"/>'
+
+
 SID_TITLE = "Sid Sijbrandij’s published story in five phases, and what led from one to the next"
 
 
 def _sid_desc(phases, links) -> str:
     out = []
     for i, ph in enumerate(phases):
-        acts = "; ".join(f"{a['when']}: {a['what']}" for a in ph["actions"])
+        acts = "; ".join(f"{a['when']}: {'Milestone: ' if 'milestone' in a else ''}{a['what']}"
+                         for a in ph["actions"])
         out.append(f"Phase {i + 1}, {ph['title'].strip('“”')}, {phase_span(ph)}. {acts}.")
         if i < len(links):
             ln = links[i]
@@ -619,15 +625,21 @@ def _sid_svg(p: str, wide: bool) -> str:
     phases, links = sid_phases()
     W = 860 if wide else 400
     body = []
-    y = 8
+    ky = 18
+    body.append(_ms_mark(8 if wide else 10, ky - 9))
+    body.append(text(26 if wide else 28, ky, "Milestone", size=13, weight=700, fill=PINK, bg=PAPER,
+                     spacing="1.4", upper=True))
+    body.append(text(118 if wide else 120, ky, "a step his own sources name", size=14.5, fill=INK, bg=PAPER))
+    y = 40
     for i, ph in enumerate(phases):
         rows = ph["actions"]
         if wide:
             lw, rx = 214, 228
             dcol = 132
-            tchars = int((W - rx - dcol - 30) / 7.6)
+            tchars = int((W - rx - dcol - 42) / 7.6)
             row_lines = [wrap(a["what"], tchars) for a in rows]
-            rows_h = sum(max(1, len(l)) * 21 + 10 for l in row_lines) + 26
+            nl = [max(len(l), 2 if "milestone" in a else 1) for a, l in zip(rows, row_lines)]
+            rows_h = sum(n * 21 + 10 for n in nl) + 26
             tlines = wrap(ph["title"], 15)
             left_h = 30 + 24 + 14 + len(tlines) * 28 + 18
             h = max(rows_h, left_h)
@@ -641,11 +653,16 @@ def _sid_svg(p: str, wide: bool) -> str:
             body.append(f'<rect x="{rx}" y="{y}" width="{W - rx - 2}" height="{h}" fill="{WHITE}" '
                         f'stroke="{INK}" stroke-width="2"/>')
             ry = y + 30
-            for a, ls in zip(rows, row_lines):
-                body.append(text(rx + 16, ry, a["when"], size=14.5, weight=700, fill=PINK, bg=WHITE))
-                body.append(lines_text(rx + 16 + dcol, ry, ls, lh=21, size=16, weight=600 if "evidence" in a else 400,
+            for a, ls, n in zip(rows, row_lines, nl):
+                if "milestone" in a:
+                    body.append(f'<rect class="ms-rule" x="{rx + 1}" y="{ry - 20}" width="4" height="{n * 21 + 8}" fill="{PINK}"/>')
+                    body.append(_ms_mark(rx + 12, ry - 10))
+                    body.append(text(rx + 28, ry + 20, "Milestone", size=11.5, weight=700, fill=PINK,
+                                     bg=WHITE, spacing="1.3", upper=True))
+                body.append(text(rx + 28, ry, a["when"], size=14.5, weight=700, fill=PINK, bg=WHITE))
+                body.append(lines_text(rx + 28 + dcol, ry, ls, lh=21, size=16, weight=600 if "evidence" in a else 400,
                                        fill=DEEP if "evidence" in a else INK, bg=WHITE))
-                ry += max(1, len(ls)) * 21 + 10
+                ry += n * 21 + 10
             cx = lw / 2
         else:
             tlines = wrap(ph["title"], 24)
@@ -664,7 +681,12 @@ def _sid_svg(p: str, wide: bool) -> str:
                         f'stroke="{INK}" stroke-width="2"/>')
             ry = y + band + 26
             for a, ls in zip(rows, row_lines):
-                body.append(text(24, ry, a["when"], size=14, weight=700, fill=PINK, bg=WHITE))
+                if "milestone" in a:
+                    body.append(f'<rect class="ms-rule" x="9" y="{ry - 18}" width="4" height="{20 + len(ls) * 20 + 4}" fill="{PINK}"/>')
+                    body.append(_ms_mark(22, ry - 10))
+                    body.append(text(W - 24, ry, "Milestone", size=11.5, weight=700, fill=PINK, bg=WHITE,
+                                     spacing="1.3", upper=True, anchor="end"))
+                body.append(text(38 if "milestone" in a else 24, ry, a["when"], size=14, weight=700, fill=PINK, bg=WHITE))
                 body.append(lines_text(24, ry + 20, ls, lh=20, size=15.5, weight=600 if "evidence" in a else 400,
                                        fill=DEEP if "evidence" in a else INK, bg=WHITE))
                 ry += 20 + len(ls) * 20 + 10
@@ -701,6 +723,7 @@ def sid_figure() -> str:
         '<figure class="dg dg-sid" id="sid-timeline">' + _sid_svg("sid-w", True) + _sid_svg("sid-t", False)
         + "<figcaption>One person’s story, not evidence that a treatment works. Dates and actions "
         "come from osteosarc.com records and his own posts; plain-weight lines are his own words. "
-        "A reason is shown only where his sources give one."
+        "A reason is shown only where his sources give one. A small pink square marks a milestone "
+        "his own sources name."
         "</figcaption></figure>"
     )
