@@ -1,0 +1,816 @@
+{
+  "biomarker_id": "BRAF-V600E",
+  "generated_at": "2026-11-13T21:09:03+01:00",
+  "source_hash": "51b12850c84434b9822bf0d31fc5973eb84bb9fc6c377d401dfd3ca2d77ff42e",
+  "intro": {
+    "what": [
+      "BRAF V600E is a change in the BRAF gene.",
+      "This change is the most common BRAF change in many cancers, and it can switch the gene on."
+    ],
+    "test_report": "If a test report mentions BRAF V600E, it is noting this gene change. That note is not a diagnosis, and it is not a decision about treatment.",
+    "sources": [
+      {
+        "id": "civic-gene:BRAF",
+        "url": "https://civicdb.org/features/5",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "biomarker:BRAF-V600E",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      },
+      {
+        "id": "summary:BRAF-V600E",
+        "url": "https://civicdb.org/features/5",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      }
+    ],
+    "test_report_sources": [
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      },
+      {
+        "id": "biomarker:BRAF-V600E",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "cdx:cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.)|Melanoma - Tissue",
+      "category": "cdx",
+      "text": "cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.) is an FDA companion test for melanoma (a skin cancer). It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:cobas 4800 BRAF V600 Mutation Test (Roche Molecular Systems, Inc.)|Melanoma - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.|Low-Grade Glioma - Tissue",
+      "category": "cdx",
+      "text": "FoundationOne CDx (Foundation Medicine, Inc. is an FDA companion test for brain tumour. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.|Low-Grade Glioma - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Melanoma - Tissue",
+      "category": "cdx",
+      "text": "FoundationOne CDx (Foundation Medicine, Inc.) is an FDA companion test for melanoma (a skin cancer). It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Melanoma - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "FoundationOne CDx (Foundation Medicine, Inc.) is an FDA companion test for advanced lung cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:FoundationOne Liquid CDx (Foundation Medicine, Inc.)|Metastatic Colorectal Cancer (mCRC) - Plasma",
+      "category": "cdx",
+      "text": "FoundationOne Liquid CDx (Foundation Medicine, Inc.) is an FDA companion test for advanced bowel cancer. It uses a blood (plasma) sample.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne Liquid CDx (Foundation Medicine, Inc.)|Metastatic Colorectal Cancer (mCRC) - Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:FoundationOne Liquid CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Plasma",
+      "category": "cdx",
+      "text": "FoundationOne Liquid CDx (Foundation Medicine, Inc.) is an FDA companion test for advanced lung cancer. It uses a blood (plasma) sample.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne Liquid CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Guardant360 CDx (Guardant Health, Inc.)|Colorectal Cancer (CRC) - Plasma",
+      "category": "cdx",
+      "text": "Guardant360 CDx (Guardant Health, Inc.) is an FDA companion test for advanced bowel cancer. It uses a blood (plasma) sample.",
+      "sources": [
+        {
+          "id": "cdx:Guardant360 CDx (Guardant Health, Inc.)|Colorectal Cancer (CRC) - Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Guardant360® Liquid CDx (Guardant Health, Inc.)|Colorectal cancer - Plasma",
+      "category": "cdx",
+      "text": "Guardant360® Liquid CDx (Guardant Health, Inc.) is an FDA companion test for advanced bowel cancer. It uses a blood (plasma) sample.",
+      "sources": [
+        {
+          "id": "cdx:Guardant360® Liquid CDx (Guardant Health, Inc.)|Colorectal cancer - Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Colorectal Cancer - Tissue",
+      "category": "cdx",
+      "text": "MI Cancer Seek (MCS) (Caris Life Sciences) is an FDA companion test for advanced bowel cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Colorectal Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Melanoma - Tissue",
+      "category": "cdx",
+      "text": "MI Cancer Seek (MCS) (Caris Life Sciences) is an FDA companion test for melanoma (a skin cancer). It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Melanoma - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Oncomine Dx Target Test (Life Technologies Corporation)|Anaplastic Thyroid Cancer (ATC) - Tissue",
+      "category": "cdx",
+      "text": "Oncomine Dx Target Test (Life Technologies Corporation) is an FDA companion test for thyroid cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:Oncomine Dx Target Test (Life Technologies Corporation)|Anaplastic Thyroid Cancer (ATC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Oncomine Dx Target Test (Life Technologies Corporation)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "Oncomine Dx Target Test (Life Technologies Corporation) is an FDA companion test for advanced lung cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:Oncomine Dx Target Test (Life Technologies Corporation)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:therascreen BRAF V600E RGQ PCR Kit (QIAGEN GmbH)|Colorectal Cancer - Tissue",
+      "category": "cdx",
+      "text": "therascreen BRAF V600E RGQ PCR Kit (QIAGEN GmbH) is an FDA companion test for advanced bowel cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:therascreen BRAF V600E RGQ PCR Kit (QIAGEN GmbH)|Colorectal Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:THXID BRAF Kit (bioMérieux Inc.)|Melanoma - Tissue",
+      "category": "cdx",
+      "text": "THXID BRAF Kit (bioMérieux Inc.) is an FDA companion test for melanoma (a skin cancer). It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:THXID BRAF Kit (bioMérieux Inc.)|Melanoma - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Atezolizumab",
+      "category": "mainstream",
+      "text": "Atezolizumab (TECENTRIQ): a drug named on the FDA label in this snapshot. Approved for melanoma (a skin cancer) with a BRAF V600 change.",
+      "sources": [
+        {
+          "id": "therapy:BRAF-V600E:Atezolizumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6fa682c9-a312-4932-9831-f286908660ee",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Binimetinib",
+      "category": "mainstream",
+      "text": "Binimetinib (MEKTOVI): a drug that blocks the BRAF signal. Approved for advanced lung cancer with a BRAF V600E change. Authorised in Europe since 2018.",
+      "sources": [
+        {
+          "id": "therapy:BRAF-V600E:Binimetinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6c3408ac-d401-4925-8a03-26591afbc240",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Cetuximab",
+      "category": "mainstream",
+      "text": "Cetuximab (ERBITUX): a drug named on the FDA label in this snapshot. Approved for advanced bowel cancer with a BRAF V600E change.",
+      "sources": [
+        {
+          "id": "therapy:BRAF-V600E:Cetuximab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8bc6397e-4bd8-4d37-a007-a327e4da34d9",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Cobimetinib",
+      "category": "mainstream",
+      "text": "Cobimetinib (Cotellic): a drug that blocks the BRAF signal. Approved for melanoma (a skin cancer) with a BRAF V600E change. Authorised in Europe since 2015.",
+      "sources": [
+        {
+          "id": "therapy:BRAF-V600E:Cobimetinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c387579e-cee0-4334-bd1e-73f93ac1bde6",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Dabrafenib",
+      "category": "mainstream",
+      "text": "Dabrafenib (Tafinlar): a drug that blocks the BRAF signal. Approved for melanoma (a skin cancer) with a BRAF V600E change. Authorised in Europe since 2013.",
+      "sources": [
+        {
+          "id": "therapy:BRAF-V600E:Dabrafenib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fee1e6b1-e1a5-4254-9f2e-a70e0f8dbdea",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Encorafenib",
+      "category": "mainstream",
+      "text": "Encorafenib (BRAFTOVI): a drug that blocks the BRAF signal. Approved for advanced bowel cancer with a BRAF V600E change. Authorised in Europe since 2018.",
+      "sources": [
+        {
+          "id": "therapy:BRAF-V600E:Encorafenib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=235dfc38-0f0b-4037-b501-7a9f4294740c",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Tovorafenib",
+      "category": "mainstream",
+      "text": "Tovorafenib (OJEMDA): a drug named on the FDA label in this snapshot. Approved for brain tumour with a BRAF V600 change.",
+      "sources": [
+        {
+          "id": "therapy:BRAF-V600E:Tovorafenib",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Trametinib",
+      "category": "mainstream",
+      "text": "Trametinib (Mekinist): a drug that blocks the BRAF signal. Approved for melanoma (a skin cancer) with a BRAF V600E change. Authorised in Europe since 2014.",
+      "sources": [
+        {
+          "id": "therapy:BRAF-V600E:Trametinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0002ad27-779d-42ab-83b5-bc65453412a1",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Vemurafenib",
+      "category": "mainstream",
+      "text": "Vemurafenib (ZELBORAF): a drug that blocks the BRAF signal. Approved for melanoma (a skin cancer) with a BRAF V600E change. Authorised in Europe since 2012.",
+      "sources": [
+        {
+          "id": "therapy:BRAF-V600E:Vemurafenib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=38eea320-7e0c-485a-bc30-98c3c45e2763",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT03042221",
+      "category": "trials",
+      "text": "NCT03042221: Early Rebiopsy to Identify Biomarkers of Tumor Cell Survival Following EGFR, ALK, ROS1 or…. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT03042221",
+          "url": "https://clinicaltrials.gov/study/NCT03042221",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04116541",
+      "category": "trials",
+      "text": "NCT04116541: A Study Evaluating the Activity of Anti-cancer Treatments Targeting Tumor Molecular Alterations/Characteristics in Advanced…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04116541",
+          "url": "https://clinicaltrials.gov/study/NCT04116541",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04511013",
+      "category": "trials",
+      "text": "NCT04511013: A Study to Compare the Administration of Encorafenib + Binimetinib + Nivolumab Versus Ipilimumab…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04511013",
+          "url": "https://clinicaltrials.gov/study/NCT04511013",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04741997",
+      "category": "trials",
+      "text": "NCT04741997: Adjuvant Therapy Based on Pathologic Response After Neoadjuvant Encorafenib Binimetinib in Melanoma. A recruiting study (early phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04741997",
+          "url": "https://clinicaltrials.gov/study/NCT04741997",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04903119",
+      "category": "trials",
+      "text": "NCT04903119: Nilotinib Plus Dabrafenib/Trametinib or Encorafenib/Binimetinib in Metastatic Melanoma. A recruiting study (phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04903119",
+          "url": "https://clinicaltrials.gov/study/NCT04903119",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05503797",
+      "category": "trials",
+      "text": "NCT05503797: A Study to Assess the Efficacy and Safety of FORE8394 in Participants With Cancer…. A recruiting study (phase 2). Sites in 12 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT05503797",
+          "url": "https://clinicaltrials.gov/study/NCT05503797",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05639413",
+      "category": "trials",
+      "text": "NCT05639413: A Clinical-biological Prospective Cohort of Patients With BRAFV600E-mutated Metastatic Colorectal Cancer. A recruiting study (NA). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05639413",
+          "url": "https://clinicaltrials.gov/study/NCT05639413",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05706779",
+      "category": "trials",
+      "text": "NCT05706779: Encorafenib Plus Cetuximab in a Neoadjuvant Setting in Patients With BRAF Mutation Localised Colon…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05706779",
+          "url": "https://clinicaltrials.gov/study/NCT05706779",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05768178",
+      "category": "trials",
+      "text": "NCT05768178: DETERMINE Trial Treatment Arm 05: Vemurafenib in Combination With Cobimetinib in Adult Patients With…. A recruiting study (phase 2 / phase 3). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05768178",
+          "url": "https://clinicaltrials.gov/study/NCT05768178",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05786924",
+      "category": "trials",
+      "text": "NCT05786924: Phase 1/2 Trial of S241656 in Selected RAS/MAPK Mutation- Positive Malignancies. A recruiting study (phase 1 / phase 2). Sites in 10 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT05786924",
+          "url": "https://clinicaltrials.gov/study/NCT05786924",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05800340",
+      "category": "trials",
+      "text": "NCT05800340: Neoadjuvant Immunotherapy in Rare Mutations Localized NSCLC. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05800340",
+          "url": "https://clinicaltrials.gov/study/NCT05800340",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05868629",
+      "category": "trials",
+      "text": "NCT05868629: Clinical Study To Further Evaluate The Efficacy Of Dabrafenib Plus Trametinib In Patients With…. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05868629",
+          "url": "https://clinicaltrials.gov/study/NCT05868629",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05940311",
+      "category": "trials",
+      "text": "NCT05940311: Versatile Ampification Single-Molecule Detection in Liquid Biopsy. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05940311",
+          "url": "https://clinicaltrials.gov/study/NCT05940311",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06007924",
+      "category": "trials",
+      "text": "NCT06007924: Avutometinib and Defactinib in People With Thyroid Cancer. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06007924",
+          "url": "https://clinicaltrials.gov/study/NCT06007924",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06008119",
+      "category": "trials",
+      "text": "NCT06008119: Efficacy and Safety of Tunlametinib Plus Vemurafenib in Patients With BRAF V600E-mutant Metastatic Colorectal Cancer. A recruiting study (phase 3). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06008119",
+          "url": "https://clinicaltrials.gov/study/NCT06008119",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06102902",
+      "category": "trials",
+      "text": "NCT06102902: Testing the Addition of Anti-cancer Drug, ZEN003694, to the Usual Chemotherapy Treatment, Cetuximab Plus…. A recruiting study (phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06102902",
+          "url": "https://clinicaltrials.gov/study/NCT06102902",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06207656",
+      "category": "trials",
+      "text": "NCT06207656: Study to Evaluate the Efficacy and Safety of Cetuximab in Combination with Encorafenib Plus…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06207656",
+          "url": "https://clinicaltrials.gov/study/NCT06207656",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06262919",
+      "category": "trials",
+      "text": "NCT06262919: Special Drug Use-results Surveillance of Tafinlar/Mekinist. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06262919",
+          "url": "https://clinicaltrials.gov/study/NCT06262919",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06411600",
+      "category": "trials",
+      "text": "NCT06411600: Combination Therapy for BRAF-V600E Metastatic CRCm. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06411600",
+          "url": "https://clinicaltrials.gov/study/NCT06411600",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06475989",
+      "category": "trials",
+      "text": "NCT06475989: Targeted Therapy vs. Chemotherapy in Patients With Thyroid Cancer. A recruiting study (phase 3). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06475989",
+          "url": "https://clinicaltrials.gov/study/NCT06475989",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06536400",
+      "category": "trials",
+      "text": "NCT06536400: HSK42360 in Solid Tumors With BRAF V600 Mutation. A recruiting study (phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06536400",
+          "url": "https://clinicaltrials.gov/study/NCT06536400",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06610682",
+      "category": "trials",
+      "text": "NCT06610682: A Trial to Evaluate CSF ctDNA and Safety of Plixorafenib Alone or With Retifanlimab…. A recruiting study (early phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06610682",
+          "url": "https://clinicaltrials.gov/study/NCT06610682",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06653517",
+      "category": "trials",
+      "text": "NCT06653517: Clinical Study of Neoadjuvant Targeted Therapy for Ameloblastoma. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06653517",
+          "url": "https://clinicaltrials.gov/study/NCT06653517",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06749015",
+      "category": "trials",
+      "text": "NCT06749015: A Study on Treatment for Patients With BRAFV600E Mutant Metastatic Colorectal Cancer (mCRC). A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06749015",
+          "url": "https://clinicaltrials.gov/study/NCT06749015",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06763029",
+      "category": "trials",
+      "text": "NCT06763029: Irinotecan Liposomes Combined with Cetuximab + Vermofenib in First-line Failure of Advanced Colorectal Cancer. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06763029",
+          "url": "https://clinicaltrials.gov/study/NCT06763029",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06887088",
+      "category": "trials",
+      "text": "NCT06887088: Encorafenib and biNimetinib Followed by CEmiplimab and FiAnLimab in Patients With BRAF Mutant melanOma…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06887088",
+          "url": "https://clinicaltrials.gov/study/NCT06887088",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06902376",
+      "category": "trials",
+      "text": "NCT06902376: XL092 and Cemiplimab in BRAF WT Thyroid Cancer. A recruiting study (phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06902376",
+          "url": "https://clinicaltrials.gov/study/NCT06902376",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06978400",
+      "category": "trials",
+      "text": "NCT06978400: Dabrafenib Plus Cetuximab/Panitumumab With FOLFOX in the First Line of Therapy in People With…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06978400",
+          "url": "https://clinicaltrials.gov/study/NCT06978400",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07110246",
+      "category": "trials",
+      "text": "NCT07110246: Dabrafenib and Trametinib for BRAF V600 Mutant Low-Grade Gliomas. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07110246",
+          "url": "https://clinicaltrials.gov/study/NCT07110246",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07150247",
+      "category": "trials",
+      "text": "NCT07150247: Safety and Efficacy of IB-FOLFIRI in BRAF V600E-Mutant Metastatic Colorectal Cancer. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07150247",
+          "url": "https://clinicaltrials.gov/study/NCT07150247",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07158710",
+      "category": "trials",
+      "text": "NCT07158710: HSK42360 in Malignant Brain Tumors With BRAF V600 Mutation. A recruiting study (phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07158710",
+          "url": "https://clinicaltrials.gov/study/NCT07158710",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07440290",
+      "category": "trials",
+      "text": "NCT07440290: DETERMINE Trial Treatment Arm 07: Dabrafenib in Combination With Trametinib in Adult, Paediatric and…. A recruiting study (phase 2 / phase 3). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07440290",
+          "url": "https://clinicaltrials.gov/study/NCT07440290",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07506109",
+      "category": "trials",
+      "text": "NCT07506109: Sintilimab Combined With Ipilimumab N01, Cetuximab and Dabrafenib in Patients With Microsatellite-Stable, BRAF V600E-Mutated…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07506109",
+          "url": "https://clinicaltrials.gov/study/NCT07506109",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07561554",
+      "category": "trials",
+      "text": "NCT07561554: HSK42360-Na in Solid Tumors With BRAF V600 Mutation. A recruiting study (phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07561554",
+          "url": "https://clinicaltrials.gov/study/NCT07561554",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07617610",
+      "category": "trials",
+      "text": "NCT07617610: Primary and Acquired Resistance to Targeted Treatment in BRAF V600E-mutated Metastatic Colorectal Cancer. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07617610",
+          "url": "https://clinicaltrials.gov/study/NCT07617610",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07688356",
+      "category": "trials",
+      "text": "NCT07688356: Belvarafenib for CNS Efficacy in Patients With BRAF-Altered Solid Tumors. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07688356",
+          "url": "https://clinicaltrials.gov/study/NCT07688356",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07789210",
+      "category": "trials",
+      "text": "NCT07789210: A Single-Arm, Phase II, Multicenter Clinical Study of Neoadjuvant Encorafenib Plus Cetuximab N01 and…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07789210",
+          "url": "https://clinicaltrials.gov/study/NCT07789210",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07790510",
+      "category": "trials",
+      "text": "NCT07790510: HSK42360-Na Tablets Combined With Cetuximab With or Without Chemotherapy in BRAF V600-Mutant Metastatic Colorectal Cancer. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07790510",
+          "url": "https://clinicaltrials.gov/study/NCT07790510",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07809893",
+      "category": "trials",
+      "text": "NCT07809893: Ivosidenib Plus mFOLFOXIRI and Celecoxib for BRAF-targeted Therapy-refractory BRAF V600E-mutant Colorectal Cancer Patients. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07809893",
+          "url": "https://clinicaltrials.gov/study/NCT07809893",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07870265",
+      "category": "trials",
+      "text": "NCT07870265: Detection of the BRAF V600E Mutation in Liquid Biopsy Using the CRISPR/Cas12a System. A recruiting study (NA). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07870265",
+          "url": "https://clinicaltrials.gov/study/NCT07870265",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "civic:27",
+      "category": "on-the-edge",
+      "text": "Vemurafenib: early evidence for KIAA1549::BRAF Fusion, Pilocytic Astrocytoma. The public record lists this as SUBMITTED. This is not an FDA approval.",
+      "sources": [
+        {
+          "id": "civic:27",
+          "url": "https://civicdb.org/assertions/27",
+          "label": "Public evidence record"
+        }
+      ]
+    }
+  ]
+}

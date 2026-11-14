@@ -1,0 +1,116 @@
+{
+  "comment": "Whole-product and indication-level withdrawals verified from sources opened on 13 November 2026 (Europe/Paris). Only whole-product entries remove a drug from Mainstream. Indication-level entries are reported by the gate and must not silently drop a drug that still has another approved use.",
+  "opened_at": "2026-11-13",
+  "entries": [
+    {
+      "id": "exkivity-mobocertinib",
+      "names": [
+        "Mobocertinib",
+        "Exkivity",
+        "mobocertinib succinate"
+      ],
+      "scope": "whole-product",
+      "status": "withdrawn",
+      "region": "US",
+      "effective_date": "2024-07-15",
+      "announcement_date": "2023-10-02",
+      "detail": "FDA withdrew approval of NDA 215310 for EXKIVITY (mobocertinib succinate) capsule, effective 15 July 2024, after Takeda asked for withdrawal. Takeda announced on 2 October 2023 that it would work with the FDA towards a voluntary withdrawal. The EMA application was withdrawn earlier, on 20 July 2022; that is a different event (the EU marketing application, not a US approval withdrawal).",
+      "sources": [
+        {
+          "label": "Federal Register 89 FR 57418",
+          "url": "https://www.federalregister.gov/documents/2024/07/15/2024-15371/takeda-pharmaceuticals-usa-inc-withdrawal-of-approval-of-new-drug-application-for-exkivity",
+          "date": "2024-07-15",
+          "detail": "Approval is withdrawn as of July 15, 2024. NDA 215310. Published 15 July 2024. Opened 13 November 2026."
+        },
+        {
+          "label": "FDA Withdrawn Cancer Accelerated Approvals",
+          "url": "https://www.fda.gov/drugs/cancer-approvals/withdrawn-cancer-accelerated-approvals",
+          "date": "2026-11-13",
+          "detail": "Row for Exkivity (mobocertinib): Accelerated Approval Date 9/15/2021, Withdrawal Date 7/15/2024. Page opened 13 November 2026."
+        },
+        {
+          "label": "Takeda press release",
+          "url": "https://www.takeda.com/newsroom/newsreleases/2023/takeda-provides-update-on-exkivity-mobocertinib/",
+          "date": "2023-10-02",
+          "detail": "Takeda announced it will be working with the FDA towards a voluntary withdrawal of EXKIVITY in the U.S. Opened 13 November 2026."
+        },
+        {
+          "label": "EMA EPAR Exkivity",
+          "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/exkivity",
+          "date": "2022-07-20",
+          "detail": "EMA application withdrawn on 20 July 2022. This is withdrawal of the EU marketing application, not the US NDA. Opened 13 November 2026."
+        }
+      ]
+    }
+  ],
+  "indication_level_noted": [
+    {
+      "id": "krazati-adagrasib-crc",
+      "names": [
+        "Adagrasib",
+        "Krazati"
+      ],
+      "scope": "indication",
+      "indication": "In combination with cetuximab for KRAS G12C mutated locally advanced or metastatic colorectal cancer after fluoropyrimidine-, oxaliplatin-, and irinotecan-based chemotherapy.",
+      "withdrawal_date": "2026-09-01",
+      "sure": "Confirmed from the FDA Prior Approval sNDA letter for NDA 216340/S-011, electronically signed 1 September 2026 (Reference ID 5862281; Europe/Paris), which approves voluntary withdrawal of the accelerated colorectal-cancer indication (in combination with cetuximab; PMR 4650-1). Also listed on the FDA Withdrawn Cancer Accelerated Approvals page opened on 13 November 2026 (Europe/Paris), with Withdrawal Date 9/1/2026. A Federal Register API search of 2026 FDA \u201cWithdrawal of Approval\u201d notices through 13 November 2026 found no matching entry for adagrasib, Krazati, or NDA 216340. The NSCLC indication is a different use and is not treated as withdrawn.",
+      "source": {
+        "label": "FDA Prior Approval sNDA letter, NDA 216340/S-011",
+        "url": "https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2026/216340Orig1s011ltr.pdf",
+        "date": "2026-09-01",
+        "detail": "Electronic signature SANDRA J CASAK 09/01/2026; Reference ID 5862281. Withdrawal of the accelerated CRC indication in combination with cetuximab."
+      },
+      "sources": [
+        {
+          "label": "FDA Prior Approval sNDA letter, NDA 216340/S-011",
+          "url": "https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2026/216340Orig1s011ltr.pdf",
+          "date": "2026-09-01",
+          "detail": "Electronic signature SANDRA J CASAK 09/01/2026; Reference ID 5862281. Withdrawal of the accelerated CRC indication in combination with cetuximab."
+        },
+        {
+          "label": "FDA Withdrawn Cancer Accelerated Approvals",
+          "url": "https://www.fda.gov/drugs/cancer-approvals/withdrawn-cancer-accelerated-approvals",
+          "date": "2026-11-13",
+          "detail": "Krazati (adagrasib) CRC combination with cetuximab; Withdrawal Date 9/1/2026. Opened 13 November 2026."
+        }
+      ],
+      "federal_register": {
+        "searched": true,
+        "found": false,
+        "note": "Federal Register API search of 2026 FDA Withdrawal of Approval notices through 13 November 2026 returned no adagrasib/Krazati/216340 entry."
+      }
+    },
+    {
+      "id": "iressa-gefitinib-2003-indication",
+      "names": [
+        "Gefitinib",
+        "Iressa"
+      ],
+      "scope": "indication",
+      "indication": "As monotherapy for locally advanced or metastatic NSCLC after failure of platinum-based and docetaxel chemotherapy (accelerated approval 5/5/2003, withdrawal date 4/25/2012).",
+      "withdrawal_date": "2012-04-25",
+      "sure": "Confirmed from Federal Register notice 2012-9944, published 25 April 2012 (Effective 25 April 2012), opened 13 November 2026 (Europe/Paris). The notice withdraws NDA 21-399, whose indication was monotherapy after failure of platinum-based and docetaxel chemotherapies. Gefitinib later has a different FDA label use (first-line EGFR exon 19 deletion or L858R) which remains in this snapshot and is not treated as withdrawn.",
+      "source": {
+        "label": "FDA Withdrawn Cancer Accelerated Approvals",
+        "url": "https://www.fda.gov/drugs/cancer-approvals/withdrawn-cancer-accelerated-approvals",
+        "date": "2026-11-13"
+      },
+      "plain": "Its older use after chemotherapy was withdrawn in the US in 2012; first-treatment use is still approved.",
+      "sources": [
+        {
+          "label": "FDA Withdrawn Cancer Accelerated Approvals",
+          "url": "https://www.fda.gov/drugs/cancer-approvals/withdrawn-cancer-accelerated-approvals",
+          "date": "2026-11-13"
+        },
+        {
+          "label": "Federal Register notice 2012-9944 (77 FR 24723)",
+          "url": "https://www.federalregister.gov/documents/2012/04/25/2012-9944/astrazeneca-pharmaceuticals-lp-withdrawal-of-approval-of-a-new-drug-application-for-iressa",
+          "date": "2012-04-25",
+          "opened": "2026-11-13",
+          "opened_zone": "Europe/Paris",
+          "detail": "Opened 13 November 2026 (Europe/Paris). Effective 25 April 2012. FDA withdrew approval of NDA 21-399 for IRESSA (gefitinib) Tablets. The withdrawn indication, as stated in the notice, was monotherapy after failure of both platinum-based and docetaxel chemotherapies for locally advanced or metastatic non-small cell lung cancer (accelerated approval 2 May 2003). The current FDA label in this snapshot has a later, different first-treatment use that is not treated as withdrawn."
+        }
+      ]
+    }
+  ]
+}

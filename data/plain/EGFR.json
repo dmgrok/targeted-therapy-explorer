@@ -1,0 +1,624 @@
+{
+  "biomarker_id": "EGFR",
+  "generated_at": "2026-11-13T21:09:03+01:00",
+  "source_hash": "0c443f56fbb1f0ac6d3d16eab33ca6c25a48344b84b6193c14e382c5d209cd8b",
+  "intro": {
+    "what": [
+      "EGFR is a gene.",
+      "Changes in this gene can help some cancers grow, including some lung, brain and breast cancers."
+    ],
+    "test_report": "If a test report mentions EGFR, it is noting a finding about this gene. That note is not a diagnosis, and it is not a decision about treatment.",
+    "sources": [
+      {
+        "id": "civic-gene:EGFR",
+        "url": "https://civicdb.org/features/19",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "biomarker:EGFR",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      },
+      {
+        "id": "summary:EGFR",
+        "url": "https://civicdb.org/features/19",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      }
+    ],
+    "test_report_sources": [
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      },
+      {
+        "id": "biomarker:EGFR",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "cdx:cobas EGFR Mutation Test v1 (Roche Molecular Systems, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "cobas EGFR Mutation Test v1 (Roche Molecular Systems, Inc.) is an FDA companion test for advanced lung cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:cobas EGFR Mutation Test v1 (Roche Molecular Systems, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:cobas EGFR Mutation Test v2 (Roche Molecular Systems, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Plasma",
+      "category": "cdx",
+      "text": "cobas EGFR Mutation Test v2 (Roche Molecular Systems, Inc.) is an FDA companion test for advanced lung cancer. It uses a blood (plasma) sample.",
+      "sources": [
+        {
+          "id": "cdx:cobas EGFR Mutation Test v2 (Roche Molecular Systems, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:cobas EGFR Mutation Test v2 (Roche Molecular Systems, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "cobas EGFR Mutation Test v2 (Roche Molecular Systems, Inc.) is an FDA companion test for advanced lung cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:cobas EGFR Mutation Test v2 (Roche Molecular Systems, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:cobas EGFR Mutation Test v2 (Roche Molecular Systems, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue or Plasma",
+      "category": "cdx",
+      "text": "cobas EGFR Mutation Test v2 (Roche Molecular Systems, Inc.) is an FDA companion test for advanced lung cancer. It uses a tissue or blood (plasma) sample.",
+      "sources": [
+        {
+          "id": "cdx:cobas EGFR Mutation Test v2 (Roche Molecular Systems, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue or Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Dako EGFR pharmDx Kit (Dako North America, Inc.)|Colorectal Cancer - Tissue",
+      "category": "cdx",
+      "text": "Dako EGFR pharmDx Kit (Dako North America, Inc.) is an FDA companion test for advanced bowel cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:Dako EGFR pharmDx Kit (Dako North America, Inc.)|Colorectal Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "FoundationOne CDx (Foundation Medicine, Inc.) is an FDA companion test for advanced lung cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:FoundationOne Liquid CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Plasma",
+      "category": "cdx",
+      "text": "FoundationOne Liquid CDx (Foundation Medicine, Inc.) is an FDA companion test for advanced lung cancer. It uses a blood (plasma) sample.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne Liquid CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Guardant360® Liquid CDx (Guardant Health, Inc.)|Non-small cell lung cancer (NSCLC) - Plasma",
+      "category": "cdx",
+      "text": "Guardant360® Liquid CDx (Guardant Health, Inc.) is an FDA companion test for advanced lung cancer. It uses a blood (plasma) sample.",
+      "sources": [
+        {
+          "id": "cdx:Guardant360® Liquid CDx (Guardant Health, Inc.)|Non-small cell lung cancer (NSCLC) - Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Oncomine Dx Express Test (Life Technologies Corporation)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "Oncomine Dx Express Test (Life Technologies Corporation) is an FDA companion test for advanced lung cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:Oncomine Dx Express Test (Life Technologies Corporation)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Oncomine Dx Target Test (Life Technologies Corporation)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "Oncomine Dx Target Test (Life Technologies Corporation) is an FDA companion test for advanced lung cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:Oncomine Dx Target Test (Life Technologies Corporation)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:therascreen EGFR RGQ PCR Kit (Qiagen Manchester, Ltd.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "therascreen EGFR RGQ PCR Kit (Qiagen Manchester, Ltd.) is an FDA companion test for advanced lung cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:therascreen EGFR RGQ PCR Kit (Qiagen Manchester, Ltd.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Afatinib",
+      "category": "mainstream",
+      "text": "Afatinib (Gilotrif): a pill that blocks the EGFR signal. Approved for advanced lung cancer with certain EGFR mutations. Authorised in Europe since 2013.",
+      "sources": [
+        {
+          "id": "therapy:EGFR:Afatinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ec5b9e00-3eab-4dbd-9bb3-75865b1af485",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Amivantamab",
+      "category": "mainstream",
+      "text": "Amivantamab (Rybrevant): a lab-made antibody. Approved for advanced lung cancer with an EGFR exon 19 deletion or L858R change. Authorised in Europe since 2021.",
+      "sources": [
+        {
+          "id": "therapy:EGFR:Amivantamab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1466c070-9f97-4fa4-a955-6a6b59981fb8",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Cetuximab",
+      "category": "mainstream",
+      "text": "Cetuximab (ERBITUX): a drug that blocks the EGFR signal. Approved for head and neck cancer. Authorised in Europe since 2004.",
+      "sources": [
+        {
+          "id": "therapy:EGFR:Cetuximab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8bc6397e-4bd8-4d37-a007-a327e4da34d9",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Dacomitinib",
+      "category": "mainstream",
+      "text": "Dacomitinib (Vizimpro): a drug that blocks the EGFR signal. Approved for advanced lung cancer with an EGFR exon 19 deletion or L858R change.",
+      "sources": [
+        {
+          "id": "therapy:EGFR:Dacomitinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4ab27d2f-e385-4e9c-b324-fa69c10b855a",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Datopotamab Deruxtecan",
+      "category": "mainstream",
+      "text": "Datopotamab Deruxtecan: a lab-made antibody linked to a drug. Approved for advanced lung cancer with an EGFR mutation. Authorised in Europe since 2025.",
+      "sources": [
+        {
+          "id": "therapy:EGFR:Datopotamab Deruxtecan",
+          "url": "https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Erlotinib",
+      "category": "mainstream",
+      "text": "Erlotinib (Tarceva): a pill that blocks the EGFR signal. Approved for advanced lung cancer with an EGFR exon 19 deletion or L858R change.",
+      "sources": [
+        {
+          "id": "therapy:EGFR:Erlotinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2c4c7353-b81c-4651-8aac-6d15e88145af",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Gefitinib",
+      "category": "mainstream",
+      "text": "Gefitinib (Iressa): a pill. Approved for advanced lung cancer with an EGFR exon 19 deletion or L858R change. Authorised in Europe since 2009.",
+      "sources": [
+        {
+          "id": "therapy:EGFR:Gefitinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0afc12dd-12f8-4def-9027-f38412a862b9",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Lazertinib",
+      "category": "mainstream",
+      "text": "Lazertinib (LAZCLUZE): a drug that blocks the EGFR signal. Approved for advanced lung cancer with an EGFR exon 19 deletion or L858R change.",
+      "sources": [
+        {
+          "id": "therapy:EGFR:Lazertinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c417f9ee-2027-4ed5-92ad-3c19266de16c",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Osimertinib",
+      "category": "mainstream",
+      "text": "Osimertinib (TAGRISSO): a drug that blocks the EGFR signal. Approved for advanced lung cancer with an EGFR exon 19 deletion or L858R change.",
+      "sources": [
+        {
+          "id": "therapy:EGFR:Osimertinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5e81b4a7-b971-45e1-9c31-29cea8c87ce7",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Panitumumab",
+      "category": "mainstream",
+      "text": "Panitumumab (Vectibix): a drug that blocks the EGFR signal. Approved for advanced bowel cancer with no KRAS gene change. Authorised in Europe since 2007.",
+      "sources": [
+        {
+          "id": "therapy:EGFR:Panitumumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e0fa4bca-f245-4d92-ae29-b0c630a315c2",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Ramucirumab",
+      "category": "mainstream",
+      "text": "Ramucirumab (CYRAMZA): a drug named on the FDA label in this snapshot. Approved for advanced lung cancer with an EGFR exon 19 deletion or L858R change.",
+      "sources": [
+        {
+          "id": "therapy:EGFR:Ramucirumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c6080942-dee6-423e-b688-1272c2ae90d4",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Sunvozertinib",
+      "category": "mainstream",
+      "text": "Sunvozertinib (Zegfrovy): a drug named on the FDA label in this snapshot. Approved for advanced lung cancer with an EGFR exon 20 insertion.",
+      "sources": [
+        {
+          "id": "therapy:EGFR:Sunvozertinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=349fa84e-1fdb-4976-b1bb-689b80eac8ad",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "withdrawn:Mobocertinib",
+      "category": "withdrawn",
+      "text": "Mobocertinib (Exkivity): withdrawn from the US market. The FDA withdrew approval in 2024.",
+      "sources": [
+        {
+          "id": "withdrawn:exkivity-mobocertinib",
+          "url": "https://www.federalregister.gov/documents/2024/07/15/2024-15371/takeda-pharmaceuticals-usa-inc-withdrawal-of-approval-of-new-drug-application-for-exkivity",
+          "label": "Federal Register 89 FR 57418"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT03191149",
+      "category": "trials",
+      "text": "NCT03191149: Testing Osimertinib as a Treatment for Lung Cancers With an EGFR Exon 20 Change. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT03191149",
+          "url": "https://clinicaltrials.gov/study/NCT03191149",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04181060",
+      "category": "trials",
+      "text": "NCT04181060: Osimertinib With or Without Bevacizumab as Initial Treatment for Patients With EGFR-Mutant Lung Cancer. A recruiting study (phase 3). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04181060",
+          "url": "https://clinicaltrials.gov/study/NCT04181060",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05315700",
+      "category": "trials",
+      "text": "NCT05315700: ORIC-114 in Patients With Advanced Solid Tumors Harboring an EGFR or HER2 Alteration. A recruiting study (phase 1 / phase 2). Sites in 10 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT05315700",
+          "url": "https://clinicaltrials.gov/study/NCT05315700",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05498428",
+      "category": "trials",
+      "text": "NCT05498428: Amivantamab in Participants With Advanced or Metastatic Solid Tumors Including Epidermal Growth Factor Receptor…. A recruiting study (phase 2). Sites in 12 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT05498428",
+          "url": "https://clinicaltrials.gov/study/NCT05498428",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05579366",
+      "category": "trials",
+      "text": "NCT05579366: Rinatabart Sesutecan (Rina-S, PRO1184, GEN1184) for Advanced Solid Tumors (GCT1184-01/ PRO1184-001). A recruiting study (phase 1 / phase 2). Sites in 4 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT05579366",
+          "url": "https://clinicaltrials.gov/study/NCT05579366",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06010329",
+      "category": "trials",
+      "text": "NCT06010329: A Study to Evaluate the Efficacy and Safety of Sutetinib Maleate Capsule in Locally…. A recruiting study (phase 2). Sites in 2 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06010329",
+          "url": "https://clinicaltrials.gov/study/NCT06010329",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06043817",
+      "category": "trials",
+      "text": "NCT06043817: First-In-Human Study of STX-721/PFL-721 in Participants With Locally Advanced or Metastatic Non-Small Cell Lung…. A recruiting study (phase 1 / phase 2). Sites in 8 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06043817",
+          "url": "https://clinicaltrials.gov/study/NCT06043817",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06422546",
+      "category": "trials",
+      "text": "NCT06422546: A Prospective ,Multicenter ,Non-interventional ,Real-world Study Observing Changes in Molecular Markers Osimertinib Targeted Therapy…. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06422546",
+          "url": "https://clinicaltrials.gov/study/NCT06422546",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06667076",
+      "category": "trials",
+      "text": "NCT06667076: Amivantamab in Combination With Lazertinib, or Amivantamab in Combination With Platinum-Based Chemotherapy, for Common…. A recruiting study (phase 2). Sites in 14 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06667076",
+          "url": "https://clinicaltrials.gov/study/NCT06667076",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06706076",
+      "category": "trials",
+      "text": "NCT06706076: BH-30643 in Subjects With Locally Advanced or Metastatic NSCLC Harboring EGFR and/or HER2 Mutations. A recruiting study (phase 1 / phase 2). Sites in 9 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06706076",
+          "url": "https://clinicaltrials.gov/study/NCT06706076",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06868485",
+      "category": "trials",
+      "text": "NCT06868485: A Study to Assess the Efficacy of WSD0922-FU in Patients With C797S+ Advanced Non-small…. A recruiting study (phase 2). Sites in 3 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06868485",
+          "url": "https://clinicaltrials.gov/study/NCT06868485",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07100080",
+      "category": "trials",
+      "text": "NCT07100080: Izalontamab Brengitecan (BMS-986507) Versus Platinum-Pemetrexed for EGFR-mutated Non-small Cell Lung Cancer After Failure of…. A recruiting study (phase 2 / phase 3). Sites in 25 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07100080",
+          "url": "https://clinicaltrials.gov/study/NCT07100080",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07185997",
+      "category": "trials",
+      "text": "NCT07185997: Study to Evaluate Efficacy and Safety of Firmonertinib Compared With Investigator's Choice of EGFR…. A recruiting study (phase 3). Sites in 17 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07185997",
+          "url": "https://clinicaltrials.gov/study/NCT07185997",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07206498",
+      "category": "trials",
+      "text": "NCT07206498: A Study to Evaluate Safety and Efficacy of WSD0922-FU Combo With Osimertinib for NSCLC. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07206498",
+          "url": "https://clinicaltrials.gov/study/NCT07206498",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07230691",
+      "category": "trials",
+      "text": "NCT07230691: Clinical Outcomes in Participants With EGFR Mutated Advanced Non-Small Cell Lung Cancer (NSCLC) in…. A recruiting study. Sites in 8 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07230691",
+          "url": "https://clinicaltrials.gov/study/NCT07230691",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07326566",
+      "category": "trials",
+      "text": "NCT07326566: Silevertinib With Temozolomide for the Treatment of Newly Diagnosed GBM With Unmethylated MGMT and EGFRvIII. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07326566",
+          "url": "https://clinicaltrials.gov/study/NCT07326566",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07510841",
+      "category": "trials",
+      "text": "NCT07510841: JY016 Injection in Patients With Advanced Solid Tumors Expressing EGFR. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07510841",
+          "url": "https://clinicaltrials.gov/study/NCT07510841",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07586202",
+      "category": "trials",
+      "text": "NCT07586202: Neoadjuvant Amivantamab With Either Lazertinib or Chemotherapy in Participants With Resectable EGFR-Mutated NSCLC. A recruiting study (phase 2). Sites in 6 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07586202",
+          "url": "https://clinicaltrials.gov/study/NCT07586202",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07680790",
+      "category": "trials",
+      "text": "NCT07680790: Izalontamab Brengitecan (BMS-986507) in Combination With Osimertinib Versus Osimertinib Monotherapy or Osimertinib in Combination…. A recruiting study (phase 3). Sites in 16 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07680790",
+          "url": "https://clinicaltrials.gov/study/NCT07680790",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07699328",
+      "category": "trials",
+      "text": "NCT07699328: VRN110755 in Patients With EGFR-Mutant Non-Small Cell Lung Cancer. A recruiting study (phase 1 / phase 2). Sites in 10 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07699328",
+          "url": "https://clinicaltrials.gov/study/NCT07699328",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07709585",
+      "category": "trials",
+      "text": "NCT07709585: Befotertinib Plus Chemotherapy With an MRD-guided Adaptive Strategy for Treatment Escalation and Response Optimization…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07709585",
+          "url": "https://clinicaltrials.gov/study/NCT07709585",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07750132",
+      "category": "trials",
+      "text": "NCT07750132: SM2275 Injection in Patients With Advanced Solid Tumors. A recruiting study (phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07750132",
+          "url": "https://clinicaltrials.gov/study/NCT07750132",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07754123",
+      "category": "trials",
+      "text": "NCT07754123: HS-10504 Versus Platinum-Based Doublet Chemotherapy in Patients With C797S+ NSCLC. A recruiting study (phase 3). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07754123",
+          "url": "https://clinicaltrials.gov/study/NCT07754123",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07911449",
+      "category": "trials",
+      "text": "NCT07911449: Osimertinib Plus Stereotactic Radiosurgery/Radiotherapy for EGFR-Mutant Non-Small Cell Lung Cancer With Symptomatic Brain Metastases. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07911449",
+          "url": "https://clinicaltrials.gov/study/NCT07911449",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    }
+  ]
+}

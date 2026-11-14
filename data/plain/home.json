@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-11-13T21:09:03+01:00",
+  "source_hash": "683b2fc0ee4f1301650000fcb0f4fe877cc784607ed28f71cb9b410725c3fb20",
+  "intro": {
+    "what": [
+      "This site maps a short list of tumour gene findings to approved drugs and recruiting trials, from public sources only.",
+      "It is general information. It is not medical advice, a diagnosis or a treatment recommendation."
+    ],
+    "how": "Pick a gene finding. You will see a decision tree: cancer type, then the gene change, then when a drug is used. Tags are Mainstream, Trials, or On the edge. Order is not a ranking. Talk to your oncologist.",
+    "sources": [
+      {
+        "id": "method:home",
+        "url": "",
+        "label": "This explorer's method"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "home:how",
+      "text": "Pick a gene finding. You will see a decision tree: cancer type, then the gene change, then when a drug is used. Tags are Mainstream, Trials, or On the edge. Order is not a ranking. Talk to your oncologist.",
+      "sources": [
+        {
+          "id": "method:home",
+          "url": "",
+          "label": "This explorer's method"
+        }
+      ]
+    }
+  ]
+}

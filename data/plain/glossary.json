@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-11-13T21:09:03+01:00",
+  "terms": [
+    {
+      "term": "Biomarker",
+      "text": "A measurable feature of a tumour, such as a gene change, that can be used as a selection criterion for a therapy or a trial."
+    },
+    {
+      "term": "Mutation",
+      "text": "A change in the DNA sequence of a gene."
+    },
+    {
+      "term": "TKI (tyrosine kinase inhibitor)",
+      "text": "A type of targeted drug. The letters stand for tyrosine kinase inhibitor. The FDA labels in this snapshot sometimes describe a drug as a kinase inhibitor."
+    },
+    {
+      "term": "NSCLC",
+      "text": "Non-small cell lung cancer, a type of lung cancer named in many of the FDA labels in this snapshot."
+    },
+    {
+      "term": "FDA",
+      "text": "The U.S. Food and Drug Administration, which approves drugs and some tests in the United States. This site uses FDA labels, an FDA table of gene findings and drugs, and the companion-test list."
+    },
+    {
+      "term": "EMA",
+      "text": "The European Medicines Agency, which authorises medicines in the European Union. This site adds an EMA match when one is found."
+    },
+    {
+      "term": "Companion diagnostic",
+      "text": "A test on the FDA’s list of authorised companion diagnostic devices, used to identify people who may be considered for a corresponding therapy."
+    },
+    {
+      "term": "CIViC",
+      "text": "A public, volunteer-curated cancer knowledgebase released under a public-domain dedication. Its statements are not regulatory approvals."
+    },
+    {
+      "term": "Fusion",
+      "text": "When parts of two genes join and form an abnormal gene. Reports may mention an ALK fusion or an NTRK fusion."
+    },
+    {
+      "term": "Exon",
+      "text": "A numbered segment of a gene. A report may mention a change in a specific exon."
+    },
+    {
+      "term": "Recruiting",
+      "text": "A clinical trial whose ClinicalTrials.gov record in this snapshot lists the status as recruiting, meaning it was listed as enrolling participants at the time of that record."
+    },
+    {
+      "term": "Indication",
+      "text": "The use listed on a drug’s official label: what the drug was approved for, in which disease, and with which test or conditions, as written in the FDA label."
+    }
+  ]
+}

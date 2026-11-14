@@ -1,0 +1,98 @@
+{
+  "slug": "feldman",
+  "name": "Jill Feldman",
+  "short": "EGFR exon 19 lung cancer",
+  "order": 4,
+  "died": null,
+  "summary": [
+    "Jill Feldman was diagnosed with lung cancer in 2009, at age 39.",
+    "The Patient Story, in a 10 January 2025 interview, lists the cancer as stage 1A, with an EGFR exon 19 deletion.",
+    "In her own words in that interview, she said she was EGFR-positive.",
+    "She wrote in June 2020 that she took erlotinib after her first surgery, even though it was not standard care.",
+    "She named her oncologist, Phil Bonomi, in that post.",
+    "She wrote that the drug worked until she stopped taking it. A new nodule appeared eight months later.",
+    "As of 10 January 2025, she described a later progression in the spring, radiation to that area, and staying on the same treatment.",
+    "She did not name that later drug in the January 2025 interview we opened.",
+    "We found no first-person update from her in 2026 about her scans or her drug."
+  ],
+  "quotes": [
+    {
+      "text": "I was diagnosed with lung cancer in 2009 at 39 years old.",
+      "url": "https://thepatientstory.com/patient-stories/lung-cancer/non-small-cell/jill-f/",
+      "label": "The Patient Story interview, 10 January 2025",
+      "opened": "13 November 2026"
+    },
+    {
+      "text": "I didn’t want my kids to ever go through what I went through, so I took Erlotinib (off label) as adjuvant therapy. And it worked…. until I stopped taking it.",
+      "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+      "label": "her post of 12 June 2020",
+      "opened": "13 November 2026"
+    },
+    {
+      "text": "That just happened to me in the spring. I had progression, and I ended up being able to radiate the area where the cancer was growing. Now, I stay on the same treatment.",
+      "url": "https://thepatientstory.com/patient-stories/lung-cancer/non-small-cell/jill-f/",
+      "label": "The Patient Story interview, 10 January 2025",
+      "opened": "13 November 2026"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2009",
+      "decision": "She was diagnosed with lung cancer at age 39. The Patient Story lists it as stage 1A with an EGFR exon 19 deletion. In the interview she named Dr. Becker from that period.",
+      "helpers": [
+        "Dr. Becker"
+      ],
+      "url": "https://thepatientstory.com/patient-stories/lung-cancer/non-small-cell/jill-f/",
+      "label": "The Patient Story interview, 10 January 2025",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "after her first surgery (year not given on the 2020 post)",
+      "decision": "She took erlotinib after surgery, off label, as extra therapy. She wrote that her oncologist knew she wanted this, even though it was not standard care.",
+      "helpers": [
+        "Phil Bonomi"
+      ],
+      "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+      "label": "her post of 12 June 2020",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "eight months after she stopped erlotinib (exact calendar date not given)",
+      "decision": "A new nodule appeared on her scan. Four months later she had surgery to remove it, another stage 1A EGFR lung cancer. Further tumour growth showed on later scans.",
+      "helpers": [],
+      "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer",
+      "label": "her post of 12 June 2020",
+      "opened": "13 November 2026"
+    },
+    {
+      "date": "spring (year not given; told in a 10 January 2025 interview)",
+      "decision": "She had progression and had radiation to the area where the cancer was growing. She then stayed on the same treatment. She did not name the drug in that interview.",
+      "helpers": [],
+      "url": "https://thepatientstory.com/patient-stories/lung-cancer/non-small-cell/jill-f/",
+      "label": "The Patient Story interview, 10 January 2025",
+      "opened": "13 November 2026"
+    }
+  ],
+  "status": {
+    "as_of": "10 January 2025",
+    "label": "The Patient Story interview",
+    "url": "https://thepatientstory.com/patient-stories/lung-cancer/non-small-cell/jill-f/",
+    "opened": "13 November 2026",
+    "quote": "Now, I stay on the same treatment.",
+    "note": "We opened later 2026 pages about an AACR award. Those pages are about an honour, not a first-person update on her scans or her drug, so they are not used as her status."
+  },
+  "pointers": [
+    {
+      "label": "Finding Hope: A Patient’s Perspective on Adjuvant Therapy (12 June 2020)",
+      "url": "https://jfeldman48.wixsite.com/website/post/finding-hope-a-patient-s-perspective-on-adjuvant-therapy-in-lung-cancer"
+    },
+    {
+      "label": "The Patient Story interview (10 January 2025)",
+      "url": "https://thepatientstory.com/patient-stories/lung-cancer/non-small-cell/jill-f/"
+    },
+    {
+      "label": "IASLC: A Journey Unlike Any Other",
+      "url": "https://www.iaslc.org/journey-unlike-any-other-jill-feldman"
+    }
+  ]
+}

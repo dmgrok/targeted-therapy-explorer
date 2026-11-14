@@ -1,0 +1,768 @@
+{
+  "biomarker_id": "ALK",
+  "generated_at": "2026-11-13T21:09:03+01:00",
+  "source_hash": "8c5f8dd6b157440bc5468d857c17f6c115ebded524f0f6d80c2181dc78cfc5f4",
+  "intro": {
+    "what": [
+      "ALK is a gene.",
+      "Changes in ALK — extra copies, joins with another gene, or mutations — can help some lung cancers grow."
+    ],
+    "test_report": "If a test report mentions ALK, it is noting a finding about this gene. That note is not a diagnosis, and it is not a decision about treatment.",
+    "sources": [
+      {
+        "id": "civic-gene:ALK",
+        "url": "https://civicdb.org/features/1",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "biomarker:ALK",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      },
+      {
+        "id": "summary:ALK",
+        "url": "https://civicdb.org/features/1",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      }
+    ],
+    "test_report_sources": [
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      },
+      {
+        "id": "biomarker:ALK",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "cdx:FoundationOne CDx (Foundation Medicine Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "FoundationOne CDx (Foundation Medicine Inc.) is an FDA companion test for advanced lung cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne CDx (Foundation Medicine Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "FoundationOne CDx (Foundation Medicine, Inc.) is an FDA companion test for advanced lung cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:FoundationOne Liquid CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Plasma",
+      "category": "cdx",
+      "text": "FoundationOne Liquid CDx (Foundation Medicine, Inc.) is an FDA companion test for advanced lung cancer. It uses a blood (plasma) sample.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne Liquid CDx (Foundation Medicine, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Ventana ALK (D5F3) CDx Assay (Ventana Medical Systems, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "Ventana ALK (D5F3) CDx Assay (Ventana Medical Systems, Inc.) is an FDA companion test for advanced lung cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:Ventana ALK (D5F3) CDx Assay (Ventana Medical Systems, Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Vysis ALK Break Apart FISH Probe Kit (Abbott Molecular Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+      "category": "cdx",
+      "text": "Vysis ALK Break Apart FISH Probe Kit (Abbott Molecular Inc.) is an FDA companion test for advanced lung cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:Vysis ALK Break Apart FISH Probe Kit (Abbott Molecular Inc.)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Alectinib",
+      "category": "mainstream",
+      "text": "Alectinib (Alecensa): a drug that blocks the ALK signal. Approved for advanced lung cancer with an ALK change. Authorised in Europe since 2017.",
+      "sources": [
+        {
+          "id": "therapy:ALK:Alectinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=42c49deb-713b-427a-9670-08af08adcffb",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Brigatinib",
+      "category": "mainstream",
+      "text": "Brigatinib (Alunbrig): a drug that blocks the ALK signal. Approved for advanced lung cancer with an ALK change. Authorised in Europe since 2018.",
+      "sources": [
+        {
+          "id": "therapy:ALK:Brigatinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0fe9ff20-d402-41f3-bc1e-7002ea7007db",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Ceritinib",
+      "category": "mainstream",
+      "text": "Ceritinib (ZYKADIA): a drug that blocks the ALK signal. Approved for advanced lung cancer with an ALK change. Authorised in Europe since 2015.",
+      "sources": [
+        {
+          "id": "therapy:ALK:Ceritinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fff5d805-4ffd-4e8e-8e63-6f129697563e",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Crizotinib",
+      "category": "mainstream",
+      "text": "Crizotinib (Xalkori): a drug named on the FDA label in this snapshot. Approved for lymphoma with an ALK change. Authorised in Europe since 2012.",
+      "sources": [
+        {
+          "id": "therapy:ALK:Crizotinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2a51b0de-47d6-455e-a94c-d2c737b04ff7",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Ensartinib",
+      "category": "mainstream",
+      "text": "Ensartinib (ENSACOVE): a drug that blocks the ALK signal. Approved for advanced lung cancer with an ALK change.",
+      "sources": [
+        {
+          "id": "therapy:ALK:Ensartinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1e1b2f79-678a-472a-b924-66909c8a4b2e",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Lorlatinib",
+      "category": "mainstream",
+      "text": "Lorlatinib (Lorbrena): a drug that blocks the ALK signal. Approved for advanced lung cancer with an ALK change. Authorised in Europe since 2019.",
+      "sources": [
+        {
+          "id": "therapy:ALK:Lorlatinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=004f93d7-a1cd-4b67-9207-31cdcb5c5976",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT02285582",
+      "category": "trials",
+      "text": "NCT02285582: International Rare Histiocytic Disorders Registry (IRHDR). A recruiting study. Sites in 9 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT02285582",
+          "url": "https://clinicaltrials.gov/study/NCT02285582",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT03126916",
+      "category": "trials",
+      "text": "NCT03126916: Testing the Addition of 131I-MIBG or Lorlatinib to Intensive Therapy in People With High-Risk Neuroblastoma (NBL). A recruiting study (phase 3). Sites in 3 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT03126916",
+          "url": "https://clinicaltrials.gov/study/NCT03126916",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04322890",
+      "category": "trials",
+      "text": "NCT04322890: Treatment Strategies and Survival Outcome for Non-small Cell Lung Cancer With Oncogenic Mutation. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04322890",
+          "url": "https://clinicaltrials.gov/study/NCT04322890",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04423185",
+      "category": "trials",
+      "text": "NCT04423185: PLATFORM Study of Precision Medicine for Rare Tumors. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04423185",
+          "url": "https://clinicaltrials.gov/study/NCT04423185",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04777084",
+      "category": "trials",
+      "text": "NCT04777084: The Efficacy and Safety of the Bispecific Anti-PD-1/PD-L1 Antibody IBI318 Combined with Lenvatinib in NSCLC.. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04777084",
+          "url": "https://clinicaltrials.gov/study/NCT04777084",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04900935",
+      "category": "trials",
+      "text": "NCT04900935: Patient-centered, Optimal Integration of Survivorship and Palliative Care. A recruiting study (NA). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04900935",
+          "url": "https://clinicaltrials.gov/study/NCT04900935",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04925609",
+      "category": "trials",
+      "text": "NCT04925609: Brigatinib in Pediatric and Young Adult Patients With ALK+ ALCL, IMT or Other Solid Tumors. A recruiting study (phase 1 / phase 2). Sites in 2 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT04925609",
+          "url": "https://clinicaltrials.gov/study/NCT04925609",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05014464",
+      "category": "trials",
+      "text": "NCT05014464: ALK Tyrosine Kinase Inhibitors in ALK-rearranged Advanced Squamous Cell Carcinoma. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05014464",
+          "url": "https://clinicaltrials.gov/study/NCT05014464",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05122806",
+      "category": "trials",
+      "text": "NCT05122806: Analysis of Biological Characteristics of Advanced ALK-rearranged NSCLC. A recruiting study (NA). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05122806",
+          "url": "https://clinicaltrials.gov/study/NCT05122806",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05142189",
+      "category": "trials",
+      "text": "NCT05142189: Clinical Trial Evaluating the Safety, Tolerability and Preliminary Efficacy of BNT116 Alone and in…. A recruiting study (phase 1). Sites in 8 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT05142189",
+          "url": "https://clinicaltrials.gov/study/NCT05142189",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05241028",
+      "category": "trials",
+      "text": "NCT05241028: Adjuvant Therapy of Ensartinib in Stage IB-IIIA ALK-positive Non-small Cell Lung Cancer. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05241028",
+          "url": "https://clinicaltrials.gov/study/NCT05241028",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05384626",
+      "category": "trials",
+      "text": "NCT05384626: Neladalkib (NVL-655) in Patients With Advanced NSCLC and Other Solid Tumors Harboring ALK Rearrangement…. A recruiting study (phase 1 / phase 2). Sites in 15 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT05384626",
+          "url": "https://clinicaltrials.gov/study/NCT05384626",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05498064",
+      "category": "trials",
+      "text": "NCT05498064: A Real World Study of Ensartinib in Advanced ALK-positive NSCLC. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05498064",
+          "url": "https://clinicaltrials.gov/study/NCT05498064",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05525338",
+      "category": "trials",
+      "text": "NCT05525338: Comparison of Standard Dose Alectinib to Alectinib in Adjusted Dose Based on Alectinib Bloodlevels. A recruiting study (phase 4). Sites in 2 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT05525338",
+          "url": "https://clinicaltrials.gov/study/NCT05525338",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05599412",
+      "category": "trials",
+      "text": "NCT05599412: Post Marketing Surveillance(PMS) Study of Lorviqua in Korea. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05599412",
+          "url": "https://clinicaltrials.gov/study/NCT05599412",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05713006",
+      "category": "trials",
+      "text": "NCT05713006: Alectinib Pharmacokinetic in Patients With NSCLC. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05713006",
+          "url": "https://clinicaltrials.gov/study/NCT05713006",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05724004",
+      "category": "trials",
+      "text": "NCT05724004: Alectinib Followed by Concomitant Consolidation Radiation Therapy in Advanced NSCLC With ALK-rearrangement (A-SAB). A recruiting study (NA). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05724004",
+          "url": "https://clinicaltrials.gov/study/NCT05724004",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05765877",
+      "category": "trials",
+      "text": "NCT05765877: Neoadjuvant WX-0593 in Resectable ALK-positive or ROS1-positive Non-small Cell Lung Cancer. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05765877",
+          "url": "https://clinicaltrials.gov/study/NCT05765877",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05770037",
+      "category": "trials",
+      "text": "NCT05770037: DETERMINE Trial Treatment Arm 01: Alectinib in Adult, Paediatric and Teenage/Young Adult Patients With…. A recruiting study (phase 2 / phase 3). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05770037",
+          "url": "https://clinicaltrials.gov/study/NCT05770037",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05950139",
+      "category": "trials",
+      "text": "NCT05950139: Peptide Vaccine To Prevent Acquired Resistance In Patients With Advanced ALK+ NSCLC. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05950139",
+          "url": "https://clinicaltrials.gov/study/NCT05950139",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05978141",
+      "category": "trials",
+      "text": "NCT05978141: A Registry for People With T-cell Lymphoma. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05978141",
+          "url": "https://clinicaltrials.gov/study/NCT05978141",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06081907",
+      "category": "trials",
+      "text": "NCT06081907: The Efficacy and Safety of IBI363 in Solid Tumors. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06081907",
+          "url": "https://clinicaltrials.gov/study/NCT06081907",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06092086",
+      "category": "trials",
+      "text": "NCT06092086: Lorlatinib as the First-line Treatment in China Advanced ALK+ NSCLC. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06092086",
+          "url": "https://clinicaltrials.gov/study/NCT06092086",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06176690",
+      "category": "trials",
+      "text": "NCT06176690: Constitutive IL7R (C7R) Modified Banked Allogeneic CD30.CAR EBVSTS for CD30-Positive Lymphomas. A recruiting study (phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06176690",
+          "url": "https://clinicaltrials.gov/study/NCT06176690",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06221670",
+      "category": "trials",
+      "text": "NCT06221670: Toripalimab Therapy After Resection in High-risk Stage IA2-IB NSCLC With no Driver Alterations (EGFR or ALK). A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06221670",
+          "url": "https://clinicaltrials.gov/study/NCT06221670",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06225427",
+      "category": "trials",
+      "text": "NCT06225427: Gilteritinib for the Treatment of ALK NSCLC. A recruiting study (phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06225427",
+          "url": "https://clinicaltrials.gov/study/NCT06225427",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06333899",
+      "category": "trials",
+      "text": "NCT06333899: Lorlatinib for Newly-Diagnosed High-Grade Glioma With ROS or ALK Fusion. A recruiting study (early phase 1). Sites in 6 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06333899",
+          "url": "https://clinicaltrials.gov/study/NCT06333899",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06361589",
+      "category": "trials",
+      "text": "NCT06361589: Real World Study of Lolatinib for Advanced ALK+ NSCLC Patients. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06361589",
+          "url": "https://clinicaltrials.gov/study/NCT06361589",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06378892",
+      "category": "trials",
+      "text": "NCT06378892: A Study to Evaluate the Combination of Platinum-pemetrexed Based Chemotherapy Plus Lorlatinib in ALK…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06378892",
+          "url": "https://clinicaltrials.gov/study/NCT06378892",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06487078",
+      "category": "trials",
+      "text": "NCT06487078: Analysis of the Effectiveness and Safety of Lorlatinib in Untreated ALK-Positive NSCLC Patients in…. A recruiting study (NA). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06487078",
+          "url": "https://clinicaltrials.gov/study/NCT06487078",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06528847",
+      "category": "trials",
+      "text": "NCT06528847: Adjuvant Benmelstobart for Stage IB, Grade 3 Invasive Lung Adenocarcinoma. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06528847",
+          "url": "https://clinicaltrials.gov/study/NCT06528847",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06563999",
+      "category": "trials",
+      "text": "NCT06563999: Neoadjuvant Umbrella Trial for Patients With Unresectable Stage III NSCLC Harboring Rare Mutations.. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06563999",
+          "url": "https://clinicaltrials.gov/study/NCT06563999",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06620835",
+      "category": "trials",
+      "text": "NCT06620835: Trial for Local Ablative Treatment (LAT) Optimization in Patients With Advanced Non-Small Cells Lung…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06620835",
+          "url": "https://clinicaltrials.gov/study/NCT06620835",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06765109",
+      "category": "trials",
+      "text": "NCT06765109: Neladalkib (NVL-655) for TKI-naive Patients With Advanced ALK-Positive NSCLC. A recruiting study (phase 3). Sites in 29 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06765109",
+          "url": "https://clinicaltrials.gov/study/NCT06765109",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06834373",
+      "category": "trials",
+      "text": "NCT06834373: Golcadomide and Rituximab as Bridging Therapy for Relapsed or Refractory Aggressive B-cell Non-Hodgkin Lymphoma…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06834373",
+          "url": "https://clinicaltrials.gov/study/NCT06834373",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06862869",
+      "category": "trials",
+      "text": "NCT06862869: Real World Clinical Outcomes of Resected ALK-Positive Early Stage NSCLC Patients Treated With Alectinib…. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06862869",
+          "url": "https://clinicaltrials.gov/study/NCT06862869",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07001384",
+      "category": "trials",
+      "text": "NCT07001384: Alectinib and Duvelisib in People With Anaplastic Lymphoma Kinase-Positive Anaplastic Large Cell Lymphoma (ALK+ALCL). A recruiting study (phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07001384",
+          "url": "https://clinicaltrials.gov/study/NCT07001384",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07013565",
+      "category": "trials",
+      "text": "NCT07013565: Chemoimmunotherapy for ALK+ Relapsed/Refractory ALCL. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07013565",
+          "url": "https://clinicaltrials.gov/study/NCT07013565",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07140016",
+      "category": "trials",
+      "text": "NCT07140016: Gilteritinib in Adults With Advanced ALK-positive Non-small Cell Lung Cancer (NSCLC). A recruiting study (phase 1). Sites in 3 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07140016",
+          "url": "https://clinicaltrials.gov/study/NCT07140016",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07330596",
+      "category": "trials",
+      "text": "NCT07330596: QL1706 Combined With Chemotherapy in the Treatment of Immune-mediated NSCLC. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07330596",
+          "url": "https://clinicaltrials.gov/study/NCT07330596",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07354061",
+      "category": "trials",
+      "text": "NCT07354061: Neoadjuvant Therapy With Ensartinib Combined With Chemotherapy for ALK-positive Non - Small Cell Lung Cancer (NSCLC). A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07354061",
+          "url": "https://clinicaltrials.gov/study/NCT07354061",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07374614",
+      "category": "trials",
+      "text": "NCT07374614: Iruplinalkib in ALK-Positive Advanced Lung Adenocarcinoma After Lorlatinib. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07374614",
+          "url": "https://clinicaltrials.gov/study/NCT07374614",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07415005",
+      "category": "trials",
+      "text": "NCT07415005: Lorlatinib Plus Local Consolidation Therapy In ALK Positive Advanced Non-Small Cell Lung Cancer. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07415005",
+          "url": "https://clinicaltrials.gov/study/NCT07415005",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07491497",
+      "category": "trials",
+      "text": "NCT07491497: A Phase 1/2 Study of TRI-611 in ALK-Positive NSCLC. A recruiting study (phase 1 / phase 2). Sites in 4 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07491497",
+          "url": "https://clinicaltrials.gov/study/NCT07491497",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07617337",
+      "category": "trials",
+      "text": "NCT07617337: AQUA07 in Patients With ALK-Positive Non-Small Cell Lung Cancer. A recruiting study (phase 1). Sites in 2 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07617337",
+          "url": "https://clinicaltrials.gov/study/NCT07617337",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07633626",
+      "category": "trials",
+      "text": "NCT07633626: Vortioxetine for Cognitive Function in ALK-positive NSCLC Treated With Lorlatinib. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07633626",
+          "url": "https://clinicaltrials.gov/study/NCT07633626",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07696832",
+      "category": "trials",
+      "text": "NCT07696832: Efficacy and Safety of Ivonescimab Monotherapy as First-Line Treatment for PD-L1-Positive, Driver Gene-Negative, Locally…. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07696832",
+          "url": "https://clinicaltrials.gov/study/NCT07696832",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07784959",
+      "category": "trials",
+      "text": "NCT07784959: NXP900 With Lorlatinib in ALK+ Lung Cancer. A recruiting study (phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07784959",
+          "url": "https://clinicaltrials.gov/study/NCT07784959",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07810933",
+      "category": "trials",
+      "text": "NCT07810933: A Phase 1/2 Study of SY-12321 in Patients With ALK-positive Advanced Malignancies. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07810933",
+          "url": "https://clinicaltrials.gov/study/NCT07810933",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    }
+  ]
+}

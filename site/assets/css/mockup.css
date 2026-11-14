@@ -1,0 +1,376 @@
+/* EGFR design mockup. Same Risograph identity: paper #f4efe4, teal #1b4f4c,
+   pinks #b02058 / #d13a72. No orange. Barlow Condensed + Source Sans 3. */
+
+body.mockup { background: var(--paper, #f4efe4); color: var(--ink, #1b4f4c); }
+.mock-wrap { max-width: 68rem; margin: 0 auto; padding: 0 1rem 3rem; }
+.mock-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0 0.6rem;
+  border-bottom: 2px solid var(--ink, #1b4f4c);
+}
+.mock-head .site-title {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 1.35rem;
+  margin: 0;
+}
+.mock-head .site-title a { color: inherit; text-decoration: none; }
+.mock-flag {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin: 0;
+  color: var(--pink, #b02058);
+  border: 1px solid var(--pink, #b02058);
+  padding: 0.15rem 0.45rem;
+}
+.mock-foot { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--fade, rgba(27,79,76,.12)); }
+
+.crumbs {
+  margin: 1rem 0 1.2rem;
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+}
+.crumbs a { color: var(--ink, #1b4f4c); }
+
+h1 {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  line-height: 1.1;
+  margin: 0 0 0.6rem;
+  color: var(--ink-deep, #122e2c);
+}
+.question {
+  font-size: 1.2rem;
+  margin: 0 0 1.1rem;
+}
+.lede, .tree-how { max-width: 42rem; }
+.mock-note {
+  max-width: 42rem;
+  padding: 0.7rem 0.85rem;
+  border-left: 4px solid var(--pink, #b02058);
+  background: #fff;
+  margin: 1rem 0 1.4rem;
+}
+
+.choices {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+.choice {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.8rem 1.2rem;
+  padding: 0.9rem 1rem;
+  background: #fff;
+  border: 2px solid var(--ink, #1b4f4c);
+  color: var(--ink-deep, #122e2c);
+  text-decoration: none;
+  box-shadow: 3px 3px 0 var(--ink, #1b4f4c);
+  min-height: 3.2rem;
+}
+.choice:hover, .choice:focus-visible {
+  background: #fff;
+  outline: 3px solid var(--pink, #b02058);
+  outline-offset: 2px;
+}
+.choice.unknown { border-style: dashed; box-shadow: none; }
+.choice.bm-later {
+  border-style: dashed;
+  box-shadow: none;
+  opacity: 0.72;
+  cursor: default;
+}
+.choice-name {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  overflow-wrap: anywhere;
+}
+.choice-n {
+  font-size: 0.95rem;
+  white-space: nowrap;
+  color: var(--ink, #1b4f4c);
+}
+@media (max-width: 520px) {
+  .choice { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+  .choice-n { white-space: normal; }
+}
+
+.inline-def {
+  font-family: "Source Sans 3", "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-size: 0.95rem;
+  text-transform: none;
+}
+
+.levels { max-width: 46rem; margin: 2rem 0; }
+.levels h2 {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 1.4rem;
+  margin: 0 0 0.5rem;
+}
+.level-defs { margin: 0 0 0.8rem; padding-left: 1.2rem; }
+.level-defs li { margin: 0.3rem 0; }
+
+.level {
+  display: inline-block;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  padding: 0.15rem 0.45rem;
+  border: 1px solid var(--ink, #1b4f4c);
+  background: #fff;
+}
+.level-mainstream { background: #fff; color: var(--ink-deep, #122e2c); }
+.level-testing { background: var(--ink, #1b4f4c); color: var(--paper, #f4efe4); }
+.level-edge { background: var(--pink-fade, rgba(176,32,88,.12)); color: var(--pink, #b02058); border-color: var(--pink, #b02058); }
+.level-withdrawn { background: var(--paper, #f4efe4); color: var(--ink, #1b4f4c); }
+
+.wd-banner, .indication-note {
+  max-width: 46rem;
+  background: #fff;
+  border: 2px solid var(--ink, #1b4f4c);
+  padding: 0.8rem 1rem;
+  margin: 1rem 0 1.4rem;
+}
+.path-plain { font-size: 1.15rem; max-width: 46rem; margin: 0 0 1rem; }
+.table-counts { margin: 0 0 0.8rem; }
+
+.opt-table-wrap { overflow-x: auto; margin: 0 0 2rem; }
+.opt-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 1rem;
+}
+.opt-table th, .opt-table td {
+  vertical-align: top;
+  text-align: left;
+  padding: 0.75rem 0.7rem;
+  border-bottom: 1px solid var(--fade-strong, rgba(27,79,76,.22));
+}
+.opt-table thead th {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  border-bottom: 2px solid var(--ink, #1b4f4c);
+  background: var(--paper, #f4efe4);
+}
+.opt-table .brand { font-weight: 400; }
+.opt-table .col-what { max-width: 22rem; }
+.opt-table .sources-toggle { margin-top: 0.35rem; }
+
+/* Stacked rows at phone width — every column label stays visible. */
+@media (max-width: 640px) {
+  .opt-table thead { display: none; }
+  .opt-table, .opt-table tbody, .opt-table tr, .opt-table th, .opt-table td {
+    display: block;
+    width: 100%;
+  }
+  .opt-table tr {
+    border: 2px solid var(--ink, #1b4f4c);
+    margin: 0 0 0.8rem;
+    padding: 0.35rem 0.2rem 0.5rem;
+    background: #fff;
+  }
+  .opt-table th, .opt-table td {
+    border: 0;
+    padding: 0.35rem 0.7rem;
+  }
+  .opt-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 0.1rem;
+    color: var(--ink, #1b4f4c);
+  }
+  .opt-table .col-option { font-size: 1.2rem; padding-top: 0.6rem; }
+  .choice-name { font-size: 1.25rem; }
+  .mock-head { flex-wrap: wrap; }
+}
+
+.context { margin: 0 0 0.4rem; font-size: 1.05rem; }
+
+/* Ink on white. style.css .notice sets cream text on pink; without an
+   explicit colour here the cream (#f4efe4) was inherited onto this white
+   background and the banner looked washed out (well below WCAG AA). */
+.notice.notice-short,
+.notice-short {
+  font-size: 1rem;
+  margin: 0 0 0.6rem;
+  padding: 0.45rem 0.7rem;
+  border: 0;
+  border-left: 4px solid #1b4f4c;
+  background: #fff;
+  color: #1b4f4c;
+  font-weight: 600;
+}
+.notice.notice-short a,
+.notice-short a {
+  color: #b02058;
+  text-decoration: underline;
+}
+.notice.notice-short strong,
+.notice-short strong {
+  color: #122e2c;
+  font-family: inherit;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: inherit;
+  font-weight: 700;
+  display: inline;
+  margin: 0;
+}
+/* Same trap as .notice-short: style.css .notice sets cream text on pink.
+   This box used a white background and inherited the cream, so the long
+   disclaimer was washed out (about 1.15:1). Ink on white is 9.25:1. */
+.notice.notice-full,
+.notice-full {
+  font-size: 0.98rem;
+  margin: 0 0 0.8rem;
+  padding: 0.5rem 0.7rem;
+  border: 0;
+  border-left: 4px solid #1b4f4c;
+  background: #fff;
+  color: #1b4f4c;
+  font-weight: 600;
+}
+.notice.notice-full a,
+.notice-full a {
+  color: #b02058;
+  text-decoration: underline;
+}
+.notice.notice-full strong,
+.notice-full strong {
+  color: #122e2c;
+  font-family: inherit;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: inherit;
+  font-weight: 700;
+  display: inline;
+  margin: 0;
+}
+.choice-why {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 400;
+  line-height: 1.35;
+  margin: 0.2rem 0 0.15rem;
+  color: #333;
+}
+.combo {
+  margin: 0.35rem 0 0;
+  font-weight: 600;
+}
+
+.mock-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+.mock-nav a { color: var(--ink, #1b4f4c); text-decoration: none; }
+.mock-nav a:hover, .mock-nav a:focus-visible { color: var(--pink, #b02058); text-decoration: underline; }
+
+/* Case studies: one person's story, never an option in the tables. */
+.case-banner {
+  background: #fff;
+  color: #1b4f4c;
+  border: 2px solid #b02058;
+  padding: 0.85rem 1rem;
+  margin: 0.8rem 0 1.2rem;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+.case-banner strong {
+  color: #122e2c;
+  display: inline;
+}
+.case-died {
+  background: #fff;
+  color: #1b4f4c;
+  border-left: 4px solid #1b4f4c;
+  padding: 0.85rem 1rem;
+  margin: 0 0 1.4rem;
+}
+.case-died p { margin: 0 0 0.6rem; }
+.case-died p:last-child { margin-bottom: 0; }
+.case-quote {
+  margin: 0.8rem 0 1.1rem;
+  padding: 0.6rem 0 0.6rem 1rem;
+  border-left: 3px solid #b02058;
+  background: transparent;
+}
+.case-quote p {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  color: #122e2c;
+}
+.case-quote footer {
+  font-size: 0.9rem;
+  color: #1b4f4c;
+}
+.case-timeline {
+  list-style: none;
+  margin: 0.6rem 0 1.6rem;
+  padding: 0;
+  border-left: 3px solid #1b4f4c;
+}
+.case-timeline li {
+  margin: 0 0 1.15rem 0;
+  padding: 0 0 0.2rem 1.1rem;
+  position: relative;
+}
+.case-timeline li::before {
+  content: "";
+  position: absolute;
+  left: -0.45rem;
+  top: 0.45rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  background: #b02058;
+  border-radius: 50%;
+}
+.case-date {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #b02058;
+  margin: 0 0 0.25rem;
+}
+.case-helpers {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+.case-pointers { margin: 0.4rem 0 1.2rem; padding-left: 1.2rem; }
+.case-choices .fine { margin: 0.25rem 0 0.8rem; }

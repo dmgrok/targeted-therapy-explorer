@@ -1,0 +1,732 @@
+{
+  "biomarker_id": "MSI-H-dMMR",
+  "generated_at": "2026-11-13T21:09:03+01:00",
+  "source_hash": "9713c578a099334511bb5cc7cc2947f504e36599b839a1f561d09fcf384a6b5b",
+  "intro": {
+    "what": [
+      "MSI-H and dMMR are test findings about how a tumour repairs its DNA.",
+      "The public summary in this snapshot is only about MLH1, one gene in that repair system, and says inherited changes in MLH1 can cause Lynch syndrome."
+    ],
+    "test_report": "If a test report mentions MSI-H or dMMR, it is noting that finding. That note is not a diagnosis, and it is not a decision about treatment.",
+    "sources": [
+      {
+        "id": "civic-gene:MLH1",
+        "url": "https://civicdb.org/features/3532",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "biomarker:MSI-H-dMMR",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      },
+      {
+        "id": "summary:MSI-H-dMMR",
+        "url": "https://civicdb.org/features/3532",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      }
+    ],
+    "test_report_sources": [
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      },
+      {
+        "id": "biomarker:MSI-H-dMMR",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Solid Tumors - Tissue",
+      "category": "cdx",
+      "text": "FoundationOne CDx (Foundation Medicine, Inc.) is an FDA companion test for several types of solid tumour. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Solid Tumors - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Endometrial Carcinoma (EC) - Tissue",
+      "category": "cdx",
+      "text": "MI Cancer Seek (MCS) (Caris Life Sciences) is an FDA companion test for cancer of the womb. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Endometrial Carcinoma (EC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Solid Tumors - Tissue",
+      "category": "cdx",
+      "text": "MI Cancer Seek (MCS) (Caris Life Sciences) is an FDA companion test for several types of solid tumour. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Solid Tumors - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:OncoMate MSI Dx Analysis System (Promega Corporation)|Endometrial Carcinoma (EC) – Tissue",
+      "category": "cdx",
+      "text": "OncoMate MSI Dx Analysis System (Promega Corporation) is an FDA companion test for cancer of the womb. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:OncoMate MSI Dx Analysis System (Promega Corporation)|Endometrial Carcinoma (EC) – Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:OncoMate MSI Dx Analysis System (Promega Corporation)|Solid Tumors - Tissue",
+      "category": "cdx",
+      "text": "OncoMate MSI Dx Analysis System (Promega Corporation) is an FDA companion test for several types of solid tumour. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:OncoMate MSI Dx Analysis System (Promega Corporation)|Solid Tumors - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Ventana MMR RxDx Panel (Ventana Medical Systems, Inc.)|Endometrial Carcinoma (EC) - Tissue",
+      "category": "cdx",
+      "text": "Ventana MMR RxDx Panel (Ventana Medical Systems, Inc.) is an FDA companion test for cancer of the womb. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:Ventana MMR RxDx Panel (Ventana Medical Systems, Inc.)|Endometrial Carcinoma (EC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Ventana MMR RxDx Panel (Ventana Medical Systems, Inc.)|Solid Tumors",
+      "category": "cdx",
+      "text": "Ventana MMR RxDx Panel (Ventana Medical Systems, Inc.) is an FDA companion test for several types of solid tumour.",
+      "sources": [
+        {
+          "id": "cdx:Ventana MMR RxDx Panel (Ventana Medical Systems, Inc.)|Solid Tumors",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Dostarlimab",
+      "category": "mainstream",
+      "text": "Dostarlimab (Jemperli): a drug named on the FDA label in this snapshot. Approved for cancer of the womb with an MSI-H or dMMR finding.",
+      "sources": [
+        {
+          "id": "therapy:MSI-H-dMMR:Dostarlimab",
+          "url": "https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Durvalumab",
+      "category": "mainstream",
+      "text": "Durvalumab (IMFINZI): a drug named on the FDA label in this snapshot. Approved for cancer of the womb with an MSI-H or dMMR finding.",
+      "sources": [
+        {
+          "id": "therapy:MSI-H-dMMR:Durvalumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8baba4ea-2855-42fa-9bd9-5a7548d4cec3",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Ipilimumab",
+      "category": "mainstream",
+      "text": "Ipilimumab (YERVOY): a drug named on the FDA label in this snapshot. Approved for advanced bowel cancer with an MSI-H or dMMR finding.",
+      "sources": [
+        {
+          "id": "therapy:MSI-H-dMMR:Ipilimumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2265ef30-253e-11df-8a39-0800200c9a66",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Nivolumab",
+      "category": "mainstream",
+      "text": "Nivolumab (OPDIVO QVANTIG): an infusion. Approved for advanced bowel cancer with an MSI-H or dMMR finding. Authorised in Europe since 2015.",
+      "sources": [
+        {
+          "id": "therapy:MSI-H-dMMR:Nivolumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7f8c38fa-42f4-4387-9e8c-7a1c66855d8b",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Pembrolizumab",
+      "category": "mainstream",
+      "text": "Pembrolizumab (Keytruda, KEYTRUDA QLEX): a drug named on the FDA label in this snapshot. Approved for several types of solid tumour with an MSI-H or dMMR finding.",
+      "sources": [
+        {
+          "id": "therapy:MSI-H-dMMR:Pembrolizumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=097d166f-b73b-41d3-9b37-7653cd2a0c41",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT03026140",
+      "category": "trials",
+      "text": "NCT03026140: Neoadjuvant Immune Checkpoint Inhibition and Novel IO Combinations in Early-stage Colon Cancer. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT03026140",
+          "url": "https://clinicaltrials.gov/study/NCT03026140",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT03736889",
+      "category": "trials",
+      "text": "NCT03736889: Tislelizumab (Anti-Programmed Cell Death Protein-1 (PD-1) Antibody) in MSI-H or dMMR Solid Tumors. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT03736889",
+          "url": "https://clinicaltrials.gov/study/NCT03736889",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT03816345",
+      "category": "trials",
+      "text": "NCT03816345: Testing an Immunotherapy Anti-cancer Drug, Nivolumab, for Advanced Cancers in Patients With Autoimmune Disorders, AIM-NIVO. A recruiting study (phase 1). Sites in 2 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT03816345",
+          "url": "https://clinicaltrials.gov/study/NCT03816345",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04165772",
+      "category": "trials",
+      "text": "NCT04165772: Induction PD-1 Blockade in Subjects With Locally Advanced Mismatch Repair Deficient Solid Tumors. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04165772",
+          "url": "https://clinicaltrials.gov/study/NCT04165772",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04198766",
+      "category": "trials",
+      "text": "NCT04198766: INBRX-106 and INBRX-106 in Combination With Pembrolizumab (Keytruda®) in Subjects With Locally Advanced or…. A recruiting study (phase 1 / phase 2). Sites in 4 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT04198766",
+          "url": "https://clinicaltrials.gov/study/NCT04198766",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04774419",
+      "category": "trials",
+      "text": "NCT04774419: Radiation and TSR-042 (Dostarlimab) in People With Endometrial Cancer After They Receive Surgery. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04774419",
+          "url": "https://clinicaltrials.gov/study/NCT04774419",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04777994",
+      "category": "trials",
+      "text": "NCT04777994: Study With ABBV-CLS-484 in Participants With Locally Advanced or Metastatic Tumors. A recruiting study (phase 1). Sites in 6 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT04777994",
+          "url": "https://clinicaltrials.gov/study/NCT04777994",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05112601",
+      "category": "trials",
+      "text": "NCT05112601: Testing Nivolumab With or Without Ipilimumab in Deficient Mismatch Repair System (dMMR) Recurrent Endometrial Carcinoma. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05112601",
+          "url": "https://clinicaltrials.gov/study/NCT05112601",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05129605",
+      "category": "trials",
+      "text": "NCT05129605: Prostate Cancer Genetic Risk Evaluation and Screening Study. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05129605",
+          "url": "https://clinicaltrials.gov/study/NCT05129605",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05272709",
+      "category": "trials",
+      "text": "NCT05272709: TT-702 in Patients With Advanced Solid Tumours.. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05272709",
+          "url": "https://clinicaltrials.gov/study/NCT05272709",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05310643",
+      "category": "trials",
+      "text": "NCT05310643: Nivolumab and Ipilimumab in Anti-PD1-Resistant dMMR/MSI mCRC. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05310643",
+          "url": "https://clinicaltrials.gov/study/NCT05310643",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05592626",
+      "category": "trials",
+      "text": "NCT05592626: a Selective T Cell Receptor (TCR) Targeting, Bifunctional Antibody-fusion Molecule STAR0602 in Participants With…. A recruiting study (phase 1 / phase 2). Sites in 4 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT05592626",
+          "url": "https://clinicaltrials.gov/study/NCT05592626",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05845450",
+      "category": "trials",
+      "text": "NCT05845450: Pre-operative Targeted Treatments in Molecularly Selected Resectable Colorectal Cancer (UNICORN). A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05845450",
+          "url": "https://clinicaltrials.gov/study/NCT05845450",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05855200",
+      "category": "trials",
+      "text": "NCT05855200: Perioperative Dostarlimab in Participants With Untreated T4N0 or Stage III dMMR/MSI-H Resectable Colon Cancer. A recruiting study (phase 3). Sites in 28 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT05855200",
+          "url": "https://clinicaltrials.gov/study/NCT05855200",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05919264",
+      "category": "trials",
+      "text": "NCT05919264: FOG-001 in Locally Advanced or Metastatic Solid Tumors. A recruiting study (phase 1 / phase 2). Sites in 2 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT05919264",
+          "url": "https://clinicaltrials.gov/study/NCT05919264",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06004245",
+      "category": "trials",
+      "text": "NCT06004245: A Study to Evaluate the Safety, Pharmacokinetics, and Anti-Tumor Activity of VVD-133214 as Monotherapy…. A recruiting study (phase 1). Sites in 11 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06004245",
+          "url": "https://clinicaltrials.gov/study/NCT06004245",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06059495",
+      "category": "trials",
+      "text": "NCT06059495: DEWI: Watch-and-Wait With Dostarlimab in Localized dMMR/MSI-H Gastric/GEJ Adenocarcinoma Phase II Study. A recruiting study (phase 2). Sites in 2 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06059495",
+          "url": "https://clinicaltrials.gov/study/NCT06059495",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06305962",
+      "category": "trials",
+      "text": "NCT06305962: 177Lu-anti-PD-L1 sdAb in Metastatic Solid Tumors. A recruiting study (early phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06305962",
+          "url": "https://clinicaltrials.gov/study/NCT06305962",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06333314",
+      "category": "trials",
+      "text": "NCT06333314: Dostarlimab for Locally Advanced or Metastatic Cancer (Non-colorectal/Non-endometrial) With Tumor dMMR/MSI. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06333314",
+          "url": "https://clinicaltrials.gov/study/NCT06333314",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06346197",
+      "category": "trials",
+      "text": "NCT06346197: Combination of Immune Checkpoint in Locally Advanced or Metastatic MSI/dMMR Esogastric Adenocarcinomas. A recruiting study (phase 3). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06346197",
+          "url": "https://clinicaltrials.gov/study/NCT06346197",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06353854",
+      "category": "trials",
+      "text": "NCT06353854: Prospective National Cohort Evaluating Predictive Biomarkers of Resistance to Immunotherapy in Patients With MSI/dMMR…. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06353854",
+          "url": "https://clinicaltrials.gov/study/NCT06353854",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06449989",
+      "category": "trials",
+      "text": "NCT06449989: Comparison of Molecular-Genetic Concordance of the Primary Tumor and Brain Metastases of Colorectal Cancer. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06449989",
+          "url": "https://clinicaltrials.gov/study/NCT06449989",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06529523",
+      "category": "trials",
+      "text": "NCT06529523: Tislelizumab in People With Colorectal Cancer. A recruiting study (phase 2). Sites in 2 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06529523",
+          "url": "https://clinicaltrials.gov/study/NCT06529523",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06549855",
+      "category": "trials",
+      "text": "NCT06549855: PD-1 Inhibitor Combined With Progesterone Treatment in FST for Patients With MMRd Endometrial Cancer. A recruiting study (NA). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06549855",
+          "url": "https://clinicaltrials.gov/study/NCT06549855",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06567782",
+      "category": "trials",
+      "text": "NCT06567782: Neoadjuvant Dostarlimab Plus Capecitabine Plus Oxaliplatin (CAPEOX) Vs CAPEOX With Previously Untreated T4N0 or…. A recruiting study (phase 2). Sites in 6 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06567782",
+          "url": "https://clinicaltrials.gov/study/NCT06567782",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06762405",
+      "category": "trials",
+      "text": "NCT06762405: PRODIGE 90 - (FFCD 2204) Neoadjuvant Dostarlimab with Short Course Radiotherapy in a Watch-and-wait…. A recruiting study (phase 3). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06762405",
+          "url": "https://clinicaltrials.gov/study/NCT06762405",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06890273",
+      "category": "trials",
+      "text": "NCT06890273: NIS to Examine the Effectiveness and Safety of Durvalumab and Olaparib in Patients With…. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06890273",
+          "url": "https://clinicaltrials.gov/study/NCT06890273",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06898450",
+      "category": "trials",
+      "text": "NCT06898450: A Study to Assess the Safety, Tolerability, and Efficacy of NDI-219216 in Patients With…. A recruiting study (phase 1 / phase 2). Sites in 8 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06898450",
+          "url": "https://clinicaltrials.gov/study/NCT06898450",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06948448",
+      "category": "trials",
+      "text": "NCT06948448: A Study to Evaluate the Safety and Efficacy of Two Dose Levels of ONO-4578…. A recruiting study (phase 2). Sites in 6 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06948448",
+          "url": "https://clinicaltrials.gov/study/NCT06948448",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07127822",
+      "category": "trials",
+      "text": "NCT07127822: Assessing Iparomlimab and Tuvonralimab in Recurrent or Metastatic MSI-H/dMMR Gastric Cancer. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07127822",
+          "url": "https://clinicaltrials.gov/study/NCT07127822",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07140679",
+      "category": "trials",
+      "text": "NCT07140679: Immunotherapy (Toripalimab) for Reducing Recurrence Risk After Surgery for Mismatch Repair Deficient Stage IIB…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07140679",
+          "url": "https://clinicaltrials.gov/study/NCT07140679",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07213609",
+      "category": "trials",
+      "text": "NCT07213609: A Study to Investigate the Safety and Preliminary Efficacy of GSK5460025 Alone or in…. A recruiting study (phase 1 / phase 2). Sites in 9 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07213609",
+          "url": "https://clinicaltrials.gov/study/NCT07213609",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07262619",
+      "category": "trials",
+      "text": "NCT07262619: EIK1005-002: A Clinical Research Study Evaluating EIK1005, a Werner Helicase Inhibitor, as Monotherapy and…. A recruiting study (phase 1 / phase 2). Sites in 15 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07262619",
+          "url": "https://clinicaltrials.gov/study/NCT07262619",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07270666",
+      "category": "trials",
+      "text": "NCT07270666: ctDNA Testing to Inform Standard-of-Care Treatment Decisions in People With Endometrial Cancer. A recruiting study (NA). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07270666",
+          "url": "https://clinicaltrials.gov/study/NCT07270666",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07274657",
+      "category": "trials",
+      "text": "NCT07274657: Superb Microvascular Imaging (SMI) and Two-Dimensional Endoscopic Ultrasound Guided Shear Wave Elastography (2D-SWE-EUS) in…. A recruiting study (NA). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07274657",
+          "url": "https://clinicaltrials.gov/study/NCT07274657",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07403721",
+      "category": "trials",
+      "text": "NCT07403721: AMG 436 as Monotherapy and Combination Therapy in Participants With MSI-H/dMMR Solid Tumors. A recruiting study (phase 1). Sites in 10 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07403721",
+          "url": "https://clinicaltrials.gov/study/NCT07403721",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07472686",
+      "category": "trials",
+      "text": "NCT07472686: Small Bowel Capsule Endoscopy in Lynch Syndrome. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07472686",
+          "url": "https://clinicaltrials.gov/study/NCT07472686",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07562347",
+      "category": "trials",
+      "text": "NCT07562347: Clinical Experience and Real-world Safety and Effectiveness of Envafolimab: Patient Access Program. A recruiting study. Sites in 3 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07562347",
+          "url": "https://clinicaltrials.gov/study/NCT07562347",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07750951",
+      "category": "trials",
+      "text": "NCT07750951: Single-arm, Phase II Clinical Study Evaluating the Safety and Efficacy of Sintilimab Combined With…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07750951",
+          "url": "https://clinicaltrials.gov/study/NCT07750951",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07775950",
+      "category": "trials",
+      "text": "NCT07775950: Research on Colorectal Cancer Recurrence Monitoring and Individualized Treatment Based on MRD. A recruiting study (NA). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07775950",
+          "url": "https://clinicaltrials.gov/study/NCT07775950",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07780305",
+      "category": "trials",
+      "text": "NCT07780305: ABCSG R07 Rectal Cancer Registry. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07780305",
+          "url": "https://clinicaltrials.gov/study/NCT07780305",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07811193",
+      "category": "trials",
+      "text": "NCT07811193: A Study to Evaluate the Efficacy of VVD-133214 in Combination With Pembrolizumab Compared With…. A recruiting study (phase 2). Sites in 22 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07811193",
+          "url": "https://clinicaltrials.gov/study/NCT07811193",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07829081",
+      "category": "trials",
+      "text": "NCT07829081: Research on Effective Strategies After Immunotherapy for Mismatch Repair-deficient Early-stage GI Tumors. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07829081",
+          "url": "https://clinicaltrials.gov/study/NCT07829081",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07841236",
+      "category": "trials",
+      "text": "NCT07841236: ctDNA-Guided Immunotherapy for dMMR/MSI-H Colon Cancer. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07841236",
+          "url": "https://clinicaltrials.gov/study/NCT07841236",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07901582",
+      "category": "trials",
+      "text": "NCT07901582: Implementation of a Pain Management Plan in Major Open Abdominal Surgeries.. A recruiting study (NA). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07901582",
+          "url": "https://clinicaltrials.gov/study/NCT07901582",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    }
+  ]
+}

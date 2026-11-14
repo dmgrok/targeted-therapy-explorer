@@ -21,6 +21,24 @@ jobs:
         run: python3 scripts/build_site.py
       - name: Disclaimer, schema and source checks
         run: python3 tests/test_site.py
+      - name: Plain-language sources, stale-hash and category rules
+        run: python3 tests/test_plain.py
+      - name: Decision-tree and mockup gates
+        run: python3 tests/test_mockup.py
+      - name: Case study gates
+        run: python3 tests/test_cases.py
+      - name: Set up Chrome
+        id: chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          install-dependencies: true
+      - name: Contrast gate (WCAG AA 4.5:1)
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: |
+          echo "CHROME_BIN=$CHROME_BIN"
+          "$CHROME_BIN" --version
+          python3 tests/test_contrast.py
       - name: No OncoKB and no secrets in the tree
         run: |
           if grep -RIn --exclude-dir=.git --exclude-dir=site/assets/fonts \

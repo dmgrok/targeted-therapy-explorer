@@ -1,0 +1,331 @@
+{
+  "biomarker_id": "NTRK",
+  "generated_at": "2026-11-13T21:09:03+01:00",
+  "source_hash": "9f1bf00b1e9d4403a9f98b24ad1cce060b2fafcce9396116e2eb8c49115ca8a8",
+  "intro": {
+    "what": [
+      "NTRK is a group of three genes: NTRK1, NTRK2 and NTRK3.",
+      "This page is about when one of these genes joins onto another gene. This snapshot has no public gene summary for them."
+    ],
+    "test_report": "If a test report mentions an NTRK fusion, it is noting a finding about NTRK1, NTRK2 or NTRK3. That note is not a diagnosis, and it is not a decision about treatment.",
+    "sources": [
+      {
+        "id": "biomarker:NTRK",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      },
+      {
+        "id": "summary:NTRK",
+        "url": "https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling",
+        "label": "CIViC gene summary"
+      },
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      }
+    ],
+    "test_report_sources": [
+      {
+        "id": "method:categories",
+        "url": "",
+        "label": "How this page is built"
+      },
+      {
+        "id": "biomarker:NTRK",
+        "url": "",
+        "label": "This snapshot’s biomarker record"
+      }
+    ]
+  },
+  "lines": [
+    {
+      "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Solid Tumors - Tissue",
+      "category": "cdx",
+      "text": "FoundationOne CDx (Foundation Medicine, Inc.) is an FDA companion test for several types of solid tumour. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne CDx (Foundation Medicine, Inc.)|Solid Tumors - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:FoundationOne Liquid CDx (Foundation Medicine, Inc.)|Solid Tumors - Plasma",
+      "category": "cdx",
+      "text": "FoundationOne Liquid CDx (Foundation Medicine, Inc.) is an FDA companion test for several types of solid tumour. It uses a blood (plasma) sample.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne Liquid CDx (Foundation Medicine, Inc.)|Solid Tumors - Plasma",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:TruSight Oncology Comprehensive (Illumina, Inc.)|Solid Tumors - Tissue",
+      "category": "cdx",
+      "text": "TruSight Oncology Comprehensive (Illumina, Inc.) is an FDA companion test for several types of solid tumour. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:TruSight Oncology Comprehensive (Illumina, Inc.)|Solid Tumors - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Entrectinib",
+      "category": "mainstream",
+      "text": "Entrectinib (Rozlytrek): a drug that blocks the NTRK signal. Approved for advanced lung cancer with an NTRK fusion. Authorised in Europe since 2020.",
+      "sources": [
+        {
+          "id": "therapy:NTRK:Entrectinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c7c71b0c-2549-4495-86b6-c2807fa54908",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Larotrectinib",
+      "category": "mainstream",
+      "text": "Larotrectinib (VITRAKVI): a drug named on the FDA label in this snapshot. Approved for several types of solid tumour with an NTRK fusion.",
+      "sources": [
+        {
+          "id": "therapy:NTRK:Larotrectinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0c8ca614-58b2-4aa4-83d3-0387a8f782fd",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "therapy:Repotrectinib",
+      "category": "mainstream",
+      "text": "Repotrectinib (Augtyro): a drug that blocks the NTRK signal. Approved for advanced lung cancer with an NTRK fusion. Authorised in Europe since 2025.",
+      "sources": [
+        {
+          "id": "therapy:NTRK:Repotrectinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fb526827-40ba-4462-94cf-179ae3b0cb8a",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT01639508",
+      "category": "trials",
+      "text": "NCT01639508: Cabozantinib in Patients With RET Fusion-Positive Advanced Non-Small Cell Lung Cancer and Those With…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT01639508",
+          "url": "https://clinicaltrials.gov/study/NCT01639508",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT03093116",
+      "category": "trials",
+      "text": "NCT03093116: Repotrectinib (TPX-0005) in Patients With Advanced Solid Tumors Harboring ALK, ROS1, or NTRK1-3 Rearrangements. A recruiting study (phase 1 / phase 2). Sites in 19 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT03093116",
+          "url": "https://clinicaltrials.gov/study/NCT03093116",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT03556228",
+      "category": "trials",
+      "text": "NCT03556228: VMD-928 Monotherapy and in Combination With Pembrolizumab to Treat TrkA Overexpression Driven Solid Tumors or Lymphoma. A recruiting study (phase 1 / phase 2). Sites in 2 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT03556228",
+          "url": "https://clinicaltrials.gov/study/NCT03556228",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04094610",
+      "category": "trials",
+      "text": "NCT04094610: Repotrectinib in Pediatric and Young Adult Subjects Harboring ALK, ROS1, OR NTRK1-3 Alterations. A recruiting study (phase 1 / phase 2). Sites in 11 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT04094610",
+          "url": "https://clinicaltrials.gov/study/NCT04094610",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04655404",
+      "category": "trials",
+      "text": "NCT04655404: A Pilot Study of Larotrectinib for Newly-Diagnosed High-Grade Glioma With NTRK Fusion. A recruiting study (early phase 1). Sites in 5 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT04655404",
+          "url": "https://clinicaltrials.gov/study/NCT04655404",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04879121",
+      "category": "trials",
+      "text": "NCT04879121: Larotrectinib for the Treatment of NTRK Amplification Positive, Locally Advanced or Metastatic Solid Tumors. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04879121",
+          "url": "https://clinicaltrials.gov/study/NCT04879121",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04945330",
+      "category": "trials",
+      "text": "NCT04945330: NTRK Gene Fusion - Positive Advanced or Recurrent Solid Tumors, a Rare Cancer Caused…. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04945330",
+          "url": "https://clinicaltrials.gov/study/NCT04945330",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04996121",
+      "category": "trials",
+      "text": "NCT04996121: XZP-5955 Tablets in Patients With NTRK or ROS1 Fusion Positive Locally Advanced or Metastatic Solid Tumors. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04996121",
+          "url": "https://clinicaltrials.gov/study/NCT04996121",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05745623",
+      "category": "trials",
+      "text": "NCT05745623: ICP-723 in Patients With Advanced Solid Tumors or Primary Central Nervous System Tumors. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05745623",
+          "url": "https://clinicaltrials.gov/study/NCT05745623",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT05783323",
+      "category": "trials",
+      "text": "NCT05783323: Larotrectinib to Enhance RAI Avidity in Differentiated Thyroid Cancer. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT05783323",
+          "url": "https://clinicaltrials.gov/study/NCT05783323",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06010342",
+      "category": "trials",
+      "text": "NCT06010342: A Study to Evaluate the Efficacy and Safety of TL118 in Solid Tumors Patients. A recruiting study (phase 2). Sites in 2 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06010342",
+          "url": "https://clinicaltrials.gov/study/NCT06010342",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06307795",
+      "category": "trials",
+      "text": "NCT06307795: A Study to Investigate ANS014004 in Participants With Locally Advanced or Metastatic Solid Tumors. A recruiting study (phase 1). Sites in 3 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06307795",
+          "url": "https://clinicaltrials.gov/study/NCT06307795",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06528691",
+      "category": "trials",
+      "text": "NCT06528691: Entrectinib as a Single Agent in Upfront Therapy for Children <3 Years of Age…. A recruiting study (phase 2). Sites in 4 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06528691",
+          "url": "https://clinicaltrials.gov/study/NCT06528691",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06563999",
+      "category": "trials",
+      "text": "NCT06563999: Neoadjuvant Umbrella Trial for Patients With Unresectable Stage III NSCLC Harboring Rare Mutations.. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT06563999",
+          "url": "https://clinicaltrials.gov/study/NCT06563999",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06716138",
+      "category": "trials",
+      "text": "NCT06716138: A Study to Investigate ANS03 in Participants With Locally Advanced or Metastatic Solid Tumors. A recruiting study (phase 1). Sites in 2 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06716138",
+          "url": "https://clinicaltrials.gov/study/NCT06716138",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07394374",
+      "category": "trials",
+      "text": "NCT07394374: A Phase 1/2 Study of CG001419 Tablets in Adult Subjects With Locally Advanced or…. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07394374",
+          "url": "https://clinicaltrials.gov/study/NCT07394374",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07755826",
+      "category": "trials",
+      "text": "NCT07755826: Repotrectinib Post-Marketing Surveillance in Pediatric Patients With NTRK Fusion-Positive Tumors in Japan. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07755826",
+          "url": "https://clinicaltrials.gov/study/NCT07755826",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "civic:39",
+      "category": "on-the-edge",
+      "text": "Larotrectinib: early evidence for ETV6::NTRK3 Fusion, B-lymphoblastic Leukemia/lymphoma. The public record lists this as ACCEPTED. This is not an FDA approval.",
+      "sources": [
+        {
+          "id": "civic:39",
+          "url": "https://civicdb.org/assertions/39",
+          "label": "Public evidence record"
+        }
+      ]
+    }
+  ]
+}
