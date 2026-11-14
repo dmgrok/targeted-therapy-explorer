@@ -395,6 +395,8 @@ def test_sid_timeline_dates() -> None:
         return
     if "One person’s story, not evidence that a treatment works" not in fig:
         err("Sid timeline caption must say it is one person’s story, not evidence")
+    if "his own sources name" in fig or "we picked" not in fig:
+        err("milestone key/caption must say the selection is ours, not that his sources call them milestones")
     d = json.loads((ROOT / "data" / "cases" / "sijbrandij.json").read_text(encoding="utf-8"))
     src = d.get("phase_sources", {})
     own = {"https://osteosarc.com/", "https://osteosarc.com/data/events.tsv",

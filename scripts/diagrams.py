@@ -629,8 +629,14 @@ def _sid_svg(p: str, wide: bool) -> str:
     body.append(_ms_mark(8 if wide else 10, ky - 9))
     body.append(text(26 if wide else 28, ky, "Milestone", size=13, weight=700, fill=PINK, bg=PAPER,
                      spacing="1.4", upper=True))
-    body.append(text(118 if wide else 120, ky, "a step his own sources name", size=14.5, fill=INK, bg=PAPER))
-    y = 40
+    key = "a key step we picked; each is described in his own sources"
+    if wide:
+        body.append(text(118, ky, key, size=14.5, fill=INK, bg=PAPER))
+        y = 40
+    else:
+        body.append(lines_text(120, ky, ["a key step we picked; each is", "described in his own sources"],
+                               lh=19, size=14.5, fill=INK, bg=PAPER))
+        y = 58
     for i, ph in enumerate(phases):
         rows = ph["actions"]
         if wide:
@@ -723,7 +729,7 @@ def sid_figure() -> str:
         '<figure class="dg dg-sid" id="sid-timeline">' + _sid_svg("sid-w", True) + _sid_svg("sid-t", False)
         + "<figcaption>One person’s story, not evidence that a treatment works. Dates and actions "
         "come from osteosarc.com records and his own posts; plain-weight lines are his own words. "
-        "A reason is shown only where his sources give one. A small pink square marks a milestone "
-        "his own sources name."
+        "A reason is shown only where his sources give one. A small pink square marks a key step "
+        "we picked; each one is described in his own sources."
         "</figcaption></figure>"
     )
