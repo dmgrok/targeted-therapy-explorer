@@ -272,6 +272,12 @@ def case_body(case: dict) -> str:
     parts.append(status_html(case))
     parts.append(pointers_html(case))
     parts.append(sources_list(case))
+    if case.get("slug") == "sijbrandij":
+        parts.append(
+            '<p class="fine">A shorter telling of this story, with the same '
+            "verified-quote rules, is on the "
+            '<a href="../index.html#sid-sijbrandij">steps page</a>.</p>'
+        )
     return "\n".join(parts)
 
 
@@ -303,6 +309,9 @@ def index_body(cases: list[dict]) -> str:
         + "<ul class='choices case-choices'>"
         + "".join(items)
         + "</ul>"
+        + '<p>The <a href="../index.html#sid-sijbrandij">steps page</a> also '
+        "tells Sid Sijbrandij’s story, briefly, as one person’s example. "
+        "It is not evidence that a treatment works.</p>"
     )
 
 

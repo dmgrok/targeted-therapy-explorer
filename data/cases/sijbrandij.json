@@ -136,5 +136,357 @@
       "label": "Sijbrandij Foundation, FCCT (the page says FCCT is not a medical provider)",
       "url": "https://sijbrandijfoundation.org/fcct"
     }
-  ]
+  ],
+  "phase_sources": {
+    "https://osteosarc.com/data/events.tsv": {
+      "label": "osteosarc.com treatment timeline data (events.tsv, from osteosarc.com/timeline/)",
+      "opened": "14 November 2026"
+    },
+    "https://osteosarc.com/": {
+      "label": "osteosarc.com",
+      "opened": "14 November 2026"
+    },
+    "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer": {
+      "label": "his Substack post of 20 January 2026",
+      "opened": "14 November 2026"
+    },
+    "https://sytse.com/cancer/": {
+      "label": "his cancer page",
+      "opened": "14 November 2026"
+    }
+  },
+  "phases": [
+    {
+      "id": "p1",
+      "title": "Diagnosis and first treatment",
+      "actions": [
+        {
+          "when": "2022",
+          "what": "He wrote that he left key analyses and decisions to others",
+          "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
+          "quote": "When I was first diagnosed with cancer in 2022, I delegated the crucial analyses and decisions about my care to others."
+        },
+        {
+          "when": "Nov 2022",
+          "what": "Biopsy of the spine tumour (T5 vertebra, UCSF)",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2022-11-14 | Procedures | Biopsy | Biopsy | T5"
+          ],
+          "label_basis": [
+            {
+              "url": "https://sytse.com/cancer/",
+              "quote": "osteosarcoma in the T5 vertebrae of the upper spine"
+            }
+          ]
+        },
+        {
+          "when": "Dec 2022",
+          "what": "Surgery removed the tumour (UCSF)",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2022-12-16 | Procedures | Surgery | Surgery | T4/5"
+          ],
+          "milestone": [
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "The primary tumor was resected from the spine in December 2022 (T0)."
+            }
+          ]
+        },
+        {
+          "when": "Jan–Feb 2023",
+          "what": "Radiation to the spine (SBRT)",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2023-01-30–2023-02-09 | Treatments | Radiation | SBRT | Thoracic spine"
+          ]
+        },
+        {
+          "when": "Feb–Jun 2023",
+          "what": "Chemotherapy",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2023-02-14 | Treatments | Chemotherapy | DNA damaging agents | Cisplatin",
+            "2023-02-14 | Treatments | Chemotherapy | DNA damaging agents | Doxorubicin",
+            "2023-03-07 | Treatments | Chemotherapy | DNA damaging agents | Cisplatin",
+            "2023-03-07 | Treatments | Chemotherapy | DNA damaging agents | Doxorubicin",
+            "2023-03-30 | Treatments | Chemotherapy | DNA damaging agents | Cisplatin",
+            "2023-03-30 | Treatments | Chemotherapy | DNA damaging agents | Doxorubicin",
+            "2023-04-19 | Treatments | Chemotherapy | DNA damaging agents | Cisplatin",
+            "2023-04-19 | Treatments | Chemotherapy | DNA damaging agents | Doxorubicin",
+            "2023-05-10 | Treatments | Chemotherapy | DNA damaging agents | Doxorubicin",
+            "2023-05-10 | Treatments | Chemotherapy | DNA damaging agents | Ifosfamide",
+            "2023-05-10 | Treatments | Chemotherapy | Protective agents | Mesna",
+            "2023-06-02 | Treatments | Chemotherapy | DNA damaging agents | Doxorubicin",
+            "2023-06-02 | Treatments | Chemotherapy | DNA damaging agents | Ifosfamide",
+            "2023-06-02 | Treatments | Chemotherapy | Protective agents | Mesna"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "title": "More treatment",
+      "actions": [
+        {
+          "when": "Jul 2023 – Jan 2024",
+          "what": "A doxorubicin gel (SQ3370)",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2023-07-17–2024-01-26 | Treatments | Chemotherapy | DNA damaging agents | SQ3370 (Doxorubicin Biogel click)"
+          ]
+        },
+        {
+          "when": "From Oct 2023",
+          "what": "Personalised cancer vaccines",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2023-10-10 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv1)",
+            "2023-10-17 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv1)",
+            "2023-10-20 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv1)"
+          ],
+          "milestone": [
+            {
+              "url": "https://osteosarc.com/data/events.tsv",
+              "quote": "2023-10-10 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv1)"
+            },
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "neoantigen targets of personalized vaccines"
+            }
+          ]
+        },
+        {
+          "when": "From May 2024",
+          "what": "New biopsy; targeted drug, chemo and gene therapy",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2024-05-10 | Procedures | Biopsy | Biopsy | T5",
+            "2024-05-20 | Treatments | Targeted therapy | Small molecule inhibitors | Pazopanib",
+            "2024-05-20–2024-08-28 | Treatments | Targeted therapy | Gene therapy | DeltaRex-G",
+            "2024-05-21 | Treatments | Targeted therapy | Small molecule inhibitors | Pazopanib",
+            "2024-05-22 | Treatments | Chemotherapy | DNA damaging agents | Trabectedin",
+            "2024-05-22 | Treatments | Targeted therapy | Small molecule inhibitors | Pazopanib"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "title": "Cancer came back in the spine",
+      "actions": [
+        {
+          "when": "Jun 2024",
+          "what": "Biopsies of the spine (Th4 and Th4–Th5 vertebrae, UCLA)",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2024-06-06 | Procedures | Biopsy | Biopsy | T4",
+            "2024-06-11 | Procedures | Biopsy | Biopsy | T4/5"
+          ],
+          "label_basis": [
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "Disease recurred at the Th4 vertebra in June 2024 (T1, UCLA)"
+            },
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "2024-06-11 T1 UCLA (Th4–Th5 needle core biopsy)"
+            }
+          ]
+        },
+        {
+          "when": "Jun–Aug 2024",
+          "what": "Proton radiation",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2024-06-12–2024-08-02 | Treatments | Radiation | Proton | Proton therapy"
+          ]
+        },
+        {
+          "when": "From Jul 2024",
+          "what": "Immunotherapy drugs, a cell therapy and a virus therapy",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2024-07-17 | Treatments | Immunotherapy | Immune checkpoint inhibitors | Dostarlimab",
+            "2024-08-05 | Treatments | Immunotherapy | Immune checkpoint inhibitors | Ipilimumab",
+            "2024-08-06–2025-03-20 | Treatments | Immunotherapy | Cell therapies | SNK-01",
+            "2024-08-12 | Treatments | Immunotherapy | Immune checkpoint inhibitors | Dostarlimab",
+            "2024-08-26 | Treatments | Immunotherapy | Cell therapies | SNK-01",
+            "2024-09-23 | Treatments | Immunotherapy | Immune checkpoint inhibitors | Dostarlimab",
+            "2024-10-10 | Treatments | Immunotherapy | Oncolytic viruses | AdAPT-001 (IT)",
+            "2024-10-11 | Treatments | Immunotherapy | Immune checkpoint inhibitors | Dostarlimab",
+            "2024-10-29 | Treatments | Immunotherapy | Oncolytic viruses | AdAPT-001 (IT)",
+            "2024-11-01 | Treatments | Immunotherapy | Immune checkpoint inhibitors | Dostarlimab",
+            "2024-11-01 | Treatments | Immunotherapy | Immune checkpoint inhibitors | Ipilimumab",
+            "2024-11-22 | Treatments | Immunotherapy | Immune checkpoint inhibitors | Dostarlimab",
+            "2024-11-27 | Treatments | Immunotherapy | Oncolytic viruses | AdAPT-001 (IT)",
+            "2024-12-09 | Treatments | Immunotherapy | Cell therapies | SNK-01",
+            "2024-12-13 | Treatments | Immunotherapy | Immune checkpoint inhibitors | Dostarlimab"
+          ]
+        },
+        {
+          "when": "Late 2024",
+          "what": "He wrote that his cancer reappeared",
+          "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
+          "quote": "In late 2024, when my cancer reappeared and my doctors told me I had exhausted the standard of care and there were no trials for my situation, I realized that assumption might, quite literally, kill me. Founder Mode was my only option."
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "title": "“Founder Mode”",
+      "actions": [
+        {
+          "when": "Late 2024",
+          "what": "He built a team of doctors and scientists",
+          "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
+          "quote": "Founder Mode meant going deep on every diagnostic and treatment option. It meant assembling a team of physicians and scientists to work from first principles to understand what was possible beyond standard protocols.",
+          "date_basis": "In late 2024, when my cancer reappeared and my doctors told me I had exhausted the standard of care and there were no trials for my situation, I realized that assumption might, quite literally, kill me. Founder Mode was my only option.",
+          "milestone": [
+            {
+              "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
+              "quote": "It meant assembling a team of physicians and scientists to work from first principles to understand what was possible beyond standard protocols."
+            }
+          ]
+        },
+        {
+          "when": "Jan 2025",
+          "what": "Cancer recorded again at Th4–Th5 (UCLA)",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2025-01-28 | Procedures | Biopsy | Biopsy | T4/5"
+          ],
+          "label_basis": [
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "2025-01-28 T2 UCLA (Th4–Th5 biopsy)"
+            },
+            {
+              "url": "https://osteosarc.com/data/events.tsv",
+              "quote": "2025-01-28 | Procedures | Biopsy | Biopsy | T4/5"
+            }
+          ]
+        },
+        {
+          "when": "Feb–Mar 2025",
+          "what": "Targeted radiation drugs (radioligand)",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2025-02-05 | Treatments | Targeted therapy | Radioligand therapies | 177Lu-FAPi",
+            "2025-03-26 | Treatments | Targeted therapy | Radioligand therapies | 225Ac-FAPi"
+          ]
+        },
+        {
+          "when": "Apr 2025",
+          "what": "Surgery removed the Th4–Th5 tumour (MSKCC)",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2025-04-17 | Procedures | Surgery | Surgery | T4/5",
+            "2025-04-17 | Procedures | Surgery | Surgery | T4/5 resection"
+          ],
+          "milestone": [
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "Disease recurred at the Th4 vertebra in June 2024 (T1, UCLA), at Th4–Th5 in January 2025 (T2, UCLA), and was excised in April 2025 (T3, MSKCC)."
+            }
+          ],
+          "label_basis": [
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "2025-04-17 T3 MSKCC (Th4–Th5 excision)"
+            },
+            {
+              "url": "https://osteosarc.com/data/events.tsv",
+              "quote": "2025-04-17 | Procedures | Surgery | Surgery | T4/5 resection"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "title": "After surgery",
+      "actions": [
+        {
+          "when": "May–Aug 2025",
+          "what": "Vaccine version 3 (JLFv3)",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2025-05-06 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv3)",
+            "2025-05-09 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv3)",
+            "2025-05-13 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv3)",
+            "2025-05-20 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv3)",
+            "2025-05-27 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv3)",
+            "2025-06-25 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv3)",
+            "2025-07-22 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv3)",
+            "2025-08-20 | Treatments | Immunotherapy | Cancer vaccines | Peptide neoantigen vaccine (JLFv3)"
+          ]
+        },
+        {
+          "when": "Jun 2025",
+          "what": "Another radioligand dose",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2025-06-18 | Treatments | Targeted therapy | Radioligand therapies | 225Ac-FAPi"
+          ]
+        },
+        {
+          "when": "Dec 2025",
+          "what": "An mRNA cancer vaccine",
+          "url": "https://osteosarc.com/data/events.tsv",
+          "evidence": [
+            "2025-12-29 | Treatments | Immunotherapy | Cancer vaccines | mRNA neoantigen vaccine"
+          ]
+        },
+        {
+          "when": "20 Jan 2026",
+          "what": "He wrote that he has no evidence of disease",
+          "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
+          "quote": "Today, thanks to the efforts of many people around the world and the support of my wife Karen, I currently have no evidence of disease.",
+          "milestone": [
+            {
+              "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
+              "quote": "I currently have no evidence of disease."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "phase_links": [
+    {
+      "from": "p1",
+      "to": "p2",
+      "cause": null
+    },
+    {
+      "from": "p2",
+      "to": "p3",
+      "cause": null
+    },
+    {
+      "from": "p3",
+      "to": "p4",
+      "cause": "His doctors said the standard of care was exhausted and there were no trials for his situation. He wrote: “Founder Mode was my only option.”",
+      "sources": [
+        {
+          "url": "https://sijbrandij.substack.com/p/im-going-founder-mode-on-my-cancer",
+          "label": "his Substack post of 20 January 2026",
+          "quote": "In late 2024, when my cancer reappeared and my doctors told me I had exhausted the standard of care and there were no trials for my situation, I realized that assumption might, quite literally, kill me. Founder Mode was my only option."
+        },
+        {
+          "url": "https://sytse.com/cancer/",
+          "label": "his cancer page",
+          "quote": "After I ran out of standard-of-care treatment options and there were no trials available for me, I started doing maximum diagnostics, created new treatments, started doing treatments in parallel, and began scaling this for others."
+        }
+      ]
+    },
+    {
+      "from": "p4",
+      "to": "p5",
+      "cause": null
+    }
+  ],
+  "phases_note": "Phases group dated rows from osteosarc.com and his own words. A reason is given on a link only where his own sources state one; otherwise the link is plain sequence. Shown up to 20 January 2026."
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Decision-tree site: home → gene → cancer → mutation → when → table.
+"""Decision-tree site: options → gene → cancer → mutation → when → table.
 
 Built from the same snapshot, plain-language lines, decision-tree rules
 and withdrawal catalog as the rest of the repo. Every biomarker in the
@@ -163,6 +163,7 @@ def mock_foot(depth: int) -> str:
     <footer class="mock-foot">
       <p class="fine">{esc(DISCLAIMER_SHORT)} This site uses only public sources. It does not recommend a treatment. Options in a table are listed alphabetically within each level. That order is not a ranking.</p>
       <p class="fine"><a href="{prefix}index.html">Home</a>
+      · <a href="{prefix}options/index.html">Drug pages</a>
       · <a href="{prefix}cases/index.html">Case studies</a>
       · <a href="{prefix}about.html">About and sources</a>
       · <a href="{prefix}notice.html">Notice</a>
@@ -520,25 +521,29 @@ def choice_list(items: list[dict], heading: str, question: str) -> str:
     )
 
 
-def page_shell(title: str, depth: int, snap: dict, body: str, crumbs_h: str, full_notice: bool = False) -> str:
+def page_shell(title: str, depth: int, snap: dict, body: str, crumbs_h: str, full_notice: bool = False, custom_notice: str | None = None) -> str:
     ct_ts = (snap.get("clinicalTrials") or {}).get("dataTimestamp") or ""
     data_rel = asset_prefix(depth) + "data/snapshot.json"
     notice_rel = asset_prefix(depth) + "notice.html"
-    short = (
-        f'<div class="notice notice-short" role="note">'
-        f'<strong>{esc(DISCLAIMER_SHORT)}</strong> '
-        f'<a href="{esc(notice_rel)}">Full notice</a>.'
-        f'</div>'
-    )
-    long = ""
-    if full_notice:
-        long = (
-            f'<div class="notice notice-full" role="note">'
-            f'{esc(DISCLAIMER_LONG)} '
-            f'Data is a snapshot as of <time datetime="{esc(snap["snapshotDate"])}">{esc(fmt_date(snap["snapshotDate"]))}</time>. '
-            f'ClinicalTrials.gov processed this trial data on <time datetime="{esc(ct_ts)}">{esc(fmt_date(ct_ts))}</time>.'
+    if custom_notice is not None:
+        short = custom_notice
+        long = ""
+    else:
+        short = (
+            f'<div class="notice notice-short" role="note">'
+            f'<strong>{esc(DISCLAIMER_SHORT)}</strong> '
+            f'<a href="{esc(notice_rel)}">Full notice</a>.'
             f'</div>'
         )
+        long = ""
+        if full_notice:
+            long = (
+                f'<div class="notice notice-full" role="note">'
+                f'{esc(DISCLAIMER_LONG)} '
+                f'Data is a snapshot as of <time datetime="{esc(snap["snapshotDate"])}">{esc(fmt_date(snap["snapshotDate"]))}</time>. '
+                f'ClinicalTrials.gov processed this trial data on <time datetime="{esc(ct_ts)}">{esc(fmt_date(ct_ts))}</time>.'
+                f'</div>'
+            )
     notice_h = f"""
     {short}
     {long}
@@ -553,6 +558,7 @@ def page_shell(title: str, depth: int, snap: dict, body: str, crumbs_h: str, ful
       <p class="site-title"><a href="{prefix}index.html">Targeted Therapy Explorer</a></p>
       <nav class="mock-nav" aria-label="Site">
         <a href="{prefix}index.html">Home</a>
+        <a href="{prefix}options/index.html">Drug pages</a>
         <a href="{prefix}cases/index.html">Case studies</a>
         <a href="{prefix}about.html">About</a>
       </nav>
@@ -857,6 +863,7 @@ def build_biomarker(snap: dict, bid: str) -> dict:
             crumbs(
                 [
                     ("../../index.html", "Home"),
+                    ("../../options/index.html", "Drug pages"),
                     ("index.html", label),
                 ],
                 2,
@@ -898,6 +905,7 @@ def build_biomarker(snap: dict, bid: str) -> dict:
                 crumbs(
                     [
                         ("../../../index.html", "Home"),
+                        ("../../../options/index.html", "Drug pages"),
                         ("../index.html", label),
                         ("index.html", title_case_cancer(cnode["cancer"])),
                     ],
@@ -940,6 +948,7 @@ def build_biomarker(snap: dict, bid: str) -> dict:
                     crumbs(
                         [
                             ("../../../../index.html", "Home"),
+                            ("../../../../options/index.html", "Drug pages"),
                             ("../../index.html", label),
                             ("../index.html", title_case_cancer(cnode["cancer"])),
                             ("index.html", mnode["mutation"]),
@@ -1012,6 +1021,7 @@ def build_biomarker(snap: dict, bid: str) -> dict:
                         crumbs(
                             [
                                 ("../../../../index.html", "Home"),
+                            ("../../../../options/index.html", "Drug pages"),
                                 ("../../index.html", label),
                                 ("../index.html", title_case_cancer(cnode["cancer"])),
                                 ("index.html", mnode["mutation"]),
@@ -1046,23 +1056,27 @@ def build_biomarker(snap: dict, bid: str) -> dict:
 
 
 def write_home(snap: dict) -> None:
+    """Write the decision-tree start at options/index.html, not the site front door."""
     cards = []
     for label, ready, bid in CLOSED_LIST:
         cards.append(
-            f'<li><a class="choice bm-ready" href="b/{esc(bid)}/index.html">'
+            f'<li><a class="choice bm-ready" href="../b/{esc(bid)}/index.html">'
             f'<span class="choice-name">{esc(label)}</span>'
             f'<span class="choice-n">Open the decision tree</span>'
             "</a></li>"
         )
     home_body = (
         "<h1>Choose a gene finding</h1>"
-        '<p class="lede">This site maps a short list of tumour gene findings to approved '
+        '<p class="lede">These drug pages map a short list of tumour gene findings to approved '
         "drugs and recruiting studies, from public sources only. It is general information. "
-        "It is not medical advice, a diagnosis or a treatment recommendation.</p>"
+        "It is not medical advice, a diagnosis or a treatment recommendation. "
+        "They are linked from the "
+        '<a href="../index.html#step-matching">matching to options or trials</a> '
+        "step on the home page.</p>"
         '<p class="lede">Pick a gene finding. You will walk a decision tree: cancer type, '
         "then the gene change, then when a drug is used. At the end you will see one table "
         "of options, tagged Mainstream, In testing, or On the edge.</p>"
-        '<p class="lede">A separate <a href="cases/index.html">Case studies</a> page tells '
+        '<p class="lede">A separate <a href="../cases/index.html">Case studies</a> page tells '
         "one person’s published story. A case study is not evidence that a treatment works, "
         "and it is not an option in the tables.</p>"
         f'<ul class="choices home-choices">{"".join(cards)}</ul>'
@@ -1070,13 +1084,13 @@ def write_home(snap: dict) -> None:
         + tree_note()
     )
     write(
-        SITE / "index.html",
+        SITE / "options" / "index.html",
         page_shell(
             "Choose a gene finding — Targeted Therapy Explorer",
-            0,
+            1,
             snap,
             home_body,
-            crumbs([("index.html", "Home")], 0),
+            crumbs([("../index.html", "Home"), ("index.html", "Drug pages")], 1),
             full_notice=True,
         ),
     )
@@ -1086,11 +1100,13 @@ def build(snap: dict) -> dict:
     """Build the decision-tree site for every biomarker. Returns a report."""
     _wipe_previous_trees()
     write_notice(snap)
+    from build_steps import write_steps
+    write_steps(snap)
     write_home(snap)
 
     reports = {}
     all_leaves = []
-    n_pages = 2  # home + notice
+    n_pages = 3  # steps + options + notice
     n_leaves = 0
     for _label, _ready, bid in CLOSED_LIST:
         rep = build_biomarker(snap, bid)

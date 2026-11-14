@@ -29,6 +29,7 @@ def ok(msg: str) -> None:
 def test_click_path() -> None:
     path = [
         SITE / "index.html",
+        SITE / "options" / "index.html",
         TREE / "EGFR" / "index.html",
         TREE / "EGFR" / "lung-cancer" / "index.html",
         TREE / "EGFR" / "lung-cancer" / "egfr-exon-19-deletion-or-l858r" / "index.html",
@@ -38,11 +39,14 @@ def test_click_path() -> None:
         if not p.is_file():
             err(f"missing tree page {p.relative_to(SITE)}")
             return
-    ok("home → EGFR → lung → exon 19 / L858R → first-treatment table exists")
+    ok("home → drug pages → EGFR → lung → exon 19 / L858R → first-treatment table exists")
 
     home = (SITE / "index.html").read_text(encoding="utf-8")
-    if 'href="b/EGFR/index.html"' not in home:
-        err("home does not link to the EGFR tree")
+    options = (SITE / "options" / "index.html").read_text(encoding="utf-8")
+    if 'href="options/index.html"' not in home and 'href="b/EGFR/index.html"' not in home:
+        err("home does not link to the drug pages or the EGFR tree")
+    if 'href="../b/EGFR/index.html"' not in options:
+        err("drug pages start does not link to the EGFR tree")
     leaf = path[-1].read_text(encoding="utf-8")
     vis = visible_text(leaf)
     if "Amivantamab" not in vis or "Gefitinib" not in vis:
@@ -100,7 +104,7 @@ def test_mobocertinib_withdrawn() -> None:
 
 def _all_pages():
     pages = list(TREE.rglob("*.html"))
-    for extra in ("index.html", "notice.html", "about.html"):
+    for extra in ("index.html", "notice.html", "about.html", "options/index.html"):
         q = SITE / extra
         if q.is_file():
             pages.append(q)
@@ -121,7 +125,11 @@ def test_visible_layer() -> None:
             err(f"{rel}: ISO timestamp is visible")
         if re.search(r"\bTIER_[IVX]", vis) or "ampLevel" in vis:
             err(f"{rel}: CIViC / AMP codes are visible")
-        if "ChiCTR" in html or "NCCN" in html or re.search(r"\bESMO\b", html):
+        # The steps front door may mention ChiCTR (not as a finder) and may
+        # link to ESMO/NCCN documents or quote a paper that names NCCN.
+        # Other pages still must not introduce those sources.
+        is_steps = p.resolve() == (SITE / "index.html").resolve()
+        if not is_steps and ("ChiCTR" in html or "NCCN" in html or re.search(r"\bESMO\b", html)):
             err(f"{rel}: forbidden source")
     ok("visible layer has a disclaimer, no ISO date, no AMP/CIViC codes")
 
@@ -157,9 +165,13 @@ def test_notice_and_banner() -> None:
     leaf = (
         TREE / "EGFR" / "lung-cancer" / "egfr-exon-19-deletion-or-l858r" / "as-a-first-treatment.html"
     ).read_text(encoding="utf-8")
-    if "This site is general information only" not in home or "This site is general information only" not in leaf:
-        err("full disclaimer is missing from the home or the table page")
-    ok("short banner, notice page, and full text on home and table")
+    # The steps front door has one short merged notice and a link to the
+    # full-notice page. Table pages still carry the full disclaimer text.
+    if "Not medical advice. Talk to your oncologist." not in home or "notice.html" not in home:
+        err("steps home is missing the short notice or the full-notice link")
+    if "This site is general information only" not in leaf:
+        err("full disclaimer is missing from the table page")
+    ok("short banner, notice page, and full text on the table; merged notice on home")
 
 
 def test_what_it_is_and_combo() -> None:
