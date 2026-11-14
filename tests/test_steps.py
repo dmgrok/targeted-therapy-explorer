@@ -353,8 +353,15 @@ def test_diagrams() -> None:
             err("overview svg has no Re-test loop label")
         if "stroke-dasharray" not in s:
             err("overview svg has no dashed branch to access routes")
-    if "<figcaption>" not in ov:
-        err("overview has no figcaption text alternative")
+    if "<figcaption" in ov:
+        err("overview should not repeat its legend in a visible caption (title/desc carry it)")
+    # Pink connectors are only the re-test return: one pink loop line per variant.
+    wide = svgs[0] if svgs else ""
+    if len(re.findall(r'<line\b[^>]*stroke="#b02058"', wide)) != 2:
+        err("overview (wide): expected exactly one pink return line plus the pink key swatch")
+    tall = svgs[1] if len(svgs) > 1 else ""
+    if len(re.findall(r'<line\b[^>]*stroke="#b02058"', tall)) != 1:
+        err("overview (mobile): expected exactly one pink return line")
     # overview sits before step 1
     if html.find('id="path-diagram"') > html.find('id="step-diagnosis"'):
         err("overview diagram should come before step 1")
@@ -408,6 +415,25 @@ def test_sid_timeline_dates() -> None:
     ok(f"Sid timeline: {len(shown)} dates, all from the verified case file")
 
 
+def test_diagram_wording() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    svg = " ".join(re.findall(r"<svg\b.*?</svg>", html, re.S))
+    words = " ".join(re.findall(r">([^<>]+)</text>", svg))
+    for bad in ("Use not on the label", "Came back at Th4", "Disease at Th4", "by country"):
+        if bad in words:
+            err(f"diagram still says {bad!r}")
+    for good in ("Hospital platforms (France)", "wherever you live", "Off-label use", "A use not listed on the label",
+                 "Cancer came back in the spine (Th4 vertebra)"):
+        if good not in words:
+            err(f"diagram should say {good!r}")
+    no_svg = re.sub(r"<svg\b.*?</svg>", "", html, flags=re.S)
+    if "a use not listed on the label" not in no_svg.lower():
+        err("off-label explanation must reuse wording already on the page")
+    if re.search(r"(?i)not organised by country|countries are ignored", no_svg):
+        err("page text suggests countries are ignored")
+    ok("diagram wording: plain labels, countries kept, off-label explained")
+
+
 def test_diagram_hygiene() -> None:
     html = INDEX.read_text(encoding="utf-8")
     svg = " ".join(re.findall(r"<svg\b.*?</svg>", html, re.S))
@@ -441,6 +467,7 @@ def main() -> int:
     test_identity()
     test_diagrams()
     test_sid_timeline_dates()
+    test_diagram_wording()
     test_diagram_hygiene()
     if errors:
         print(f"\n{len(errors)} FAIL(S)")

@@ -250,11 +250,12 @@ def overview_wide() -> str:
     x6, y6 = 509, 270
     out.append(line(1029, 46 + nh + 8, 1029, y5 - 10, p))
     # halftone loop field behind the loop connectors
-    out.append(f'<rect x="{x6 + nw + 10}" y="{y5 + 18}" width="{x5 - x6 - nw - 20}" height="86" '
+    # 5 -> 6 is an ordinary next step; only the 6 -> 5 return is pink (re-test).
+    out.append(line(x5 - 8, y5 + 40, x6 + nw + 12, y5 + 40, p))
+    out.append(f'<rect x="{x6 + nw + 10}" y="{y5 + 68}" width="{x5 - x6 - nw - 20}" height="44" '
                f'fill="url(#{p}-dots)" opacity="0.7"/>')
-    out.append(line(x5 - 8, y5 + 36, x6 + nw + 12, y5 + 36, p, color=PINK, pink=True))
-    out.append(line(x6 + nw + 8, y5 + 88, x5 - 12, y5 + 88, p, color=PINK, pink=True))
-    out.append(pill((x6 + nw + x5) / 2, y5 + 62, "Re-test"))
+    out.append(line(x6 + nw + 8, y5 + 90, x5 - 12, y5 + 90, p, color=PINK, pink=True))
+    out.append(pill((x6 + nw + x5) / 2, y5 + 90, "Re-test"))
     out.append(node(x6, y6, nw, nh, *STEP_NODES[5][:3], p))
     out.append(node(x5, y5, nw, nh, *STEP_NODES[4][:3], p, hub=True))
     # Row 3: 7 branches from 5
@@ -263,7 +264,7 @@ def overview_wide() -> str:
     out.append(node(x5, y7, nw, nh, *STEP_NODES[6][:3], p))
     # Left: a quiet title block, on paper
     out.append(text(51, 318, "One shared path", size=34, weight=700, fill=DEEP, family=HEAD))
-    out.append(lines_text(51, 350, ["Not a care plan. Not organised", "by country."], lh=22,
+    out.append(lines_text(51, 350, ["Not a care plan. The same path", "wherever you live."], lh=22,
                           size=17, fill=INK))
     # Key, row 3 left: drawn swatches with labels on paper
     ky = 486
@@ -295,11 +296,12 @@ def overview_tall() -> str:
     sw, sh = 172, 118
     x7, x6 = 18, 210
     # loop 5 <-> 6 (right), branch 5 -> 7 (left)
-    out.append(f'<rect x="{x6 + 20}" y="{ys[4] + nh + 12}" width="{sw - 40}" height="76" '
+    # 5 -> 6 next step (teal); 6 -> 5 return is the pink re-test loop.
+    out.append(line(x6 + 30, ys[4] + nh + 7, x6 + 30, y67 - 9, p))
+    out.append(f'<rect x="{x6 + sw - 70}" y="{ys[4] + nh + 12}" width="80" height="76" '
                f'fill="url(#{p}-dots)" opacity="0.7"/>')
-    out.append(line(x6 + 30, ys[4] + nh + 7, x6 + 30, y67 - 9, p, color=PINK, pink=True))
     out.append(line(x6 + sw - 30, y67 - 7, x6 + sw - 30, ys[4] + nh + 9, p, color=PINK, pink=True))
-    out.append(pill(x6 + sw / 2, ys[4] + nh + 50, "Re-test", size=15, h=28))
+    out.append(pill(x6 + sw - 30, ys[4] + nh + 50, "Re-test", size=15, h=28))
     out.append(line(x7 + 60, ys[4] + nh + 7, x7 + 60, y67 - 9, p, dash=True))
     out_nodes.append(node(x6, y67, sw, sh, *STEP_NODES[5][:3], p, tsize=22, ssize=15, subchars=18))
     out_nodes.append(node(x7, y67, sw, sh, *STEP_NODES[6][:3], p, tsize=22, ssize=15, subchars=18))
@@ -312,9 +314,7 @@ def overview_figure() -> str:
     return (
         '<figure class="dg dg-overview" id="path-diagram">'
         + overview_wide() + overview_tall()
-        + '<figcaption>The shared path. Re-testing feeds back into matching. '
-        "Access routes branch off from matching. Each step below has its own small diagram.</figcaption>"
-        "</figure>"
+        + "</figure>"
     )
 
 
@@ -359,7 +359,7 @@ STEP_SPECS = {
     "step-matching": {
         "title": "Step 5, matching to options or trials",
         "branch": (("helix", "Gene-test result"),
-                   ["Approved drug", "Use not on the label", "Clinical trial"]),
+                   ["Approved drug", ("Off-label use", "A use not listed on the label"), "Clinical trial"]),
         "who": ["You", "Treating doctor"],
         "can": ["Summarise an official trial record as it stands"],
         "not": ["Declare that a person is eligible for a trial or a drug"],
@@ -432,8 +432,12 @@ def panel_what(spec: dict, x0: float, y0: float, W: float, p: str) -> tuple[str,
         bw = x0 + W - bx
         bg_ = 13
         ochars = max(12, int((bw - 26) / 8.3))
-        wrapped = [wrap(o, ochars) for o in opts]
-        hs = [34 + 19 * (len(w) - 1) for w in wrapped]
+        wrapped, subs = [], []
+        for o in opts:
+            lab_o, sub_o = (o if isinstance(o, tuple) else (o, ""))
+            wrapped.append(wrap(lab_o, ochars))
+            subs.append(wrap(sub_o, int((bw - 26) / 7.2)) if sub_o else [])
+        hs = [34 + 19 * (len(w) - 1) + 18 * len(s) for w, s in zip(wrapped, subs)]
         total = sum(hs) + bg_ * (len(hs) - 1)
         slines = wrap(lab, max(10, int(sw / 8.3)))
         oh = max(oh, total, 80 + (len(slines) - 1) * 19 + 26)
@@ -446,7 +450,7 @@ def panel_what(spec: dict, x0: float, y0: float, W: float, p: str) -> tuple[str,
                  bg=WHITE, anchor="middle")
             for k, ln in enumerate(slines)))
         by = oy
-        for w, bh in zip(wrapped, hs):
+        for w, sb, bh in zip(wrapped, subs, hs):
             out.append(line(x0 + sw + 5, top + oh / 2, bx - 7, by + bh / 2, p))
             out.append(plate(bx, by, bw, bh, p, dx=4, dy=4, opacity=0.45))
             out.append(f'<rect x="{bx:.1f}" y="{by:.1f}" width="{bw:.1f}" height="{bh}" '
@@ -454,6 +458,10 @@ def panel_what(spec: dict, x0: float, y0: float, W: float, p: str) -> tuple[str,
             out.append("".join(
                 text(bx + 14, by + 22.5 + k * 19, ln, size=15.5, weight=600, fill=DEEP, bg=WHITE)
                 for k, ln in enumerate(w)))
+            out.append("".join(
+                text(bx + 14, by + 22.5 + len(w) * 19 + k * 18, ln, size=13.5, weight=400,
+                     fill=DEEP, bg=WHITE)
+                for k, ln in enumerate(sb)))
             by += bh + bg_
     wy = top + oh + 24
     out.append(text(x0, wy + 14, spec.get("who_head", "Who is involved"), size=13,
@@ -508,7 +516,8 @@ def _step_desc(spec: dict) -> str:
         what = ", then ".join([labs[0]] + [l[0].lower() + l[1:] for l in labs[1:]]) + "."
     else:
         (_g, lab), opts = spec["branch"]
-        what = f"{lab} can lead to: " + ", ".join(opts) + "."
+        what = f"{lab} can lead to: " + ", ".join(
+            f"{o[0]} ({o[1][0].lower() + o[1][1:]})" if isinstance(o, tuple) else o for o in opts) + "."
     who = spec.get("who_head", "Who is involved") + ": " + ", ".join(spec["who"]) + "."
     can = "AI can: " + "; ".join(spec["can"]) + "."
     nott = "AI must not: " + "; ".join(spec["not"]) + "."
@@ -547,10 +556,10 @@ def step_figure(step_id: str) -> str:
 SID_LABELS = {
     "November 2022": "Diagnosed with osteosarcoma",
     "16 December 2022": "Primary tumour removed",
-    "June 2024": "Came back at Th4",
+    "June 2024": "Cancer came back in the spine (Th4 vertebra)",
     "late 2024": "He wrote: standard of care exhausted, no trials",
-    "28 January 2025": "Disease at Th4–Th5 recorded again",
-    "17 April 2025": "Disease at Th4–Th5 excised",
+    "28 January 2025": "Cancer came back again in the spine (Th4–Th5)",
+    "17 April 2025": "Tumour at Th4–Th5 removed",
     "20 January 2026": "He wrote: no evidence of disease",
 }
 

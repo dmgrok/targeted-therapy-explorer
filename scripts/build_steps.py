@@ -3,8 +3,8 @@
 
 This writes site/index.html. The decision-tree drug pages live at
 options/index.html and are linked from the matching step. There is no live
-AI, no form, no patient data, and no ranking. Countries are not an organising
-axis: one shared path, with official FR/CH/EU lists in "Where to start looking".
+AI, no form, no patient data, and no ranking. The path is the same
+wherever you live; country-specific official FR/CH/EU places sit in "Where to start looking".
 """
 from __future__ import annotations
 
@@ -540,7 +540,8 @@ def page_body() -> str:
         "<h1>Steps people take today for personalised cancer treatment</h1>"
         '<p class="lede">Each step has a short explanation, a static box on how AI '
         "can help you digest this and what it must not do, and sources. "
-        "This is one shared path. It is not organised by country.</p>"
+        "The path is the same wherever you live. "
+        '<a href="#where-to-start">Where to start looking</a> lists official places in France, Switzerland and the EU.</p>'
         '<p class="confidence-line" id="confidence">Some figures come from studies of older AI models; dates are shown with each source.</p>'
         '<section id="process">'
         "<h2>The process</h2>"
