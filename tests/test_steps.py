@@ -383,6 +383,18 @@ def test_diagrams() -> None:
     ok("overview + 7 step diagrams: role=img, title/desc, wide + mobile variants")
 
 
+_LEVEL_RE = re.compile(r"\bT(?:h)?(\d{1,2})(?:\s*[–/-]\s*T?(?:h)?(\d{1,2}))?\b")
+
+
+def _levels(s: str) -> set:
+    """Vertebra levels in text, normalised: 'Th4–Th5' == 'T4/5' == 'Th4-Th5' -> (4, 5); 'T5' -> (5,)."""
+    out = set()
+    for m in _LEVEL_RE.finditer(s):
+        a_, b_ = int(m.group(1)), m.group(2)
+        out.add((a_, int(b_)) if b_ else (a_,))
+    return out
+
+
 def test_sid_timeline_dates() -> None:
     """Sid phase chain: every phase, date and cause traces to a source entry."""
     import json
@@ -421,8 +433,19 @@ def test_sid_timeline_dates() -> None:
             for lb in a.get("label_basis", []):
                 if lb.get("url") not in src or not lb.get("quote"):
                     err(f"action {a['what']!r}: label_basis needs a sourced quote")
-                elif not re.search(r"spine|vertebra", lb["quote"]) and "biopsy" not in lb["quote"]:
+                elif not re.search(r"spine|vertebra", lb["quote"]) and not _levels(lb["quote"]):
                     err(f"action {a['what']!r}: label_basis quote does not support the wording")
+            # Vertebra levels in a label must appear in that row's own backing lines.
+            # T0–T3 on osteosarc.com are sample time points, never vertebrae, in this case.
+            lab_levels = _levels(a["what"])
+            if any(lv[0] <= 3 for lv in lab_levels):
+                err(f"action {a['what']!r} presents a time-point code (T0–T3) as a vertebra")
+            backing = list(a.get("evidence", [])) + [lb.get("quote", "") for lb in a.get("label_basis", [])]
+            backing += [m.get("quote", "") for m in a.get("milestone", [])] + [a.get("quote", "")]
+            back_levels = set().union(*[_levels(b) for b in backing]) if backing else set()
+            for lv in lab_levels:
+                if lv not in back_levels:
+                    err(f"action {a['what']!r}: vertebra level {lv} is not in any of its backing lines")
             if a.get("evidence"):
                 dates = []
                 for row in a["evidence"]:

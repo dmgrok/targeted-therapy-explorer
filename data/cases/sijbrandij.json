@@ -356,6 +356,16 @@
           "url": "https://osteosarc.com/data/events.tsv",
           "evidence": [
             "2025-01-28 | Procedures | Biopsy | Biopsy | T4/5"
+          ],
+          "label_basis": [
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "2025-01-28 T2 UCLA (Th4–Th5 biopsy)"
+            },
+            {
+              "url": "https://osteosarc.com/data/events.tsv",
+              "quote": "2025-01-28 | Procedures | Biopsy | Biopsy | T4/5"
+            }
           ]
         },
         {
@@ -379,6 +389,16 @@
             {
               "url": "https://osteosarc.com/",
               "quote": "Disease recurred at the Th4 vertebra in June 2024 (T1, UCLA), at Th4–Th5 in January 2025 (T2, UCLA), and was excised in April 2025 (T3, MSKCC)."
+            }
+          ],
+          "label_basis": [
+            {
+              "url": "https://osteosarc.com/",
+              "quote": "2025-04-17 T3 MSKCC (Th4–Th5 excision)"
+            },
+            {
+              "url": "https://osteosarc.com/data/events.tsv",
+              "quote": "2025-04-17 | Procedures | Surgery | Surgery | T4/5 resection"
             }
           ]
         }
