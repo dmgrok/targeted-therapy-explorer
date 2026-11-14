@@ -24,6 +24,7 @@ from build_mockup import (  # noqa: E402
     SITE,
 )
 from build_site import DISCLAIMER_SHORT, fmt_date  # noqa: E402
+from diagrams import overview_figure, sid_figure, step_figure  # noqa: E402
 
 # Opened dates, Europe/Paris (UTC+1). Official process and directory pages,
 # and the 2023 JAMA / NCI / Sid pages, were opened or re-opened 13 Nov 2026.
@@ -95,6 +96,7 @@ def step(step_id: str, number: int, title: str, body: str, help_text: str, limit
         f'<p class="path-step-num">Step {number} of 7</p>'
         f"<h2>{esc(title)}</h2>"
         + body
+        + step_figure(step_id)
         + ai_box(step_id, help_text, limit_text)
         + src_block(sources)
         + "</section>"
@@ -291,7 +293,8 @@ def sid_example() -> str:
         "<p>Sid Sijbrandij has bone cancer, called osteosarcoma, in the spine. "
         "A longer telling, with a timeline, is on his "
         '<a href="cases/sijbrandij.html">case study page</a>.</p>'
-        "<h3>In his own words</h3>"
+        + sid_figure()
+        + "<h3>In his own words</h3>"
         '<blockquote class="case-quote"><p>'
         + esc(q1)
         + "</p>"
@@ -556,6 +559,7 @@ def page_body() -> str:
             "Sources for this introduction",
         )
         + "</section>"
+        + overview_figure()
         + diagnosis
         + testing
         + second

@@ -310,6 +310,120 @@ def test_identity() -> None:
         err("steps page uses a forbidden assistant-product look")
     ok("Risograph identity, no orange, no assistant-product look")
 
+STEP_DIAGRAM_IDS = ["step-diagnosis", "step-testing", "step-second-opinion", "step-tumour-board",
+                    "step-matching", "step-monitoring", "step-access"]
+
+
+def _figure(html: str, fid: str) -> str:
+    m = re.search(r'<figure class="dg[^"]*" id="' + re.escape(fid) + r'">(.*?)</figure>', html, re.S)
+    return m.group(1) if m else ""
+
+
+def _svgs(fig: str) -> list[str]:
+    return re.findall(r"<svg\b.*?</svg>", fig, re.S)
+
+
+def _check_svg_a11y(svg: str, where: str) -> None:
+    head = re.match(r"<svg\b[^>]*>", svg).group(0)
+    if 'role="img"' not in head or "aria-labelledby" not in head:
+        err(f"{where}: svg lacks role=img / aria-labelledby")
+    ids = re.search(r'aria-labelledby="([^"]+)"', head)
+    for i in (ids.group(1).split() if ids else []):
+        if not re.search(r'<(title|desc) id="' + re.escape(i) + r'">[^<]{8,}</(title|desc)>', svg):
+            err(f"{where}: labelled-by id {i} has no non-empty title/desc")
+    if "viewBox" not in head:
+        err(f"{where}: svg has no viewBox (not responsive)")
+
+
+def test_diagrams() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    ov = _figure(html, "path-diagram")
+    if not ov:
+        err("overview diagram #path-diagram missing")
+        return
+    svgs = _svgs(ov)
+    if len(svgs) != 2 or 'class="dg-wide"' not in svgs[0] or 'class="dg-tall"' not in svgs[1]:
+        err("overview should have a wide and a tall (mobile) svg")
+    for s in svgs:
+        _check_svg_a11y(s, "overview")
+        for n in range(1, 8):
+            if f">Step {n}<" not in s and f">STEP {n}<" not in s:
+                err(f"overview svg missing Step {n}")
+        if ">Re-test<" not in s:
+            err("overview svg has no Re-test loop label")
+        if "stroke-dasharray" not in s:
+            err("overview svg has no dashed branch to access routes")
+    if "<figcaption>" not in ov:
+        err("overview has no figcaption text alternative")
+    # overview sits before step 1
+    if html.find('id="path-diagram"') > html.find('id="step-diagnosis"'):
+        err("overview diagram should come before step 1")
+    for sid in STEP_DIAGRAM_IDS:
+        fig = _figure(html, f"dg-{sid}")
+        if not fig:
+            err(f"step diagram dg-{sid} missing")
+            continue
+        sec = re.search(r'<section class="path-step" id="' + sid + r'">(.*?)</section>', html, re.S)
+        if not sec or f'id="dg-{sid}"' not in sec.group(1):
+            err(f"dg-{sid} is not inside its step section")
+        ss = _svgs(fig)
+        if len(ss) != 2:
+            err(f"dg-{sid}: expected wide + tall svg")
+        for s in ss:
+            _check_svg_a11y(s, f"dg-{sid}")
+            if "ai can" not in s.lower() or "must not" not in s.lower():
+                err(f"dg-{sid}: AI can / Must not panel missing")
+    ok("overview + 7 step diagrams: role=img, title/desc, wide + mobile variants")
+
+
+def test_sid_timeline_dates() -> None:
+    import json
+    html = INDEX.read_text(encoding="utf-8")
+    fig = _figure(html, "sid-timeline")
+    if not fig:
+        err("Sid timeline #sid-timeline missing")
+        return
+    data = json.loads((ROOT / "data" / "cases" / "sijbrandij.json").read_text(encoding="utf-8"))
+    def dates_in(obj):
+        if isinstance(obj, dict):
+            for k, v in obj.items():
+                if k == "date" and isinstance(v, str):
+                    yield v.strip().lower()
+                else:
+                    yield from dates_in(v)
+        elif isinstance(obj, list):
+            for v in obj:
+                yield from dates_in(v)
+    known = set(dates_in(data))
+    shown = set()
+    for s in _svgs(fig):
+        _check_svg_a11y(s, "sid-timeline")
+        for d in re.findall(r'fill="#b02058"[^>]*>([^<]+)</text>', s):
+            shown.add(d.strip().lower())
+    if not shown:
+        err("Sid timeline shows no dates")
+    extra = shown - known
+    if extra:
+        err(f"Sid timeline shows dates not in sijbrandij.json: {sorted(extra)}")
+    ok(f"Sid timeline: {len(shown)} dates, all from the verified case file")
+
+
+def test_diagram_hygiene() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    svg = " ".join(re.findall(r"<svg\b.*?</svg>", html, re.S))
+    if re.search(r"#(f[0-9a-f]8[0-9a-f]{3}|ff[6-9a-c][0-9a-f]{3}|e[6-9a-f]7[0-9a-f]2[0-9a-f])\b", svg, re.I) or re.search(r"\borange\b", svg, re.I):
+        err("orange-ish colour inside a diagram")
+    words = " ".join(re.findall(r">([^<>]+)</text>", svg)).lower()
+    for w in ("opened", "unverified", "commenter", "ais helped", "kilo code"):
+        if w in words:
+            err(f"verification chatter in diagram text: {w!r}")
+    for w in ("best", "top-ranked", "you should take", "recommended for you"):
+        if w in words:
+            err(f"ranking/advice wording in diagram text: {w!r}")
+    if re.search(r"<text\b(?![^>]*data-bg=)[^>]*>", svg):
+        err("an svg <text> lacks data-bg (contrast gate cannot measure it)")
+    ok("diagrams: no orange, no chatter, no ranking words, every label measurable")
+
 
 def main() -> int:
     if not INDEX.is_file():
@@ -325,6 +439,9 @@ def main() -> int:
     test_no_verification_chatter()
     test_readability()
     test_identity()
+    test_diagrams()
+    test_sid_timeline_dates()
+    test_diagram_hygiene()
     if errors:
         print(f"\n{len(errors)} FAIL(S)")
         return 1

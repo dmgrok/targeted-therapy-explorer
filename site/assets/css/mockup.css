@@ -498,3 +498,16 @@ a.choice-cta {
   color: #1b4f4c;
   font-size: 1rem;
 }
+
+/* Steps diagrams: inline SVG, Risograph two-ink print. */
+.dg { margin: 1.3rem 0 1.4rem; padding: 0; }
+.dg svg { display: block; width: 100%; height: auto; overflow: visible; }
+.dg .dg-tall { display: none; }
+.dg-overview { max-width: 68rem; margin: 2rem 0 2.6rem; }
+.dg-step { max-width: 46rem; }
+.dg-sid { max-width: 68rem; margin: 1.2rem 0 1.6rem; }
+.dg figcaption { max-width: 42rem; margin: 0.6rem 0 0; font-size: 0.95rem; color: #1b4f4c; }
+@media (max-width: 640px) {
+  .dg .dg-wide { display: none; }
+  .dg .dg-tall { display: block; max-width: 30rem; }
+}

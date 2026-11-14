@@ -170,7 +170,21 @@ COLLECT_JS = r"""
       if (r.width >= 1 && r.height >= 1) { visible = true; break; }
     }
     if (!visible) continue;
-    const cols = effectiveColours(el);
+    let cols = effectiveColours(el);
+    // Inline SVG text: the ink is the computed fill, and the solid colour
+    // drawn behind it is declared on the <text> as data-bg (diagrams.py).
+    if (el instanceof SVGElement) {
+      const host = el.closest("[data-bg]");
+      const fill = parseRGBA(getComputedStyle(el).fill);
+      if (!host || fill[3] === 0) {
+        results.push({tag: tag.toLowerCase(), desc: "svg text without data-bg", text: text.slice(0,80),
+                      fg: "?", bg: "?", ratio: 0, opacity: 1});
+        continue;
+      }
+      const hb = host.getAttribute("data-bg").replace("#", "");
+      const bgc = [parseInt(hb.slice(0,2),16), parseInt(hb.slice(2,4),16), parseInt(hb.slice(4,6),16), 1];
+      cols = { fg: blend(fill, bgc), bg: bgc, opacity: 1 };
+    }
     const ratio = contrast(cols.fg, cols.bg);
     const key = [tag, el.className, hex(cols.fg), hex(cols.bg), text.slice(0,40)].join("|");
     if (seen.has(key)) continue;
@@ -507,9 +521,16 @@ def main() -> int:
         print(f"contrast gate using {chrome}", flush=True)
         proc, debug_port = _launch_chrome(chrome, debug_port)
         ws = _connect_page(debug_port)
-        for rel in SAMPLE:
+        runs = [(rel, None) for rel in SAMPLE] + [("index.html", 390)]
+        for rel, width in runs:
             url = f"http://127.0.0.1:{http_port}/{rel}"
+            if width:
+                ws.call("Emulation.setDeviceMetricsOverride", width=width, height=844,
+                        deviceScaleFactor=1, mobile=True)
             rows = _measure(ws, url)
+            if width:
+                ws.call("Emulation.clearDeviceMetricsOverride")
+                rel = f"{rel} @{width}px"
             if not rows:
                 print(f"FAIL: no visible text measured on {rel}")
                 return 1
@@ -544,7 +565,7 @@ def main() -> int:
         f"{lowest['desc']} — {lowest['fg']} on {lowest['bg']} "
         f"«{lowest['text']}»"
     )
-    print(f"Checked {n_checked} visible text elements on {len(SAMPLE)} pages.")
+    print(f"Checked {n_checked} visible text elements on {len(SAMPLE)} pages (+ steps page at 390px).")
     if failures:
         print(f"\n{len(failures)} FAIL(S) below {THRESHOLD}:1")
         for r in failures[:25]:

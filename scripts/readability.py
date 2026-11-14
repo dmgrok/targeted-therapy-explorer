@@ -93,6 +93,19 @@ def visible_text(html: str, *, also_drop_selectors: bool = False) -> str:
     text = re.sub(r"<script\b[^>]*>.*?</script>", " ", text, flags=re.I | re.S)
     text = re.sub(r"<style\b[^>]*>.*?</style>", " ", text, flags=re.I | re.S)
     text = _strip_details(text)
+    # Inline SVG diagrams: their drawn labels are not prose. Score the text
+    # alternative (<title> and <desc>) instead, as sentences.
+    def _svg_alt(m: "re.Match") -> str:
+        inner = m.group(0)
+        bits = re.findall(r"<(title|desc)\b[^>]*>(.*?)</\1>", inner, flags=re.I | re.S)
+        out = []
+        for _tag, s in bits:
+            s = s.strip()
+            if s and not s.endswith((".", "!", "?")):
+                s += "."
+            out.append(s)
+        return " " + " ".join(out) + " "
+    text = re.sub(r"<svg\b[^>]*>.*?</svg>", _svg_alt, text, flags=re.I | re.S)
     if also_drop_selectors:
         # Optional: legal chrome, for a secondary score.
         text = re.sub(r'<div class="notice"[^>]*>.*?</div>', " ", text, flags=re.I | re.S)
