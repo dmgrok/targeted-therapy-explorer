@@ -515,6 +515,175 @@ def _clean_drug_token(name: str) -> str:
     return re.sub(r"\s+", " ", name).strip()
 
 
+# FDA companion-diagnostic cells now append the application number
+# ("ENHERTU (fam-trastuzumab deruxtecan-nxki) BLA 761139") and sometimes
+# list several drugs, or a whole "Identifying patients…" catalogue, in
+# one cell. The application number is not part of the drug name.
+_CDX_APP_NO = re.compile(
+    r"(?:\s*(?:and|&)\s*)?\s*[–\-—]?\s*(?:BLA|NDA|ANDA)\s*\d+[A-Za-z0-9/]*",
+    re.I,
+)
+_CDX_BRAND_APP = re.compile(
+    r"([A-Za-z][A-Za-z0-9®™'’+\-]*)\s*\(([^)]+)\)\s*[–\-—]?\s*(?:BLA|NDA|ANDA)\s*\d+",
+    re.I,
+)
+_CDX_NOT_A_DRUG = re.compile(
+    r"identifying patients|approved by fda|list of |suitable for treatment|"
+    r"tyrosine kinase inhibitor|patients with",
+    re.I,
+)
+
+
+def _cdx_token(token: str) -> str:
+    token = _clean_drug_token(token)
+    token = _CDX_APP_NO.sub(" ", token)
+    token = re.sub(r"\s+", " ", token).strip(" -–—")
+    if not token or len(token) < 3 or len(token) > 80:
+        return ""
+    if _CDX_NOT_A_DRUG.search(token):
+        return ""
+    if token.lower() in {"alone", "or", "and", "with", "the"}:
+        return ""
+    return token
+
+
+def cdx_drug_mentions(cell: str) -> list[tuple[str, str]]:
+    """(trade name, inn) pairs from one companion-diagnostic drug cell.
+
+    Catalogue cells contribute only the Brand (inn) pairs that sit next to
+    an application number, so 'Melanoma (Tissue)' and 'exon 21 (L858R)' are
+    not treated as drugs. The inn is kept so a trade name such as Tarceva
+    can be joined to the erlotinib record already collected from the
+    pharmacogenomic table.
+    """
+    raw = (cell or "").strip()
+    if not raw:
+        return []
+    mentions: list[tuple[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+
+    def push(trade: str, inn: str) -> None:
+        trade_c = _cdx_token(trade)
+        inn_c = _cdx_token(inn)
+        if not trade_c and not inn_c:
+            return
+        key = ((trade_c or "").lower(), (inn_c or "").lower())
+        if key in seen:
+            return
+        seen.add(key)
+        mentions.append((trade_c, inn_c))
+
+    if re.search(r"Identifying patients|List of ", raw, re.I):
+        for m in _CDX_BRAND_APP.finditer(raw):
+            push(m.group(1), m.group(2))
+        return mentions
+
+    # Brand (inn) pairs, including several drugs in one cell.
+    pair = re.compile(
+        r"([A-Za-z][A-Za-z0-9®™'’+\- ]{0,40}?)\s*\(([^)]+)\)",
+    )
+    matched_span = False
+    for m in pair.finditer(raw):
+        inn = m.group(2)
+        if re.search(r"\b(inc|ltd|corp|corporation|company|systems)\b", inn, re.I):
+            continue
+        push(m.group(1), inn)
+        matched_span = True
+    if matched_span:
+        # A partner written without parentheses still counts
+        # ("in combination with cetuximab BLA 125084").
+        rest = pair.sub(" ", raw)
+        rest = _CDX_APP_NO.sub(" ", rest)
+        parts = re.split(
+            r"\s*(?:;|\n|\s/\s|,|\+|\bor\b|in combination with|\band\b)\s*",
+            rest,
+            flags=re.I,
+        )
+        for part in parts:
+            part = re.sub(r"\balone\b", " ", part, flags=re.I)
+            push(part, "")
+        return mentions
+
+    stripped = _CDX_APP_NO.sub(" ", raw)
+    parts = re.split(
+        r"\s*(?:;|\n|\s/\s|,|\+|\bor\b|in combination with|\band\b)\s*",
+        stripped,
+        flags=re.I,
+    )
+    for part in parts:
+        part = re.sub(r"\balone\b", " ", part, flags=re.I)
+        push(part, "")
+    return mentions
+
+
+def _inn_keys(inn: str) -> list[str]:
+    """Active-ingredient keys for a parenthetical, including each part of
+    'atezolizumab and hyaluronidase-tqjs'."""
+    if not inn:
+        return []
+    parts = [inn]
+    if re.search(r"\band\b", inn, re.I):
+        parts = [p.strip() for p in re.split(r"\s+and\s+", inn, flags=re.I) if p.strip()]
+    keys = []
+    for part in parts:
+        key = primary_inn(part)
+        if key and key not in keys:
+            keys.append(key)
+    return keys
+
+
+def cdx_name_for_candidates(trade: str, inn: str, candidates: dict) -> str:
+    """Prefer a drug already collected, matched on the active ingredient.
+
+    A formulation partner (hyaluronidase) is not a new therapy when the
+    antibody is already in the table.
+    """
+    keys = _inn_keys(inn)
+    trade_key = primary_inn(trade) if trade else ""
+
+    def _close(a: str, b: str) -> bool:
+        """One substitution or insertion, for a long stem. Joins a misspelled
+        table cell (dostarlimag, amivantamb) to the drug already collected."""
+        if not a or not b or a == b or min(len(a), len(b)) < 8:
+            return False
+        if abs(len(a) - len(b)) > 1:
+            return False
+        if len(a) == len(b):
+            return sum(x != y for x, y in zip(a, b)) == 1
+        short, long = (a, b) if len(a) < len(b) else (b, a)
+        i = j = skipped = 0
+        while i < len(short) and j < len(long):
+            if short[i] != long[j]:
+                skipped += 1
+                if skipped > 1:
+                    return False
+                j += 1
+                continue
+            i += 1
+            j += 1
+        return i == len(short) and skipped + (len(long) - j) == 1
+
+    for rec in candidates.values():
+        have = primary_inn(rec.get("name") or "")
+        if not have:
+            continue
+        if have in keys or (trade_key and have == trade_key):
+            return rec["name"]
+        if any(_close(have, key) for key in keys) or (trade_key and _close(have, trade_key)):
+            return rec["name"]
+    if keys:
+        # Use the first ingredient, not the whole 'X and hyaluronidase' phrase.
+        first = re.split(r"\s+and\s+", inn, maxsplit=1, flags=re.I)[0].strip()
+        cleaned = _cdx_token(first)
+        if cleaned:
+            # The table often writes the inn in lower case. The pages use
+            # the capitalised name ("Panitumumab", not "panitumumab").
+            if cleaned[:1].islower():
+                cleaned = cleaned[:1].upper() + cleaned[1:]
+            return cleaned
+    return trade
+
+
 # Salt / form words and formulation partners that are not a different INN.
 _SALT_WORDS = (
     r"hydrochloride|hydrobromide|sodium|disodium|potassium|mesylate|besylate|"
@@ -527,7 +696,9 @@ _HYALURONIDASE = re.compile(
     r"(?:and|&|,)?\s*\w*hyaluronidase(?:\s+alfa)?(?:-[a-z]{4})?",
     re.I,
 )
-_BIOSIM_SUFFIX = re.compile(r"-([a-z]{4})\b", re.I)
+# A four-letter FDA suffix, with a hyphen (deruxtecan-nxki) or a space
+# when the table dropped the hyphen (deruxtecan nxki).
+_BIOSIM_SUFFIX = re.compile(r"(?:-|\s)([a-z]{4})\b", re.I)
 
 
 def primary_inn(name: str) -> str:
@@ -664,31 +835,51 @@ def _prefer_label(drug: str, records: list[dict]) -> dict | None:
     return owned[0]
 
 
-def fetch_openfda_label(drug: str) -> dict | None:
+def _label_query_tokens(drug: str) -> list[str]:
+    """openFDA search strings for a drug.
+
+    The pharmacogenomic table now uses the FDA proper name with a
+    four-letter suffix (dostarlimab-gxly). That string often 404s;
+    the stem (dostarlimab) is the name on the label.
+    """
     token = _clean_drug_token(drug)
-    if not token:
+    out: list[str] = []
+    if token:
+        out.append(token)
+    m = re.match(r"^(.*?)-([A-Za-z]{4})$", token or "")
+    if m:
+        stem = m.group(1).strip()
+        if len(stem) >= 4 and stem.lower() not in {t.lower() for t in out}:
+            out.append(stem)
+    return out
+
+
+def fetch_openfda_label(drug: str) -> dict | None:
+    tokens = _label_query_tokens(drug)
+    if not tokens:
         return None
     # Prefer generic name, then brand. Take several hits and keep only the
     # label whose generic/brand is this drug's own active ingredient — a
     # limit-1 search for "trastuzumab" otherwise returns Kadcyla
     # (ado-trastuzumab emtansine) first.
-    for field in ("openfda.generic_name", "openfda.brand_name", "openfda.substance_name"):
-        url = (
-            "https://api.fda.gov/drug/label.json?"
-            + urlencode({"search": f'{field}:"{token}"', "limit": "25"})
-        )
-        try:
-            data = http_json(url, timeout=40)
-        except (HTTPError, HttpError) as e:
-            if getattr(e, "code", None) == 404:
+    for token in tokens:
+        for field in ("openfda.generic_name", "openfda.brand_name", "openfda.substance_name"):
+            url = (
+                "https://api.fda.gov/drug/label.json?"
+                + urlencode({"search": f'{field}:"{token}"', "limit": "25"})
+            )
+            try:
+                data = http_json(url, timeout=40)
+            except (HTTPError, HttpError) as e:
+                if getattr(e, "code", None) == 404:
+                    continue
+                raise
+            results = data.get("results") or []
+            if not results:
                 continue
-            raise
-        results = data.get("results") or []
-        if not results:
-            continue
-        chosen = _prefer_label(drug, results)
-        if chosen:
-            return _label_record(drug, chosen, url)
+            chosen = _prefer_label(drug, results)
+            if chosen:
+                return _label_record(drug, chosen, url)
     return None
 
 
@@ -1077,13 +1268,10 @@ def therapies_for(bm: dict, pgx: list[dict], cdx: list[dict],
         hay = f"{row.get('biomarker','')} {row.get('indication','')} {row.get('drug','')}"
         if alias_match(hay, bm["aliases"]):
             # Drug field may list several trade names
-            raw = row.get("drug") or ""
-            # Split on common separators but keep "drug (generic)" together
-            pieces = re.split(r"\s*(?:;|\n| / )\s*", raw)
-            for p in pieces:
-                p = p.strip()
-                if p:
-                    add(p, "fda-cdx", {"cdx": row})
+            for trade, inn in cdx_drug_mentions(row.get("drug") or ""):
+                drug_name = cdx_name_for_candidates(trade, inn, candidates)
+                if drug_name:
+                    add(drug_name, "fda-cdx", {"cdx": row})
 
     therapies = []
     for key, rec in sorted(candidates.items(), key=lambda kv: kv[1]["name"].lower()):

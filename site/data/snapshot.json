@@ -1,20 +1,20 @@
 {
-  "snapshotDate": "2026-11-12",
+  "snapshotDate": "2026-11-15",
   "clinicalTrials": {
     "apiVersion": "2.0.5",
-    "dataTimestamp": "2026-11-10T10:00:05"
+    "dataTimestamp": "2026-11-13T10:00:06"
   },
   "counts": {
     "biomarkers": 7,
-    "therapies": 52,
-    "trials": 266,
+    "therapies": 53,
+    "therapiesAll": 104,
+    "trials": 262,
+    "trialsAll": 516,
     "civicAssertions": 69,
     "literature": 35,
     "fdaPgxRows": 692,
     "fdaCdxRows": 244,
-    "emaRows": 2357,
-    "openfdaLabels": 68,
-    "therapiesAll": 104,
-    "trialsAll": 508
+    "emaRows": 2365,
+    "openfdaLabels": 74
   }
 }

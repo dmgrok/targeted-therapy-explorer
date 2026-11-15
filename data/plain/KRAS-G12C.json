@@ -1,7 +1,7 @@
 {
   "biomarker_id": "KRAS-G12C",
-  "generated_at": "2026-11-13T21:09:03+01:00",
-  "source_hash": "e281220b9f2662197385e9bbea292516e7e24ced7f276396c45b0671320770f0",
+  "generated_at": "2026-11-15T14:51:14+01:00",
+  "source_hash": "485cd985a481d0204331141c7fb586ffff5c9b44edacc972449075f409e76bee",
   "intro": {
     "what": [
       "KRAS G12C is a change in the KRAS gene, which belongs to a family of genes called RAS.",
@@ -63,6 +63,18 @@
       "sources": [
         {
           "id": "cdx:cobas KRAS Mutation Test (Roche Molecular Systems, Inc.)|Colorectal Cancer - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:Foundation One CDx (Foundation Medicine, Inc.)|Colorectal Cancer - Tissue",
+      "category": "cdx",
+      "text": "Foundation One CDx (Foundation Medicine, Inc.) is an FDA companion test for advanced bowel cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:Foundation One CDx (Foundation Medicine, Inc.)|Colorectal Cancer - Tissue",
           "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
           "label": "FDA companion test list"
         }
@@ -153,18 +165,6 @@
       ]
     },
     {
-      "id": "cdx:xT CDx (Tempus Labs, Inc.)|Colorectal Cancer (CRC) - Tissue (Matching Blood/Saliva)",
-      "category": "cdx",
-      "text": "xT CDx (Tempus Labs, Inc.) is an FDA companion test for advanced bowel cancer. It uses Tissue (Matching Blood/Saliva).",
-      "sources": [
-        {
-          "id": "cdx:xT CDx (Tempus Labs, Inc.)|Colorectal Cancer (CRC) - Tissue (Matching Blood/Saliva)",
-          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
-          "label": "FDA companion test list"
-        }
-      ]
-    },
-    {
       "id": "therapy:Adagrasib",
       "category": "mainstream",
       "text": "Adagrasib (KRAZATI): a drug named on the FDA label in this snapshot. Approved for advanced lung cancer with a KRAS G12C change.",
@@ -183,7 +183,7 @@
       "sources": [
         {
           "id": "therapy:KRAS-G12C:Panitumumab",
-          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e0fa4bca-f245-4d92-ae29-b0c630a315c2",
           "label": "FDA drug label / EMA record"
         }
       ]
@@ -460,18 +460,6 @@
         {
           "id": "trial:NCT06345729",
           "url": "https://clinicaltrials.gov/study/NCT06345729",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
-      "id": "trial:NCT06383871",
-      "category": "trials",
-      "text": "NCT06383871: A Phase I Clinical Study of HRS-7058 in Patients With Advanced Malignant Tumour. A recruiting study (phase 1). Sites in 1 country.",
-      "sources": [
-        {
-          "id": "trial:NCT06383871",
-          "url": "https://clinicaltrials.gov/study/NCT06383871",
           "label": "ClinicalTrials.gov"
         }
       ]
