@@ -1,7 +1,7 @@
 {
   "biomarker_id": "ALK",
-  "generated_at": "2026-11-13T21:09:03+01:00",
-  "source_hash": "8c5f8dd6b157440bc5468d857c17f6c115ebded524f0f6d80c2181dc78cfc5f4",
+  "generated_at": "2026-11-15T14:51:14+01:00",
+  "source_hash": "29265bb0193c80417856ec5d5ca0e18b8c0b94c22f2068a31e02108b3ba93ac3",
   "intro": {
     "what": [
       "ALK is a gene.",
@@ -107,7 +107,7 @@
     {
       "id": "therapy:Alectinib",
       "category": "mainstream",
-      "text": "Alectinib (Alecensa): a drug that blocks the ALK signal. Approved for advanced lung cancer with an ALK change. Authorised in Europe since 2017.",
+      "text": "Alectinib (ALECENSA): a drug that blocks the ALK signal. Approved for advanced lung cancer with an ALK change. Authorised in Europe since 2017.",
       "sources": [
         {
           "id": "therapy:ALK:Alectinib",

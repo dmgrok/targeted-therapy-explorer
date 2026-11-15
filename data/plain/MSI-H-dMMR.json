@@ -1,7 +1,7 @@
 {
   "biomarker_id": "MSI-H-dMMR",
-  "generated_at": "2026-11-13T21:09:03+01:00",
-  "source_hash": "9713c578a099334511bb5cc7cc2947f504e36599b839a1f561d09fcf384a6b5b",
+  "generated_at": "2026-11-15T14:51:14+01:00",
+  "source_hash": "2b85b0c2ea66c721c05b75aa7cf879ec1887901cd0b8e010a44096215406128d",
   "intro": {
     "what": [
       "MSI-H and dMMR are test findings about how a tumour repairs its DNA.",
@@ -81,6 +81,18 @@
       ]
     },
     {
+      "id": "cdx:MMR IHC Panel pharmDx (Dako Omnis) (Agilent Technologies, Inc.)|Colorectal Cancer (CRC) - Tissue",
+      "category": "cdx",
+      "text": "MMR IHC Panel pharmDx (Dako Omnis) (Agilent Technologies, Inc.) is an FDA companion test for advanced bowel cancer. It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:MMR IHC Panel pharmDx (Dako Omnis) (Agilent Technologies, Inc.)|Colorectal Cancer (CRC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
       "id": "cdx:OncoMate MSI Dx Analysis System (Promega Corporation)|Endometrial Carcinoma (EC) – Tissue",
       "category": "cdx",
       "text": "OncoMate MSI Dx Analysis System (Promega Corporation) is an FDA companion test for cancer of the womb. It uses a tissue sample.",
@@ -129,13 +141,13 @@
       ]
     },
     {
-      "id": "therapy:Dostarlimab",
+      "id": "therapy:Dostarlimab-gxly",
       "category": "mainstream",
-      "text": "Dostarlimab (Jemperli): a drug named on the FDA label in this snapshot. Approved for cancer of the womb with an MSI-H or dMMR finding.",
+      "text": "Dostarlimab-gxly (Jemperli): a lab-made antibody. Approved for cancer of the womb with an MSI-H or dMMR finding. Authorised in Europe since 2021.",
       "sources": [
         {
-          "id": "therapy:MSI-H-dMMR:Dostarlimab",
-          "url": "https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling",
+          "id": "therapy:MSI-H-dMMR:Dostarlimab-gxly",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=095eab9f-545a-4f12-bfb7-19477fb901a5",
           "label": "FDA drug label / EMA record"
         }
       ]
@@ -165,13 +177,25 @@
       ]
     },
     {
+      "id": "therapy:Lenvatinib",
+      "category": "mainstream",
+      "text": "Lenvatinib (Lenvima): a drug that blocks a growth signal. Approved for thyroid cancer. Authorised in Europe since 2015.",
+      "sources": [
+        {
+          "id": "therapy:MSI-H-dMMR:Lenvatinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f4bedd21-efde-44c6-9d9c-b48b78d7ed1e",
+          "label": "FDA drug label / EMA record"
+        }
+      ]
+    },
+    {
       "id": "therapy:Nivolumab",
       "category": "mainstream",
-      "text": "Nivolumab (OPDIVO QVANTIG): an infusion. Approved for advanced bowel cancer with an MSI-H or dMMR finding. Authorised in Europe since 2015.",
+      "text": "Nivolumab (OPDIVO): a drug named on the FDA label in this snapshot. Approved for advanced bowel cancer with an MSI-H or dMMR finding.",
       "sources": [
         {
           "id": "therapy:MSI-H-dMMR:Nivolumab",
-          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7f8c38fa-42f4-4387-9e8c-7a1c66855d8b",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f570b9c4-6846-4de2-abfa-4d0a4ae4e394",
           "label": "FDA drug label / EMA record"
         }
       ]
@@ -179,11 +203,11 @@
     {
       "id": "therapy:Pembrolizumab",
       "category": "mainstream",
-      "text": "Pembrolizumab (Keytruda, KEYTRUDA QLEX): a drug named on the FDA label in this snapshot. Approved for several types of solid tumour with an MSI-H or dMMR finding.",
+      "text": "Pembrolizumab (KEYTRUDA): a drug named on the FDA label in this snapshot. Approved for several types of solid tumour with an MSI-H or dMMR finding.",
       "sources": [
         {
           "id": "therapy:MSI-H-dMMR:Pembrolizumab",
-          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=097d166f-b73b-41d3-9b37-7653cd2a0c41",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9333c79b-d487-4538-a9f0-71b91a02b287",
           "label": "FDA drug label / EMA record"
         }
       ]
@@ -465,18 +489,6 @@
       ]
     },
     {
-      "id": "trial:NCT06549855",
-      "category": "trials",
-      "text": "NCT06549855: PD-1 Inhibitor Combined With Progesterone Treatment in FST for Patients With MMRd Endometrial Cancer. A recruiting study (NA). Sites in 1 country.",
-      "sources": [
-        {
-          "id": "trial:NCT06549855",
-          "url": "https://clinicaltrials.gov/study/NCT06549855",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
       "id": "trial:NCT06567782",
       "category": "trials",
       "text": "NCT06567782: Neoadjuvant Dostarlimab Plus Capecitabine Plus Oxaliplatin (CAPEOX) Vs CAPEOX With Previously Untreated T4N0 or…. A recruiting study (phase 2). Sites in 6 countries.",
@@ -532,18 +544,6 @@
         {
           "id": "trial:NCT06948448",
           "url": "https://clinicaltrials.gov/study/NCT06948448",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
-      "id": "trial:NCT07127822",
-      "category": "trials",
-      "text": "NCT07127822: Assessing Iparomlimab and Tuvonralimab in Recurrent or Metastatic MSI-H/dMMR Gastric Cancer. A recruiting study (phase 2). Sites in 1 country.",
-      "sources": [
-        {
-          "id": "trial:NCT07127822",
-          "url": "https://clinicaltrials.gov/study/NCT07127822",
           "label": "ClinicalTrials.gov"
         }
       ]
@@ -640,18 +640,6 @@
         {
           "id": "trial:NCT07562347",
           "url": "https://clinicaltrials.gov/study/NCT07562347",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
-      "id": "trial:NCT07750951",
-      "category": "trials",
-      "text": "NCT07750951: Single-arm, Phase II Clinical Study Evaluating the Safety and Efficacy of Sintilimab Combined With…. A recruiting study (phase 2). Sites in 1 country.",
-      "sources": [
-        {
-          "id": "trial:NCT07750951",
-          "url": "https://clinicaltrials.gov/study/NCT07750951",
           "label": "ClinicalTrials.gov"
         }
       ]

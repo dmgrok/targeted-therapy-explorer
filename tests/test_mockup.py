@@ -290,10 +290,13 @@ def test_combination_gate_catches_merged_sets() -> None:
 
 
 def _row_window(vis: str, name: str, n: int = 400) -> str:
-    i = vis.find(name)
-    if i < 0:
+    # A hyphenated proper name must not satisfy a shorter one
+    # (Fam-Trastuzumab Deruxtecan-nxki is not the Trastuzumab row).
+    pat = re.compile(r"(?<![A-Za-z\-])" + re.escape(name) + r"(?![A-Za-z])")
+    m = pat.search(vis)
+    if not m:
         return ""
-    return vis[i:i + n]
+    return vis[m.start():m.start() + n]
 
 
 def test_osimertinib_europe_year() -> None:
@@ -902,7 +905,7 @@ def test_indication_specific_extension_years() -> None:
          "EGFR/head-and-neck-cancer/label-does-not-say-the-gene-change-subtype/after-another-drug.html"),
         # 2. Enhertu HER2+ breast first treatment: EMA/VR/0000322236 CD 28/08/2026
         # (2022 was II/0014, after prior anti-HER2).
-        ("HER2", "Fam-trastuzumab deruxtecan",
+        ("HER2", "Fam-Trastuzumab Deruxtecan-nxki",
          ("breast cancer", "HER2-positive", "as a first treatment"),
          "Europe since 2026", "Europe since 2022",
          "HER2/breast-cancer/her2-positive/as-a-first-treatment.html"),
@@ -937,7 +940,7 @@ def test_indication_specific_extension_years() -> None:
          "HER2/breast-cancer/her2-positive/after-another-drug.html"),
         # 8. Tislelizumab HER2+ stomach first treatment: Tevimbra gastric 4.1
         # is HER2-negative only.
-        ("HER2", "Tislelizumab",
+        ("HER2", "Tislelizumab-jsgr",
          ("stomach cancer", "HER2-positive", "as a first treatment"),
          "Europe: approved for other uses", "Europe since 2024",
          "HER2/stomach-cancer/her2-positive/as-a-first-treatment.html"),

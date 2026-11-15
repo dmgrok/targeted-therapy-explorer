@@ -1,7 +1,7 @@
 {
   "biomarker_id": "BRAF-V600E",
-  "generated_at": "2026-11-13T21:09:03+01:00",
-  "source_hash": "51b12850c84434b9822bf0d31fc5973eb84bb9fc6c377d401dfd3ca2d77ff42e",
+  "generated_at": "2026-11-15T14:51:14+01:00",
+  "source_hash": "7360950abfb8ffc727348b4442f2634466378432f0d3b5c2d4d80c42533e5546",
   "intro": {
     "what": [
       "BRAF V600E is a change in the BRAF gene.",
@@ -93,6 +93,18 @@
       ]
     },
     {
+      "id": "cdx:FoundationOne CDx(Foundation Medicine, Inc.)|Melanoma - Tissue",
+      "category": "cdx",
+      "text": "FoundationOne CDx(Foundation Medicine, Inc.) is an FDA companion test for melanoma (a skin cancer). It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:FoundationOne CDx(Foundation Medicine, Inc.)|Melanoma - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
       "id": "cdx:FoundationOne Liquid CDx (Foundation Medicine, Inc.)|Metastatic Colorectal Cancer (mCRC) - Plasma",
       "category": "cdx",
       "text": "FoundationOne Liquid CDx (Foundation Medicine, Inc.) is an FDA companion test for advanced bowel cancer. It uses a blood (plasma) sample.",
@@ -141,24 +153,24 @@
       ]
     },
     {
-      "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Colorectal Cancer - Tissue",
+      "id": "cdx:MI Cancer Seek (Caris Life Sciences)|Melanoma - Tissue",
       "category": "cdx",
-      "text": "MI Cancer Seek (MCS) (Caris Life Sciences) is an FDA companion test for advanced bowel cancer. It uses a tissue sample.",
+      "text": "MI Cancer Seek (Caris Life Sciences) is an FDA companion test for melanoma (a skin cancer). It uses a tissue sample.",
       "sources": [
         {
-          "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Colorectal Cancer - Tissue",
+          "id": "cdx:MI Cancer Seek (Caris Life Sciences)|Melanoma - Tissue",
           "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
           "label": "FDA companion test list"
         }
       ]
     },
     {
-      "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Melanoma - Tissue",
+      "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Colorectal Cancer - Tissue",
       "category": "cdx",
-      "text": "MI Cancer Seek (MCS) (Caris Life Sciences) is an FDA companion test for melanoma (a skin cancer). It uses a tissue sample.",
+      "text": "MI Cancer Seek (MCS) (Caris Life Sciences) is an FDA companion test for advanced bowel cancer. It uses a tissue sample.",
       "sources": [
         {
-          "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Melanoma - Tissue",
+          "id": "cdx:MI Cancer Seek (MCS) (Caris Life Sciences)|Colorectal Cancer - Tissue",
           "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
           "label": "FDA companion test list"
         }
@@ -183,6 +195,18 @@
       "sources": [
         {
           "id": "cdx:Oncomine Dx Target Test (Life Technologies Corporation)|Non-Small Cell Lung Cancer (NSCLC) - Tissue",
+          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "label": "FDA companion test list"
+        }
+      ]
+    },
+    {
+      "id": "cdx:PGDx elio tissue complete CDx (Personal Genome Diagnostics, Inc.)|Melanoma - Tissue",
+      "category": "cdx",
+      "text": "PGDx elio tissue complete CDx (Personal Genome Diagnostics, Inc.) is an FDA companion test for melanoma (a skin cancer). It uses a tissue sample.",
+      "sources": [
+        {
+          "id": "cdx:PGDx elio tissue complete CDx (Personal Genome Diagnostics, Inc.)|Melanoma - Tissue",
           "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
           "label": "FDA companion test list"
         }
@@ -291,7 +315,7 @@
       "sources": [
         {
           "id": "therapy:BRAF-V600E:Tovorafenib",
-          "url": "https://www.fda.gov/medical-devices/in-vitro-diagnostics/list-fda-authorized-companion-diagnostic-devices-in-vitro-and-imaging-tools",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ea3a9631-3a66-6a7c-e053-2995a90ae2ad",
           "label": "FDA drug label / EMA record"
         }
       ]
@@ -688,6 +712,18 @@
         {
           "id": "trial:NCT07158710",
           "url": "https://clinicaltrials.gov/study/NCT07158710",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07178717",
+      "category": "trials",
+      "text": "NCT07178717: A Study to Characterize Encorafenib Plus Cetuximab as Rechallenge Treatment for BRAF V600E-mutant Metastatic…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07178717",
+          "url": "https://clinicaltrials.gov/study/NCT07178717",
           "label": "ClinicalTrials.gov"
         }
       ]

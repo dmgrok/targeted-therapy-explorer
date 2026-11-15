@@ -39,10 +39,44 @@ def load_labels() -> dict:
     return json.loads(LABELS.read_text(encoding="utf-8"))
 
 
+# FDA proper names add a four-letter suffix (tislelizumab-jsgr). The
+# committed label is stored under the name without that suffix.
+_FDA_PROPER_SUFFIX = re.compile(r"^(.*)-([A-Za-z]{4})$")
+
+
+def _fold_label_name(name: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", (name or "").lower())
+
+
+def _entry_by_name(entries: dict, name: str) -> dict | None:
+    name = (name or "").strip()
+    if not name:
+        return None
+    if name in entries:
+        return entries[name]
+    folded = {}
+    for key, entry in entries.items():
+        folded.setdefault(_fold_label_name(key), entry)
+    hit = folded.get(_fold_label_name(name))
+    if hit:
+        return hit
+    m = _FDA_PROPER_SUFFIX.match(name)
+    if m:
+        return _entry_by_name(entries, m.group(1).strip())
+    return None
+
+
 def entry_for(therapy: dict, catalog: dict | None = None) -> dict | None:
     catalog = catalog if catalog is not None else load_labels()
-    name = (therapy.get("name") or "").strip()
-    return (catalog.get("entries") or {}).get(name)
+    entries = catalog.get("entries") or {}
+    names = [therapy.get("name") or ""]
+    names.extend(therapy.get("genericNames") or [])
+    names.extend(therapy.get("brandNames") or [])
+    for name in names:
+        hit = _entry_by_name(entries, name)
+        if hit:
+            return hit
+    return None
 
 
 def indications(therapy: dict, catalog: dict | None = None) -> str:
