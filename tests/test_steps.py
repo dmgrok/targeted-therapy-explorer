@@ -560,6 +560,104 @@ def test_diagram_hygiene() -> None:
     ok("diagrams: no orange, no chatter, no ranking words, every label measurable")
 
 
+def test_practical_access() -> None:
+    path = SITE / "practical-access.html"
+    if not path.is_file():
+        err("missing site/practical-access.html")
+        return
+    html = path.read_text(encoding="utf-8")
+    vis = visible_text(html)
+    import html as html_lib
+    decoded = html_lib.unescape(html)
+    if "Not medical advice. Talk to your oncologist." not in html:
+        err("practical access missing the short disclaimer")
+    if 'id="stale-banner"' not in html or 'id="snapshot-date"' not in html:
+        err("practical access missing snapshot date or stale banner")
+    if re.search(r"<form\b|<(input|textarea|select)\b", html, re.I):
+        err("practical access collects input")
+    if re.search(r"\b(we recommend|best option|preferred option|you should take)\b", html, re.I):
+        err("practical access sounds like a recommendation")
+    for phrase in (
+        "not a care plan",
+        "not a ranking",
+        "All are investigational",
+        "bioinformatic neoantigen prediction",
+        "à voir avec l'équipe soignante",
+        "To discuss with the care team",
+        "Last checked 15 Nov 2026",
+        "not a country average",
+        "no reimbursement table",
+        "A registry status may lag a sponsor statement",
+        "not a licensed treatment",
+        "not a current list",
+        "WHO ICTRP terms bar marketing, promotional or commercial reuse",
+        "You will not need to undergo an extra procedure",
+        "bioinformatically predicted and ranked by immunogenicity",
+        "designed and produced using a patient's tumor sample",
+        "a synthetic mRNA coding for up to 34 neoantigens.",
+        "decided to terminate",
+        "a numerical imbalance in overall survival between treatment arms",
+        "outlines the full range of genomic tests that are commissioned for the NHS in England",
+        "the patients who are eligible.",
+        "28 hospital platforms",
+        "1,137",
+        "757 vs 380",
+        "24.6 months",
+        "82.2%",
+        "70.0%",
+        "88.5%",
+        "80.2%",
+        "23.6%",
+        "20.3%",
+        "8 of 16",
+        "≤6 weeks",
+        "≤9 weeks",
+        "two-sided P",
+        "P=0.002",
+        "One setting",
+        "Not an approval",
+    ):
+        if phrase not in decoded and phrase not in vis:
+            err(f"practical access missing {phrase!r}")
+    for href in (
+        "https://www.cancer.gov/research/infrastructure/cancer-centers/find",
+        "https://www.cancer.fr/professionnels-de-sante/parcours-de-soins-des-patients/traitements/traitements-medicamenteux/les-therapies-ciblees/les-plateformes-de-genetique-moleculaire-des-cancers/missions-et-localisation-des-plateformes",
+        "https://www.southampton.ac.uk/ctu/cancer-vaccine-launch-pad.page",
+        "https://www.england.nhs.uk/genomics/the-national-genomic-test-directory/",
+        "https://pfmg2025.fr/patients-et-famille/la-medecine-genomique-appliquee-aux-cancers/",
+        "https://pfmg2025.fr/",
+        "https://clinicaltrials.gov",
+        "https://trialsearch.who.int",
+        "https://www.who.int/tools/clinical-trials-registry-platform",
+        "https://euclinicaltrials.eu/search-for-clinical-trials",
+        "https://www.nature.com/articles/s41586-023-06063-y",
+        "https://www.nejm.org/doi/full/10.1056/NEJMoa2609762",
+        "https://clinicaltrials.gov/study/NCT05933577",
+        "https://clinicaltrials.gov/study/NCT05968326",
+        "https://clinicaltrials.gov/study/NCT04486378",
+        "https://www.biontech.com/int/en/home/mediaroom/news/statements/2026/08/BioNTech-Provides-Update-on-Phase-2-Clinical-Trial-of-Autogene-Cevumeran-in-Resected-Colorectal-Cancer.html",
+    ):
+        if href not in html:
+            err(f"practical access missing link {href}")
+    if "merck-and-moderna-will-present-results" not in html:
+        err("practical access missing the Merck and Moderna release link")
+    for bad in (
+        "machine learning",
+        "AI designs",
+        "artificial intelligence",
+        "request a biopsy",
+        "delay a biopsy",
+        "skip a biopsy",
+        "skip the biopsy",
+    ):
+        if bad.lower() in html.lower():
+            err(f"practical access contains {bad!r}")
+    home = INDEX.read_text(encoding="utf-8")
+    if 'href="practical-access.html"' not in home:
+        err("steps page does not link to practical access")
+    ok("practical access: disclaimer, quotes, figures, registry links only, no advice to alter a biopsy")
+
+
 def main() -> int:
     if not INDEX.is_file():
         err("site/index.html is missing — run scripts/build_site.py")
@@ -578,6 +676,7 @@ def main() -> int:
     test_sid_timeline_dates()
     test_diagram_wording()
     test_diagram_hygiene()
+    test_practical_access()
     if errors:
         print(f"\n{len(errors)} FAIL(S)")
         return 1

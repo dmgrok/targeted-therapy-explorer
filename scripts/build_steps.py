@@ -531,7 +531,12 @@ def page_body() -> str:
         "run by HAS, with four stated conditions. Accès compassionnel (AAC) is a "
         "named-patient route run by ANSM. In the EU, the EMA describes compassionate "
         "use, which Member States run. Public trial finders are listed in "
-        '<a href="#where-to-start">Where to start looking</a>.</p>',
+        '<a href="#where-to-start">Where to start looking</a>.</p>'
+        "<p><a href=\"practical-access.html\">Practical access</a> "
+        "is a further section on this same path. It adds country examples "
+        "and what is public on personalised mRNA cancer vaccines. "
+        "Those vaccines are investigational. That page is not a care plan "
+        "and not a ranking.</p>",
         "AI can say which kind of route a public record describes. It can point to the official page.",
         "It must not say that a person qualifies.",
         [
@@ -545,7 +550,8 @@ def page_body() -> str:
         '<p class="lede">Each step has a short explanation, a static box on how AI '
         "can help you digest this and what it must not do, and sources. "
         "The path is the same wherever you live. "
-        '<a href="#where-to-start">Where to start looking</a> lists official places in France, Switzerland and the EU.</p>'
+        '<a href="#where-to-start">Where to start looking</a> lists official places in France, Switzerland and the EU. '
+        '<a href="practical-access.html">Practical access</a> is a further section on the same path.</p>'
         '<p class="confidence-line" id="confidence">Some figures come from studies of older AI models; dates are shown with each source.</p>'
         '<section id="process">'
         "<h2>The process</h2>"
@@ -611,6 +617,8 @@ def write_steps(snap: dict) -> None:
             custom_notice=merged_notice(snap),
         ),
     )
+    from build_access import write_practical_access
+    write_practical_access(snap)
 
 
 def main() -> int:
