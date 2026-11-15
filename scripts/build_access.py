@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_mockup import SITE, crumbs, esc, page_shell, write  # noqa: E402
 from build_site import DISCLAIMER_SHORT, fmt_date  # noqa: E402
 
-CHECKED = "Last checked 15 Nov 2026"
+CHECKED = "Sources last checked 15 Nov 2026"
 
 URL = {
     "nci_centers": "https://www.cancer.gov/research/infrastructure/cancer-centers/find",
@@ -33,6 +33,10 @@ URL = {
     "ctg": "https://clinicaltrials.gov",
     "who_search": "https://trialsearch.who.int",
     "who_tool": "https://www.who.int/tools/clinical-trials-registry-platform",
+    "who_terms": (
+        "https://www.who.int/tools/clinical-trials-registry-platform/network/"
+        "who-data-set/downloading-records-from-the-ictrp-database"
+    ),
     "ctis": "https://euclinicaltrials.eu/search-for-clinical-trials",
     "rojas": "https://www.nature.com/articles/s41586-023-06063-y",
     "long": "https://www.nejm.org/doi/full/10.1056/NEJMoa2609762",
@@ -63,25 +67,25 @@ SOURCES = [
     (
         "nhs_cvlp",
         "NHS Cancer Vaccine Launch Pad",
-        "",
+        "Page undated",
         "A national study funded and sponsored by NHS England. It refers people to trials. It is not a licensed treatment.",
     ),
     (
         "nhs_directory",
         "NHS National Genomic Test Directory",
-        "",
+        "Page undated",
         "",
     ),
     (
         "pfmg_cancer",
         "PFMG 2025 cancer page",
-        "",
+        "Aviesan/Inserm. Page undated",
         "Short paraphrase only. PFMG content is not openly licensed.",
     ),
     (
         "pfmg_home",
         "PFMG 2025, preindications and LBM-FMG labs",
-        "",
+        "Aviesan/Inserm. Page undated",
         "",
     ),
     ("ctg", "ClinicalTrials.gov", "Registry home", "Link only. No trial record is copied."),
@@ -115,7 +119,7 @@ SOURCES = [
         "biontech",
         "BioNTech statement",
         "28 Aug 2026",
-        "Colorectal Phase 2 BNT122-01.",
+        "Colorectal Phase 2 BNT122-01. It says IMcode003 continues as planned.",
     ),
     (
         "nct_interpath",
@@ -179,8 +183,11 @@ def source_list() -> str:
     for key, label, detail, note in SOURCES:
         detail_h = f" {esc(detail)}." if detail else ""
         note_h = f" {esc(note)}" if note else ""
+        terms = ""
+        if key in ("who_search", "who_tool"):
+            terms = " " + link("who_terms", "ICTRP terms on downloading records") + "."
         items.append(
-            f"<li>{link(key, label)}.{detail_h}{note_h} {esc(CHECKED)}.</li>"
+            f"<li>{link(key, label)}.{detail_h}{note_h}{terms} {esc(CHECKED)}.</li>"
         )
     return '<ul class="source-dates">' + "".join(items) + "</ul>"
 
@@ -207,9 +214,9 @@ def page_body() -> str:
         + "<p>England. The NHS Cancer Vaccine Launch Pad is a national study. "
         "NHS England funds it and sponsors it. "
         "It refers people to trials. It is not a licensed treatment.</p>"
-        + cite("nhs_cvlp", "NHS Cancer Vaccine Launch Pad", "")
+        + cite("nhs_cvlp", "NHS Cancer Vaccine Launch Pad", "Page undated")
         + "<p>England also publishes the NHS National Genomic Test Directory.</p>"
-        + cite("nhs_directory", "NHS National Genomic Test Directory", "")
+        + cite("nhs_directory", "NHS National Genomic Test Directory", "Page undated")
         + "</section>"
     )
     tissue = (
@@ -220,19 +227,19 @@ def page_body() -> str:
         "It says the doctor discusses it and asks for agreement. "
         "PFMG content is not openly licensed. "
         "The lines above are a short paraphrase, not a copy.</p>"
-        + cite("pfmg_cancer", "PFMG 2025 cancer page", "")
+        + cite("pfmg_cancer", "PFMG 2025 cancer page", "Aviesan/Inserm. Page undated")
         + "<p>The NHS Cancer Vaccine Launch Pad page says unused tissue from a "
         "previous surgery or biopsy is used. "
         "The quote is about the Launch Pad itself.</p>"
         + quote(
             "You will not need to undergo an extra procedure",
-            "NHS Cancer Vaccine Launch Pad, for the Launch Pad itself. "
+            "NHS Cancer Vaccine Launch Pad, for the Launch Pad itself. Page undated. "
             + link("nhs_cvlp", "NHS Cancer Vaccine Launch Pad")
             + f". {esc(CHECKED)}.",
         )
         + "<p>The same page says people should ask their local hospital team "
         "if they wish to take part.</p>"
-        + cite("nhs_cvlp", "NHS Cancer Vaccine Launch Pad", "")
+        + cite("nhs_cvlp", "NHS Cancer Vaccine Launch Pad", "Page undated")
         + care_line()
         + "</section>"
     )
@@ -240,19 +247,29 @@ def page_body() -> str:
         '<section id="sequencing">'
         "<h3>Sequencing</h3>"
         "<p>This step starts with the treating team.</p>"
-        "<p>Sequencing uses tumour NGS panels. "
-        "Sometimes the test is a whole exome or a whole genome.</p>"
-        "<p>In France, this step points to PFMG 2025 preindications and LBM-FMG labs.</p>"
-        + cite("pfmg_home", "PFMG 2025", "")
+        "<p>The INCa and DGOS platforms page describes NGS for tumour tests, "
+        "including targeted NGS and wider gene panels.</p>"
+        + cite(
+            "inca_platforms",
+            "INCa and DGOS molecular-genetics platforms",
+            "Page dated 11 Feb 2022. Directory 2020",
+        )
+        + "<p>The PFMG 2025 cancer page says sequencing can cover a whole exome "
+        "or a whole genome.</p>"
+        + cite("pfmg_cancer", "PFMG 2025 cancer page", "Aviesan/Inserm. Page undated")
+        + "<p>In France, this step points to PFMG 2025 preindications and LBM-FMG labs.</p>"
+        + cite("pfmg_home", "PFMG 2025", "Aviesan/Inserm. Page undated")
         + "<p>In England, the NHS National Genomic Test Directory uses these words:</p>"
         + quote(
             "outlines the full range of genomic tests that are commissioned for the NHS in England",
-            link("nhs_directory", "NHS National Genomic Test Directory")
+            "NHS National Genomic Test Directory. Page undated. "
+            + link("nhs_directory", "NHS National Genomic Test Directory")
             + f". {esc(CHECKED)}.",
         )
         + quote(
             "the patients who are eligible.",
-            link("nhs_directory", "NHS National Genomic Test Directory")
+            "NHS National Genomic Test Directory. Page undated. "
+            + link("nhs_directory", "NHS National Genomic Test Directory")
             + f". {esc(CHECKED)}.",
         )
         + "<p>No wait time is shown. "
@@ -264,8 +281,11 @@ def page_body() -> str:
         '<section id="interpretation">'
         "<h3>Interpretation and matching</h3>"
         "<p>This step starts with the treating team.</p>"
-        "<p>The care team and the molecular review meeting match a result to a trial.</p>"
-        "<p>This page links to trial registries only. "
+        "<p>The PFMG 2025 cancer page says the doctor may propose a targeted drug "
+        "or a clinical trial from the molecular findings.</p>"
+        + cite("pfmg_cancer", "PFMG 2025 cancer page", "Aviesan/Inserm. Page undated")
+        + "<p>The molecular review meeting: General explanation, check with the care team.</p>"
+        + "<p>This page links to trial registries only. "
         "It copies no trial record, no count, no status and no location number. "
         "A trial may be named by its registry id, with a link to its registry page.</p>"
         "<ul>"
@@ -274,7 +294,9 @@ def page_body() -> str:
         f"and {link('who_tool', 'the WHO ICTRP page')}</li>"
         f"<li>{link('ctis', 'EU CTIS search')}</li>"
         "</ul>"
-        "<p>WHO ICTRP terms bar marketing, promotional or commercial reuse.</p>"
+        "<p>WHO ICTRP terms bar marketing, promotional or commercial reuse. "
+        + link("who_terms", "ICTRP terms on downloading records")
+        + ".</p>"
         + cite("ctg", "ClinicalTrials.gov", "Registry home")
         + cite("who_search", "WHO ICTRP search", "Registry search")
         + cite("who_tool", "WHO ICTRP", "Registry page")
@@ -285,8 +307,8 @@ def page_body() -> str:
         '<section id="reach">'
         "<h3>Access, reimbursement and travel</h3>"
         "<p>This step starts with the treating team.</p>"
-        "<p>Trial slots and geography shape access. "
-        "Manufacturing is made to order.</p>"
+        "<p>Trial slots, geography and made-to-order manufacturing: "
+        "General explanation, check with the care team.</p>"
         "<p>No personalised mRNA cancer vaccine marketing authorisation was found "
         "in the sources linked on this page. There is no reimbursement table.</p>"
         + cite_set()
@@ -356,12 +378,11 @@ def page_body() -> str:
         + cite("rojas", "Rojas et al., Nature", "10 May 2023")
         + "<p>Phase 2 IMcode003, "
         + link("nct_imcode", "NCT05968326")
-        + ", is in resected pancreatic cancer. It continues. "
-        "The link is the registry page only. No registry fields are copied. "
+        + ", is in resected pancreatic cancer. "
+        "The 28 Aug 2026 BioNTech statement says it continues as planned. "
+        "The registry link is the page only. No registry fields are copied. "
         "A registry status may lag a sponsor statement.</p>"
-        + '<p class="fine">Checked 15 Nov 2026. '
-        "No separate source link is added for the word “continues”. "
-        "The registry link is the page only.</p>"
+        + cite("biontech", "BioNTech statement", "28 Aug 2026")
         + "<p>On 28 Aug 2026 BioNTech said it had decided to terminate the colorectal "
         "Phase 2 study BNT122-01, "
         + link("nct_bnt", "NCT04486378")
@@ -388,6 +409,9 @@ def page_body() -> str:
         "Country names are examples. This page is not a ranking of treatments, "
         "countries or centres.</p>"
         '<p class="confidence-line">Not medical advice. Talk to your oncologist. '
+        f"{esc(CHECKED)}.</p>"
+        "<p>The 12 November 2026 snapshot date on this page is the site-wide date "
+        "for the data tables. "
         f"{esc(CHECKED)}.</p>"
         '<article class="practical-access">'
         "<h2>A common path</h2>"
@@ -426,8 +450,10 @@ def merged_notice(snap: dict) -> str:
         "It is not a care plan, a diagnosis or a treatment recommendation. "
         "It is not a ranking of treatments, countries or centres. "
         "There is no live AI on this page, and no collection of patient data. "
-        "Data is a snapshot as of "
-        f'<time datetime="{esc(snap["snapshotDate"])}">{esc(fmt_date(snap["snapshotDate"]))}</time>. '
+        "The "
+        f'<time datetime="{esc(snap["snapshotDate"])}">{esc(fmt_date(snap["snapshotDate"]))}</time> '
+        "snapshot is the site-wide date for the data tables. "
+        f"{esc(CHECKED)}. "
         '<a href="notice.html">Full notice</a>.'
         "</div>"
     )
