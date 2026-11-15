@@ -47,6 +47,7 @@ SAMPLE = [
     "cases/augenstein.html",
     "cases/feldman.html",
     "cases/olson.html",
+    "practical-access.html",
 ]
 # Pages also checked at a 390px phone width (mobile diagram variants).
 MOBILE = ["index.html"] + [p for p in SAMPLE if p.startswith("cases/") and p != "cases/index.html"]

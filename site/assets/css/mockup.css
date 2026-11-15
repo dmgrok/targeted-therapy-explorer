@@ -499,6 +499,32 @@ a.choice-cta {
   font-size: 1rem;
 }
 
+/* Practical access: same two inks, same type, no new palette. */
+.practical-access { max-width: 46rem; }
+.practical-access h2,
+.practical-access h3 {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: #122e2c;
+  margin: 1.5rem 0 0.45rem;
+}
+.practical-access h2 {
+  font-size: 1.7rem;
+  border-top: 1px solid rgba(27, 79, 76, 0.18);
+  padding-top: 0.8rem;
+}
+.practical-access h3 { font-size: 1.25rem; }
+.practical-access ul { margin: 0.4rem 0 1rem; padding-left: 1.2rem; }
+.practical-access li { margin: 0.25rem 0; }
+.care-line {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+  color: #122e2c;
+  margin: 0.4rem 0 1rem;
+}
+
 /* Steps diagrams: inline SVG, Risograph two-ink print. */
 .dg { margin: 1.3rem 0 1.4rem; padding: 0; }
 .dg svg { display: block; width: 100%; height: auto; overflow: visible; }
