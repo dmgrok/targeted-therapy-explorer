@@ -1,7 +1,7 @@
 {
   "biomarker_id": "BRAF-V600E",
-  "generated_at": "2026-11-15T14:51:14+01:00",
-  "source_hash": "7360950abfb8ffc727348b4442f2634466378432f0d3b5c2d4d80c42533e5546",
+  "generated_at": "2026-11-25T09:39:33+01:00",
+  "source_hash": "cf41691a2284a9bef0194fbb5889bdeb7febdd8838080209fcad503a9445010c",
   "intro": {
     "what": [
       "BRAF V600E is a change in the BRAF gene.",

@@ -1,7 +1,7 @@
 {
   "biomarker_id": "MSI-H-dMMR",
-  "generated_at": "2026-11-15T14:51:14+01:00",
-  "source_hash": "2b85b0c2ea66c721c05b75aa7cf879ec1887901cd0b8e010a44096215406128d",
+  "generated_at": "2026-11-25T09:39:33+01:00",
+  "source_hash": "47761939a8e7a06e1bcc7d2c091f41dccab6a162bca53b50007060a130f853ca",
   "intro": {
     "what": [
       "MSI-H and dMMR are test findings about how a tumour repairs its DNA.",
@@ -321,18 +321,6 @@
       ]
     },
     {
-      "id": "trial:NCT05272709",
-      "category": "trials",
-      "text": "NCT05272709: TT-702 in Patients With Advanced Solid Tumours.. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
-      "sources": [
-        {
-          "id": "trial:NCT05272709",
-          "url": "https://clinicaltrials.gov/study/NCT05272709",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
       "id": "trial:NCT05310643",
       "category": "trials",
       "text": "NCT05310643: Nivolumab and Ipilimumab in Anti-PD1-Resistant dMMR/MSI mCRC. A recruiting study (phase 2). Sites in 1 country.",
@@ -549,6 +537,18 @@
       ]
     },
     {
+      "id": "trial:NCT07128355",
+      "category": "trials",
+      "text": "NCT07128355: Botensilimab, Balstilimab, and SBRT in Colorectal Cancer. A recruiting study (early phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07128355",
+          "url": "https://clinicaltrials.gov/study/NCT07128355",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
       "id": "trial:NCT07140679",
       "category": "trials",
       "text": "NCT07140679: Immunotherapy (Toripalimab) for Reducing Recurrence Risk After Surgery for Mismatch Repair Deficient Stage IIB…. A recruiting study (phase 2). Sites in 1 country.",
@@ -683,7 +683,7 @@
     {
       "id": "trial:NCT07829081",
       "category": "trials",
-      "text": "NCT07829081: Research on Effective Strategies After Immunotherapy for Mismatch Repair-deficient Early-stage GI Tumors. A recruiting study. Sites in 1 country.",
+      "text": "NCT07829081: Research on Effective Strategies After Immunotherapy for Mismatch Repair-Deficient Early-Stage GI Tumors. A recruiting study. Sites in 1 country.",
       "sources": [
         {
           "id": "trial:NCT07829081",

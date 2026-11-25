@@ -1,7 +1,7 @@
 {
   "biomarker_id": "EGFR",
-  "generated_at": "2026-11-15T14:51:14+01:00",
-  "source_hash": "4403b48b32e888f44c53e41d96eae8c9f528d6705f2162e8d171378578c6f20f",
+  "generated_at": "2026-11-25T09:39:33+01:00",
+  "source_hash": "7eea0d71ac11444ae3363028376f6a0df85d088b11901c1b5f3728b55c13214c",
   "intro": {
     "what": [
       "EGFR is a gene.",
@@ -335,11 +335,11 @@
     {
       "id": "therapy:Lazertinib",
       "category": "mainstream",
-      "text": "Lazertinib (LAZCLUZE): a drug that blocks the EGFR signal. Approved for advanced lung cancer with an EGFR exon 19 deletion or L858R change.",
+      "text": "Lazertinib: a drug named on the FDA label in this snapshot. Approved for a use named on the FDA label. Authorised in Europe since 2025.",
       "sources": [
         {
           "id": "therapy:EGFR:Lazertinib",
-          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c417f9ee-2027-4ed5-92ad-3c19266de16c",
+          "url": "https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling",
           "label": "FDA drug label / EMA record"
         }
       ]
@@ -405,13 +405,37 @@
       ]
     },
     {
-      "id": "trial:NCT04181060",
+      "id": "trial:NCT02861898",
       "category": "trials",
-      "text": "NCT04181060: Osimertinib With or Without Bevacizumab as Initial Treatment for Patients With EGFR-Mutant Lung Cancer. A recruiting study (phase 3). Sites in 1 country.",
+      "text": "NCT02861898: Super-selective Intra-arterial Repeated Infusion of Cetuximab for the Treatment of Newly Diagnosed Glioblastoma. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
       "sources": [
         {
-          "id": "trial:NCT04181060",
-          "url": "https://clinicaltrials.gov/study/NCT04181060",
+          "id": "trial:NCT02861898",
+          "url": "https://clinicaltrials.gov/study/NCT02861898",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT03191149",
+      "category": "trials",
+      "text": "NCT03191149: Testing Osimertinib as a Treatment for Lung Cancers With an EGFR Exon 20 Change. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT03191149",
+          "url": "https://clinicaltrials.gov/study/NCT03191149",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT04410796",
+      "category": "trials",
+      "text": "NCT04410796: Osimertinib Alone or With Chemotherapy for EGFR-Mutant Lung Cancers. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT04410796",
+          "url": "https://clinicaltrials.gov/study/NCT04410796",
           "label": "ClinicalTrials.gov"
         }
       ]
@@ -429,37 +453,25 @@
       ]
     },
     {
-      "id": "trial:NCT05315700",
+      "id": "trial:NCT05168566",
       "category": "trials",
-      "text": "NCT05315700: ORIC-114 in Patients With Advanced Solid Tumors Harboring an EGFR or HER2 Alteration. A recruiting study (phase 1 / phase 2). Sites in 10 countries.",
+      "text": "NCT05168566: Study to Evaluate Sutetinib Maleate Capsule in Locally Advanced or Metastatic Non-small Cell Lung Cancer. A recruiting study (phase 2). Sites in 3 countries.",
       "sources": [
         {
-          "id": "trial:NCT05315700",
-          "url": "https://clinicaltrials.gov/study/NCT05315700",
+          "id": "trial:NCT05168566",
+          "url": "https://clinicaltrials.gov/study/NCT05168566",
           "label": "ClinicalTrials.gov"
         }
       ]
     },
     {
-      "id": "trial:NCT05498428",
+      "id": "trial:NCT05256290",
       "category": "trials",
-      "text": "NCT05498428: Amivantamab in Participants With Advanced or Metastatic Solid Tumors Including Epidermal Growth Factor Receptor…. A recruiting study (phase 2). Sites in 12 countries.",
+      "text": "NCT05256290: Phase 1/2 Study of Silevertinib (BDTX-1535) in Patients With Glioblastoma or Non-Small Cell Lung…. A recruiting study (phase 1 / phase 2). Sites in 2 countries.",
       "sources": [
         {
-          "id": "trial:NCT05498428",
-          "url": "https://clinicaltrials.gov/study/NCT05498428",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
-      "id": "trial:NCT05579366",
-      "category": "trials",
-      "text": "NCT05579366: Rinatabart Sesutecan (Rina-S, PRO1184, GEN1184) for Advanced Solid Tumors (GCT1184-01/ PRO1184-001). A recruiting study (phase 1 / phase 2). Sites in 4 countries.",
-      "sources": [
-        {
-          "id": "trial:NCT05579366",
-          "url": "https://clinicaltrials.gov/study/NCT05579366",
+          "id": "trial:NCT05256290",
+          "url": "https://clinicaltrials.gov/study/NCT05256290",
           "label": "ClinicalTrials.gov"
         }
       ]
@@ -472,54 +484,6 @@
         {
           "id": "trial:NCT05748093",
           "url": "https://clinicaltrials.gov/study/NCT05748093",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
-      "id": "trial:NCT06043817",
-      "category": "trials",
-      "text": "NCT06043817: First-In-Human Study of STX-721/PFL-721 in Participants With Locally Advanced or Metastatic Non-Small Cell Lung…. A recruiting study (phase 1 / phase 2). Sites in 8 countries.",
-      "sources": [
-        {
-          "id": "trial:NCT06043817",
-          "url": "https://clinicaltrials.gov/study/NCT06043817",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
-      "id": "trial:NCT06422546",
-      "category": "trials",
-      "text": "NCT06422546: A Prospective ,Multicenter ,Non-interventional ,Real-world Study Observing Changes in Molecular Markers Osimertinib Targeted Therapy…. A recruiting study. Sites in 1 country.",
-      "sources": [
-        {
-          "id": "trial:NCT06422546",
-          "url": "https://clinicaltrials.gov/study/NCT06422546",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
-      "id": "trial:NCT06667076",
-      "category": "trials",
-      "text": "NCT06667076: Amivantamab in Combination With Lazertinib, or Amivantamab in Combination With Platinum-Based Chemotherapy, for Common…. A recruiting study (phase 2). Sites in 14 countries.",
-      "sources": [
-        {
-          "id": "trial:NCT06667076",
-          "url": "https://clinicaltrials.gov/study/NCT06667076",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
-      "id": "trial:NCT06706076",
-      "category": "trials",
-      "text": "NCT06706076: BH-30643 in Subjects With Locally Advanced or Metastatic NSCLC Harboring EGFR and/or HER2 Mutations. A recruiting study (phase 1 / phase 2). Sites in 9 countries.",
-      "sources": [
-        {
-          "id": "trial:NCT06706076",
-          "url": "https://clinicaltrials.gov/study/NCT06706076",
           "label": "ClinicalTrials.gov"
         }
       ]
@@ -549,6 +513,30 @@
       ]
     },
     {
+      "id": "trial:NCT07054307",
+      "category": "trials",
+      "text": "NCT07054307: Becotatug Vedotin (MRG003) Plus Pucotenlimab (HX008) as First-Line Treatment for EGFR-Positive Locally Advanced or…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07054307",
+          "url": "https://clinicaltrials.gov/study/NCT07054307",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07070232",
+      "category": "trials",
+      "text": "NCT07070232: A Clinical Study to Test if an Investigational Treatment Called BNT326 is Safe and…. A recruiting study (phase 1 / phase 2). Sites in 9 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07070232",
+          "url": "https://clinicaltrials.gov/study/NCT07070232",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
       "id": "trial:NCT07100080",
       "category": "trials",
       "text": "NCT07100080: Izalontamab Brengitecan (BMS-986507) Versus Platinum-based Chemotherapy With or Without Amivantamab for EGFR-mutated Non-small Cell…. A recruiting study (phase 2 / phase 3). Sites in 25 countries.",
@@ -573,49 +561,61 @@
       ]
     },
     {
-      "id": "trial:NCT07185997",
+      "id": "trial:NCT07229339",
       "category": "trials",
-      "text": "NCT07185997: Study to Evaluate Efficacy and Safety of Firmonertinib Compared With Investigator's Choice of EGFR…. A recruiting study (phase 3). Sites in 17 countries.",
+      "text": "NCT07229339: Zipalertinib for the Treatment of Resectable, Stage IB-IIIB, Non-Small Cell Lung Cancer. A recruiting study (phase 2). Sites in 1 country.",
       "sources": [
         {
-          "id": "trial:NCT07185997",
-          "url": "https://clinicaltrials.gov/study/NCT07185997",
+          "id": "trial:NCT07229339",
+          "url": "https://clinicaltrials.gov/study/NCT07229339",
           "label": "ClinicalTrials.gov"
         }
       ]
     },
     {
-      "id": "trial:NCT07206498",
+      "id": "trial:NCT07379476",
       "category": "trials",
-      "text": "NCT07206498: A Study to Evaluate Safety and Efficacy of WSD0922-FU Combo With Osimertinib for NSCLC. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "text": "NCT07379476: Local Ablative Therapy to Oligoresidual Metastasis in EGFR Mutated Non-small Cell Lung Cancer. A recruiting study (phase 2). Sites in 1 country.",
       "sources": [
         {
-          "id": "trial:NCT07206498",
-          "url": "https://clinicaltrials.gov/study/NCT07206498",
+          "id": "trial:NCT07379476",
+          "url": "https://clinicaltrials.gov/study/NCT07379476",
           "label": "ClinicalTrials.gov"
         }
       ]
     },
     {
-      "id": "trial:NCT07326566",
+      "id": "trial:NCT07462377",
       "category": "trials",
-      "text": "NCT07326566: Silevertinib With Temozolomide for the Treatment of Newly Diagnosed GBM With Unmethylated MGMT and EGFRvIII. A recruiting study (phase 2). Sites in 1 country.",
+      "text": "NCT07462377: EPI-326 in EGFR-mutant NSCLC and HNSCC. A recruiting study (phase 1). Sites in 3 countries.",
       "sources": [
         {
-          "id": "trial:NCT07326566",
-          "url": "https://clinicaltrials.gov/study/NCT07326566",
+          "id": "trial:NCT07462377",
+          "url": "https://clinicaltrials.gov/study/NCT07462377",
           "label": "ClinicalTrials.gov"
         }
       ]
     },
     {
-      "id": "trial:NCT07510841",
+      "id": "trial:NCT07476287",
       "category": "trials",
-      "text": "NCT07510841: JY016 Injection in Patients With Advanced Solid Tumors Expressing EGFR. A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "text": "NCT07476287: Symbiotic-Lung-14: A Study to Learn About the Study Medicine Called PF08634404 in Combination With…. A recruiting study (phase 2). Sites in 12 countries.",
       "sources": [
         {
-          "id": "trial:NCT07510841",
-          "url": "https://clinicaltrials.gov/study/NCT07510841",
+          "id": "trial:NCT07476287",
+          "url": "https://clinicaltrials.gov/study/NCT07476287",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07593248",
+      "category": "trials",
+      "text": "NCT07593248: Real-World Outcomes of Resected EGFR-Mutated NSCLC Patients Treated With Adjuvant EGFR-TKI in China. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07593248",
+          "url": "https://clinicaltrials.gov/study/NCT07593248",
           "label": "ClinicalTrials.gov"
         }
       ]
@@ -645,37 +645,13 @@
       ]
     },
     {
-      "id": "trial:NCT07709585",
+      "id": "trial:NCT07708961",
       "category": "trials",
-      "text": "NCT07709585: Befotertinib Plus Chemotherapy With an MRD-guided Adaptive Strategy for Treatment Escalation and Response Optimization…. A recruiting study (phase 2). Sites in 1 country.",
+      "text": "NCT07708961: Temozolomide, With or Without WSD0922-FU, for the Treatment of EGFR-Mutant, IDH-Wildtype Glioblastoma. A recruiting study (phase 2). Sites in 1 country.",
       "sources": [
         {
-          "id": "trial:NCT07709585",
-          "url": "https://clinicaltrials.gov/study/NCT07709585",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
-      "id": "trial:NCT07750132",
-      "category": "trials",
-      "text": "NCT07750132: SM2275 Injection in Patients With Advanced Solid Tumors. A recruiting study (phase 1). Sites in 1 country.",
-      "sources": [
-        {
-          "id": "trial:NCT07750132",
-          "url": "https://clinicaltrials.gov/study/NCT07750132",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
-      "id": "trial:NCT07911449",
-      "category": "trials",
-      "text": "NCT07911449: Osimertinib Plus Stereotactic Radiosurgery/Radiotherapy for EGFR-Mutant Non-Small Cell Lung Cancer With Symptomatic Brain Metastases. A recruiting study (phase 2). Sites in 1 country.",
-      "sources": [
-        {
-          "id": "trial:NCT07911449",
-          "url": "https://clinicaltrials.gov/study/NCT07911449",
+          "id": "trial:NCT07708961",
+          "url": "https://clinicaltrials.gov/study/NCT07708961",
           "label": "ClinicalTrials.gov"
         }
       ]
@@ -688,6 +664,18 @@
         {
           "id": "trial:NCT07933055",
           "url": "https://clinicaltrials.gov/study/NCT07933055",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07955363",
+      "category": "trials",
+      "text": "NCT07955363: Ivonescimab Combined With Chemotherapy and Third-generation Epidermal Growth Factor Receptor Tyrosine Kinase Inhibitor (EGFR-TKIs)…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07955363",
+          "url": "https://clinicaltrials.gov/study/NCT07955363",
           "label": "ClinicalTrials.gov"
         }
       ]
