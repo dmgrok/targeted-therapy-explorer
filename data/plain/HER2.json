@@ -1,7 +1,7 @@
 {
   "biomarker_id": "HER2",
-  "generated_at": "2026-11-15T14:51:14+01:00",
-  "source_hash": "256b4120c8c07d5baae9eb3e70183ab94799b5bece07e098219f60ccf7a60861",
+  "generated_at": "2026-11-25T09:39:33+01:00",
+  "source_hash": "1e21fad84af908c50b61c694a249a877a3a4526df4d6cf8c7a0c40aac5a9ef5d",
   "intro": {
     "what": [
       "HER2, also called ERBB2, is a gene.",
@@ -489,30 +489,6 @@
       ]
     },
     {
-      "id": "trial:NCT05253651",
-      "category": "trials",
-      "text": "NCT05253651: Tucatinib With Trastuzumab and mFOLFOX6 Versus Standard of Care Treatment in First-line HER2+ Metastatic Colorectal Cancer. A recruiting study (phase 3). Sites in 25 countries.",
-      "sources": [
-        {
-          "id": "trial:NCT05253651",
-          "url": "https://clinicaltrials.gov/study/NCT05253651",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
-      "id": "trial:NCT05315700",
-      "category": "trials",
-      "text": "NCT05315700: ORIC-114 in Patients With Advanced Solid Tumors Harboring an EGFR or HER2 Alteration. A recruiting study (phase 1 / phase 2). Sites in 10 countries.",
-      "sources": [
-        {
-          "id": "trial:NCT05315700",
-          "url": "https://clinicaltrials.gov/study/NCT05315700",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
       "id": "trial:NCT05372614",
       "category": "trials",
       "text": "NCT05372614: Testing the Safety and Tolerability of the Anti-cancer Drugs Trastuzumab Deruxtecan and Neratinib for…. A recruiting study (phase 1). Sites in 1 country.",
@@ -585,13 +561,25 @@
       ]
     },
     {
-      "id": "trial:NCT06274515",
+      "id": "trial:NCT06220214",
       "category": "trials",
-      "text": "NCT06274515: A Study to Investigate Mechanisms of Resistance to Breast Cancer Therapies. A recruiting study (phase 4). Sites in 8 countries.",
+      "text": "NCT06220214: Neoadjuvant Therapy and Contrast-enhanced Mammography for Early Stage Breast Cancer. A recruiting study (early phase 1). Sites in 1 country.",
       "sources": [
         {
-          "id": "trial:NCT06274515",
-          "url": "https://clinicaltrials.gov/study/NCT06274515",
+          "id": "trial:NCT06220214",
+          "url": "https://clinicaltrials.gov/study/NCT06220214",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT06253871",
+      "category": "trials",
+      "text": "NCT06253871: A Phase 1/2 Study of IAM1363 in HER2 Cancers. A recruiting study (phase 1 / phase 2). Sites in 8 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT06253871",
+          "url": "https://clinicaltrials.gov/study/NCT06253871",
           "label": "ClinicalTrials.gov"
         }
       ]
@@ -604,18 +592,6 @@
         {
           "id": "trial:NCT06282575",
           "url": "https://clinicaltrials.gov/study/NCT06282575",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
-      "id": "trial:NCT06330064",
-      "category": "trials",
-      "text": "NCT06330064: A Study to Evaluate the Efficacy and Safety of Ifinatamab Deruxtecan (I-DXd) in Subjects…. A recruiting study (phase 1 / phase 2). Sites in 18 countries.",
-      "sources": [
-        {
-          "id": "trial:NCT06330064",
-          "url": "https://clinicaltrials.gov/study/NCT06330064",
           "label": "ClinicalTrials.gov"
         }
       ]
@@ -657,25 +633,25 @@
       ]
     },
     {
-      "id": "trial:NCT06695845",
+      "id": "trial:NCT06660511",
       "category": "trials",
-      "text": "NCT06695845: Zanidatamab in Patients With HER2-expressing Tumors. A recruiting study (phase 2). Sites in 4 countries.",
+      "text": "NCT06660511: Exploratory Study on the Safety and Efficacy of Disitamab Vedotin in Combination With Anlotinib…. A recruiting study (early phase 1). Sites in 1 country.",
       "sources": [
         {
-          "id": "trial:NCT06695845",
-          "url": "https://clinicaltrials.gov/study/NCT06695845",
+          "id": "trial:NCT06660511",
+          "url": "https://clinicaltrials.gov/study/NCT06660511",
           "label": "ClinicalTrials.gov"
         }
       ]
     },
     {
-      "id": "trial:NCT06706076",
+      "id": "trial:NCT06686394",
       "category": "trials",
-      "text": "NCT06706076: BH-30643 in Subjects With Locally Advanced or Metastatic NSCLC Harboring EGFR and/or HER2 Mutations. A recruiting study (phase 1 / phase 2). Sites in 9 countries.",
+      "text": "NCT06686394: Patritumab Deruxtecan With Other Anticancer Agents in Participants With HER2 Positive Breast Cancer That…. A recruiting study (phase 1 / phase 2). Sites in 6 countries.",
       "sources": [
         {
-          "id": "trial:NCT06706076",
-          "url": "https://clinicaltrials.gov/study/NCT06706076",
+          "id": "trial:NCT06686394",
+          "url": "https://clinicaltrials.gov/study/NCT06686394",
           "label": "ClinicalTrials.gov"
         }
       ]
@@ -717,18 +693,6 @@
       ]
     },
     {
-      "id": "trial:NCT06949410",
-      "category": "trials",
-      "text": "NCT06949410: HER2 Vaccine for Locally Advanced Breast Cancer. A recruiting study (phase 1). Sites in 1 country.",
-      "sources": [
-        {
-          "id": "trial:NCT06949410",
-          "url": "https://clinicaltrials.gov/study/NCT06949410",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
       "id": "trial:NCT07007559",
       "category": "trials",
       "text": "NCT07007559: ASPEN-09-03: A Study of Evorpacept in Combination With Trastuzumab and Chemotherapy in Metastatic HER2-Positive Breast Cancer. A recruiting study (phase 2). Sites in 8 countries.",
@@ -741,13 +705,61 @@
       ]
     },
     {
-      "id": "trial:NCT07137871",
+      "id": "trial:NCT07070232",
       "category": "trials",
-      "text": "NCT07137871: Clinical Trial of Avasopasem in Patients With Metastatic Hormone Receptor Positive Breast Cancer With…. A recruiting study (phase 1). Sites in 1 country.",
+      "text": "NCT07070232: A Clinical Study to Test if an Investigational Treatment Called BNT326 is Safe and…. A recruiting study (phase 1 / phase 2). Sites in 9 countries.",
       "sources": [
         {
-          "id": "trial:NCT07137871",
-          "url": "https://clinicaltrials.gov/study/NCT07137871",
+          "id": "trial:NCT07070232",
+          "url": "https://clinicaltrials.gov/study/NCT07070232",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07081555",
+      "category": "trials",
+      "text": "NCT07081555: A First-in-Human Phase 1 Safety and Biodistribution of [177Lu]Lu-ABY-271 in Subjects With HER2-positive Metastatic Breast Cancer. A recruiting study (phase 1). Sites in 2 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07081555",
+          "url": "https://clinicaltrials.gov/study/NCT07081555",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07102381",
+      "category": "trials",
+      "text": "NCT07102381: A Phase 2 Neoadjuvant Study of Zanidatamab in Combination With Chemotherapy in Participants With…. A recruiting study (phase 2). Sites in 4 countries.",
+      "sources": [
+        {
+          "id": "trial:NCT07102381",
+          "url": "https://clinicaltrials.gov/study/NCT07102381",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07124000",
+      "category": "trials",
+      "text": "NCT07124000: DESTINY-PANTUMOUR04. A recruiting study. Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07124000",
+          "url": "https://clinicaltrials.gov/study/NCT07124000",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07195344",
+      "category": "trials",
+      "text": "NCT07195344: Study Aiming to Compare the Plasma Exposure of the Payload (Free-DXd) in Patients Treated…. A recruiting study (phase 4). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07195344",
+          "url": "https://clinicaltrials.gov/study/NCT07195344",
           "label": "ClinicalTrials.gov"
         }
       ]
@@ -760,6 +772,18 @@
         {
           "id": "trial:NCT07195695",
           "url": "https://clinicaltrials.gov/study/NCT07195695",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07383506",
+      "category": "trials",
+      "text": "NCT07383506: Mutant Selective-Inhibitor (CGT6297), in Patients With Advanced Solid Tumors. A recruiting study (phase 1). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07383506",
+          "url": "https://clinicaltrials.gov/study/NCT07383506",
           "label": "ClinicalTrials.gov"
         }
       ]
@@ -789,18 +813,6 @@
       ]
     },
     {
-      "id": "trial:NCT07527741",
-      "category": "trials",
-      "text": "NCT07527741: A Study to Assess Treatment Patterns and Treatment Adherence in Early HER2-positive Breast Cancer…. A recruiting study. Sites in 1 country.",
-      "sources": [
-        {
-          "id": "trial:NCT07527741",
-          "url": "https://clinicaltrials.gov/study/NCT07527741",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
       "id": "trial:NCT07546695",
       "category": "trials",
       "text": "NCT07546695: Role of Axillary Lymph Node Dissection for Residual MACROMETASTASES After NEOADJUVANT Chemotherapy in Patients…. A recruiting study. Sites in 1 country.",
@@ -820,18 +832,6 @@
         {
           "id": "trial:NCT07551362",
           "url": "https://clinicaltrials.gov/study/NCT07551362",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
-      "id": "trial:NCT07613151",
-      "category": "trials",
-      "text": "NCT07613151: Negative/Low Hormone Receptor And/or HER2 POsitive Lobular Invasive Breast Carcinoma - A Real-World International Cohort Study. A recruiting study. Sites in 1 country.",
-      "sources": [
-        {
-          "id": "trial:NCT07613151",
-          "url": "https://clinicaltrials.gov/study/NCT07613151",
           "label": "ClinicalTrials.gov"
         }
       ]
@@ -861,13 +861,61 @@
       ]
     },
     {
-      "id": "trial:NCT07880353",
+      "id": "trial:NCT07631871",
       "category": "trials",
-      "text": "NCT07880353: Real-World Outcomes of Sevabertinib in HER2-Mutant Advanced NSCLC: A Bidirectional Cohort Study. A recruiting study. Sites in 1 country.",
+      "text": "NCT07631871: An Exploratory Study of Zanidatamab in HER2-positive Advanced Tumor After at Least One Line…. A recruiting study (phase 2). Sites in 1 country.",
       "sources": [
         {
-          "id": "trial:NCT07880353",
-          "url": "https://clinicaltrials.gov/study/NCT07880353",
+          "id": "trial:NCT07631871",
+          "url": "https://clinicaltrials.gov/study/NCT07631871",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07631884",
+      "category": "trials",
+      "text": "NCT07631884: Exploratory Study on the Efficacy and Safety of Trastuzumab Rezetecan in the Treatment of…. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07631884",
+          "url": "https://clinicaltrials.gov/study/NCT07631884",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07683754",
+      "category": "trials",
+      "text": "NCT07683754: T-DXd Based Therapy Followed by Endocrine Therapy Plus Dual HER2 Blockade in First-line HER2+/…. A recruiting study (phase 3). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07683754",
+          "url": "https://clinicaltrials.gov/study/NCT07683754",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07885683",
+      "category": "trials",
+      "text": "NCT07885683: MagSense® Human Epidermal Growth Factor Receptor 2 (HER2) Imaging Agent (MSH2IA). A recruiting study (phase 1 / phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07885683",
+          "url": "https://clinicaltrials.gov/study/NCT07885683",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07949695",
+      "category": "trials",
+      "text": "NCT07949695: Neoadjuvant Trastuzumab Rezetecan Plus Toripalimab and Endocrine Therapy in HR-Positive HER2-Low Breast Cancer. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07949695",
+          "url": "https://clinicaltrials.gov/study/NCT07949695",
           "label": "ClinicalTrials.gov"
         }
       ]

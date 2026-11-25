@@ -1,7 +1,7 @@
 {
   "biomarker_id": "NTRK",
-  "generated_at": "2026-11-15T14:51:14+01:00",
-  "source_hash": "82c97099792c3da5dea4af7dd1738cf98050253e6de0ccc8af6fc7869f5b166a",
+  "generated_at": "2026-11-25T09:39:33+01:00",
+  "source_hash": "d846b6598c07ff7423520159879c4ef3acdee7aa555d9dd70c9ae4d004a94277",
   "intro": {
     "what": [
       "NTRK is a group of three genes: NTRK1, NTRK2 and NTRK3.",
@@ -155,18 +155,6 @@
         {
           "id": "trial:NCT04094610",
           "url": "https://clinicaltrials.gov/study/NCT04094610",
-          "label": "ClinicalTrials.gov"
-        }
-      ]
-    },
-    {
-      "id": "trial:NCT04655404",
-      "category": "trials",
-      "text": "NCT04655404: A Pilot Study of Larotrectinib for Newly-Diagnosed High-Grade Glioma With NTRK Fusion. A recruiting study (early phase 1). Sites in 5 countries.",
-      "sources": [
-        {
-          "id": "trial:NCT04655404",
-          "url": "https://clinicaltrials.gov/study/NCT04655404",
           "label": "ClinicalTrials.gov"
         }
       ]

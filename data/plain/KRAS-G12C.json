@@ -1,7 +1,7 @@
 {
   "biomarker_id": "KRAS-G12C",
-  "generated_at": "2026-11-15T14:51:14+01:00",
-  "source_hash": "485cd985a481d0204331141c7fb586ffff5c9b44edacc972449075f409e76bee",
+  "generated_at": "2026-11-25T09:39:33+01:00",
+  "source_hash": "adab4e75d84dcbf60db04ebe6732b66893e66bc10261e7cd34c8b94c23f3bf3e",
   "intro": {
     "what": [
       "KRAS G12C is a change in the KRAS gene, which belongs to a family of genes called RAS.",
@@ -820,6 +820,18 @@
         {
           "id": "trial:NCT07589569",
           "url": "https://clinicaltrials.gov/study/NCT07589569",
+          "label": "ClinicalTrials.gov"
+        }
+      ]
+    },
+    {
+      "id": "trial:NCT07639242",
+      "category": "trials",
+      "text": "NCT07639242: Olomorasib + Pembrolizumab KRAS G12C Mutant, PD-L1 TPS 1-49% Locally Advanced or Metastatic NSCLC. A recruiting study (phase 2). Sites in 1 country.",
+      "sources": [
+        {
+          "id": "trial:NCT07639242",
+          "url": "https://clinicaltrials.gov/study/NCT07639242",
           "label": "ClinicalTrials.gov"
         }
       ]
