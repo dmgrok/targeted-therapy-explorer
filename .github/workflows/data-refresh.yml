@@ -25,6 +25,8 @@ jobs:
           python3 scripts/fetch_snapshot.py \
             --out data/snapshot.json \
             --prev /tmp/prev/snapshot.json
+      - name: Regenerate plain-language text
+        run: python3 scripts/generate_plain.py
       - name: Rebuild the site
         run: python3 scripts/build_site.py
       - name: Run gates
@@ -42,7 +44,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
-          git add data/snapshot.json site/
+          git add data/snapshot.json data/plain/ site/
           git commit -m "Weekly snapshot $DATE"
           git push -u origin "$BRANCH"
           gh pr create \
